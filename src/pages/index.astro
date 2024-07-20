@@ -1,0 +1,71 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import RedesBoton from "../components/RedesBoton.astro";
+import Icons from "../components/Icons.astro";
+---
+
+<Layout title="Bienvenido a mi portafolio.">
+  <main>
+    <article>
+      <div id="foto-biografia">
+        <div id="foto-perfil"></div>
+        <div id="biografia">
+          <h1>Hola, soy Gabriela Ferrer.</h1>
+          <p>
+            Mi enfoque laboral a lo largo de los años ha sido relacionado a la
+            atención al público, ya dicho esto, quiero enfatizar que he decidido
+            emprender un emocionante cambio de carrera hacia el mundo del diseño
+            de experiencia de usuario y la programación frontend. Durante mis
+            años en el servicio al cliente, he desarrollado habilidades valiosas
+            en la comunicación efectiva, la empatía y la resolución de
+            problemas.
+          </p>
+        </div>
+      </div>
+      <div>
+        <h2>Front-End Developer UX Desing</h2>
+        <div id="tags-container">
+          <div id="mis-redes">
+            <RedesBoton href="/" text="Github"> <Icons/> </RedesBoton>
+            <RedesBoton href="/" text="LinkedIn"> <Icons/> </RedesBoton>
+            <RedesBoton href="/" text="Hoja de vida"> <Icons/> </RedesBoton>
+          </div>
+          <div>Disponible para trabajar</div>
+        </div>
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  #foto-biografia{
+    display: flex;
+    align-items: row;
+    gap: 30px;
+
+    & #biografia{
+      text-align: justify;
+      width: 300px
+    }
+  }
+  #foto-perfil {
+    background-image: url(/images/Foto.jpg);
+    width: 100px;
+    height: 100px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 100%;
+    border: solid white 5px;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
+  }
+
+
+  #mis-redes{
+    display: flex;
+    flex-direction: row;
+    gap: 20px ;
+  }
+</style>
