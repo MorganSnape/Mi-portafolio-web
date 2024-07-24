@@ -4,32 +4,44 @@
 
 <header style="position: sticky;">
   <nav>
-    <ul>
-      <li class="nav-item"><a href="/">Sobre Mí</a></li>
-      <li class="nav-item"><a href="/">Proyectos</a></li>
-      <li class="nav-item"><a href="/">Estudios</a></li>
-      <li class="nav-item"><a href="/">Contactame</a></li>
-    </ul>
+    <a href="/" class="nav-item">Sobre Mí</a>
+    <a href="/" class="nav-item">Proyectos</a>
+    <a href="/" class="nav-item">Estudios</a>
   </nav>
 </header>
 
 <style>
-  ul {
+  nav {
+    height: 60px;
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: flex-end;
     gap: 30px;
+    padding-right: 40px;
+    border-bottom: solid 0.5px #d8d8d8;
   }
 
   .nav-item {
     list-style: none;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     color: black;
+    cursor: pointer;
+    padding: 10px;
+    border: 2px solid transparent;
+    transition: transform 0.1s ease-in-out;
   }
 
-  a {
-    padding: 4px;
+  .nav-item:hover{
+    /* font-weight: 600; */
+    transform: scale(1.03);
+    color: #666666 ;
   }
+
+  .nav-item:active{
+    font-weight: 600;
+    color: black ;
+  }
+
 </style>
