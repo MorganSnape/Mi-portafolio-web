@@ -4,8 +4,9 @@ import Card from "../components/Card.astro";
 import RedesBoton from "../components/RedesBoton.astro";
 import { Icon } from "astro-icon/components";
 import BarNav from "../components/BarNav.astro";
-import SubProyectos from "../components/SubProyectos.astro"
+import Subtitulo from "../components/Subtitulo.astro"
 import Footer from "../components/Footer.astro";
+import Stacks from "../components/Stacks.astro";
 ---
 
 <Layout title="Bienvenido a mi portafolio.">
@@ -49,7 +50,8 @@ import Footer from "../components/Footer.astro";
       </div>
     </article>
     <article class="proyectos-container">
-      <SubProyectos />
+      <Subtitulo text="Mis Proyectos" size="aside" type="Fron-End"/>
+
       <div id="lista-proyectos">
         <Card
           size="md"
@@ -84,6 +86,8 @@ import Footer from "../components/Footer.astro";
           body="Pagina dedicada dedicadas a la venta de plantas..."
         />
       </div>
+
+      <Subtitulo size="center" type="Stacks"/>
     </article>
   </main>
   <!-- <aside
@@ -91,6 +95,8 @@ import Footer from "../components/Footer.astro";
   >
   </aside> -->
 
+  <Stacks/>
+  
   <Footer/>
 </Layout>
 

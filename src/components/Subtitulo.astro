@@ -1,0 +1,72 @@
+---
+interface Props{
+  text?: string;
+  type?: string | null;
+  size: "aside" | "center" ;
+}
+let {size, text, type}= Astro.props;
+---
+<article class:list={["subt-container", "subt-container-"+size]}>
+  <div  class:list={["elements-container", "subt-"+size]}>
+    <p>{text} <strong class="espaciado">{type}</strong></p>
+  </div>
+
+  <div class:list={["line", "line-"+size]}></div>
+</article>
+
+<style>
+  .subt-container{
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .subt-container-center{
+    justify-content: center;
+  }
+
+
+  .line{
+    width: calc(100%);
+    border: solid 4px black;
+    flex: 1;
+  }
+
+  .line-center{
+    display: none;
+    flex: 0;
+  }
+
+  .subt-aside{
+    box-shadow: 6px 6px 0px #000000;
+    width: fit-content;
+  }
+
+  .subt-center{
+    box-shadow: 0px 4px 0px #000000;
+    width: 240px;
+    justify-content: center;
+  }
+
+  .elements-container{
+    font-family:"Montserrat", sans-serif; ;
+    display: flex;
+    flex-direction: row;
+    background-color:#FFE971 ;
+    
+    padding: 10px 48px;
+    border: black 1px solid;
+    gap:20px;
+    font-size: 16px;
+    font-weight: 600;
+    
+  }
+
+  .espaciado{
+    letter-spacing: 8px; 
+    font-weight: 700;
+    margin-left: 10px;
+  }
+</style>
