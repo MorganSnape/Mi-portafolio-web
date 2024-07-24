@@ -2,10 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import RedesBoton from "../components/RedesBoton.astro";
-import Icons from "../components/Icons.astro";
 import { Icon } from "astro-icon/components";
 import BarNav from "../components/BarNav.astro";
-import SubProyectos from "../components/SubProyectos.astro";
+import SubProyectos from "../components/SubProyectos.astro"
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Bienvenido a mi portafolio.">
@@ -86,10 +86,12 @@ import SubProyectos from "../components/SubProyectos.astro";
       </div>
     </article>
   </main>
-  <aside
+  <!-- <aside
     style="height:calc(100vh - 2px - 80px); width: 200px; border: solid 1px red; position: fixed; top:80px; right: 0"
   >
-  </aside>
+  </aside> -->
+
+  <Footer/>
 </Layout>
 
 <style>
