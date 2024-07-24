@@ -49,6 +49,7 @@ import Stacks from "../components/Stacks.astro";
         </div>
       </div>
     </article>
+
     <article class="proyectos-container">
       <Subtitulo text="Mis Proyectos" size="aside" type="Fron-End"/>
 
@@ -89,14 +90,13 @@ import Stacks from "../components/Stacks.astro";
 
       <Subtitulo size="center" type="Stacks"/>
     </article>
+
+    <Stacks/>
   </main>
   <!-- <aside
     style="height:calc(100vh - 2px - 80px); width: 200px; border: solid 1px red; position: fixed; top:80px; right: 0"
   >
   </aside> -->
-
-  <Stacks/>
-  
   <Footer/>
 </Layout>
 
@@ -168,6 +168,7 @@ import Stacks from "../components/Stacks.astro";
     align-items: center;
     justify-content: center;
     gap: 30px;
+    height: 80vh;
   }
   #izquierda {
     display: flex;
@@ -187,6 +188,7 @@ import Stacks from "../components/Stacks.astro";
     display: flex;
     flex-direction: column;
     gap: 60px;
+    margin-top: 60px;
     
   }
 </style>
