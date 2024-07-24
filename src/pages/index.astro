@@ -1,11 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import CardMedium from "../components/CardMedium.astro";
+import Card from "../components/Card.astro";
 import RedesBoton from "../components/RedesBoton.astro";
 import Icons from "../components/Icons.astro";
 import { Icon } from "astro-icon/components";
 import BarNav from "../components/BarNav.astro";
-import CardLittle from "../components/CardLittle.astro";
 import SubProyectos from "../components/SubProyectos.astro";
 ---
 
@@ -52,29 +51,30 @@ import SubProyectos from "../components/SubProyectos.astro";
     <article class="proyectos-container">
       <SubProyectos />
       <div id="lista-proyectos">
-        <CardMedium
-          tag1="Astro"
+        <Card
+          size="md"
           src="/images/proyecto.jpg"
           href="/"
           title="Amarilla Garden"
           body="Pagina dedicada dedicadas a la venta de plantas..."
         />
-        <CardLittle
-          tag1="Astro"
+        <Card
+          size="sm"
+          tags={["Astro"]}
           src="/images/proyecto.jpg"
           href="/"
           title="Amarilla Garden"
           body="Pagina dedicada dedicadas a la venta de plantas..."
         />
-        <CardLittle
-          tag1="Astro"
+        <Card
+          size="sm"
           src="/images/proyecto.jpg"
           href="/"
           title="Amarilla Garden"
           body="Pagina dedicada dedicadas a la venta de plantas..."
         />
-        <CardMedium
-          tag1="Astro"
+        <Card
+          size="md"
           src="/images/proyecto.jpg"
           href="/"
           title="Amarilla Garden"

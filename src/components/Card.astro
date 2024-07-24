@@ -3,33 +3,67 @@ interface Props {
   title: string;
   body: string;
   href: string;
-  tag1?: string;
-  tag2?: string;
+  tags?: string[];
+  size?: "sm" | "md";
   src: string;
   alt?: string;
 }
 
-const { href, title, body, tag1, tag2, src, alt } = Astro.props;
+const { href, title, body, src, alt } = Astro.props;
+
+let { size, tags } = Astro.props;
+
+if (size===undefined) {
+  size = "sm";
+}
+
+let tagss: string[] = [];
+if (tags) {
+  tagss = tags.slice(0, 2);
+}
 ---
 
-<li class="link-card">
+<li class:list={["link-card", "link-card-" + size]}>
   <a href={href} class="element-card-content">
     <div class="text-card">
-      <span class="tag">{tag1}{tag2}</span>
+      {
+        tagss.map((tag) => {
+          return <span class="tag">{tag}</span>;
+        })
+      }
 
       <div>
         <h4>{title}</h4>
         <p>{body}</p>
       </div>
     </div>
-    <img src={src} alt={alt} class="foto-card" />
+    <img src={src} alt={alt} class:list={["foto-card", "foto-card-" + size]}/>
   </a>
 </li>
 
 <style>
+
+  .foto-card-sm {
+    height: 200px;
+    width: 200px;
+  }
+  .link-card-sm {
+    width: clamp(400px, 40%, 400px);
+
+  }
+  .link-card-md {
+    width: clamp(400px, 60%, 500px);
+  }
+
+  .foto-card-md {
+    height: 200px;
+    width: 300px;
+  }
+
+  /* Estilos Generales*/ 
+
   .link-card {
     padding: 20px;
-    width: clamp(400px, 60%, 500px);
     height: 200px;
     border-radius: 10px;
     display: flex;
@@ -50,10 +84,9 @@ const { href, title, body, tag1, tag2, src, alt } = Astro.props;
     gap: 20px;
   }
   .foto-card {
-    height: 200px;
-    width: 300px;
     border-radius: 10px;
     border: #676767 solid 1px;
+    overflow: hidden;
   }
   .tag {
     display: flex;
@@ -69,15 +102,14 @@ const { href, title, body, tag1, tag2, src, alt } = Astro.props;
     font-weight: 600;
     box-shadow: inset 0px 0px 8px 1px rgba(35, 35, 35, 0.4);
   }
-  p{
-    color: #5C5C5C;
+  p {
+    color: #5c5c5c;
     font-size: 16px;
     font-weight: 400;
     font-family: "Fredoka", sans-serif;
   }
 
-  h4{
+  h4 {
     font-weight: 600;
   }
 </style>
-
