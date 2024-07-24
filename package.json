@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.8.2",
+    "@iconify-json/bxs": "^1.1.10",
+    "@iconify-json/fa6-brands": "^1.1.21",
     "astro": "^4.12.2",
     "astro-icon": "^1.1.0",
     "typescript": "^5.5.3"

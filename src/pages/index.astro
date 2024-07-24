@@ -1,17 +1,28 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import CardMedium from "../components/CardMedium.astro";
 import RedesBoton from "../components/RedesBoton.astro";
 import Icons from "../components/Icons.astro";
+import { Icon } from "astro-icon/components";
+import BarNav from "../components/BarNav.astro";
+import CardLittle from "../components/CardLittle.astro";
+import SubProyectos from "../components/SubProyectos.astro";
 ---
 
 <Layout title="Bienvenido a mi portafolio.">
+  <BarNav />
   <main>
-    <article>
-      <div id="foto-biografia">
+    <article id="sobre-mi-container">
+      <div id="izquierda">
         <div id="foto-perfil"></div>
-        <div id="biografia">
-          <h1>Hola, soy Gabriela Ferrer.</h1>
+        <h2>
+          <strong>Front-End</strong> Developer <strong>UX</strong> Desinger
+        </h2>
+      </div>
+
+      <div id="biografia">
+        <div id="text">
+          <h1>Hola, soy <strong>Gabriela Ferrer.</strong></h1>
           <p>
             Mi enfoque laboral a lo largo de los años ha sido relacionado a la
             atención al público, ya dicho esto, quiero enfatizar que he decidido
@@ -22,37 +33,76 @@ import Icons from "../components/Icons.astro";
             problemas.
           </p>
         </div>
-      </div>
-      <div>
-        <h2>Front-End Developer UX Desing</h2>
         <div id="tags-container">
           <div id="mis-redes">
-            <RedesBoton href="/" text="Github"> <Icons/> </RedesBoton>
-            <RedesBoton href="/" text="LinkedIn"> <Icons/> </RedesBoton>
-            <RedesBoton href="/" text="Hoja de vida"> <Icons/> </RedesBoton>
+            <RedesBoton href="/" text="Github">
+              <Icon name="fa6-brands:github" />
+            </RedesBoton>
+            <RedesBoton href="/" text="LinkedIn">
+              <Icon name="fa6-brands:linkedin" />
+            </RedesBoton>
+            <RedesBoton href="/" text="Hoja de vida">
+              <Icon name="bxs:file-blank" /></RedesBoton
+            >
           </div>
-          <div>Disponible para trabajar</div>
+          <div id="disponible">Disponible para trabajar</div>
         </div>
       </div>
     </article>
+    <article class="proyectos-container">
+      <SubProyectos />
+      <div id="lista-proyectos">
+        <CardMedium
+          tag1="Astro"
+          src="/images/proyecto.jpg"
+          href="/"
+          title="Amarilla Garden"
+          body="Pagina dedicada dedicadas a la venta de plantas..."
+        />
+        <CardLittle
+          tag1="Astro"
+          src="/images/proyecto.jpg"
+          href="/"
+          title="Amarilla Garden"
+          body="Pagina dedicada dedicadas a la venta de plantas..."
+        />
+        <CardLittle
+          tag1="Astro"
+          src="/images/proyecto.jpg"
+          href="/"
+          title="Amarilla Garden"
+          body="Pagina dedicada dedicadas a la venta de plantas..."
+        />
+        <CardMedium
+          tag1="Astro"
+          src="/images/proyecto.jpg"
+          href="/"
+          title="Amarilla Garden"
+          body="Pagina dedicada dedicadas a la venta de plantas..."
+        />
+      </div>
+    </article>
   </main>
+  <aside
+    style="height:calc(100vh - 2px - 80px); width: 200px; border: solid 1px red; position: fixed; top:80px; right: 0"
+  >
+  </aside>
 </Layout>
 
 <style>
-  #foto-biografia{
-    display: flex;
-    align-items: row;
-    gap: 30px;
-
-    & #biografia{
-      text-align: justify;
-      width: 300px
-    }
+  main{
+    padding: 20px 120px ;
+  }
+  strong {
+    color: #8c659b;
+  }
+  [data-icon] {
+    font-size: 20px;
   }
   #foto-perfil {
     background-image: url(/images/Foto.jpg);
-    width: 100px;
-    height: 100px;
+    width: 160px;
+    height: 160px;
     background-position: center;
     background-size: cover;
     border-radius: 100%;
@@ -61,11 +111,68 @@ import Icons from "../components/Icons.astro";
     -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
   }
+  h2 {
+    width: 300px;
+    text-align: center;
+  }
+  #biografia {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 
+    #text {
+      width: 700px;
+      text-wrap: pretty;
+    }
+    #tags-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      & #mis-redes {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+      }
+      & #disponible {
+        border-radius: 100px;
+        color: #676767;
+        background-color: #eeeeee;
+        padding: 12px 80px;
+        font-size: 16px;
+        box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);
+        font-weight: 450;
+      }
+    }
+  }
 
-  #mis-redes{
+  #sobre-mi-container {
     display: flex;
     flex-direction: row;
-    gap: 20px ;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+  }
+  #izquierda {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #lista-proyectos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .proyectos-container {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    
   }
 </style>
