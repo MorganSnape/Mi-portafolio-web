@@ -41,7 +41,7 @@ import Stacks from "../components/Stacks.astro";
             <RedesBoton href="/" text="LinkedIn">
               <Icon name="fa6-brands:linkedin" />
             </RedesBoton>
-            <RedesBoton href="/" text="Hoja de vida">
+            <RedesBoton href="/" text="Currículum">
               <Icon name="bxs:file-blank" /></RedesBoton
             >
           </div>
@@ -122,16 +122,21 @@ import Stacks from "../components/Stacks.astro";
     -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
   }
+  h1{
+    margin-bottom: 28px;
+  }
   h2 {
     width: 300px;
     text-align: center;
   }
+
+
   #biografia {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 28px;
 
     #text {
       width: 700px;
@@ -141,11 +146,11 @@ import Stacks from "../components/Stacks.astro";
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
+      gap: 40px;
       & #mis-redes {
         display: flex;
         flex-direction: row;
-        gap: 20px;
+        gap: 24px;
       }
       & #disponible {
         border: 1px solid #94AE7B;
@@ -167,14 +172,14 @@ import Stacks from "../components/Stacks.astro";
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 30px;
+    gap: 40px;
     height: 80vh;
   }
   #izquierda {
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
   }
 
   #lista-proyectos {
