@@ -51,12 +51,13 @@ import Stacks from "../components/Stacks.astro";
     </article>
 
     <article class="proyectos-container">
-      <Subtitulo text="Mis Proyectos" size="aside" type="Fron-End"/>
+      
 
       <div id="lista-proyectos">
+        <Subtitulo text="Mis Proyectos" size="aside" type="Fron-End"/>
         <Card
           size="md"
-          tags={["Astro"]}
+          tags={["Astro", "En proceso"]}
           src="/images/proyecto.jpg"
           href="/"
           title="Amarilla Garden"
@@ -102,7 +103,7 @@ import Stacks from "../components/Stacks.astro";
 
 <style>
   main{
-    padding: 20px 120px ;
+    padding: 20px 0px ;
   }
   strong {
     color: #8c659b;
@@ -188,17 +189,20 @@ import Stacks from "../components/Stacks.astro";
   }
 
   #lista-proyectos {
+    margin-top: 88px;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
+    background-image: url(/fondoDos.svg);
+    background-size: 20px;
+    padding: 100px 0px;
   }
   .proyectos-container {
     display: flex;
     flex-direction: column;
-    gap: 60px;
-    margin-top: 60px;
     
   }
 </style>

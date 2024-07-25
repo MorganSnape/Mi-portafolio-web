@@ -26,13 +26,15 @@ if (tags) {
 <section class:list={["link-card", "link-card-" + size]}>
   <a href={href} class="element-card-content">
     <div class="text-card">
+      <div class="tags-container">
       {
         tagss.map((tag) => {
           return <span class="tag">{tag}</span>;
         })
       }
+      </div>
 
-      <div>
+      <div class="sobre-card">
         <h4>{title}</h4>
         <p>{body}</p>
       </div>
@@ -68,9 +70,15 @@ if (tags) {
     border-radius: 10px;
     display: flex;
     background-color: #fbfbfb;
-    border: #676767 solid 1px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 20px 2px;
+    border: #d8d8d8  2px solid;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px 0px;
+    transition: transform 0.1s ease-in-out;
   }
+
+  .link-card:hover {
+    transform: scale(1.02);
+  }
+
   .element-card-content {
     display: flex;
     flex-direction: row;
@@ -81,26 +89,33 @@ if (tags) {
   .text-card {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
+  }
+
+  h4{
+    margin-bottom: 0px;
   }
   .foto-card {
     border-radius: 10px;
-    border: #676767 solid 1px;
+    border: #d8d8d8 solid 1px;
     overflow: hidden;
     object-fit: contain;
   }
-  .tag {
+
+  .tags-container{
     display: flex;
     flex-direction: row;
-    gap: 20px;
-    display: flex;
     align-items: center;
-    background-color: #8c659b;
+    gap: 20px;
+  }
+  .tag {
+    font-size: 14px;
+    background-color: #8C659B;
     width: fit-content;
-    padding: 8px 30px;
-    border-radius: 100px;
+    padding: 8px 24px;
+    border-radius: 50px;
     color: white;
-    font-weight: 600;
+    font-weight: 500;
     box-shadow: inset 0px 0px 8px 1px rgba(35, 35, 35, 0.4);
   }
   p {
