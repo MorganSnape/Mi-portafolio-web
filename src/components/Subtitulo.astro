@@ -1,77 +1,79 @@
 ---
-interface Props{
+interface Props {
   text?: string;
   type?: string | null;
-  size: "aside" | "center" ;
+  size: "aside" | "center";
 }
-let {size, text, type}= Astro.props;
+let { size, text, type } = Astro.props;
 ---
-<article class:list={["subt-container", "subt-container-"+size]}>
-  <div  class:list={["elements-container", "subt-"+size]}>
+
+<article class:list={["subt-container", "subt-container-" + size]}>
+  <div class:list={["elements-container","borde-subt", "subt-" + size]}>
     <p>{text} <strong class="espaciado">{type}</strong></p>
   </div>
 
-  <div class:list={["line", "line-"+size]}></div>
+  <!-- <div class:list={["line", "line-"+size]}></div> -->
 </article>
 
 <style>
-  .subt-container{
-    margin-left: 20px;
-    margin-right: 20px;
+  .subt-container {
     position: absolute;
-    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
+    overflow: hidden;
+    width: 100%;
+    padding-bottom: 8px;
   }
-  .subt-container-aside{
+  .subt-container-aside {
     z-index: 1;
-    top: -5%
+    top: -40px;
   }
-  .subt-container-center{
-    bottom: -5%;
+  .subt-container-center {
     justify-content: center;
+    bottom: 235px;
+    z-index: 1;
   }
 
-
-  .line{
-    width: calc(100%);
-    border: solid 4px black;
-    flex: 1;
-  }
-
-  .line-center{
-    display: none;
-    flex: 0;
-  }
-
-  .subt-aside{
+  .subt-aside {
     box-shadow: 6px 6px 0px #000000;
     width: fit-content;
+    position: relative;
+    margin-left: 40px;
   }
 
-  .subt-center{
+  .borde-subt::before {
+    position: absolute;
+    content: "";
+    width: 200vw;
+    z-index: -1;
+    left: -50%;
+    top: 50%;
+    border: solid 4px black;
+
+  }
+
+  .subt-center {
     box-shadow: 0px 4px 0px #000000;
     width: 240px;
     justify-content: center;
   }
 
-  .elements-container{
-    font-family:"Montserrat", sans-serif; ;
+  .elements-container {
+    font-family: "Montserrat", sans-serif;
     display: flex;
     flex-direction: row;
-    background-color:#FFE971 ;
-    
+    background-color: #ffe971;
+
     padding: 10px 48px;
     border: black 1px solid;
-    gap:20px;
+    gap: 20px;
     font-size: 16px;
     font-weight: 600;
-    
   }
 
-  .espaciado{
-    letter-spacing: 8px; 
+  .espaciado {
+    letter-spacing: 8px;
     font-weight: 700;
     margin-left: 10px;
   }

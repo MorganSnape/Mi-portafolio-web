@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import Subtitulo from "./Subtitulo.astro";
 
 const stacks = ["html", "css", "js", "astro", "figma"];
 
@@ -30,29 +31,40 @@ const cssColors = {
 };
 ---
 
-<article id="icons-container">
-  {
-    stacks.map((stack) => {
-      const { src } = MAP_STACK_TO_INFO[stack];
+<section id="lista-stacks">
+  <Subtitulo size="center" type="Stacks" />
+  <article id="icons-container">
+    {
+      stacks.map((stack) => {
+        const { src } = MAP_STACK_TO_INFO[stack];
 
-      return (
-        <div>
-          <Icon class="stack" name={src} />
-        </div>
-      );
-    })
-  }
-</article>
+        return (
+          <div>
+            <Icon class="stack" name={src} />
+          </div>
+        );
+      })
+    }
+  </article>
+</section>
 
 <style>
+  #lista-stacks {
+    padding: 0px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+  }
   #icons-container {
-    margin-top: 10%;
-    margin-bottom: 10%;
+    padding: 80px 0px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     gap: 80px;
+    width: 600px;
   }
 
   div {
@@ -82,4 +94,6 @@ const cssColors = {
   .stack {
     font-size: 44px;
   }
+
+  
 </style>
