@@ -1,13 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
 import RedesBoton from "../components/RedesBoton.astro";
 import { Icon } from "astro-icon/components";
 import BarNav from "../components/BarNav.astro";
-import Subtitulo from "../components/Subtitulo.astro"
 import Footer from "../components/Footer.astro";
 import Stacks from "../components/Stacks.astro";
 import Estudios from "../components/Estudios.astro";
+import ProyectsFront from "../components/ProyectsFront.astro";
+import ProyectsUx from "../components/ProyectsUx.astro"
 ---
 
 <Layout title="Bienvenido a mi portafolio.">
@@ -51,49 +51,11 @@ import Estudios from "../components/Estudios.astro";
       </div>
     </article>
 
-    <section class="proyectos-container">
-      
-
-      <div id="lista-proyectos">
-        <Subtitulo text="Mis Proyectos" align="aside" type="Fron-End"/>
-        <Card
-          size="md"
-          tags={["Astro", "En proceso"]}
-          src="/images/proyecto.jpg"
-          href="/"
-          title="Amarilla Garden"
-          body="Pagina dedicada dedicadas a la venta de plantas..."
-        />
-        <Card
-          size="sm"
-          tags={["Astro"]}
-          src="/images/proyecto.jpg"
-          href="/"
-          title="Amarilla Garden"
-          body="Pagina dedicada dedicadas a la venta de plantas..."
-        />
-        <Card
-          size="sm"
-          tags={["Astro"]}
-          src="/images/proyecto.jpg"
-          href="/"
-          title="Amarilla Garden"
-          body="Pagina dedicada dedicadas a la venta de plantas..."
-        />
-        <Card
-          size="md"
-          tags={["Astro"]}
-          src="/images/proyecto.jpg"
-          href="/"
-          title="Amarilla Garden"
-          body="Pagina dedicada dedicadas a la venta de plantas..."
-        />
-      </div>
-      
-      
-    </section>
-
+    <ProyectsFront/>
+    
     <Stacks/>
+    <ProyectsUx/>
+
 
     <Estudios/>
 

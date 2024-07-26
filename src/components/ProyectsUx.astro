@@ -1,0 +1,50 @@
+---
+import Subtitulo from "./Subtitulo.astro"
+import Card from "./Card.astro";
+---
+
+<section class="proyectos-container">
+      
+
+  <div id="lista-proyectos">
+    <Subtitulo text="Mis Proyectos" align="aside" type="UX / UI Desinger"/>
+    <Card
+      size="md"
+      tags={["Astro", "En proceso"]}
+      src="/images/Amarilla.png"
+      href="/"
+      title="Amarilla Garden"
+      body="Pagina dedicada dedicadas a la venta de plantas..."
+    />
+    <Card
+      size="sm"
+      tags={["Astro"]}
+      src="/images/Rick-Morty.png"
+      href="/"
+      title="Amarilla Garden"
+      body="Pagina dedicada dedicadas a la venta de plantas..."
+    />
+  </div>
+  
+  
+</section>
+
+<style>
+ 
+ #lista-proyectos {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-image: url(/fondoDos.svg);
+    background-size: 20px;
+    padding: 80px 0px;
+  }
+  .proyectos-container {
+    display: flex;
+    flex-direction: column;
+    
+  }
+</style>
