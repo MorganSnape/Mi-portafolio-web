@@ -14,10 +14,13 @@ if (!target) {
 }
 ---
 
-<a {href} class="red-boton" {target}> <slot /> {text}</a>
+<div>
+  <a {href} class="red-boton" {target}> <slot /> {text}</a>
+</div>
 
 <style>
   .red-boton {
+
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -33,5 +36,10 @@ if (!target) {
     border: 1px solid black;
     border-radius: 10px;
     box-shadow: 8px 8px 0px #000000;
+    transition: transform 0.1s ease-in-out;
+  }
+
+  .red-boton:hover{
+    transform: scale(1.03);
   }
 </style>

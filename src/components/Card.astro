@@ -24,7 +24,7 @@ if (tags) {
 ---
 
 <section class:list={["link-card", "link-card-" + size]}>
-  <a href={href} class="element-card-content">
+  <a href={href} class:list={["element-card-content", "element-card-content-" + size]}>
     <div class="text-card">
     
       <div>
@@ -39,6 +39,7 @@ if (tags) {
         <h4>{title}</h4>
         <p>{body}</p>
 
+        <slot/>
       </div>
     </div>
 
@@ -74,6 +75,19 @@ if (tags) {
   /*Estilos del size xl */
   .link-card-xl{
     width: clamp(400px, 60%, 700px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .element-card-content-xl::before{
+    position: absolute;
+    background-color: #8c659b;
+    width: 80px;
+    height: 12px;
+    content: "";
+    left: -16px;
+    transform: rotate(140deg);
+    top: 15px;
   }
 
   .foto-card-xl {
