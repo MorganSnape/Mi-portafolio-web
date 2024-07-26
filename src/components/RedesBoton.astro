@@ -2,12 +2,19 @@
 interface Props {
   text: string;
   href: string;
+  target?: string;
 }
 
 const { text, href } = Astro.props;
+
+let { target } = Astro.props;
+
+if (!target) {
+  target = "_blank";
+}
 ---
 
-<a {href} class="red-boton"> <slot /> {text}</a>
+<a {href} class="red-boton" {target}> <slot /> {text}</a>
 
 <style>
   .red-boton {
@@ -20,13 +27,11 @@ const { text, href } = Astro.props;
     font-size: 14px;
     font-weight: 500;
 
-    
     width: fit-content;
     background-color: #8c659b;
     color: white;
     border: 1px solid black;
     border-radius: 10px;
     box-shadow: 8px 8px 0px #000000;
-
   }
 </style>

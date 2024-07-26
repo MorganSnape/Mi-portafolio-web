@@ -7,6 +7,7 @@ import BarNav from "../components/BarNav.astro";
 import Subtitulo from "../components/Subtitulo.astro"
 import Footer from "../components/Footer.astro";
 import Stacks from "../components/Stacks.astro";
+import Estudios from "../components/Estudios.astro";
 ---
 
 <Layout title="Bienvenido a mi portafolio.">
@@ -35,10 +36,10 @@ import Stacks from "../components/Stacks.astro";
         </div>
         <div id="tags-container">
           <div id="mis-redes">
-            <RedesBoton href="/" text="Github">
+            <RedesBoton href="https://github.com/MorganSnape" text="Github">
               <Icon name="fa6-brands:github" />
             </RedesBoton>
-            <RedesBoton href="/" text="LinkedIn">
+            <RedesBoton href="https://www.linkedin.com/in/gabriela-de-los-angeles-ferrer-martinez-8a45771a4/" text="LinkedIn" >
               <Icon name="fa6-brands:linkedin" />
             </RedesBoton>
             <RedesBoton href="/" text="Currículum">
@@ -54,7 +55,7 @@ import Stacks from "../components/Stacks.astro";
       
 
       <div id="lista-proyectos">
-        <Subtitulo text="Mis Proyectos" size="aside" type="Fron-End"/>
+        <Subtitulo text="Mis Proyectos" align="aside" type="Fron-End"/>
         <Card
           size="md"
           tags={["Astro", "En proceso"]}
@@ -93,6 +94,9 @@ import Stacks from "../components/Stacks.astro";
     </section>
 
     <Stacks/>
+
+    <Estudios/>
+
   </main>
   <!-- <aside
     style="height:calc(100vh - 2px - 80px); width: 200px; border: solid 1px red; position: fixed; top:80px; right: 0"
@@ -179,7 +183,7 @@ import Stacks from "../components/Stacks.astro";
     align-items: center;
     justify-content: center;
     gap: 40px;
-    height: 80vh;
+    height: 100vh;
   }
   #izquierda {
     display: flex;

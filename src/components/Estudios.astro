@@ -1,0 +1,41 @@
+---
+import Subtitulo from "./Subtitulo.astro";
+import Card from "./Card.astro";
+---
+
+<section id="studies-container">
+  <Subtitulo align="center" type="Estudios" position="two" />
+  <div id="studies-list">
+    <Card
+      size="xl"
+      tags={["Astro"]}
+      src="/images/Full-Stacks.png"
+      href="/"
+      title="Diplomado - Programador Full Stack Junior."
+      body="En alianza de la Universidad Tecnológica de Pereira y la Universidad Católica de Pereira | 2024"
+    />
+
+    <Card
+      size="xl"
+      tags={["Astro"]}
+      src="/images/personal-curso.png"
+      href="/"
+      title="Formación Desarrollo Personal G7 - ONE"
+      body="En alianza de Alura Latam y Oracle. Curso dedicado al desarrodo de habilidades de habilidades blandas  | 2024 "
+    />
+  </div>
+</section>
+
+<style>
+  #studies-container {
+    position: relative;
+    padding-top: 140px;
+    padding-bottom: 40px;
+  }
+  #studies-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+</style>

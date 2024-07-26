@@ -32,7 +32,8 @@ const cssColors = {
 ---
 
 <section id="lista-stacks">
-  <Subtitulo size="center" type="Stacks" />
+  <Subtitulo align="center" type="Stacks" position="one"/>
+
   <article id="icons-container">
     {
       stacks.map((stack) => {
@@ -50,12 +51,12 @@ const cssColors = {
 
 <style>
   #lista-stacks {
-    padding: 0px 0px;
+    position: relative;
+    padding: 100px 0px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 100vw;
   }
   #icons-container {
     padding: 80px 0px;
@@ -95,5 +96,6 @@ const cssColors = {
     font-size: 44px;
   }
 
+  
   
 </style>

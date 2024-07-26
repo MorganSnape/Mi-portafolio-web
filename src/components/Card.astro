@@ -4,7 +4,7 @@ interface Props {
   body: string;
   href: string;
   tags?: string[];
-  size?: "sm" | "md";
+  size?: "sm" | "md" | "xl";
   src: string;
   alt?: string;
 }
@@ -13,7 +13,7 @@ const { href, title, body, src, alt } = Astro.props;
 
 let { size, tags } = Astro.props;
 
-if (size===undefined) {
+if (size === undefined) {
   size = "sm";
 }
 
@@ -26,51 +26,69 @@ if (tags) {
 <section class:list={["link-card", "link-card-" + size]}>
   <a href={href} class="element-card-content">
     <div class="text-card">
-      <div class="tags-container">
-      {
-        tagss.map((tag) => {
-          return <span class="tag">{tag}</span>;
-        })
-      }
-      </div>
+    
+      <div>
+        <div class="tags-container">
+          {
+            tagss.map((tag) => {
+              return <span class="tag">{tag}</span>;
+            })
+          }
+        </div>
 
-      <div class="sobre-card">
         <h4>{title}</h4>
         <p>{body}</p>
+
       </div>
     </div>
-    <img src={src} alt={alt} class:list={["foto-card", "foto-card-" + size]}/>
+
+    <img src={src} alt={alt} class:list={["foto-card", "foto-card-" + size]} />
   </a>
 </section>
 
-<style>
 
-  .foto-card-sm {
-    height: 200px;
-    width: 260px;
-  }
+
+
+
+<style>
+  /*Estilos del size sm */
   .link-card-sm {
     width: clamp(400px, 40%, 500px);
 
   }
+  .foto-card-sm {
+    height: 200px;
+    /* width: 260px; */
+  }
+
+
+  /*Estilos del size md */
   .link-card-md {
     width: clamp(400px, 60%, 560px);
   }
 
   .foto-card-md {
     height: 200px;
-    width: 280px;
+    /* width: 280px; */
+  }
+  /*Estilos del size xl */
+  .link-card-xl{
+    width: clamp(400px, 60%, 700px);
   }
 
-  /* Estilos Generales*/ 
+  .foto-card-xl {
+    height: 200px;
+    /* width: 280px; */
+  }
 
+  /*Estilos Generales de las Cards*/
   .link-card {
     padding: 20px;
     height: 200px;
     border-radius: 10px;
     display: flex;
     background-color: #fbfbfb;
-    border: #d8d8d8  2px solid;
+    border: #d8d8d8 2px solid;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px 0px;
     transition: transform 0.1s ease-in-out;
   }
@@ -86,33 +104,39 @@ if (tags) {
     gap: 10px;
   }
 
+
   .text-card {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    flex: 1;
   }
 
-  h4{
+  h4 {
     margin-bottom: 0px;
   }
   .foto-card {
     border-radius: 10px;
     border: #d8d8d8 solid 1px;
     overflow: hidden;
-    object-fit: contain;
+    object-fit: cover;
+    width: clamp(100px, 45%, 300px);
   }
 
-  .tags-container{
+  .tags-container {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 20px;
+    padding-bottom: 20px;
+    width: fit-content;
+    
   }
   .tag {
     font-size: 14px;
-    background-color: #8C659B;
+    background-color: #8c659b;
     width: fit-content;
-    padding: 8px 24px;
+    padding: 8px 20px;
     border-radius: 50px;
     color: white;
     font-weight: 500;
@@ -123,9 +147,12 @@ if (tags) {
     font-size: 16px;
     font-weight: 400;
     font-family: "Fredoka", sans-serif;
+    width: 100%;
+    text-wrap: balance;
   }
 
   h4 {
+    font-size: 16px;
     font-weight: 600;
   }
 </style>
