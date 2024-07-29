@@ -14,7 +14,7 @@ import LiveCode from "../components/LiveCode.astro"
 <Layout title="Bienvenido a mi portafolio.">
   <BarNav />
   <main>
-    <article id="sobre-mi-container">
+    <section id="sobre-mi-container">
       <div id="izquierda">
         <div id="foto-perfil"></div>
         <h2>
@@ -50,9 +50,9 @@ import LiveCode from "../components/LiveCode.astro"
           <div id="disponible">Disponible para trabajar</div>
         </div>
       </div>
-    </article>
+    </section>
 
-    <ProyectsFront> <LiveCode/></ProyectsFront>
+    <ProyectsFront/>
     
     <Stacks/>
     <ProyectsUx/>
@@ -89,6 +89,7 @@ import LiveCode from "../components/LiveCode.astro"
     -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.4);
     box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.4);
+    user-select:none;
   }
   h1{
     margin-bottom: 28px;
@@ -134,7 +135,7 @@ import LiveCode from "../components/LiveCode.astro"
         font-size: 16px;
         box-shadow: inset 0px 0px 10.3px 5px rgba(125, 147, 103, 0.25);
         font-weight: 450;
-
+        user-select:none;
 
       }
     }
@@ -171,7 +172,9 @@ import LiveCode from "../components/LiveCode.astro"
     display: flex;
     flex-direction: column;
     
-  }
+  }  
 
+@media (min-width){
 
+}
 </style>

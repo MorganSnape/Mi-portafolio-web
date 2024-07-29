@@ -3,12 +3,13 @@ interface Props {
   text?: string;
   type?: string | null;
   align: "aside" | "center";
-  position?: "one"| "two"
+  position?: "one"| "two";
+  id? : string;
 }
-let { align, text, type,position } = Astro.props;
+let { align, text, type,position, id } = Astro.props;
 ---
 
-<article class:list={["subt-container", "subt-container-" + align, "subt-position-" + position]}>
+<article class:list={["subt-container", "subt-container-" + align, "subt-position-" + position]} id={id}>
   <div class:list={["elements-container","borde-subt", "subt-" + align]}>
     <p>{text} <strong class="espaciado">{type}</strong></p>
   </div>
@@ -24,15 +25,15 @@ let { align, text, type,position } = Astro.props;
     align-items: center;
     overflow: hidden;
     width: 100%;
-    padding-bottom: 8px;
+    z-index: 3;
+    padding: 16px 0px 16px 0px;
+    user-select:none
+
   }
-  .subt-container-aside {
-    z-index: 1;
-    top: -40px;
-  }
+
   .subt-container-center {
+
     justify-content: center;
-    z-index: 1;
   }
 
   .subt-aside {
@@ -79,9 +80,9 @@ let { align, text, type,position } = Astro.props;
   }
 
   .subt-position-one{
-   top: -42px;
+   top: -60px;
   }
   .subt-position-two{
-   top: -42px;
+   top: -60px;
   }
 </style>

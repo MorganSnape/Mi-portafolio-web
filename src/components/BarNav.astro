@@ -2,11 +2,11 @@
 
 ---
 
-<header style="position: fixed; right: 0; z-index: 2; width: 100vw; background-image:url(/fondo.svg);background-size: 20px;">
+<header style="position: fixed; right: 0; z-index: 4; width:100vw; background-image:url(/fondo.svg);background-size: 20px;">
   <nav>
-    <a href="/" class="nav-item">Sobre Mí</a>
-    <a href="/" class="nav-item">Proyectos</a>
-    <a href="/" class="nav-item">Estudios</a>
+    <a href="#sobre-mi-container" class="nav-item">Sobre Mí</a>
+    <a href="#proyectos-container-frond" class="nav-item">Proyectos</a>
+    <a href="#studies-container" class="nav-item">Estudios</a>
   </nav>
 </header>
 
@@ -23,6 +23,7 @@
   }
 
   .nav-item {
+    z-index: 4;
     list-style: none;
     font-size: 16px;
     font-weight: 500;
