@@ -1,15 +1,17 @@
 ---
-import Subtitulo from "../components/Subtitulo.astro"
+import Subtitulo from "../components/Subtitulo.astro";
 import Card from "../components/Card.astro";
 import LiveCode from "./LiveCode.astro";
 ---
 
 <section id="proyectos-container-frond">
-      
-
   <div id="lista-proyectos">
-
-    <Subtitulo text="Mis Proyectos" align="aside" type="Front-End" position="one"/>
+    <Subtitulo
+      text="Mis Proyectos"
+      align="aside"
+      type="Front-End"
+      position="one"
+    />
     <Card
       size="md"
       tags={["Astro", "En proceso"]}
@@ -17,26 +19,25 @@ import LiveCode from "./LiveCode.astro";
       href="/"
       title="Amarilla Garden"
       body="Pagina dedicada dedicadas a la venta de plantas..."
-    > <LiveCode href="/"/> </Card>
+    >
+      <!-- <LiveCode href="#" /> -->
+    </Card>
 
     <Card
       size="sm"
-      tags={["Astro" , "En proceso"]}
+      tags={["Astro", "En proceso"]}
       src="/images/Rick-Morty.png"
       href="/"
       title="Amarilla Garden"
       body="Pagina dedicada dedicadas a la venta de plantas..."
-    > <LiveCode href="/"/> </Card>
-
+    >
+      <!-- <LiveCode href="#" /> -->
+    </Card>
   </div>
-  
-  
 </section>
 
 <style>
- 
- #lista-proyectos {
-    
+  #lista-proyectos {
     position: relative;
     display: flex;
     justify-content: center;
@@ -47,10 +48,9 @@ import LiveCode from "./LiveCode.astro";
     background-size: 20px;
     padding: 80px 0px;
   }
-  #proyectos-container-frond{
+  #proyectos-container-frond {
     display: flex;
     flex-direction: column;
     padding-top: 60px;
-    
   }
 </style>

@@ -20,8 +20,6 @@ let { align, text, type, position, id } = Astro.props;
   <div class:list={["elements-container", "borde-subt", "subt-" + align]}>
     <p>{text} <strong class="espaciado">{type}</strong></p>
   </div>
-
-  <!-- <div class:list={["line", "line-"+size]}></div> -->
 </article>
 
 <style>
@@ -83,14 +81,9 @@ let { align, text, type, position, id } = Astro.props;
     margin-left: 10px;
   }
 
-  .subt-position-one {
-    top: -60px;
-  }
-  .subt-position-two {
-    top: -60px;
-  }
+ 
 
-  @media (min-width: 320px) {
+  @media (max-width: 768px)  {
 
     .elements-container {
       width: fit-content;
@@ -98,10 +91,10 @@ let { align, text, type, position, id } = Astro.props;
       padding: 10px 30px;
     }
     .subt-position-one {
-      top: -50px;
+      top: -60px;
     }
     .subt-position-two {
-      top: -50px;
+      top: -60px;
     }
 
     .subt-aside {
@@ -113,6 +106,13 @@ let { align, text, type, position, id } = Astro.props;
     .elements-container {
     padding: 10px 48px;
     font-size: 16px;
+  }
+
+  .subt-position-one {
+    top: -60px;
+  }
+  .subt-position-two {
+    top: -60px;
   }
   }
 </style>

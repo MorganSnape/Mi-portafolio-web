@@ -15,7 +15,10 @@ if (!target) {
 ---
 
 <div>
-  <a {href} class="red-boton" {target}> <slot /> {text}</a>
+  <a {href} class="red-boton" {target}>
+    <slot />
+    <span>{text}</span>
+  </a>
 </div>
 
 <style>
@@ -46,12 +49,12 @@ if (!target) {
       box-shadow: 4px 4px 0px #000000;
     }
 
-    @media (min-width: 768px) {
-      .red-boton {
-        padding: 8px 18px;
-        font-size: 14px;
-        box-shadow: 8px 8px 0px #000000;
-      }
+  }
+  @media (min-width: 768px) {
+    .red-boton {
+      padding: 8px 18px;
+      font-size: 14px;
+      box-shadow: 8px 8px 0px #000000;
     }
   }
 </style>

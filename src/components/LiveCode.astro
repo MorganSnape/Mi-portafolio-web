@@ -8,15 +8,16 @@ interface Props {
 const { href } = Astro.props;
 ---
 
-<div id="buttons-container">
+<div class="buttons-container">
   <a class="button-cards" href={href}> Code</a>
-  <a class="button-cards button-icon" href={href}
-    >Live<Icon name="ic:round-link" class="icon" /></a
-  >
+  <a class="button-cards button-icon" href={href}>
+    <span>Live</span>
+    <Icon name="ic:round-link" class="icon" />
+  </a>
 </div>
 
 <style>
-  #buttons-container {
+  .buttons-container {
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -55,7 +56,7 @@ const { href } = Astro.props;
     transform: rotate(40deg);
   }
 
-  /*Vista movil*/ 
+  /*Vista movil*/
   @media (max-width: 768px) {
     .button-cards {
       padding: 4px 12px;
