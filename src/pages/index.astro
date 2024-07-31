@@ -7,8 +7,8 @@ import Footer from "../components/Footer.astro";
 import Stacks from "../components/Stacks.astro";
 import Estudios from "../components/Estudios.astro";
 import ProyectsFront from "../components/ProyectsFront.astro";
-import ProyectsUx from "../components/ProyectsUx.astro"
-import LiveCode from "../components/LiveCode.astro"
+import ProyectsUx from "../components/ProyectsUx.astro";
+import LiveCode from "../components/LiveCode.astro";
 ---
 
 <Layout title="Bienvenido a mi portafolio.">
@@ -18,7 +18,7 @@ import LiveCode from "../components/LiveCode.astro"
       <div id="izquierda">
         <div id="foto-perfil"></div>
         <h2>
-          <strong>Front-End</strong> Developer <strong>UX/ UI</strong> Desinger
+          <strong>Front-End</strong> Developer <strong>UX / UI</strong> Designer
         </h2>
       </div>
 
@@ -26,13 +26,12 @@ import LiveCode from "../components/LiveCode.astro"
         <div id="text">
           <h1>Hola, soy <strong>Gabriela Ferrer.</strong></h1>
           <p>
-            Mi enfoque laboral a lo largo de los años ha sido relacionado a la
-            atención al público, ya dicho esto, quiero enfatizar que he decidido
-            emprender un emocionante cambio de carrera hacia el mundo del diseño
-            de experiencia de usuario y la programación frontend. Durante mis
-            años en el servicio al cliente, he desarrollado habilidades valiosas
-            en la comunicación efectiva, la empatía y la resolución de
-            problemas.
+            Como estudiante me encuentro empapándome de lo que es mundo visual
+            del diseño web. Actualmente mis estudios se centran en Diseño UX UI
+            y Desarrollo- Front End. Mis conocimientos los adquiero mayormente
+            de manera autodidacta y los afianzo mediante a la practica. Mi
+            aspiración a corto - mediano plazo es formar parte de un equipo
+            solido donde pueda crecer y poner en practica lo que me apasiona.
           </p>
         </div>
         <div id="tags-container">
@@ -40,10 +39,16 @@ import LiveCode from "../components/LiveCode.astro"
             <RedesBoton href="https://github.com/MorganSnape" text="Github">
               <Icon name="fa6-brands:github" />
             </RedesBoton>
-            <RedesBoton href="https://www.linkedin.com/in/gabriela-de-los-angeles-ferrer-martinez-8a45771a4/" text="LinkedIn" >
+            <RedesBoton
+              href="https://www.linkedin.com/in/gabriela-de-los-angeles-ferrer-martinez-8a45771a4/"
+              text="LinkedIn"
+            >
               <Icon name="fa6-brands:linkedin" />
             </RedesBoton>
-            <RedesBoton href="https://drive.google.com/file/d/11i-GnUlnxp8hBZpLYlYV4rNcAbvz5uBV/view?usp=sharing" text="Currículum">
+            <RedesBoton
+              href="https://drive.google.com/file/d/11i-GnUlnxp8hBZpLYlYV4rNcAbvz5uBV/view?usp=sharing"
+              text="Currículum"
+            >
               <Icon name="bxs:file-blank" /></RedesBoton
             >
           </div>
@@ -52,36 +57,24 @@ import LiveCode from "../components/LiveCode.astro"
       </div>
     </section>
 
-    <ProyectsFront/>
-    
-    <Stacks/>
-    <ProyectsUx/>
+    <ProyectsFront />
 
+    <Stacks />
+    <ProyectsUx />
 
-    <Estudios/>
-
+    <Estudios />
   </main>
-  <!-- <aside
-    style="height:calc(100vh - 2px - 80px); width: 200px; border: solid 1px red; position: fixed; top:80px; right: 0"
-  >
-  </aside> -->
-  <Footer/>
+  <Footer />
 </Layout>
 
 <style>
-  main{
-    padding: 20px 0px ;
-  }
+  /*Estilos Generales*/
   strong {
     color: #8c659b;
   }
-  [data-icon] {
-    font-size: 20px;
-  }
+  
   #foto-perfil {
     background-image: url(/images/Foto.jpg);
-    width: 200px;
-    height: 200px;
     background-position: center;
     background-size: cover;
     border-radius: 100%;
@@ -89,21 +82,14 @@ import LiveCode from "../components/LiveCode.astro"
     -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.4);
     box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.4);
-    user-select:none;
+    user-select: none;
   }
-  h1{
-    margin-bottom: 28px;
-    font-size: 32px;
-  }
+
   h2 {
     width: 380px;
     text-align: center;
     font-size: 30px;
   }
-  p{
-    font-size: 20px;
-  }
-
 
   #biografia {
     display: flex;
@@ -112,42 +98,38 @@ import LiveCode from "../components/LiveCode.astro"
     justify-content: center;
     gap: 28px;
 
-    #text {
-      width: 700px;
-      text-wrap: pretty;
-    }
     #tags-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 40px;
-      & #mis-redes {
-        display: flex;
-        flex-direction: row;
-        gap: 24px;
-      }
-      & #disponible {
-        border: 1px solid #94AE7B;
-        border-radius: 100px;
-        color: #222C18;
-        background: #BEE09D;
-        padding: 12px 80px;
-        font-size: 16px;
-        box-shadow: inset 0px 0px 10.3px 5px rgba(125, 147, 103, 0.25);
-        font-weight: 450;
-        user-select:none;
-
-      }
     }
   }
 
+  #mis-redes {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  #disponible {
+    border: 1px solid #94ae7b;
+    border-radius: 100px;
+    color: #222c18;
+    background: #bee09d;
+    padding: 12px 80px;
+    font-size: 16px;
+    box-shadow: inset 0px 0px 10.3px 5px rgba(125, 147, 103, 0.25);
+    font-weight: 450;
+    user-select: none;
+  }
   #sobre-mi-container {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin: 0px 10px;
     gap: 40px;
-    height: 100vh;
   }
   #izquierda {
     display: flex;
@@ -156,25 +138,121 @@ import LiveCode from "../components/LiveCode.astro"
     gap: 30px;
   }
 
-  #lista-proyectos {
-    margin-top: 10%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    background-image: url(/fondoDos.svg);
-    background-size: 20px;
-    padding: 100px 0px;
-  }
-  .proyectos-container {
-    display: flex;
-    flex-direction: column;
+  /*Vista movil*/
+  @media (max-width: 768px) {
+
+    main{
+      padding-top:calc(var(--altura-header) + 10px);
+    }
+    #sobre-mi-container {
+      flex-direction: column;
+      padding-bottom: 28px;
+      gap: 8px;
+    }
+
+    #text {
+      text-wrap: pretty;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+    #izquierda{
+      gap: 0;
+    }
+    h2 {
+      text-wrap: balance;
+      font-size: 24px;
+    }
+    p {
+      font-size: 18px;
+      margin: 0px 10px;
+    }
+    #foto-perfil {
+      width: 160px;
+      height: 160px;
+    }
+
     
-  }  
+    #disponible {
+      padding: 8px 40px;
+      font-size: 18px;
+    }
+    [data-icon] {
+      font-size: 24px;
+    }
+    #mis-redes {
+      padding-top: 80px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+  }
 
-@media (min-width){
+  /*Vista computador*/
+  @media (min-width: 768px) {
+   
+    [data-icon] {
+      font-size: 20px;
+    }
+    #foto-perfil {      
+      width: 200px;
+      height: 200px;
+    }
+    h1 {
+      margin-bottom: 28px;
+      font-size: 32px;
+    }
+    h2 {
+      width: 380px;
+      text-align: center;
+      font-size: 30px;
+    }
+    p {
+      font-size: 20px;
+    }
 
-}
+    #biografia {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+
+      #text {
+        width: 700px;
+        text-wrap: pretty;
+        text-align: left;
+      }
+      #tags-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        & #mis-redes {
+          display: flex;
+          flex-direction: row;
+          gap: 24px;
+        }
+        & #disponible {   
+          padding: 12px 80px;
+          font-size: 16px;   
+          
+        }
+      }
+    }
+
+    #sobre-mi-container {
+      flex-direction: row;
+      height: 100vh;
+    }
+    #izquierda {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 30px;
+    }
+  }
 </style>

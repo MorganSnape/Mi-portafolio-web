@@ -3,14 +3,21 @@ interface Props {
   text?: string;
   type?: string | null;
   align: "aside" | "center";
-  position?: "one"| "two";
-  id? : string;
+  position?: "one" | "two";
+  id?: string;
 }
-let { align, text, type,position, id } = Astro.props;
+let { align, text, type, position, id } = Astro.props;
 ---
 
-<article class:list={["subt-container", "subt-container-" + align, "subt-position-" + position]} id={id}>
-  <div class:list={["elements-container","borde-subt", "subt-" + align]}>
+<article
+  class:list={[
+    "subt-container",
+    "subt-container-" + align,
+    "subt-position-" + position,
+  ]}
+  id={id}
+>
+  <div class:list={["elements-container", "borde-subt", "subt-" + align]}>
     <p>{text} <strong class="espaciado">{type}</strong></p>
   </div>
 
@@ -27,12 +34,10 @@ let { align, text, type,position, id } = Astro.props;
     width: 100%;
     z-index: 3;
     padding: 16px 0px 16px 0px;
-    user-select:none
-
+    user-select: none;
   }
 
   .subt-container-center {
-
     justify-content: center;
   }
 
@@ -51,7 +56,6 @@ let { align, text, type,position, id } = Astro.props;
     left: -50%;
     top: 50%;
     border: solid 4px black;
-
   }
 
   .subt-center {
@@ -79,10 +83,36 @@ let { align, text, type,position, id } = Astro.props;
     margin-left: 10px;
   }
 
-  .subt-position-one{
-   top: -60px;
+  .subt-position-one {
+    top: -60px;
   }
-  .subt-position-two{
-   top: -60px;
+  .subt-position-two {
+    top: -60px;
+  }
+
+  @media (min-width: 320px) {
+
+    .elements-container {
+      width: fit-content;
+      font-size: 12px;
+      padding: 10px 30px;
+    }
+    .subt-position-one {
+      top: -50px;
+    }
+    .subt-position-two {
+      top: -50px;
+    }
+
+    .subt-aside {
+    margin-left: 10px;
+  }
+  }
+
+  @media (min-width: 768px){
+    .elements-container {
+    padding: 10px 48px;
+    font-size: 16px;
+  }
   }
 </style>

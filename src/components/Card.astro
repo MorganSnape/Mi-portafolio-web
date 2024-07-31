@@ -1,5 +1,5 @@
 ---
-import FotoCard from './FotoCard.astro';
+import FotoCard from "./FotoCard.astro";
 interface Props {
   title: string;
   body: string;
@@ -25,9 +25,11 @@ if (tags) {
 ---
 
 <section class:list={["link-card", "link-card-" + size]}>
-  <a href={href} class:list={["element-card-content", "element-card-content-" + size]}>
+  <a
+    href={href}
+    class:list={["element-card-content", "element-card-content-" + size]}
+  >
     <div class="text-card">
-    
       <div>
         <div class="tags-container">
           {
@@ -39,39 +41,33 @@ if (tags) {
 
         <h4>{title}</h4>
         <p>{body}</p>
-
       </div>
-      <slot/>
+      <slot />
     </div>
 
     <img src={src} alt={alt} class:list={["foto-card", "foto-card-" + size]} />
   </a>
 </section>
 
-
-
-
-
 <style>
   /*Estilos del size sm */
   .link-card-sm {
-    width: clamp(400px, 40%, 500px);
-
+    width: clamp(280px, 40%, 500px);
   }
 
   /*Estilos del size md */
   .link-card-md {
-    width: clamp(400px, 60%, 560px);
+    width: clamp(280px, 60%, 500px);
   }
 
   /*Estilos del size xl */
-  .link-card-xl{
-    width: clamp(400px, 60%, 700px);
+  .link-card-xl {
+    width: clamp(280px, 60%, 700px);
     position: relative;
     overflow: hidden;
   }
 
-  .element-card-content-xl::before{
+  .element-card-content-xl::before {
     position: absolute;
     background-color: #8c659b;
     width: 80px;
@@ -105,14 +101,12 @@ if (tags) {
     gap: 10px;
   }
 
-
   .text-card {
     display: flex;
     flex-direction: column;
     gap: 10px;
     flex: 1;
   }
-
 
   .foto-card {
     border-radius: 10px;
@@ -130,7 +124,6 @@ if (tags) {
     gap: 10px;
     padding-bottom: 20px;
     width: fit-content;
-    
   }
   .tag {
     font-size: 12px;
@@ -155,5 +148,62 @@ if (tags) {
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 0px;
+    margin-top: 0px;
+  }
+
+  @media (min-width: 320px) {
+    .link-card {
+      height: 160px;
+    }
+
+    .foto-card {
+      height: 160px;
+    }
+
+    .tags-container {
+      gap: 8px;
+      padding-bottom: 10px;
+    }
+
+    .tag {
+      font-size: 10px;
+      padding: 6px 12px;
+    }
+
+    p {
+      font-size: 12px;
+    }
+
+    h4 {
+      font-size: 12px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .link-card {
+      height: 200px;
+    }
+
+    .foto-card {
+      height: 200px;
+    }
+
+    .tags-container {
+      gap: 10px;
+      padding-bottom: 20px;
+    }
+
+    .tag {
+      font-size: 12px;
+      padding: 8px 16px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
   }
 </style>

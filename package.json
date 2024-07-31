@@ -13,6 +13,7 @@
     "@astrojs/check": "^0.8.2",
     "@iconify-json/bxs": "^1.1.10",
     "@iconify-json/catppuccin": "^1.1.0",
+    "@iconify-json/codicon": "^1.1.50",
     "@iconify-json/fa6-brands": "^1.1.21",
     "@iconify-json/ic": "^1.1.17",
     "@iconify-json/skill-icons": "^1.1.9",

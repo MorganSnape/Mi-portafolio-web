@@ -1,21 +1,22 @@
 ---
 import { Icon } from "astro-icon/components";
 
-interface Props{
-  href:string;
+interface Props {
+  href: string;
 }
 
-const {href}= Astro.props
+const { href } = Astro.props;
 ---
 
 <div id="buttons-container">
-  <a class="button-cards" href={href} > Code</a>
-  <a class="button-cards button-icon" href={href}>Live<Icon name="ic:round-link" class="icon"/></a>
+  <a class="button-cards" href={href}> Code</a>
+  <a class="button-cards button-icon" href={href}
+    >Live<Icon name="ic:round-link" class="icon" /></a
+  >
 </div>
 
 <style>
-
-  #buttons-container{
+  #buttons-container {
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -30,28 +31,43 @@ const {href}= Astro.props
     border-radius: 10px;
     transition: transform 0.1s ease-in-out;
     box-shadow: 4px 4px 0px #000000;
-    
+
     font-size: 14px;
     font-weight: 600;
   }
-  .icon{
+  .icon {
     font-size: 16px;
     transition: transform 0.1s ease-in-out;
   }
 
-  .button-icon{
+  .button-icon {
     display: flex;
     align-items: center;
     gap: 4px;
   }
 
-  .button-cards:hover{
+  .button-cards:hover {
     transform: scale(1.05);
     gap: 10px;
-   
   }
 
-  .button-cards:hover .icon{
-      transform: rotate(40deg);
+  .button-cards:hover .icon {
+    transform: rotate(40deg);
+  }
+
+  /*Vista movil*/ 
+  @media (max-width: 768px) {
+    .button-cards {
+      padding: 4px 12px;
+      font-size: 12px;
     }
+  }
+
+  /*Vista computador*/
+  @media (min-width: 768px) {
+    .button-cards {
+      padding: 8px 14px;
+      font-size: 14px;
+    }
+  }
 </style>
