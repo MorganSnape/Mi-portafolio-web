@@ -26,8 +26,6 @@ if (tags) {
 ---
 
 <section class:list={["link-card", "link-card-" + size]}>
-  <!-- style="width: 100%;" -->
-  <!-- href={href} -->
   <a class:list={["element-card-content", "element-card-content-" + size]}>
     <div class="text-card">
       <div>
@@ -76,13 +74,14 @@ if (tags) {
     left: -16px;
     transform: rotate(140deg);
     top: 15px;
+    z-index: 1;
   }
 
   /*Estilos Generales de las Cards*/
   .link-card {
-    height: 200px;
-    border-radius: 10px;
     display: flex;
+    height: 240px;
+    border-radius: 10px;
     background-color: #fbfbfb;
     border: #d8d8d8 2px solid;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px 0px;
@@ -153,21 +152,33 @@ if (tags) {
   }
 
   @media (max-width: 768px) {
-    
-    .text-card {
-    }
-    .tags-container {
-    }
-    .tag {
+
+    .link-card{
+      height: 240px;
     }
 
-    .link-card {
-      height: 160px;
+    .element-card-content{
+      position: relative;
+      overflow: hidden;
+    }
+    .foto-card{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+    }
+
+    .text-card{
+      margin-top: 112px;
     }
 
     .tags-container {
+      z-index: 1;
+      right: 8px;
+      top: 8px;
       gap: 8px;
-      padding-bottom: 10px;
+      position: absolute;
     }
 
     .tag {
@@ -185,9 +196,6 @@ if (tags) {
   }
 
   @media (min-width: 768px) {
-    .link-card {
-      height: 220px;
-    }
 
     .tags-container {
       gap: 10px;
