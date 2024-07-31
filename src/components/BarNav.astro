@@ -1,18 +1,51 @@
 ---
-
+import { Icon } from "astro-icon/components";
 ---
 
-<header style="position: fixed; right: 0; z-index: 4; width:100vw; background-image:url(/fondo.svg);background-size: 20px;">
+<header
+  style="position: fixed; right: 0; z-index: 4; width:100vw; background-image:var(--fondo);background-size: 20px;"
+>
   <nav>
-    <a href="#sobre-mi-container" class="nav-item">Sobre Mí</a>
-    <a href="#proyectos-container-frond" class="nav-item">Proyectos</a>
-    <a href="#studies-container" class="nav-item">Estudios</a>
+    <label for="menu-hamburguer" class="label-hamburguer">
+      <Icon name="codicon:menu" style="font-size: 30px;" />
+    </label>
+    <input type="checkbox" name="" id="menu-hamburguer" checked/>
+
+    <ul class="ul-links">
+      <li class="li-link">
+        <a href="#sobre-mi-container" class="nav-item">Sobre Mí</a>
+      </li>
+      <li class="li-link">
+        <a href="#proyectos-container-frond" class="nav-item">Proyectos</a>
+      </li>
+      <li class="li-link">
+        <a href="#studies-container" class="nav-item">Estudios</a>
+      </li>
+    </ul>
   </nav>
 </header>
 
+<script>
+  const $ul = document.querySelector("header ul.ul-links");
+  const $checkbox = document.getElementById(
+    "menu-hamburguer"
+  ) as HTMLInputElement;
+
+  console.log($ul);
+
+  $ul?.addEventListener("click", (e) => {
+    $checkbox.checked = false;
+    console.log("Click!", e);
+  });
+</script>
+
 <style>
+  :root {
+    --altura-header: 52px;
+    --fondo: url(/fondo.svg);
+  }
   nav {
-    height: 52px;
+    height: var(--altura-header);
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -34,14 +67,85 @@
     transition: transform 0.1s ease-in-out;
   }
 
-  .nav-item:hover{
+  .nav-item:hover {
     transform: scale(1.03);
-    color: #666666 ;
+    color: #666;
   }
 
-  .nav-item:active{
+  .nav-item:active {
     font-weight: 600;
-    color: black ;
+    color: black;
   }
 
+  .label-hamburguer,
+  #menu-hamburguer {
+    display: none;
+  }
+
+  /*Vista movil*/
+
+  @media (max-width: 768px) {
+    .label-hamburguer,
+    #menu-hamburguer {
+      display: contents;
+    }
+    nav {
+      position: relative;
+      flex-wrap: wrap;
+    }
+    .ul-links {
+      width: 100%;
+      background-image: var(--fondo);
+      position: absolute;
+      left: 0;
+      top: var(--altura-header);
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      /* gap: 40px; */
+
+      height: 0;
+      padding-left: 0px;
+      background-size: 20px;
+      margin: 0px;
+      overflow: hidden;
+
+      transition: all 0.3s;
+    }
+
+    .li-link {
+      width: 100%;
+    }
+
+    .li-link:not(:last-child){
+      border-bottom: solid 1px #d8d8d8;
+    }
+
+    .li-link:nth-child(2n) {
+      background-color: #d8d8d850;
+    }
+
+    .nav-item {
+      display: block;
+      width: 100%;
+      padding: 16px 0;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    #menu-hamburguer:checked + .ul-links {
+      height: calc(100vh - var(--altura-header));
+    }
+  }
+
+  /*Vista computador*/
+
+  @media (min-width: 768px) {
+    .ul-links {
+      display: flex;
+      flex-direction: row;
+    }
+  }
 </style>
