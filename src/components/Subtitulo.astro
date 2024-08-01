@@ -18,7 +18,8 @@ let { align, text, type, position, id } = Astro.props;
   id={id}
 >
   <div class:list={["elements-container", "borde-subt", "subt-" + align]}>
-    <p>{text} <strong class="espaciado">{type}</strong></p>
+    <span class="title">{text}</span>
+    <span class="espaciado">{type}</span>
   </div>
 </article>
 
@@ -31,8 +32,8 @@ let { align, text, type, position, id } = Astro.props;
     overflow: hidden;
     width: 100%;
     z-index: 3;
-    padding: 16px 0px 16px 0px;
     user-select: none;
+    padding-bottom: 8px;
   }
 
   .subt-container-center {
@@ -44,6 +45,10 @@ let { align, text, type, position, id } = Astro.props;
     width: fit-content;
     position: relative;
     margin-left: 40px;
+  }
+
+  span {
+    margin: 0px;
   }
 
   .borde-subt::before {
@@ -60,6 +65,10 @@ let { align, text, type, position, id } = Astro.props;
     box-shadow: 0px 4px 0px #000000;
     width: 240px;
     justify-content: center;
+
+    & .title {
+      display: none;
+    }
   }
 
   .elements-container {
@@ -67,8 +76,10 @@ let { align, text, type, position, id } = Astro.props;
     display: flex;
     flex-direction: row;
     background-color: #ffe971;
+    align-items: center;
 
-    padding: 10px 48px;
+    width: fit-content;
+    padding: 24px 48px;
     border: black 1px solid;
     gap: 20px;
     font-size: 16px;
@@ -78,41 +89,41 @@ let { align, text, type, position, id } = Astro.props;
   .espaciado {
     letter-spacing: 8px;
     font-weight: 700;
-    margin-left: 10px;
   }
 
- 
+  /*Vista Movil*/
 
-  @media (max-width: 768px)  {
-
+  @media (max-width: 768px) {
     .elements-container {
-      width: fit-content;
-      font-size: 12px;
-      padding: 10px 30px;
+      font-size: 16px;
+      padding: 20px 20px;
+      flex-direction: column;
+      gap: 8px;
     }
     .subt-position-one {
-      top: -60px;
+      top: -50px;
     }
     .subt-position-two {
-      top: -60px;
+      top: -40px;
     }
 
     .subt-aside {
-    margin-left: 10px;
-  }
+      margin-left: 10px;
+    }
+
+    span {
+      text-align: justify;
+      width: fit-content;
+    }
   }
 
-  @media (min-width: 768px){
-    .elements-container {
-    padding: 10px 48px;
-    font-size: 16px;
-  }
-
-  .subt-position-one {
-    top: -60px;
-  }
-  .subt-position-two {
-    top: -60px;
-  }
+  /* // Vista Computador */
+  @media (min-width: 768px) {
+    .subt-position-one {
+      top: -40px;
+    }
+    .subt-position-two {
+      top: -40px;
+    }
   }
 </style>
