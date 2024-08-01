@@ -1,13 +1,16 @@
 ---
-import Subtitulo from "./Subtitulo.astro"
+import Subtitulo from "./Subtitulo.astro";
 import Card from "./Card.astro";
 ---
 
 <section class="proyectos-container">
-      
-
   <div id="lista-proyectos">
-    <Subtitulo text="Mis Proyectos" align="aside" type="UX/UI Designer" position="one"/>
+    <Subtitulo
+      text="Mis Proyectos"
+      align="aside"
+      type="UX/UI Designer"
+      position="one"
+    />
     <Card
       size="md"
       tags={["Astro", "En proceso"]}
@@ -17,7 +20,7 @@ import Card from "./Card.astro";
       body="Pagina dedicada dedicadas a la venta de plantas..."
     />
     <Card
-      size="sm"
+      size="md"
       tags={["Astro"]}
       src="/images/Rick-Morty.png"
       href="/"
@@ -25,13 +28,10 @@ import Card from "./Card.astro";
       body="Pagina dedicada dedicadas a la venta de plantas..."
     />
   </div>
-  
-  
 </section>
 
 <style>
- 
- #lista-proyectos {
+  #lista-proyectos {
     position: relative;
     display: flex;
     justify-content: center;
@@ -45,6 +45,10 @@ import Card from "./Card.astro";
   .proyectos-container {
     display: flex;
     flex-direction: column;
-    
+  }
+
+  /*Vista Movil*/
+
+  @media (max-width: 768px) {
   }
 </style>

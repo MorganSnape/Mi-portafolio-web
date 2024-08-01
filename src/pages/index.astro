@@ -72,7 +72,7 @@ import LiveCode from "../components/LiveCode.astro";
   strong {
     color: #8c659b;
   }
-  
+
   #foto-perfil {
     background-image: url(/images/Foto.jpg);
     background-position: center;
@@ -97,15 +97,13 @@ import LiveCode from "../components/LiveCode.astro";
     align-items: center;
     justify-content: center;
     gap: 28px;
-
-    #tags-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 40px;
-    }
   }
-
+  #tags-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
   #mis-redes {
     display: flex;
     flex-direction: row;
@@ -140,9 +138,8 @@ import LiveCode from "../components/LiveCode.astro";
 
   /*Vista movil*/
   @media (max-width: 768px) {
-
-    main{
-      padding-top:calc(var(--altura-header) + 10px);
+    main {
+      padding-top: calc(var(--altura-header) + 10px);
     }
     #sobre-mi-container {
       flex-direction: column;
@@ -159,7 +156,7 @@ import LiveCode from "../components/LiveCode.astro";
       margin-bottom: 10px;
       font-size: 24px;
     }
-    #izquierda{
+    #izquierda {
       gap: 0;
     }
     h2 {
@@ -175,16 +172,20 @@ import LiveCode from "../components/LiveCode.astro";
       height: 160px;
     }
 
-    
+    #tags-container {
+      padding-top: 40px;
+      gap: 60px;
+      padding-bottom: 20px;
+    }
+
     #disponible {
       padding: 8px 40px;
-      font-size: 18px;
+      font-size: 16px;
     }
     [data-icon] {
       font-size: 24px;
     }
     #mis-redes {
-      padding-top: 80px;
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
@@ -193,11 +194,10 @@ import LiveCode from "../components/LiveCode.astro";
 
   /*Vista computador*/
   @media (min-width: 768px) {
-   
     [data-icon] {
       font-size: 20px;
     }
-    #foto-perfil {      
+    #foto-perfil {
       width: 200px;
       height: 200px;
     }
@@ -236,10 +236,9 @@ import LiveCode from "../components/LiveCode.astro";
           flex-direction: row;
           gap: 24px;
         }
-        & #disponible {   
+        & #disponible {
           padding: 12px 80px;
-          font-size: 16px;   
-          
+          font-size: 16px;
         }
       }
     }
