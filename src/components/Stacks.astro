@@ -32,7 +32,7 @@ const cssColors = {
 ---
 
 <section id="lista-stacks">
-  <Subtitulo align="center" type="Stacks" position="two"/>
+  <Subtitulo align="center" type="Stacks" position="two" />
 
   <article id="icons-container">
     {
@@ -59,7 +59,6 @@ const cssColors = {
     justify-content: center;
   }
   #icons-container {
-    padding: 80px 0px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -71,10 +70,8 @@ const cssColors = {
   div {
     display: flex;
     justify-content: center;
-
     padding: 0px;
     border-radius: 100%;
-
     position: relative;
 
     &::before {
@@ -92,45 +89,31 @@ const cssColors = {
     }
   }
 
-  
- /* Vista MOvil */
-  @media (max-width: 768px){
-    #icons-container {
-    padding: 8px 0px;
-    gap: 32px;
-    width: 160px;
-  }
-    .stack {
-    font-size: 30px;
-  }
+  /* Vista MOvil */
+  @media (max-width: 768px) {
 
-  }
-
-  @media (min-width: 768px){
-
-    #icons-container {
-    padding: 80px 0px;
-    gap: 80px;
-    width: fit-content;
-  }
-    .stack {
-    font-size: 50px;
-  }
-
-  div {
-    display: flex;
-    justify-content: center;
-
-    padding: 0px;
-    border-radius: 100%;
-
-    position: relative;
-
-    &::before {
-
-      -webkit-box-shadow: 0px 0px 20px 17px rgba(0, 0, 0, 0.75);
-      -moz-box-shadow: 0px 0px 20px 17px rgba(0, 0, 0, 0.75);
-      box-shadow: 0px 0px 20px 17px rgba(0, 0, 0, 0.75);
+    #lista-stacks{
+      padding: 140px 0px;
     }
+    #icons-container {
+      padding: 8px 0px;
+      gap: 32px;
+      width: 200px;
+    }
+    .stack {
+      font-size: 40px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    #icons-container {
+      padding: 80px 0px;
+      gap: 80px;
+      width: fit-content;
+    }
+    .stack {
+      font-size: 50px;
+    }
+
   }
 </style>
