@@ -1,6 +1,4 @@
 ---
-import type { HTMLTag } from "astro/types";
-import FotoCard from "./FotoCard.astro";
 interface Props {
   title: string;
   body: string;
@@ -25,9 +23,9 @@ if (tags) {
 }
 ---
 
-<section class:list={["link-card", "link-card-" + size]}>
-  <a class:list={["element-card-content", "element-card-content-" + size]}>
-    <div class="text-card">
+<article class:list={["link-card", "link-card-" + size]}>
+  <a class:list={["element-card-content", "element-card-content-" + size]} href={href}>
+    <div class="elements-card">
       <div>
         <div class="tags-container">
           {
@@ -36,16 +34,17 @@ if (tags) {
             })
           }
         </div>
-
-        <h4>{title}</h4>
-        <p>{body}</p>
+        <span class="text-card">
+          <h4>{title}</h4>
+          <p>{body}</p>
+        </span>
       </div>
       <slot />
     </div>
 
     <img src={src} alt={alt} class:list={["foto-card", "foto-card-" + size]} />
   </a>
-</section>
+</article>
 
 <style>
   /*Estilos del size sm */
@@ -54,16 +53,16 @@ if (tags) {
   }
 
   /*Estilos del size md */
-  .link-card-md {
-    width: clamp(280px, 60%, 500px);
-  }
+  /* .link-card-md {
+    width: clamp(280px, 80%, 500px);
+  } */
 
   /*Estilos del size xl */
-  .link-card-xl {
+
+  /* .link-card-xl {
     width: clamp(280px, 60%, 700px);
     position: relative;
-    overflow: hidden;
-  }
+  } */
 
   .element-card-content-xl::before {
     position: absolute;
@@ -86,6 +85,7 @@ if (tags) {
     border: #d8d8d8 2px solid;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px 0px;
     transition: transform 0.1s ease-in-out;
+    overflow: hidden;
   }
 
   .link-card:hover {
@@ -101,7 +101,7 @@ if (tags) {
     width: 100%;
   }
 
-  .text-card {
+  .elements-card {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -151,26 +151,40 @@ if (tags) {
     margin-top: 0px;
   }
 
-  @media (max-width: 768px) {
+  /*Vista Movil*/
 
-    .link-card{
+  @media (max-width: 768px) {
+    .link-card {
       height: 240px;
     }
 
-    .element-card-content{
-      position: relative;
-      overflow: hidden;
+    .link-card-md {
+      width: clamp(280px, 80%, 320px);
     }
-    .foto-card{
+    .link-card-xl {
+      width: clamp(280px, 80%, 500px);
+      position: relative;
+      height: 300px;
+    }
+
+    .element-card-content {
+      position: relative;
+    }
+
+    .foto-card {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: 50%;
+      height: 54%;
     }
 
-    .text-card{
-      margin-top: 112px;
+    .text-card {
+      width: inherit;
+      /* margin-top: 200px; */
+      position: absolute;
+      /* top: 60%; */
+      bottom: 0;
     }
 
     .tags-container {
@@ -182,24 +196,32 @@ if (tags) {
     }
 
     .tag {
-      font-size: 10px;
+      font-size: 12px;
       padding: 4px 12px;
     }
 
     p {
-      font-size: 12px;
+      font-size: 16px;
     }
 
     h4 {
-      font-size: 12px;
+      font-size: 16px;
     }
   }
 
   @media (min-width: 768px) {
-
     .tags-container {
       gap: 10px;
       padding-bottom: 20px;
+    }
+
+    .link-card-md {
+      width: clamp(500px, 80%, 520px);
+    }
+
+    .link-card-xl {
+      width: clamp(600px, 60%, 700px);
+      position: relative;
     }
 
     .tag {

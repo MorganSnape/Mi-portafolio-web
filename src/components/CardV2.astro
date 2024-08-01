@@ -68,6 +68,10 @@ if (tags) {
   .link-card:hover {
     transform: scale(1.02);
   }
+
+  .link-card-xl{
+      width: clamp(500px, 80%, 600px);
+    }
   .element-card-content{
     display: flex;
     flex-direction: column;
@@ -142,13 +146,20 @@ if (tags) {
 
   @media (max-width: 768px){
 
-    .link-card-md {
-      width: clamp(280px, 80%, 320px);
-    }
-    .link-card-xl {
+    .link-card-xl{
       width: clamp(280px, 80%, 500px);
-      position: relative;
-      height: clamp(280px, 80%, 500px);
+      height: minmax(300px, 700px);
     }
+
+    .link-card-md{
+      width: clamp(280px, 80%, 320px); 
+    }
+
+    /* .link-card-md {
+      width: clamp(280px, 80%, 320px);
+    } */
+    /* .link-card-xl {
+      
+    } */
   }
 </style>
