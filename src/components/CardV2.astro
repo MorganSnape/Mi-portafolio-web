@@ -60,19 +60,34 @@ if (tags) {
     width: clamp(500px, 80%, 520px);
     border-radius: 10px;
     background-color: #fbfbfb;
-    border: #d8d8d8 2px solid;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px 0px;
-    /* overflow: hidden; */
+    overflow: hidden;
+    border: #d8d8d8 solid 1px;
+    transition: transform 0.1s ease-in-out;
+  }
+
+  .link-card:hover {
+    transform: scale(1.02);
   }
   .element-card-content{
     display: flex;
     flex-direction: column;
-
     justify-content: flex-start;
     gap: 0px;
     position: relative;
     height: 100%;
     width: 100%;
+  }
+
+  .element-card-content-xl::before {
+    position: absolute;
+    background-color: #8c659b;
+    width: 80px;
+    height: 12px;
+    content: "";
+    left: -16px;
+    transform: rotate(140deg);
+    top: 15px;
+    z-index: 1;
   }
 
   .tags-fotos{
@@ -100,7 +115,6 @@ if (tags) {
   .foto-card{
     width: 100%;
     height: 100%;
-    border-radius: 10px;
     border: #d8d8d8 solid 1px;
     object-fit: cover;
   }
@@ -115,7 +129,7 @@ if (tags) {
     font-weight: 400;
     font-family: "Fredoka", sans-serif;
     width: 100%;
-    text-wrap: balance;
+    text-wrap: pretty;
   }
 
   h4 {
@@ -134,7 +148,7 @@ if (tags) {
     .link-card-xl {
       width: clamp(280px, 80%, 500px);
       position: relative;
-      height: 300px;
+      height: clamp(280px, 80%, 500px);
     }
   }
 </style>
