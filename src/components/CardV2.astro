@@ -23,18 +23,12 @@ if (tags) {
 ---
 
 <article class:list={["modal", "link-card", "link-card-" + size]}>
-  <div
-    class:list={["element-card-content", "element-card-content-" + size]}}
-  >
+  <div class:list={["element-card-content", "element-card-content-" + size]} }>
     <div class="tags-fotos">
       <div class="tags-container">
         {
           tags?.map((tag) => {
-            return (
-              <span class="tag">
-                {tag}
-              </span>
-            );
+            return <span class="tag">{tag}</span>;
           })
         }
       </div>
@@ -47,7 +41,7 @@ if (tags) {
 
     <main class="text-card">
       <h4>{title}</h4>
-      <p >{body}</p>
+      <p>{body}</p>
     </main>
   </div>
   <footer>
@@ -56,37 +50,36 @@ if (tags) {
 </article>
 
 <style>
-
-footer{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  margin: 8px 0 8px 0;
-
-}
+  footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 8px 0 8px 0;
+  }
   .link-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
-    height: 300px;
-    width: clamp(500px, 80%, 520px);
-    border-radius:10px ;
+
+    border-radius: 10px;
     background-color: #fbfbfb;
     border: #d8d8d8 solid 1px;
     transition: transform 0.1s ease-in-out;
+    flex: 1 1 0;
+    max-width: 520px;
+    min-width: 240px;
   }
 
   .link-card:hover {
     transform: scale(1.02);
   }
 
-  .link-card-xl{
-      border-radius:10px;
-      width: clamp(500px, 80%, 600px);
-    }
-  .element-card-content{
+  .link-card-xl {
+    border-radius: 10px;
+    width: clamp(500px, 80%, 600px);
+  }
+  .element-card-content {
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -109,19 +102,18 @@ footer{
     z-index: 1;
   }
 
-  .tags-fotos{
+  .tags-fotos {
     width: 100%;
-    height: 60%;
   }
 
-  .tags-container{
+  .tags-container {
     position: absolute;
     top: 8px;
     right: 0px;
   }
 
   .tag {
-    background-color: #8C659B;
+    background-color: #8c659b;
     color: #ffffff;
     font-size: 14px;
     padding: 4px 16px;
@@ -131,15 +123,16 @@ footer{
     box-shadow: inset 0px 0px 2px 1px rgba(40, 40, 35, 0.4);
   }
 
-  .foto-card{
+  .foto-card {
     width: 100%;
     height: 100%;
+    aspect-ratio: 2.5;
     border: #d8d8d8 solid 1px;
     object-fit: cover;
-    border-radius:10px 10px 0px 0px ;
+    border-radius: 10px 10px 0px 0px;
   }
 
-  .text-card{
+  .text-card {
     padding: 12px;
   }
 
@@ -157,29 +150,5 @@ footer{
     margin: 0px;
     font-size: 16px;
     font-weight: 600;
-  }
-
-  /*Vista Movil*/
-
-  @media (max-width: 768px){
-
-    .link-card-xl{
-      width: clamp(280px, 80%, 500px);
-      height: minmax(400px, 700px);
-    }
-
-    .link-card-md{
-      height: minmax(400px, 700px);
-      width: clamp(280px, 80%, 320px); 
-    }
-
-
-
-    /* .link-card-md {
-      width: clamp(280px, 80%, 320px);
-    } */
-    /* .link-card-xl {
-      
-    } */
   }
 </style>

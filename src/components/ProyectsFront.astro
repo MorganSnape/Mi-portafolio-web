@@ -5,7 +5,7 @@ import CardV2 from "./CardV2.astro";
 ---
 
 <section id="proyectos-container-frond">
-  <div id="lista-proyectos">
+  <div id="proyectos-front">
     <Subtitulo
       text="Mis Proyectos"
       align="aside"
@@ -37,16 +37,16 @@ import CardV2 from "./CardV2.astro";
 </section>
 
 <style>
-  #lista-proyectos {
+  #proyectos-front {
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     flex-wrap: wrap;
     gap: 20px;
     background-image: url(/fondoDos.svg);
     background-size: 20px;
-    padding: 80px 0px;
+    padding: 80px 20px;
   }
   #proyectos-container-frond {
     display: flex;
