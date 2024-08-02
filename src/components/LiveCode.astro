@@ -3,57 +3,60 @@ import { Icon } from "astro-icon/components";
 
 interface Props {
   href: string;
+  name: string;
+  title: string;
+  target?: string;
 }
 
-const { href } = Astro.props;
+const { href, name, title} = Astro.props;
+let { target } = Astro.props;
+if (!target) {
+  target = "_blank";
+}
 ---
 
-<div class="buttons-container">
-  <a class="button-cards" href={href}> Code</a>
-  <a class="button-cards button-icon" href={href}>
-    <span>Live</span>
-    <Icon name="ic:round-link" class="icon" />
+  <a class="button-cards button-icon" href={href} {target}>
+    <span>{title}</span>
+    <Icon name={name} class="icon" />
   </a>
-</div>
 
 <style>
-  .buttons-container {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    width: fit-content;
-  }
   .button-cards {
-    padding: 4px 14px 4px 14px;
-    width: fit-content;
-    background-color: #ffe971;
-    color: black;
-    border: 1px solid black;
+    text-align: center;
+    height: 30px;
+    width: 40%;
     border-radius: 10px;
+    /* background-color: #000000; */
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
     transition: transform 0.1s ease-in-out;
-    box-shadow: 4px 4px 0px #000000;
+    
+    /* box-shadow: 4px 4px 0px #000000; */
+  }
 
-    font-size: 14px;
+  span {
+    font-size: 16px;
     font-weight: 600;
   }
   .icon {
-    font-size: 16px;
+    font-size: 18px;
     transition: transform 0.1s ease-in-out;
   }
 
   .button-icon {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
+    justify-content: center;
   }
 
   .button-cards:hover {
     transform: scale(1.05);
-    gap: 10px;
   }
 
   .button-cards:hover .icon {
-    transform: rotate(40deg);
+    transform: rotate(40deg)  scale(1.05);
+    margin-left: 10px;
   }
 
   /*Vista movil*/

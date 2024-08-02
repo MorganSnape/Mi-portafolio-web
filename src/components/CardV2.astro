@@ -2,14 +2,13 @@
 interface Props {
   title: string;
   body: string;
-  href: string;
   tags?: string[];
   size?: "sm" | "md" | "xl";
   src: string;
   alt?: string;
 }
 
-const { href, title, body, src, alt } = Astro.props;
+const { title, body, src, alt } = Astro.props;
 
 let { size, tags } = Astro.props;
 
@@ -23,10 +22,9 @@ if (tags) {
 }
 ---
 
-<article class:list={["link-card", "link-card-" + size]}>
-  <a
-    class:list={["element-card-content", "element-card-content-" + size]}
-    href={href}
+<article class:list={["modal", "link-card", "link-card-" + size]}>
+  <div
+    class:list={["element-card-content", "element-card-content-" + size]}}
   >
     <div class="tags-fotos">
       <div class="tags-container">
@@ -51,16 +49,31 @@ if (tags) {
       <h4>{title}</h4>
       <p >{body}</p>
     </main>
-  </a>
+  </div>
+  <footer>
+    <slot />
+  </footer>
 </article>
 
 <style>
+
+footer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 8px 0 8px 0;
+
+}
   .link-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
     height: 300px;
     width: clamp(500px, 80%, 520px);
-    border-radius: 10px;
+    border-radius:10px ;
     background-color: #fbfbfb;
-    overflow: hidden;
     border: #d8d8d8 solid 1px;
     transition: transform 0.1s ease-in-out;
   }
@@ -70,9 +83,11 @@ if (tags) {
   }
 
   .link-card-xl{
+      border-radius:10px;
       width: clamp(500px, 80%, 600px);
     }
   .element-card-content{
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -106,12 +121,12 @@ if (tags) {
   }
 
   .tag {
-    background-color: #797979;
+    background-color: #8C659B;
     color: #ffffff;
-    font-size: 12px;
+    font-size: 14px;
     padding: 4px 16px;
     border-radius: 50px;
-    font-weight: 600;
+    font-weight: 500;
     margin: 8px;
     box-shadow: inset 0px 0px 2px 1px rgba(40, 40, 35, 0.4);
   }
@@ -121,6 +136,7 @@ if (tags) {
     height: 100%;
     border: #d8d8d8 solid 1px;
     object-fit: cover;
+    border-radius:10px 10px 0px 0px ;
   }
 
   .text-card{
@@ -134,6 +150,7 @@ if (tags) {
     font-family: "Fredoka", sans-serif;
     width: 100%;
     text-wrap: pretty;
+    margin-bottom: 0px;
   }
 
   h4 {
@@ -148,12 +165,15 @@ if (tags) {
 
     .link-card-xl{
       width: clamp(280px, 80%, 500px);
-      height: minmax(300px, 700px);
+      height: minmax(400px, 700px);
     }
 
     .link-card-md{
+      height: minmax(400px, 700px);
       width: clamp(280px, 80%, 320px); 
     }
+
+
 
     /* .link-card-md {
       width: clamp(280px, 80%, 320px);

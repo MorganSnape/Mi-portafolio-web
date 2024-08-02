@@ -1,7 +1,7 @@
 ---
 import Subtitulo from "../components/Subtitulo.astro";
-import Card from "../components/Card.astro";
 import LiveCode from "./LiveCode.astro";
+import CardV2 from "./CardV2.astro";
 ---
 
 <section id="proyectos-container-frond">
@@ -12,27 +12,27 @@ import LiveCode from "./LiveCode.astro";
       type="Front-End"
       position="one"
     />
-    <Card
+    <CardV2
       size="md"
       tags={["Astro", "En proceso"]}
       src="/images/Amarilla.png"
-      href="/"
       title="Amarilla Garden"
-      body="Pagina dedicada dedicadas a la venta de plantas..."
+      body="Emprendimiento dedicado a la venta de productos artesanales a base de cemento como macetas, porta incienso, etc."
     >
-      <!-- <LiveCode href="#" /> -->
-    </Card>
+      <LiveCode href="https://www.amarillagarden.com/" name="ic:round-link" title="Live"/>
+      <LiveCode href="https://github.com/stratos-code/Amarilla-Garden" name="fa6-brands:github" title="Ver GitHub"/>
+    </CardV2>
 
-    <Card
+    <CardV2
       size="md"
       tags={["Astro", "En proceso"]}
       src="/images/Rick-Morty.png"
-      href="/"
-      title="Amarilla Garden"
-      body="Pagina dedicada dedicadas a la venta de plantas..."
+      title="Rick and Morty"
+      body="Proyecto personal de estuidio usando la appi de la serie Rick and Morty."
     >
-      <!-- <LiveCode href="#" /> -->
-    </Card>
+      <LiveCode href="#" name="ic:round-link" title="Live"/>
+      <LiveCode href="#" name="fa6-brands:github" title="Ver GitHub"/>
+    </CardV2>
   </div>
 </section>
 

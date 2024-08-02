@@ -1,6 +1,8 @@
 ---
 import Subtitulo from "./Subtitulo.astro";
 import Card from "./Card.astro";
+import CardV2 from "./CardV2.astro";
+import LiveCode from "./LiveCode.astro";
 ---
 
 <section class="proyectos-container">
@@ -11,22 +13,27 @@ import Card from "./Card.astro";
       type="UX/UI Designer"
       position="one"
     />
-    <Card
+    <CardV2
       size="md"
-      tags={["Astro", "En proceso"]}
-      src="/images/Amarilla.png"
-      href="/"
-      title="Amarilla Garden"
-      body="Pagina dedicada dedicadas a la venta de plantas..."
-    />
-    <Card
+      tags={["Figma", "Ux Reserch"]}
+      src="/images/Portada-Karol.png"
+      title="Boleteria - Karol Tour"
+      body="Diseño y simulación de investigación como proyecto de curso de fundamentos de UX "
+    >
+      <LiveCode href="https://www.canva.com/design/DAGMqT_kH6I/xZXLJdPoHl6vCVJY4Unzaw/view?utm_content=DAGMqT_kH6I&utm_campaign=designshare&utm_medium=link&utm_source=editor" name="bxs:file-blank" title="Lee más"/>
+      <LiveCode href="https://www.figma.com/design/TmJpPdMDclnhIoY0uZ60l1/Karol-G---Page?node-id=0-1&t=O07XXmERbl0GVXxO-1" name="fa6-brands:figma" title="Ver Figma"/>
+    </CardV2>
+
+    <CardV2
       size="md"
-      tags={["Astro"]}
-      src="/images/Rick-Morty.png"
-      href="/"
-      title="Amarilla Garden"
-      body="Pagina dedicada dedicadas a la venta de plantas..."
-    />
+      tags={["Figma", "Ux Reserch"]}
+      src="/images/Portada-Commet.png"
+      title="Commet.App"
+      body="Diseño y simulación de investigación como proyecto de curso de fundamentos de U"
+    >
+      <LiveCode href="#" name="bxs:file-blank" title="Lee más"/>
+      <LiveCode href="https://www.figma.com/design/q7khsSBJocn9TTIOirQoid/Commet.app?node-id=1-925&t=jqAwKcaA9aGDuylg-1" name="fa6-brands:figma" title="Ver Figma"/>
+    </CardV2>
   </div>
 </section>
 
