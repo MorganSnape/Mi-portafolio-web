@@ -23,46 +23,80 @@ if (tags) {
 }
 ---
 
-<article class:list={["link-card", "link-card-" + size]}>
-  <a class:list={["element-card-content", "element-card-content-" + size]} href={href}>
-    <div class="elements-card">
-      <div>
-        <div class="tags-container">
-          {
-            tagss.map((tag) => {
-              return <span class="tag">{tag}</span>;
-            })
-          }
-        </div>
-        <span class="text-card">
-          <h4>{title}</h4>
-          <p>{body}</p>
-        </span>
+<article class:list={["modal", "link-card", "link-card-" + size]}>
+  <a
+    class:list={["element-card-content", "element-card-content-" + size]}}
+  >
+    <div class="tags-fotos">
+      <div class="tags-container">
+        {
+          tags?.map((tag) => {
+            return (
+              <span class="tag">
+                {tag}
+              </span>
+            );
+          })
+        }
       </div>
-      <slot />
+      <img
+        src={src}
+        alt={alt}
+        class:list={["foto-card", "foto-card-" + size]}
+      />
     </div>
 
-    <img src={src} alt={alt} class:list={["foto-card", "foto-card-" + size]} />
+    <main class="text-card">
+      <h4>{title}</h4>
+      <p >{body}</p>
+    </main>
   </a>
+  <footer>
+    <slot />
+  </footer>
 </article>
 
 <style>
-  /*Estilos del size sm */
-  .link-card-sm {
-    width: clamp(280px, 40%, 500px);
+
+footer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 8px 0 8px 0;
+
+}
+  .link-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    height: 300px;
+    width: clamp(500px, 80%, 520px);
+    border-radius:10px ;
+    background-color: #fbfbfb;
+    border: #d8d8d8 solid 1px;
+    transition: transform 0.1s ease-in-out;
   }
 
-  /*Estilos del size md */
-  /* .link-card-md {
-    width: clamp(280px, 80%, 500px);
-  } */
+  .link-card:hover {
+    transform: scale(1.02);
+  }
 
-  /*Estilos del size xl */
-
-  /* .link-card-xl {
-    width: clamp(280px, 60%, 700px);
+  .link-card-xl{
+      border-radius:10px;
+      width: clamp(500px, 80%, 600px);
+    }
+  .element-card-content{
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0px;
     position: relative;
-  } */
+    height: 100%;
+    width: 100%;
+  }
 
   .element-card-content-xl::before {
     position: absolute;
@@ -76,165 +110,68 @@ if (tags) {
     z-index: 1;
   }
 
-  /*Estilos Generales de las Cards*/
-  .link-card {
-    display: flex;
-    height: 240px;
-    border-radius: 10px;
-    background-color: #fbfbfb;
-    border: #d8d8d8 2px solid;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px 0px;
-    transition: transform 0.1s ease-in-out;
-    overflow: hidden;
-  }
-
-  .link-card:hover {
-    transform: scale(1.02);
-  }
-
-  .element-card-content {
-    padding: 20px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
+  .tags-fotos{
     width: 100%;
+    height: 60%;
   }
 
-  .elements-card {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    flex: 1;
+  .tags-container{
+    position: absolute;
+    top: 8px;
+    right: 0px;
   }
 
-  .foto-card {
-    border-radius: 10px;
-    border: #d8d8d8 solid 1px;
-    overflow: hidden;
-    object-fit: cover;
-    width: clamp(100px, 45%, 300px);
-    height: 100%;
-  }
-
-  .tags-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    padding-bottom: 20px;
-    width: fit-content;
-  }
   .tag {
-    font-size: 12px;
-    background-color: #8c659b;
-    width: fit-content;
+    background-color: #8C659B;
+    color: #ffffff;
+    font-size: 14px;
     padding: 4px 16px;
     border-radius: 50px;
-    color: white;
     font-weight: 500;
-    box-shadow: inset 0px 0px 8px 1px rgba(35, 35, 35, 0.4);
+    margin: 8px;
+    box-shadow: inset 0px 0px 2px 1px rgba(40, 40, 35, 0.4);
   }
+
+  .foto-card{
+    width: 100%;
+    height: 100%;
+    border: #d8d8d8 solid 1px;
+    object-fit: cover;
+    border-radius:10px 10px 0px 0px ;
+  }
+
+  .text-card{
+    padding: 12px;
+  }
+
   p {
     color: #5c5c5c;
     font-size: 16px;
     font-weight: 400;
     font-family: "Fredoka", sans-serif;
     width: 100%;
-    text-wrap: balance;
+    text-wrap: pretty;
+    margin-bottom: 0px;
   }
 
   h4 {
+    margin: 0px;
     font-size: 16px;
     font-weight: 600;
-    margin-bottom: 0px;
-    margin-top: 0px;
   }
 
   /*Vista Movil*/
 
-  @media (max-width: 768px) {
-    .link-card {
-      height: 240px;
-    }
+  @media (max-width: 768px){
 
-    .link-card-md {
-      width: clamp(280px, 80%, 320px);
-    }
-    .link-card-xl {
+    .link-card-xl{
       width: clamp(280px, 80%, 500px);
-      position: relative;
-      height: 300px;
+      height: minmax(400px, 700px);
     }
 
-    .element-card-content {
-      position: relative;
+    .link-card-md{
+      height: minmax(400px, 700px);
+      width: clamp(280px, 80%, 320px); 
     }
 
-    .foto-card {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 54%;
-    }
-
-    .text-card {
-      width: inherit;
-      /* margin-top: 200px; */
-      position: absolute;
-      /* top: 60%; */
-      bottom: 0;
-    }
-
-    .tags-container {
-      z-index: 1;
-      right: 8px;
-      top: 8px;
-      gap: 8px;
-      position: absolute;
-    }
-
-    .tag {
-      font-size: 12px;
-      padding: 4px 12px;
-    }
-
-    p {
-      font-size: 16px;
-    }
-
-    h4 {
-      font-size: 16px;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .tags-container {
-      gap: 10px;
-      padding-bottom: 20px;
-    }
-
-    .link-card-md {
-      width: clamp(500px, 80%, 520px);
-    }
-
-    .link-card-xl {
-      width: clamp(600px, 60%, 700px);
-      position: relative;
-    }
-
-    .tag {
-      font-size: 12px;
-      padding: 4px 16px;
-    }
-
-    p {
-      font-size: 16px;
-    }
-
-    h4 {
-      font-size: 16px;
-    }
-  }
 </style>
