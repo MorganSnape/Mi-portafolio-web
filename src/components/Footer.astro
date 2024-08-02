@@ -1,12 +1,14 @@
-<footer  id="footer">
-  <a href="mailto:gabriellangeles@outlook.com" class="item-footer">gabriellangeles@outlook.com</a>
+<footer id="footer">
+  <a href="mailto:gabriellangeles@outlook.com" class="item-footer"
+    >gabriellangeles@outlook.com</a
+  >
 </footer>
 
 <style>
-  #footer{
-    background-color:#FFE971 ;
+  #footer {
+    background-color: #ffe971;
     border-top: solid black 1px;
-    
+
     height: 48px;
 
     display: flex;
@@ -15,8 +17,14 @@
     align-items: center;
   }
 
-  .item-footer{
+  .item-footer {
     font-size: 16px;
     font-weight: 600;
+  }
+
+  @media (max-width: 360px) {
+    .item-footer {
+      font-size: 14px;
+    }
   }
 </style>

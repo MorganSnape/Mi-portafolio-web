@@ -68,7 +68,7 @@ if (tags) {
     transition: transform 0.1s ease-in-out;
     flex: 1 1 0;
     max-width: 520px;
-    min-width: 240px;
+    min-width: 200px;
   }
 
   .link-card:hover {
@@ -109,7 +109,9 @@ if (tags) {
   .tags-container {
     position: absolute;
     top: 8px;
-    right: 0px;
+    right: 8px;
+    display: flex;
+    gap: 8px;
   }
 
   .tag {
@@ -119,7 +121,6 @@ if (tags) {
     padding: 4px 16px;
     border-radius: 50px;
     font-weight: 500;
-    margin: 8px;
     box-shadow: inset 0px 0px 2px 1px rgba(40, 40, 35, 0.4);
   }
 
@@ -150,5 +151,11 @@ if (tags) {
     margin: 0px;
     font-size: 16px;
     font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .tag {
+      font-size: 12px;
+    }
   }
 </style>
