@@ -16,10 +16,7 @@ if (size === undefined) {
   size = "sm";
 }
 
-let tagss: string[] = [];
-if (tags) {
-  tagss = tags.slice(0, 2);
-}
+let tagss: string[] = tags? tags.slice(0, 2) : [];
 ---
 
 <article class:list={["modal", "link-card", "link-card-" + size]}>
@@ -27,7 +24,7 @@ if (tags) {
     <div class="tags-fotos">
       <div class="tags-container">
         {
-          tags?.map((tag) => {
+          tagss?.map((tag) => {
             return <span class="tag">{tag}</span>;
           })
         }
