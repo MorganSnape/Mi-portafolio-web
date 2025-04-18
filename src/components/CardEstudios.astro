@@ -11,8 +11,8 @@ const { href, title, body, src, alt } = Astro.props;
 
 ---
 
-<a {href} target="_blank" class="card-container">
-<article class="link-card">
+<a {href} target="_blank" class="card-container " >
+<article class="link-card bg-white">
     <header>
       <img src={src} alt={alt} class="foto-card" />
     </header>
@@ -39,7 +39,7 @@ const { href, title, body, src, alt } = Astro.props;
     max-width: 800px;
     min-width: 200px;
     border-radius: 10px;
-    background-color: #fbfbfb;
+   
     border: #d8d8d8 solid 1px;
     transition: transform 0.1s ease-in-out;
     border-radius: 10px;
