@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+@theme {
+  --color-uno: #8c659b;
+}
