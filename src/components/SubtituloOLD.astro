@@ -1,0 +1,129 @@
+---
+interface Props {
+  text?: string;
+  type?: string | null;
+  align: "aside" | "center";
+  position?: "one" | "two";
+  id?: string;
+}
+let { align, text, type, position, id } = Astro.props;
+---
+
+<div
+  class:list={[
+    "subt-container",
+    "subt-container-" + align,
+    "subt-position-" + position,
+  ]}
+  id={id}
+>
+  <div class:list={["elements-container", "borde-subt", "subt-" + align]}>
+    <span class="title">{text}</span>
+    <span class="espaciado">{type}</span>
+  </div>
+</div>
+
+<style>
+  .subt-container {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    z-index: 3;
+    user-select: none;
+    padding-bottom: 8px;
+  }
+
+  .subt-container-center {
+    justify-content: center;
+  }
+
+  .subt-aside-right {
+    /* box-shadow: 6px 6px 0px #000000; */
+    width: fit-content;
+    position: relative;
+    margin-left: 40px;
+  }
+
+  span {
+    margin: 0px;
+  }
+
+  .borde-subt::before {
+    position: absolute;
+    content: "";
+    width: 200vw;
+    z-index: -1;
+    left: -50%;
+    top: 50%;
+    border: solid 4px black;
+  }
+
+  .subt-center {
+    /* box-shadow: 0px 4px 0px #000000; */
+    width: 240px;
+    justify-content: center;
+
+    & .title {
+      display: none;
+    }
+  }
+
+  .elements-container {
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    flex-direction: row;
+    background-color: #ffe971;
+    align-items: center;
+
+    width: fit-content;
+    padding: 24px 48px;
+    border: black 1px solid;
+    gap: 20px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .espaciado {
+    letter-spacing: 8px;
+    font-weight: 700;
+  }
+
+  /*Vista Movil*/
+
+  @media (max-width: 768px) {
+    .elements-container {
+      font-size: 16px;
+      padding: 20px 20px;
+      flex-direction: column;
+      gap: 8px;
+    }
+    /* .subt-position-one {
+      top: -50px;
+    }
+    .subt-position-two {
+      top: -40px;
+    } */
+
+    .subt-aside-right {
+      margin-left: 10px;
+    }
+
+    span {
+      text-align: justify;
+      width: fit-content;
+    }
+  }
+
+  /* // Vista Computador */
+  @media (min-width: 768px) {
+    .subt-position-one {
+      top: -40px;
+    }
+    .subt-position-two {
+      top: -40px;
+    }
+  }
+</style>
