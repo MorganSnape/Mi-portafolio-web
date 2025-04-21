@@ -1,0 +1,48 @@
+---
+import { Icon } from "astro-icon/components";
+interface Props {
+  title: string;
+  description: string;
+  imageUrl: string;
+  link: string;
+  tags?: string[];
+}
+const { title, description, imageUrl, link, tags } = Astro.props;
+---
+
+<article
+  class="shadow-primary bg-white card w-[320px]  rounded-lg overflow-hidden py-4 px-4 flex justify-between flex-col"
+>
+  <header class="gap-4 flex flex-col">
+    <img
+      src={imageUrl}
+      alt={"Portada del proyecto " + title}
+      class="border-1 border-tertiary rounded-lg "
+    />
+    <div class="flex flex-wrap gap-2">
+      {
+        tags &&
+          tags.map((tag) => (
+            <div class="bg-secondary text-black py-0.5 px-4 w-fit text-xs font-semibold border-1 border-black ">
+              {tag}
+            </div>
+          ))
+      }
+    </div>
+    <h4 class="text-lg font-semibold">{title}</h4>
+  </header>
+  <body>
+    <p class="text-sm text-text-card text-pretty">{description}</p>
+  </body>
+  <footer class="py-4">
+    <a
+      href={link}
+      target="_blank"
+      class="cursor-pointer w-fit border-2 border-primary rounded-lg px-4 py-2 text-primary font-semibold text-sm hover:bg-primary hover:text-white transition duration-300 ease-in-out flex items-center gap-1"
+    >
+      <Icon name="g-link" height={20} width={20} />Ver más
+    </a>
+  </footer>
+</article>
+
+<style></style>

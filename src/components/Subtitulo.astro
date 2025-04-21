@@ -14,10 +14,10 @@ enum aligns {
 const { align, text, type } = Astro.props;
 ---
 
-<div class="w-screen relative h-2 flex items-center mt-8">
+<div class="w-screen relative h-2 flex items-center ">
   <h3
     class:list={aligns[align]}
-    class="bg-secondary min-w-sm absolute h-16 bottom-[100%] translate-y-1/2 flex items-center justify-center border-1 border-black py-6 px-12 gap-4 font-semibold text-center text-lg"
+    class="bg-secondary min-w-sm absolute h-16 bottom-[100%] translate-y-1/2 flex items-center justify-center border-1 border-black py-6 px-12 gap-4 font-semibold text-center text-ms"
   >
     <span>{text}</span>
     <span class="tracking-[6px] font-bold">{type}</span>
