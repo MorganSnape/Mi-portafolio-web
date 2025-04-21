@@ -1,17 +1,26 @@
 ---
 import { Icon } from "astro-icon/components";
+import type { U } from "node_modules/tailwindcss/dist/types-B254mqw1.d.mts";
 interface Props {
   title: string;
   description: string;
   imageUrl: string;
-  link: string;
+  linkUX?: string;
+  linkGit?: string;
+  linkSite?: string;
   tags?: string[];
+  type?: "Ux"|"Front"|undefined;
 }
-const { title, description, imageUrl, link, tags } = Astro.props;
+const { title, description, imageUrl, linkUX, linkGit, linkSite, tags, type } = Astro.props;
+
+enum types {
+  Ux = "Ux",
+  Front = "Front",
+}
 ---
 
 <article
-  class="shadow-primary bg-white card w-[320px]  rounded-lg overflow-hidden py-4 px-4 flex justify-between flex-col"
+  class="shadow-primary bg-white card w-[320px] h-[420px] rounded-lg overflow-hidden py-4 px-4 flex flex-col"
 >
   <header class="gap-4 flex flex-col">
     <img
@@ -35,13 +44,36 @@ const { title, description, imageUrl, link, tags } = Astro.props;
     <p class="text-sm text-text-card text-pretty">{description}</p>
   </body>
   <footer class="py-4">
+
+  {types[type]==="Ux" && (
     <a
-      href={link}
+      href={linkUX}
       target="_blank"
       class="cursor-pointer w-fit border-2 border-primary rounded-lg px-4 py-2 text-primary font-semibold text-sm hover:bg-primary hover:text-white transition duration-300 ease-in-out flex items-center gap-1"
     >
       <Icon name="g-link" height={20} width={20} />Ver más
-    </a>
+    </a>)
+  }
+
+  {
+    types[type]==="Front" && (
+      <div class="flex flex-row gap-2">
+        <a
+        href={linkSite}
+        target="_blank"
+        class="cursor-pointer w-fit rounded-full p-0.5 text-primary hover:bg-primary hover:text-white transition duration-300 ease-in-out flex items-center justify-center "
+      >
+        <Icon name="fa6-solid:earth-americas" height={32} width={32}/> 
+      </a>
+      <a
+        href={linkGit}
+        target="_blank"
+        class="cursor-pointer  rounded-full text-primary p-0.5 hover:bg-primary hover:text-white transition duration-300 ease-in-out flex items-center justify-center "
+      ><Icon name="fa6-brands:github" height={32} width={32} />
+      </a>
+      </div>)
+  }
+    
   </footer>
 </article>
 
