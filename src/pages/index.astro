@@ -78,7 +78,7 @@ import CardEstudios from "@/components/CardEstudios.astro";
         </div>
       </div>
     </section>
-    <section id="contenedor-mi-experiencia" class="w-screen">
+    <section id="experiencia-container" class="w-screen">
       <Subtitulo align="center" type="Experiencia" />
       <div class="h-[72vh] flex justify-center items-center">
         <article class="flex flex-col gap-8">
@@ -102,9 +102,9 @@ import CardEstudios from "@/components/CardEstudios.astro";
         </article>
       </div>
     </section>
-    <section id="proyectos" class="bg-[url(/fondoDos.svg)] bg-[length:20px] w-screen flex flex-col items-center">
+    <section id="proyectos-container" class="bg-[url(/fondoDos.svg)] bg-[length:20px] w-screen flex flex-col items-center">
       <Subtitulo align="left" type="UX/UI Designer" text="Proyectos"/>
-      <div class=" flex flex-wrap gap-20 py-20 w-3/4">
+      <div class="grid gap-12 py-20  grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
         {
           proyectosUX.map((proyecto) => (
             <Card type={proyecto.type} title={proyecto.title} description={proyecto.description} imageUrl={proyecto.imageUrl} linkUX={proyecto.linkUX} linkGit={proyecto.linkGit} linkSite={proyecto.linkSite} tags={proyecto.tags} type={proyecto.type} />
@@ -112,7 +112,7 @@ import CardEstudios from "@/components/CardEstudios.astro";
         }
       </div>
       <Subtitulo align="right" type="Front-End" text="Proyectos"/>
-      <div class=" flex flex-wrap justify-center items-center gap-20 py-20">
+      <div class="grid gap-12 py-20  grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
         {
           proyectosFront.map((proyecto) => (
             <Card title={proyecto.title} description={proyecto.description} imageUrl={proyecto.imageUrl} linkUX={proyecto.linkUX} linkGit={proyecto.linkGit} linkSite={proyecto.linkSite} tags={proyecto.tags} type={proyecto.type} />
@@ -120,7 +120,7 @@ import CardEstudios from "@/components/CardEstudios.astro";
         }
       </div>
     </section>
-    <section id="estudios" class="w-screen">
+    <section id="estudios-container" class="w-screen">
       <Subtitulo align="center" type="Estudios"/>
       <div class="flex flex-col gap-10 justify-center items-center py-20">
       {
