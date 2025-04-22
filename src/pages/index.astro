@@ -1,14 +1,10 @@
 ---
 import { proyectosUX, proyectosFront, estudios } from "@/data/portfolio";
+
 import Layout from "@/layouts/Layout.astro";
 import RedesBoton from "@/components/RedesBoton.astro";
 import { Icon } from "astro-icon/components";
 import BarNav from "@/components/BarNav.astro";
-import Footer from "@/components/Footer.astro";
-// import Stacks from "@/components/Stacks.astro";
-// import Estudios from "@/components/Estudios.astro";
-// import ProyectsFront from "@/components/ProyectsFront.astro";
-// import ProyectsUx from "@/components/ProyectsUx.astro";
 import Subtitulo from "@/components/Subtitulo.astro";
 import Card from "@/components/Card.astro";
 import CardEstudios from "@/components/CardEstudios.astro";
@@ -136,5 +132,9 @@ import CardEstudios from "@/components/CardEstudios.astro";
       </div>
     </section>
   </main>
-  <Footer />
+  <footer id="footer" class="bg-[#ffe971] border-t border-black h-12 flex justify-center items-center">
+    <a href="mailto:gabriellangeles@outlook.com" class="text-base font-semibold max-[360px]:text-sm">
+      gabriellangeles@outlook.com
+    </a>
+  </footer>
 </Layout>
