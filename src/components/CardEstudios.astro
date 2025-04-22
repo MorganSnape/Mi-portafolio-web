@@ -12,7 +12,7 @@ interface Props {
 const { title, descriptions, link, tags,institution,duration } = Astro.props;
 ---
 
-<article class="shadow-primary w-[72vw] rounded-lg py-5 px-12 bg-white flex flex-col gap-5">
+<article class="shadow-primary w-[72vw] rounded-lg py-5 px-12 bg-white flex flex-col justify-between gap-5 min-h[300px]">
   <div class="flex flex-wrap gap-2">
     {
       tags &&
@@ -26,7 +26,7 @@ const { title, descriptions, link, tags,institution,duration } = Astro.props;
   <main>
     <h4 class="text-lg font-semibold">{title}<span class="text-primary">{` | ${duration}`}</span></h4>
     <p class="text-primary font-bold text-xs">{institution}</p>
-    <ul class="flex flex-wrap gap-x-2 mt-5">
+    <ul class="columns-2 gap-x-6 mt-5 flex-grow">
     {
       descriptions &&
       descriptions.map(( description) => (

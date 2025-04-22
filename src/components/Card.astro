@@ -25,13 +25,13 @@ const type: TypesValues = typeInput ? typeInput : types.undefined;
 ---
 
 <article
-  class="shadow-primary bg-white card w-[320px] h-[420px] rounded-lg overflow-hidden py-4 px-4 flex flex-col"
+  class="shadow-primary bg-white card w-[320px] h-[420px] rounded-lg overflow-hidden p-4 flex flex-col justify-between"
 >
   <header class="gap-4 flex flex-col">
     <img
       src={imageUrl}
       alt={"Portada del proyecto " + title}
-      class="border-1 border-tertiary rounded-lg "
+      class="border-1 border-tertiary rounded-lg aspect-video w-full object-cover"
     />
     <div class="flex flex-wrap gap-2">
       {
@@ -45,9 +45,9 @@ const type: TypesValues = typeInput ? typeInput : types.undefined;
     </div>
     <h4 class="text-lg font-semibold">{title}</h4>
   </header>
-  <body>
+  <main class="flex-grow">
     <p class="text-sm text-text-card text-pretty">{description}</p>
-  </body>
+  </main>
   <footer class="py-4">
 
   {types[type]==="UX" && (
@@ -78,8 +78,5 @@ const type: TypesValues = typeInput ? typeInput : types.undefined;
       </a>
       </div>)
   }
-    
   </footer>
 </article>
-
-<style></style>
