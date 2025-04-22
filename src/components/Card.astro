@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import type { U } from "node_modules/tailwindcss/dist/types-B254mqw1.d.mts";
+
 interface Props {
   title: string;
   description: string;
@@ -9,14 +9,19 @@ interface Props {
   linkGit?: string;
   linkSite?: string;
   tags?: string[];
-  type?: "Ux"|"Front"|undefined;
+  type?: TypesValues;
 }
-const { title, description, imageUrl, linkUX, linkGit, linkSite, tags, type } = Astro.props;
 
 enum types {
-  Ux = "Ux",
+  UX = "UX",
   Front = "Front",
+  undefined = "undefined",
 }
+type TypesValues = `${types}`;
+
+const { title, description, imageUrl, linkUX, linkGit, linkSite, tags, type: typeInput } = Astro.props;
+
+const type: TypesValues = typeInput ? typeInput : types.undefined;
 ---
 
 <article
@@ -45,7 +50,7 @@ enum types {
   </body>
   <footer class="py-4">
 
-  {types[type]==="Ux" && (
+  {types[type]==="UX" && (
     <a
       href={linkUX}
       target="_blank"
