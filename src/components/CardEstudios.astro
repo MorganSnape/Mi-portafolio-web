@@ -1,121 +1,54 @@
 ---
+import { Icon } from "astro-icon/components";
 interface Props {
   title: string;
-  body: string;
-  href: string;
+  institution?: string;
+  descriptions: string[];
+  link?: string;
   tags?: string[];
-  src: string;
-  alt?: string;
+  duration?: string;
 }
-const { href, title, body, src, alt } = Astro.props;
 
+const { title, descriptions, link, tags,institution,duration } = Astro.props;
 ---
 
-<a {href} target="_blank" class="card-container " >
-<article class="link-card bg-white">
-    <header>
-      <img src={src} alt={alt} class="foto-card" />
-    </header>
-
-    <main class="text-card">
-      <h4>{title}</h4>
-      <p>{body}</p>
-    </main>
-  </article>
-</a>
-
-<style>
-  .card-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .link-card {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    max-width: 800px;
-    min-width: 200px;
-    border-radius: 10px;
-   
-    border: #d8d8d8 solid 1px;
-    transition: transform 0.1s ease-in-out;
-    border-radius: 10px;
-    position: relative;
-    overflow: hidden;
-
-    &:hover {
-      transform: scale(1.02);
+<article class="shadow-primary w-[72vw] rounded-lg py-5 px-12 bg-white flex flex-col gap-5">
+  <div class="flex flex-wrap gap-2">
+    {
+      tags &&
+        tags.map((tag) => (
+          <div class="bg-secondary text-black py-0.5 px-4 w-fit text-xs font-semibold border-1 border-black ">
+            {tag}
+          </div>
+        ))
     }
-  }
-
-
-  .link-card::before {
-    position: absolute;
-    background-color: #8c659b;
-    width: 80px;
-    height: 12px;
-    content: "";
-    right: -16px;
-    transform: rotate(221deg);
-    top: 15px;
-    z-index: 1;
-  }
-
-  header {
-    aspect-ratio: 16/9;
-    width: 60%;
-    height: 100%;
-  }
-
-  .foto-card {
-    width: 400px;
-    height: 100%;
-    border: #d8d8d8 solid 1px;
-    object-fit: cover;
-    border-radius: 10px 0px 0px 10px;
-  }
-
-  .text-card {
-    padding: 12px;
-  }
-
-  p {
-    color: #5c5c5c;
-    font-size: 16px;
-    font-weight: 400;
-    font-family: "Fredoka", sans-serif;
-    width: 100%;
-    text-wrap: pretty;
-    margin-bottom: 0px;
-  }
-
-  h4 {
-    margin: 0px;
-    font-size: 16px;
-    font-weight: 600;
-  }
-
-/* Vista Movil */
-  @media (max-width: 690px) {
-    .link-card{
-      flex-direction: column;
-      width: clamp(500px, 80%, 500px);
+  </div>
+  <main>
+    <h4 class="text-lg font-semibold">{title}<span class="text-primary">{` | ${duration}`}</span></h4>
+    <p class="text-primary font-bold text-xs">{institution}</p>
+    <ul class="flex flex-wrap gap-x-2 mt-5">
+    {
+      descriptions &&
+      descriptions.map(( description) => (
+          <li class="text-sm text-text-card text-pretty list-disc list-inside">
+            { description}
+          </li>
+        ))
     }
-    header{
-      aspect-ratio: inherit;
-      width: 100%;
+    </ul>
+  </main>
+  <footer>
+    {
+      link && (
+        <a
+          href={link}
+          target="_blank"
+          class="cursor-pointer w-fit border-2 border-primary rounded-lg px-4 py-2 text-primary font-semibold text-sm hover:bg-primary hover:text-white transition duration-300 ease-in-out flex items-center gap-1"
+        >
+          <Icon name="g-link" height={20} width={20} />
+          Ver certificado
+        </a>
+      )
     }
-    .foto-card {
-    width: 100%;
-    max-height: 200px;
-  }
-
-  .link-card::before {
-    left: -16px;
-    transform: rotate(130deg);
-  }
-  }
-</style>
+  </footer>
+</article>
