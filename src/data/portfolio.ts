@@ -67,8 +67,8 @@ export const proyectosFront = [
     description: "Sitio web para mostrar mis proyectos y estudios.",
     imageUrl: "/images/portfolio.png",
     linkUX: "/images/Amarilla.webp",
-    linkGit: "https://github.com/user/portfolio",
-    linkSite: "https://miportfolio.dev",
+    linkGit: "Hola",
+    linkSite: "",
     tags: ["Astro", "TypeScript", "Tailwind"],
     type: "Front"
   },
