@@ -13,48 +13,14 @@ if (!target) {
   target = "_blank";
 }
 ---
-
 <div>
-  <a {href} class="red-boton" {target}>
+  <a
+    {href}
+    class="select-none flex flex-row justify-center items-center gap-[10px] font-medium w-fit bg-[#8c659b] text-white border border-black rounded-[10px] transition-transform duration-100 ease-in-out hover:scale-[1.03] px-4 py-[4px] text-[16px] shadow-[4px_4px_0px_#000000] md:px-[18px] md:py-2 md:text-[14px] md:shadow-[8px_8px_0px_#000000]"
+    {target}
+  >
     <slot />
     <span>{text}</span>
   </a>
 </div>
 
-<style>
-  .red-boton {
-    user-select: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    font-weight: 500;
-
-    width: fit-content;
-    background-color: #8c659b;
-    color: white;
-    border: 1px solid black;
-    border-radius: 10px;
-    transition: transform 0.1s ease-in-out;
-  }
-
-  .red-boton:hover {
-    transform: scale(1.03);
-  }
-  @media (max-width: 768px) {
-    .red-boton {
-      padding: 4px 14px;
-      font-size: 16px;
-      box-shadow: 4px 4px 0px #000000;
-    }
-
-  }
-  @media (min-width: 768px) {
-    .red-boton {
-      padding: 8px 18px;
-      font-size: 14px;
-      box-shadow: 8px 8px 0px #000000;
-    }
-  }
-</style>
