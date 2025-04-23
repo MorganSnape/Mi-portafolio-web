@@ -12,7 +12,7 @@ interface Props {
 const { title, descriptions, link, tags,institution,duration } = Astro.props;
 ---
 
-<article class="shadow-primary w-[80vw] rounded-lg p-4 md:py-5 md:px-12 bg-white flex flex-col justify-between gap-5 min-h[300px]">
+<article class="shadow-primary w-[80vw] max-w-[1000px] rounded-lg p-4 md:py-5 md:px-12 bg-white flex flex-col justify-between gap-5 min-h[300px]">
   <div class="flex flex-wrap gap-2">
     {
       tags &&
