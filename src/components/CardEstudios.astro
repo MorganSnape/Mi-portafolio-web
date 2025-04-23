@@ -12,25 +12,25 @@ interface Props {
 const { title, descriptions, link, tags,institution,duration } = Astro.props;
 ---
 
-<article class="shadow-primary w-[72vw] rounded-lg py-5 px-12 bg-white flex flex-col justify-between gap-5 min-h[300px]">
+<article class="shadow-primary w-[80vw] rounded-lg p-4 md:py-5 md:px-12 bg-white flex flex-col justify-between gap-5 min-h[300px]">
   <div class="flex flex-wrap gap-2">
     {
       tags &&
         tags.map((tag) => (
-          <div class="bg-secondary text-black py-0.5 px-4 w-fit text-xs font-semibold border-1 border-black ">
+          <div class="bg-secondary text-black py-0.5 px-2 md:px-4 w-fit text-xs font-semibold border-1 border-black ">
             {tag}
           </div>
         ))
     }
   </div>
   <main>
-    <h4 class="text-lg font-semibold">{title}<span class="text-primary">{` | ${duration}`}</span></h4>
+    <h4 class="text-md md:text-lg font-semibold">{title}<span class="text-primary">{` | ${duration}`}</span></h4>
     <p class="text-primary font-bold text-xs">{institution}</p>
-    <ul class="columns-2 gap-x-6 mt-5 flex-grow">
+    <ul class="columns-2 gap-x-2 md:gap-x-6 mt-5 flex-grow">
     {
       descriptions &&
       descriptions.map(( description) => (
-          <li class="text-sm text-text-card text-pretty list-disc list-inside">
+          <li class="text-xs md:text-sm text-text-card text-pretty list-disc list-inside">
             { description}
           </li>
         ))
