@@ -1,23 +1,8 @@
 ---
+import { type Proyect, ProyectTypes, type ProyectTypesValues } from "@/models";  
 import { Icon } from "astro-icon/components";
 
-interface Props {
-  title: string;
-  description: string;
-  imageUrl: string;
-  linkUX?: string;
-  linkGit?: string;
-  linkSite?: string;
-  tags?: string[];
-  type?: TypesValues;
-}
-
-enum types {
-  UX = "UX",
-  Front = "Front",
-  undefined = "undefined",
-}
-type TypesValues = `${types}`;
+interface Props extends Proyect {}
 
 const {
   title,
@@ -30,7 +15,7 @@ const {
   type: typeInput,
 } = Astro.props;
 
-const type: TypesValues = typeInput ? typeInput : types.undefined;
+const type: ProyectTypesValues = typeInput ? typeInput : ProyectTypes.undefined;
 ---
 
 <article
@@ -55,11 +40,11 @@ const type: TypesValues = typeInput ? typeInput : types.undefined;
     <h4 class="text-md md:text-lg font-semibold">{title}</h4>
   </header>
   <main class="flex-grow">
-    <p class="text-xs md:text-sm text-text-card text-pretty">{description}</p>
+    <p class="text-xs md:text-sm text-text-card text-pretty line-clamp-3">{description}</p>
   </main>
   <footer class="py-4">
     {
-      types[type] === "UX" && (
+      ProyectTypes[type] === "UX" && (
         <a
           href={linkUX}
           target="_blank"
@@ -72,7 +57,7 @@ const type: TypesValues = typeInput ? typeInput : types.undefined;
     }
 
     {
-      types[type] === "Front" && (
+      ProyectTypes[type] === "Front" && (
         <div class="flex flex-row gap-2">
           {linkSite && (
             <a

@@ -1,13 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
-interface Props {
-  title: string;
-  institution?: string;
-  descriptions: string[];
-  link?: string;
-  tags?: string[];
-  duration?: string;
-}
+
+import type { Studies } from "@/models";
+
+interface Props extends Studies {}
 
 const { title, descriptions, link, tags,institution,duration } = Astro.props;
 ---
@@ -26,11 +22,11 @@ const { title, descriptions, link, tags,institution,duration } = Astro.props;
   <main>
     <h4 class="text-md md:text-lg font-semibold">{title}<span class="text-primary">{` | ${duration}`}</span></h4>
     <p class="text-primary font-bold text-xs">{institution}</p>
-    <ul class="columns-2 gap-x-2 md:gap-x-6 mt-5 flex-grow">
+    <ul class="columns-2 gap-x-2 md:gap-x-6 mt-5 flex-grow list-disc list-outside pl-5">
     {
       descriptions &&
       descriptions.map(( description) => (
-          <li class="text-xs md:text-sm text-text-card text-pretty list-disc list-inside">
+          <li class="text-xs md:text-sm text-text-card text-pretty">
             { description}
           </li>
         ))
