@@ -34,7 +34,7 @@ const type: TypesValues = typeInput ? typeInput : types.undefined;
 ---
 
 <article
-  class="shadow-primary bg-white card w-[320px] h-[420px] rounded-lg overflow-hidden p-4 flex flex-col justify-between"
+  class="shadow-primary bg-white card w-[300px] h-[400px] md:w-[320px] md:h-[420px] rounded-lg overflow-hidden p-4 flex flex-col justify-between"
 >
   <header class="gap-4 flex flex-col">
     <img
@@ -46,16 +46,16 @@ const type: TypesValues = typeInput ? typeInput : types.undefined;
       {
         tags &&
           tags.map((tag) => (
-            <div class="bg-secondary text-black py-0.5 px-4 w-fit text-xs font-semibold border-1 border-black ">
+            <div class="bg-secondary text-black py-0.5 px-2 md:px-4 w-fit text-xs font-semibold border-1 border-black ">
               {tag}
             </div>
           ))
       }
     </div>
-    <h4 class="text-lg font-semibold">{title}</h4>
+    <h4 class="text-md md:text-lg font-semibold">{title}</h4>
   </header>
   <main class="flex-grow">
-    <p class="text-sm text-text-card text-pretty">{description}</p>
+    <p class="text-xs md:text-sm text-text-card text-pretty">{description}</p>
   </main>
   <footer class="py-4">
     {
