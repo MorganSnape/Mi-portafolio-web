@@ -12,7 +12,7 @@ import CardEstudios from "@/components/CardEstudios.astro";
 
 <Layout title="Gabriela Ferrer - Bienvenido a mi portafolio.">
   <BarNav />
-  <main class="flex flex-col items-center">
+  <main class="flex flex-col items-center gap-8">
     <section id="sobre-mi-container"
       class="min-h-screen max-w-[1024px] flex flex-col lg:flex-row items-center justify-center gap-5 px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0 font-medium"
     >
@@ -78,17 +78,17 @@ import CardEstudios from "@/components/CardEstudios.astro";
         </div>
       </div>
     </section>
-    <section id="experiencia-container" class="w-screen">
+    <section id="experiencia-container" class="w-screen flex flex-col items-center">
       <Subtitulo align="center" type="Experiencia" />
-      <div class="h-[72vh] flex justify-center items-center">
+      <div class="flex items-center gap-10 py-20 min-w-xs px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0">
         <article class="flex flex-col gap-8">
           <header class="flex flex-col gap-2">
             <p class="text-primary font-bold text-xs">Nov, 2024 - Actualmente</p>
-            <h4 class="font-semibold bg-secondary text-lg py-1 px-2 w-fit">User Experience Designer </h4>
-            <p class="tracking-[6px] font-bold">Proyecto JetChat</p>
+            <h4 class="font-semibold bg-secondary text-md md:text-lg py-1 px-2 w-fit">User Experience Designer </h4>
+            <p class="tracking-[6px] font-bold text-sm lg:text-base">Proyecto JetChat</p>
           </header>
           <main>
-            <ul class="">
+            <ul class="text-sm lg:text-base">
              <li class="list-disc list-inside">Desarrollo de sistema de diseño usando las pautas establecidas por la empresa.</li>
              <li class="list-disc list-inside">Diseño de flujo de navegación del usuario, manteniendo la simpleza y coherencia del proyecto.</li>
              <li class="list-disc list-inside">Diseño de Wireframes y Mockups en conjunto del equipo de desarrollo del proyecto.</li>
@@ -96,8 +96,8 @@ import CardEstudios from "@/components/CardEstudios.astro";
            </ul>
           </main>
           <footer class="flex flex-row items-center justify-center gap-6 w-full border-t-2 border-[#d1d1d1] pt-8">
-            <div class="bg-primary text-white font-semibold py-2 px-10">Referencias:</div>
-            <div class="text-center">Juan Giraldo - CTO del proyecto <br> +57 3044757582</div>
+            <div class="bg-primary text-white font-semibold py-2 px-6 md:px-10 text-sm lg:text-base">Referencias:</div>
+            <div class="text-center text-sm lg:text-base">Juan Giraldo - CTO del proyecto <br> +57 3044757582</div>
           </footer>
         </article>
       </div>
@@ -120,7 +120,7 @@ import CardEstudios from "@/components/CardEstudios.astro";
         }
       </div>
     </section>
-    <section id="estudios-container" class="w-screen">
+    <section id="estudios-container" class="w-screen -my-8">
       <Subtitulo align="center" type="Estudios"/>
       <div class="flex flex-col gap-10 justify-center items-center py-20">
       {
