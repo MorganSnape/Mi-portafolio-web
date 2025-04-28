@@ -5,12 +5,12 @@ import { Icon } from "astro-icon/components";
 interface Props extends Proyect {}
 
 const {
-  title,
+  slug,
+  name,
   description,
   imageUrl,
-  linkUX,
   linkGit,
-  linkSite,
+  linkWebsite,
   tags,
   type: typeInput,
 } = Astro.props;
@@ -24,7 +24,7 @@ const type: ProyectTypesValues = typeInput ? typeInput : ProyectTypes.undefined;
   <header class="gap-4 flex flex-col">
     <img
       src={imageUrl}
-      alt={"Portada del proyecto " + title}
+      alt={"Portada del proyecto " + name}
       class="border-1 border-tertiary rounded-lg aspect-video w-full object-cover"
     />
     <div class="flex flex-wrap gap-2">
@@ -37,7 +37,7 @@ const type: ProyectTypesValues = typeInput ? typeInput : ProyectTypes.undefined;
           ))
       }
     </div>
-    <h4 class="text-md md:text-lg font-semibold">{title}</h4>
+    <h4 class="text-md md:text-lg font-semibold">{name}</h4>
   </header>
   <main class="flex-grow">
     <p class="text-xs md:text-sm text-text-card text-pretty line-clamp-3">{description}</p>
@@ -46,7 +46,7 @@ const type: ProyectTypesValues = typeInput ? typeInput : ProyectTypes.undefined;
     {
       ProyectTypes[type] === "UX" && (
         <a
-          href={linkUX}
+          href={`/proyectos/${slug}`}
           target="_blank"
           class="cursor-pointer w-fit border-2 border-primary rounded-lg px-4 py-2 text-primary font-semibold text-sm hover:bg-primary hover:text-white transition duration-300 ease-in-out flex items-center gap-1"
         >
@@ -59,9 +59,9 @@ const type: ProyectTypesValues = typeInput ? typeInput : ProyectTypes.undefined;
     {
       ProyectTypes[type] === "Front" && (
         <div class="flex flex-row gap-2">
-          {linkSite && (
+          {linkWebsite && (
             <a
-              href={linkSite}
+              href={linkWebsite}
               target="_blank"
               class="cursor-pointer w-fit rounded-full p-0.5 text-primary hover:bg-primary hover:text-white transition duration-300 ease-in-out flex items-center justify-center "
             >

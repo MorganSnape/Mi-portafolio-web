@@ -1,5 +1,6 @@
 ---
-import { proyectosUX, proyectosFront, estudios } from "@/data/portfolio";
+import { proyectosUX, proyectosFront } from "@/data/portfolio.ts";
+import { estudios } from "@/data/studies.ts";
 
 import Layout from "@/layouts/Layout.astro";
 import RedesBoton from "@/components/RedesBoton.astro";
@@ -107,15 +108,15 @@ import CardEstudios from "@/components/CardEstudios.astro";
       <div class="grid gap-12 py-20  grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
         {
           proyectosUX.map((proyecto) => (
-            <Card type={proyecto.type} title={proyecto.title} description={proyecto.description} imageUrl={proyecto.imageUrl} linkUX={proyecto.linkUX} linkGit={proyecto.linkGit} linkSite={proyecto.linkSite} tags={proyecto.tags} type={proyecto.type} />
+            <Card {...proyecto} />
           ))
         }
       </div>
       <Subtitulo align="right" type="Front-End" text="Proyectos"/>
-      <div class="grid gap-12 py-20  grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+      <div class="grid gap-12 py-20 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
         {
           proyectosFront.map((proyecto) => (
-            <Card title={proyecto.title} description={proyecto.description} imageUrl={proyecto.imageUrl} linkUX={proyecto.linkUX} linkGit={proyecto.linkGit} linkSite={proyecto.linkSite} tags={proyecto.tags} type={proyecto.type} />
+            <Card {...proyecto} />
           ))
         }
       </div>
