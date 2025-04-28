@@ -1,0 +1,43 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { proyectosUX } from "@/data/portfolio.ts";
+import Subtitulo from "@/components/Subtitulo.astro";
+
+
+export async function getStaticPaths() {
+  return proyectosUX.flatMap((proyecto) => {
+    return {
+      params: { slug: proyecto.slug },
+    };
+  });
+}
+
+const { slug } = Astro.params;
+const proyecto = proyectosUX.find((proyecto) => proyecto.slug === slug);
+
+// if (!proyecto) {
+//   throw new Error("No existe el proyecto");
+// }
+
+const {
+  name,
+  description,
+  imageUrl,
+  linkGit,
+  linkWebsite,
+  tags,
+  type: typeInput,
+} = proyecto;
+---
+
+<Layout title=`Este es el proyecto`>
+  <main class="flex flex-col items-center">
+    <img
+      src={imageUrl}
+      alt={`Portada del proyecto ${name}`}
+      class="h-[400px] w-full object-cover"
+    />
+    <Subtitulo align="center" type={name} />
+    <h1 class="mt-20">Proyecto personal {name}</h1>
+  </main>
+</Layout>
