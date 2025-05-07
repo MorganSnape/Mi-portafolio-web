@@ -1,5 +1,5 @@
 ---
-import { type Proyect, ProyectTypes, type ProyectTypesValues } from "@/models";  
+import { type Proyect,  ProyectTypes, type ProyectTypesValues } from "@/models";  
 import { Icon } from "astro-icon/components";
 
 interface Props extends Proyect {}
@@ -46,7 +46,7 @@ const type: ProyectTypesValues = typeInput ? typeInput : ProyectTypes.undefined;
     {
       ProyectTypes[type] === "UX" && (
         <a
-          href={`/proyectos/${slug}`}
+          href={`/proyectosUX/${slug}`}
           target="_blank"
           class="cursor-pointer w-fit border-2 border-primary rounded-lg px-4 py-2 text-primary font-semibold text-sm hover:bg-primary hover:text-white transition duration-300 ease-in-out flex items-center gap-1"
         >

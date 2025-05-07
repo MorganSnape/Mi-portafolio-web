@@ -1,19 +1,7 @@
-export interface ProyectV2 {
-  slug: string;
-  title: string;
-  description: string;
-  imageUrl: string;
-  linkPage?: string;
-  linkGit?: string;
-  linkSite?: string;
-  tags?: string[];
-  type?: ProyectTypesValues;
-}
-
 export interface Proyect {
   slug: string;
   name: string;
-  projectType: string;
+  proyectType?: string;
   type?: ProyectTypesValues;
   description: string;
   tags?: string[];
@@ -24,7 +12,24 @@ export interface Proyect {
   linkFigma?: string;
   linkGit?: string;
   linkWebsite?: string;
+  challenges?: ProyectChallenge[]|undefined;
+  designPrinciples?:ProyectDesignPrinciple[];
 }
+
+export type ProyectChallenge = {
+  name: string;
+  description: string;
+  solution: string;
+};
+
+export type ProyectDesignPrinciple = {
+  name: string; 
+  description: string; 
+}
+
+
+
+
 export enum ProyectTypes {
   UX = "UX",
   Front = "Front",
