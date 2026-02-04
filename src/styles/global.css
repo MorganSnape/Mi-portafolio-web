@@ -5,6 +5,8 @@
   --color-secondary: #ffe971;
   --color-tertiary: #d1d1d1;
   --color-text-card: #5d5d5d;
+
+  --color-tag: var(--color-secondary)
 }
 
 
