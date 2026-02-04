@@ -13,7 +13,10 @@ import { Icon } from "astro-icon/components";
 
     <ul class="ul-links">
       <li class="li-link">
-        <a href="#sobre-mi-container" class="nav-item">Sobre Mí</a>
+        <a href="#inicio" class="nav-item">Inicio</a>
+      </li>
+      <li class="li-link">
+        <a href="#sobre-mi" class="nav-item">Sobre mí</a>
       </li>
       <li class="li-link">
         <a href="#experiencia-container" class="nav-item">Experiencia</a>
@@ -33,13 +36,40 @@ import { Icon } from "astro-icon/components";
   const $checkbox = document.getElementById(
     "menu-hamburguer"
   ) as HTMLInputElement;
+  const $navItems = document.querySelectorAll(".nav-item") as NodeListOf<HTMLAnchorElement>;
 
-  console.log($ul);
-
+  // Cerrar menu al hacer click
   $ul?.addEventListener("click", (e) => {
     $checkbox.checked = false;
-    console.log("Click!", e);
   });
+
+  // Función para resaltar nav item activo
+  function updateActiveNavItem() {
+    const sections = document.querySelectorAll(
+      "section[id]"
+    ) as NodeListOf<HTMLElement>;
+    let currentSection = "inicio";
+
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+        currentSection = section.id;
+      }
+    });
+
+    $navItems.forEach((item) => {
+      item.classList.remove("active");
+      const href = item.getAttribute("href");
+      if (href === `#${currentSection}` || (currentSection === "inicio" && href === "#inicio")) {
+        item.classList.add("active");
+      }
+    });
+  }
+
+  // Listener en scroll
+  window.addEventListener("scroll", updateActiveNavItem);
+  // Inicializar al cargar
+  updateActiveNavItem();
 </script>
 
 <style>
@@ -62,7 +92,7 @@ import { Icon } from "astro-icon/components";
     font-weight: 500;
     color: black;
     cursor: pointer;
-    padding: 20px;
+    padding: 4px 16px;
     border: 2px solid transparent;
     transition: transform 0.1s ease-in-out;
   }
@@ -75,6 +105,12 @@ import { Icon } from "astro-icon/components";
   .nav-item:active {
     font-weight: 600;
     color: black;
+  }
+
+  .nav-item.active {
+    font-weight: 700;
+    color: var(--primary, #9775a1);
+    border-bottom: 3px solid var(--primary, #9775a1);
   }
 
   .label-hamburguer,
@@ -130,7 +166,7 @@ import { Icon } from "astro-icon/components";
     .nav-item {
       display: block;
       width: 100%;
-      padding: 16px 0;
+      padding: 16px 0px;
       font-size: 20px;
       text-align: center;
     }
