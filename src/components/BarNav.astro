@@ -12,7 +12,7 @@ import RedesBoton from "./RedesBoton.astro";
     </label>
     <input type="checkbox" name="" id="menu-hamburguer" />
 
-    <ul class="ul-links flex flex-row items-center gap-2">
+    <ul class="ul-links flex flex-col md:flex-row items-center gap-2">
       <li class="li-link">
         <a href="#inicio" class="nav-item">Inicio</a>
       </li>
@@ -186,15 +186,6 @@ import RedesBoton from "./RedesBoton.astro";
 
     #menu-hamburguer:checked + .ul-links {
       height: calc(100vh - var(--altura-header));
-    }
-  }
-
-  /*Vista computador*/
-
-  @media (min-width: 768px) {
-    .ul-links {
-      display: flex;
-      flex-direction: row;
     }
   }
 </style>
