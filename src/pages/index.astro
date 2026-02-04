@@ -24,7 +24,7 @@ import Footer from "@/components/Footer.astro";
         class="w-full lg:w-2/3 flex flex-col gap-4 lg:gap-8 text-center lg:text-left"
       >
         <h1
-          class="mx-auto w-fit lg:mx-0 py-2 px-8 bg-tag text-center [box-shadow:_0px_4px_0px_#000000] border border-black rounded-2xl text-[clamp(1.02rem,_1.114rem_+_0.727vw,_1.20rem)]"
+          class="select-none transition-transform duration-100 ease-in-out hover:scale-105 mx-auto w-fit lg:mx-0 py-2 px-8 bg-tag text-center [box-shadow:_0px_4px_0px_#000000] border border-black rounded-2xl text-[clamp(1.02rem,_1.114rem_+_0.727vw,_1.20rem)]"
         >
           ¡Hola! soy <span class="font-bold">Gabriela Ferrer.</span>
         </h1>
@@ -43,7 +43,10 @@ import Footer from "@/components/Footer.astro";
             a mi portafolio!
           </p>
         </div>
-        <div id="mis-redes" class="flex flex-wrap gap-4 justify-center lg:justify-start">
+        <div
+          id="mis-redes"
+          class="flex flex-wrap gap-4 justify-center lg:justify-start"
+        >
           <RedesBoton href="https://github.com/MorganSnape" text="Github">
             <Icon name="fa6-brands:github" height={20} width={20} />
           </RedesBoton>
@@ -63,12 +66,12 @@ import Footer from "@/components/Footer.astro";
         class="relative font-bold flex flex-col items-center gap-2 w-full lg:w-1/2"
       >
         <div
-          class="hidden lg:block absolute -left-8 top-14 w-fit py-2 px-4 bg-tag text-center [box-shadow:_0px_4px_0px_#000000] border border-black rounded-xl text-[clamp(0.4rem,_1.114rem_+_0.727vw,_0.8rem)]"
+          class="tagYellow lg:block absolute -left-8 top-14 w-fit py-2 px-4 [box-shadow:_0px_4px_0px_#000000] text-[clamp(0.4rem,_1.114rem_+_0.727vw,_0.8rem)]"
         >
           Front-End Developer
         </div>
         <div
-          class="hidden lg:block absolute -right-8 bottom-14 w-fit py-2 px-4 bg-tag text-center [box-shadow:_0px_4px_0px_#000000] border border-black rounded-xl text-[clamp(0.4rem,_1.114rem_+_0.727vw,_0.8rem)]"
+          class="tagYellow lg:block absolute w-fit py-2 px-4 [box-shadow:_0px_4px_0px_#000000] text-[clamp(0.4rem,_1.114rem_+_0.727vw,_0.8rem)] -right-8 bottom-14"
         >
           UX / UI Desinger
         </div>
@@ -84,21 +87,20 @@ import Footer from "@/components/Footer.astro";
         </div>
       </div>
     </section>
-    <section
-      id="sobre-mi"
-      class="w-screen flex flex-col items-center"
-    >
+    <section id="sobre-mi" class="w-screen flex flex-col items-center">
       <Subtitulo align="center" type="Sobre mí" />
       <div
         class="max-w-[1024px] flex flex-col lg:flex-row items-center justify-center gap-10 py-20 px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0"
       >
         <div class="lg:w-1/2 flex flex-col gap-6">
           <div class="flex flex-col gap-3">
-            <h3 class="text-2xl lg:text-3xl font-bold">
-              Quién soy y qué hago
-            </h3>
+            <h3 class="text-2xl lg:text-3xl font-bold">Quién soy y qué hago</h3>
             <p class="text-sm lg:text-base text-gray-700 leading-relaxed">
-              Soy Gabriela Ferrer, una desarrolladora Front-End y diseñadora UX/UI apasionada por crear experiencias digitales que sean tanto funcionales como hermosas. Con formación en diseño gráfico y desarrollo web, combino habilidades técnicas con pensamiento de diseño para resolver problemas complejos.
+              Soy Gabriela Ferrer, una desarrolladora Front-End y diseñadora
+              UX/UI apasionada por crear experiencias digitales que sean tanto
+              funcionales como hermosas. Con formación en diseño gráfico y
+              desarrollo web, combino habilidades técnicas con pensamiento de
+              diseño para resolver problemas complejos.
             </p>
           </div>
           <div class="flex flex-col gap-4">
@@ -107,7 +109,9 @@ import Footer from "@/components/Footer.astro";
               <div>
                 <h4 class="font-semibold text-lg mb-1">Desarrollo Front-End</h4>
                 <p class="text-sm lg:text-base text-gray-700">
-                  Creo interfaces modernas y responsivas usando tecnologías como Astro, React y Tailwind CSS, siempre enfocándome en la experiencia del usuario.
+                  Creo interfaces modernas y responsivas usando tecnologías como
+                  Astro, React y Tailwind CSS, siempre enfocándome en la
+                  experiencia del usuario.
                 </p>
               </div>
             </div>
@@ -116,7 +120,9 @@ import Footer from "@/components/Footer.astro";
               <div>
                 <h4 class="font-semibold text-lg mb-1">Diseño UX/UI</h4>
                 <p class="text-sm lg:text-base text-gray-700">
-                  Diseño sistemas de diseño escalables, prototipos de alta fidelidad y experiencias intuitivas basadas en investigación y Design Thinking.
+                  Diseño sistemas de diseño escalables, prototipos de alta
+                  fidelidad y experiencias intuitivas basadas en investigación y
+                  Design Thinking.
                 </p>
               </div>
             </div>
@@ -125,7 +131,8 @@ import Footer from "@/components/Footer.astro";
               <div>
                 <h4 class="font-semibold text-lg mb-1">Diseño Gráfico</h4>
                 <p class="text-sm lg:text-base text-gray-700">
-                  Combinο elementos visuales impactantes con identidad de marca sólida para comunicar mensajes claros y memorables.
+                  Combinο elementos visuales impactantes con identidad de marca
+                  sólida para comunicar mensajes claros y memorables.
                 </p>
               </div>
             </div>
@@ -135,8 +142,15 @@ import Footer from "@/components/Footer.astro";
           <div
             class="bg-primary/10 border-2 border-primary rounded-lg p-8 lg:p-10"
           >
-            <p class="text-base lg:text-lg font-medium text-gray-800 leading-relaxed">
-              <span class="font-bold text-primary">Creo en la importancia de la empatía</span> en el diseño. Cada proyecto es una oportunidad para entender las necesidades reales de los usuarios y crear soluciones que hagan una diferencia. Me gusta trabajar en equipo, aprender constantemente y llevar mis ideas del concepto a la realidad.
+            <p
+              class="text-base lg:text-lg font-medium text-gray-800 leading-relaxed"
+            >
+              <span class="font-bold text-primary"
+                >Creo en la importancia de la empatía</span
+              > en el diseño. Cada proyecto es una oportunidad para entender las
+              necesidades reales de los usuarios y crear soluciones que hagan una
+              diferencia. Me gusta trabajar en equipo, aprender constantemente y
+              llevar mis ideas del concepto a la realidad.
             </p>
           </div>
         </div>
@@ -147,42 +161,50 @@ import Footer from "@/components/Footer.astro";
         <div class="flex flex-col gap-3">
           <h3 class="text-2xl lg:text-3xl font-bold">Fuera del código</h3>
           <p class="text-sm lg:text-base text-gray-700 leading-relaxed">
-            Cuando no estoy diseñando o programando, me gusta disfrutar de actividades creativas y aventureras que alimentan mi inspiración:
+            Cuando no estoy diseñando o programando, me gusta disfrutar de
+            actividades creativas y aventureras que alimentan mi inspiración:
           </p>
         </div>
         <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
           <div class="flex flex-col gap-2 items-center text-center">
             <div class="bg-secondary p-4 rounded-lg font-bold text-xl">🧶</div>
             <h4 class="font-semibold text-sm lg:text-base">Tejer</h4>
-            <p class="text-xs lg:text-sm text-gray-600">Crear algo con mis manos</p>
+            <p class="text-xs lg:text-sm text-gray-600">
+              Crear algo con mis manos
+            </p>
           </div>
           <div class="flex flex-col gap-2 items-center text-center">
             <div class="bg-secondary p-4 rounded-lg font-bold text-xl">🎨</div>
             <h4 class="font-semibold text-sm lg:text-base">Pintar</h4>
-            <p class="text-xs lg:text-sm text-gray-600">Expresión artística libre</p>
+            <p class="text-xs lg:text-sm text-gray-600">
+              Expresión artística libre
+            </p>
           </div>
           <div class="flex flex-col gap-2 items-center text-center">
             <div class="bg-secondary p-4 rounded-lg font-bold text-xl">🎤</div>
             <h4 class="font-semibold text-sm lg:text-base">Cantar</h4>
-            <p class="text-xs lg:text-sm text-gray-600">Mi forma de expresarme</p>
+            <p class="text-xs lg:text-sm text-gray-600">
+              Mi forma de expresarme
+            </p>
           </div>
           <div class="flex flex-col gap-2 items-center text-center">
             <div class="bg-secondary p-4 rounded-lg font-bold text-xl">🥾</div>
             <h4 class="font-semibold text-sm lg:text-base">Senderismo</h4>
-            <p class="text-xs lg:text-sm text-gray-600">Conexión con la naturaleza</p>
+            <p class="text-xs lg:text-sm text-gray-600">
+              Conexión con la naturaleza
+            </p>
           </div>
           <div class="flex flex-col gap-2 items-center text-center">
             <div class="bg-secondary p-4 rounded-lg font-bold text-xl">✈️</div>
             <h4 class="font-semibold text-sm lg:text-base">Viajar</h4>
-            <p class="text-xs lg:text-sm text-gray-600">Descubrir nuevas culturas</p>
+            <p class="text-xs lg:text-sm text-gray-600">
+              Descubrir nuevas culturas
+            </p>
           </div>
         </div>
       </div>
     </section>
-    <section
-      id="stacks"
-      class="w-screen flex flex-col items-center"
-    >
+    <section id="stacks" class="w-screen flex flex-col items-center">
       <Subtitulo align="center" type="Mi Stack" />
       <div
         class="max-w-[1024px] w-full flex flex-col gap-12 py-20 px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0"
@@ -190,27 +212,40 @@ import Footer from "@/components/Footer.astro";
         <div class="flex flex-col gap-6">
           <div class="flex flex-col gap-2">
             <h3 class="text-2xl font-bold text-primary">Diseño</h3>
-            <p class="text-sm lg:text-base text-gray-700">Herramientas que utilizo para crear experiencias visuales impactantes</p>
+            <p class="text-sm lg:text-base text-gray-700">
+              Herramientas que utilizo para crear experiencias visuales
+              impactantes
+            </p>
           </div>
           <div class="flex flex-wrap gap-4">
-            <div class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200">
+            <div
+              class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200"
+            >
               <span class="text-3xl">🎨</span>
               <div>
                 <h4 class="font-semibold text-sm lg:text-base">Figma</h4>
                 <p class="text-xs text-gray-600">Diseño UX/UI y prototipos</p>
               </div>
             </div>
-            <div class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200">
+            <div
+              class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200"
+            >
               <span class="text-3xl">📋</span>
               <div>
                 <h4 class="font-semibold text-sm lg:text-base">FigJam</h4>
-                <p class="text-xs text-gray-600">Colaboración y brainstorming</p>
+                <p class="text-xs text-gray-600">
+                  Colaboración y brainstorming
+                </p>
               </div>
             </div>
-            <div class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200">
+            <div
+              class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200"
+            >
               <span class="text-3xl">🖼️</span>
               <div>
-                <h4 class="font-semibold text-sm lg:text-base">Adobe Photoshop</h4>
+                <h4 class="font-semibold text-sm lg:text-base">
+                  Adobe Photoshop
+                </h4>
                 <p class="text-xs text-gray-600">Edición y diseño gráfico</p>
               </div>
             </div>
@@ -220,52 +255,68 @@ import Footer from "@/components/Footer.astro";
         <div class="flex flex-col gap-6">
           <div class="flex flex-col gap-2">
             <h3 class="text-2xl font-bold text-primary">Front-End</h3>
-            <p class="text-sm lg:text-base text-gray-700">Tecnologías para crear interfaces web modernas y responsivas</p>
+            <p class="text-sm lg:text-base text-gray-700">
+              Tecnologías para crear interfaces web modernas y responsivas
+            </p>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200">
+            <div
+              class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200"
+            >
               <span class="text-3xl">⚡</span>
               <div>
                 <h4 class="font-semibold text-sm lg:text-base">Astro</h4>
                 <p class="text-xs text-gray-600">Framework moderno</p>
               </div>
             </div>
-            <div class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200">
+            <div
+              class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200"
+            >
               <span class="text-3xl">⚛️</span>
               <div>
                 <h4 class="font-semibold text-sm lg:text-base">React</h4>
                 <p class="text-xs text-gray-600">Componentes interactivos</p>
               </div>
             </div>
-            <div class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200">
+            <div
+              class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200"
+            >
               <span class="text-3xl">🎨</span>
               <div>
                 <h4 class="font-semibold text-sm lg:text-base">Tailwind CSS</h4>
                 <p class="text-xs text-gray-600">Estilos utilities</p>
               </div>
             </div>
-            <div class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200">
+            <div
+              class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200"
+            >
               <span class="text-3xl">📝</span>
               <div>
                 <h4 class="font-semibold text-sm lg:text-base">HTML5</h4>
                 <p class="text-xs text-gray-600">Estructura semántica</p>
               </div>
             </div>
-            <div class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200">
+            <div
+              class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200"
+            >
               <span class="text-3xl">🎯</span>
               <div>
                 <h4 class="font-semibold text-sm lg:text-base">CSS3</h4>
                 <p class="text-xs text-gray-600">Animaciones y layouts</p>
               </div>
             </div>
-            <div class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200">
+            <div
+              class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200"
+            >
               <span class="text-3xl">💻</span>
               <div>
                 <h4 class="font-semibold text-sm lg:text-base">JavaScript</h4>
                 <p class="text-xs text-gray-600">Lógica interactiva</p>
               </div>
             </div>
-            <div class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200">
+            <div
+              class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200"
+            >
               <span class="text-3xl">🔷</span>
               <div>
                 <h4 class="font-semibold text-sm lg:text-base">TypeScript</h4>

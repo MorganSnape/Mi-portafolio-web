@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import RedesBoton from "./RedesBoton.astro";
 ---
 
 <header
@@ -9,9 +10,9 @@ import { Icon } from "astro-icon/components";
     <label for="menu-hamburguer" class="label-hamburguer">
       <Icon name="codicon:menu" style="font-size: 30px;" />
     </label>
-    <input type="checkbox" name="" id="menu-hamburguer"/>
+    <input type="checkbox" name="" id="menu-hamburguer" />
 
-    <ul class="ul-links">
+    <ul class="ul-links flex flex-row items-center gap-2">
       <li class="li-link">
         <a href="#inicio" class="nav-item">Inicio</a>
       </li>
@@ -27,6 +28,14 @@ import { Icon } from "astro-icon/components";
       <li class="li-link">
         <a href="#estudios-container" class="nav-item">Estudios</a>
       </li>
+      <li>
+        <a
+          href="#footer"
+          class="buttonPurple gap-2.5 px-4 py-2 text-base shadow-[4px_4px_0px_#000000] md:px-4 md:py-1 md:text-sm md:shadow-[6px_6px_0px_#000000]"
+        >
+          Contactame
+        </a>
+      </li>
     </ul>
   </nav>
 </header>
@@ -34,9 +43,11 @@ import { Icon } from "astro-icon/components";
 <script>
   const $ul = document.querySelector("header ul.ul-links");
   const $checkbox = document.getElementById(
-    "menu-hamburguer"
+    "menu-hamburguer",
   ) as HTMLInputElement;
-  const $navItems = document.querySelectorAll(".nav-item") as NodeListOf<HTMLAnchorElement>;
+  const $navItems = document.querySelectorAll(
+    ".nav-item",
+  ) as NodeListOf<HTMLAnchorElement>;
 
   // Cerrar menu al hacer click
   $ul?.addEventListener("click", (e) => {
@@ -46,13 +57,16 @@ import { Icon } from "astro-icon/components";
   // Función para resaltar nav item activo
   function updateActiveNavItem() {
     const sections = document.querySelectorAll(
-      "section[id]"
+      "section[id]",
     ) as NodeListOf<HTMLElement>;
     let currentSection = "inicio";
 
     sections.forEach((section) => {
       const rect = section.getBoundingClientRect();
-      if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+      if (
+        rect.top <= window.innerHeight / 2 &&
+        rect.bottom >= window.innerHeight / 2
+      ) {
         currentSection = section.id;
       }
     });
@@ -60,7 +74,10 @@ import { Icon } from "astro-icon/components";
     $navItems.forEach((item) => {
       item.classList.remove("active");
       const href = item.getAttribute("href");
-      if (href === `#${currentSection}` || (currentSection === "inicio" && href === "#inicio")) {
+      if (
+        href === `#${currentSection}` ||
+        (currentSection === "inicio" && href === "#inicio")
+      ) {
         item.classList.add("active");
       }
     });
@@ -73,7 +90,6 @@ import { Icon } from "astro-icon/components";
 </script>
 
 <style>
-
   nav {
     height: var(--altura-header);
     display: flex;
@@ -136,9 +152,6 @@ import { Icon } from "astro-icon/components";
       left: 0;
       top: var(--altura-header);
 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: flex-start;
       /* gap: 40px; */
 
@@ -155,7 +168,7 @@ import { Icon } from "astro-icon/components";
       width: 100%;
     }
 
-    .li-link:not(:last-child){
+    .li-link:not(:last-child) {
       border-bottom: solid 1px #d8d8d8;
     }
 
