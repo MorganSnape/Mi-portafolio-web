@@ -56,7 +56,10 @@ import Footer from "@/components/Footer.astro";
           >
             <Icon name="fa6-brands:linkedin" height={20} width={20} />
           </RedesBoton>
-          <RedesBoton href="/pdf/Gabriela_Ferrer_CV.pdf" text="Currículum">
+          <RedesBoton
+            href="/pdf/Hoja de vida Gabriela Ferrer.pdf"
+            text="Currículum"
+          >
             <Icon name="bxs:file-blank" height={20} width={20} /></RedesBoton
           >
         </div>
@@ -401,11 +404,11 @@ import Footer from "@/components/Footer.astro";
       class="bg-[url(/fondoDos.svg)] bg-[length:20px] w-screen flex flex-col items-center"
     >
       <Subtitulo align="left" type="UX/UI Designer" text="Proyectos" />
-      <div class="gap-12 py-20 flex flex-col justify-center">
+      <div class="gap-12 py-20 px-6 flex flex-col justify-center">
         {proyectosUX.map((proyecto) => <Card {...proyecto} />)}
       </div>
       <Subtitulo align="right" type="Front-End" text="Proyectos" />
-      <div class="gap-12 py-20 flex flex-col justify-center">
+      <div class="gap-12 py-20 px-6 flex flex-col justify-center">
         {proyectosFront.map((proyecto) => <Card {...proyecto} />)}
       </div>
     </section>

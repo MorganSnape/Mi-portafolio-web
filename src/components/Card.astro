@@ -18,70 +18,6 @@ const {
 const type: ProyectTypesValues = typeInput ? typeInput : ProyectTypes.undefined;
 ---
 
-<!-- <article
-  class="shadow-primary bg-white card w-[260px] h-[380px] sm:w-[300px] sm:h-[400px]  md:w-[320px] md:h-[420px] rounded-lg overflow-hidden p-2 md:p-4 flex flex-col justify-between"
->
-  <header class="gap-4 flex flex-col">
-    <img
-      src={imageUrl}
-      alt={"Portada del proyecto " + name}
-      class="border-1 border-tertiary rounded-lg aspect-video w-full object-cover"
-    />
-    <div class="flex flex-wrap gap-2">
-      {
-        tags &&
-          tags.map((tag) => (
-            <div class="bg-secondary text-black py-0.5 px-2 md:px-4 w-fit text-xs font-semibold border-1 border-black ">
-              {tag}
-            </div>
-          ))
-      }
-    </div>
-    <h4 class="text-md md:text-lg font-semibold">{name}</h4>
-  </header>
-  <main class="flex-grow">
-    <p class="text-xs md:text-sm text-text-card text-pretty line-clamp-3">{description}</p>
-  </main>
-  <footer class="py-4">
-    {
-      ProyectTypes[type] === "UX" && (
-        <a
-          href={`/proyectosUX/${slug}`}
-          target="_blank"
-          class="cursor-pointer w-fit border-2 border-primary rounded-lg px-4 py-2 text-primary font-semibold text-sm hover:bg-primary hover:text-white transition duration-300 ease-in-out flex items-center gap-1"
-        >
-          <Icon name="g-link" height={20} width={20} />
-          Ver más
-        </a>
-      )
-    }
-
-    {
-      ProyectTypes[type] === "Front" && (
-        <div class="flex flex-row gap-2">
-          {linkWebsite && (
-            <a
-              href={linkWebsite}
-              target="_blank"
-              class="cursor-pointer w-fit rounded-full p-0.5 text-primary hover:bg-primary hover:text-white transition duration-300 ease-in-out flex items-center justify-center "
-            >
-              <Icon name="fa6-solid:earth-americas" height={32} width={32} />
-            </a>
-          )}
-          {linkGit && (
-            <a
-              href={linkGit}
-              target="_blank"
-              class="cursor-pointer  rounded-full text-primary p-0.5 hover:bg-primary hover:text-white transition duration-300 ease-in-out flex items-center justify-center "
-            >
-              <Icon name="fa6-brands:github" height={32} width={32} />
-            </a>
-          )}
-        </div>
-      )
-    }
-  </footer>
-</article> -->
 <article class={`flex flex-col md:flex-row items-center h-auto md:h-40 w-full md:w-[80vw] md:max-w-[1000px] md:min-h-[240px] ${ProyectTypes[type] === "UX"? "md:flex-row":"md:flex-row-reverse"}`}>
   <header
     class="border-2 border-black rounded-sm h-[200px] md:h-[98%] w-full md:w-2/5 bg-[url(/fondo.svg)] bg-[length:20px] overflow-hidden md:flex-shrink-0"
@@ -92,7 +28,7 @@ const type: ProyectTypesValues = typeInput ? typeInput : ProyectTypes.undefined;
       class="w-full h-full object-cover md:object-contain"
     />
   </header>
-  <main class="z-0 md:-m-4 h-auto md:h-full flex flex-col bg-primary border-2 rounded-sm border-white text-white shadow-[0px_0px_24px_-3px_rgba(0,0,0,0.5)] p-4 md:p-8 justify-between w-full md:flex-1">
+  <main class="z-0 -mt-4 md:-m-4 h-auto md:h-full flex flex-col gap-2 bg-primary border-2 rounded-sm border-white text-white shadow-[0px_0px_24px_-3px_rgba(0,0,0,0.5)] p-4 md:p-8 justify-between w-full md:flex-1">
     <h4 class="text-md md:text-lg font-semibold">{name}</h4>
     <div class="flex flex-wrap gap-2">
       {
@@ -113,10 +49,10 @@ const type: ProyectTypesValues = typeInput ? typeInput : ProyectTypes.undefined;
           <a
             href={`/proyectosUX/${slug}`}
             target="_blank"
-            class="cursor-pointer w-fit border-2 border-white rounded-lg px-3 py-2 text-white font-medium text-sm transition duration-300 ease-in-out flex items-center gap-1"
+            class="cursor-pointer w-fit border-2 border-white rounded-lg px-3 py-2 text-white  font-medium text-sm transition duration-300 ease-in-out flex items-center gap-1 hover:bg-white hover:text-primary"
           >
             <Icon name="g-link" height={20} width={20} />
-            Ver más
+            Ver proyecto
           </a>
         )
       }
