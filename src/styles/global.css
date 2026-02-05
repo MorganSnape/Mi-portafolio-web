@@ -14,6 +14,6 @@
     @apply flex flex-row justify-center items-center transition-transform duration-100 ease-in-out hover:scale-105 select-none text-white border border-black rounded-lg font-medium w-fit bg-primary;
   }
   .tagYellow {
-    @apply transition-transform duration-100 ease-in-out hover:scale-105  bg-tag text-center hidden rounded-xl border border-black select-none;
+    @apply transition-transform duration-100 ease-in-out hover:scale-105  bg-tag text-center rounded-xl border border-black select-none;
   }
 }

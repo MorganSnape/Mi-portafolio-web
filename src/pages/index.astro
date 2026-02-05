@@ -17,11 +17,11 @@ import Footer from "@/components/Footer.astro";
   <main class="flex flex-col items-center gap-8">
     <section
       id="inicio"
-      class="py-20 lg:py-0 lg:h-screen max-w-[1024px] w-full flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-5 px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0 font-medium"
+      class="py-20 lg:py-0 lg:h-screen max-w-[1024px] w-full flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-8 lg:gap-0 px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-8 xl:px-0 font-medium"
     >
       <div
         id="biografia"
-        class="w-full lg:w-2/3 flex flex-col gap-4 lg:gap-8 text-center lg:text-left"
+        class="w-full lg:w-1/2 flex flex-col gap-4 lg:gap-8 text-center lg:text-left"
       >
         <h1
           class="select-none transition-transform duration-100 ease-in-out hover:scale-105 mx-auto w-fit lg:mx-0 py-2 px-8 bg-tag text-center [box-shadow:_0px_4px_0px_#000000] border border-black rounded-2xl text-[clamp(1.02rem,_1.114rem_+_0.727vw,_1.20rem)]"
@@ -64,29 +64,28 @@ import Footer from "@/components/Footer.astro";
           >
         </div>
       </div>
-      <div
-        id="izquierda"
-        class="relative font-bold flex flex-col items-center gap-2 w-full lg:w-1/2"
-      >
-        <div
-          class="tagYellow lg:block absolute -left-8 top-14 w-fit py-2 px-4 [box-shadow:_0px_4px_0px_#000000] text-[clamp(0.4rem,_1.114rem_+_0.727vw,_0.8rem)]"
-        >
-          Front-End Developer
-        </div>
-        <div
-          class="tagYellow lg:block absolute w-fit py-2 px-4 [box-shadow:_0px_4px_0px_#000000] text-[clamp(0.4rem,_1.114rem_+_0.727vw,_0.8rem)] -right-8 bottom-14"
-        >
-          UX / UI Desinger
-        </div>
-        <div
-          id="foto-perfil"
-          class="flex justify-end bg-primary overflow-hidden bg-cover bg-center rounded-[90px] w-32 sm:w-40 md:w-[280px] md:h-[380px] lg:h-[400px] shadow-[8px_8px_0px_#000000] sm:shadow-[12px_12px_0px_#000000] md:shadow-[16px_16px_0px_#000000]"
-        >
-          <img
-            src="/images/Foto.png"
-            alt="Foto de Gabriela Ferrer usando un sueter rosa y sonriendo."
-            class="w-11/12 object-cover"
-          />
+      <div class="font-bold flex flex-col items-center w-full lg:w-1/2">
+        <div class="relative">
+          <div
+            id="foto-perfil"
+            class="flex justify-center bg-primary overflow-hidden bg-cover bg-center rounded-[60px] md:rounded-[90px] w-44 sm:w-48 md:w-[280px] md:h-[380px] lg:h-[400px] shadow-[8px_8px_0px_#000000] sm:shadow-[12px_12px_0px_#000000] md:shadow-[16px_16px_0px_#000000]"
+          >
+            <img
+              src="/images/Foto.png"
+              alt="Foto de Gabriela Ferrer usando un sueter rosa y sonriendo."
+              class="w-11/12 object-cover"
+            />
+          </div>
+          <div
+            class="tagYellow absolute -left-28 top-8 md:top-14 w-fit py-2 px-4 [box-shadow:_0px_4px_0px_#000000] text-[clamp(0.1rem,_0.5rem_+_0.727vw,_0.8rem)]"
+          >
+            Front-End Developer
+          </div>
+          <div
+            class="tagYellow absolute w-fit py-2 px-4 [box-shadow:_0px_4px_0px_#000000] text-[clamp(0.1rem,_0.5rem_+_0.727vw,_0.8rem)] -right-24 bottom-6 md:bottom-14"
+          >
+            UX / UI Desinger
+          </div>
         </div>
       </div>
     </section>
