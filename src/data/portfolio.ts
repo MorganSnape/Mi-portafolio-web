@@ -2,58 +2,6 @@ import type { Proyect } from "@/models";
 
 export const proyectosUX: Proyect[] = [
   {
-    slug: "mi-portafolio",
-    name: "Mi Portafolio",
-    proyectType: "Proyecto personal",
-    description: "Diseñé y desarrollé este portafolio como una plataforma personal para presentar mis proyectos, trayectoria académica y habilidades técnicas. El objetivo fue reflejar no sólo mi perfil profesional, sino también mi personalidad, estilo visual y enfoque creativo.\n\nDurante el proceso, investigué y analicé diversos portafolios de diseñadores y desarrolladores para identificar referentes visuales, estructurales y narrativos que me permitieran comunicar mi trabajo de forma clara, atractiva y coherente con mi identidad profesional.",
-    tags: ["Figma", "Figjam"],
-    duration: "1 mes",
-    myRole: "Diseñador UX/UI",
-    client: "Proyecto personal",
-    imageUrl: "/images/portada-este-portafolio.webp",
-    linkFigma: "https://Hola",
-    linkWebsite: "https://miportfolio.dev",
-    type: "UX",
-    challenges: [{
-      name: "Equilibrar claridad e información sin sobrecargar la experiencia",
-      description: "Durante el diseño de mi portafolio me enfrenté al reto de encontrar un balance entre una estructura visualmente clara, simple y ordenada, y al mismo tiempo lo suficientemente informativa como para reflejar el valor de cada experiencia y los conocimientos adquiridos en cada proyecto.",
-      solution: "Opté por un enfoque iterativo, explorando y evaluando distintas estructuras de diseño que fueran visualmente limpias, lógicas y organizadas. Me enfoqué en lograr un equilibrio entre estética, funcionalidad y facilidad de mantenimiento, priorizando una arquitectura visual que facilitara tanto la navegación como su implementación técnica."
-    },
-    {
-      name: "Escasez de referencias",
-      description: "Al tratarse de mi primer portafolio como diseñadora UX/UI, no me sentía segura sobre qué mostrar ni cómo presentarlo. Durante la búsqueda de referencias, me encontré con pocos ejemplos portafolios de diseñadores UX o los que lograba encontrar  correspondían a perfiles muy consolidados dentro del sector, con una trayectoria avanzada y recursos difíciles de replicar desde un punto de partida inicial. Esto hizo que el proceso se sintiera desafiante, pero también me motivó a construir una propuesta auténtica y adaptada a mi nivel, enfocada en comunicar mi proceso, mis aprendizajes y mi potencial como diseñadora en formación.",
-      solution: "Amplié mi búsqueda de inspiración, analizando tanto proyectos de otras disciplinas apropiando sus recursos visuales que pudieran  aportar valor estructural y conceptual. Complementé este proceso con el apoyo de videos que abordaban cómo comunicar de manera efectiva el proceso de diseño."
-    },
-    ],
-
-    designPrinciples: [{
-      name: "Claridad visual",
-      description: "Organización limpia y jerarquía clara para facilitar la lectura y navegación"
-    },
-    {
-      name: "Simplicidad",
-      description: "Diseño directo, sin elementos innecesarios, que prioriza lo esencial."
-    },
-    {
-      name: "Accesibilidad",
-      description: "Contrastes adecuados y estructura legible para todo tipo de usuarios."
-    },
-
-    {
-      name: "Narrativa del proceso",
-      description: "Cada proyecto cuenta una historia desde el reto hasta la solución, mostrando el pensamiento detrás del diseño."
-    },
-    {
-      name: "Iteración continua",
-      description: "El diseño del portafolio fue el resultado de ensayo, prueba y mejora."
-    },
-    {
-      name: "Identidad personal",
-      description: "Refleja mi estilo, enfoque creativo y decisiones auténticas como diseñadora."
-    }
-    ]
-  },
-  {
     slug: "amarilla-garden",
     name: "Amarilla Garden",
     proyectType: "E-commerce website",
