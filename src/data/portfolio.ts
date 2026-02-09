@@ -1,15 +1,16 @@
 import type { Proyect } from "@/models";
 
-export const proyectosUX: Proyect[] = [
+export const proyectos: Proyect[] = [
   {
+    type: ["UX", "Front"],
     slug: "amarilla-garden",
     name: "Amarilla Garden",
     proyectType: "E-commerce website",
     description: "Estoy desarrollando un proyecto pro bono para una tienda artesanal de piezas decorativas en cemento. El objetivo es digitalizar su catálogo y abrir un nuevo canal de ventas online, manteniendo su identidad artesanal a través de una experiencia moderna, accesible e intuitiva, que facilite a los clientes  actuales realizar sus compras y captar la atención de nuevos clientes.",
     imageUrl: "/images/Amarilla.webp",
     linkWebsite: "https://www.amarillagarden.com",
+    linkGit: "https://github.com/user/portfolio",
     tags: ["Astro", "TypeScript", "Tailwind"],
-    type: "UX",
     duration: "En proceso",
     myRole: "Diseñador UX/UI",
     client: "Proyecto probono",
@@ -50,13 +51,13 @@ export const proyectosUX: Proyect[] = [
     ]
   },
   {
+    type: ["UX"],
     slug: "commet-app",
     name: "Commet.App",
     description: "Este proyecto fue desarrollado como parte del curso Fundamentos de UX/UI, aplicando un enfoque de diseño centrado en el usuario, respaldado por procesos de investigación, design thinking y prototipado en Figma.\n\n Se trata de una Plataforma de reseñas tipo red social enfocada en permitir a usuarios de cualquier perfil compartir su opinión sobre productos tecnológicos, ropa, locales comerciales y servicios. La app permite crear publicaciones personalizadas con el nombre del producto o local, precio, lugar de adquisición y reseña personal. Además, incorpora funciones de búsqueda y filtrado inteligentes, mostrando un promedio visual de opiniones para cada ítem, con el fin de facilitar decisiones informadas.",
     imageUrl: "/images/Portada-Commet.webp",
     linkFigma: "https://www.figma.com/design/q7khsSBJocn9TTIOirQoid/Commet.app?node-id=1-925&t=KuJk3EwziEKo4Woi-1",
     tags: ["Figma"],
-    type: "UX",
     duration: "2 mes",
     myRole: "Estudiante",
     client: "Proyecto personal",
@@ -105,19 +106,8 @@ export const proyectosUX: Proyect[] = [
       }
     ],
   },
-];
-export const proyectosFront: Proyect[] = [
   {
-    slug: "amarilla-garden",
-    name: "Amarilla Garden",
-    description: "Estoy desarrollando un proyecto pro bono para una tienda en línea especializada en la fabricación y venta de piezas decorativas en cemento. El objetivo fue ayudar a la marca a digitalizar su catálogo artesanal y abrir un nuevo canal de ventas a través de una plataforma intuitiva, moderna y accesible. ",
-    imageUrl: "/images/Amarilla.webp",
-    linkGit: "https://github.com/user/portfolio",
-    linkWebsite: "https://www.amarillagarden.com/",
-    tags: ["Astro", "TypeScript", "Tailwind"],
-    type: "Front"
-  },
-  {
+    type: ["Front"],
     slug: "encriptador-texto",
     name: "Encriptador de Texto",
     description: "Proyecto desarrollado como parte del Diplomado en Programación Frontend con JavaScript, en el cual se aplicaron principios fundamentales de desarrollo web moderno como Mobile First, junto con tecnologías clave: HTML5, CSS3, JavaScript, y herramientas de diseño como Figma.",
@@ -125,7 +115,6 @@ export const proyectosFront: Proyect[] = [
     linkGit: "https://github.com/MorganSnape/Encriptador-Texto.git",
     linkWebsite: "https://encriptador-texto-liard.vercel.app/",
     tags: ["HTML", "CSS", "JavaScript"],
-    type: "Front"
   },
 ];
 

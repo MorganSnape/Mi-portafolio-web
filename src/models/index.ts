@@ -1,8 +1,8 @@
 export interface Proyect {
+  type: ProyectType[]
   slug: string;
   name: string;
   proyectType?: string;
-  type?: ProyectTypesValues;
   description: string;
   tags?: string[];
   imageUrl: string;
@@ -12,8 +12,8 @@ export interface Proyect {
   linkFigma?: string;
   linkGit?: string;
   linkWebsite?: string;
-  challenges?: ProyectChallenge[]|undefined;
-  designPrinciples?:ProyectDesignPrinciple[];
+  challenges?: ProyectChallenge[] | undefined;
+  designPrinciples?: ProyectDesignPrinciple[];
 }
 
 export type ProyectChallenge = {
@@ -23,19 +23,21 @@ export type ProyectChallenge = {
 };
 
 export type ProyectDesignPrinciple = {
-  name: string; 
-  description: string; 
+  name: string;
+  description: string;
 }
 
+export type ProyectType = "UX" | "Front";
 
 
 
-export enum ProyectTypes {
-  UX = "UX",
-  Front = "Front",
-  undefined = "undefined",
-}
-export type ProyectTypesValues = `${ProyectTypes}`;
+// export enum ProyectTypes {
+//   UX = "UX",
+//   Front = "Front",
+//   undefined = "undefined",
+// }
+
+// export type ProyectTypesValues = `${ProyectTypes}`;
 
 export interface Studies {
   title: string;

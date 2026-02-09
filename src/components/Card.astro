@@ -1,117 +1,74 @@
 ---
-import { type Proyect, ProyectTypes, type ProyectTypesValues } from "@/models";
+import { type Proyect } from "@/models";
 import { Icon } from "astro-icon/components";
 
-interface Props extends Proyect {}
+interface Props extends Proyect {
+  section: "UX" | "Front";
+}
+const { slug, name, description, imageUrl, tags } = Astro.props;
 
-const {
-  slug,
-  name,
-  description,
-  imageUrl,
-  linkGit,
-  linkWebsite,
-  tags,
-  type: typeInput,
-} = Astro.props;
-
-const type: ProyectTypesValues = typeInput ? typeInput : ProyectTypes.undefined;
+let { section } = Astro.props;
 ---
 
-<article
-  class={`group cursor-pointer flex flex-col md:flex-row items-center h-auto md:h-40 w-full md:w-[80vw] md:max-w-[1000px] md:min-h-[240px] ${ProyectTypes[type] === "UX" ? "md:flex-row" : "md:flex-row-reverse"}`}
->
-  <header
-    class="border-2 border-black rounded-sm h-[200px] md:h-[98%] w-full md:w-2/5 bg-[url(/fondo.svg)] bg-[length:20px] overflow-hidden md:flex-shrink-0"
+<a href={`/proyectos/${slug}`} target="_blank" class="inline-block">
+  <article
+    class={`group cursor-pointer flex flex-col md:flex-row items-center h-auto md:h-40 w-full md:w-[80vw] md:max-w-[1000px] md:min-h-[240px] ${section === "UX" ? "md:flex-row" : "md:flex-row-reverse"}`}
   >
-    <img
-      src={imageUrl}
-      alt={"Portada del proyecto " + name}
-      class="w-full h-full object-cover md:object-contain transition-transform duration-300 group-hover:scale-110"
-    />
-  </header>
-  <main
-    class="z-0 -mt-4 md:-m-4 h-auto md:h-full flex flex-col gap-2 bg-primary border-2 rounded-sm border-white text-white shadow-[0px_0px_24px_-3px_rgba(0,0,0,0.5)] p-4 md:p-8 justify-between w-full md:flex-1"
-  >
-    <h4 class="text-md md:text-lg font-semibold">{name}</h4>
-    <div class="flex flex-wrap gap-2">
-      {
-        tags &&
-          tags.map((tag) => (
-            <div class="bg-secondary text-black py-0.5 px-2 md:px-4 w-fit text-xs font-semibold border-1 border-black ">
-              {tag}
-            </div>
-          ))
-      }
-    </div>
-    <p class="text-xs md:text-sm text-pretty line-clamp-3">
-      {description}
-    </p>
-    <div>
-      {
-        ProyectTypes[type] === "UX" && (
-          <a
-            href={`/proyectosUX/${slug}`}
-            target="_blank"
-            class="
-    cursor-pointer
-    border-2 border-white rounded-lg
-    px-3 py-2
-    text-white font-medium text-sm
-    flex items-center gap-1
-    w-fit
-    transition-colors duration-300 ease-in-out
-    group-hover:bg-white group-hover:text-primary
-  "
+    <header
+      class="border-2 border-black rounded-sm h-[200px] md:h-[98%] w-full md:w-2/5 bg-[url(/fondo.svg)] bg-[length:20px] overflow-hidden md:flex-shrink-0"
+    >
+      <img
+        src={imageUrl}
+        alt={"Portada del proyecto " + name}
+        class="w-full h-full object-cover md:object-contain transition-transform duration-300 group-hover:scale-110"
+      />
+    </header>
+    <main
+      class="z-0 -mt-4 md:-m-4 h-auto md:h-full flex flex-col gap-2 bg-primary border-2 rounded-sm border-white text-white shadow-[0px_0px_24px_-3px_rgba(0,0,0,0.5)] p-4 md:p-8 justify-between w-full md:flex-1"
+    >
+      <h4 class="text-md md:text-lg font-semibold">{name}</h4>
+      <div class="flex flex-wrap gap-2">
+        {
+          tags &&
+            tags.map((tag) => (
+              <div class="bg-secondary text-black py-0.5 px-2 md:px-4 w-fit text-xs font-semibold border-1 border-black ">
+                {tag}
+              </div>
+            ))
+        }
+      </div>
+      <p class="text-xs md:text-sm text-pretty line-clamp-3">{description}</p>
+      <div>
+        <button
+          class="cursor-pointer
+      border-2 border-white rounded-lg
+      px-3 py-2
+      text-white font-medium text-sm
+      flex items-center gap-1
+      w-fit
+      transition-colors duration-300 ease-in-out
+      group-hover:bg-white group-hover:text-primary"
+        >
+          <Icon
+            name="g-link"
+            height={20}
+            width={20}
+            class="transition-transform duration-300 group-hover:rotate-45"
+          />
+
+          <span
+            class="overflow-hidden
+        max-w-0
+        opacity-0
+        whitespace-nowrap
+        transition-all duration-300 ease-in-out
+        group-hover:max-w-[120px]
+        group-hover:opacity-100"
           >
-            <Icon
-              name="g-link"
-              height={20}
-              width={20}
-              class="transition-transform duration-300 group-hover:rotate-45"
-            />
-
-            <span
-              class="
-      overflow-hidden
-      max-w-0
-      opacity-0
-      whitespace-nowrap
-      transition-all duration-300 ease-in-out
-      group-hover:max-w-[120px]
-      group-hover:opacity-100
-    "
-            >
-              Ver proyecto
-            </span>
-          </a>
-        )
-      }
-
-      {
-        ProyectTypes[type] === "Front" && (
-          <div class="flex flex-row gap-2">
-            {linkWebsite && (
-              <a
-                href={linkWebsite}
-                target="_blank"
-                class="cursor-pointer w-fit rounded-full p-0.5 text-white hover:bg-primary hover:text-white transition duration-300 ease-in-out flex items-center justify-center "
-              >
-                <Icon name="fa6-solid:earth-americas" height={28} width={28} />
-              </a>
-            )}
-            {linkGit && (
-              <a
-                href={linkGit}
-                target="_blank"
-                class="cursor-pointer  rounded-full text-white p-0.5 hover:bg-primary hover:text-white transition duration-300 ease-in-out flex items-center justify-center "
-              >
-                <Icon name="fa6-brands:github" height={28} width={28} />
-              </a>
-            )}
-          </div>
-        )
-      }
-    </div>
-  </main>
-</article>
+            Ver proyecto
+          </span>
+        </button>
+      </div>
+    </main>
+  </article>
+</a>

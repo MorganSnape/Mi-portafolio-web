@@ -1,5 +1,5 @@
 ---
-import { proyectosUX, proyectosFront } from "@/data/portfolio.ts";
+import { proyectos } from "@/data/portfolio.ts";
 import { estudios } from "@/data/studies.ts";
 
 import Layout from "@/layouts/Layout.astro";
@@ -10,6 +10,11 @@ import Subtitulo from "@/components/Subtitulo.astro";
 import Card from "@/components/Card.astro";
 import CardEstudios from "@/components/CardEstudios.astro";
 import Footer from "@/components/Footer.astro";
+
+const uxProjects = proyectos.filter((project) => project.type.includes("UX"));
+const frontProjects = proyectos.filter((project) =>
+  project.type.includes("Front"),
+);
 ---
 
 <Layout title="Gabriela Ferrer - Bienvenido a mi portafolio.">
@@ -337,7 +342,7 @@ import Footer from "@/components/Footer.astro";
     >
       <Subtitulo align="center" type="Experiencia" />
       <div
-        class="flex items-center gap-10 py-20 min-w-xs px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0 max-w-[980px]"
+        class="flex items-center gap-10 py-40 min-w-xs px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0 max-w-[980px]"
       >
         <article class="flex flex-col gap-8">
           <header class="flex flex-col gap-2">
@@ -379,7 +384,7 @@ import Footer from "@/components/Footer.astro";
               </li>
             </ul>
           </main>
-          <footer
+          <!-- <footer
             class="flex flex-row items-center justify-center gap-6 w-full border-t-2 border-[#d1d1d1] pt-8"
           >
             <div
@@ -390,7 +395,7 @@ import Footer from "@/components/Footer.astro";
             <div class="text-center text-sm lg:text-base">
               Eduardo Sánchez- CO del proyecto <br /> +57 3183400992
             </div>
-          </footer>
+          </footer> -->
         </article>
       </div>
     </section>
@@ -400,11 +405,11 @@ import Footer from "@/components/Footer.astro";
     >
       <Subtitulo align="left" type="UX/UI Designer" text="Proyectos" />
       <div class="gap-12 py-20 px-6 flex flex-col justify-center">
-        {proyectosUX.map((proyecto) => <Card {...proyecto} />)}
+        {uxProjects.map((proyecto) => <Card section="UX" {...proyecto} />)}
       </div>
       <Subtitulo align="right" type="Front-End" text="Proyectos" />
       <div class="gap-12 py-20 px-6 flex flex-col justify-center">
-        {proyectosFront.map((proyecto) => <Card {...proyecto} />)}
+        {frontProjects.map((proyecto) => <Card section="Front" {...proyecto} />)}
       </div>
     </section>
     <section id="estudios-container" class="w-screen -mt-8">
