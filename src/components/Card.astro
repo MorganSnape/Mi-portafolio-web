@@ -12,7 +12,7 @@ let { section } = Astro.props;
 
 <a href={`/proyectos/${slug}`} target="_blank" class="inline-block">
   <article
-    class={`group cursor-pointer flex flex-col md:flex-row items-center h-auto md:h-40 w-full md:w-[80vw] md:max-w-[1000px] md:min-h-[240px] ${section === "UX" ? "md:flex-row" : "md:flex-row-reverse"}`}
+    class={`group cursor-pointer flex flex-col md:flex-row items-center h-auto md:h-64 w-full md:w-[80vw] md:max-w-[1000px] md:min-h-[240px] ${section === "UX" ? "md:flex-row" : "md:flex-row-reverse"}`}
   >
     <header
       class="border-2 border-black rounded-sm h-[200px] md:h-[98%] w-full md:w-2/5 bg-[url(/fondo.svg)] bg-[length:20px] overflow-hidden md:flex-shrink-0"
@@ -24,7 +24,7 @@ let { section } = Astro.props;
       />
     </header>
     <main
-      class="z-0 -mt-4 md:-m-4 h-auto md:h-full flex flex-col gap-2 bg-primary border-2 rounded-sm border-white text-white shadow-[0px_0px_24px_-3px_rgba(0,0,0,0.5)] p-4 md:p-8 justify-between w-full md:flex-1"
+      class="z-0 -mt-4 md:-m-4 h-auto md:h-full flex flex-col gap-2 bg-primary border-2 rounded-sm border-white text-white shadow-[0px_0px_24px_-3px_rgba(0,0,0,0.5)] p-4 md:p-6 lg:p-8 justify-between w-full md:flex-1"
     >
       <h4 class="text-md md:text-lg font-semibold">{name}</h4>
       <div class="flex flex-wrap gap-2">
@@ -53,11 +53,11 @@ let { section } = Astro.props;
             name="g-link"
             height={20}
             width={20}
-            class="transition-transform duration-300 group-hover:rotate-45"
+            class="transition-transform ease-in-out duration-200 group-hover:rotate-45"
           />
 
           <span
-            class="overflow-hidden
+            class="overflow-hidden font-semibold
         max-w-0
         opacity-0
         whitespace-nowrap

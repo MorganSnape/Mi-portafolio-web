@@ -10,7 +10,7 @@ export const proyectos: Proyect[] = [
     imageUrl: "/images/Amarilla.webp",
     linkWebsite: "https://www.amarillagarden.com",
     linkGit: "https://github.com/user/portfolio",
-    tags: ["Astro", "TypeScript", "Tailwind"],
+    tags: ["Figma","FigJam","Astro", "TypeScript", "Tailwind"],
     duration: "En proceso",
     myRole: "Diseñador UX/UI",
     client: "Proyecto probono",
