@@ -1,5 +1,4 @@
 ---
-
 import { estudios } from "@/data/studies.ts";
 
 import Layout from "@/layouts/Layout.astro";
@@ -23,20 +22,24 @@ import CardEstudios from "@/components/CardEstudios.astro";
       class="w-screen flex flex-col items-center"
     >
       <Subtitulo align="center" type="Experiencia" />
+
       <div
-        class="flex items-center gap-10 py-40 min-w-xs px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0 max-w-[980px]"
+        class="flex flex-col md:flex-row  items-start gap-10 py-40 min-w-xs px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0"
       >
-        <article class="flex flex-col gap-8">
-          <header class="flex flex-col gap-2">
-            <p class="text-primary font-bold text-xs">Nov, 2024 - Oct,2025</p>
+        <div class="flex flex-row items-center gap-4 mt-2">
+          <p class="text-black font-bold text-base font-jost">
+            Nov, 2024 - Oct,2025
+          </p>
+          <div class="h-0.5 bg-black w-20"></div>
+        </div>
+
+        <article class="flex flex-col gap-6">
+          <header >
             <h4
-              class="font-semibold bg-secondary text-md md:text-lg py-1 px-2 w-fit"
+              class="font-bold font-jost text-xl md:text-2xl w-fit"
             >
-              UI/UX Developer
+              UI/UX Developer - Mvp KunturWing
             </h4>
-            <p class="tracking-[6px] font-bold text-sm lg:text-base">
-              Mvp KunturWing
-            </p>
           </header>
           <main>
             <ul class="text-sm lg:text-base space-y-1">
@@ -81,7 +84,7 @@ import CardEstudios from "@/components/CardEstudios.astro";
         </article>
       </div>
     </section>
-    <Proyectos/>
+    <Proyectos />
     <section id="estudios-container" class="w-screen -mt-8">
       <Subtitulo align="center" type="Estudios" />
       <div class="flex flex-col gap-10 justify-center items-center py-20">

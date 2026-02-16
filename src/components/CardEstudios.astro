@@ -9,7 +9,7 @@ const { title, descriptions, link, tags, institution, duration } = Astro.props;
 ---
 
 <article
-  class="shadow-primary w-[80vw] max-w-[1000px] rounded-lg p-4 md:py-5 md:px-12 bg-white flex flex-col justify-between gap-5 min-h[300px]"
+  class="shadow-primary select-none w-[80vw] max-w-[1000px] rounded-xl md:rounded-2xl p-4 md:py-5 md:px-12 bg-white flex flex-col justify-between gap-5 min-h[300px]"
 >
   <div class="flex flex-wrap gap-2">
     {
@@ -22,7 +22,7 @@ const { title, descriptions, link, tags, institution, duration } = Astro.props;
     }
   </div>
   <main>
-    <h4 class="text-md md:text-lg font-semibold">
+    <h4 class="text-lg md:text-xl font-semibold font-jost">
       {title}<span class="text-primary">{` | ${duration}`}</span>
     </h4>
     <p class="text-primary font-bold text-xs">{institution}</p>
@@ -32,7 +32,7 @@ const { title, descriptions, link, tags, institution, duration } = Astro.props;
       {
         descriptions &&
           descriptions.map((description) => (
-            <li class="text-xs md:text-sm text-text-card text-pretty">
+            <li class="text-xs md:text-sm text-black text-pretty">
               {description}
             </li>
           ))
