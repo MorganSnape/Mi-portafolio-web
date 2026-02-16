@@ -1,6 +1,36 @@
 ---
 import Subtitulo from "@/components/Subtitulo.astro";
 import NavegadorStacks from "../NavegadorStacks.astro";
+import Hobbies from "../Hobbies.astro";
+import PintarSvg from "@/assets/pintar.svg";
+import CantarSvg from "@/assets/cantar.svg";
+import SenderismoSvg from "@/assets/senderismo.svg";
+import TravelSvg from "@/assets/travel.svg";
+import TejerSvg from "@/assets/tejer.svg";
+
+
+const hobbies = [
+  {
+    text: "Pintar",
+    svg: PintarSvg,
+  },
+  {
+    text: "Tejer",
+    svg: TejerSvg,
+  },
+  {
+    text: "Cantar",
+    svg: CantarSvg,
+  },
+  {
+    text: "Senderismo",
+    svg: SenderismoSvg,
+  },
+  {
+    text: "Viajar",
+    svg: TravelSvg,
+  },
+];
 ---
 
 <section id="sobre-mi" class="w-screen flex flex-col items-center text-black">
@@ -55,53 +85,27 @@ import NavegadorStacks from "../NavegadorStacks.astro";
 
     <div class="flex flex-col gap-8">
       <div class="flex flex-col gap-3">
-        <h3 class="titleH3">Fuera del código</h3>
-        <p class="text-sm lg:text-base text-gray-700 leading-relaxed">
+        <h3 class="titleH3">Mis pasatiempos</h3>
+        <p class="text-sm lg:text-base leading-relaxed text-balance">
           Cuando no estoy diseñando o programando, me gusta disfrutar de
           actividades creativas y aventureras que alimentan mi inspiración:
         </p>
       </div>
       <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
-        <div class="flex flex-col gap-2 items-center text-center">
-          <div class="bg-secondary p-4 rounded-lg font-bold text-xl">🧶</div>
-          <h4 class="font-semibold text-sm lg:text-base">Tejer</h4>
-          <p class="text-xs lg:text-sm text-gray-600">
-            Crear algo con mis manos
-          </p>
-        </div>
-        <div class="flex flex-col gap-2 items-center text-center">
-          <div class="bg-secondary p-4 rounded-lg font-bold text-xl">🎨</div>
-          <h4 class="font-semibold text-sm lg:text-base">Pintar</h4>
-          <p class="text-xs lg:text-sm text-gray-600">
-            Expresión artística libre
-          </p>
-        </div>
-        <div class="flex flex-col gap-2 items-center text-center">
-          <div class="bg-secondary p-4 rounded-lg font-bold text-xl">🎤</div>
-          <h4 class="font-semibold text-sm lg:text-base">Cantar</h4>
-          <p class="text-xs lg:text-sm text-gray-600">Mi forma de expresarme</p>
-        </div>
-        <div class="flex flex-col gap-2 items-center text-center">
-          <div class="bg-secondary p-4 rounded-lg font-bold text-xl">🥾</div>
-          <h4 class="font-semibold text-sm lg:text-base">Senderismo</h4>
-          <p class="text-xs lg:text-sm text-gray-600">
-            Conexión con la naturaleza
-          </p>
-        </div>
-        <div class="flex flex-col gap-2 items-center text-center">
-          <div class="bg-secondary p-4 rounded-lg font-bold text-xl">✈️</div>
-          <h4 class="font-semibold text-sm lg:text-base">Viajar</h4>
-          <p class="text-xs lg:text-sm text-gray-600">
-            Descubrir nuevas culturas
-          </p>
-        </div>
+        {
+          hobbies.map((hobby) => (
+            <Hobbies text="Pintar" svg={hobby.svg} text={hobby.text} />
+          ))
+        }
       </div>
     </div>
 
     <div id="stacks" class="py-12">
       <h3 class="titleH3 mb-4">Stacks</h3>
 
-      <div class="flex flex-col items-center md:items-start md:flex-row w-full md:justify-between">
+      <div
+        class="flex flex-col gap-4 md:gap-0 items-center md:items-start md:flex-row w-full md:justify-between"
+      >
         <NavegadorStacks title="Programación" />
         <NavegadorStacks title="Diseño UX/UI" />
         <NavegadorStacks title="Diseño Gráfico" />
