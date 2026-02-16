@@ -1,0 +1,19 @@
+---
+const { logo: Logo, alt, text } = Astro.props;
+---
+
+<div class="flex flex-col items-center select-none" title={alt}>
+  <div
+    class="border-2 border-black w-14 h-14 flex justify-center items-center bg-white"
+  >
+    <div class="aspect-square font-black text-black border-2 border-black p-1">
+      {
+        Logo ? (
+          <Logo class="w-8 h-8" />
+        ) : (
+          <span class="text-2xl font-jost ">{text}</span>
+        )
+      }
+    </div>
+  </div>
+</div>

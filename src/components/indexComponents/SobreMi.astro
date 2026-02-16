@@ -1,206 +1,111 @@
 ---
 import Subtitulo from "@/components/Subtitulo.astro";
+import NavegadorStacks from "../NavegadorStacks.astro";
 ---
 
-<section id="sobre-mi" class="w-screen flex flex-col items-center">
+<section id="sobre-mi" class="w-screen flex flex-col items-center text-black">
   <Subtitulo align="center" type="Sobre mí" />
   <div
-    class="max-w-[1024px] flex flex-col lg:flex-row items-center justify-center gap-10 py-20 px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0"
+    class="max-w-[1024px] px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0 flex flex-col gap-6"
   >
-    <div class="lg:w-1/2 flex flex-col gap-6">
-      <div class="flex flex-col gap-3">
-        <h3 class="text-2xl lg:text-3xl font-bold">Quién soy y qué hago</h3>
-        <p
-          class="text-sm lg:text-base text-gray-700 leading-relaxed text-balance"
+    <div
+      class="flex flex-col lg:flex-row items-center justify-center gap-10 py-20"
+    >
+      <div class="lg:w-1/2 flex flex-col gap-6">
+        <div class="flex flex-col gap-3">
+          <h3 class="titleH3">Quién soy y qué hago</h3>
+          <p
+            class="text-sm lg:text-base text-black leading-relaxed text-balance"
+          >
+            Soy Gabriela Ferrer, una desarrolladora Front-End y diseñadora UX/UI
+            apasionada por crear experiencias digitales que sean tanto
+            funcionales como hermosas. Con formación en diseño gráfico y
+            desarrollo web, combino habilidades técnicas con diseño para
+            resolver problemas complejos.
+          </p>
+        </div>
+      </div>
+      <div class="lg:w-1/2 flex justify-center">
+        <div
+          class="bg-primary border-2 border-black rounded-xl md:rounded-2xl overflow-hidden"
         >
-          Soy Gabriela Ferrer, una desarrolladora Front-End y diseñadora UX/UI
-          apasionada por crear experiencias digitales que sean tanto funcionales
-          como hermosas. Con formación en diseño gráfico y desarrollo web,
-          combino habilidades técnicas con diseño para resolver problemas
-          complejos.
-        </p>
-      </div>
-    </div>
-    <div class="lg:w-1/2 flex justify-center">
-      <div class="bg-primary/10 border-2 border-primary rounded-lg p-8 lg:p-10">
-        <p
-          class="text-base lg:text-lg font-medium text-gray-800 leading-relaxed"
-        >
-          <span class="font-bold text-primary"
-            >Creo en la importancia de la empatía</span
-          > en el diseño. Cada proyecto es una oportunidad para entender las necesidades
-          reales de los usuarios y crear soluciones que hagan una diferencia. Me
-          gusta trabajar en equipo, aprender constantemente y llevar mis ideas del
-          concepto a la realidad.
-        </p>
-      </div>
-    </div>
-  </div>
-  <div
-    class="max-w-[1024px] w-full flex flex-col gap-8 py-12 px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0 border-t-2 border-gray-200"
-  >
-    <div class="flex flex-col gap-3">
-      <h3 class="text-2xl lg:text-3xl font-bold">Fuera del código</h3>
-      <p class="text-sm lg:text-base text-gray-700 leading-relaxed">
-        Cuando no estoy diseñando o programando, me gusta disfrutar de
-        actividades creativas y aventureras que alimentan mi inspiración:
-      </p>
-    </div>
-    <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
-      <div class="flex flex-col gap-2 items-center text-center">
-        <div class="bg-secondary p-4 rounded-lg font-bold text-xl">🧶</div>
-        <h4 class="font-semibold text-sm lg:text-base">Tejer</h4>
-        <p class="text-xs lg:text-sm text-gray-600">Crear algo con mis manos</p>
-      </div>
-      <div class="flex flex-col gap-2 items-center text-center">
-        <div class="bg-secondary p-4 rounded-lg font-bold text-xl">🎨</div>
-        <h4 class="font-semibold text-sm lg:text-base">Pintar</h4>
-        <p class="text-xs lg:text-sm text-gray-600">
-          Expresión artística libre
-        </p>
-      </div>
-      <div class="flex flex-col gap-2 items-center text-center">
-        <div class="bg-secondary p-4 rounded-lg font-bold text-xl">🎤</div>
-        <h4 class="font-semibold text-sm lg:text-base">Cantar</h4>
-        <p class="text-xs lg:text-sm text-gray-600">Mi forma de expresarme</p>
-      </div>
-      <div class="flex flex-col gap-2 items-center text-center">
-        <div class="bg-secondary p-4 rounded-lg font-bold text-xl">🥾</div>
-        <h4 class="font-semibold text-sm lg:text-base">Senderismo</h4>
-        <p class="text-xs lg:text-sm text-gray-600">
-          Conexión con la naturaleza
-        </p>
-      </div>
-      <div class="flex flex-col gap-2 items-center text-center">
-        <div class="bg-secondary p-4 rounded-lg font-bold text-xl">✈️</div>
-        <h4 class="font-semibold text-sm lg:text-base">Viajar</h4>
-        <p class="text-xs lg:text-sm text-gray-600">
-          Descubrir nuevas culturas
-        </p>
-      </div>
-    </div>
-  </div>
-  <div id="stacks" class="w-screen flex flex-col items-center">
-      <Subtitulo align="center" type="Mi Stack" />
-      <div
-        class="max-w-[1024px] w-full flex flex-col gap-12 py-20 px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0"
-      >
-        <div class="flex flex-col gap-6">
-          <div class="flex flex-col gap-2">
-            <h3 class="text-2xl font-bold text-primary">Diseño</h3>
-            <p class="text-sm lg:text-base text-gray-700">
-              Herramientas que utilizo para crear experiencias visuales
-              impactantes
+          <div
+            class="h-10 bg-white flex flex-row items-center gap-2 px-4 border-b-4 border-black"
+          >
+            <div class="h-3 w-3 bg-black rounded-full"></div>
+            <div class="h-3 w-3 bg-black rounded-full"></div>
+            <div class="h-3 w-3 bg-black rounded-full"></div>
+          </div>
+          <div class="p-4 lg:px-6 lg:py-8">
+            <h4 class="font-semibold text-white text-xl mb-4 font-jost">
+              Creo en la importancia de la empatía
+            </h4>
+            <p
+              class="text-sm lg:text-base font-medium text-white leading-relaxed"
+            >
+              En el diseño. Cada proyecto es una oportunidad para entender las
+              necesidades reales de los usuarios y crear soluciones que hagan
+              una diferencia. Me gusta trabajar en equipo, aprender
+              constantemente y llevar mis ideas del concepto a la realidad.
             </p>
           </div>
-          <div class="flex flex-wrap gap-4">
-            <div
-              class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200"
-            >
-              <span class="text-3xl">🎨</span>
-              <div>
-                <h4 class="font-semibold text-sm lg:text-base">Figma</h4>
-                <p class="text-xs text-gray-600">Diseño UX/UI y prototipos</p>
-              </div>
-            </div>
-            <div
-              class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200"
-            >
-              <span class="text-3xl">📋</span>
-              <div>
-                <h4 class="font-semibold text-sm lg:text-base">FigJam</h4>
-                <p class="text-xs text-gray-600">
-                  Colaboración y brainstorming
-                </p>
-              </div>
-            </div>
-            <div
-              class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200"
-            >
-              <span class="text-3xl">🖼️</span>
-              <div>
-                <h4 class="font-semibold text-sm lg:text-base">
-                  Adobe Photoshop
-                </h4>
-                <p class="text-xs text-gray-600">Edición y diseño gráfico</p>
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
+    </div>
 
-        <div class="flex flex-col gap-6">
-          <div class="flex flex-col gap-2">
-            <h3 class="text-2xl font-bold text-primary">Front-End</h3>
-            <p class="text-sm lg:text-base text-gray-700">
-              Tecnologías para crear interfaces web modernas y responsivas
-            </p>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div
-              class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200"
-            >
-              <span class="text-3xl">⚡</span>
-              <div>
-                <h4 class="font-semibold text-sm lg:text-base">Astro</h4>
-                <p class="text-xs text-gray-600">Framework moderno</p>
-              </div>
-            </div>
-            <div
-              class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200"
-            >
-              <span class="text-3xl">⚛️</span>
-              <div>
-                <h4 class="font-semibold text-sm lg:text-base">React</h4>
-                <p class="text-xs text-gray-600">Componentes interactivos</p>
-              </div>
-            </div>
-            <div
-              class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200"
-            >
-              <span class="text-3xl">🎨</span>
-              <div>
-                <h4 class="font-semibold text-sm lg:text-base">Tailwind CSS</h4>
-                <p class="text-xs text-gray-600">Estilos utilities</p>
-              </div>
-            </div>
-            <div
-              class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200"
-            >
-              <span class="text-3xl">📝</span>
-              <div>
-                <h4 class="font-semibold text-sm lg:text-base">HTML5</h4>
-                <p class="text-xs text-gray-600">Estructura semántica</p>
-              </div>
-            </div>
-            <div
-              class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200"
-            >
-              <span class="text-3xl">🎯</span>
-              <div>
-                <h4 class="font-semibold text-sm lg:text-base">CSS3</h4>
-                <p class="text-xs text-gray-600">Animaciones y layouts</p>
-              </div>
-            </div>
-            <div
-              class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200"
-            >
-              <span class="text-3xl">💻</span>
-              <div>
-                <h4 class="font-semibold text-sm lg:text-base">JavaScript</h4>
-                <p class="text-xs text-gray-600">Lógica interactiva</p>
-              </div>
-            </div>
-            <div
-              class="flex items-center gap-3 bg-white rounded-lg p-4 border-2 border-gray-200"
-            >
-              <span class="text-3xl">🔷</span>
-              <div>
-                <h4 class="font-semibold text-sm lg:text-base">TypeScript</h4>
-                <p class="text-xs text-gray-600">Tipado estático</p>
-              </div>
-            </div>
-          </div>
+    <div class="flex flex-col gap-8">
+      <div class="flex flex-col gap-3">
+        <h3 class="titleH3">Fuera del código</h3>
+        <p class="text-sm lg:text-base text-gray-700 leading-relaxed">
+          Cuando no estoy diseñando o programando, me gusta disfrutar de
+          actividades creativas y aventureras que alimentan mi inspiración:
+        </p>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
+        <div class="flex flex-col gap-2 items-center text-center">
+          <div class="bg-secondary p-4 rounded-lg font-bold text-xl">🧶</div>
+          <h4 class="font-semibold text-sm lg:text-base">Tejer</h4>
+          <p class="text-xs lg:text-sm text-gray-600">
+            Crear algo con mis manos
+          </p>
+        </div>
+        <div class="flex flex-col gap-2 items-center text-center">
+          <div class="bg-secondary p-4 rounded-lg font-bold text-xl">🎨</div>
+          <h4 class="font-semibold text-sm lg:text-base">Pintar</h4>
+          <p class="text-xs lg:text-sm text-gray-600">
+            Expresión artística libre
+          </p>
+        </div>
+        <div class="flex flex-col gap-2 items-center text-center">
+          <div class="bg-secondary p-4 rounded-lg font-bold text-xl">🎤</div>
+          <h4 class="font-semibold text-sm lg:text-base">Cantar</h4>
+          <p class="text-xs lg:text-sm text-gray-600">Mi forma de expresarme</p>
+        </div>
+        <div class="flex flex-col gap-2 items-center text-center">
+          <div class="bg-secondary p-4 rounded-lg font-bold text-xl">🥾</div>
+          <h4 class="font-semibold text-sm lg:text-base">Senderismo</h4>
+          <p class="text-xs lg:text-sm text-gray-600">
+            Conexión con la naturaleza
+          </p>
+        </div>
+        <div class="flex flex-col gap-2 items-center text-center">
+          <div class="bg-secondary p-4 rounded-lg font-bold text-xl">✈️</div>
+          <h4 class="font-semibold text-sm lg:text-base">Viajar</h4>
+          <p class="text-xs lg:text-sm text-gray-600">
+            Descubrir nuevas culturas
+          </p>
         </div>
       </div>
     </div>
+
+    <div id="stacks" class="py-12">
+      <h3 class="titleH3 mb-4">Stacks</h3>
+
+      <div class="flex flex-col items-center md:items-start md:flex-row w-full md:justify-between">
+        <NavegadorStacks title="Programación" />
+        <NavegadorStacks title="Diseño UX/UI" />
+        <NavegadorStacks title="Diseño Gráfico" />
+      </div>
+    </div>
+  </div>
 </section>

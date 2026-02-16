@@ -19,6 +19,7 @@
     "@tailwindcss/vite": "^4.1.4",
     "astro": "^5.7.4",
     "astro-icon": "^1.1.5",
+    "react-icons": "^5.5.0",
     "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3"
   }

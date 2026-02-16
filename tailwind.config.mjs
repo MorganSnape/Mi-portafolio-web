@@ -5,6 +5,10 @@ module.exports = {
   plugins: [],
   theme: {
     extend: {
+      fontFamily: {
+        josefine: ["var(--font-josefin)"],
+        montserrat: ["var(--font-montserrat)"],
+      },
     },
   },
 };

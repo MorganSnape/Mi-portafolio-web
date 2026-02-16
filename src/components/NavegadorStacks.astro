@@ -1,0 +1,61 @@
+---
+import TegnologiaLogo from "./TegnologiaLogo.astro";
+
+import AstroSvg from "../assets/astro.svg";
+import FigmaSvg from "../assets/figma.svg";
+import MiroSvg from "../assets/miro.svg";
+import ReactSvg from "../assets/react.svg";
+import TailwindSvg from "../assets/tailwind.svg";
+
+const { title } = Astro.props;
+
+const tegnologias = {
+  "Programación": [
+    { logo: ReactSvg, alt: "Logo de React" },
+    { logo: TailwindSvg, alt: "Logo de Tailwind" },
+    { logo: AstroSvg, alt: "Logo de Astro" },
+    { text: "JS", alt: "Logo de JavaScript" },
+  ],
+  "Diseño UX/UI": [
+    { logo: FigmaSvg, alt: "Logo de Figma" },
+    { logo: MiroSvg, alt: "Logo de Miro" },
+  ],
+  "Diseño Gráfico": [
+    { text: "AI", alt: "Logo de Ilustrator" },
+    { text: "PS", alt: "Logo de Photoshop" },
+    { text: "PR", alt: "Logo de Premiere" },
+  ],
+};
+
+const tecnologiasSeleccionadas =
+  tegnologias[title as keyof typeof tegnologias] || [];
+---
+
+<div
+  class="bg-primary w-64 min-h-72 border-2 border-black rounded-xl md:rounded-2xl overflow-hidden"
+>
+  <div
+    class="h-10 bg-white flex flex-row items-center gap-2 px-4 border-b-4 border-black"
+  >
+    <div class="h-3 w-3 bg-black rounded-full"></div>
+    <div class="h-3 w-3 bg-black rounded-full"></div>
+    <div class="h-3 w-3 bg-black rounded-full"></div>
+  </div>
+  <div class="p-4 lg:px-6 lg:py-8">
+    <h4 class="font-semibold text-white text-2xl mb-4 font-jost">
+      {title}
+    </h4>
+    <div class="flex flex-wrap  flex-row gap-4">
+      {
+        tecnologiasSeleccionadas.map((tegnologia, index) => (
+          <TegnologiaLogo
+            key={index}
+            logo={tegnologia.logo}
+            text={tegnologia.text}
+            alt={tegnologia.alt}
+          />
+        ))
+      }
+    </div>
+  </div>
+</div>

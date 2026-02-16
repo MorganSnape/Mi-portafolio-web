@@ -23,14 +23,13 @@ const { title } = Astro.props;
     <meta name="author" content="Gabriela Ferrer" />
     <meta name="publisher" content="https://github.com/MorganSnape" />
     <link rel="icon" type="image/svg+xml" href="/favicon.webp" />
-    <meta name="generator" content={Astro.generator} />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Press+Start+2P&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
   <body>
@@ -38,20 +37,11 @@ const { title } = Astro.props;
   </body>
 </html>
 <style is:global>
-  .montserrat-<uniquifier > {
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: <weight>;
-    font-style: normal;
-  }
-
   :root {
     --altura-header: 52px;
     --fondo: url(/fondo.svg);
   }
   html {
-    font-family: "Montserrat", sans-serif;
-    color: black;
     font-weight: 500;
     background-image: url(/fondo.svg);
     background-size: 20px;
@@ -69,18 +59,8 @@ const { title } = Astro.props;
     text-decoration: none;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  strong,
-  a,
-  spam {
-    font-family: "Montserrat", sans-serif;
-  }
-
   .shadow-primary {
-  box-shadow: 6px 6px 0px #000000;
-  border: 1px solid #000000;
-}
+    box-shadow: 6px 6px 0px #000000;
+    border: 1px solid #000000;
+  }
 </style>
