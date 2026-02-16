@@ -1,0 +1,25 @@
+---
+import { proyectos } from "@/data/portfolio.ts";
+
+import Subtitulo from "../Subtitulo.astro";
+import Card from "@/components/Card.astro";
+
+const uxProjects = proyectos.filter((project) => project.type.includes("UX"));
+const frontProjects = proyectos.filter((project) =>
+  project.type.includes("Front"),
+);
+---
+
+<section
+  id="proyectos-container"
+  class="bg-[url(/fondoDos.svg)] bg-[length:20px] w-screen flex flex-col items-center"
+>
+  <Subtitulo align="left" type="UX/UI Designer" text="Proyectos" />
+  <div class="gap-12 py-20 px-6 flex flex-col justify-center">
+    {uxProjects.map((proyecto) => <Card section="UX" {...proyecto} />)}
+  </div>
+  <Subtitulo align="right" type="Front-End" text="Proyectos" />
+  <div class="gap-12 py-20 px-6 flex flex-col justify-center">
+    {frontProjects.map((proyecto) => <Card section="Front" {...proyecto} />)}
+  </div>
+</section>
