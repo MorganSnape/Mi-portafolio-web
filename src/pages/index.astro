@@ -29,7 +29,7 @@ const frontProjects = proyectos.filter((project) =>
         class="w-full lg:w-1/2 flex flex-col gap-4 lg:gap-8 text-center lg:text-left"
       >
         <h1
-          class="select-none transition-transform duration-100 ease-in-out hover:scale-105 mx-auto w-fit lg:mx-0 py-2 px-8 bg-tag text-center [box-shadow:_0px_4px_0px_#000000] border border-black rounded-2xl text-[clamp(1.02rem,_1.114rem_+_0.727vw,_1.20rem)]"
+          class="primaryButton gap-2 mx-auto w-fit lg:mx-0 py-2 px-8 bg-tag text-center text-[clamp(1.02rem,_1.114rem_+_0.727vw,_1.20rem)]"
         >
           ¡Hola! soy <span class="font-bold">Gabriela Ferrer.</span>
         </h1>
@@ -73,7 +73,7 @@ const frontProjects = proyectos.filter((project) =>
         <div class="relative">
           <div
             id="foto-perfil"
-            class="flex justify-center bg-primary overflow-hidden bg-cover bg-center rounded-[60px] md:rounded-[90px] w-44 sm:w-48 md:w-[280px] md:h-[380px] lg:h-[400px] shadow-[8px_8px_0px_#000000] sm:shadow-[12px_12px_0px_#000000] md:shadow-[16px_16px_0px_#000000]"
+            class="flex justify-center bg-primary overflow-hidden bg-cover bg-center rounded-2xl md:rounded-4xl w-44 sm:w-48 md:w-[280px] md:h-[380px] lg:h-[400px] shadow-[8px_8px_0px_#000000] sm:shadow-[12px_12px_0px_#000000] md:shadow-[16px_16px_0px_#000000]"
           >
             <img
               src="/images/Foto.png"
@@ -82,12 +82,12 @@ const frontProjects = proyectos.filter((project) =>
             />
           </div>
           <div
-            class="tagYellow absolute -left-28 top-8 md:top-14 w-fit py-2 px-4 [box-shadow:_0px_4px_0px_#000000] text-[clamp(0.1rem,_0.5rem_+_0.727vw,_0.8rem)]"
+            class="primaryButton bg-tag font-bold absolute -left-28 top-8 md:top-14 w-fit py-2 px-4 text-[clamp(0.1rem,_0.5rem_+_0.727vw,_0.8rem)]"
           >
             Front-End Developer
           </div>
           <div
-            class="tagYellow absolute w-fit py-2 px-4 [box-shadow:_0px_4px_0px_#000000] text-[clamp(0.1rem,_0.5rem_+_0.727vw,_0.8rem)] -right-24 bottom-6 md:bottom-14"
+            class="primaryButton bg-tag font-bold absolute w-fit py-2 px-4 text-[clamp(0.1rem,_0.5rem_+_0.727vw,_0.8rem)] -right-24 bottom-6 md:bottom-14"
           >
             UX / UI Desinger
           </div>
@@ -409,7 +409,11 @@ const frontProjects = proyectos.filter((project) =>
       </div>
       <Subtitulo align="right" type="Front-End" text="Proyectos" />
       <div class="gap-12 py-20 px-6 flex flex-col justify-center">
-        {frontProjects.map((proyecto) => <Card section="Front" {...proyecto} />)}
+        {
+          frontProjects.map((proyecto) => (
+            <Card section="Front" {...proyecto} />
+          ))
+        }
       </div>
     </section>
     <section id="estudios-container" class="w-screen -mt-8">
