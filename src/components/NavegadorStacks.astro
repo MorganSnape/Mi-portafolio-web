@@ -32,7 +32,7 @@ const tecnologiasSeleccionadas =
 ---
 
 <div
-  class="bg-primary w-64 min-h-72 border-2 border-black rounded-xl md:rounded-2xl overflow-hidden"
+  class="bg-primary w-52 lg:w-64 min-h-64 border-2 border-black rounded-xl md:rounded-2xl overflow-hidden"
 >
   <div
     class="h-10 bg-white flex flex-row items-center gap-2 px-4 border-b-4 border-black"
@@ -42,10 +42,10 @@ const tecnologiasSeleccionadas =
     <div class="h-3 w-3 bg-black rounded-full"></div>
   </div>
   <div class="p-4 lg:px-6 lg:py-8">
-    <h4 class="font-semibold text-white text-2xl mb-4 font-jost">
+    <h4 class="font-semibold text-white text-lg md:text-xl lg:text-2xl mb-4 font-jost">
       {title}
     </h4>
-    <div class="flex flex-wrap  flex-row gap-4">
+    <div class="grid grid-cols-3 grid-rows-2 gap-4">
       {
         tecnologiasSeleccionadas.map((tegnologia, index) => (
           <TegnologiaLogo
