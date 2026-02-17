@@ -1,6 +1,5 @@
 ---
 import { Icon } from "astro-icon/components";
-import RedesBoton from "./RedesBoton.astro";
 ---
 
 <header
@@ -50,7 +49,7 @@ import RedesBoton from "./RedesBoton.astro";
   ) as NodeListOf<HTMLAnchorElement>;
 
   // Cerrar menu al hacer click
-  $ul?.addEventListener("click", (e) => {
+  $ul?.addEventListener("click", () => {
     $checkbox.checked = false;
   });
 

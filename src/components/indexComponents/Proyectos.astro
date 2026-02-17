@@ -1,7 +1,6 @@
 ---
 import { proyectos } from "@/data/portfolio.ts";
 
-import Subtitulo from "../Subtitulo.astro";
 import Card from "@/components/Card.astro";
 
 const uxProjects = proyectos.filter((project) => project.type.includes("UX"));
@@ -17,11 +16,11 @@ const frontProjects = proyectos.filter((project) =>
   <div>
     <div class="w-screen relative h-2 flex items-center">
       <div
-        class="flex flex-row gap-0 items-center absolute bottom-[100%] translate-y-1/2  left-8 md:left-20"
+        class="flex flex-row gap-0 items-center absolute bottom-[100%] translate-y-1/2 left-8 md:left-20"
       >
         <button
           id="btn-ux"
-          class="bottonProyectos translate-0  flex items-center justify-center "
+          class="bottonProyectos translate-0 flex items-center justify-center"
         >
           <span class="tracking-[6px] font-bold">UX/UI</span>
         </button>
@@ -73,7 +72,8 @@ const frontProjects = proyectos.filter((project) =>
     front?.classList.add("hidden");
   });
 
-  function setActive(activeBtn, inactiveBtn) {
+  function setActive(activeBtn: HTMLElement | null, inactiveBtn: HTMLElement | null) {
+    if (!activeBtn || !inactiveBtn) return;
     // Activar
     activeBtn.classList.remove("translate-1.5", "shadow-[0px_0px_0px_#141414]");
     activeBtn.classList.add("translate-0");

@@ -50,9 +50,7 @@ const tecnologiasSeleccionadas =
         tecnologiasSeleccionadas.map((tegnologia, index) => (
           <TegnologiaLogo
             key={index}
-            logo={tegnologia.logo}
-            text={tegnologia.text}
-            alt={tegnologia.alt}
+            {...tegnologia}
           />
         ))
       }
