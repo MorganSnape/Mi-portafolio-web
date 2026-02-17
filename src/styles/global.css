@@ -20,7 +20,15 @@
   .bottonProyectos {
     @apply transition-all duration-150 ease-in-out select-none
          shadow-[4px_4px_0px_#141414]
-         md:shadow-[6px_6px_0px_#141414];
+         md:shadow-[6px_6px_0px_#141414]
+        cursor-pointer
+        bg-secondary  
+        md:min-w-xs
+        h-14 md:h-16
+        py-2 md:py-6
+        border-2 border-black 
+        min-w-[12rem]
+        
   }
   .titleH3 {
     @apply text-2xl lg:text-4xl font-black font-jost;
@@ -39,5 +47,4 @@
          after:duration-300
          hover:after:w-full;
   }
-  
 }
