@@ -26,7 +26,7 @@ const frontProjects = proyectos.filter((project) =>
         </button>
         <button
           id="btn-front"
-          class="bottonProyectos translate-1.5 shadow-[0px_0px_0px_#141414] flex items-center justify-center gap-4 font-semibold text-center text-sm md:text-base"
+          class="bottonProyectos -m-0.5 md:m-0  translate-1.5 shadow-[0px_0px_0px_#141414] flex items-center justify-center gap-4 font-semibold text-center text-sm md:text-base"
         >
           <span class="tracking-[6px] font-bold">Front-end</span>
         </button>
@@ -34,25 +34,32 @@ const frontProjects = proyectos.filter((project) =>
       <div class="bg-black w-full h-2"></div>
     </div>
   </div>
-  <div id="ux-projects" class="gap-12 py-28 px-6 flex flex-col justify-center">
+  <div
+    id="ux-projects"
+    class="gap-4 py-12 md:py-28 px-6 flex flex-col justify-center"
+  >
     <h3
-      class="primaryButton gap-2 mx-auto w-fit lg:mx-0 py-2 px-8 bg-white/30 text-center text-xl lg:text-2xl"
+      class="text-black gap-2 mx-auto w-fit lg:mx-0 text-center text-2xl lg:text-3xl bg-primary/50"
     >
       Proyectos <span class="font-bold">UX/UI</span>
     </h3>
-    {uxProjects.map((proyecto) => <Card section="UX" {...proyecto} />)}
+    <div class="gap-12 flex flex-col md:flex-row justify-center">
+      {uxProjects.map((proyecto) => <Card section="UX" {...proyecto} />)}
+    </div>
   </div>
 
   <div
     id="front-projects"
-    class="gap-12 hidden py-28 px-6 flex flex-col justify-center"
+    class="gap-4 hidden py-12 mg:py-20 lg:py-28 px-6 flex flex-col justify-center"
   >
     <h3
-      class="primaryButton gap-2 mx-auto w-fit lg:mx-0 py-2 px-8 bg-white/30 text-center text-xl lg:text-2xl"
+      class="text-black gap-2 mx-auto w-fit lg:mx-0 text-center text-2xl lg:text-3xl bg-primary/50"
     >
       Proyectos <span class="font-bold">Front-end</span>
     </h3>
-    {frontProjects.map((proyecto) => <Card section="Front" {...proyecto} />)}
+    <div class="gap-12 flex flex-col md:flex-row justify-center">
+      {frontProjects.map((proyecto) => <Card section="Front" {...proyecto} />)}
+    </div>
   </div>
 </section>
 
@@ -72,7 +79,10 @@ const frontProjects = proyectos.filter((project) =>
     front?.classList.add("hidden");
   });
 
-  function setActive(activeBtn: HTMLElement | null, inactiveBtn: HTMLElement | null) {
+  function setActive(
+    activeBtn: HTMLElement | null,
+    inactiveBtn: HTMLElement | null,
+  ) {
     if (!activeBtn || !inactiveBtn) return;
     // Activar
     activeBtn.classList.remove("translate-1.5", "shadow-[0px_0px_0px_#141414]");

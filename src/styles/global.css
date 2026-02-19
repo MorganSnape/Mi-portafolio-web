@@ -28,7 +28,8 @@
         py-2 md:py-6
         border-2 border-black 
         min-w-[12rem]
-        
+        hover:scale-101
+       hover:brightness-90
   }
   .titleH3 {
     @apply text-2xl lg:text-4xl font-black font-jost;
