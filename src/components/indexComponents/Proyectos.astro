@@ -26,7 +26,7 @@ const frontProjects = proyectos.filter((project) =>
         </button>
         <button
           id="btn-front"
-          class="bottonProyectos -m-0.5 md:m-0  translate-1.5 shadow-[0px_0px_0px_#141414] flex items-center justify-center gap-4 font-semibold text-center text-sm md:text-base"
+          class="bottonProyectos -m-0.5 md:m-0 translate-1.5 shadow-[0px_0px_0px_#141414] flex items-center justify-center gap-4 font-semibold text-center text-sm md:text-base"
         >
           <span class="tracking-[6px] font-bold">Front-end</span>
         </button>
@@ -34,17 +34,22 @@ const frontProjects = proyectos.filter((project) =>
       <div class="bg-black w-full h-2"></div>
     </div>
   </div>
-  <div
-    id="ux-projects"
-    class="gap-4 py-12 md:py-28 px-6 flex flex-col justify-center"
-  >
-    <h3
-      class="text-black gap-2 mx-auto w-fit lg:mx-0 text-center text-2xl lg:text-3xl bg-primary/50"
-    >
-      Proyectos <span class="font-bold">UX/UI</span>
-    </h3>
-    <div class="gap-12 flex flex-col md:flex-row justify-center">
-      {uxProjects.map((proyecto) => <Card section="UX" {...proyecto} />)}
+
+  <div id="ux-projects" class="py-12 md:py-28 w-11/12 max-w-[1024px] mx-auto">
+    <div class="flex items-center flex-row gap-4">
+      <button id="scrollLeft" class="bg-black text-white px-3 py-2">←</button>
+      <div class="w-full overflow-hidden">
+        <h3 class="text-black mb-4 text-2xl lg:text-3xl bg-primary/50">
+          Proyectos <span class="font-bold">UX/UI</span>
+        </h3>
+        <div
+          id="scrollContainer"
+          class="gap-12 flex flex-row overflow-x-scroll scroll-smooth snap-x snap-mandatory"
+        >
+          {uxProjects.map((proyecto) => <Card section="UX" {...proyecto} />)}
+        </div>
+      </div>
+      <button id="scrollRight" class="bg-black text-white px-3 py-2">→</button>
     </div>
   </div>
 
@@ -61,43 +66,71 @@ const frontProjects = proyectos.filter((project) =>
       {frontProjects.map((proyecto) => <Card section="Front" {...proyecto} />)}
     </div>
   </div>
+
+  <script>
+    const btnFront = document.getElementById("btn-front");
+    const btnUx = document.getElementById("btn-ux");
+
+    const front = document.getElementById("front-projects");
+    const ux = document.getElementById("ux-projects");
+
+    btnFront?.addEventListener("click", () => {
+      front?.classList.remove("hidden");
+      ux?.classList.add("hidden");
+    });
+    btnUx?.addEventListener("click", () => {
+      ux?.classList.remove("hidden");
+      front?.classList.add("hidden");
+    });
+
+    function setActive(
+      activeBtn: HTMLElement | null,
+      inactiveBtn: HTMLElement | null,
+    ) {
+      if (!activeBtn || !inactiveBtn) return;
+      // Activar
+      activeBtn.classList.remove(
+        "translate-1.5",
+        "shadow-[0px_0px_0px_#141414]",
+      );
+      activeBtn.classList.add("translate-0");
+
+      // Desactivar
+      inactiveBtn.classList.remove("translate-0");
+      inactiveBtn.classList.add(
+        "translate-1.5",
+        "shadow-[0px_0px_0px_#141414]",
+      );
+    }
+
+    btnFront?.addEventListener("click", () => {
+      setActive(btnFront, btnUx);
+    });
+
+    btnUx?.addEventListener("click", () => {
+      setActive(btnUx, btnFront);
+    });
+
+    //CONTROLADOR DE SCROLL HORINZONTAL
+
+    const container = document.getElementById("scrollContainer");
+    const btnLeft = document.getElementById("scrollLeft");
+    const btnRight = document.getElementById("scrollRight");
+
+    const scrollAmount = 600; // ancho tarjeta + gap
+
+    btnRight.addEventListener("click", () => {
+      container.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
+    });
+
+    btnLeft.addEventListener("click", () => {
+      container.scrollBy({
+        left: -scrollAmount,
+        behavior: "smooth",
+      });
+    });
+  </script>
 </section>
-
-<script>
-  const btnFront = document.getElementById("btn-front");
-  const btnUx = document.getElementById("btn-ux");
-
-  const front = document.getElementById("front-projects");
-  const ux = document.getElementById("ux-projects");
-
-  btnFront?.addEventListener("click", () => {
-    front?.classList.remove("hidden");
-    ux?.classList.add("hidden");
-  });
-  btnUx?.addEventListener("click", () => {
-    ux?.classList.remove("hidden");
-    front?.classList.add("hidden");
-  });
-
-  function setActive(
-    activeBtn: HTMLElement | null,
-    inactiveBtn: HTMLElement | null,
-  ) {
-    if (!activeBtn || !inactiveBtn) return;
-    // Activar
-    activeBtn.classList.remove("translate-1.5", "shadow-[0px_0px_0px_#141414]");
-    activeBtn.classList.add("translate-0");
-
-    // Desactivar
-    inactiveBtn.classList.remove("translate-0");
-    inactiveBtn.classList.add("translate-1.5", "shadow-[0px_0px_0px_#141414]");
-  }
-
-  btnFront?.addEventListener("click", () => {
-    setActive(btnFront, btnUx);
-  });
-
-  btnUx?.addEventListener("click", () => {
-    setActive(btnUx, btnFront);
-  });
-</script>

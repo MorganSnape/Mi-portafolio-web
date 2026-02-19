@@ -10,7 +10,7 @@ export const proyectos: Proyect[] = [
     imageUrl: "/images/Amarilla.webp",
     linkWebsite: "https://www.amarillagarden.com",
     linkGit: "https://github.com/user/portfolio",
-    tags: ["Figma","FigJam","Astro", "TypeScript", "Tailwind"],
+    tags: ["Figma", "FigJam", "Astro", "TypeScript", "Tailwind"],
     duration: "En proceso",
     myRole: "Diseñador UX/UI",
     client: "Proyecto probono",
@@ -115,6 +115,55 @@ export const proyectos: Proyect[] = [
     linkGit: "https://github.com/MorganSnape/Encriptador-Texto.git",
     linkWebsite: "https://encriptador-texto-liard.vercel.app/",
     tags: ["HTML", "CSS", "JavaScript"],
+  },
+  {
+    type: ["UX", "Front"],
+    slug: "amarilla-garden",
+    name: "Amarilla Garden",
+    proyectType: "E-commerce website",
+    description: "Estoy desarrollando un proyecto pro bono para una tienda artesanal de piezas decorativas en cemento. El objetivo es digitalizar su catálogo y abrir un nuevo canal de ventas online, manteniendo su identidad artesanal a través de una experiencia moderna, accesible e intuitiva, que facilite a los clientes  actuales realizar sus compras y captar la atención de nuevos clientes.",
+    imageUrl: "/images/Amarilla.webp",
+    linkWebsite: "https://www.amarillagarden.com",
+    linkGit: "https://github.com/user/portfolio",
+    tags: ["Figma", "FigJam", "Astro", "TypeScript", "Tailwind"],
+    duration: "En proceso",
+    myRole: "Diseñador UX/UI",
+    client: "Proyecto probono",
+    challenges: [
+      {
+        name: "Digitalizar un catálogo artesanal",
+        description: "Traducir productos físicos únicos al entorno digital sin perder su esencia manual y visual.",
+        solution: "Se priorizó una estética minimalista, con fotografías grandes y fondos neutros que resaltaran los detalles del producto."
+      },
+      {
+        name: "Crear un canal de venta accesible",
+        description: "La marca no contaba con experiencia previa en plataformas digitales.",
+        solution: "Se diseñó una navegación clara y simple, con jerarquía visual que guía al usuario hacia la acción de compra con facilidad."
+      },
+      {
+        name: "Transmitir identidad visual",
+        description: "El diseño debía reflejar calidez y estética natural, sin parecer genérico.",
+        solution: "Se aplicaron colores suaves, tipografía orgánica y componentes visuales inspirados en materiales crudos como el cemento."
+      }
+    ],
+    designPrinciples: [
+      {
+        name: "Claridad visual",
+        description: "Diseño limpio y ordenado para destacar el producto sobre todo lo demás."
+      },
+      {
+        name: "Accesibilidad",
+        description: "Estructura adaptable y legible en cualquier dispositivo, priorizando la experiencia móvil."
+      },
+      {
+        name: "Identidad visual coherente",
+        description: "Se mantuvo la estética artesanal en toda la experiencia, transmitiendo autenticidad."
+      },
+      {
+        name: "Usabilidad",
+        description: "Flujo de compra e interacción simples, sin fricción para usuarios nuevos."
+      }
+    ]
   },
 ];
 
