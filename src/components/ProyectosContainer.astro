@@ -1,0 +1,63 @@
+---
+const { title } = Astro.props;
+---
+
+<div class="proyectos-container flex items-center flex-row gap-4">
+  <button
+    class="scrollLeft bg-black text-white px-3 py-2 disabled:opacity-30 disabled:scale-100 disabled:cursor-auto cursor-pointer hover:scale-105 transition-all duration-150 ease-in-out hover:brightness-200"
+    >←</button
+  >
+  <div class="w-full overflow-hidden">
+    <h3 class="text-black mb-4 text-2xl lg:text-3xl bg-primary/50">
+      Proyectos <span class="font-bold">{title}</span>
+    </h3>
+    <div
+      class="scrollContainer gap-12 flex flex-row overflow-x-scroll scroll-smooth snap-x snap-mandatory"
+    >
+      <slot />
+    </div>
+  </div>
+  <button
+    class="scrollRight bg-black text-white px-3 py-2 disabled:opacity-30 disabled:scale-100 disabled:cursor-auto cursor-pointer hover:scale-105 transition-all duration-150 ease-in-out hover:brightness-200"
+    >→</button
+  >
+</div>
+
+<script>
+  // CONTROLADOR DE SCROLL HORIZONTAL (cada instancia funciona por separado)
+  document.querySelectorAll('.proyectos-container').forEach((wrapper) => {
+    const container = wrapper.querySelector('.scrollContainer') as HTMLElement | null;
+    const btnLeft = wrapper.querySelector('.scrollLeft') as HTMLButtonElement | null;
+    const btnRight = wrapper.querySelector('.scrollRight') as HTMLButtonElement | null;
+    const card = container?.querySelector('.snap-start') as HTMLElement | null;
+
+    function getScrollAmount() {
+      if (!card) return 0;
+      const cardWidth = card.offsetWidth;
+      const gap = 48; // si tu gap-6 = 24px
+      return cardWidth + gap;
+    }
+
+    function updateButtons() {
+      if (!container || !btnLeft || !btnRight) return;
+      const scrollLeft = container.scrollLeft;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+
+      btnLeft.disabled = scrollLeft <= 0;
+      btnRight.disabled = scrollLeft >= maxScroll - 1;
+    }
+
+    btnRight?.addEventListener('click', () => {
+      if (!container) return;
+      container.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+    });
+
+    btnLeft?.addEventListener('click', () => {
+      if (!container) return;
+      container.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+    });
+
+    container?.addEventListener('scroll', updateButtons);
+    updateButtons();
+  });
+</script>

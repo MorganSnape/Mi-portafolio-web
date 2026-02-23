@@ -51,16 +51,19 @@
 }
 
 /* Ocultar scrollbar Chrome, Edge y Safari */
-#scrollContainer::-webkit-scrollbar {
+#scrollContainer::-webkit-scrollbar,
+.scrollContainer::-webkit-scrollbar {
   display: none;
 }
 
 /* Ocultar scrollbar Firefox */
-#scrollContainer {
+#scrollContainer,
+.scrollContainer {
   scrollbar-width: none;
 }
 
 /* Ocultar scrollbar IE */
-#scrollContainer {
+#scrollContainer,
+.scrollContainer {
   -ms-overflow-style: none;
 }
