@@ -46,7 +46,7 @@
          after:-z-10
          after:transition-all
          after:duration-300
-         hover:after:w-full;
+         hover:after:w-full
   }
 }
 

@@ -35,9 +35,13 @@ const frontProjects = proyectos.filter((project) =>
     </div>
   </div>
 
-  <div id="ux-projects" class="py-12 md:py-28 w-11/12 max-w-[1024px] mx-auto">
+  <div id="ux-projects" class="py-12 md:py-28 w-11/12 max-w-[1120px] mx-auto">
     <div class="flex items-center flex-row gap-4">
-      <button id="scrollLeft" class="bg-black text-white px-3 py-2">←</button>
+      <button
+        id="scrollLeft"
+        class="bg-black text-white px-3 py-2 disabled:opacity-30 disabled:scale-100 disabled:cursor-auto cursor-pointer hover:scale-105 transition-all duration-150 ease-in-out hover:brightness-200"
+        >←</button
+      >
       <div class="w-full overflow-hidden">
         <h3 class="text-black mb-4 text-2xl lg:text-3xl bg-primary/50">
           Proyectos <span class="font-bold">UX/UI</span>
@@ -49,21 +53,44 @@ const frontProjects = proyectos.filter((project) =>
           {uxProjects.map((proyecto) => <Card section="UX" {...proyecto} />)}
         </div>
       </div>
-      <button id="scrollRight" class="bg-black text-white px-3 py-2">→</button>
+      <button
+        id="scrollRight"
+        class="bg-black text-white px-3 py-2 disabled:opacity-30 disabled:scale-100 disabled:cursor-auto cursor-pointer hover:scale-105 transition-all duration-150 ease-in-out hover:brightness-200"
+        >→</button
+      >
     </div>
   </div>
 
   <div
     id="front-projects"
-    class="gap-4 hidden py-12 mg:py-20 lg:py-28 px-6 flex flex-col justify-center"
+    class="py-12 md:py-28 w-11/12 max-w-[1120px] mx-auto hidden"
   >
-    <h3
-      class="text-black gap-2 mx-auto w-fit lg:mx-0 text-center text-2xl lg:text-3xl bg-primary/50"
-    >
-      Proyectos <span class="font-bold">Front-end</span>
-    </h3>
-    <div class="gap-12 flex flex-col md:flex-row justify-center">
-      {frontProjects.map((proyecto) => <Card section="Front" {...proyecto} />)}
+    <div class="flex items-center flex-row gap-4">
+      <button
+        id="scrollLeft"
+        class="bg-black text-white px-3 py-2 disabled:opacity-30 disabled:scale-100 disabled:cursor-auto cursor-pointer hover:scale-105 transition-all duration-150 ease-in-out hover:brightness-200"
+        >←</button
+      >
+      <div class="w-full overflow-hidden">
+        <h3 class="text-black mb-4 text-2xl lg:text-3xl bg-primary/50">
+          Proyectos <span class="font-bold">Front-end</span>
+        </h3>
+        <div
+          id="scrollContainer"
+          class="gap-12 flex flex-row overflow-x-scroll scroll-smooth snap-x snap-mandatory"
+        >
+          {
+            frontProjects.map((proyecto) => (
+              <Card section="Front" {...proyecto} />
+            ))
+          }
+        </div>
+      </div>
+      <button
+        id="scrollRight"
+        class="bg-black text-white px-3 py-2 disabled:opacity-30 disabled:scale-100 disabled:cursor-auto cursor-pointer hover:scale-105 transition-all duration-150 ease-in-out hover:brightness-200"
+        >→</button
+      >
     </div>
   </div>
 
@@ -111,26 +138,59 @@ const frontProjects = proyectos.filter((project) =>
       setActive(btnUx, btnFront);
     });
 
-    //CONTROLADOR DE SCROLL HORINZONTAL
+    // CONTROLADOR DE SCROLL HORIZONTAL
 
-    const container = document.getElementById("scrollContainer");
-    const btnLeft = document.getElementById("scrollLeft");
-    const btnRight = document.getElementById("scrollRight");
+    const container = document.getElementById(
+      "scrollContainer",
+    ) as HTMLElement | null;
+    const btnLeft = document.getElementById(
+      "scrollLeft",
+    ) as HTMLButtonElement | null;
+    const btnRight = document.getElementById(
+      "scrollRight",
+    ) as HTMLButtonElement | null;
 
-    const scrollAmount = 600; // ancho tarjeta + gap
+    const card = container?.querySelector(".snap-start") as HTMLElement | null;
 
-    btnRight.addEventListener("click", () => {
+    function getScrollAmount() {
+      if (!card) return 0;
+      const cardWidth = card.offsetWidth;
+      const gap = 48; // si tu gap-6 = 24px
+      return cardWidth + gap;
+    }
+
+    function updateButtons() {
+      if (!container || !btnLeft || !btnRight) return;
+      const scrollLeft = container.scrollLeft;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+
+      // Si está al inicio
+      btnLeft.disabled = scrollLeft <= 0;
+
+      // Si está al final
+      btnRight.disabled = scrollLeft >= maxScroll - 1;
+    }
+
+    btnRight?.addEventListener("click", () => {
+      if (!container) return;
       container.scrollBy({
-        left: scrollAmount,
+        left: getScrollAmount(),
         behavior: "smooth",
       });
     });
 
-    btnLeft.addEventListener("click", () => {
+    btnLeft?.addEventListener("click", () => {
+      if (!container) return;
       container.scrollBy({
-        left: -scrollAmount,
+        left: -getScrollAmount(),
         behavior: "smooth",
       });
     });
+
+    // Detectar cuando el usuario hace scroll manual
+    container?.addEventListener("scroll", updateButtons);
+
+    // Ejecutar al cargar
+    updateButtons();
   </script>
 </section>
