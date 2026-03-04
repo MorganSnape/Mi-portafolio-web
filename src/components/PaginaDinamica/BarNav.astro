@@ -1,0 +1,36 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<header
+  style="position: fixed; right: 0; z-index: 4; width:100vw; background-image:var(--fondo);background-size: 20px;"
+>
+  <nav class="font-montserrat">
+    <a href="/" class="nav-item flex flex-row gap-4">
+      <Icon name="fa6-solid:chevron-left" class="text-xl md:text-2xl" /> Volver</a
+    >
+  </nav>
+</header>
+
+<style>
+  nav {
+    height: var(--altura-header);
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+    border-bottom: solid 0.5px #d8d8d8;
+  }
+
+  .nav-item {
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+    cursor: pointer;
+    padding: 4px 16px;
+    text-decoration: none;
+  }
+
+  .nav-item:hover {
+    color: #666;
+  }
+</style>

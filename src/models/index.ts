@@ -1,19 +1,22 @@
 export interface Proyect {
   type: ProyectType[]
   slug: string;
+  nameProject: string;
   name: string;
-  proyectType?: string;
-  description: string;
+  date: string;
+  duration: string;
+  constraints?: string;
+  myRole: string;
+  client: string;
+  shortDescription: string; //Breve descripción del proyecto
+  projectType?: string; // E-commers , app etc
+  brandDescription?: string; // Descripción de la marca
+  descriptionProject: string;
   tags?: string[];
-  imageUrl: string;
-  duration?: string;
-  myRole?: string;
-  client?: string;
+  frontPage: string;
   linkFigma?: string;
   linkGit?: string;
   linkWebsite?: string;
-  challenges?: ProyectChallenge[] | undefined;
-  designPrinciples?: ProyectDesignPrinciple[];
 }
 
 export type ProyectChallenge = {

@@ -36,7 +36,7 @@ const frontProjects = proyectos.filter((project) =>
     </div>
   </div>
 
-  <div id="ux-projects" class="py-12 md:py-28 w-11/12 max-w-[1120px] mx-auto">
+  <div id="ux-projects" class="py-12 md:py-28 w-11/12 max-w-[1016px]">
     <ProyectosContainer title="UX/UI">
       {uxProjects.map((proyecto) => <Card section="UX" {...proyecto} />)}
     </ProyectosContainer>
@@ -44,7 +44,7 @@ const frontProjects = proyectos.filter((project) =>
 
   <div
     id="front-projects"
-    class="py-12 md:py-28 w-11/12 max-w-[1120px] mx-auto hidden"
+    class="py-12 md:py-28 w-11/12 max-w-[1016px] mx-auto hidden"
   >
     <ProyectosContainer title="Front-end">
       {frontProjects.map((proyecto) => <Card section="Front" {...proyecto} />)}

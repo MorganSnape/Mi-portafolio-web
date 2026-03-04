@@ -2,12 +2,11 @@
 import { proyectos } from "@/data/portfolio.ts";
 
 import Layout from "@/layouts/Layout.astro";
-import Subtitulo from "@/components/Subtitulo.astro";
 import Footer from "@/components/Footer.astro";
-import CardHorizontalSlug from "@/components/PaginaDinamica/CardHorizontalSlug.astro";
-import CardSlug from "@/components/PaginaDinamica/CardSlug.astro";
 import { Icon } from "astro-icon/components";
 import RedesBoton from "@/components/RedesBoton.astro";
+import BarNav from "@/components/PaginaDinamica/BarNav.astro";
+import DetailsProyectItem from "@/components/PaginaDinamica/DetailsProyectItem.astro";
 
 export async function getStaticPaths() {
   return proyectos.flatMap((proyecto) => {
@@ -25,24 +24,26 @@ if (!proyecto) {
 }
 
 const {
+  nameProject,
   name,
-  proyectType,
-  description,
-  imageUrl,
+  date,
+  projectType,
+  brandDescription,
+  frontPage,
   duration,
   myRole,
   client,
   linkFigma,
   linkWebsite,
+  shortDescription,
+  descriptionProject,
+  constraints,
+  tags,
 } = proyecto;
-
-let { challenges, designPrinciples } = proyecto;
-
-challenges = challenges || [];
-designPrinciples = designPrinciples || [];
 ---
 
-<Layout title=`Este es el proyecto`>
+<Layout title=`Este es el proyecto ${name}`>
+  <BarNav />
   <main class="flex flex-col items-center gap-10">
     <div
       class="fixed bottom-10 right-4 md:right-10 z-50 flex flex-col md:flex-row gap-4"
@@ -62,82 +63,123 @@ designPrinciples = designPrinciples || [];
         )
       }
     </div>
-    <section class="flex flex-col items-center w-full">
-      <img
-        src={imageUrl}
-        alt={`Portada del proyecto ${name}`}
-        class="h-[200px] md:h-[400px] w-full object-cover"
-      />
-      <Subtitulo align="center" type={name} />
-      <div class="flex flex-col items-center w-[80vw] max-w-[1000px]">
-        <h1
-          class="text-[clamp(1.25rem,_1.114rem_+_0.727vw,_1.75rem)] mt-10 text-center"
-        >
-          {proyectType} de {name}
+    <section id="inicio" class="flex flex-col items-center w-full">
+      <div
+        class="flex flex-col gap-4 items-start w-11/12 max-w-[1120px] pb-8 pt-20"
+      >
+        <h1 class="titleH3 text-center font-bold font-jost">
+          {nameProject} - {myRole}
         </h1>
+        <p class="text-lg lg:text-xl font-medium leading-tight">
+          {shortDescription}
+        </p>
         <ul
-          class="bg-primary text-white font-medium text-sm md:text-base flex flex-wrap md:flex-row justify-center items-center gap-4 md:gap-10 lg:gap-24 px-6 py-2 mt-10 mx-auto"
+          class="w-full text-black font-medium text-sm md:text-base flex flex-wrap md:flex-row items-center gap-4 py-2"
         >
-          <li class="flex flex-row items-center gap-1 md:gap-2 text-center">
-            <Icon name="bxs:briefcase" class="text-2xl md:text-3xl" />
-            {client}
+          <li class="flex flex-row gap-3 items-center">
+            <div
+              class="h-10 w-10 rounded-full flex justify-center bg-primary overflow-hidden bg-cover bg-center border-2 border-primary"
+            >
+              <img
+                src="/images/Foto.png"
+                alt="Foto de Gabsriela Ferrer usando un sueter rosa y sonriendo."
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <p class="font-semibold">Gabriela Ferrer</p>
           </li>
-          <li class="flex flex-row items-center gap-1 md:gap-2 text-center">
-            <Icon name="bxs:time" class="text-2xl md:text-3xl" />
-            {duration}
+          <li class="mx-6">
+            <p class="text-black text-base">
+              {date}
+            </p>
           </li>
-          <li class="flex flex-row items-center gap-1 md:gap-2 text-center">
-            <Icon name="bxs:user" class="text-2xl md:text-3xl" />
-            {myRole}
-          </li>
+          {
+            tags &&
+              tags.map((tag) => (
+                <li class="bg-secondary text-black py-0.5 px-2 md:px-4 w-fit text-xs font-semibold border-1 border-black ">
+                  {tag}
+                </li>
+              ))
+          }
         </ul>
       </div>
+      <img
+        src={frontPage}
+        alt={`Portada del proyecto ${name}`}
+        class="h-[220px] md:h-[420px] w-full object-cover"
+      />
     </section>
 
     <section
-      class="w-[80vw] max-w-[1000px] flex flex-col items-center gap-10 px-4"
+      id="acerca"
+      class="w-11/12 max-w-[1120px] flex flex-col gap-8 mb-8"
     >
-      <div class="flex flex-col items-center">
-        <h2
-          class="tracking-[6px] font-bold text-sm lg:text-base text-text-card"
-        >
-          Contexto
-        </h2>
-        <p
-          class="text-center text-pretty text-sm lg:text-base font-medium py-10 md:py-12 whitespace-pre-wrap"
-        >
-          {description}
-        </p>
-      </div>
-    </section>
-
-    <section class="flex flex-col items-center">
-      <h2 class="tracking-[6px] font-bold text-sm lg:text-base text-text-card">
-        Desafíos
+      {
+        brandDescription && (
+          <div class="flex flex-row gap-6 items-stretch w-fit">
+            <div class="w-3 bg-primary" />
+            <p class="italic text-sm md:text-base">{brandDescription}</p>
+          </div>
+        )
+      }
+      <h2 class="title-h2 efectoResaltador">
+        Acerca de {name}
+        {projectType}
       </h2>
-      <div class="flex flex-col gap-10 py-10 md:py-12">
-        {
-          challenges.map((challenge) => (
-            <CardHorizontalSlug challenge={challenge} />
-          ))
-        }
-      </div>
-
-      <section
-        class="flex flex-col items-center gap-10 bg-[url(/fondoDos.svg)] bg-[length:20px] w-screen"
+      <p
+        class="text-pretty text-sm lg:text-base font-medium whitespace-pre-wrap"
       >
-        <Subtitulo align="left" type="Principios de diseño" />
+        {descriptionProject}
+      </p>
+      <div
+        class="bg-primary border-2 border-black rounded-xl md:rounded-2xl overflow-hidden md:w-10/12 max-w-4xl mx-auto"
+      >
         <div
-          class="grid gap-12 py-10 md:py-20 grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
+          class="h-10 bg-white flex flex-row items-center gap-2 px-4 border-b-4 border-black"
         >
-          {
-            designPrinciples.map((designPrinciple) => (
-              <CardSlug designPrinciple={designPrinciple} />
-            ))
-          }
+          <div class="h-3 w-3 bg-black rounded-full"></div>
+          <div class="h-3 w-3 bg-black rounded-full"></div>
+          <div class="h-3 w-3 bg-black rounded-full"></div>
         </div>
-      </section>
+        <div class="p-4 lg:px-6 lg:py-8">
+          <ul
+            class="bg-primary w-full text-white font-medium text-sm md:text-base grid grid-cols-3 gap-4"
+          >
+            <DetailsProyectItem
+              detailName="Empresa"
+              content={name}
+              icon="bxs:briefcase"
+            />
+
+            <DetailsProyectItem
+              detailName="My rol"
+              content={myRole}
+              icon="bxs:user"
+            />
+            <DetailsProyectItem
+              detailName="Duración"
+              content={duration}
+              icon="bxs:time"
+            />
+            <DetailsProyectItem
+              detailName="Tipo de negocio"
+              content="Híbrido B2C y B2B"
+              icon="bxs:briefcase"
+            />
+            <DetailsProyectItem
+              detailName="Tipo de proyecto"
+              content={client}
+              icon="bxs:briefcase"
+            />
+            <DetailsProyectItem
+              detailName="Restricciones"
+              content={constraints}
+              icon="bxs:briefcase"
+            />
+          </ul>
+        </div>
+      </div>
     </section>
   </main>
-  <Footer />
 </Layout>
+<Footer />
