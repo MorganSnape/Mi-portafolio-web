@@ -15,7 +15,7 @@
 
 @layer components {
   .primaryButton {
-    @apply flex flex-row justify-center items-center transition-all duration-150 ease-in-out select-none border-2 border-black  font-medium w-fit translate-0 hover:translate-1.5 shadow-[4px_4px_0px_#141414] md:shadow-[6px_6px_0px_#141414] hover:shadow-[0px_0px_0px_#141414];
+    @apply hover:brightness-90 hover:scale-101 flex flex-row justify-center items-center transition-all duration-150 ease-in-out select-none border-2 border-black  font-medium w-fit translate-0 active:translate-1.5 shadow-[4px_4px_0px_#141414] md:shadow-[6px_6px_0px_#141414] active:shadow-[0px_0px_0px_#141414];
   }
   .bottonProyectos {
     @apply transition-all duration-150 ease-in-out select-none
@@ -29,7 +29,10 @@
         border-2 border-black 
         min-w-[12rem]
         hover:scale-101
-       hover:brightness-90
+       hover:brightness-90;
+  }
+  .title-h2 {
+    @apply text-xl lg:text-3xl font-bold font-jost ;
   }
   .titleH3 {
     @apply text-2xl lg:text-4xl font-black font-jost;
@@ -46,7 +49,7 @@
          after:-z-10
          after:transition-all
          after:duration-300
-         hover:after:w-full
+         hover:after:w-full;
   }
 }
 
