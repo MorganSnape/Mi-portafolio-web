@@ -51,18 +51,18 @@ const { slug, name, descriptionProject, frontPage, tags, nameProject } =
       <div>
         <button
           class="cursor-pointer
-      border-2 border-black
+      
       px-3 py-2
-      text-black font-medium text-sm
-      flex items-center gap-1
+      font-medium text-sm
+      flex items-center gap-0 group-hover:gap-2
       w-fit
-      transition-colors duration-300 ease-in-out"
+      transition-colors duration-300 ease-in-out text-black bg-primary/20 rounded-lg"
         >
           <Icon
-            name="g-link"
+            name="fa6-solid:arrow-up"
             height={20}
             width={20}
-            class="transition-transform ease-in-out duration-200 group-hover:rotate-45"
+            class="transition-transform ease-in-out duration-200 rotate-45 group-hover:rotate-90"
           />
 
           <span
@@ -73,6 +73,7 @@ const { slug, name, descriptionProject, frontPage, tags, nameProject } =
         transition-all duration-300 ease-in-out
         group-hover:max-w-[120px]
         group-hover:opacity-100"
+        
           >
             Ver proyecto
           </span>
