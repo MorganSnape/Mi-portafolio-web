@@ -3,6 +3,7 @@ import type { Proyect } from "@/models";
 export const proyectos: Proyect[] = [
   {
     type: ["UX", "Front"],
+    specialTag:"En proceso",
     slug: "amarilla-garden",
     name: "Amarilla Garden",
     date: "3 de Marzo del 2026",
@@ -18,7 +19,7 @@ export const proyectos: Proyect[] = [
     frontPage: "/images/Amarilla.webp",
     linkWebsite: "https://www.amarillagarden.com",
     linkGit: "https://github.com/user/portfolio",
-    tags: ["Figma", "FigJam", "Astro", "TypeScript", "Tailwind"],
+    tags: ["UX/UI","Figma", "FigJam", "Astro", "TypeScript", "Tailwind"],
 
   },
   {

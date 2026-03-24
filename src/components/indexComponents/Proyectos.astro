@@ -21,14 +21,16 @@ const frontProjects = proyectos.filter((project) =>
       >
         <button
           id="btn-ux"
-          class="bottonProyectos translate-0 flex items-center justify-center"
+          class="bottonProyectos translate-0 pl-4 md:pl-0 py-4 flex flex-col md:flex-row items-start md:items-center justify-center md:gap-4"
         >
-          <span class="tracking-[6px] font-bold">UX/UI</span>
+          <span>Proyectos</span>
+          <span class="tracking-[6px] font-bold">Diseño</span>
         </button>
         <button
           id="btn-front"
-          class="bottonProyectos -m-0.5 md:m-0 translate-1.5 shadow-[0px_0px_0px_#141414] flex items-center justify-center gap-4 font-semibold text-center text-sm md:text-base"
+          class="bottonProyectos -m-0.5 md:m-0 translate-1.5 shadow-[0px_0px_0px_#141414] font-semibold text-center pl-4 md:pl-0 flex flex-col md:flex-row items-start md:items-center justify-center md:gap-4"
         >
+          <span>Proyectos</span>
           <span class="tracking-[6px] font-bold">Front-end</span>
         </button>
       </div>
@@ -36,8 +38,8 @@ const frontProjects = proyectos.filter((project) =>
     </div>
   </div>
 
-  <div id="ux-projects" class="py-12 md:py-28 w-11/12 max-w-[1016px]">
-    <ProyectosContainer title="UX/UI">
+  <div id="design-projects" class="py-12 md:py-28 w-11/12 max-w-[1016px]">
+    <ProyectosContainer>
       {uxProjects.map((proyecto) => <Card section="UX" {...proyecto} />)}
     </ProyectosContainer>
   </div>
@@ -46,7 +48,7 @@ const frontProjects = proyectos.filter((project) =>
     id="front-projects"
     class="py-12 md:py-28 w-11/12 max-w-[1016px] mx-auto hidden"
   >
-    <ProyectosContainer title="Front-end">
+    <ProyectosContainer >
       {frontProjects.map((proyecto) => <Card section="Front" {...proyecto} />)}
     </ProyectosContainer>
   </div>
@@ -56,7 +58,7 @@ const frontProjects = proyectos.filter((project) =>
     const btnUx = document.getElementById("btn-ux");
 
     const front = document.getElementById("front-projects");
-    const ux = document.getElementById("ux-projects");
+    const ux = document.getElementById("design-projects");
 
     btnFront?.addEventListener("click", () => {
       front?.classList.remove("hidden");

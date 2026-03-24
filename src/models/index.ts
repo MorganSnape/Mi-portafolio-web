@@ -1,6 +1,7 @@
 export interface Proyect {
   type: ProyectType[]
   slug: string;
+  specialTag?:string;
   nameProject: string;
   name: string;
   date: string;
