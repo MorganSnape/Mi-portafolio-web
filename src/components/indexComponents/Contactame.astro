@@ -1,8 +1,3 @@
----
-import RedesBoton from "@/components/RedesBoton.astro";
-import { Icon } from "astro-icon/components";
----
-
 <section id="contactame" class="w-screen flex flex-col items-center text-black py-16 bg-[#fff8df] border-t-8 border-black">
   <div class="max-w-[1024px] w-full px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0 flex flex-col gap-8">
     <div class="text-center">
@@ -45,18 +40,6 @@ import { Icon } from "astro-icon/components";
         Al darle clic a enviar, se abrirá tu gestor de correo.
       </p>
     </form>
-
-    <div id="mis-redes-contacto" class="flex flex-wrap gap-4 justify-center lg:justify-start">
-      <RedesBoton href="https://github.com/MorganSnape" text="Github">
-        <Icon name="fa6-brands:github" height={20} width={20} />
-      </RedesBoton>
-      <RedesBoton href="https://www.linkedin.com/in/gabriela-de-los-angeles-ferrer-martinez-8a45771a4/" text="LinkedIn">
-        <Icon name="fa6-brands:linkedin" height={20} width={20} />
-      </RedesBoton>
-      <RedesBoton href="/pdf/Hoja de vida Gabriela Ferrer.pdf" text="Currículum">
-        <Icon name="bxs:file-blank" height={20} width={20} />
-      </RedesBoton>
-    </div>
   </div>
 
   <script>
