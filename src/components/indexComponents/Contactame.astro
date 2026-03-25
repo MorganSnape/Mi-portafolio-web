@@ -1,0 +1,86 @@
+---
+import RedesBoton from "@/components/RedesBoton.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<section id="contactame" class="w-screen flex flex-col items-center text-black py-16 bg-[#fff8df] border-t-8 border-black">
+  <div class="max-w-[1024px] w-full px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0 flex flex-col gap-8">
+    <div class="text-center">
+      <h2 class="titleH3 efectoResaltador">Contáctame</h2>
+      <p class="text-sm lg:text-base leading-relaxed">
+        Cada gran proyecto empieza con una conversación.
+        <strong>¿Hablamos?</strong>.
+      </p>
+    </div>
+
+    <form
+      id="contact-form"
+      class="flex flex-col gap-3 border-2 border-black rounded-xl p-6 bg-white"
+    >
+      <label class="font-semibold">Tu correo</label>
+      <input
+        name="fromEmail"
+        type="email"
+        required
+        placeholder="ejemplo@correo.com"
+        class="border border-black rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+
+      <label class="font-semibold">Mensaje</label>
+      <textarea
+        name="message"
+        required
+        rows="5"
+        placeholder="Escribe aquí lo que quieras comentarme..."
+        class="border border-black rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+      ></textarea>
+
+      <button
+        type="submit"
+        class="primaryButton bg-primary text-white gap-2 px-4 py-2 text-base md:px-5 md:py-2 md:text-sm"
+      >
+        Enviar correo
+      </button>
+      <p class="text-xs text-neutral-600">
+        Al darle clic a enviar, se abrirá tu gestor de correo.
+      </p>
+    </form>
+
+    <div id="mis-redes-contacto" class="flex flex-wrap gap-4 justify-center lg:justify-start">
+      <RedesBoton href="https://github.com/MorganSnape" text="Github">
+        <Icon name="fa6-brands:github" height={20} width={20} />
+      </RedesBoton>
+      <RedesBoton href="https://www.linkedin.com/in/gabriela-de-los-angeles-ferrer-martinez-8a45771a4/" text="LinkedIn">
+        <Icon name="fa6-brands:linkedin" height={20} width={20} />
+      </RedesBoton>
+      <RedesBoton href="/pdf/Hoja de vida Gabriela Ferrer.pdf" text="Currículum">
+        <Icon name="bxs:file-blank" height={20} width={20} />
+      </RedesBoton>
+    </div>
+  </div>
+
+  <script>
+    function sendContactMail(event: SubmitEvent) {
+      event.preventDefault();
+      const form = event.currentTarget as HTMLFormElement;
+      const fromEmail = (form.fromEmail?.value || "").trim();
+      const message = (form.message?.value || "").trim();
+
+      if (!fromEmail || !message) {
+        alert("Por favor completa tu correo y mensaje.");
+        return;
+      }
+
+      const subject = encodeURIComponent(`Contacto desde portafolio: ${fromEmail}`);
+      const body = encodeURIComponent(`${message}`);
+      const mailto = `mailto:gabriellangeles@outlook.com?subject=${subject}&body=${body}`;
+
+      window.location.href = mailto;
+    }
+
+    const formElement = document.getElementById("contact-form");
+    if (formElement) {
+      formElement.addEventListener("submit", sendContactMail);
+    }
+  </script>
+</section>
