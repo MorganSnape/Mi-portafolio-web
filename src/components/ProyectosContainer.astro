@@ -3,24 +3,19 @@ import { Icon } from "astro-icon/components";
 ---
 
 <div
-  class="proyectos-container relative flex items-center flex-row gap-4 pb-16"
+  class="proyectos-container relative flex items-center flex-row gap-4"
 >
   <button
     type="button"
     aria-label="Scroll projects left"
-    class="scrollLeft primaryButton bg-white rounded-full text-black p-3 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+    class="hidden md:flex scrollLeft primaryButton bg-white rounded-full text-black p-3 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
   >
-    <Icon
-      name="fa6-solid:arrow-up"
-      height={20}
-      width={20}
-      class="rotate-270"
-    />
+    <Icon name="fa6-solid:arrow-up" height={20} width={20} class="rotate-270" />
   </button>
 
   <div class="w-full overflow-hidden">
     <div
-      class="scrollContainer gap-12 flex flex-row overflow-x-scroll scroll-smooth snap-x snap-mandatory"
+      class="scrollContainer gap-4 md:gap-12 flex flex-row overflow-x-scroll scroll-smooth snap-x snap-mandatory"
     >
       <slot />
     </div>
@@ -29,58 +24,55 @@ import { Icon } from "astro-icon/components";
   <button
     type="button"
     aria-label="Scroll projects right"
-    class="scrollRight primaryButton bg-white rounded-full text-black p-3 disabled:cursor-not-allowed cursor-pointer disabled:opacity-30"
+    class="hidden md:flex scrollRight primaryButton bg-white rounded-full text-black p-3 disabled:cursor-not-allowed cursor-pointer disabled:opacity-30"
   >
-    <Icon
-      name="fa6-solid:arrow-up"
-      height={20}
-      width={20}
-      class="rotate-90"
-    />
+    <Icon name="fa6-solid:arrow-up" height={20} width={20} class="rotate-90" />
   </button>
+
+  <script>
+    // CONTROLADOR DE SCROLL HORIZONTAL (cada instancia funciona por separado)
+    document.querySelectorAll(".proyectos-container").forEach((wrapper) => {
+      const container = wrapper.querySelector(
+        ".scrollContainer",
+      ) as HTMLElement | null;
+      const btnLeft = wrapper.querySelector(
+        ".scrollLeft",
+      ) as HTMLButtonElement | null;
+      const btnRight = wrapper.querySelector(
+        ".scrollRight",
+      ) as HTMLButtonElement | null;
+      const card = container?.querySelector(
+        ".snap-start",
+      ) as HTMLElement | null;
+
+      function getScrollAmount() {
+        if (!card) return 0;
+        const cardWidth = card.offsetWidth;
+        const gap = 48; // si tu gap-6 = 24px
+        return cardWidth + gap;
+      }
+
+      function updateButtons() {
+        if (!container || !btnLeft || !btnRight) return;
+        const scrollLeft = container.scrollLeft;
+        const maxScroll = container.scrollWidth - container.clientWidth;
+
+        btnLeft.disabled = scrollLeft <= 0;
+        btnRight.disabled = scrollLeft >= maxScroll - 1;
+      }
+
+      btnRight?.addEventListener("click", () => {
+        if (!container) return;
+        container.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+      });
+
+      btnLeft?.addEventListener("click", () => {
+        if (!container) return;
+        container.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
+      });
+
+      container?.addEventListener("scroll", updateButtons);
+      updateButtons();
+    });
+  </script>
 </div>
-
-<script>
-  // CONTROLADOR DE SCROLL HORIZONTAL (cada instancia funciona por separado)
-  document.querySelectorAll(".proyectos-container").forEach((wrapper) => {
-    const container = wrapper.querySelector(
-      ".scrollContainer",
-    ) as HTMLElement | null;
-    const btnLeft = wrapper.querySelector(
-      ".scrollLeft",
-    ) as HTMLButtonElement | null;
-    const btnRight = wrapper.querySelector(
-      ".scrollRight",
-    ) as HTMLButtonElement | null;
-    const card = container?.querySelector(".snap-start") as HTMLElement | null;
-
-    function getScrollAmount() {
-      if (!card) return 0;
-      const cardWidth = card.offsetWidth;
-      const gap = 48; // si tu gap-6 = 24px
-      return cardWidth + gap;
-    }
-
-    function updateButtons() {
-      if (!container || !btnLeft || !btnRight) return;
-      const scrollLeft = container.scrollLeft;
-      const maxScroll = container.scrollWidth - container.clientWidth;
-
-      btnLeft.disabled = scrollLeft <= 0;
-      btnRight.disabled = scrollLeft >= maxScroll - 1;
-    }
-
-    btnRight?.addEventListener("click", () => {
-      if (!container) return;
-      container.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
-    });
-
-    btnLeft?.addEventListener("click", () => {
-      if (!container) return;
-      container.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
-    });
-
-    container?.addEventListener("scroll", updateButtons);
-    updateButtons();
-  });
-</script>
