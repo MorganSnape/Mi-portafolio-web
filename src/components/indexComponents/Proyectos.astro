@@ -3,6 +3,7 @@ import { proyectos } from "@/data/portfolio.ts";
 
 import Card from "@/components/Card.astro";
 import ProyectosContainer from "../ProyectosContainer.astro";
+import Subtitulo from "../Subtitulo.astro";
 
 const uxProjects = proyectos.filter((project) => project.type.includes("UX"));
 const frontProjects = proyectos.filter((project) =>
@@ -14,87 +15,21 @@ const frontProjects = proyectos.filter((project) =>
   id="proyectos-container"
   class="bg-[url(/fondoDos.svg)] bg-[length:20px] w-screen flex flex-col items-center min-h-[600px]"
 >
-  <div>
-    <div class="w-screen relative h-2 flex items-center">
-      <div
-        class="flex flex-row gap-0 items-center absolute bottom-[100%] translate-y-1/2 left-8 md:left-20"
-      >
-        <button
-          id="btn-ux"
-          class="bottonProyectos translate-0 pl-4 md:pl-0 py-4 flex flex-col md:flex-row items-start md:items-center justify-center md:gap-4"
-        >
-          <span>Proyectos</span>
-          <span class="tracking-[6px] font-bold">Diseño</span>
-        </button>
-        <button
-          id="btn-front"
-          class="bottonProyectos -m-0.5 md:m-0 translate-1.5 shadow-[0px_0px_0px_#141414] font-semibold text-center pl-4 md:pl-0 flex flex-col md:flex-row items-start md:items-center justify-center md:gap-4"
-        >
-          <span>Proyectos</span>
-          <span class="tracking-[6px] font-bold">Front-end</span>
-        </button>
-      </div>
-      <div class="bg-black w-full h-2"></div>
-    </div>
-  </div>
+  <Subtitulo align="left" text="Proyectos" type="Diseño" />
 
-  <div id="design-projects" class="py-12 md:py-28 w-11/12 max-w-[1016px]">
+  <div id="design-projects" class="py-12 md:py-20 w-11/12 max-w-[1016px]">
     <ProyectosContainer>
       {uxProjects.map((proyecto) => <Card section="UX" {...proyecto} />)}
     </ProyectosContainer>
   </div>
+  <Subtitulo align="right" text="Proyectos" type="Front - End" />
 
   <div
     id="front-projects"
-    class="py-12 md:py-28 w-11/12 max-w-[1016px] mx-auto hidden"
+    class="py-12 md:py-20 w-11/12 max-w-[1016px] mx-auto"
   >
-    <ProyectosContainer >
+    <ProyectosContainer>
       {frontProjects.map((proyecto) => <Card section="Front" {...proyecto} />)}
     </ProyectosContainer>
   </div>
-
-  <script>
-    const btnFront = document.getElementById("btn-front");
-    const btnUx = document.getElementById("btn-ux");
-
-    const front = document.getElementById("front-projects");
-    const ux = document.getElementById("design-projects");
-
-    btnFront?.addEventListener("click", () => {
-      front?.classList.remove("hidden");
-      ux?.classList.add("hidden");
-    });
-    btnUx?.addEventListener("click", () => {
-      ux?.classList.remove("hidden");
-      front?.classList.add("hidden");
-    });
-
-    function setActive(
-      activeBtn: HTMLElement | null,
-      inactiveBtn: HTMLElement | null,
-    ) {
-      if (!activeBtn || !inactiveBtn) return;
-      // Activar
-      activeBtn.classList.remove(
-        "translate-1.5",
-        "shadow-[0px_0px_0px_#141414]",
-      );
-      activeBtn.classList.add("translate-0");
-
-      // Desactivar
-      inactiveBtn.classList.remove("translate-0");
-      inactiveBtn.classList.add(
-        "translate-1.5",
-        "shadow-[0px_0px_0px_#141414]",
-      );
-    }
-
-    btnFront?.addEventListener("click", () => {
-      setActive(btnFront, btnUx);
-    });
-
-    btnUx?.addEventListener("click", () => {
-      setActive(btnUx, btnFront);
-    });
-  </script>
 </section>
