@@ -3,7 +3,6 @@ import type { Proyect } from "@/models";
 export const proyectos: Proyect[] = [
   {
     type: ["UX", "Front"],
-    specialTag:"En proceso",
     slug: "amarilla-garden",
     name: "Amarilla Garden",
     date: "3 de Marzo del 2026",
