@@ -15,10 +15,10 @@
 
 @layer components {
   .primaryButton {
-    @apply hover:brightness-80 hover:scale-101 flex flex-row justify-center items-center transition-all duration-150 ease-in-out select-none border-2 border-black  font-medium w-fit translate-0 active:translate-1.5 disabled:translate-0 shadow-[4px_4px_0px_#141414] md:shadow-[6px_6px_0px_#141414] active:shadow-[0px_0px_0px_#141414] disabled:md:shadow-[6px_6px_0px_#141414] disabled:shadow-[4px_4px_0px_#141414];
+    @apply hover:brightness-80 disabled:hover:brightness-100 hover:scale-105 disabled:hover:scale-100 flex flex-row justify-center items-center transition-all duration-150 ease-in-out select-none border-2 border-black  font-medium w-fit translate-0 active:translate-1.5 disabled:translate-0 shadow-[4px_4px_0px_#141414] md:shadow-[6px_6px_0px_#141414] active:shadow-[0px_0px_0px_#141414] disabled:md:shadow-[6px_6px_0px_#141414] disabled:shadow-[4px_4px_0px_#141414];
   }
   .tag-me {
-    @apply flex flex-row justify-center items-center transition-all duration-150 ease-in-out select-none border-2 border-black font-medium w-fit translate-0 hover:translate-1.5 shadow-[4px_4px_0px_#141414] md:shadow-[6px_6px_0px_#141414] hover:shadow-[0px_0px_0px_#141414] ;
+    @apply flex flex-row justify-center items-center transition-all duration-150 ease-in-out select-none border-2 border-black font-medium w-fit translate-0 hover:translate-1.5 shadow-[4px_4px_0px_#141414] md:shadow-[6px_6px_0px_#141414] hover:shadow-[0px_0px_0px_#141414];
   }
   .center-tag-me {
     @apply flex flex-row justify-center items-center transition-all duration-150 ease-in-out select-none border-2 border-black font-medium w-fit translate-0 hover:translate-y-1.5 shadow-[0px_4px_0px_#141414] md:shadow-[0px_6px_0px_#141414] hover:shadow-[0px_0px_0px_#141414] disabled:hover:translate-y-0 disabled:hover:shadow-[0px_4px_0px_#141414];
