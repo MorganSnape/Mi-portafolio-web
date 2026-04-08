@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { personalInfo } from "../data/personal";
-import { proyectos } from "../data/portfolio";
 import { estudios } from "../data/studies";
 ---
 
@@ -141,10 +140,8 @@ import { estudios } from "../data/studies";
                   {estudio.institution}
                 </p>
                 <ul class="text-black ml-6">
-                  {estudio.descriptions.map((desc, index) => (
-                    <li key={index} class="list-disc text-sm mb-1">
-                      {desc}
-                    </li>
+                  {estudio.descriptions.map((desc) => (
+                    <li class="list-disc text-sm mb-1">{desc}</li>
                   ))}
                 </ul>
                 {estudio.tags && (

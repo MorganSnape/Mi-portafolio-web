@@ -75,18 +75,20 @@ const hobbies = [
             <h4 class="font-semibold text-white text-xl mb-4 font-jost">
               ¿Qué traigo a la mesa?
             </h4>
-            <ul class="list-disc list-outside text-white leading-tight text-sm lg:text-base font-medium pl-4 flex flex-col gap-3">
+            <ul
+              class="list-disc list-outside text-white leading-tight text-sm lg:text-base font-medium pl-4 flex flex-col gap-3"
+            >
               <li>
-                <span class="font-semibold">Visión Gráfica:</span> Manejo avanzado de la suite de Adobe para piezas
-                visuales con impacto.
+                <span class="font-semibold">Visión Gráfica:</span> Manejo avanzado
+                de la suite de Adobe para piezas visuales con impacto.
               </li>
               <li>
-                <span class="font-semibold">UX/UI:</span> Metodologías de Design Thinking y Research para
-                decisiones basadas en datos.
+                <span class="font-semibold">UX/UI:</span> Metodologías de Design
+                Thinking y Research para decisiones basadas en datos.
               </li>
               <li>
-                <span class="font-semibold">Frontend:</span> Capacidad de maquetar e implementar interfaces
-                modernas y accesibles."
+                <span class="font-semibold">Frontend:</span> Capacidad de maquetar
+                e implementar interfaces modernas y accesibles."
               </li>
             </ul>
           </div>
@@ -102,7 +104,7 @@ const hobbies = [
           actividades creativas y aventureras que alimentan mi inspiración:
         </p>
       </div>
-      <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
+      <div class="flex flex-row justify-between items-center flex-wrap gap-4">
         {
           hobbies.map((hobby) => (
             <Hobbies text="Pintar" svg={hobby.svg} text={hobby.text} />
