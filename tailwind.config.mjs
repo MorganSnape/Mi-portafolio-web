@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        josefine: ["var(--font-josefin)"],
+        jost: ["var(--font-jost)"],
         montserrat: ["var(--font-montserrat)"],
       },
     },

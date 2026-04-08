@@ -5,13 +5,13 @@ import { Icon } from "astro-icon/components";
 <header
   style="position: fixed; right: 0; z-index: 4; width:100vw; background-image:var(--fondo);background-size: 20px;"
 >
-  <nav class="font-montserrat">
+  <nav class="font-montserrat flex flex-row items-center gap-2 lg:gap-8 justify-end pr-6 lg:pr-12 border-b border-gray-300" >
     <label for="menu-hamburguer" class="label-hamburguer">
       <Icon name="codicon:menu" style="font-size: 30px;" />
     </label>
     <input type="checkbox" name="" id="menu-hamburguer" />
 
-    <ul class="ul-links flex flex-col md:flex-row items-center gap-2">
+    <ul class="ul-links flex flex-col md:flex-row justify-center items-center gap-2">
       <li class="li-link">
         <a href="#inicio" class="nav-item">Inicio</a>
       </li>
@@ -32,7 +32,7 @@ import { Icon } from "astro-icon/components";
       </li>
       <li>
         <a
-          href="/pdf/Hoja de vida Gabriela Ferrer.pdf" target="_blank"
+          href="/curriculum"
           class="primaryButton text-white bg-primary gap-2.5 px-4 py-2 text-base md:px-4 md:py-1 md:text-sm"
         >
           Currículum
@@ -94,13 +94,6 @@ import { Icon } from "astro-icon/components";
 <style>
   nav {
     height: var(--altura-header);
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: flex-end;
-    gap: 30px;
-    padding-right: 40px;
-    border-bottom: solid 0.5px #d8d8d8;
   }
 
   .nav-item {
@@ -138,7 +131,7 @@ import { Icon } from "astro-icon/components";
 
   /*Vista movil*/
 
-  @media (max-width: 768px) {
+  @media (max-width: 890px) {
     .label-hamburguer,
     #menu-hamburguer {
       display: contents;
