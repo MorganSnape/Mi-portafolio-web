@@ -51,3 +51,5 @@ export interface Studies {
   tags?: string[];
   duration?: string;
 }
+
+export type { PersonalInfo } from '../data/personal';

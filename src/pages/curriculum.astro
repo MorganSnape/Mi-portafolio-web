@@ -1,0 +1,235 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { personalInfo } from "../data/personal";
+import { proyectos } from "../data/portfolio";
+import { estudios } from "../data/studies";
+---
+
+<Layout title="Currículum - Gabriela Ferrer">
+  <div class="bg-primary/20">
+    <article
+      class="max-w-4xl mx-auto p-8 print:p-4 bg-white flex flex-col gap-8"
+    >
+      <section class="flex gap-5 flex-col">
+        <div class="text-center pb-5 border-b-3 border-primary">
+          <div>
+            <h1 class="font-bold text-3xl text-black mb-4">
+              {personalInfo.name}
+            </h1>
+            <p class="text-xl font-semibold">{personalInfo.title}</p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-5 justify-center items-center">
+          <h2 class="font-bold text-xl mb-6pb-2">Resumen Profesional</h2>
+          <p
+            class="text-black text-pretty text-sm text-center whitespace-pre-line"
+          >
+            {personalInfo.summary}
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 print:grid-cols-2 gap-6 mb-8 text-sm">
+          <div>
+            <div class="space-y-3 text-black">
+              <div>
+                <span class="font-bold text-primary">Teléfono:</span>{" "}
+                <p>
+                  {personalInfo.phone}
+                </p>
+              </div>
+              <div>
+                <a
+                  href={personalInfo.linkedin}
+                  class="text-primary font-bold hover:text-black transition-colors"
+                >
+                  LinkedIn
+                  <p class="text-black font-medium">
+                    https://www.linkedin.com/in/gabriela-de-los-angeles-ferrer-martinez-8a45771a4/
+                  </p>
+                </a>
+              </div>
+            </div>
+          </div><div>
+            <div class="space-y-3 text-black">
+              <div>
+                <span class="font-bold text-primary">Email:</span>
+                <p>
+                  {personalInfo.email}
+                </p>
+              </div>
+              <div>
+                <a
+                  href={personalInfo.website}
+                  class="text-primary hover:text-black transition-colors"
+                >
+                  <span class="font-bold">Portafolio Web</span>
+                  <p class="text-black">https://gabrielaferrer.vercel.app/</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experiencia Profesional -->
+      <section class="flex flex-col">
+        <h2
+          class="font-bold text-xl mb-6 pb-4 text-black border-b-3 border-primary"
+        >
+          Experiencia Profesional
+        </h2>
+        <div class="flex flex-row items-start gap-6 px-0">
+          <div class="flex flex-row gap-2 items-center">
+            <p class="text-black font-bold text-sm font-jost w-20">
+              Nov, 2024 Oct,2025
+            </p>
+            <div class="h-0.5 bg-black w-8"></div>
+          </div>
+
+          <article class="flex flex-col gap-6">
+            <header>
+              <h4 class="font-bold font-jost text-lg w-fit">
+                UI/UX Developer - Mvp KunturWing
+              </h4>
+            </header>
+            <main>
+              <ul class="text-sm space-y-1">
+                <li class="list-disc list-outside pl-2">
+                  Creación y mantenimiento del sistema de diseño alineado a la
+                  marca y escalable.
+                </li>
+                <li class="list-disc list-outside pl-2">
+                  Diseño del flujo de navegación enfocado en usabilidad y
+                  coherencia.
+                </li>
+                <li class="list-disc list-outside pl-2">
+                  Desarrollo de wireframes, mockups y prototipos de alta
+                  fidelidad junto al equipo de desarrollo.
+                </li>
+                <li class="list-disc list-outside pl-2">
+                  Diseño y desarrollo de la landing page del producto orientada
+                  a conversión.
+                </li>
+                <li class="list-disc list-outside pl-2">
+                  Diseño de la interfaz visual asegurando accesibilidad y
+                  consistencia visual.
+                </li>
+                <li class="list-disc list-outside pl-2">
+                  Aplicación de Design Thinking para crear soluciones centradas
+                  en el usuario.
+                </li>
+              </ul>
+            </main>
+          </article>
+        </div>
+      </section>
+
+      <!-- Educación -->
+      <section class="mb-12 print:break-before-page">
+        <h2
+          class="font-bold text-xl mb-6 pb-4 text-black border-b-3 border-primary"
+        >
+          Educación
+        </h2>
+        <div class="space-y-8">
+          {
+            estudios.map((estudio) => (
+              <div class="border-l-3 border-primary/40 pl-6 print:break-inside-avoid">
+                <h3 class="font-jost font-bold text-base text-black">
+                  {estudio.title} | {estudio.duration}
+                </h3>
+                <p class=" font-medium mb-3 text-primary italic text-sm">
+                  {estudio.institution}
+                </p>
+                <ul class="text-black ml-6">
+                  {estudio.descriptions.map((desc, index) => (
+                    <li key={index} class="list-disc text-sm mb-1">
+                      {desc}
+                    </li>
+                  ))}
+                </ul>
+                {estudio.tags && (
+                  <div class="mt-4">
+                    <span class="text-black font-semibold text-sm">
+                      Habilidades adquiridas:
+                    </span>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                      {estudio.tags.map((tag) => (
+                        <span class=" text-black px-3 py-1 text-xs font-medium border border-black">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- Idiomas -->
+      {
+        personalInfo.languages && (
+          <section class="mb-12 print:break-inside-avoid">
+            <h2 class="font-bold text-xl mb-6 pb-4 text-black border-b-3 border-primary">
+              Idiomas
+            </h2>
+            <div class="flex flex-wrap gap-4">
+              {personalInfo.languages.map((language) => (
+                <span class="font-medium text-sm">{language}</span>
+              ))}
+            </div>
+          </section>
+        )
+      }
+
+      <!-- Habilidades Técnicas -->
+      <section class="mb-12 print:break-inside-avoid">
+        <h2
+          class="font-bold text-xl mb-6 pb-4 text-black border-b-3 border-primary"
+        >
+          Habilidades Técnicas
+        </h2>
+        <div class="flex flex-wrap gap-3">
+          {
+            personalInfo.skills.map((skill) => (
+              <span class="font-medium text-sm border border-black  px-3 py-1">
+                {skill}
+              </span>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- Botón de descarga -->
+      <div class="text-center mt-12 print:hidden fixed bottom-12 right-12">
+        <button
+          onclick="window.print()"
+          class="primaryButton bg-primary text-white px-6 py-3 font-medium"
+        >
+          Descargar como PDF
+        </button>
+      </div>
+      <!-- End content -->
+    </article>
+    <!-- End background container -->
+  </div>
+
+  <style>
+    @media print {
+      body {
+        -webkit-print-color-adjust: exact; /* Chrome, Safari, Edge */
+        print-color-adjust: exact; /* Firefox */
+      }
+      .print\\:hidden {
+        display: none;
+      }
+      .border-l-4 {
+        border-left-width: 4px;
+      }
+      .border-b-2 {
+        border-bottom-width: 2px;
+      }
+    }
+  </style></Layout
+>
