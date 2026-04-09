@@ -26,45 +26,52 @@ import { estudios } from "../data/studies";
             {personalInfo.summary}
           </p>
         </div>
-        <div class="grid md:grid-cols-2 print:grid-cols-2 gap-6 mb-8 text-sm">
-          <div>
+        <div class="flex flex-col gap-2">
+          <div class="grid md:grid-cols-2 col-span-1 print:grid-cols-2 gap-6 text-sm">
             <div class="space-y-3 text-black">
-              <div>
-                <span class="font-bold text-primary">Teléfono:</span>{" "}
-                <p>
-                  {personalInfo.phone}
-                </p>
-              </div>
-              <div>
-                <a
-                  href={personalInfo.linkedin}
-                  class="text-primary font-bold hover:text-black transition-colors"
-                >
-                  LinkedIn
-                  <p class="text-black font-medium">
-                    https://www.linkedin.com/in/gabriela-de-los-angeles-ferrer-martinez-8a45771a4/
-                  </p>
-                </a>
-              </div>
+              <span class="font-bold text-primary">Teléfono:</span>
+              <p>
+                {personalInfo.phone}
+              </p>
             </div>
-          </div><div>
-            <div class="space-y-3 text-black">
-              <div>
-                <span class="font-bold text-primary">Email:</span>
-                <p>
-                  {personalInfo.email}
-                </p>
-              </div>
-              <div>
-                <a
-                  href={personalInfo.website}
-                  class="text-primary hover:text-black transition-colors"
-                >
-                  <span class="font-bold">Portafolio Web</span>
-                  <p class="text-black">https://gabrielaferrer.vercel.app/</p>
-                </a>
-              </div>
+            <div>
+              <span class="font-bold text-primary">Email:</span>
+              <p>
+                {personalInfo.email}
+              </p>
             </div>
+          </div>
+          <div class="grid md:grid-cols-2 col-span-1 print:grid-cols-2 gap-6 text-sm">
+            <a
+              href={personalInfo.linkedin}
+              class="text-primary hover:text-black transition-colors"
+            >
+              <span class="font-bold">LinkedIn:</span>
+              <p class="text-black">{personalInfo.linkedin}</p>
+            </a>
+            <a
+              href={personalInfo.website}
+              class="text-primary hover:text-black transition-colors"
+            >
+              <span class="font-bold">Portafolio Web:</span>
+              <p class="text-black">{personalInfo.website}</p>
+            </a>
+          </div>
+          <div class="grid md:grid-cols-2 col-span-1 print:grid-cols-2 gap-6 text-sm">
+            <a
+              href={personalInfo.behance}
+              class="text-primary hover:text-black transition-colors"
+            >
+              <span class="font-bold break-words">Behane:</span>
+              <p class="text-black">{personalInfo.behance}</p>
+            </a>
+            <a
+              href={personalInfo.github}
+              class="text-primary hover:text-black transition-colors"
+            >
+              <span class="font-bold">Git Hub:</span>
+              <p class="text-black">{personalInfo.github}</p>
+            </a>
           </div>
         </div>
       </section>
@@ -118,6 +125,13 @@ import { estudios } from "../data/studies";
                 </li>
               </ul>
             </main>
+            <div class="text-sm">
+              <span class="font-bold text-primary">Referencias:</span>
+              <p>
+                <span class="italic">Juan Giraldo</span> - CTO del proyecto +57 304
+                4757582
+              </p>
+            </div>
           </article>
         </div>
       </section>
@@ -198,35 +212,53 @@ import { estudios } from "../data/studies";
         </div>
       </section>
 
-      <!-- Botón de descarga -->
-      <div class="text-center mt-12 print:hidden fixed bottom-12 right-12">
-        <button
-          onclick="window.print()"
-          class="primaryButton bg-primary text-white px-6 py-3 font-medium"
+      <!-- Habilidades Blandas -->
+      <section
+        class="mb-12 print:break-inside-avoid pb-12 border-b-3 border-primary"
+      >
+        <h2
+          class="font-bold text-xl mb-6 pb-4 text-black border-b-3 border-primary"
         >
-          Descargar como PDF
-        </button>
-      </div>
-      <!-- End content -->
+          Habilidades Blandas
+        </h2>
+        <div class="flex flex-wrap gap-3">
+          {
+            personalInfo.softSkills?.map((skill) => (
+              <span class="font-medium text-sm border border-black  px-3 py-1">
+                {skill}
+              </span>
+            ))
+          }
+        </div>
+      </section>
     </article>
-    <!-- End background container -->
-  </div>
 
-  <style>
-    @media print {
-      body {
-        -webkit-print-color-adjust: exact; /* Chrome, Safari, Edge */
-        print-color-adjust: exact; /* Firefox */
-      }
-      .print\\:hidden {
-        display: none;
-      }
-      .border-l-4 {
-        border-left-width: 4px;
-      }
-      .border-b-2 {
-        border-bottom-width: 2px;
-      }
+    <!-- Botón de descarga -->
+    <div class="text-center mt-12 print:hidden fixed bottom-12 right-12">
+      <button
+        onclick="window.print()"
+        class="primaryButton bg-primary text-white px-6 py-3 font-medium"
+      >
+        Descargar como PDF
+      </button>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  @media print {
+    body {
+      -webkit-print-color-adjust: exact; /* Chrome, Safari, Edge */
+      print-color-adjust: exact; /* Firefox */
     }
-  </style></Layout
->
+    .print\\:hidden {
+      display: none;
+    }
+    .border-l-4 {
+      border-left-width: 4px;
+    }
+    .border-b-2 {
+      border-bottom-width: 2px;
+    }
+  }
+</style>
