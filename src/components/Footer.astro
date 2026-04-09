@@ -1,17 +1,40 @@
-<footer class="bg-[#ffe971] border-t border-black flex flex-col items-center justify-center w-full py-6">
+---
+import { personalInfo } from "@/data/personal";
+---
+
+<footer
+  class="bg-[#ffe971] border-t border-black flex flex-col items-center justify-center w-full py-6"
+>
   <div class="flex flex-wrap gap-3 justify-center mb-3">
-    <a href="https://www.behance.net/gabrielferrer18" target="_blank" class="text-base font-semibold max-[360px]:text-sm underline">
+    <a
+      href={personalInfo.behance!}
+      target="_blank"
+      class="text-base font-semibold max-[360px]:text-sm underline"
+    >
       Behance
     </a>
-    <a href="https://github.com/MorganSnape" target="_blank" class="text-base font-semibold max-[360px]:text-sm underline">
+    <a
+      href={personalInfo.github!}
+      target="_blank"
+      class="text-base font-semibold max-[360px]:text-sm underline"
+    >
       GitHub
     </a>
-    <a href="https://www.linkedin.com/in/gabriela-de-los-angeles-ferrer-martinez-8a45771a4/" target="_blank" class="text-base font-semibold max-[360px]:text-sm underline">
+    <a
+      href={personalInfo.linkedin!}
+      target="_blank"
+      class="text-base font-semibold max-[360px]:text-sm underline"
+    >
       LinkedIn
     </a>
-    <a href="/curriculum" class="text-base font-semibold max-[360px]:text-sm underline">
+    <a
+      href="/curriculum"
+      class="text-base font-semibold max-[360px]:text-sm underline"
+    >
       Currículum
     </a>
   </div>
-  <p class="text-sm text-center">{new Date().getFullYear()} Gabriela Ferrer · Portfolio</p>
+  <p class="text-sm text-center">
+    {new Date().getFullYear()} Gabriela Ferrer · Portfolio
+  </p>
 </footer>

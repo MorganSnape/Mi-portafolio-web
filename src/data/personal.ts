@@ -24,7 +24,7 @@ export const personalInfo: PersonalInfo = {
   linkedin: "https://www.linkedin.com/in/gabriela-de-los-angeles-ferrer-martinez-8a45771a4/",
   github: "https://github.com/MorganSnape",
   website: "https://gabrielaferrer.vercel.app/",
-  behance:"https://www.behance.net/gabrielferrer18/",
+  behance:"https://www.behance.net/gabriellangeles",
   birthDate: "2000",
   summary: "Vengo del mundo de la atención al cliente, donde aprendí que la empatía es la herramienta más poderosa para resolver problemas. Hoy, esa misma empatía es la que guía mi proceso como Diseñadora UX/UI y Desarrolladora Frontend. \n\n Me apasiona el reto de transformar una necesidad de negocio en un flujo de navegación fluido y, posteriormente, en una interfaz funcional y estética. Mi formación autodidacta y académica (SENA, Google, Oracle) me ha dado la versatilidad necesaria para adaptarme a equipos ágiles y proyectos de alto impacto, como mi reciente trabajo en el sistema de diseño para Mvp KunturWing. Estoy lista para dar mi siguiente paso profesional a través de mis pasantías de Diseño Gráfico mediante a un contrado de aprendizaje, aportando un valor agregado en diseño digital y tecnología",
   skills: [

@@ -1,6 +1,7 @@
 ---
 import RedesBoton from "@/components/RedesBoton.astro";
 import { Icon } from "astro-icon/components";
+import { personalInfo } from "@/data/personal";
 ---
 
 <section
@@ -35,18 +36,18 @@ import { Icon } from "astro-icon/components";
       id="mis-redes"
       class="flex flex-wrap gap-4 justify-center lg:justify-start"
     >
-      <RedesBoton href="https://www.behance.net/gabrielferrer18" text="Behance">
+      <RedesBoton href={personalInfo.behance!} text="Behance">
         <Icon
           name="fa6-brands:square-behance"
           height={20}
           width={20}
         /></RedesBoton
       >
-      <RedesBoton href="https://github.com/MorganSnape" text="Github">
+      <RedesBoton href={personalInfo.github!} text="Github">
         <Icon name="fa6-brands:github" height={20} width={20} />
       </RedesBoton>
       <RedesBoton
-        href="https://www.linkedin.com/in/gabriela-de-los-angeles-ferrer-martinez-8a45771a4/"
+        href={personalInfo.linkedin!}
         text="LinkedIn"
       >
         <Icon name="fa6-brands:linkedin" height={20} width={20} />

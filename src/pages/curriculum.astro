@@ -5,7 +5,9 @@ import { estudios } from "../data/studies";
 ---
 
 <Layout title="Currículum - Gabriela Ferrer">
-  <div class="bg-primary/20">
+  <div
+    class="bg-primary/20 text-sm print:text-xs print:font-normal font-medium"
+  >
     <article
       class="max-w-4xl mx-auto p-8 print:p-4 bg-white flex flex-col gap-8"
     >
@@ -20,14 +22,12 @@ import { estudios } from "../data/studies";
         </div>
         <div class="flex flex-col gap-5 justify-center items-center">
           <h2 class="font-bold text-xl mb-6pb-2">Resumen Profesional</h2>
-          <p
-            class="text-black text-pretty text-sm text-center whitespace-pre-line"
-          >
+          <p class="text-black text-pretty text-center whitespace-pre-line">
             {personalInfo.summary}
           </p>
         </div>
         <div class="flex flex-col gap-2">
-          <div class="grid md:grid-cols-2 col-span-1 print:grid-cols-2 gap-6 text-sm">
+          <div class="grid md:grid-cols-2 col-span-1 print:grid-cols-2 gap-6">
             <div class="space-y-3 text-black">
               <span class="font-bold text-primary">Teléfono:</span>
               <p>
@@ -41,7 +41,7 @@ import { estudios } from "../data/studies";
               </p>
             </div>
           </div>
-          <div class="grid md:grid-cols-2 col-span-1 print:grid-cols-2 gap-6 text-sm">
+          <div class="grid md:grid-cols-2 col-span-1 print:grid-cols-2 gap-6">
             <a
               href={personalInfo.linkedin}
               class="text-primary hover:text-black transition-colors"
@@ -57,7 +57,7 @@ import { estudios } from "../data/studies";
               <p class="text-black">{personalInfo.website}</p>
             </a>
           </div>
-          <div class="grid md:grid-cols-2 col-span-1 print:grid-cols-2 gap-6 text-sm">
+          <div class="grid md:grid-cols-2 col-span-1 print:grid-cols-2 gap-6">
             <a
               href={personalInfo.behance}
               class="text-primary hover:text-black transition-colors"
@@ -77,7 +77,7 @@ import { estudios } from "../data/studies";
       </section>
 
       <!-- Experiencia Profesional -->
-      <section class="flex flex-col">
+      <section class="flex flex-col print:break-inside-avoid">
         <h2
           class="font-bold text-xl mb-6 pb-4 text-black border-b-3 border-primary"
         >
@@ -85,7 +85,7 @@ import { estudios } from "../data/studies";
         </h2>
         <div class="flex flex-row items-start gap-6 px-0">
           <div class="flex flex-row gap-2 items-center">
-            <p class="text-black font-bold text-sm font-jost w-20">
+            <p class="text-black font-bold font-jost w-20">
               Nov, 2024 Oct,2025
             </p>
             <div class="h-0.5 bg-black w-8"></div>
@@ -98,7 +98,7 @@ import { estudios } from "../data/studies";
               </h4>
             </header>
             <main>
-              <ul class="text-sm space-y-1">
+              <ul class="space-y-1">
                 <li class="list-disc list-outside pl-2">
                   Creación y mantenimiento del sistema de diseño alineado a la
                   marca y escalable.
@@ -125,7 +125,7 @@ import { estudios } from "../data/studies";
                 </li>
               </ul>
             </main>
-            <div class="text-sm">
+            <div class="">
               <span class="font-bold text-primary">Referencias:</span>
               <p>
                 <span class="italic">Juan Giraldo</span> - CTO del proyecto +57 304
@@ -150,17 +150,17 @@ import { estudios } from "../data/studies";
                 <h3 class="font-jost font-bold text-base text-black">
                   {estudio.title} | {estudio.duration}
                 </h3>
-                <p class=" font-medium mb-3 text-primary italic text-sm">
+                <p class=" font-medium mb-3 text-primary italic  ">
                   {estudio.institution}
                 </p>
                 <ul class="text-black ml-6">
                   {estudio.descriptions.map((desc) => (
-                    <li class="list-disc text-sm mb-1">{desc}</li>
+                    <li class="list-disc   mb-1">{desc}</li>
                   ))}
                 </ul>
                 {estudio.tags && (
                   <div class="mt-4">
-                    <span class="text-black font-semibold text-sm">
+                    <span class="text-black font-semibold  ">
                       Habilidades adquiridas:
                     </span>
                     <div class="flex flex-wrap gap-2 mt-2">
@@ -187,7 +187,7 @@ import { estudios } from "../data/studies";
             </h2>
             <div class="flex flex-wrap gap-4">
               {personalInfo.languages.map((language) => (
-                <span class="font-medium text-sm">{language}</span>
+                <span>{language}</span>
               ))}
             </div>
           </section>
@@ -204,9 +204,7 @@ import { estudios } from "../data/studies";
         <div class="flex flex-wrap gap-3">
           {
             personalInfo.skills.map((skill) => (
-              <span class="font-medium text-sm border border-black  px-3 py-1">
-                {skill}
-              </span>
+              <span class="border border-black px-3 py-1">{skill}</span>
             ))
           }
         </div>
@@ -224,9 +222,7 @@ import { estudios } from "../data/studies";
         <div class="flex flex-wrap gap-3">
           {
             personalInfo.softSkills?.map((skill) => (
-              <span class="font-medium text-sm border border-black  px-3 py-1">
-                {skill}
-              </span>
+              <span class="border border-black  px-3 py-1">{skill}</span>
             ))
           }
         </div>
@@ -250,6 +246,8 @@ import { estudios } from "../data/studies";
     body {
       -webkit-print-color-adjust: exact; /* Chrome, Safari, Edge */
       print-color-adjust: exact; /* Firefox */
+      user-select: text !important;
+      -webkit-user-select: text !important;
     }
     .print\\:hidden {
       display: none;
@@ -260,5 +258,8 @@ import { estudios } from "../data/studies";
     .border-b-2 {
       border-bottom-width: 2px;
     }
+  }
+  a {
+    z-index: 99;
   }
 </style>
