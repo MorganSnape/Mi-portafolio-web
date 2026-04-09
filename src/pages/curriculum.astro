@@ -5,9 +5,7 @@ import { estudios } from "../data/studies";
 ---
 
 <Layout title="Currículum - Gabriela Ferrer">
-  <div
-    class="bg-primary/20 text-sm print:text-xs print:font-normal font-medium"
-  >
+  <div class="bg-primary/20 text-sm print:font-normal font-medium">
     <article
       class="max-w-4xl mx-auto p-8 print:p-4 bg-white flex flex-col gap-8"
     >
@@ -155,23 +153,9 @@ import { estudios } from "../data/studies";
                 </p>
                 <ul class="text-black ml-6">
                   {estudio.descriptions.map((desc) => (
-                    <li class="list-disc   mb-1">{desc}</li>
+                    <li class="list-disc mb-1">{desc}</li>
                   ))}
                 </ul>
-                {estudio.tags && (
-                  <div class="mt-4">
-                    <span class="text-black font-semibold  ">
-                      Habilidades adquiridas:
-                    </span>
-                    <div class="flex flex-wrap gap-2 mt-2">
-                      {estudio.tags.map((tag) => (
-                        <span class=" text-black px-3 py-1 text-xs font-medium border border-black">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
             ))
           }
@@ -201,31 +185,31 @@ import { estudios } from "../data/studies";
         >
           Habilidades Técnicas
         </h2>
-        <div class="flex flex-wrap gap-3">
+        <ul class="ml-5">
           {
             personalInfo.skills.map((skill) => (
-              <span class="border border-black px-3 py-1">{skill}</span>
+              <li class="list-disc mb-1">{skill}</li>
             ))
           }
-        </div>
+        </ul>
       </section>
 
       <!-- Habilidades Blandas -->
       <section
-        class="mb-12 print:break-inside-avoid pb-12 border-b-3 border-primary"
+        class="mb-12 print:break-inside-avoid pb-12 "
       >
         <h2
           class="font-bold text-xl mb-6 pb-4 text-black border-b-3 border-primary"
         >
           Habilidades Blandas
         </h2>
-        <div class="flex flex-wrap gap-3">
+        <ul class="ml-5">
           {
             personalInfo.softSkills?.map((skill) => (
-              <span class="border border-black  px-3 py-1">{skill}</span>
+              <li class="list-disc mb-1">{skill}</li>
             ))
           }
-        </div>
+        </ul>
       </section>
     </article>
 
