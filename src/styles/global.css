@@ -29,6 +29,12 @@
   .titleH3 {
     @apply text-2xl lg:text-4xl font-black font-jost;
   }
+  .titleProyecto{
+    @apply font-jost font-bold text-3xl md:text-6xl
+  }
+  .subtituloProyecto{
+    @apply font-jost font-bold text-2xl
+  }
   .efectoResaltador {
     @apply relative w-fit px-2 inline-block
          after:content-['']

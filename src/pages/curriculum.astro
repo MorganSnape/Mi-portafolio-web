@@ -97,30 +97,9 @@ import { estudios } from "../data/studies";
             </header>
             <main>
               <ul class="space-y-1">
-                <li class="list-disc list-outside pl-2">
-                  Creación y mantenimiento del sistema de diseño alineado a la
-                  marca y escalable.
-                </li>
-                <li class="list-disc list-outside pl-2">
-                  Diseño del flujo de navegación enfocado en usabilidad y
-                  coherencia.
-                </li>
-                <li class="list-disc list-outside pl-2">
-                  Desarrollo de wireframes, mockups y prototipos de alta
-                  fidelidad junto al equipo de desarrollo.
-                </li>
-                <li class="list-disc list-outside pl-2">
-                  Diseño y desarrollo de la landing page del producto orientada
-                  a conversión.
-                </li>
-                <li class="list-disc list-outside pl-2">
-                  Diseño de la interfaz visual asegurando accesibilidad y
-                  consistencia visual.
-                </li>
-                <li class="list-disc list-outside pl-2">
-                  Aplicación de Design Thinking para crear soluciones centradas
-                  en el usuario.
-                </li>
+                {personalInfo.experience?.map((item) => (
+                  <li class="list-disc list-outside pl-2">{item}</li>
+                ))}
               </ul>
             </main>
             <div class="">

@@ -5,10 +5,7 @@ export interface Proyect {
   nameProject: string;
   name: string;
   date: string;
-  duration: string;
-  constraints?: string;
-  myRole: string;
-  client: string;
+  details?: ProyectDetail[];
   shortDescription: string; //Breve descripción del proyecto
   projectType?: string; // E-commers , app etc
   brandDescription?: string; // Descripción de la marca
@@ -18,6 +15,12 @@ export interface Proyect {
   linkFigma?: string;
   linkGit?: string;
   linkWebsite?: string;
+}
+
+export interface ProyectDetail {
+  label: string;
+  value: string;
+  icon: string;
 }
 
 export type ProyectChallenge = {

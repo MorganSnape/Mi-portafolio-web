@@ -10,6 +10,7 @@ export interface PersonalInfo {
   website?: string;
   birthDate?: string;
   summary: string;
+  experience?: string[];
   skills: string[];
   softSkills?: string[];
   languages?: string[];
@@ -27,6 +28,14 @@ export const personalInfo: PersonalInfo = {
   behance: "https://www.behance.net/gabriellangeles",
   birthDate: "2000",
   summary: "Vengo del mundo de la atención al cliente, donde aprendí que la empatía es la herramienta más poderosa para resolver problemas. Hoy, esa misma empatía es la que guía mi proceso como Diseñadora UX/UI y Desarrolladora Frontend. \n\n Me apasiona el reto de transformar una necesidad de negocio en un flujo de navegación fluido y, posteriormente, en una interfaz funcional y estética. Mi formación autodidacta y académica (SENA, Google, Oracle) me ha dado la versatilidad necesaria para adaptarme a equipos ágiles y proyectos de alto impacto, como mi reciente trabajo en el sistema de diseño para Mvp KunturWing. Estoy lista para dar mi siguiente paso profesional a través de mis pasantías de Diseño Gráfico mediante a un contrato de aprendizaje, aportando un valor agregado en diseño digital y tecnología",
+  experience: [
+    "Creación y mantenimiento del sistema de diseño alineado a la marca y escalable.",
+    "Diseño del flujo de navegación enfocado en usabilidad y coherencia.",
+    "Desarrollo de wireframes, mockups y prototipos de alta fidelidad junto al equipo de desarrollo.",
+    "Diseño y desarrollo de la landing page del producto orientada a conversión.",
+    "Diseño de la interfaz visual asegurando accesibilidad y consistencia visual.",
+    "Aplicación de Design Thinking para crear soluciones centradas en el usuario.",
+  ],
   skills: [
     "UX/UI: Figma, Design Systems, UX Research, Wireframing y Prototipado",
     "Frontend: React, JavaScript, Astro, Tailwind CSS, HTML5/CSS3",

@@ -3,10 +3,15 @@ import { proyectos } from "@/data/portfolio.ts";
 
 import Layout from "@/layouts/Layout.astro";
 import Footer from "@/components/Footer.astro";
+import Investigacion from "@/components/PaginaDinamica/Investigacion.astro";
+import DefinicionProblema from "@/components/PaginaDinamica/DefinicionProblema.astro";
+import Ideacion from "@/components/PaginaDinamica/Ideacion.astro";
+import Diseño from "@/components/PaginaDinamica/Diseño.astro";
 import { Icon } from "astro-icon/components";
 import RedesBoton from "@/components/RedesBoton.astro";
 import BarNav from "@/components/PaginaDinamica/BarNav.astro";
-import DetailsProyectItem from "@/components/PaginaDinamica/DetailsProyectItem.astro";
+
+import Estrella from "@/assets/estrella.svg";
 
 export async function getStaticPaths() {
   return proyectos.flatMap((proyecto) => {
@@ -30,15 +35,12 @@ const {
   projectType,
   brandDescription,
   frontPage,
-  duration,
-  myRole,
-  client,
   linkFigma,
   linkWebsite,
   shortDescription,
   descriptionProject,
-  constraints,
   tags,
+  details,
 } = proyecto;
 ---
 
@@ -68,9 +70,12 @@ const {
         class="flex flex-col gap-4 items-start w-11/12 max-w-[1120px] pb-8 pt-20"
       >
         <h1 class="titleH3 text-center font-bold font-jost">
-          {nameProject} - {myRole}
+          {nameProject}
+          <span class="text-primary">
+            - {details?.find((item) => item.label === "My rol")?.value}
+          </span>
         </h1>
-        <p class="text-lg lg:text-xl font-medium leading-tight">
+        <p class="text-base font-medium leading-tight">
           {shortDescription}
         </p>
         <ul
@@ -82,7 +87,7 @@ const {
             >
               <img
                 src="/images/Foto.png"
-                alt="Foto de Gabsriela Ferrer usando un sueter rosa y sonriendo."
+                alt="Foto de Gabriela Ferrer usando un sueter rosa y sonriendo."
                 class="w-full h-full object-cover object-top"
               />
             </div>
@@ -106,80 +111,90 @@ const {
       <img
         src={frontPage}
         alt={`Portada del proyecto ${name}`}
-        class="h-[220px] md:h-[420px] w-full object-cover"
+        class="h-[220px] md:h-[420px] w-full object-cover border-y-2 border-black"
       />
+      <ul
+        class="w-full bg-[#d3a79e]/20 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-4 pt-6 pb-2 px-4 items-start"
+      >
+        {
+          details?.map((detail) => (
+            <li class="flex flex-col justify-center gap-2 text-center">
+              <div class="flex flex-row justify-center items-center gap-2 font-semibold">
+                <Icon name={detail.icon} class="text-lg md:text-xl" />
+                {detail.label}
+              </div>
+              <p class="text-sm md:text-base">{detail.value}</p>
+            </li>
+          ))
+        }
+      </ul>
     </section>
 
-    <section
-      id="acerca"
-      class="w-11/12 max-w-[1120px] flex flex-col gap-8 mb-8"
-    >
-      {
-        brandDescription && (
-          <div class="flex flex-row gap-6 items-stretch w-fit">
-            <div class="w-3 bg-primary" />
-            <p class="italic text-sm md:text-base">{brandDescription}</p>
-          </div>
-        )
-      }
-      <h2 class="title-h2 efectoResaltador">
-        Acerca de {name}
-        {projectType}
-      </h2>
-      <p
-        class="text-pretty text-sm lg:text-base font-medium whitespace-pre-wrap"
-      >
-        {descriptionProject}
-      </p>
-      <div
-        class="bg-primary border-2 border-black rounded-xl md:rounded-2xl overflow-hidden md:w-10/12 max-w-4xl mx-auto"
-      >
+    <div class="w-11/12 max-w-[1120px] flex flex-col gap-20 mb-8">
+      <section id="acerca" class="flex flex-col gap-12">
+        {
+          brandDescription && (
+            <p class="italic text-sm md:text-base border-l-8 border-primary pl-4">
+              {brandDescription}
+            </p>
+          )
+        }
         <div
-          class="h-10 bg-white flex flex-row items-center gap-2 px-4 border-b-4 border-black"
+          class="grid grid-cols-1 md:grid-cols-[400px_1fr] gap-8 md:gap-12 items-center"
         >
-          <div class="h-3 w-3 bg-black rounded-full"></div>
-          <div class="h-3 w-3 bg-black rounded-full"></div>
-          <div class="h-3 w-3 bg-black rounded-full"></div>
-        </div>
-        <div class="p-4 lg:px-6 lg:py-8">
-          <ul
-            class="bg-primary w-full text-white font-medium text-sm md:text-base grid grid-cols-3 gap-4"
+          <h2 class="titleProyecto">
+            Contexto del <br /> proyecto
+          </h2>
+          <p
+            class="text-balance text-sm lg:text-base font-medium whitespace-pre-wrap"
           >
-            <DetailsProyectItem
-              detailName="Empresa"
-              content={name}
-              icon="bxs:briefcase"
-            />
-
-            <DetailsProyectItem
-              detailName="My rol"
-              content={myRole}
-              icon="bxs:user"
-            />
-            <DetailsProyectItem
-              detailName="Duración"
-              content={duration}
-              icon="bxs:time"
-            />
-            <DetailsProyectItem
-              detailName="Tipo de negocio"
-              content="Híbrido B2C y B2B"
-              icon="bxs:briefcase"
-            />
-            <DetailsProyectItem
-              detailName="Tipo de proyecto"
-              content={client}
-              icon="bxs:briefcase"
-            />
-            <DetailsProyectItem
-              detailName="Restricciones"
-              content={constraints}
-              icon="bxs:briefcase"
-            />
-          </ul>
+            {descriptionProject}
+          </p>
         </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-40">
+          <div class="flex flex-col gap-4">
+            <div class="flex flex-row gap-4 items-center">
+              <Estrella class="h-8 w-8" />
+              <h3 class="subtituloProyecto">Objetivo del negocio</h3>
+            </div>
+            <p class="text-balance">
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex
+            </p>
+          </div>
+          <div class="flex flex-col gap-4">
+            <div class="flex flex-row gap-4 items-center">
+              <Estrella class="h-8 w-8" />
+              <h3 class="subtituloProyecto">Objetivo del usuario</h3>
+            </div>
+            <p class="text-balance">
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex
+            </p>
+          </div>
+        </div>
+      </section>
+      <Investigacion />
+      <DefinicionProblema />
+      <Ideacion />
+      <div class="flex flex-col gap-12">
+        <h2 class="titleProyecto">Pruebas</h2>
+        <p>
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum."
+        </p>
       </div>
-    </section>
+    </div>
+    <Diseño />
   </main>
+  <Footer />
 </Layout>
-<Footer />
