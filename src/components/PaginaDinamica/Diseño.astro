@@ -1,19 +1,41 @@
+---
+import type { ProyectVisualDesign } from "@/models";
+
+type Props = {
+  visualDesign?: ProyectVisualDesign;
+};
+
+const { visualDesign } = Astro.props;
+---
+
 <div class="w-11/12 max-w-[1120px]">
   <h2 class="titleProyecto mb-12">Diseño visual y UI</h2>
 </div>
-<section class="w-full flex flex-col">
-  <img
-    class="w-full"
-    src="/images/BaseImagen.jpg"
-    alt="Imagen de investigación"
-  />
-  <video controls class="w-full h-[80vh]">
-    <source src="/videos/videoEjemplo.mp4" type="video/mp4" />
-    Tu navegador no soporta este video
-  </video>
-  <img
-    class="w-full"
-    src="/images/BaseImagen.jpg"
-    alt="Imagen de investigación"
-  />
+<section class="w-full flex flex-col gap-8">
+  {
+    visualDesign?.kitUiImage && (
+      <img
+        class="w-full"
+        src={visualDesign?.kitUiImage}
+        alt={`Diseño visual kitUiImage`}
+      />
+    )
+  }
+  {
+    visualDesign?.video ? (
+      <video controls class="w-full h-[80vh]">
+        <source src={visualDesign.video} type="video/mp4" />
+        Tu navegador no soporta este video
+      </video>
+    ) : null
+  }
+  {
+    visualDesign?.mockupImage && (
+      <img
+        class="w-full"
+        src={visualDesign?.mockupImage}
+        alt={`Diseño visual mockupImage`}
+      />
+    )
+  }
 </section>

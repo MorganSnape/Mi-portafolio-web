@@ -1,15 +1,22 @@
 export interface Proyect {
-  type: ProyectType[]
+  type: ProyectType[];
   slug: string;
-  specialTag?:string;
+  specialTag?: string;
   nameProject: string;
   name: string;
   date: string;
   details?: ProyectDetail[];
-  shortDescription: string; //Breve descripción del proyecto
-  projectType?: string; // E-commers , app etc
-  brandDescription?: string; // Descripción de la marca
+  shortDescription: string;
+  projectType?: string;
+  brandDescription?: string;
   descriptionProject: string;
+  objectiveBusiness?: string;
+  objectiveUser?: string;
+  research?: ProyectResearch;
+  problemDefinition?: ProyectProblemDefinition;
+  ideation?: ProyectIdeation;
+  testing?: ProyectTesting;
+  visualDesign?: ProyectVisualDesign;
   tags?: string[];
   frontPage: string;
   linkFigma?: string;
@@ -23,6 +30,44 @@ export interface ProyectDetail {
   icon: string;
 }
 
+export interface ProyectBenchmarkItem {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+export interface ProyectResearch {
+  overview?: string;
+  benchmark?: ProyectBenchmarkItem[];
+  strengths?: string;
+  opportunity?: string;
+  image?: string;
+}
+
+export interface ProyectProblemDefinition {
+  description?: string;
+  userPersona?: string;
+  personaImage?: string;
+}
+
+export interface ProyectIdeation {
+  overview?: string;
+  sitemapImage?: string;
+  userFlowImage?: string;
+  sketchImage?: string;
+  wireframeImage?: string;
+}
+
+export interface ProyectTesting {
+  summary?: string;
+}
+
+export interface ProyectVisualDesign {
+  kitUiImage?:string;
+  mockupImage?:string;
+  video?: string;
+}
+
 export type ProyectChallenge = {
   name: string;
   description: string;
@@ -32,7 +77,7 @@ export type ProyectChallenge = {
 export type ProyectDesignPrinciple = {
   name: string;
   description: string;
-}
+};
 
 export type ProyectType = "UX" | "Front";
 

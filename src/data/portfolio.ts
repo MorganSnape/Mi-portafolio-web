@@ -18,12 +18,56 @@ export const proyectos: Proyect[] = [
       { label: "Restricción", value: "Propuesta de valor no definida", icon: "bxs:briefcase" },
     ],
     brandDescription: "Amarilla Garden es una marca artesanal con 5 años de evolución, que inició vendiendo suculentas y expandió su oferta a piezas de concreto y velas hechas a mano. Se destaca por ofrecer productos 100% artesanales y experiencias a través de talleres creativos.",
-    descriptionProject: "Proyecto pro-bono enfocado en crear un e-commerce para digitalizar el catálogo de la marca y abrir un nuevo canal de ventas. El objetivo fue mantener su esencia artesanal mediante una experiencia moderna, accesible e intuitiva, facilitando la compra, atrayendo nuevos clientes y promoviendo sus talleres. \n\n Como única diseñadora UX/UI, participé en investigación con stakeholders, ideación, iteración de propuestas y validación con usuarios.",
+    descriptionProject: "Proyecto pro-bono enfocado en crear un e-commerce para digitalizar el catálogo de la marca y abrir un nuevo canal de ventas. El objetivo fue mantener su esencia artesanal mediante una experiencia moderna, accesible e intuitiva, facilitando la compra, atrayendo nuevos clientes y promoviendo sus talleres.\n\n Como única diseñadora UX/UI, participé en investigación con stakeholders, ideación, iteración de propuestas y validación con usuarios.",
+    objectiveBusiness: "Digitalizar el catálogo artesanal y abrir un canal de venta online que preserve la experiencia de marca.",
+    objectiveUser: "Facilitar a los clientes la compra de productos hechos a mano mediante un recorrido claro, visual y seguro.",
+    research: {
+      overview: "Investigación cualitativa y benchmarking para entender el comportamiento de usuarios que buscan decoración artesanal online.",
+      benchmark: [
+        {
+          title: "Tiendas artesanales en marketplaces",
+          description: "Comparativa de experiencia de compra, navegación de productos y opciones de entrega.",
+          image: "/images/proyectos/amarilla/Empresa.webp",
+        },
+        {
+          title: "E-commerce de plantas y velas",
+          description: "Análisis de organización de categorías, ficha de producto y proceso de pago.",
+          image: "/images/BaseImagen.jpg",
+        },
+        {
+          title: "Sitios de talleres creativos",
+          description: "Estudio de cómo comunican la propuesta de valor y las experiencias presenciales.",
+          image: "/images/BaseImagen.jpg",
+        },
+      ],
+      strengths: "Valor artesanal claro, productos únicos y taller creativo como diferenciador.",
+      opportunity: "Mejorar la claridad del catálogo y el proceso de compra para reducir la fricción en compradores indecisos.",
+      image: "/images/proyectos/amarilla/grafica.jpg",
+    },
+    problemDefinition: {
+      description: "Los visitantes no encuentran un camino de compra claro ni información completa de materiales, lo que dificulta la decisión y reduce la conversión.",
+      userPersona: "Compradora creativa que busca piezas artesanales únicas para su hogar.",
+      personaImage: "/images/BaseImagen.jpg",
+    },
+    ideation: {
+      overview: "Generamos una estructura con categorías concretas, fichas visuales y un checkout accesible para un público menos técnico.",
+      sitemapImage: "/images/BaseImagen.jpg",
+      userFlowImage: "/images/BaseImagen.jpg",
+      sketchImage: "/images/BaseImagen.jpg",
+      wireframeImage: "/images/BaseImagen.jpg",
+    },
+    testing: {
+      summary: "Evaluamos la navegación con usuarios para asegurar que encuentren productos en menos de 3 pasos y comprendan fácilmente las opciones de envío.",
+    },
+    visualDesign: {
+      kitUiImage:"/images/BaseImagen.jpg",
+      mockupImage:"/images/BaseImagen.jpg",
+      video: "/videos/videoEjemplo.mp4",
+    },
     frontPage: "/images/Amarilla.webp",
     linkWebsite: "https://www.amarillagarden.com",
     linkGit: "https://github.com/user/portfolio",
-    tags: ["UX/UI","Figma", "FigJam", "Astro", "TypeScript", "Tailwind"],
-
+    tags: ["UX/UI", "Figma", "FigJam", "Astro", "TypeScript", "Tailwind"],
   },
   {
     type: ["UX"],
@@ -42,10 +86,36 @@ export const proyectos: Proyect[] = [
     ],
     brandDescription: "Se trata de una Plataforma de reseñas tipo red social enfocada en permitir a usuarios de cualquier perfil compartir su opinión sobre productos tecnológicos, ropa, locales comerciales y servicios.",
     descriptionProject: "Este proyecto fue desarrollado como parte del curso Fundamentos de UX/UI, aplicando un enfoque de diseño centrado en el usuario, respaldado por procesos de investigación, design thinking y prototipado en Figma.\n\n Se trata de una Plataforma de reseñas tipo red social enfocada en permitir a usuarios de cualquier perfil compartir su opinión sobre productos tecnológicos, ropa, locales comerciales y servicios. La app permite crear publicaciones personalizadas con el nombre del producto o local, precio, lugar de adquisición y reseña personal. Además, incorpora funciones de búsqueda y filtrado inteligentes, mostrando un promedio visual de opiniones para cada ítem, con el fin de facilitar decisiones informadas.",
+    objectiveBusiness: "Validar el diseño de una red social de reseñas que simplifique la publicación y consulta de opiniones.",
+    objectiveUser: "Permitir al usuario expresar reseñas claras y descubrir recomendaciones rápidas para productos y servicios.",
+    research: {
+      overview: "Investigación de plataformas de reseñas y redes sociales para identificar patrones de confianza, interacción y visualización de opiniones.",
+      
+      strengths: "Interfaz simple, enfoque en el contenido generado por usuario y filtros rápidos.",
+      opportunity: "Reducir la fricción para crear reseñas y facilitar la exploración de productos relevantes.",
+      image: "/images/BaseImagen.jpg",
+    },
+    problemDefinition: {
+      description: "Los usuarios necesitan una forma intuitiva de compartir reseñas sin sentirse abrumados por formularios extensos.",
+      userPersona: "Usuario tecnológico que busca recomendaciones confiables y rápidas.",
+      personaImage: "/images/BaseImagen.jpg",
+    },
+    ideation: {
+      overview: "Diseñamos un flujo de publicación breve, feed de reseñas y filtros que priorizan la claridad y la usabilidad.",
+      userFlowImage: "/images/BaseImagen.jpg",
+      sketchImage: "/images/BaseImagen.jpg",
+      wireframeImage: "/images/BaseImagen.jpg",
+    },
+    testing: {
+      summary: "Probamos la capacidad de los usuarios para publicar reseñas en menos de un minuto y encontrar productos recomendados fácilmente.",
+    },
+    visualDesign: {
+      images: ["/images/BaseImagen.jpg", "/images/BaseImagen.jpg"],
+      video: "/videos/videoEjemplo.mp4",
+    },
     frontPage: "/images/Portada-Commet.webp",
     linkFigma: "https://www.figma.com/design/q7khsSBJocn9TTIOirQoid/Commet.app?node-id=1-925&t=KuJk3EwziEKo4Woi-1",
     tags: ["Figma"],
-
   },
   {
     type: ["Front"],
@@ -63,10 +133,11 @@ export const proyectos: Proyect[] = [
     ],
     shortDescription: "Desarrollo de un encriptador y desencriptador del mismo texto",
     descriptionProject: "Proyecto desarrollado como parte del Diplomado en Programación Frontend con JavaScript, en el cual se aplicaron principios fundamentales de desarrollo web moderno como Mobile First, junto con tecnologías clave: HTML5, CSS3, JavaScript, y herramientas de diseño como Figma.",
+    objectiveBusiness: "Demostrar habilidades de Front End con una herramienta interactiva de cifrado y descifrado.",
+    objectiveUser: "Ofrecer una interfaz sencilla para encriptar y desencriptar texto sin pasos técnicos complejos.",
     frontPage: "/images/portada-encriptador-texto.webp",
     linkGit: "https://github.com/MorganSnape/Encriptador-Texto.git",
     linkWebsite: "https://encriptador-texto-liard.vercel.app/",
     tags: ["HTML", "CSS", "JavaScript"],
   },
 ];
-

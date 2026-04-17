@@ -1,3 +1,13 @@
+---
+import type { ProyectProblemDefinition } from "@/models";
+
+type Props = {
+  problemDefinition?: ProyectProblemDefinition;
+};
+
+const { problemDefinition } = Astro.props;
+---
+
 <section class="flex flex-col gap-12">
   <div
     class="grid grid-cols-1 md:grid-cols-[400px_1fr] gap-8 md:gap-12 items-center"
@@ -8,20 +18,17 @@
     <p
       class="text-balance text-sm lg:text-base font-medium whitespace-pre-wrap"
     >
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum."
+      {problemDefinition?.description}
     </p>
   </div>
-  <h3 class="subtituloProyecto efectoResaltador">User Person</h3>
+  <h3 class="subtituloProyecto efectoResaltador">User Persona</h3>
+  <p>
+    {problemDefinition?.userPersona ?? "User Persona"}
+  </p>
 
   <img
     class="w-full"
-    src="/images/BaseImagen.jpg"
-    alt="Imagen de investigación"
+    src={problemDefinition?.personaImage ?? "/images/BaseImagen.jpg"}
+    alt={problemDefinition?.userPersona ?? "Imagen de investigación"}
   />
 </section>
