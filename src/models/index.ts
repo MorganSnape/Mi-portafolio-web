@@ -32,6 +32,7 @@ export interface ProyectDetail {
 
 export interface ProyectBenchmarkItem {
   title: string;
+  competitionType: string;
   description: string;
   image?: string;
 }

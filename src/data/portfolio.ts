@@ -22,27 +22,30 @@ export const proyectos: Proyect[] = [
     objectiveBusiness: "Digitalizar el catálogo artesanal y abrir un canal de venta online que preserve la experiencia de marca.",
     objectiveUser: "Facilitar a los clientes la compra de productos hechos a mano mediante un recorrido claro, visual y seguro.",
     research: {
-      overview: "Investigación cualitativa y benchmarking para entender el comportamiento de usuarios que buscan decoración artesanal online.",
+      overview: "Se realizó una investigación cualitativa y cuantitativa a través de encuestas con el objetivo de comprender la percepción de la clientela de Amarilla Garden frente al uso de una página web como canal de compra. Además, se identificaron las necesidades de contenido y los principales usos esperados de la plataforma.\n\n De forma complementaria, se desarrolló un análisis competitivo que permitió evaluar la competencia directa e indirecta, identificar sus fortalezas y debilidades, y reconocer oportunidades estratégicas para el posicionamiento de la marca en el entorno digital.",
       benchmark: [
         {
-          title: "Tiendas artesanales en marketplaces",
-          description: "Comparativa de experiencia de compra, navegación de productos y opciones de entrega.",
-          image: "/images/proyectos/amarilla/Empresa.webp",
+          title: "Simetriadeco",
+          competitionType: "Competencia directa",
+          description: "Fabrica de velas con mensajes personalizados con aroma",
+          image: "/images/proyectos/amarilla/simetria.jpg",
         },
         {
-          title: "E-commerce de plantas y velas",
-          description: "Análisis de organización de categorías, ficha de producto y proceso de pago.",
-          image: "/images/BaseImagen.jpg",
+          title: "Ornamental",
+          competitionType: "Competencia directa",
+          description: "Fabrica de velas de cera vegetal , wax ment y ambientadores.",
+          image: "/images/proyectos/amarilla/ornamental.jpg",
         },
         {
-          title: "Sitios de talleres creativos",
-          description: "Estudio de cómo comunican la propuesta de valor y las experiencias presenciales.",
-          image: "/images/BaseImagen.jpg",
+          title: "Meiso",
+          competitionType: "Competencia indirecta",
+          description: "Fabrica de decoraciones de concreto ;materas, mobiliario, jarrones",
+          image: "/images/proyectos/amarilla/meiso.jpg",
         },
       ],
       strengths: "Valor artesanal claro, productos únicos y taller creativo como diferenciador.",
       opportunity: "Mejorar la claridad del catálogo y el proceso de compra para reducir la fricción en compradores indecisos.",
-      image: "/images/proyectos/amarilla/grafica.jpg",
+      image: "/images/proyectos/amarilla/metricasAmarilla.png",
     },
     problemDefinition: {
       description: "Los visitantes no encuentran un camino de compra claro ni información completa de materiales, lo que dificulta la decisión y reduce la conversión.",
@@ -60,8 +63,8 @@ export const proyectos: Proyect[] = [
       summary: "Evaluamos la navegación con usuarios para asegurar que encuentren productos en menos de 3 pasos y comprendan fácilmente las opciones de envío.",
     },
     visualDesign: {
-      kitUiImage:"/images/BaseImagen.jpg",
-      mockupImage:"/images/BaseImagen.jpg",
+      kitUiImage: "/images/BaseImagen.jpg",
+      mockupImage: "/images/BaseImagen.jpg",
       video: "/videos/videoEjemplo.mp4",
     },
     frontPage: "/images/Amarilla.webp",
@@ -90,7 +93,7 @@ export const proyectos: Proyect[] = [
   //   objectiveUser: "Permitir al usuario expresar reseñas claras y descubrir recomendaciones rápidas para productos y servicios.",
   //   research: {
   //     overview: "Investigación de plataformas de reseñas y redes sociales para identificar patrones de confianza, interacción y visualización de opiniones.",
-      
+
   //     strengths: "Interfaz simple, enfoque en el contenido generado por usuario y filtros rápidos.",
   //     opportunity: "Reducir la fricción para crear reseñas y facilitar la exploración de productos relevantes.",
   //     image: "/images/BaseImagen.jpg",

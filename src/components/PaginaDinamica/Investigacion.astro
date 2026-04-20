@@ -11,7 +11,7 @@ const { research } = Astro.props;
 
 <section class="flex flex-col gap-12">
   <h2 class="titleProyecto">Investigación</h2>
-  <p>
+  <p class="whitespace-pre-wrap">
     {research?.overview }
   </p>
   {
@@ -30,7 +30,7 @@ const { research } = Astro.props;
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
   {
     (research?.benchmark ?? []).map((item) => (
-      <article class="bg-primary border-2 border-black rounded-xl md:rounded-2xl overflow-hidden">
+      <article class="border-2 border-black rounded-xl md:rounded-2xl overflow-hidden">
         <div class="h-10 bg-white flex flex-row items-center gap-2 px-4 border-b-4 border-black">
           <div class="h-3 w-3 bg-black rounded-full" />
           <div class="h-3 w-3 bg-black rounded-full" />
@@ -40,12 +40,13 @@ const { research } = Astro.props;
           <img
             src={item.image ?? "/images/BaseImagen.jpg"}
             alt={item.title}
-            class="h-32 w-32 object-cover rounded-full"
+            class="h-32 w-32 object-cover rounded-full border-2 border-black"
           />
-          <footer class="font-semibold text-white text-lg text-center">
+          <footer class="font-semibold text-lg text-center">
             {item.title}
           </footer>
-          <p class="text-sm text-white text-center">{item.description}</p>
+          <p class="text-center">{item.competitionType}</p>
+          <p class="text-sm text-center">{item.description}</p>
         </div>
       </article>
     ))
