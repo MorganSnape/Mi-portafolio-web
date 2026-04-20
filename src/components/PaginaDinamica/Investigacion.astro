@@ -74,4 +74,17 @@ const { research } = Astro.props;
   </div>
 
 )}
+
+{research?.userPersona && (
+    <h3 class="subtituloProyecto efectoResaltador">User Persona</h3>
+  <p>
+  {research.userPersona.decription}
+  </p>
+
+  <img
+    class="w-full"
+    src={research?.userPersona.image}
+    alt={research?.userPersona ?? "Imagen de investigación"}
+  />
+)}
 </section>

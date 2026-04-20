@@ -22,7 +22,7 @@ export const proyectos: Proyect[] = [
     objectiveBusiness: "Digitalizar el catálogo artesanal y abrir un canal de venta online que preserve la experiencia de marca.",
     objectiveUser: "Facilitar a los clientes la compra de productos hechos a mano mediante un recorrido claro, visual y seguro.",
     research: {
-      overview: "Se realizó una investigación cualitativa y cuantitativa a través de encuestas con el objetivo de comprender la percepción de la clientela de Amarilla Garden frente al uso de una página web como canal de compra. Además, se identificaron las necesidades de contenido y los principales usos esperados de la plataforma.\n\n De forma complementaria, se desarrolló un análisis competitivo que permitió evaluar la competencia directa e indirecta, identificar sus fortalezas y debilidades, y reconocer oportunidades estratégicas para el posicionamiento de la marca en el entorno digital.",
+      overview: "Se realizó una investigación cualitativa y cuantitativa a través de encuestas con el objetivo de comprender la percepción de la clientela de Amarilla Garden tanto sobre la marca como sobre el uso de una página web como canal de compra. A partir de esta investigación, se identificaron puntos de dolor, oportunidades de mejora, necesidades de contenido y los principales usos esperados de la plataforma.\n\n De forma complementaria, se desarrolló un análisis competitivo que permitió evaluar la competencia directa e indirecta, identificar sus fortalezas y debilidades, y reconocer oportunidades estratégicas para el posicionamiento de la marca en el entorno digital.",
       benchmark: [
         {
           title: "Simetriadeco",
@@ -45,12 +45,15 @@ export const proyectos: Proyect[] = [
       ],
       strengths: "Valor artesanal claro, productos únicos y taller creativo como diferenciador.",
       opportunity: "Mejorar la claridad del catálogo y el proceso de compra para reducir la fricción en compradores indecisos.",
+      userPersona: {
+        decription: "Basándome en los resultados de la encuenta, creé nuestra persona de usuario, Elena Giraldo.",
+        image: "/images/proyectos/amarilla/userPersonaAmarilla.png",
+      },
       image: "/images/proyectos/amarilla/metricasAmarilla.png",
     },
     problemDefinition: {
       description: "Los visitantes no encuentran un camino de compra claro ni información completa de materiales, lo que dificulta la decisión y reduce la conversión.",
       userPersona: "Compradora creativa que busca piezas artesanales únicas para su hogar.",
-      personaImage: "/images/BaseImagen.jpg",
     },
     ideation: {
       overview: "Generamos una estructura con categorías concretas, fichas visuales y un checkout accesible para un público menos técnico.",

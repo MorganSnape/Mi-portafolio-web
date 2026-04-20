@@ -37,12 +37,18 @@ export interface ProyectBenchmarkItem {
   image?: string;
 }
 
+export interface UserPersona {
+  decription: string;
+  image: string;
+}
+
 export interface ProyectResearch {
   overview?: string;
   benchmark?: ProyectBenchmarkItem[];
   strengths?: string;
   opportunity?: string;
   image?: string;
+  userPersona?: UserPersona;
 }
 
 export interface ProyectProblemDefinition {
@@ -64,8 +70,8 @@ export interface ProyectTesting {
 }
 
 export interface ProyectVisualDesign {
-  kitUiImage?:string;
-  mockupImage?:string;
+  kitUiImage?: string;
+  mockupImage?: string;
   video?: string;
 }
 
