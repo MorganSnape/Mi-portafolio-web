@@ -36,23 +36,25 @@ const { research } = Astro.props;
           <div class="h-3 w-3 bg-black rounded-full" />
           <div class="h-3 w-3 bg-black rounded-full" />
         </div>
-        <div class="min-w-80 p-4 lg:px-6 lg:py-8 flex flex-col items-center gap-4">
+        <div class="min-w-80 p-4 lg:px-6 lg:py-8 flex flex-col items-center gap-4 bg-primary">
           <img
             src={item.image ?? "/images/BaseImagen.jpg"}
             alt={item.title}
-            class="h-32 w-32 object-cover rounded-full border-2 border-black"
+            class="h-32 w-32 object-cover rounded-full border-8 border-white shadow-2xl"
           />
-          <footer class="font-semibold text-lg text-center">
-            {item.title}
-          </footer>
+          <footer class="font-semibold  text-center flex flex-col gap-2 text-white">
+           <p class="text-xl font-jost">
+             {item.title}
+            </p>
           <p class="text-center">{item.competitionType}</p>
           <p class="text-sm text-center">{item.description}</p>
+          </footer>
         </div>
       </article>
     ))
   }
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-40">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-40">
     <div class="flex flex-col gap-4">
       <div class="flex flex-row gap-4 items-center">
         <Estrella class="h-8 w-8" />
@@ -84,7 +86,7 @@ const { research } = Astro.props;
   <img
     class="w-full"
     src={research?.userPersona.image}
-    alt={research?.userPersona ?? "Imagen de investigación"}
+    alt="Imagen de investigación user persona"
   />
 )}
 </section>

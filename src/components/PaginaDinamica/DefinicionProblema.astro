@@ -1,5 +1,8 @@
 ---
 import type { ProyectProblemDefinition } from "@/models";
+import { Icon } from "astro-icon/components";
+import Comillas from "@/assets/comillas.svg";
+import Estrella from "@/assets/estrella.svg";
 
 type Props = {
   problemDefinition?: ProyectProblemDefinition;
@@ -9,17 +12,180 @@ const { problemDefinition } = Astro.props;
 ---
 
 <section class="flex flex-col gap-12">
-  <div
-    class="grid grid-cols-1 md:grid-cols-[400px_1fr] gap-8 md:gap-12 items-center"
-  >
-    <h2 class="titleProyecto">
-      Definición del <br /> problema
-    </h2>
-    <p
-      class="text-balance text-sm lg:text-base font-medium whitespace-pre-wrap"
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+    <div class="flex flex-col gap-4">
+      <h2 class="titleProyecto">
+        Definición del <br /> problema
+      </h2>
+      <p
+        class="text-balance text-sm lg:text-base font-medium whitespace-pre-wrap"
+      >
+        {problemDefinition?.description}
+      </p>
+    </div>
+    <div class="relative">
+      <div
+        class="tag-me bg-tag font-bold absolute -right-4 sm:-right-8 md:-right-12 top-4 sm:top-6 md:top-8 lg:top-14 w-fit py-2 px-4 text-[clamp(0.1rem,_0.5rem_+_0.727vw,_0.8rem)] z-40 rounded-lg"
+      >
+        100% Artesanal
+      </div>
+      <img
+        src="/images/Amarilla.webp"
+        alt=""
+        class="h-40 sm:h-48 md:h-56 w-full object-cover border-2 border-black rounded-2xl -rotate-2"
+      />
+    </div>
+  </section>
+  <section class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+    <article class="flex flex-col gap-8">
+      <header class="flex flex-row gap-4 items-center">
+        <div
+          class="bg-primary rounded-full p-2 border-2 border-black shadow-[4px_4px_0px_#141414]"
+        >
+          <Icon
+            name="fa6-solid:exclamation"
+            height={22}
+            width={22}
+            class="text-white"
+          />
+        </div>
+        <h3 class="subtituloProyecto">Objetivo del negocio</h3>
+      </header>
+      <p
+        class="w-full min-h-64 md:min-h-96 shadow-[4px_4px_0px_#141414] md:shadow-[6px_6px_0px_#141414] rounded-2xl border-2 border-black p-4 md:p-8"
+      >
+        Al contrario del pensamiento popular, el texto de Lorem Ipsum no es
+        simplemente texto aleatorio. Tiene sus raices en una pieza cl´sica de la
+        literatura del Latin, que data del año 45 antes de Cristo, haciendo que
+        este adquiera mas de 2000 años de antiguedad. Richard McClintock, un
+        profesor de Latin de la Universidad de Hampden-Sydney en Virginia
+      </p>
+    </article>
+    <article class="flex flex-col gap-8">
+      <header class="flex flex-row gap-4 items-center">
+        <div
+          class="bg-primary rounded-full p-2 border-2 border-black shadow-[4px_4px_0px_#141414]"
+        >
+          <Icon
+            name="fa6-solid:face-frown"
+            height={22}
+            width={22}
+            class="text-white"
+          />
+        </div>
+        <h3 class="subtituloProyecto">Puntos de dolor</h3>
+      </header>
+      <div class="flex flex-col gap-3">
+        <div
+          class="flex flex-row gap-4 items-center border-b border-black pb-3"
+        >
+          <div
+            class="bg-tag rounded-lg p-2 border-2 border-black shadow-[4px_4px_0px_#141414]"
+          >
+            <Icon name="fa6-solid:leaf" height={22} width={22} class="" />
+          </div>
+          <p class="text-balance">
+            Al contrario del pensamiento popular, el texto de Lorem
+          </p>
+        </div>
+        <div
+          class="flex flex-row gap-4 items-center border-b border-black pb-3"
+        >
+          <div
+            class="bg-tag rounded-lg p-2 border-2 border-black shadow-[4px_4px_0px_#141414]"
+          >
+            <Icon name="fa6-solid:leaf" height={22} width={22} class="" />
+          </div>
+          <p class="text-balance">
+            Al contrario del pensamiento popular, el texto de Lorem
+          </p>
+        </div>
+        <div
+          class="flex flex-row gap-4 items-center border-b border-black pb-3"
+        >
+          <div
+            class="bg-tag rounded-lg p-2 border-2 border-black shadow-[4px_4px_0px_#141414]"
+          >
+            <Icon name="fa6-solid:leaf" height={22} width={22} class="" />
+          </div>
+          <p class="text-balance">
+            Al contrario del pensamiento popular, el texto de Lorem
+          </p>
+        </div>
+        <div
+          class="flex flex-row gap-4 items-center border-b border-black pb-3"
+        >
+          <div
+            class="bg-tag rounded-lg p-2 border-2 border-black shadow-[4px_4px_0px_#141414]"
+          >
+            <Icon name="fa6-solid:leaf" height={22} width={22} class="" />
+          </div>
+          <p class="text-balance">
+            Al contrario del pensamiento popular, el texto de Lorem
+          </p>
+        </div>
+        <div class="flex flex-row gap-4 items-center pb-3">
+          <div
+            class="bg-tag rounded-lg p-2 border-2 border-black shadow-[4px_4px_0px_#141414]"
+          >
+            <Icon name="fa6-solid:leaf" height={22} width={22} class="" />
+          </div>
+          <p class="text-balance">
+            Al contrario del pensamiento popular, el texto de Lorem
+          </p>
+        </div>
+      </div>
+    </article>
+    <article class="flex flex-col gap-8">
+      <header class="flex flex-row gap-4 items-center">
+        <div
+          class="bg-primary rounded-full p-2 border-2 border-black shadow-[4px_4px_0px_#141414]"
+        >
+          <Icon
+            name="fa6-solid:lightbulb"
+            height={22}
+            width={22}
+            class="text-white"
+          />
+        </div>
+        <h3 class="subtituloProyecto">INSIGHT clave</h3>
+      </header>
+      <div
+        class="w-full min-h-64 md:min-h-96 shadow-[4px_4px_0px_#141414] md:shadow-[6px_6px_0px_#141414] rounded-2xl border-2 border-black p-4 overflow-hidden flex flex-col justify-between"
+      >
+        <Comillas />
+        <p class="p-4">
+          Al contrario del pensamiento popular, el texto de Lorem Ipsum no es
+          simplemente texto aleatorio. Tiene sus raices en una pieza cl´sica de
+          la literatura del Latin, que data del año 45 antes de Cristo, haciendo
+          que este adquiera mas de 2000 años de antiguedad.
+        </p>
+        <div class="flex justify-end w-full">
+          <Comillas class="rotate-180" />
+        </div>
+      </div>
+    </article>
+    <article
+      class="w-full lg:col-span-3 border-2 border-black rounded-2xl p-4 flex flex-col gap-4"
     >
-      {problemDefinition?.description}
-    </p>
-  </div>
-
+      <header class="flex flex-row gap-4 items-center">
+        <div
+          class="bg-primary rounded-full p-2 border-2 border-black shadow-[4px_4px_0px_#141414]"
+        >
+          <Icon
+            name="fa6-solid:question"
+            height={22}
+            width={22}
+            class="text-white"
+          />
+        </div>
+        <h3 class="subtituloProyecto">Objetivo del negocio</h3>
+      </header>
+      <p>
+        Para hacer que un elemento ocupe 3 columnas en CSS Grid, utiliza la
+        propiedad grid-column: span 3; en el elemento hijo. Esto le indica que
+        abarque tres columnas desde su posición inicial. Alternativamente,
+      </p>
+    </article>
+  </section>
 </section>

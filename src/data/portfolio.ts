@@ -49,7 +49,7 @@ export const proyectos: Proyect[] = [
         decription: "Basándome en los resultados de la encuenta, creé nuestra persona de usuario, Elena Giraldo.",
         image: "/images/proyectos/amarilla/userPersonaAmarilla.png",
       },
-      image: "/images/proyectos/amarilla/metricasAmarilla.png",
+      image: "/images/proyectos/amarilla/investigacionAmarilla.png",
     },
     problemDefinition: {
       description: "Los visitantes no encuentran un camino de compra claro ni información completa de materiales, lo que dificulta la decisión y reduce la conversión.",
