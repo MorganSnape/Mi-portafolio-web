@@ -54,22 +54,33 @@ export const proyectos: Proyect[] = [
     problemDefinition: {
       description: "Los visitantes no encuentran un camino de compra claro ni información completa de materiales, lo que dificulta la decisión y reduce la conversión.",
       userPersona: "Compradora creativa que busca piezas artesanales únicas para su hogar.",
+      businessObjective: "Diseñar un e-commerce que refleje la identidad artesanal de Amarilla Garden y acompañe al usuario en una experiencia de compra clara y confiable.",
+      painPoints: [
+        "Los visitantes no encuentran un camino de compra claro.",
+        "Falta información detallada de materiales y dimensiones en los productos.",
+        "La experiencia actual no transmite la calidad artesanal de la marca.",
+        "El proceso de navegación no ayuda a diferenciar categorías y colecciones.",
+        "El checkout no comunica seguridad ni las opciones de envío disponibles."
+      ],
+      insight: "El e-commerce debe conectar emocionalmente con el usuario mostrando la historia artesanal y la transparencia del producto para generar confianza en la compra online.",
+      summaryTitle: "Oportunidad estratégica",
+      summary: "Mejorar la claridad del catálogo y la comunicación de materiales permitirá que los visitantes comprendan rápidamente el valor del producto y se sientan seguros para completar la compra.",
     },
     ideation: {
       overview: "Generamos una estructura con categorías concretas, fichas visuales y un checkout accesible para un público menos técnico.",
-      sitemapImage: "/images/BaseImagen.jpg",
-      userFlowImage: "/images/BaseImagen.jpg",
+      sitemapImage: "/images/proyectos/amarilla/sideMapAmarilla.png",
+      // userFlowImage: "/images/BaseImagen.jpg",
       sketchImage: "/images/BaseImagen.jpg",
       wireframeImage: "/images/BaseImagen.jpg",
     },
-    testing: {
-      summary: "Evaluamos la navegación con usuarios para asegurar que encuentren productos en menos de 3 pasos y comprendan fácilmente las opciones de envío.",
-    },
-    visualDesign: {
-      kitUiImage: "/images/BaseImagen.jpg",
-      mockupImage: "/images/BaseImagen.jpg",
-      video: "/videos/videoEjemplo.mp4",
-    },
+    // testing: {
+    //   summary: "Evaluamos la navegación con usuarios para asegurar que encuentren productos en menos de 3 pasos y comprendan fácilmente las opciones de envío.",
+    // },
+    // visualDesign: {
+    //   kitUiImage: "/images/BaseImagen.jpg",
+    //   mockupImage: "/images/BaseImagen.jpg",
+    //   video: "/videos/videoEjemplo.mp4",
+    // },
     frontPage: "/images/Amarilla.webp",
     linkWebsite: "https://www.amarillagarden.com",
     linkGit: "https://github.com/user/portfolio",

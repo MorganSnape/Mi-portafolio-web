@@ -55,6 +55,11 @@ export interface ProyectProblemDefinition {
   description?: string;
   userPersona?: string;
   personaImage?: string;
+  businessObjective?: string;
+  painPoints?: string[];
+  insight?: string;
+  summaryTitle?: string;
+  summary?: string;
 }
 
 export interface ProyectIdeation {
