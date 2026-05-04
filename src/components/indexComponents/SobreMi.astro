@@ -1,35 +1,6 @@
 ---
 import Subtitulo from "@/components/Subtitulo.astro";
 import NavegadorStacks from "../NavegadorStacks.astro";
-import Hobbies from "../Hobbies.astro";
-import PintarSvg from "@/assets/pintar.svg";
-import CantarSvg from "@/assets/cantar.svg";
-import SenderismoSvg from "@/assets/senderismo.svg";
-import TravelSvg from "@/assets/travel.svg";
-import TejerSvg from "@/assets/tejer.svg";
-
-const hobbies = [
-  {
-    text: "Pintar",
-    svg: PintarSvg,
-  },
-  {
-    text: "Tejer",
-    svg: TejerSvg,
-  },
-  {
-    text: "Cantar",
-    svg: CantarSvg,
-  },
-  {
-    text: "Senderismo",
-    svg: SenderismoSvg,
-  },
-  {
-    text: "Viajar",
-    svg: TravelSvg,
-  },
-];
 ---
 
 <section id="sobre-mi" class="w-screen flex flex-col items-center text-black">
@@ -72,7 +43,7 @@ const hobbies = [
             <div class="h-3 w-3 bg-black rounded-full"></div>
           </div>
           <div class="p-4 lg:px-6 lg:py-8">
-            <h4 class="font-semibold text-white text-xl mb-4 font-jost">
+            <h4 class="font-semibold text-white text-xl mb-4 font-fantabular">
               ¿Qué traigo a la mesa?
             </h4>
             <ul
@@ -95,24 +66,6 @@ const hobbies = [
         </div>
       </div>
     </div>
-
-    <div class="flex flex-col gap-8">
-      <div class="flex flex-col gap-3">
-        <h3 class="titleH3 efectoResaltador">Mis pasatiempos</h3>
-        <p class="text-sm lg:text-base leading-relaxed text-balance">
-          Cuando no estoy diseñando o programando, me gusta disfrutar de
-          actividades creativas y aventureras que alimentan mi inspiración:
-        </p>
-      </div>
-      <div class="flex flex-row justify-between items-center flex-wrap gap-4">
-        {
-          hobbies.map((hobby) => (
-            <Hobbies text="Pintar" svg={hobby.svg} text={hobby.text} />
-          ))
-        }
-      </div>
-    </div>
-
     <div id="stacks" class="py-12">
       <h3 class="titleH3 efectoResaltador m-4">Stacks</h3>
 

@@ -6,8 +6,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        jost: ["var(--font-jost)"],
-        montserrat: ["var(--font-montserrat)"],
+        rethink: ["var(--font-rethink)"],
+        fantabular: ["var(--font-fantabular)"],
       },
     },
   },

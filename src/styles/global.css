@@ -1,16 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #8c659b;
+  --color-primary: #8c529b;
   --color-secondary: #ffe971;
   --color-tertiary: #d1d1d1;
   --color-text-card: #5d5d5d;
-  --color-black: #141414;
+  --color-black: #0B090B;
+  --color-white-cream:#FDF7F5;
+
 
   --color-tag: var(--color-secondary);
 
-  --font-montserrat: "Montserrat", sans-serif;
-  --font-jost: "Jost", sans-serif;
+  
+  --font-rethink: "Rethink Sans", sans-serif;
+  --font-fantabular :"fantabular-mvb", mono;
 }
 
 @layer components {
@@ -24,16 +27,16 @@
     @apply flex flex-row justify-center items-center transition-all duration-150 ease-in-out select-none border-2 border-black font-medium w-fit translate-0 hover:translate-y-1.5 shadow-[0px_4px_0px_#141414] md:shadow-[0px_6px_0px_#141414] hover:shadow-[0px_0px_0px_#141414] disabled:hover:translate-y-0 disabled:hover:shadow-[0px_4px_0px_#141414];
   }
   .title-h2 {
-    @apply text-xl lg:text-3xl font-bold font-jost;
+    @apply text-xl lg:text-3xl font-bold font-fantabular;
   }
   .titleH3 {
-    @apply text-2xl lg:text-4xl font-black font-jost;
+    @apply text-2xl lg:text-4xl font-black font-fantabular;
   }
-  .titleProyecto{
-    @apply font-jost font-bold text-3xl md:text-6xl
+  .titleProyecto {
+    @apply font-fantabular font-bold text-3xl md:text-6xl;
   }
-  .subtituloProyecto{
-    @apply font-jost font-bold text-2xl
+  .subtituloProyecto {
+    @apply font-fantabular font-bold text-2xl;
   }
   .efectoResaltador {
     @apply relative w-fit px-2 inline-block
