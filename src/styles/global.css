@@ -29,10 +29,10 @@
     @apply flex flex-row justify-center items-center transition-all duration-150 ease-in-out select-none border-2 border-black font-medium w-fit translate-0 hover:translate-y-1.5 shadow-[0px_4px_0px_#141414] md:shadow-[0px_6px_0px_#141414] hover:shadow-[0px_0px_0px_#141414] disabled:hover:translate-y-0 disabled:hover:shadow-[0px_4px_0px_#141414];
   }
   .title-h2 {
-    @apply text-xl lg:text-3xl font-bold font-fantabular;
+    @apply text-lg lg:text-2xl font-bold font-fantabular;
   }
   .titleH3 {
-    @apply text-2xl lg:text-4xl font-black font-fantabular;
+    @apply text-xl lg:text-3xl font-black font-fantabular;
   }
   .titleProyecto {
     @apply font-fantabular font-bold text-3xl md:text-6xl;
