@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 926.87 706.75">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: currentColor;
+      }
+    </style>
+  </defs>
+  <g id="Variaciones">
+    <rect class="cls-1" x="0" y="169.85" width="926.87" height="18"/>
+    <rect class="cls-1" x="0" y="521.83" width="926.8" height="18"/>
+    <g>
+      <rect class="cls-1" x="741.67" y=".25" width="18.01" height="706.25"/>
+      <rect class="cls-1" x="167.19" y=".94" width="18.01" height="703.95"/>
+    </g>
+    <polygon class="cls-1" points="389.53 415.75 296.22 352.78 389.78 289.64 389.78 249.03 389.24 248.22 262.16 335.57 262.29 352.65 262.54 370.96 389.11 457.26 389.53 456.64 389.53 415.75"/>
+    <polygon class="cls-1" points="532.86 415.75 626.17 352.78 532.61 289.64 532.61 249.03 533.15 248.22 660.22 335.57 660.1 352.65 659.84 370.96 533.27 457.26 532.86 456.64 532.86 415.75"/>
+    <polygon class="cls-1" points="472.6 227.77 414.78 477.71 450.48 477.71 508.29 227.77 472.6 227.77"/>
+  </g>
+</svg>

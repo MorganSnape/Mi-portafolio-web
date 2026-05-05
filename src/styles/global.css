@@ -3,10 +3,12 @@
 @theme {
   --color-primary: #8c529b;
   --color-secondary: #ffe971;
+  --color-pink:#FC7DA8;
   --color-tertiary: #d1d1d1;
   --color-text-card: #5d5d5d;
   --color-black: #0B090B;
   --color-white-cream:#FDF7F5;
+  --color-black-secondary:#3A353A;
 
 
   --color-tag: var(--color-secondary);

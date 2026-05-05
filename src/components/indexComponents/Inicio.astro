@@ -1,12 +1,15 @@
 ---
-import RedesBoton from "@/components/RedesBoton.astro";
-import { Icon } from "astro-icon/components";
-import { personalInfo } from "@/data/personal";
+import Button from "@/components/Button.astro";
+import SocialMediaButtons from "@/components/SocialMediaButtons.astro";
+
+
 import IlustracionMia from "@/assets/ilustraciones/Yo.svg";
 import ArrowIcon from "@/assets/flecha.svg";
 ---
 
-<div class="w-full bg-[url(/fondoDos.svg)]  bg-[length:30px]">
+<div
+  class="w-full bg-[url(/fondoDos.svg)] bg-[length:30px] pb-20 lg:h-[110vh] max-h-[1080px]"
+>
   <section
     id="inicio"
     class="mx-auto py-20 lg:py-0 lg:h-screen max-w-[1440px] w-full flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-8 lg:gap-0 px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-8 xl:px-0 font-medium"
@@ -16,51 +19,47 @@ import ArrowIcon from "@/assets/flecha.svg";
     </div>
     <div
       id="biografia"
-      class="w-full lg:w-1/2 flex flex-col gap-4 lg:gap-12 text-center lg:text-left"
+      class="w-full lg:w-1/2 flex flex-col gap-4 lg:gap-8 text-center lg:text-left"
     >
       <h1
-        class="tag-me gap-2 mx-auto w-fit lg:mx-0 py-2 px-8 bg-tag text-center text-[clamp(1.02rem,_1.114rem_+_0.727vw,_1.20rem)]"
+        class="tag-me lg:mx-0 py-2 px-4 bg-tag text-base md:text-lg mx-auto lg:m-none "
       >
         ¡Hola! soy
       </h1>
       <div class="flex gap-4 flex-col">
-        <h2 class="font-extrabold font-fantabular text-5xl text-primary">
+        <h2
+          class="font-extrabold font-fantabular text-3xl md:text-[40px] text-pink"
+        >
           <span class="text-white">Gabriela</span> Ferrer<span
             class="text-secondary">.</span
           >
         </h2>
-        <p class="text-base lg:text-2xl font-normal leading-tight text-white">
+        <p
+          class="text-base lg:text-xl font-normal leading-tight text-white text-balance"
+        >
           Diseñadora UX/UI con base en diseño gráfico y desarrollo Front-End.
         </p>
-        <p class="text-base lg:text-xl font-normal leading-tight text-white">
+        <p
+          class="text-base lg:text-lg font-normal leading-tight text-white text-balance"
+        >
           Diseño experiencias digitales centradas en las personas y las
           convierto en interfaces funcionales, accesibles y visualmente
           atractivas.
         </p>
-        <!-- <div
-          id="mis-redes"
-          class="flex flex-wrap gap-4 justify-center lg:justify-start"
-        >
-          <RedesBoton href={personalInfo.behance!} text="Behance">
-            <Icon
-              name="fa6-brands:square-behance"
-              height={20}
-              width={20}
-            /></RedesBoton
+      </div>
+      <div class="flex gap-4 flex-col items-center lg:items-start">
+        <div class="flex flex-row gap-6">
+          <Button
+            text="Ver mis proyectos"
+            typeIcon
+            style="solid"
+            href="#proyectos-container"
           >
-          <RedesBoton href={personalInfo.github!} text="Github">
-            <Icon name="fa6-brands:github" height={20} width={20} />
-          </RedesBoton>
-          <RedesBoton href={personalInfo.linkedin!} text="LinkedIn">
-            <Icon name="fa6-brands:linkedin" height={20} width={20} />
-          </RedesBoton>
-        </div> -->
-        <div>
-          <a href="#proyectos-container" class="primaryButton bg-primary stroke-color text-white flex flex-row items-center gap-2 px-6 py-3 text-base md:px-6 md:py-3 md:text-lg font-medium"
-            > Ver mis proyectos
-            <ArrowIcon class="w-8 text-white stroke-white" />
-          </a>
+            <ArrowIcon />
+          </Button>
+          <Button text="Currículum" style="transparent" href="/curriculum" />
         </div>
+        <SocialMediaButtons/>
       </div>
     </div>
   </section>

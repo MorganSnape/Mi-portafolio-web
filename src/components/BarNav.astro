@@ -1,17 +1,22 @@
 ---
 import { Icon } from "astro-icon/components";
+import Logo from "public/isotipo-negativo.svg";
 ---
 
-<header
-  style="position: fixed; right: 0; z-index: 4; width:100vw; background-image:var(--fondo);background-size: 20px;"
->
-  <nav class="font-fantabular flex flex-row items-center gap-2 lg:gap-8 justify-end pr-6 lg:pr-12 border-b border-gray-300" >
+<header class="fixed right-0 z-40 w-screen bg-black-secondary">
+  <nav
+    class="font-rethink flex flex-row justify-between items-center lg:gap-8 px-6 lg:px-12 max-w-[1440px] mx-auto"
+  >
+  <Logo class="fill-white h-4/5"/>
+
     <label for="menu-hamburguer" class="label-hamburguer">
-      <Icon name="codicon:menu" style="font-size: 30px;" />
+      <Icon name="codicon:menu" class="text-3xl text-white" />
     </label>
     <input type="checkbox" name="" id="menu-hamburguer" />
 
-    <ul class="ul-links flex flex-col md:flex-row justify-center items-center gap-2">
+    <ul
+      class="ul-links flex flex-col md:flex-row justify-center items-center gap-2"
+    >
       <li class="li-link">
         <a href="#inicio" class="nav-item">Inicio</a>
       </li>
@@ -30,13 +35,8 @@ import { Icon } from "astro-icon/components";
       <li class="li-link">
         <a href="#contactame" class="nav-item">Contáctame</a>
       </li>
-      <li>
-        <a
-          href="/curriculum"
-          class="primaryButton text-white bg-primary gap-2.5 px-4 py-2 text-base md:px-4 md:py-1 md:text-sm"
-        >
-          Currículum
-        </a>
+      <li class="li-link">
+        <a href="/curriculum" class="nav-item">Currículum</a>
       </li>
     </ul>
   </nav>
@@ -100,8 +100,8 @@ import { Icon } from "astro-icon/components";
     z-index: 4;
     list-style: none;
     font-size: 16px;
-    font-weight: 500;
-    color: black;
+    font-weight: 400;
+    color: white;
     cursor: pointer;
     padding: 4px 16px;
     border: 2px solid transparent;
@@ -110,18 +110,18 @@ import { Icon } from "astro-icon/components";
 
   .nav-item:hover {
     transform: scale(1.03);
-    color: #666;
+    color: #9d9a9d;
   }
 
   .nav-item:active {
     font-weight: 600;
-    color: black;
+    color: white;
   }
 
   .nav-item.active {
     font-weight: 700;
-    color: var(--primary, #9775a1);
-    border-bottom: 3px solid var(--primary, #9775a1);
+    color: var(--color-secondary, #ffe971);
+    border-bottom: 3px solid var(--color-secondary, #ffe971);
   }
 
   .label-hamburguer,
@@ -142,17 +142,15 @@ import { Icon } from "astro-icon/components";
     }
     .ul-links {
       width: 100%;
-      background-image: var(--fondo);
       position: absolute;
       left: 0;
       top: var(--altura-header);
+      background: var(--color-black-secondary);
 
       justify-content: flex-start;
-      /* gap: 40px; */
 
       height: 0;
       padding-left: 0px;
-      background-size: 20px;
       margin: 0px;
       overflow: hidden;
 
@@ -163,12 +161,10 @@ import { Icon } from "astro-icon/components";
       width: 100%;
     }
 
-    .li-link:not(:last-child) {
-      border-bottom: solid 1px #d8d8d8;
-    }
+    
 
     .li-link:nth-child(2n) {
-      background-color: #d8d8d850;
+      background-color: #2d2a2d;
     }
 
     .nav-item {

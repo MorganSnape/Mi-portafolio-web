@@ -1,0 +1,28 @@
+---
+const buttonClass = "shadow-[4px_4px_0px_currentColor] md:shadow-[6px_6px_0px_currentColor] active:shadow-[0px_0px_0px_currentColor]"
+
+type StyleType = "transparent" | "solid";
+
+interface Props {
+  style: StyleType;
+  text: string;
+  typeIcon?: boolean;
+  href: string;
+}
+
+const { style, text, typeIcon, href } = Astro.props;
+---
+
+<a
+  href={href}
+  class={`primaryButton text-white flex flex-row items-center gap-2 px-4 py-3 text-sm md:px-6 md:py-3 md:text-base font-normal ${style === "transparent"?`bg-transparent border-white ${buttonClass}` :"bg-primary border-black ${buttonClass"}`}
+>
+  {text}
+  {
+    typeIcon && (
+      <div class="w-8 text-white stroke-white">
+        <slot />
+      </div>
+    )
+  }
+</a>

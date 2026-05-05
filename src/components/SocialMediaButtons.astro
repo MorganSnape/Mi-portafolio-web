@@ -1,0 +1,34 @@
+---
+import { personalInfo } from "@/data/personal";
+import { Icon } from "astro-icon/components";
+
+
+const redes = [
+  {
+    link: personalInfo.linkedin,
+    icon: "fa6-brands:linkedin",
+  },
+  {
+    link: personalInfo.behance,
+    icon: "fa6-brands:square-behance",
+  },
+  {
+    link: personalInfo.github,
+    icon: "fa6-brands:github",
+  },
+];
+---
+
+<div class="flex flex-row gap-4">
+  {
+    redes.map((red) => (
+      <a
+        href={red.link}
+        class=" text-white hover:brightness-80 hover:scale-105 transition-all duration-150 ease-in-out"
+        target="_blank"
+      >
+        <Icon name={red.icon} class="w-9 h-9" />
+      </a>
+    ))
+  }
+</div>
