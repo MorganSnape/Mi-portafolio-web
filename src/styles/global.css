@@ -32,7 +32,7 @@
     @apply text-lg lg:text-2xl font-bold font-fantabular;
   }
   .titleH3 {
-    @apply text-xl lg:text-3xl font-black font-fantabular;
+    @apply text-2xl lg:text-3xl font-black font-fantabular;
   }
   .titleProyecto {
     @apply font-fantabular font-bold text-3xl md:text-6xl;

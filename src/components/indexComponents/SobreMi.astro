@@ -5,6 +5,7 @@ import NavegadorStacks from "../NavegadorStacks.astro";
 import Exclamacion from "@/icons/exclamacion.svg";
 import Decoracion from "@/icons/decoracion-cuadros.svg"
 ---
+</div>
 
 <section
   id="sobre-mi"
@@ -12,10 +13,10 @@ import Decoracion from "@/icons/decoracion-cuadros.svg"
 >
   <Subtitulo align="center" type="Sobre mí" />
   <div
-    class="mt-20 max-w-[1280px] px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0 flex flex-col gap-6"
+    class="mt-20 max-w-[1280px] px-12 tabled:px-0 flex flex-col gap-6"
   >
     <div
-      class="grid grid-cols-1 lg:grid-cols-2 items-center gap-0 lg:gap-32 justify-items-center"
+      class="grid grid-cols-1 lg:grid-cols-2 items-center gap-0 lg:gap-32 justify-items-center justify-self-start"
     >
       <div class="flex flex-col gap-6">
         <div class="relative w-fit">
@@ -44,11 +45,10 @@ import Decoracion from "@/icons/decoracion-cuadros.svg"
         alt="Imagen que contiene un resumen de perfil profesional de Gabriela Ferrer"
       />
     </div>
-    <div id="stacks" class="py-12">
-      <h3 class="titleH3 efectoResaltador m-4">Stacks</h3>
-
+    <div id="stacks" class="py-12 flex flex-col gap-12">
+      <h3 class="titleH3 efectoResaltador m-4">Herramientas que uso</h3>
       <div
-        class="flex flex-wrap justify-evenly items-center content-center gap-y-6 w-full mx-auto"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center"
       >
         <NavegadorStacks title="Diseño UX/UI" />
         <NavegadorStacks title="Programación" />

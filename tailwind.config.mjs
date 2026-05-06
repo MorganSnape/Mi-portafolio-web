@@ -9,6 +9,10 @@ module.exports = {
         rethink: ["var(--font-rethink)"],
         fantabular: ["var(--font-fantabular)"],
       },
+
+      screens:{
+        tablet:"1280px"
+      }
     },
   },
 };
