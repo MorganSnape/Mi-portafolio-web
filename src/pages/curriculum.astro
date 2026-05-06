@@ -75,42 +75,45 @@ import { estudios } from "../data/studies";
       </section>
 
       <!-- Experiencia Profesional -->
-      <section class="flex flex-col print:break-inside-avoid">
+      <section class="flex flex-col gap-12 print:break-inside-avoid">
         <h2
           class="font-bold text-xl mb-6 pb-4 text-black border-b-3 border-primary"
         >
           Experiencia Profesional
         </h2>
-        <div class="flex flex-row items-start gap-6 px-0">
-          <div class="flex flex-row gap-2 items-center">
-            <p class="text-black font-bold font-fantabular w-20">
-              Nov, 2024 Oct,2025
-            </p>
-            <div class="h-0.5 bg-black w-8"></div>
-          </div>
+        {
+          personalInfo.experiences?.map((experience) => (
+            <div class="flex flex-row items-start gap-6 px-0">
+              <div class="flex flex-row gap-2 items-center">
+                <p class="text-black font-bold font-fantabular w-20">
+                  {experience.date}
+                </p>
+                <div class="h-0.5 bg-black w-8" />
+              </div>
 
-          <article class="flex flex-col gap-6">
-            <header>
-              <h4 class="font-bold font-fantabular text-lg w-fit">
-                UI/UX Developer - Mvp KunturWing
-              </h4>
-            </header>
-            <main>
-              <ul class="space-y-1">
-                {personalInfo.experience?.map((item) => (
-                  <li class="list-disc list-outside pl-2">{item}</li>
-                ))}
-              </ul>
-            </main>
-            <div class="">
-              <span class="font-bold text-primary">Referencias:</span>
-              <p>
-                <span class="italic">Juan Giraldo</span> - CTO del proyecto +57 304
-                4757582
-              </p>
+              <article class="flex flex-col gap-6">
+                <header>
+                  <h4 class="font-bold font-fantabular text-lg w-fit">
+                    {experience.position} - {experience.company}
+                  </h4>
+                </header>
+                <main>
+                  <ul class="space-y-1">
+                    {experience.description?.map((desc) => (
+                      <li class="list-disc list-outside pl-2">
+                        {desc}
+                      </li>
+                    ))}
+                  </ul>
+                </main>
+                <div class="">
+                  <span class="font-bold text-primary">Referencias:</span>
+                  <p>{experience.reference}</p>
+                </div>
+              </article>
             </div>
-          </article>
-        </div>
+          ))
+        }
       </section>
 
       <!-- Educación -->
@@ -174,9 +177,7 @@ import { estudios } from "../data/studies";
       </section>
 
       <!-- Habilidades Blandas -->
-      <section
-        class="mb-12 print:break-inside-avoid pb-12 "
-      >
+      <section class="mb-12 print:break-inside-avoid pb-12">
         <h2
           class="font-bold text-xl mb-6 pb-4 text-black border-b-3 border-primary"
         >

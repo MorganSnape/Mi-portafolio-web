@@ -2,7 +2,7 @@
 const { logo: Logo, alt, text } = Astro.props;
 ---
 
-<div class="flex flex-col items-center select-none" title={alt}>
+<div class="group relative flex flex-col items-center select-none">
   <div
     class="border-2 border-black w-14 h-14 flex justify-center items-center bg-white"
   >
@@ -15,5 +15,15 @@ const { logo: Logo, alt, text } = Astro.props;
         )
       }
     </div>
+  </div>
+  <!-- tooltip -->
+  <div
+    class="z-20 absolute -bottom-4 -left-4 translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none shadow-2xl"
+  >
+    <span
+      class="bg-black border-2 border-white text-white text-xs px-2 py-1 rounded whitespace-nowrap"
+    >
+      {alt}
+    </span>
   </div>
 </div>

@@ -1,43 +1,73 @@
 ---
 import { Icon } from "astro-icon/components";
 import Logo from "public/isotipo-negativo.svg";
+
+const links = [
+  {
+    name: "Inicio",
+    href: "#inicio",
+  },
+  {
+    name: "Sobre mí",
+    href: "#sobre-mi",
+  },
+  {
+    name: "Experiencia",
+    href: "#experiencia-container",
+  },
+  {
+    name: "Proyectos",
+    href: "#proyectos-container",
+  },
+  {
+    name: "Estudios",
+    href: "#estudios-container",
+  },
+  {
+    name: "Contáctame",
+    href: "#contactame",
+  },
+  {
+    name: "Currículum",
+    href: "/curriculum",
+  },
+];
 ---
 
-<header class="fixed right-0 left-0 z-40 w-full bg-black-secondary overflow-x-hidden">
-  <nav
-    class="font-rethink flex flex-row justify-between items-center lg:gap-8 px-4 md:px-6 max-w-[1440px] mx-auto"
-  >
-  <Logo class="fill-white h-4/5"/>
+<header class="fixed inset-x-0 top-0 z-50 bg-black-secondary">
+  <nav class="max-w-[1440px] mx-auto flex items-center justify-between px-4 md:px-6 h-[var(--altura-header)] font-rethink">
 
-    <label for="menu-hamburguer" class="label-hamburguer">
+    <!-- Logo -->
+    <Logo class="h-8 w-auto fill-white pointer-events-none" />
+
+    <!-- Botón hamburguesa -->
+    <label for="menu-hamburguer" class="md:hidden cursor-pointer z-50">
       <Icon name="codicon:menu" class="text-3xl text-white" />
     </label>
-    <input type="checkbox" name="" id="menu-hamburguer" />
+    <input type="checkbox" id="menu-hamburguer" class="hidden peer" />
 
+    <!-- Links -->
     <ul
-      class="ul-links flex flex-col md:flex-row justify-center items-center gap-2"
+      class="fixed md:static inset-x-0 top-[var(--altura-header)] md:top-0 bg-black-secondary md:bg-transparent
+      flex flex-col md:flex-row items-center md:items-center
+      max-h-0 peer-checked:max-h-screen md:max-h-none overflow-hidden md:overflow-visible
+      transition-all duration-300"
     >
-      <li class="li-link">
-        <a href="#inicio" class="nav-item">Inicio</a>
-      </li>
-      <li class="li-link">
-        <a href="#sobre-mi" class="nav-item">Sobre mí</a>
-      </li>
-      <li class="li-link">
-        <a href="#experiencia-container" class="nav-item">Experiencia</a>
-      </li>
-      <li class="li-link">
-        <a href="#proyectos-container" class="nav-item">Proyectos</a>
-      </li>
-      <li class="li-link">
-        <a href="#estudios-container" class="nav-item">Estudios</a>
-      </li>
-      <li class="li-link">
-        <a href="#contactame" class="nav-item">Contáctame</a>
-      </li>
-      <li class="li-link">
-        <a href="/curriculum" class="nav-item">Currículum</a>
-      </li>
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="nav-item font-rethink px-4 py-3 md:py-2 text-white text-base font-normal
+              hover:text-gray-400
+              active:font-semibold
+              focus:outline-none focus:ring-2 focus:ring-yellow-300"
+            >
+              {link.name}
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </nav>
 </header>
@@ -92,91 +122,19 @@ import Logo from "public/isotipo-negativo.svg";
 </script>
 
 <style>
-  nav {
-    height: var(--altura-header);
-  }
-
-  .nav-item {
-    z-index: 4;
-    list-style: none;
-    font-size: 16px;
-    font-weight: 400;
-    color: white;
-    cursor: pointer;
-    padding: 4px 16px;
-    border: 2px solid transparent;
-    transition: transform 0.1s ease-in-out;
-  }
-
-  .nav-item:hover {
-    transform: scale(1.03);
-    color: #9d9a9d;
-  }
-
   .nav-item:active {
     font-weight: 600;
     color: white;
+    border:none;
+  }
+
+  .nav-item:focus {
+    outline: none;
   }
 
   .nav-item.active {
     font-weight: 700;
     color: var(--color-secondary, #ffe971);
     border-bottom: 3px solid var(--color-secondary, #ffe971);
-  }
-
-  .label-hamburguer,
-  #menu-hamburguer {
-    display: none;
-  }
-
-  /*Vista movil*/
-
-  @media (max-width: 890px) {
-    .label-hamburguer,
-    #menu-hamburguer {
-      display: contents;
-    }
-    nav {
-      position: relative;
-      flex-wrap: wrap;
-    }
-    .ul-links {
-      width: 100%;
-      position: absolute;
-      left: 0;
-      top: var(--altura-header);
-      background: var(--color-black-secondary);
-
-      justify-content: flex-start;
-
-      height: 0;
-      padding-left: 0px;
-      margin: 0px;
-      overflow: hidden;
-
-      transition: all 0.3s;
-    }
-
-    .li-link {
-      width: 100%;
-    }
-
-    
-
-    .li-link:nth-child(2n) {
-      background-color: #2d2a2d;
-    }
-
-    .nav-item {
-      display: block;
-      width: 100%;
-      padding: 16px 0px;
-      font-size: 20px;
-      text-align: center;
-    }
-
-    #menu-hamburguer:checked + .ul-links {
-      height: calc(100vh - var(--altura-header));
-    }
   }
 </style>

@@ -8,7 +8,7 @@ import DefinicionProblema from "@/components/PaginaDinamica/DefinicionProblema.a
 import Ideacion from "@/components/PaginaDinamica/Ideacion.astro";
 import Diseño from "@/components/PaginaDinamica/Diseño.astro";
 import { Icon } from "astro-icon/components";
-import RedesBoton from "@/components/RedesBoton.astro";
+import Button from "@/components/Button.astro";
 import BarNav from "@/components/PaginaDinamica/BarNav.astro";
 
 import Estrella from "@/assets/estrella.svg";
@@ -58,16 +58,16 @@ const {
     >
       {
         linkFigma && (
-          <RedesBoton href={linkFigma} text="Ver Figma" block={true}>
+          <Button href={linkFigma} text="Ver Figma" style="solid">
             <Icon name="fa6-brands:figma" height={20} width={20} />
-          </RedesBoton>
+          </Button>
         )
       }
       {
         linkWebsite && (
-          <RedesBoton href={linkWebsite} text="Ver Pagina" block={true}>
+          <Button href={linkWebsite} text="Ver Pagina" style="solid" typeIcon >
             <Icon name="fa6-solid:earth-americas" height={20} width={20} />
-          </RedesBoton>
+          </Button>
         )
       }
     </div>
