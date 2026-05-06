@@ -1,35 +1,29 @@
+---
+import Computador from "@/assets/Ilustraciones/Computador.svg";
+---
+
 <section
   id="contactame"
   class="w-full flex flex-col items-center text-black py-16 border-t-8 border-black"
 >
-  <div
-    class="max-w-[1024px] w-full px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0 flex flex-col gap-8"
-  >
+  <div class=" w-full mx-auto max-w-[1280px] px-4 sm:px-12 xl:px-0">
     <!-- Header Section -->
-    <div class="text-center">
-      <h2 class="titleH3 efectoResaltador">
+    <div class="relative text-center py-12">
+      <h2 class="titleH3 efectoResaltador text-balance">
         Cada gran proyecto empieza con una conversación.
       </h2>
-      <p class="text-sm lg:text-base leading-relaxed mt-4">
+      <p class="text-base lg:text-lg leading-relaxed mt-4">
         ¿Tienes una idea o necesitas ayuda con tu marca o web?<br />
         <strong>Estoy lista para ayudarte a hacerla realidad.</strong>
       </p>
+      <div class="absolute -bottom-6 md:bottom-0 right-0 rotate-8 tag-me bg-tag lg:mx-0 py-2 text-base md:text-lg mx-auto w-44 md:w-52">
+        <p class=" text-balance text-sm">¡Te responderé en menos de <span class="font-bold">24 horas</span>!</p>
+      </div>
     </div>
 
-    <div class="flex flex-col lg:flex-row gap-8">
-      <!-- Left: Form area -->
-      <div class="lg:w-2/3 border-2 border-black rounded-xl bg-white">
-        <div
-          class="h-10 py-4 flex flex-row items-center gap-2 px-4 border-b-4 border-black"
-        >
-          <div class="h-3 w-3 bg-black rounded-full"></div>
-          <div class="h-3 w-3 bg-black rounded-full"></div>
-          <div class="h-3 w-3 bg-black rounded-full"></div>
-        </div>
-        <form
-          id="contact-form"
-          class="flex flex-col gap-4 p-6"
-        >
+    <div class="relative">
+      <div class="lg:absolute lg:top-0 lg:right-0">
+        <form id="contact-form" class="flex flex-col gap-4 p-6">
           <!-- Nombre y Correo en la misma fila -->
           <div class="flex flex-col md:flex-row gap-4 md:gap-4">
             <!-- Nombre Completo -->
@@ -56,25 +50,8 @@
               />
             </div>
           </div>
-
-          <!-- Tipo de Proyecto (Dropdown) -->
-          <div class="flex flex-col gap-2">
-            <label class="font-semibold text-sm">¿Qué necesitas?</label>
-            <select
-              name="projectType"
-              required
-              class="border border-black rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary text-sm bg-white cursor-pointer"
-            >
-              <option value="">Selecciona una opción</option>
-              <option value="Diseño">Diseño</option>
-              <option value="Desarrollo">Desarrollo</option>
-              <option value="Branding">Branding</option>
-              <option value="Otro">Otro</option>
-            </select>
-          </div>
-
           <!-- Mensaje del Proyecto -->
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-2 w-full">
             <label class="font-semibold text-sm"
               >Cuéntame sobre tu proyecto...</label
             >
@@ -83,90 +60,60 @@
               required
               rows="5"
               placeholder="Describe tu idea, necesidades y objetivos..."
-              class="border border-black rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary text-sm resize-none"
+              class="border border-black rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary text-sm resize-none w-full"
             ></textarea>
           </div>
 
           <!-- Submit Button -->
-          <button
-            type="submit"
-            class="primaryButton bg-primary text-white gap-2 px-6 py-3 text-base md:px-6 md:py-3 md:text-base mt-2 justify-center"
-          >
-            Enviar mensaje
-          </button>
+          <div class="flex justify-end w-full">
+            <button
+              type="submit"
+              class="primaryButton border-2 text-white flex flex-row items-center gap-2 px-4 py-3 text-sm md:px-6 md:py-3 md:text-base font-normal bg-primary"
+            >
+              Enviar mensaje
+            </button>
+          </div>
         </form>
       </div>
-
-      <!-- Right: Quick contact + response -->
-      <aside class="lg:w-1/3 flex flex-col gap-6">
-        <div class="bg-white border-2 border-black rounded-xl p-6">
-          <p class="text-sm font-medium">Te responderé en menos de 24 horas</p>
-        </div>
-
-        <div
-          class="bg-white border-2 border-black rounded-xl p-6 flex flex-col gap-4"
-        >
-          <p class="text-sm font-medium text-center">
-            ¿Prefieres algo más rápido?
-          </p>
-          <div class="flex flex-col items-center gap-3">
-            <a
-              href="https://wa.me/+573213266303"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="primaryButton bg-secondary text-black gap-2 px-6 py-3 text-sm flex-1 justify-center"
-            >
-              WhatsApp
-            </a>
-            <a
-              href="mailto:gabriellangeles@outlook.com"
-              class="primaryButton bg-primary text-white gap-2 px-6 py-3 text-sm md:px-6 md:py-3 flex-1 justify-center"
-            >
-              Enviar correo
-            </a>
-          </div>
-        </div>
-      </aside>
+      <Computador class="w-full md:w-4/5 max-w-[800px]"  />
     </div>
   </div>
-</section>
 
-<script>
-  function sendContactMail(event: SubmitEvent) {
-    event.preventDefault();
-    const form = event.currentTarget as HTMLFormElement;
-    const fullName = (form.fullName?.value || "").trim();
-    const fromEmail = (form.fromEmail?.value || "").trim();
-    const projectType = (form.projectType?.value || "").trim();
-    const message = (form.message?.value || "").trim();
+  <script>
+    function sendContactMail(event: SubmitEvent) {
+      event.preventDefault();
+      const form = event.currentTarget as HTMLFormElement;
+      const fullName = (form.fullName?.value || "").trim();
+      const fromEmail = (form.fromEmail?.value || "").trim();
+      const message = (form.message?.value || "").trim();
 
-    if (!fullName || !fromEmail || !projectType || !message) {
-      alert("Por favor completa todos los campos del formulario.");
-      return;
-    }
+      if (!fullName || !fromEmail || !message) {
+        alert("Por favor completa todos los campos del formulario.");
+        return;
+      }
 
-    const emailBody = `
+      const emailBody = `
 Nuevo contacto desde el portafolio:
 
 Nombre: ${fullName}
 Correo: ${fromEmail}
-Tipo de proyecto: ${projectType}
 
 Detalles del proyecto:
 ${message}
       `.trim();
 
-    const subject = encodeURIComponent(
-      `Nuevo contacto desde portafolio: ${fullName}`,
-    );
-    const body = encodeURIComponent(emailBody);
-    const mailto = `mailto:gabriellangeles@outlook.com?subject=${subject}&body=${body}`;
+      const subject = encodeURIComponent(
+        `Nuevo contacto desde portafolio: ${fullName}`,
+      );
+      const body = encodeURIComponent(emailBody);
+      const mailto = `mailto:gabriellangeles@outlook.com?subject=${subject}&body=${body}`;
 
-    window.location.href = mailto;
-  }
+      window.location.href = mailto;
+    }
 
-  const formElement = document.getElementById("contact-form");
-  if (formElement) {
-    formElement.addEventListener("submit", sendContactMail);
-  }
-</script>
+    const formElement = document.getElementById("contact-form");
+    if (formElement) {
+      formElement.addEventListener("submit", sendContactMail);
+    }
+  </script>
+</section>
