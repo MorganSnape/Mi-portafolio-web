@@ -3,27 +3,27 @@ import Subtitulo from "@/components/Subtitulo.astro";
 import NavegadorStacks from "../NavegadorStacks.astro";
 
 import Exclamacion from "@/icons/exclamacion.svg";
-import Decoracion from "@/icons/decoracion-cuadros.svg"
+import Decoracion from "@/icons/decoracion-cuadros.svg";
+import DecoracionCurva from "@/icons/decoracion-curva.svg";
 ---
-</div>
 
 <section
   id="sobre-mi"
   class="w-screen flex flex-col items-center text-black z-10 -mt-10"
 >
   <Subtitulo align="center" type="Sobre mí" />
-  <div
-    class="mt-20 max-w-[1280px] px-12 tabled:px-0 flex flex-col gap-6"
-  >
+  <div class="mt-20 max-w-[1280px] px-12 tabled:px-0 flex flex-col gap-6">
     <div
       class="grid grid-cols-1 lg:grid-cols-2 items-center gap-0 lg:gap-32 justify-items-center justify-self-start"
     >
       <div class="flex flex-col gap-6">
         <div class="relative w-fit">
           <h3 class="titleH3 efectoResaltador">Quién soy y qué hago</h3>
-          <Exclamacion class="absolute h-12 w-12 -top-8 -right-10"  />
+          <Exclamacion class="absolute h-12 w-12 -top-8 -right-10" />
         </div>
-        <p class="text-base lg:text-lg text-black leading-tight text-balance font-normal">
+        <p
+          class="text-base lg:text-lg text-black leading-tight text-balance font-normal"
+        >
           ¡Hola! Soy Gabriela Ferrer. Mi trabajo se sitúa en la intersección
           entre la <strong>creatividad visual</strong>, la<strong>
             experiencia del usuario</strong
@@ -36,19 +36,22 @@ import Decoracion from "@/icons/decoracion-cuadros.svg"
           vida utilizando tecnologías como React, JavaScript y TailwindCSS.
         </p>
         <div class="flex justify-end">
-          <Decoracion class="w-40 lg:w-60"/>
+          <Decoracion class="w-40 lg:w-60" />
         </div>
       </div>
       <img
-      class="w-11/12 max-w-xl"
+        class="w-11/12 lg:w-full max-w-xl"
         src="public/images/tarjeta-presentacion.webp"
         alt="Imagen que contiene un resumen de perfil profesional de Gabriela Ferrer"
       />
     </div>
     <div id="stacks" class="py-12 flex flex-col gap-12">
-      <h3 class="titleH3 efectoResaltador m-4">Herramientas que uso</h3>
+      <div class="flex flex-row flex-wrap justify-center md:justify-start items-center gap-4">
+        <h3 class="titleH3 efectoResaltador m-4">Herramientas que uso</h3>
+        <DecoracionCurva  class="w-40"/>
+      </div>
       <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center"
+        class="grid grid-rows-3 sm:grid-rows-2 lg:grid-rows-1  grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center"
       >
         <NavegadorStacks title="Diseño UX/UI" />
         <NavegadorStacks title="Programación" />

@@ -15,12 +15,12 @@ import CardEstudios from "@/components/CardEstudios.astro";
 
 <Layout title="Gabriela Ferrer - Bienvenido a mi portafolio.">
   <BarNav />
-  <main class="flex flex-col items-center gap-8 font-rethink select-none">
+  <main class="flex flex-col items-center gap-8 font-rethink select-none w-full">
     <Inicio />
     <SobreMi />
     <section
       id="experiencia-container"
-      class="w-screen flex flex-col items-center"
+      class="w-full flex flex-col items-center"
     >
       <Subtitulo align="center" type="Experiencia" />
 
@@ -74,7 +74,7 @@ import CardEstudios from "@/components/CardEstudios.astro";
       </div>
     </section>
     <Proyectos />
-    <section id="estudios-container" class="w-screen -mt-8">
+    <section id="estudios-container" class="w-full -mt-8 ">
       <Subtitulo align="center" type="Estudios" />
       <div class="flex flex-col gap-10 justify-center items-center py-20">
         {
