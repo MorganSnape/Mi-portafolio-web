@@ -91,7 +91,7 @@ export type ProyectDesignPrinciple = {
   description: string;
 };
 
-export type ProyectType = "UX" | "Front";
+export type ProyectType = "UX" | "Front" | "Diseño";
 
 
 

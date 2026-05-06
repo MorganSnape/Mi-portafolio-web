@@ -5,31 +5,101 @@ import Card from "@/components/Card.astro";
 import ProyectosContainer from "../ProyectosContainer.astro";
 import Subtitulo from "../Subtitulo.astro";
 
-const uxProjects = proyectos.filter((project) => project.type.includes("UX"));
-const frontProjects = proyectos.filter((project) =>
-  project.type.includes("Front"),
-);
+
+const buttonClass =
+  "text-white border-2 border-white px-4 py-2 rounded-sm active:bg-tag active:text-black active:font-medium active:border-black";
 ---
 
 <section
   id="proyectos-container"
-  class="bg-[url(/fondoDos.svg)] bg-[length:30px] w-full flex flex-col items-center min-h-[600px]"
+  class="bg-[url(/fondoDos.svg)] bg-[length:30px] w-full flex flex-col items-center min-h-[760px]"
 >
-  <Subtitulo align="left" text="Proyectos" type="Diseño" />
-
-  <div id="design-projects" class="py-18 md:py-28 w-11/12 max-w-[1140px]">
-    <ProyectosContainer>
-      {uxProjects.map((proyecto) => <Card section="UX" {...proyecto} />)}
-    </ProyectosContainer>
-  </div>
-  <Subtitulo align="right" text="Proyectos" type="Front - End" />
-
-  <div
-    id="front-projects"
-    class="py-18 md:py-28 w-11/12 max-w-[1140px] mx-auto"
-  >
-    <ProyectosContainer>
-      {frontProjects.map((proyecto) => <Card section="Front" {...proyecto} />)}
-    </ProyectosContainer>
+  <Subtitulo align="center" type="Mis proyectos" />
+  <div class="w-full max-w-[1440px] px-4 md:px-12 lg:px-0">
+    <p
+      class="mx-auto text-center text-base md:text-xl font-normal text-white text-balance mt-20"
+    >
+      Una selección de proyectos donde combino diseño , experiencia de usuario y
+      código.
+    </p>
+    <div
+      class="w-full justify-center flex flex-row flex-wrap gap-4 md:gap-6 items-center py-12"
+    >
+      <button class={`${buttonClass} filter-button`} data-filter="all">Todos</button>
+      <button class={`${buttonClass} filter-button`} data-filter="ux">UX/UI</button>
+      <button class={`${buttonClass} filter-button`} data-filter="front">Front-End</button>
+      <button class={`${buttonClass} filter-button`} data-filter="design">Diseño Gráfico</button>
+    </div>
+    <div id="design-projects" class="py-4 md:py-6 w-full mb-20">
+      <ProyectosContainer id="proyects-list">
+        {proyectos.map((proyecto, key) => (
+          <div
+            class="project-card"
+            data-type={proyecto.type.map((type) => type.toLowerCase()).join(" ")}
+          >
+            <Card section={proyecto.type[key]} {...proyecto} />
+          </div>
+        ))}
+      </ProyectosContainer>
+    </div>
   </div>
 </section>
+
+<script type="module">
+  const filterButtons = document.querySelectorAll("[data-filter]");
+  const projectCards = document.querySelectorAll(".project-card");
+
+  function updateFilter(filter) {
+    const filterMap = {
+      all: [],
+      ux: ["ux"],
+      front: ["front"],
+      design: ["design", "diseño", "graphic", "graphics"],
+    };
+    const searchTerms = filterMap[filter] || [filter];
+
+    projectCards.forEach((card) => {
+      const types = card.dataset.type || "";
+      const isVisible =
+        filter === "all" ||
+        searchTerms.some((term) => types.includes(term));
+      card.classList.toggle("hidden", !isVisible);
+    });
+  }
+
+  function updateActiveButton(clickedButton) {
+    filterButtons.forEach((button) => {
+      button.classList.remove("active");
+    });
+    clickedButton.classList.add("active");
+  }
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.filter || "all";
+      updateFilter(filter);
+      updateActiveButton(button);
+    });
+  });
+
+  if (filterButtons[0]) {
+    updateActiveButton(filterButtons[0]);
+  }
+
+  updateFilter("all");
+</script>
+
+<style>
+  .filter-button {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .filter-button.active {
+    background: var(--color-secondary);
+    font-weight: 500;
+    color: black !important;
+    border-color: black;
+  }
+</style>

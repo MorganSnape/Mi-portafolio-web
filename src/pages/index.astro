@@ -26,10 +26,10 @@ import CardEstudios from "@/components/CardEstudios.astro";
       class="w-full flex flex-col items-center"
     >
       <Subtitulo align="center" type="Experiencia" />
-      <div class="flex flex-col gap-26 my-32">
+      <div class="flex flex-col gap-8 my-32">
         {
           personalInfo.experiences?.map((experience) => (
-            <div class="flex flex-col md:flex-row  items-start gap-10 min-w-xs px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0">
+            <div class="flex flex-col md:flex-row items-start gap-10 px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0">
               <div class="flex flex-row items-center gap-4 mt-2">
                 <p class="text-black font-bold text-base font-fantabular">
                   {experience.date}
@@ -44,7 +44,7 @@ import CardEstudios from "@/components/CardEstudios.astro";
                   </h4>
                 </header>
                 <main>
-                  <ul class="text-sm lg:text-base space-y-1">
+                  <ul class="text-sm lg:text-base space-y-1 pl-6">
                     {experience.description?.map((desc) => (
                       <li class="list-disc list-outside pl-2">{desc}</li>
                     ))}
