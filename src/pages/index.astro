@@ -31,7 +31,7 @@ import CardEstudios from "@/components/CardEstudios.astro";
           personalInfo.experiences?.map((experience) => (
             <div class="flex flex-col md:flex-row items-start gap-10 px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0">
               <div class="flex flex-row items-center gap-4 mt-2">
-                <p class="text-black font-bold text-base font-fantabular">
+                <p class="text-black font-medium text-base font-fantabular">
                   {experience.date}
                 </p>
                 <div class="h-0.5 bg-black w-20" />
@@ -39,7 +39,7 @@ import CardEstudios from "@/components/CardEstudios.astro";
 
               <article class="flex flex-col gap-6">
                 <header>
-                  <h4 class="efectoResaltador font-bold font-fantabular text-xl md:text-2xl w-fit">
+                  <h4 class="efectoResaltador font-medium font-fantabular text-xl md:text-2xl w-fit">
                     {experience.position} - {experience.company}
                   </h4>
                 </header>
@@ -59,16 +59,11 @@ import CardEstudios from "@/components/CardEstudios.astro";
     <Proyectos />
     <section id="estudios-container" class="w-full -mt-8">
       <Subtitulo align="center" type="Estudios" />
-      <div class="flex flex-col gap-10 justify-center items-center py-20">
+      <div class="grid grid-cols-1 md:grid-rows-2 md:grid-cols-2 gap-8 justify-center items-center py-20  mx-auto max-w-[1280px] px-4 sm:px-12 xl:px-0">
         {
           estudios.map((estudio) => (
             <CardEstudios
-              duration={estudio.duration}
-              institution={estudio.institution}
-              title={estudio.title}
-              descriptions={estudio.descriptions}
-              link={estudio.link}
-              tags={estudio.tags}
+              {...estudio}
             />
           ))
         }

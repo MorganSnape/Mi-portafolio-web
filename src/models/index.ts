@@ -110,6 +110,7 @@ export interface Studies {
   link?: string;
   tags?: string[];
   duration?: string;
+  logo?: string;
 }
 
 export type { PersonalInfo } from '../data/personal';
