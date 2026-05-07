@@ -1,40 +1,84 @@
 ---
 import { personalInfo } from "@/data/personal";
+
+import Button from "@/components/Button.astro";
+import SocialMediaButtons from "@/components/SocialMediaButtons.astro";
+
+import Logo from "public/negativo.svg";
+
+const links = [
+  {
+    name: "Inicio",
+    href: "#inicio",
+  },
+  {
+    name: "Sobre mí",
+    href: "#sobre-mi",
+  },
+  {
+    name: "Experiencia",
+    href: "#experiencia-container",
+  },
+  {
+    name: "Proyectos",
+    href: "#proyectos-container",
+  },
+  {
+    name: "Estudios",
+    href: "#estudios-container",
+  },
+  {
+    name: "Contáctame",
+    href: "#contactame",
+  },
+  {
+    name: "Currículum",
+    href: "/curriculum",
+  },
+];
 ---
 
-<footer
-  class="bg-[#ffe971] border-t border-black flex flex-col items-center justify-center w-full py-6"
->
-  <div class="flex flex-wrap gap-3 justify-center mb-3">
-    <a
-      href={personalInfo.behance!}
-      target="_blank"
-      class="text-base font-semibold max-[360px]:text-sm underline"
+<footer class="bg-[url(/fondoDos.svg)] bg-[length:30px] text-white w-full">
+  <div
+    class="flex flex-col gap-6 md:flex-row justify-center md:justify-between w-full max-w-[1280px] px-4 md:px-12 mx-auto py-12"
+  >
+    <Logo class="h-20 md:h-28 w-auto fill-white pointer-events-none" />
+    <div
+      class="flex flex-col gap-4 max-w-64 items-center md:items-start mx-auto"
     >
-      Behance
-    </a>
-    <a
-      href={personalInfo.github!}
-      target="_blank"
-      class="text-base font-semibold max-[360px]:text-sm underline"
-    >
-      GitHub
-    </a>
-    <a
-      href={personalInfo.linkedin!}
-      target="_blank"
-      class="text-base font-semibold max-[360px]:text-sm underline"
-    >
-      LinkedIn
-    </a>
-    <a
-      href="/curriculum"
-      class="text-base font-semibold max-[360px]:text-sm underline"
-    >
-      Currículum
-    </a>
+      <p>Navegación</p>
+      <ul class="grid grid-cols-3 gap-x-2">
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="font-rethink h-full text-white text-sm font-normal
+              hover:text-gray-400"
+              >
+                {link.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="flex flex-col gap-4 items-center md:items-start">
+      <p>Mis redes:</p>
+      <SocialMediaButtons />
+    </div>
   </div>
-  <p class="text-sm text-center">
-    {new Date().getFullYear()} Gabriela Ferrer · Portfolio
-  </p>
+  <div
+    class="bg-primary w-full"
+  >
+    <div class="min-h-20 w-full max-w-[1280px] px-4 md:px-12 flex flex-col gap-2 justify-center items-center mx-auto py-2">
+      <p class="text-sm text-center">
+        Ilustraciones e iconografía ilustradas por Gabriela Ferrer · Logos
+        pertenecen a sus respectivas marcas.
+      </p>
+      <p class="text-sm text-center">
+        {new Date().getFullYear()} Gabriela Ferrer · Portafolio
+      </p>
+    </div>
+  </div>
 </footer>

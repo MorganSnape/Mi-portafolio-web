@@ -2,8 +2,8 @@
 import { proyectos } from "@/data/portfolio.ts";
 
 import Card from "@/components/Card.astro";
-import ProyectosContainer from "../ProyectosContainer.astro";
-import Subtitulo from "../Subtitulo.astro";
+import ProyectosContainer from "@/components/ProyectosContainer.astro";
+import Subtitulo from "@/components/Subtitulo.astro";
 
 
 const buttonClass =
@@ -97,9 +97,7 @@ const buttonClass =
     transition: background-color 0.2s ease, color 0.2s ease;
   }
   .filter-button.active {
-    background: var(--color-secondary);
+    background: var(--color-primary);
     font-weight: 500;
-    color: black !important;
-    border-color: black;
   }
 </style>

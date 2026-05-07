@@ -1,29 +1,31 @@
 ---
 import type { Studies } from "@/models";
 
+import IconMedioCirculo from "@/icons/medio-circulo.svg";
+
 interface Props extends Studies {}
 
-const { title, descriptions, link, tags, institution, duration, logo } =
+const { title, descriptions, institution, duration, logo } =
   Astro.props;
 ---
 
 <article
-  class="group flex flex-col border-2 border-black rounded-xl md:rounded-2xl overflow-hidden h-full w-full bg-white flex-shrink-0 mx-auto"
+  class=" group flex flex-col border-2 border-black rounded-xl md:rounded-2xl overflow-hidden h-full w-full bg-white flex-shrink-0 mx-auto"
 >
   <div
-    class="h-10 py-4 flex flex-row items-center gap-2 px-4 border-b-4 border-black"
+    class="z-20 h-10 py-4 flex flex-row items-center gap-2 px-4 border-b-4 border-black"
   >
     <div class="h-3 w-3 bg-black rounded-full"></div>
     <div class="h-3 w-3 bg-black rounded-full"></div>
     <div class="h-3 w-3 bg-black rounded-full"></div>
   </div>
-  <div class="flex flex-col justify-between gap-3 p-4 flex-1">
+  <div class="relative flex flex-col justify-between gap-3 p-4 flex-1">
     <main class="flex-1 flex flex-col gap-2">
       <h4 class="text-md md:text-lg font-medium font-fantabular">
         {title}
       </h4>
       <span
-        class="text-primary block font-medium text-base font-fantabular italic"
+        class="block font-medium text-medium font-fantabular italic"
         >{duration}</span
       >
 
@@ -31,7 +33,7 @@ const { title, descriptions, link, tags, institution, duration, logo } =
         {
           descriptions &&
             descriptions.map((description) => (
-              <li class="text-xs md:text-sm text-black text-pretty">
+              <li class="text-sm text-black text-pretty">
                 {description}
               </li>
             ))
@@ -39,7 +41,7 @@ const { title, descriptions, link, tags, institution, duration, logo } =
       </ul>
     </main>
     <div
-      class="border-2 border-[#cecdce] rounded-lg w-fit px-4 py-2 flex flex-row items-center gap-4"
+      class="border-2 z-20 bg-white/90 border-[#cecdce] rounded-lg w-fit px-4 py-2 flex flex-row items-center gap-4"
     >
       <img
         src={logo}
@@ -50,5 +52,6 @@ const { title, descriptions, link, tags, institution, duration, logo } =
         {institution}
       </p>
     </div>
+    <IconMedioCirculo class="absolute -right-10 -bottom-10 w-1/4 opacity-40" />
   </div>
 </article>

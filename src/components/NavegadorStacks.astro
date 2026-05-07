@@ -67,9 +67,9 @@ const tecnologiasSeleccionadas =
     <div class="h-3 w-3 bg-black rounded-full"></div>
     <div class="h-3 w-3 bg-black rounded-full"></div>
   </div>
-  <div class="p-4 lg:px-6 lg:py-8">
+  <div class="p-4 lg:px-6 lg:py-8 flex flex-col gap-4">
     <h4
-      class="font-medium text-white text-lg md:text-lg lg:text-xl mb-4 font-fantabular"
+      class="font-medium text-white text-lg md:text-lg lg:text-xl font-fantabular"
     >
       {title}
     </h4>
@@ -79,15 +79,15 @@ const tecnologiasSeleccionadas =
           <TegnologiaLogo {...tecnologiaLogos} />
         ))
       }
-      <ul>
-        {
-          tecnologiasSeleccionadas.skills.map((tecnologiaSkill)=>(
-            <li class="text-white list-disc list-inside">
-              {tecnologiaSkill}
-            </li>
-          ))
-        }
-      </ul>
     </div>
+    <ul>
+      {
+        tecnologiasSeleccionadas.skills.map((tecnologiaSkill)=>(
+          <li class="text-white list-disc list-inside">
+            {tecnologiaSkill}
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </div>
