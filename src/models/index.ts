@@ -3,7 +3,6 @@ export interface Proyect {
   slug: string;
   specialTag?: string;
   nameProject: string;
-  name: string;
   date: string;
   details?: ProyectDetail[];
   shortDescription: string;
@@ -22,6 +21,7 @@ export interface Proyect {
   linkFigma?: string;
   linkGit?: string;
   linkWebsite?: string;
+  pdf?: string;
 }
 
 export interface ProyectDetail {

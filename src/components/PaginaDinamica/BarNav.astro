@@ -1,36 +1,26 @@
 ---
-import { Icon } from "astro-icon/components";
+import Flecha from "@/assets/flecha.svg";
+import Logo from "public/isotipo-negativo.svg";
 ---
 
-<header
-  style="position: fixed; right: 0; z-index: 4; width:100vw; background-image:var(--fondo);background-size: 20px;"
->
-  <nav class="font-rethink">
-    <a href="/" class="nav-item flex flex-row gap-4">
-      <Icon name="fa6-solid:chevron-left" class="text-xl md:text-2xl" /> Volver</a
+<header class="fixed right-0 z-50 bg-black-secondary w-full">
+  <nav
+    class="font-rethink text-white flex flex-row justify-between items-center gap-4 px-4 md:px-6 w-full"
+  >
+    <a
+      href="/"
+      class="flex flex-row gap-4 items-center font-normal cursor-pointer hover:text-gray-400"
     >
+      <Flecha class="h-6 rotate-180" stroke="#ffffff" />
+      <p>Volver a incio</p>
+    </a
+    >
+    <Logo class="h-8 w-auto fill-white " />
   </nav>
 </header>
 
 <style>
   nav {
     height: var(--altura-header);
-    display: flex;
-    align-items: center;
-    padding-left: 40px;
-    border-bottom: solid 0.5px #d8d8d8;
-  }
-
-  .nav-item {
-    font-size: 16px;
-    font-weight: 500;
-    color: black;
-    cursor: pointer;
-    padding: 4px 16px;
-    text-decoration: none;
-  }
-
-  .nav-item:hover {
-    color: #666;
   }
 </style>
