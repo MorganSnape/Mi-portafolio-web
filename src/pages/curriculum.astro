@@ -5,21 +5,21 @@ import { estudios } from "../data/studies";
 ---
 
 <Layout title="Currículum - Gabriela Ferrer">
-  <div class="bg-primary/20 text-sm print:font-normal font-medium">
+  <div class="bg-primary/20 text-sm print:font-normal font-normal">
     <article
-      class="max-w-4xl mx-auto p-8 print:p-4 bg-white flex flex-col gap-8"
+      class="max-w-4xl mx-auto p-12 print:p-4 bg-white flex flex-col gap-8"
     >
       <section class="flex gap-5 flex-col">
         <div class="text-center pb-5 border-b-3 border-primary">
           <div>
-            <h1 class="font-bold text-3xl text-black mb-4">
+            <h1 class="font-semibold text-3xl text-black mb-4 font-fantabular">
               {personalInfo.name}
             </h1>
-            <p class="text-xl font-semibold">{personalInfo.title}</p>
+            <p class="text-lg font-medium font-rethink">{personalInfo.title}</p>
           </div>
         </div>
         <div class="flex flex-col gap-5 justify-center items-center">
-          <h2 class="font-bold text-xl mb-6pb-2">Resumen Profesional</h2>
+          <h2 class="font-bold text-xl mb-2">Resumen Profesional</h2>
           <p class="text-black text-pretty text-center whitespace-pre-line">
             {personalInfo.summary}
           </p>
@@ -75,9 +75,9 @@ import { estudios } from "../data/studies";
       </section>
 
       <!-- Experiencia Profesional -->
-      <section class="flex flex-col gap-12 print:break-inside-avoid">
+      <section class="flex flex-col gap-6 print:break-inside-avoid">
         <h2
-          class="font-bold text-xl mb-6 pb-4 text-black border-b-3 border-primary"
+          class="font-bold text-xl pb-4 text-black border-b-3 border-primary"
         >
           Experiencia Profesional
         </h2>
@@ -85,7 +85,7 @@ import { estudios } from "../data/studies";
           personalInfo.experiences?.map((experience) => (
             <div class="flex flex-row items-start gap-6 px-0">
               <div class="flex flex-row gap-2 items-center">
-                <p class="text-black font-bold font-fantabular w-20">
+                <p class="text-black font-medium font-fantabular w-26">
                   {experience.date}
                 </p>
                 <div class="h-0.5 bg-black w-8" />
@@ -93,7 +93,7 @@ import { estudios } from "../data/studies";
 
               <article class="flex flex-col gap-6">
                 <header>
-                  <h4 class="font-bold font-fantabular text-lg w-fit">
+                  <h4 class="font-medium font-fantabular text-lg w-fit">
                     {experience.position} - {experience.company}
                   </h4>
                 </header>
@@ -127,7 +127,7 @@ import { estudios } from "../data/studies";
           {
             estudios.map((estudio) => (
               <div class="border-l-3 border-primary/40 pl-6 print:break-inside-avoid">
-                <h3 class="font-fantabular font-bold text-base text-black">
+                <h3 class="font-fantabular font-medium text-base text-black">
                   {estudio.title} | {estudio.duration}
                 </h3>
                 <p class=" font-medium mb-3 text-primary italic  ">

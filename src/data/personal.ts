@@ -26,7 +26,7 @@ type Experience = {
 
 export const personalInfo: PersonalInfo = {
   name: "Gabriela Ferrer",
-  title: "GRAPHIC DESIGN | UX / UI DESIGNER | FRONTEND DEVELOPER ",
+  title: "GRAPHIC DESIGN  |  UX / UI DESIGNER  |  FRONTEND DEVELOPER ",
   email: "gabriellangelesferrer@gmail.com",
   phone: "+57 321 3266303",
   location: "Pereira, Colombia",
