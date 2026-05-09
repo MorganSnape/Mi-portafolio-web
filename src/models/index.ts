@@ -4,13 +4,14 @@ export interface Proyect {
   specialTag?: string;
   nameProject: string;
   date: string;
+  projectImagesList?: unknown[];
   details?: ProyectDetail[];
   shortDescription: string;
   projectType?: string;
   brandDescription?: string;
   descriptionProject: string;
-  objectiveBusiness?: string;
-  objectiveUser?: string;
+  objectiveBusiness?: string | string[];
+  objectiveUser?: string | string[];
   research?: ProyectResearch;
   problemDefinition?: ProyectProblemDefinition;
   ideation?: ProyectIdeation;
@@ -21,7 +22,6 @@ export interface Proyect {
   linkFigma?: string;
   linkGit?: string;
   linkWebsite?: string;
-  pdf?: string;
 }
 
 export interface ProyectDetail {

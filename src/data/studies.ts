@@ -16,7 +16,7 @@ export const estudios: Studies[] = [
     link: "",
     tags: ["Diseño Gráfico", "Branding", "Ilustración", "Composición", "Teoría del color"],
     duration: "En curso",
-    logo: "/images/logos/sena.png"
+    logo: "/images/logos/sena.webp"
   },
   {
     title: "Certificado Profesional de Diseño UX de Google",
@@ -31,7 +31,7 @@ export const estudios: Studies[] = [
     link: "",
     tags: ["Figma", "UX Research", "Usabilidad", "Prototipado", "Accesibilidad"],
     duration: "En curso",
-    logo: "/images/logos/google.png"
+    logo: "/images/logos/google.webp"
   },
   {
     title: "Programación JavaScript Frontend",
@@ -44,7 +44,7 @@ export const estudios: Studies[] = [
     ],
     tags: ["HTML", "CSS", "JavaScript", "React"],
     duration: "Finalizado 01/2025",
-    logo: "/images/logos/alura+oracle.png"
+    logo: "/images/logos/alura+oracle.webp"
   },
   {
     title: "Especialización en UX Research y UX Writing",
@@ -57,6 +57,6 @@ export const estudios: Studies[] = [
     ],
     tags: ["UX Research", "UX Writing", "Design Thinking", "Storytelling"],
     duration: "Finalizado 2024",
-    logo: "/images/logos/u-catolica.png"
+    logo: "/images/logos/u-catolica.webp"
   }
 ];
