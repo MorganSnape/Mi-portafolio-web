@@ -1,5 +1,17 @@
 import type { Proyect } from "@/models";
 
+const imagesManualMarcaGaby = Object.values(
+  import.meta.glob(
+    "/src/assets/proyectos/marcaPersonalGaby/presentacion/*.{png,jpg,jpeg,webp}",
+    {
+      eager: true,
+    }
+  )
+);
+
+
+
+
 export const proyectos: Proyect[] = [
   {
     type: ["UX"],
@@ -102,27 +114,27 @@ export const proyectos: Proyect[] = [
     descriptionProject: "Este proyecto fue desarrollado como parte del curso Fundamentos de UX/UI, aplicando un enfoque de diseño centrado en el usuario, respaldado por procesos de investigación, design thinking y prototipado en Figma.\n\n Se trata de una Plataforma de reseñas tipo red social enfocada en permitir a usuarios de cualquier perfil compartir su opinión sobre productos tecnológicos, ropa, locales comerciales y servicios. La app permite crear publicaciones personalizadas con el nombre del producto o local, precio, lugar de adquisición y reseña personal. Además, incorpora funciones de búsqueda y filtrado inteligentes, mostrando un promedio visual de opiniones para cada ítem, con el fin de facilitar decisiones informadas.",
     objectiveBusiness: "Validar el diseño de una red social de reseñas que simplifique la publicación y consulta de opiniones.",
     objectiveUser: "Permitir al usuario expresar reseñas claras y descubrir recomendaciones rápidas para productos y servicios.",
-    research: {
-      overview: "Investigación de plataformas de reseñas y redes sociales para identificar patrones de confianza, interacción y visualización de opiniones.",
+    // research: {
+    //   overview: "Investigación de plataformas de reseñas y redes sociales para identificar patrones de confianza, interacción y visualización de opiniones.",
 
-      strengths: "Interfaz simple, enfoque en el contenido generado por usuario y filtros rápidos.",
-      opportunity: "Reducir la fricción para crear reseñas y facilitar la exploración de productos relevantes.",
-      image: "/images/BaseImagen.jpg",
-    },
-    problemDefinition: {
-      description: "Los usuarios necesitan una forma intuitiva de compartir reseñas sin sentirse abrumados por formularios extensos.",
-      userPersona: "Usuario tecnológico que busca recomendaciones confiables y rápidas.",
-      personaImage: "/images/BaseImagen.jpg",
-    },
-    ideation: {
-      overview: "Diseñamos un flujo de publicación breve, feed de reseñas y filtros que priorizan la claridad y la usabilidad.",
-      userFlowImage: "/images/BaseImagen.jpg",
-      sketchImage: "/images/BaseImagen.jpg",
-      wireframeImage: "/images/BaseImagen.jpg",
-    },
-    testing: {
-      summary: "Probamos la capacidad de los usuarios para publicar reseñas en menos de un minuto y encontrar productos recomendados fácilmente.",
-    },
+    //   strengths: "Interfaz simple, enfoque en el contenido generado por usuario y filtros rápidos.",
+    //   opportunity: "Reducir la fricción para crear reseñas y facilitar la exploración de productos relevantes.",
+    //   image: "/images/BaseImagen.jpg",
+    // },
+    // problemDefinition: {
+    //   description: "Los usuarios necesitan una forma intuitiva de compartir reseñas sin sentirse abrumados por formularios extensos.",
+    //   userPersona: "Usuario tecnológico que busca recomendaciones confiables y rápidas.",
+    //   personaImage: "/images/BaseImagen.jpg",
+    // },
+    // ideation: {
+    //   overview: "Diseñamos un flujo de publicación breve, feed de reseñas y filtros que priorizan la claridad y la usabilidad.",
+    //   userFlowImage: "/images/BaseImagen.jpg",
+    //   sketchImage: "/images/BaseImagen.jpg",
+    //   wireframeImage: "/images/BaseImagen.jpg",
+    // },
+    // testing: {
+    //   summary: "Probamos la capacidad de los usuarios para publicar reseñas en menos de un minuto y encontrar productos recomendados fácilmente.",
+    // },
     // visualDesign: {
     //   images: ["/images/BaseImagen.jpg", "/images/BaseImagen.jpg",],
     //   video: "/videos/videoEjemplo.mp4",
@@ -153,13 +165,13 @@ export const proyectos: Proyect[] = [
     linkWebsite: "https://encriptador-texto-liard.vercel.app/",
     tags: ["HTML", "CSS", "JavaScript"],
   },
-   {
+  {
     type: ["Diseño"],
     slug: "Diseño de marca personal - Gabriela",
     nameProject: "Marca personal de Gabriela",
     date: "Mayo 2026",
     projectType: "Identidad visual",
-    pdf: "/public/pdf/manual de marca personal gaby.pdf",
+    projectImagesList: imagesManualMarcaGaby,
     details: [
       { label: "Empresa", value: "Encriptador de Texto", icon: "bxs:briefcase" },
       { label: "My rol", value: "Desarrollador Front End", icon: "bxs:user" },
@@ -167,13 +179,21 @@ export const proyectos: Proyect[] = [
       { label: "Tipo de proyecto", value: "Web App", icon: "bxs:briefcase" },
       { label: "Cliente", value: "Gabriela Ferrer", icon: "bxs:briefcase" },
     ],
-    shortDescription: "Desarrollo de un encriptador y desencriptador del mismo texto",
-    descriptionProject: "Proyecto desarrollado como parte del Diplomado en Programación Frontend con JavaScript, en el cual se aplicaron principios fundamentales de desarrollo web moderno como Mobile First, junto con tecnologías clave: HTML5, CSS3, JavaScript, y herramientas de diseño como Figma.",
-    objectiveBusiness: "Demostrar habilidades de Front End con una herramienta interactiva de cifrado y descifrado.",
-    objectiveUser: "Ofrecer una interfaz sencilla para encriptar y desencriptar texto sin pasos técnicos complejos.",
-    frontPage: "/images/proyectos/marcaPersonalGaby/portada.png",
-    linkGit: "https://github.com/MorganSnape/Encriptador-Texto.git",
-    linkWebsite: "https://encriptador-texto-liard.vercel.app/",
+    shortDescription: "La marca personal de Gabriela Ferrer representa la integración entre diseño gráfico, UX/UI y desarrollo front-end desde un enfoque creativo y funcional. Su identidad visual combina estética neobrutalista, retículas y referencias al código para transmitir una imagen moderna, cercana y en constante evolución.",
+    descriptionProject: "Este proyecto consistió en el desarrollo de la identidad visual y manual de marca personal de Gabriela Ferrer. El objetivo fue construir una marca que reflejara sus habilidades multidisciplinarias en diseño y desarrollo digital, manteniendo una comunicación clara, creativa y coherente en diferentes plataformas.",
+    objectiveBusiness: [
+      "Construir una identidad visual reconocible y profesional.",
+      "Comunicar habilidades en diseño gráfico, UX/UI y desarrollo front-end.",
+      "Fortalecer la presencia digital y oportunidades profesionales.",
+      "Mantener consistencia visual en portafolio y redes sociales.",
+    ],
+    objectiveUser: [
+      "Facilitar la comprensión del perfil profesional y habilidades.",
+      "Transmitir una experiencia visual clara y atractiva.",
+      "Generar cercanía mediante una comunicación auténtica y creativa.",
+      "Crear una experiencia memorable a través de elementos visuales distintivos.",
+    ],
+    frontPage: "/src/assets/proyectos/marcaPersonalGaby/portada-proyecto.webp",
     tags: ["Diseño gráfico", "Identidad visual", "Manual de marca"],
   },
 ];

@@ -8,7 +8,6 @@ interface Props extends Proyect {
 
 const {
   slug,
-  name,
   descriptionProject,
   frontPage,
   tags,
@@ -36,8 +35,8 @@ const {
     >
       <img
         src={frontPage}
-        alt={"Portada del proyecto " + name}
-        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 bg-primary/10"
+        alt={"Portada del proyecto " + nameProject}
+        class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-110"
       />
     </header>
     <main class="flex flex-col gap-2 p-4 justify-between w-full md:flex-1">
@@ -89,3 +88,14 @@ const {
     </main>
   </article>
 </a>
+
+<script>
+  const button = document.getElementById("backToTop");
+
+  button?.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+</script>
