@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 import { proyectos } from "@/data/portfolio.ts";
 
 import Layout from "@/layouts/Layout.astro";
@@ -206,7 +208,8 @@ const {
         projectImagesList && (
           <div class="flex flex-col gap-0 w-4/5 mx-auto">
             {projectImagesList?.map((img: any) => (
-              <img src={img.default.src} alt="" />
+              <Image src={img.default} alt={`Imagen del proyecto ${nameProject}`} />
+              //<img src={img.default.src} alt="" />
             ))}
           </div>
         )

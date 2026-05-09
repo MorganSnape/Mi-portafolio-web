@@ -9,6 +9,7 @@ const imagesManualMarcaGaby = Object.values(
   )
 );
 
+import PortadaProyectoPersonal from "@/assets/proyectos/marcaPersonalGaby/portada-proyecto.webp";
 
 
 
@@ -193,7 +194,7 @@ export const proyectos: Proyect[] = [
       "Generar cercanía mediante una comunicación auténtica y creativa.",
       "Crear una experiencia memorable a través de elementos visuales distintivos.",
     ],
-    frontPage: "/src/assets/proyectos/marcaPersonalGaby/portada-proyecto.webp",
+    frontPage: PortadaProyectoPersonal.src,
     tags: ["Diseño gráfico", "Identidad visual", "Manual de marca"],
   },
 ];
