@@ -39,7 +39,7 @@ import { estudios } from "../data/studies";
               </p>
             </div>
           </div>
-          <div class="grid md:grid-cols-2 col-span-1 print:grid-cols-2 gap-6">
+          <div class="grid md:grid-cols-2 col-span-1 print:grid-cols-2 gap-6 z-10">
             <a
               href={personalInfo.linkedin}
               class="text-primary hover:text-black transition-colors"
@@ -194,7 +194,7 @@ import { estudios } from "../data/studies";
     </article>
 
     <!-- Botón de descarga -->
-    <div class="text-center mt-12 print:hidden fixed bottom-12 right-12">
+    <div class="text-center mt-12 print:hidden fixed bottom-12 right-12 z-50">
       <button
         onclick="window.print()"
         class="primaryButton bg-primary text-white px-6 py-3 font-medium"
@@ -223,7 +223,5 @@ import { estudios } from "../data/studies";
       border-bottom-width: 2px;
     }
   }
-  a {
-    z-index: 99;
-  }
+  /* No aplicar z-index global a los enlaces para evitar solapamientos con elementos fijos */
 </style>

@@ -114,3 +114,8 @@ export interface Studies {
 }
 
 export type { PersonalInfo } from '../data/personal';
+
+export type NavLinksType = {
+  name: string;
+  href: string;
+};

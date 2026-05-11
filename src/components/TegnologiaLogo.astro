@@ -4,14 +4,14 @@ const { logo: Logo, alt, text } = Astro.props;
 
 <div class="group relative flex flex-col items-center select-none">
   <div
-    class="border-2 border-black w-14 h-14 flex justify-center items-center bg-white"
+    class="border-2 border-black w-11 md:w-14 h-11 md:h-14 flex justify-center items-center"
   >
     <div class="aspect-square font-black text-black border-2 border-black p-1">
       {
         Logo ? (
-          <Logo class="w-8 h-8" />
+          <Logo class="w-5 md:w-8 h-5 md:h-8" />
         ) : (
-          <span class="text-2xl font-fantabular ">{text}</span>
+          <span class="text-xs md:text-2xl font-fantabular h-fit aspect-square">{text}</span>
         )
       }
     </div>

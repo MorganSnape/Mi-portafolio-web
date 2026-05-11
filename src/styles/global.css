@@ -1,17 +1,52 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #8c529b;
-  --color-secondary: #ffe971;
-  --color-pink:#FC7DA8;
-  --color-plant-green:#7D9E4A;
-  --color-tertiary: #d1d1d1;
-  --color-text-card: #5d5d5d;
-  --color-black: #0B090B;
-  --color-white-cream:#FDF7F5;
-  --color-black-secondary:#3A353A;
+   --color-primary: #8c529b;
+  --color-secondary: var(--color-kournikova-200);
+  --color-pink: var(--color-tickle-me-pink-400);
+  --color-plant-green: var(--color-asparagus-500);
+  --color-black: #0b090b;
+  --color-white-cream: #fdf7f5;
+  --color-black-secondary: #3a353a;
   --color-gray-200: #cecdce;
   --color-gray-400: #9d9a9d;
+  --color-gray-500: #6a686b;
+  --color-gray-600: #2e2b2e;
+
+  --color-tickle-me-pink-50: #fef1f6;
+  --color-tickle-me-pink-100: #fde6ef;
+  --color-tickle-me-pink-200: #feccdf;
+  --color-tickle-me-pink-300: #fea3c4;
+  --color-tickle-me-pink-400: #fc7da8;
+  --color-tickle-me-pink-500: #f63e77;
+  --color-tickle-me-pink-600: #e51d51;
+  --color-tickle-me-pink-700: #c80e39;
+  --color-tickle-me-pink-800: #a50f30;
+  --color-tickle-me-pink-900: #89122c;
+  --color-tickle-me-pink-950: #540314;
+
+  --color-kournikova-50: #fefbe8;
+  --color-kournikova-100: #fff8c2;
+  --color-kournikova-200: #ffe971;
+  --color-kournikova-300: #ffdb45;
+  --color-kournikova-400: #fcc513;
+
+  --color-asparagus-50: #f5f8ed;
+  --color-asparagus-100: #e8efd8;
+  --color-asparagus-200: #d2e0b6;
+  --color-asparagus-300: #b4cb8b;
+  --color-asparagus-400: #97b566;
+  --color-asparagus-500: #7d9e4a;
+  --color-asparagus-600: #5e7a36;
+  --color-asparagus-700: #495e2d;
+  --color-asparagus-800: #3c4c28;
+  --color-asparagus-900: #354225;
+  --color-asparagus-950: #1a2310;
+
+  --color-tag: var(--color-secondary);
+
+  --font-rethink: "Rethink Sans", sans-serif;
+  --font-fantabular: "fantabular-mvb", mono;
 
 
   --color-tag: var(--color-secondary);

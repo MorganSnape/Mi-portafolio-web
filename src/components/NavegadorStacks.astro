@@ -6,20 +6,34 @@ import FigmaSvg from "../assets/logos/figma.svg";
 import MiroSvg from "../assets/logos/miro.svg";
 import ReactSvg from "../assets/logos/react.svg";
 import TailwindSvg from "../assets/logos/tailwind.svg";
+import PsSvg from "../assets/logos/ps.svg";
+import AiSvg from "../assets/logos/ai.svg";
+import PrSvg from "../assets/logos/pr.svg";
+import JavaScriptSvg from "../assets/logos/javaS.svg";
+import NotionSvg from "../assets/logos/notion.svg";
+import GitHubSvg from "../assets/logos/gitHub.svg";
+import Claude from "../assets/logos/claude.svg";
+import ChatGPT from "../assets/logos/chatGPT.svg";
+import MidJourney from "../assets/logos/midJourney.svg";
+import Canva from "../assets/logos/canva.svg";
+import AdobeFirefly from "../assets/logos/adobeFirefly.svg";
 
-const { title } = Astro.props;
+const { title,bg } = Astro.props;
 
 const tecnologias = {
-  Programación: {
+  "Desarrollo Front-End": {
     logos: [
       { logo: ReactSvg, alt: "Logo de React" },
       { logo: TailwindSvg, alt: "Logo de Tailwind" },
       { logo: AstroSvg, alt: "Logo de Astro" },
-      { text: "JS", alt: "Logo de JavaScript" },
+      { logo: JavaScriptSvg, alt: "Logo de JavaScript" },
+      { logo: GitHubSvg, alt: "Logo de GitHub" },
+      { logo: Claude, alt: "Logo de Claude" },
+      
     ],
     skills: [
       "HTML, CSS, JavaScript",
-      "React.js",
+      "Integración UI",
       "Componentes reutilizables",
       "Desarrollo responsive",
     ],
@@ -29,20 +43,25 @@ const tecnologias = {
     logos: [
       { logo: FigmaSvg, alt: "Logo de Figma" },
       { logo: MiroSvg, alt: "Logo de Miro" },
+      { logo: NotionSvg, alt: "Logo de Notion" },
+      { logo: ChatGPT, alt: "Logo de ChatGPT" }
     ],
     skills: [
-      "Diseño de interfaces",
-      "Wireframing y prototipado",
-      "Design Systems",
+      "Arquitectura de información",
+      "Wireframes y prototipos interactivos",
+      "Sistemas de diseño",
       "Investigación de usuario",
     ],
   },
 
   "Diseño Gráfico": {
     logos: [
-      { text: "AI", alt: "Logo de Illustrator" },
-      { text: "PS", alt: "Logo de Photoshop" },
-      { text: "PR", alt: "Logo de Premiere" },
+      { logo: AiSvg, alt: "Logo de Illustrator" },
+      { logo: PsSvg, alt: "Logo de Photoshop" },
+      { logo: PrSvg, alt: "Logo de Premiere" },
+      { logo: Canva, alt: "Logo de Canva" },
+      { logo: MidJourney, alt: "Logo de MidJourney" },
+      {logo: AdobeFirefly, alt: "Logo de Adobe FireFly"},
     ],
     skills: [
       "Identidad visual",
@@ -58,7 +77,7 @@ const tecnologiasSeleccionadas =
 ---
 
 <div
-  class="bg-primary w-full min-h-64 border-2 border-black rounded-xl md:rounded-2xl "
+  class={`${bg} w-full min-h-64 border-2 border-black rounded-xl md:rounded-2xl`}
 >
   <div
     class="h-10 bg-white flex flex-row items-center gap-2 px-4 border-b-4 border-black rounded-t-xl md:rounded-t-2xl"
@@ -69,11 +88,11 @@ const tecnologiasSeleccionadas =
   </div>
   <div class="p-4 lg:px-6 lg:py-8 flex flex-col gap-4">
     <h4
-      class="font-medium text-white text-lg md:text-lg lg:text-xl font-fantabular"
+      class="font-medium  text-lg md:text-lg lg:text-xl font-fantabular"
     >
       {title}
     </h4>
-    <div class="flex flex-row flex-wrap gap-4">
+    <div class="flex flex-row flex-wrap gap-1">
       {
         tecnologiasSeleccionadas.logos.map((tecnologiaLogos) => (
           <TegnologiaLogo {...tecnologiaLogos} />
@@ -82,10 +101,8 @@ const tecnologiasSeleccionadas =
     </div>
     <ul>
       {
-        tecnologiasSeleccionadas.skills.map((tecnologiaSkill)=>(
-          <li class="text-white list-disc list-inside">
-            {tecnologiaSkill}
-          </li>
+        tecnologiasSeleccionadas.skills.map((tecnologiaSkill) => (
+          <li class="font-medium list-disc list-inside">{tecnologiaSkill}</li>
         ))
       }
     </ul>

@@ -2,66 +2,31 @@
 import { Icon } from "astro-icon/components";
 import Logo from "public/isotipo-negativo.svg";
 
-const links = [
-  {
-    name: "Inicio",
-    href: "#inicio",
-  },
-  {
-    name: "Sobre mí",
-    href: "#sobre-mi",
-  },
-  {
-    name: "Experiencia",
-    href: "#experiencia-container",
-  },
-  {
-    name: "Proyectos",
-    href: "#proyectos-container",
-  },
-  {
-    name: "Estudios",
-    href: "#estudios-container",
-  },
-  {
-    name: "Contáctame",
-    href: "#contactame",
-  },
-  {
-    name: "Currículum",
-    href: "/curriculum",
-  },
-];
+import {navLinks} from "@/data/navLinks";
+
 ---
 
-<header class="fixed inset-x-0 top-0 z-50 bg-black-secondary">
-  <nav class="max-w-[1440px] mx-auto flex items-center justify-between px-4 md:px-6 h-[var(--altura-header)] font-rethink">
-
-    <!-- Logo -->
-    <Logo class="h-8 w-auto fill-white pointer-events-none" />
+<header class="fixed top-0 z-50 bg-black-secondary w-full">
+  <nav class="max-w-[1440px] mx-auto flex items-center justify-between px-4 md:px-6 h-[var(--altura-header)]">
+    <Logo class="h-8 fill-white" />
 
     <!-- Botón hamburguesa -->
-    <label for="menu-hamburguer" class="md:hidden cursor-pointer z-50">
+    <label for="menu-hamburguer" class="md:hidden z-50">
       <Icon name="codicon:menu" class="text-3xl text-white" />
     </label>
     <input type="checkbox" id="menu-hamburguer" class="hidden peer" />
 
-    <!-- Links -->
+    <!-- Links -->  
     <ul
-      class="fixed md:static inset-x-0 top-[var(--altura-header)] md:top-0 bg-black-secondary md:bg-transparent
-      flex flex-col md:flex-row items-center md:items-center
-      max-h-0 peer-checked:max-h-screen md:max-h-none overflow-hidden md:overflow-visible
-      transition-all duration-300"
+      class="fixed md:static inset-x-0 left-0 right-0 top-[var(--altura-header)] bottom-0 md:bottom-auto md:top-0 bg-black-secondary md:bg-transparent
+      flex flex-col md:flex-row items-center md:items-center justify-start peer-checked:justify-center max-h-0 peer-checked:max-h-none overflow-hidden md:overflow-visible transition-all duration-300 ul-links box-border px-0 h-full md:h-auto space-y-4 md:space-y-0 md:space-x-4"
     >
       {
-        links.map((link) => (
-          <li>
+        navLinks.map((link) => (
+          <li class="w-full md:w-fit">
             <a
               href={link.href}
-              class="nav-item font-rethink px-4 py-3 md:py-2 text-white text-base font-normal
-              hover:text-gray-400
-              active:font-semibold
-              focus:outline-none focus:ring-2 focus:ring-yellow-300"
+              class="nav-item font-rethink w-full px-4 text-center md:text-left text-white text-base font-normal hover:text-gray-400 focus:ring-2 active:font-semibold active:text-white active:border-none focus:outline-none h-[calc(var(--altura-header)_-_12px)] focus:ring-yellow-300 flex flex-col items-center justify-center"
             >
               {link.name}
             </a>
@@ -122,16 +87,6 @@ const links = [
 </script>
 
 <style>
-  .nav-item:active {
-    font-weight: 600;
-    color: white;
-    border:none;
-  }
-
-  .nav-item:focus {
-    outline: none;
-  }
-
   .nav-item.active {
     font-weight: 700;
     color: var(--color-secondary, #ffe971);
