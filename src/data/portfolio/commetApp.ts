@@ -1,5 +1,7 @@
 import type { Proyect } from "@/models";
 
+import Portada from "@/assets/proyectos/Portada-Commet.webp";
+
 export const commetAppProyect: Proyect = {
   type: ["UX",],
   slug: "commet-app",
@@ -43,7 +45,7 @@ export const commetAppProyect: Proyect = {
   //   images: ["/images/BaseImagen.jpg", "/images/BaseImagen.jpg",],
   //   video: "/videos/videoEjemplo.mp4",
   // },
-  frontPage: "/images/Portada-Commet.webp",
+  coverImage: Portada,
   linkFigma: "https://www.figma.com/design/q7khsSBJocn9TTIOirQoid/Commet.app?node-id=1-925&t=KuJk3EwziEKo4Woi-1",
   tags: ["Figma"],
 };

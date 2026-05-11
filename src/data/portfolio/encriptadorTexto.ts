@@ -1,4 +1,6 @@
 import type { Proyect } from "@/models";
+import Portada from "@/assets/proyectos/portada-encriptador-texto.webp";
+
 
 export const encriptadorTextoProyect: Proyect = {
   type: ["Front"],
@@ -17,7 +19,7 @@ export const encriptadorTextoProyect: Proyect = {
   descriptionProject: "Proyecto desarrollado como parte del Diplomado en Programación Frontend con JavaScript, en el cual se aplicaron principios fundamentales de desarrollo web moderno como Mobile First, junto con tecnologías clave: HTML5, CSS3, JavaScript, y herramientas de diseño como Figma.",
   objectiveBusiness: "Demostrar habilidades de Front End con una herramienta interactiva de cifrado y descifrado.",
   objectiveUser: "Ofrecer una interfaz sencilla para encriptar y desencriptar texto sin pasos técnicos complejos.",
-  frontPage: "/images/portada-encriptador-texto.webp",
+  coverImage: Portada,
   linkGit: "https://github.com/MorganSnape/Encriptador-Texto.git",
   linkWebsite: "https://encriptador-texto-liard.vercel.app/",
   tags: ["HTML", "CSS", "JavaScript"],

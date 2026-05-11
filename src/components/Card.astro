@@ -1,6 +1,7 @@
 ---
 import { type Proyect } from "@/models";
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 
 interface Props extends Proyect {
   section: "UX" | "Front"| "Diseño";
@@ -9,7 +10,7 @@ interface Props extends Proyect {
 const {
   slug,
   descriptionProject,
-  frontPage,
+  coverImage,
   tags,
   nameProject,
 } = Astro.props;
@@ -33,10 +34,10 @@ const {
     <header
       class="relative border-b-2 border-black h-1/3 w-full bg-black overflow-hidden md:flex-shrink-0"
     >
-      <img
-        src={frontPage}
-        alt={"Portada del proyecto " + nameProject}
+      <Image src={coverImage} alt={"Portada del proyecto " + nameProject}
         class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-110"
+        width={coverImage.width}
+        height={coverImage.height}
       />
     </header>
     <main class="flex flex-col gap-2 p-4 justify-between w-full md:flex-1">

@@ -1,5 +1,7 @@
 import type { Proyect } from "@/models";
 
+import Portada from "@/assets/proyectos/portada-amarilla.webp";
+
 export const amarillaGardenProyect: Proyect = {
   type: ["UX"],
   slug: "amarilla-garden",
@@ -78,7 +80,7 @@ export const amarillaGardenProyect: Proyect = {
   //   mockupImage: "/images/BaseImagen.jpg",
   //   video: "/videos/videoEjemplo.mp4",
   // },
-  frontPage: "/images/proyectos/amarilla/portada-proyecto.webp",
+  coverImage: Portada,
   linkWebsite: "https://www.amarillagarden.com",
   linkGit: "https://github.com/user/portfolio",
   tags: ["UX/UI", "Figma", "FigJam", "Astro", "TypeScript", "Tailwind"],

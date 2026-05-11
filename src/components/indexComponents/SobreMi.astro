@@ -9,17 +9,16 @@ import DecoracionCurva from "@/icons/decoracion-curva.svg";
 
 <section
   id="sobre-mi"
-  class="w-screen flex flex-col items-center text-black z-10 -mt-10"
+  class="w-full flex flex-col items-center text-black z-10 overflow-hidden"
 >
-  <Subtitulo align="center" type="Sobre mí" />
   <div class="my-20 max-w-[1280px] px-4 sm:px-12 xl:px-0 flex flex-col gap-6">
     <div
       class="grid grid-cols-1 lg:grid-cols-2 items-center gap-0 lg:gap-32 justify-items-center justify-self-start"
     >
       <div class="flex flex-col gap-6">
-        <h3 class="relative titleH3 efectoResaltador w-60 sm:w-fit">
+        <h3 class="relative titleH3 efectoResaltador w-fit px-0">
           Quién soy y qué hago
-          <Exclamacion class="absolute h-12 w-12 -top-10 -right-12 sm:-top-8 sm:-right-10" />
+          <Exclamacion class="absolute h-8 sm:h-12 w-8 sm:w-12 -top-6 sm:-top-10 -right-8 sm:-right-12" />
         </h3>
         <p
           class="text-base lg:text-lg text-black leading-tight text-balance font-normal"
@@ -48,7 +47,7 @@ import DecoracionCurva from "@/icons/decoracion-curva.svg";
     <div id="stacks" class="py-12 flex flex-col gap-12">
       <div class="flex flex-row flex-wrap justify-center md:justify-start items-center gap-4">
         <h3 class="titleH3 efectoResaltador text-balance">Herramientas que uso</h3>
-        <DecoracionCurva  class="w-40"/>
+        <DecoracionCurva  class="w-32 lg:w-40"/>
       </div>
       <div
         class="grid grid-rows-3 sm:grid-rows-2 lg:grid-rows-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center"

@@ -34,7 +34,7 @@ const {
   nameProject,
   date,
   brandDescription,
-  frontPage,
+  coverImage,
   linkFigma,
   projectImagesList,
   linkWebsite,
@@ -59,9 +59,9 @@ const {
       id="backToTop"
       type="button"
       aria-label="Scroll projects left"
-      class="fixed z-50 bottom-10 right-1/2 primaryButton bg-white rounded-full text-black p-3 cursor-pointer opacity-60 hover:opacity-1000"
+      class="fixed z-50 bottom-10 left-1/2 -translate-x-1/2 primaryButton bg-white rounded-full text-black p-3 cursor-pointer opacity-60 hover:opacity-1000"
     >
-      <Icon name="fa6-solid:arrow-up" height={20} width={20} class="" />
+      <Icon name="fa6-solid:arrow-up" height={20} width={20}/>
     </button>
     <div
       class="fixed bottom-10 right-4 md:right-10 z-50 flex flex-col md:flex-row gap-4"
@@ -124,11 +124,7 @@ const {
           }
         </ul>
       </div>
-      <img
-        src={frontPage}
-        alt={`Portada del proyecto ${nameProject}`}
-        class="h-[200px] md:h-[400px] w-full object-cover object-center border-y-2 border-black"
-      />
+      <Image src={coverImage} alt={`Portada del proyecto ${nameProject}`} class="h-[200px] md:h-[400px] w-full object-cover object-center border-y-2 border-black" width={coverImage.width} height={coverImage.height}/>
       <ul
         class="sombra w-full bg-white grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-4 py-4 px-4 items-start"
       >
@@ -176,7 +172,7 @@ const {
               Array.isArray(objectiveBusiness) ? (
                 <ul>
                   {objectiveBusiness.map((item) => (
-                    <li class="list-disc">{item}</li>
+                    <li class="list-disc list-outside ml-5">{item}</li>
                   ))}
                 </ul>
               ) : (
@@ -193,7 +189,7 @@ const {
               Array.isArray(objectiveUser) ? (
                 <ul>
                   {objectiveUser.map((item) => (
-                    <li class="list-disc">{item}</li>
+                    <li class="list-disc list-outside ml-5">{item}</li>
                   ))}
                 </ul>
               ) : (
@@ -206,10 +202,9 @@ const {
 
       {
         projectImagesList && (
-          <div class="flex flex-col gap-0 w-4/5 mx-auto">
+          <div class="flex flex-col gap-0 w-full lg:w-4/5 mx-auto bg-black-secondary/90">
             {projectImagesList?.map((img: any) => (
-              <Image src={img.default} alt={`Imagen del proyecto ${nameProject}`} />
-              //<img src={img.default.src} alt="" />
+              <Image src={img} alt={`Imagen del proyecto ${nameProject}`} class="shadow-xl" />
             ))}
           </div>
         )

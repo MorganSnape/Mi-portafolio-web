@@ -1,3 +1,5 @@
+import type { ImageMetadata } from "astro";
+
 export interface Proyect {
   type: ProyectType[];
   slug: string;
@@ -18,7 +20,7 @@ export interface Proyect {
   testing?: ProyectTesting;
   visualDesign?: ProyectVisualDesign;
   tags?: string[];
-  frontPage: string;
+  coverImage: ImageMetadata;
   linkFigma?: string;
   linkGit?: string;
   linkWebsite?: string;
