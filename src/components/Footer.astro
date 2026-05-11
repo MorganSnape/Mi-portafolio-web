@@ -1,38 +1,9 @@
 ---
 import SocialMediaButtons from "@/components/SocialMediaButtons.astro";
+import {navLinks} from "@/data/navLinks";
 
 import Logo from "public/negativo.svg";
 
-const links = [
-  {
-    name: "Inicio",
-    href: "#inicio",
-  },
-  {
-    name: "Sobre mí",
-    href: "#sobre-mi",
-  },
-  {
-    name: "Experiencia",
-    href: "#experiencia-container",
-  },
-  {
-    name: "Proyectos",
-    href: "#proyectos-container",
-  },
-  {
-    name: "Estudios",
-    href: "#estudios-container",
-  },
-  {
-    name: "Contáctame",
-    href: "#contactame",
-  },
-  {
-    name: "Currículum",
-    href: "/curriculum",
-  },
-];
 ---
 
 <footer class="bg-[url(/fondoDos.svg)] bg-[length:30px] text-white w-full">
@@ -46,7 +17,7 @@ const links = [
       <p>Navegación</p>
       <ul class="grid grid-cols-3 gap-x-2">
         {
-          links.map((link) => (
+          navLinks.map((link) => (
             <li>
               <a
                 href={link.href}

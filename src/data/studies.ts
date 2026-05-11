@@ -35,7 +35,7 @@ export const estudios: Studies[] = [
   },
   {
     title: "Programación JavaScript Frontend",
-    institution: "Diplomado de Oracle + Alura Latam",
+    institution: "Oracle + Alura Latam",
     descriptions: [
       "Interfaces dinámicas con JavaScript",
       "Maquetación HTML5/CSS3 Mobile First",
