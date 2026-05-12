@@ -19,9 +19,9 @@ export const marcaPersonalProyect: Proyect = {
   projectImagesList: imagesManualMarcaGaby,
   details: [
     { label: "Empresa", value: "Encriptador de Texto", icon: "bxs:briefcase" },
-    { label: "My rol", value: "Desarrollador Front End", icon: "bxs:user" },
+    { label: "My rol", value: "Diseñadora Gráfica", icon: "bxs:user" },
     { label: "Duración", value: "1 mes", icon: "bxs:time" },
-    { label: "Tipo de proyecto", value: "Web App", icon: "bxs:briefcase" },
+    { label: "Tipo de proyecto", value: "Identidad de marca", icon: "bxs:briefcase" },
     { label: "Cliente", value: "Gabriela Ferrer", icon: "bxs:briefcase" },
   ],
   shortDescription: "La marca personal de Gabriela Ferrer representa la integración entre diseño gráfico, UX/UI y desarrollo front-end desde un enfoque creativo y funcional. Su identidad visual combina estética neobrutalista, retículas y referencias al código para transmitir una imagen moderna, cercana y en constante evolución.",
