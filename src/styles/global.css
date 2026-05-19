@@ -13,6 +13,8 @@
   --color-gray-500: #6a686b;
   --color-gray-600: #2e2b2e;
 
+  /* Rosa */
+
   --color-tickle-me-pink-50: #fef1f6;
   --color-tickle-me-pink-100: #fde6ef;
   --color-tickle-me-pink-200: #feccdf;
@@ -25,12 +27,14 @@
   --color-tickle-me-pink-900: #89122c;
   --color-tickle-me-pink-950: #540314;
 
+  /* Amarillo */
   --color-kournikova-50: #fefbe8;
   --color-kournikova-100: #fff8c2;
   --color-kournikova-200: #ffe971;
   --color-kournikova-300: #ffdb45;
   --color-kournikova-400: #fcc513;
 
+  /* Verde */
   --color-asparagus-50: #f5f8ed;
   --color-asparagus-100: #e8efd8;
   --color-asparagus-200: #d2e0b6;

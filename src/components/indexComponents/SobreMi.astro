@@ -1,10 +1,14 @@
 ---
-import Subtitulo from "@/components/Subtitulo.astro";
 import NavegadorStacks from "../NavegadorStacks.astro";
 
 import Exclamacion from "@/icons/exclamacion.svg";
 import Decoracion from "@/icons/decoracion-cuadros.svg";
 import DecoracionCurva from "@/icons/decoracion-curva.svg";
+
+import TagDesign from "@/assets/tag-design.svg";
+import TagFrontEnd from "@/assets/tag-code.svg";
+import TagDesignUX from "@/assets/tag-ux-ui.svg";
+
 ---
 
 <section
@@ -52,9 +56,9 @@ import DecoracionCurva from "@/icons/decoracion-curva.svg";
       <div
         class="grid grid-rows-3 sm:grid-rows-2 lg:grid-rows-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center"
       >
-        <NavegadorStacks title="Diseño UX/UI"  bg="bg-tickle-me-pink-200"/>
-        <NavegadorStacks title="Desarrollo Front-End" bg="bg-asparagus-200" />
-        <NavegadorStacks title="Diseño Gráfico" bg="bg-kournikova-100" />
+        <NavegadorStacks title="Diseño UX/UI" tagSvg={TagDesignUX} textColor="text-pink"/>
+        <NavegadorStacks title="Desarrollo Front-End" tagSvg={TagFrontEnd} textColor="text-plant-green" />
+        <NavegadorStacks title="Diseño Gráfico" tagSvg={TagDesign} textColor="text-kournikova-400" />
       </div>
     </div>
   </div>

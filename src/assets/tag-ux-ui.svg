@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 81.78 73.04">
+  <g>
+    <path d="M8.22,0h65.09C77.98,0,81.78,3.8,81.78,8.48v56.09c0,4.68-3.8,8.48-8.48,8.48H16.7c-4.68,0-8.48-3.8-8.48-8.48V0h0Z" fill="#fc7da8"/>
+    <polygon points="8.22 0 8.22 8.22 0 8.22 8.22 0" fill="#f63e77"/>
+  </g>
+  <g>
+    <rect x="16.79" y="20.74" width="56.42" height="31.57" fill="none" stroke="#0b090b" stroke-miterlimit="10" stroke-width="1"/>
+    <rect x="42.62" y="20.74" width="30.59" height="31.57" fill="#fff" stroke="#0b090b" stroke-miterlimit="10" stroke-width=".98"/>
+    <line x1="42.62" y1="20.74" x2="73.21" y2="52.31" fill="none" stroke="#0b090b" stroke-miterlimit="10" stroke-width=".98"/>
+    <line x1="73.21" y1="20.74" x2="42.62" y2="52.31" fill="none" stroke="#0b090b" stroke-miterlimit="10" stroke-width=".98"/>
+    <line x1="21.23" y1="36.52" x2="38.25" y2="36.52" fill="none" stroke="#0b090b" stroke-miterlimit="10" stroke-width=".98"/>
+    <line x1="21.23" y1="40.48" x2="37.61" y2="40.48" fill="none" stroke="#0b090b" stroke-miterlimit="10" stroke-width=".98"/>
+    <line x1="21.23" y1="44.49" x2="29.42" y2="44.49" fill="none" stroke="#0b090b" stroke-miterlimit="10" stroke-width=".98"/>
+  </g>
+</svg>

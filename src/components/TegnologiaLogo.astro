@@ -1,5 +1,7 @@
 ---
 const { logo: Logo, alt, text } = Astro.props;
+
+const isStringLogo = typeof Logo === "string";
 ---
 
 <div class="group relative flex flex-col items-center select-none">
@@ -9,7 +11,11 @@ const { logo: Logo, alt, text } = Astro.props;
     <div class="aspect-square font-black text-black border-2 border-black p-1">
       {
         Logo ? (
-          <Logo class="w-5 md:w-8 h-5 md:h-8" />
+          isStringLogo ? (
+            <img src={Logo} alt={alt ?? ""} class="w-5 md:w-8 h-5 md:h-8 object-contain" />
+          ) : (
+            <Logo class="w-5 md:w-8 h-5 md:h-8" />
+          )
         ) : (
           <span class="text-xs md:text-2xl font-fantabular h-fit aspect-square">{text}</span>
         )

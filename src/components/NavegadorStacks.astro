@@ -18,7 +18,7 @@ import MidJourney from "../assets/logos/midJourney.svg";
 import Canva from "../assets/logos/canva.svg";
 import AdobeFirefly from "../assets/logos/adobeFirefly.svg";
 
-const { title,bg } = Astro.props;
+const { title, tagSvg: TagSvg,textColor } = Astro.props;
 
 const tecnologias = {
   "Desarrollo Front-End": {
@@ -29,7 +29,6 @@ const tecnologias = {
       { logo: JavaScriptSvg, alt: "Logo de JavaScript" },
       { logo: GitHubSvg, alt: "Logo de GitHub" },
       { logo: Claude, alt: "Logo de Claude" },
-      
     ],
     skills: [
       "HTML, CSS, JavaScript",
@@ -44,7 +43,7 @@ const tecnologias = {
       { logo: FigmaSvg, alt: "Logo de Figma" },
       { logo: MiroSvg, alt: "Logo de Miro" },
       { logo: NotionSvg, alt: "Logo de Notion" },
-      { logo: ChatGPT, alt: "Logo de ChatGPT" }
+      { logo: ChatGPT, alt: "Logo de ChatGPT" },
     ],
     skills: [
       "Arquitectura de información",
@@ -61,7 +60,7 @@ const tecnologias = {
       { logo: PrSvg, alt: "Logo de Premiere" },
       { logo: Canva, alt: "Logo de Canva" },
       { logo: MidJourney, alt: "Logo de MidJourney" },
-      {logo: AdobeFirefly, alt: "Logo de Adobe FireFly"},
+      { logo: AdobeFirefly, alt: "Logo de Adobe FireFly" },
     ],
     skills: [
       "Identidad visual",
@@ -74,11 +73,15 @@ const tecnologias = {
 
 const tecnologiasSeleccionadas =
   tecnologias[title as keyof typeof tecnologias] || [];
+
+const primeraPalabraTitle = title.split(" ")[0];
+const segundaPalabraTitle = title.split(" ")[1];
 ---
 
 <div
-  class={`${bg} w-full min-h-64 border-2 border-black rounded-xl md:rounded-2xl`}
+  class={`relative w-full bg-white min-h-64 border-2 border-black rounded-xl md:rounded-2xl`}
 >
+  {(<TagSvg class="absolute right-4 -top-2 w-18 h-1w-18 text-black" />)}
   <div
     class="h-10 bg-white flex flex-row items-center gap-2 px-4 border-b-4 border-black rounded-t-xl md:rounded-t-2xl"
   >
@@ -87,10 +90,11 @@ const tecnologiasSeleccionadas =
     <div class="h-3 w-3 bg-black rounded-full"></div>
   </div>
   <div class="p-4 lg:px-6 lg:py-8 flex flex-col gap-4">
-    <h4
-      class="font-medium  text-lg md:text-lg lg:text-xl font-fantabular"
-    >
-      {title}
+    <h4 class="font-medium text-xl lg:text-2xl font-fantabular flex flex-col">
+      <span class={`${textColor}`}>
+        {primeraPalabraTitle}
+      </span>
+      <span class="italic"> {segundaPalabraTitle}</span>
     </h4>
     <div class="flex flex-row flex-wrap gap-1">
       {
