@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-   --color-primary: #8c529b;
+  --color-primary: #8c529b;
   --color-secondary: var(--color-kournikova-200);
   --color-pink: var(--color-tickle-me-pink-400);
   --color-plant-green: var(--color-asparagus-500);
@@ -33,6 +33,10 @@
   --color-kournikova-200: #ffe971;
   --color-kournikova-300: #ffdb45;
   --color-kournikova-400: #fcc513;
+  --color-kournikova-500: #ecac06;
+  --color-kournikova-600: #cc8402;
+  --color-kournikova-700: #a25d06;
+  --color-kournikova-800: #86490d;
 
   /* Verde */
   --color-asparagus-50: #f5f8ed;
@@ -52,12 +56,10 @@
   --font-rethink: "Rethink Sans", sans-serif;
   --font-fantabular: "fantabular-mvb", mono;
 
-
   --color-tag: var(--color-secondary);
 
-  
   --font-rethink: "Rethink Sans", sans-serif;
-  --font-fantabular :"fantabular-mvb", mono;
+  --font-fantabular: "fantabular-mvb", mono;
 }
 
 @layer components {
@@ -96,8 +98,8 @@
          after:duration-300
          hover:after:w-full;
   }
-  .sombra{
- @apply border-2 border-black shadow-[0px_4px_0px_#141414] md:shadow-[0px_6px_0px_#141414];
+  .sombra {
+    @apply border-2 border-black shadow-[0px_4px_0px_#141414] md:shadow-[0px_6px_0px_#141414];
   }
 }
 
