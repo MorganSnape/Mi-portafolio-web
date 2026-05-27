@@ -1,0 +1,54 @@
+---
+title: "Closures y Ámbito Léxico en JavaScript"
+description: "Closures y Ámbito Léxico en JavaScript"
+---
+
+## ¿Que son los closures?
+
+En JavaScript, un closure (clausura) es cuando una **función recuerda las variables del lugar donde fue creada**, incluso si se ejecuta después y fuera de ese lugar.
+
+## ¿Que es un ámbito lexico?
+
+El ámbito léxico significa que:
+
+El alcance de las variables se define por el lugar **donde escribes el código**, no por dónde se ejecuta.
+
+```js
+fuction saludar(){
+  let nombre ="Gabriela";
+
+  fuction mensaje (){
+    console.log("Hola" + nombre)
+  }
+  return mensaje;
+}
+
+
+const miFuncion = saludar();
+miFuncion();
+```
+
+### Que es lo que sucede
+
+- saludar() se ejecuta.
+
+- Dentro existe la variable nombre.
+
+- Retornamos la función mensaje.
+
+- Aunque saludar() ya terminó…
+
+- mensaje() sigue teniendo acceso a nombre.
+
+- Eso es un closure.
+
+### Eso se usa mucho para:
+
+- Variables privadas
+
+- Factory functions
+
+- Hooks en React
+
+- Manejo de estado
+

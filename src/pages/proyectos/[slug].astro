@@ -91,7 +91,7 @@ const {
             - {details?.find((item) => item.label === "My rol")?.value}
           </span>
         </h1>
-        <p class="text-lg leading-tight">
+        <p class="text-base md:text-lg leading-tight">
           {shortDescription}
         </p>
         <ul
@@ -135,7 +135,7 @@ const {
                 <Icon name={detail.icon} class="text-lg md:text-xl" />
                 {detail.label}
               </div>
-              <p class="text-sm md:text-base">{detail.value}</p>
+              <p class="text-base md:text-lg">{detail.value}</p>
             </li>
           ))
         }
@@ -147,7 +147,7 @@ const {
       <section id="acerca" class="flex flex-col gap-12">
         {
           brandDescription && (
-            <p class="italic text-sm md:text-base border-l-8 border-primary pl-4">
+            <p class="italic text-base md:text-lg border-l-8 border-primary pl-4">
               {brandDescription}
             </p>
           )
@@ -158,7 +158,7 @@ const {
           <h2 class="titleProyecto">
             Contexto del <br /> proyecto
           </h2>
-          <p class="text-balance text-sm lg:text-base whitespace-pre-wrap">
+          <p class="text-balance text-base md:text-lg whitespace-pre-wrap">
             {descriptionProject}
           </p>
         </div>
@@ -172,11 +172,11 @@ const {
               Array.isArray(objectiveBusiness) ? (
                 <ul>
                   {objectiveBusiness.map((item) => (
-                    <li class="list-disc list-outside ml-5">{item}</li>
+                    <li class="list-disc list-outside ml-5 text-base md:text-lg">{item}</li>
                   ))}
                 </ul>
               ) : (
-                <p class="text-balance">{objectiveBusiness}</p>
+                <p class="text-balance text-base md:text-lg">{objectiveBusiness}</p>
               )
             }
           </div>
@@ -189,11 +189,11 @@ const {
               Array.isArray(objectiveUser) ? (
                 <ul>
                   {objectiveUser.map((item) => (
-                    <li class="list-disc list-outside ml-5">{item}</li>
+                    <li class="list-disc list-outside ml-5 text-base md:text-lg">{item}</li>
                   ))}
                 </ul>
               ) : (
-                <p class="text-balance">{objectiveUser}</p>
+                <p class="text-balance text-base md:text-lg">{objectiveUser}</p>
               )
             }
           </div>

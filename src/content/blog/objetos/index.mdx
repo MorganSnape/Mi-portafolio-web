@@ -1,0 +1,133 @@
+---
+title: "Programación Orientada a Objetos: Conceptos y Práctica"
+description: "Programación Orientada a Objetos: Conceptos y Práctica"
+---
+## ¿Que es un objeto? 
+Un objeto es una estructura de datos que guarda información en formato clave → valor. Es como una ficha con propiedades.
+
+```js
+//Sintaxis
+
+const objeto = {
+  clave: valor,
+  clave2: valor2,
+};
+
+// Clave: nombre de la propiedad
+// Propiedad / Atributos : clave + valor
+// Metódos : Acciones que pertenecen al objeto
+```
+
+{/* TODO: Traer imagen */}
+{/* ![Texto alternativo](public/img/objeto.png) */}
+
+## ¿Cómo se usa comúnmente?
+
+```js
+const user = {
+  name: "Ana",
+  age: 20,
+  isStudent: true,
+};
+```
+
+### ¿Para qué sirve?
+
+- Guardar información relacionada
+- Representar cosas del mundo real (usuarios,productos,etc.)
+- Organizar datos de forma clara
+- Muy usado en frontend (APIs, React,etc)
+
+#### Condiciones de uso
+
+- Las claves (keys) suelen ser strings
+- Los valores pueden ser:
+  - string
+  - numbers
+  - boolean
+  - array
+  - otro objeto
+  - funciones
+
+## Acceder a los valores
+
+#### Notación punto
+
+```js
+const user = {
+  name: "Ana",
+  age: 20,
+  isStudent: true,
+};
+
+user.name;
+```
+
+#### Notación de corchetes
+
+```js
+user["age"];
+```
+
+#### Modificar valores
+
+```js
+user.age = 21;
+```
+
+#### Agregar propiedades
+
+```js
+user.country = "Colombia";
+```
+
+## Métodos en un objeto
+
+Un metódo es una función dentro de un objeto. Es una acción que ese objeto puede hacer.
+
+```js
+const user = {
+  propiedad: valor,
+  metodo() {
+    //código
+  },
+};
+
+//¿Como usarlo?
+user.metodo();
+```
+
+### ¿Para qué sirve?
+
+- Darle comportamiento a un objeto
+- Trabajar con sus propios datos
+- Siular cosas reales
+- Es una función dentro del objeto
+- Puedes usar **_this_** para acceder a sus propiedades
+  - 👉 this significa: “este objeto” es para hacer referencia al valor de una propiedad dentro del mismo objeto
+
+```js
+const user = {
+  name: "Ana",
+  greet() {
+    return `Hola , soy ${this.name}`;
+  },
+  setAge(newAge) {
+    this.age = newAge;
+  },
+};
+```
+
+## Eliminar propiedades de un objeto
+
+Elimina una propiedad (clave + valor) de un objeto. Esto es mediante al operador propio de JavaScript delete. Este no es un método
+
+```js
+const user = {
+  name: "Ana",
+  age: 20,
+};
+
+delete user.age;
+```
+

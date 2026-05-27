@@ -1,0 +1,148 @@
+---
+title: "Estrutura cíclica o bucle"
+description: "Iteraciones en JavaScript"
+---
+
+## Ciclo for
+
+El ciclo o bucle for es una estructura de control que se utiliza para repetir un bloque de código el número determinado de veces que definamos.
+
+### Estructura
+
+```js
+for (variable; condicion; incremento) {
+  //código a ejecutar
+}
+```
+
+- **Variable:** Solo se ejecuta una vez, normalmente para crear un contador. La variable se puede llamar como gustes normalmente se usa i.
+- **Condición:** Se evalúa antes de cada repetición. Mientras esta sea _true_, el ciclo continua.
+
+* **Incremento** Se ejecuta al final de cada vuelta del ciclo define como se va a incremar de una en una de dos en dos etc.
+
+### Ejemplo
+
+```js
+let list = ["eat", "sleep", "code", "repeat"];
+
+for (let i = 0; i < list.length; i++) {
+  console.log(list[i]);
+}
+```
+
+## for of
+
+El ciclo for... of permite operar sobre un objeto iterable estos serian arrays y strings.
+
+El código que se termina ejecutando es por cada elemento dentro del iterable. En caso del array por cada posicion en caso del string letra por letra y se detiene cuando ya no quedan elementos.
+
+### Estructura
+
+```js
+for (variable of iterable) {
+  // código que se ejecuta por cada elemento
+}
+```
+
+### Ejemplo
+
+```js
+const frutas = ["manzana", "pera", "uva"];
+
+for (const fruta of frutas) {
+  console.log(fruta);
+}
+```
+
+## forIn
+
+El for...in es un bucle de JavaScript que se usa para recorrer las propiedades (claves) de un objeto.
+
+Los **objetos** se componen de propiedades y su respectivo valor.
+
+### Estructura
+
+```js
+for (variable in objeto que vamos a iterar) {
+  //código a ajecutar
+}
+```
+
+### Ejemplo
+
+```js
+const persona = {
+  nombre: "Ana",
+  edad: 25,
+  ciudad: "Bogotá",
+};
+
+for (caracteristica in persona) {
+  console.log(caracteristica);
+  // imrpime cada uno de las propiedades del objeto
+  'nombre'
+  'edad'
+  'ciudad'
+}
+
+for (caracteristica in persona) {
+  console.log(caracteristica, persona[caracteristica]);
+  // imprime cada una de las props y su valor
+
+  'nombre' 'Ana'
+  'edad' 25
+  'ciudad' 'Bogotá'
+}
+```
+
+## Ciclo While
+
+El método while es una estructura de control de flujo utilizada en programación para repetir un bloque de código mientras una condición específica sea verdadera es decir que cuando la condición pase a retornar false este ciclo para.
+
+Esta técnica permite realizar iteraciones eficientes, ejecutando una secuencia de instrucciones repetidamente hasta que la condición evaluada deje de cumplirse.
+
+Se debe tener cuidado porque de no realizar bien la condición puede generar un bucle infinito.
+
+### Estructura
+
+```js
+while (condición) {
+  //codigo a ejecutar
+}
+```
+
+### Ejemplo
+
+```js
+let contador = 0;
+
+while (contador <= 10) {
+  console.log(contador);
+  contador++; // contador crece + 1
+}
+```
+
+## Ciclo doWhile
+
+Ha diferencia del while este cliclo siempre se va a ejcutar minimo 1 vez y luego pasa a validar la condición. Si la condición da true este se repite hasta que la condición retorne false.
+
+### Estructura
+
+```js
+do {
+  //codigo a ejecutar
+} while (condición);
+```
+
+### Ejemplo
+
+```js
+let contador = 0;
+
+do {
+  console.log(contador);
+  contador++; // contador crece + 1
+} while (contador <= 10);
+```
+
+

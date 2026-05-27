@@ -120,3 +120,12 @@
 .scrollContainer {
   -ms-overflow-style: none;
 }
+
+html {
+    font-weight: 400;
+    background-image: url(/fondo.svg);
+    background-size: 30px;
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+    font-family: "Rethink Sans", sans-serif;
+  }

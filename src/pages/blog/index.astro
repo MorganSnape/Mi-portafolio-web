@@ -1,0 +1,49 @@
+---
+import Layout from "@/layouts/blog/Layout.astro";
+import LinkBlog from "@/components/blog/LinkBlog.astro";
+import { getCollection } from "astro:content";
+
+const blogs = [
+  { link: "/blog/condicionales", title: "Estructuras condicionales" },
+  { link: "/blog/iteraciones", title: "Estrutura cíclica o bucle" },
+  { link: "/blog/funciones", title: "Funciones JavaScript" },
+  { link: "/blog/escope", title: "Scope y Contextos de Ejecución" },
+  { link: "/blog/clouseres", title: "Closures y Ámbito Léxico en JavaScript" },
+  { link: "/blog/arrays", title: "Arrays: Propiedades, Acceso y Creación en Programación" },
+  { link: "/blog/objetos", title:"Programación Orientada a Objetos: Conceptos y Práctica"}
+];
+
+const posts = await getCollection("blog")
+---
+
+<Layout
+  title="Inicio"
+  headerTitle="Blog de Gabriela"
+  description="Bienvenido a mi blog de JavaScript"
+>
+<main>
+  <h2 class="text-2xl font-semibold mb-4">¡Bienvenido a mi blog!</h2>
+  <p class="mb-6">
+    Aquí comparto mi aprendizaje de JavaScript paso a paso, con ejemplos, juegos
+    y explicaciones sencillas.
+  </p>
+
+  <h3 class="text-xl font-bold mb-2">Temas disponibles:</h3>
+  <ul class="list-disc pl-6 space-y-2">
+    {
+      blogs.map((blog) => {
+        return <LinkBlog title={blog.title} link={blog.link} />;
+      })
+    }
+  </ul>
+
+  <h3 class="text-xl font-bold mt-8 mb-2">¿Qué es JavaScript?</h3>
+  <p class="bg-tickle-me-pink-400 text-white p-4  shadow">
+    JavaScript es un lenguaje de programación que permite crear páginas web
+    interactivas. Es el motor detrás de botones que reaccionan, formularios que
+    validan datos, juegos en el navegador y mucho más. Junto con HTML y CSS,
+    forma la base del desarrollo web moderno. Aprender JavaScript te abre las
+    puertas a crear experiencias digitales dinámicas y personalizadas.
+  </p>
+</main>
+</Layout>

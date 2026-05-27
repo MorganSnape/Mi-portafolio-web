@@ -1,0 +1,56 @@
+---
+title: "Scope y Contextos de Ejecución"
+description: "Scope y Contextos de Ejecución"
+---
+
+## ¿Qué son los contextos de ejecución y la cadena de alcances?
+
+Determinan cómo y dónde se accede a las variables dentro del código. Al usar las palabras clave var, let, y const, es esencial comprender estas diferencias: el tipo de scope y el comportamiento de hoisting. Esto nos ayudará a tomar decisiones informadas sobre cuándo y cómo utilizar cada una.
+
+![Imágen que hababla del tipo de scope.](/img/scope.png).
+
+### Scope _significa alcance_.
+
+Es el lugar donde una variable existe y puede usarse.
+
+### Hoisting _"eleva"_
+
+Hoisting significa que JavaScript "eleva" las declaraciones al inicio del archivo o función antes de ejecutar el código.
+
+## ¿Cómo funciona el contexto de ejecución?
+
+En JavaScript, el contexto de ejecución puede pensarse como muñecas rusas: el contexto global es la muñeca más grande y los contextos locales son las más pequeñas dentro de ella.
+
+- **Contexto global:** Incluye todas las variables y código que está por fuera de funciones o bloques. Este no puede acceder al contexto local.
+- **Contextos locales:** Son los bloques definidos, por ejemplo, dentro de una función. El contecto local puede acceder al contexto global.
+
+## ¿Como se determina el contexto en un código?
+
+A través del uso de llaves { }, podemos identificar los bloques que delimitan los contextos locales. Todo lo que cae fuera de estos bloques pertenece al contexto global.
+
+### Ejemplo
+
+```js
+const globalVariable = "global1";
+console.log(carrot) // Error: carrot no está definida
+
+function local1() {
+  console.log(globalVariable); // Accede correctamente a "global1"
+  console.log(localVariable); // Error: localVariable no está definida 
+
+  function local2() {
+    const carrot = "🥕";
+    console.log(`local2: ${carrot}`);
+  }
+
+  function local3() {
+    console.log(local3Variable); // Error aquí también
+  }
+
+  local2();
+  local3();
+}
+console.log(local1());
+
+```
+En este caso la función mas adentrada solo puede acceder a las variables de su padre, de la función que la envuelve, si esta no cuenta con la variable que busca se va al global.

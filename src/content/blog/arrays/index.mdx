@@ -1,0 +1,337 @@
+---
+title: "Arrays: Propiedades, Acceso y Creación en Programación"
+headerTitle: "Arrays: Propiedades, Acceso y Creación en Programación"
+description: "Los arrays son fundamentales en la programación, permitiendo a los desarrolladores almacenar múltiples valores dentro de una sola variable. "
+---
+
+## ¿Como crear un Array?
+
+- **1-** Usando la función constructora new Array () o usando solo .Array ()
+
+```js
+const fruits = Array("apple", "banana", "orange");
+
+const justOneNumber = Array(12); // creas un array con 12 posiciones vacias
+```
+
+<h2 class="text-amber-500 font-bold text-3xl">👉 Array es un conjunto de elementos que se insertan en una variable</h2>
+
+**Array es un conjunto de elementos que se insertan en una variable**
+
+El constructor permite crear arrays con los elementos que insertes en el, pero sin embargo si solo ingresas un número este lo toma si le asignaras la longitud del array.
+
+- **2-** Usando la sintaxis literal del array.
+
+```js
+const oneNumber = [4]; // Aquí no sucede como con el constructor
+
+const emptyArray = []; //Defines un array vacio
+```
+
+Estos pueden contender todo tipo de elementos.
+
+```js
+//Array Mixto
+const recipeIngredients = [
+  "Flour",
+  true,
+  2,
+  {
+    ingredient: "Milk",
+    quantity: "1 cup",
+  },
+];
+```
+
+## Acceder a elementos dentro de un array
+
+Lo hacemos mediante el uso de la posición también llamado el indice , teniendo en cuenta que siempre la posicion incial parte desde 0.
+
+Adiccional contamos en el método _.length_ que permite saber el lago de un array.
+
+```js
+const firsFruit = fruits[0];
+
+const numberOfFruits = fruits.length; // este permite acceder al valor del largo del array.
+```
+
+## Mutabilidad e inmutabilidad
+
+Los conceptos de mutabilidad e inmutabilidad juegan un papel clave, especialmente al manipular arrays.
+
+En su esencia, **_mutabilidad_** se refiere a la capacidad de un arrray para **cambiar su estado o contenido** después de haber sido creado. Esto puede ser muy conveniendte en ciertas situaciones, pero también puede introducir complejidad.
+
+- Ejemplo: El método **.push()** que agrega un nuevo elemento al final del array.
+
+Por otro lado, la **_inmutabilidad_** asegura que una vez creado, **el array no sea alterado**, lo cual puede ser útil para asegurar la consistencia de los datos a lo largo del tiempo.
+
+- Ejemplo:
+
+El método **.concat()** el crea un nuevo array con la información del array que le pases más la nueva que le insertes como parametro.
+
+```js
+const fruist = ["manzana", "mango", "sandia"];
+const newFruist = fruist.concat(["naranja", "fresa"]);
+console.log(newFruist); // ["manzana","mango","sandia","naranja","fresa"]
+```
+
+### Ejercicio de practica
+
+Es la suma de todos los elementos de un array
+
+```js
+const numbersArray = [1, 2, 3, 4, 5];
+
+let sum = 0;
+
+for (number of numbersArray) {
+  sum += number;
+}
+
+console.log(sum);
+```
+
+## Métodos de los Arrays
+
+### **.pusch()**
+
+El método push es una poderosa función de JavaScript que permite agregar uno o más elementos al final de un array. Al hacer esto, no solo se modifica el array original, sino que también se devuelve la nueva longitud del mismo.
+
+### **.pop()**
+
+Contrario al método push, pop remueve el último elemento de un array, devolviendo dicho elemento y modificando el array original en el proceso
+
+### **.map()**
+
+.map() es un método de los arrays en JavaScript que se usa para recorrer una lista y crear una nueva lista transformando cada elemento.
+
+#### ¿Qué hace .map()?
+
+**Toma cada elemento** del array, le **aplica una función** y devuelve un nuevo array con los resultados.
+
+- No modifica el array original devuelve uno nuevo-
+- Se usa cuando quieres transformar datos
+- Puedes acceder al indice pero usarlo es opcional.
+
+```js
+//Sintaxis
+const array = [];
+
+array.map((elemento, indice) => {
+  return nuevoValor;
+});
+
+//Ejemplo
+
+const tags = ["crochet", "arte", "hecho a mano"];
+
+const elementos = tags.map((tag) => {
+  return `<div>${tag}</div>`;
+});
+```
+
+### **forEach()**
+
+**Recorre cada elemento del array y ejecuta una función**, pero NO devuelve un nuevo array. Sirve para hacer acciones, no para transformar datos por ende no retorna nada. Se usa forEach() cuando:
+
+- Para mostrar datos (console.log)
+- Modicicar algo externo
+- Ejecutar acciones (ej: enviar datos, guardar algo)
+
+```js
+//Sintaxis
+
+array.forEach((elemento, indice) => {
+  // acción
+});
+
+//Ejemplo
+
+const productos = ["bufanda", "gorra"];
+
+productos.forEach((p) => {
+  console.log(`Producto: ${p}`);
+});
+```
+
+### **filter()**
+
+**Crea un nuevo array** con los elementos que cumplen una condición _true_. Es como decir "de todo esto, solo quiero algunos".
+
+```js
+//Ejemplo
+
+const numeros = [1, 2, 3, 4, 5];
+
+const pares = numeros.filter((n) => n % 2 === 0);
+```
+
+### reduce()
+
+**Reduce todo el array a un solo valor**. Este puede ser un número, string u objeto
+
+```js
+//Sintaxis
+array.reduce((acumulador, elemento)=>{
+  return nuevoValor;
+}valorInicial);
+```
+
+- **Acumulador** es la variable propia de la función que almacena el valor
+- **Elemento es** el item actual a trabajar en la función ejemplo el primer item seria el 1 luego el segundo item seria el 2
+- **Valor Inicial** es tal cual el valor inical de la variable
+
+```js
+//Ejemplo:
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const resultado = filter.reduce(
+  (acumulador, currentValue) => acumulador + currentValue,
+  0,
+);
+// Devuelve 50
+```
+
+```js
+//Otro ejemplo
+//Hacer que en un objeto se almacene las palabras repetidas y su cantidad
+
+const palabras = ["manzana", "banana", "mora", "mora"];
+
+const palabrasRepetidas = palabras.reduce((acumulador, currentValue) => {
+  if (acumulador[currentValue]) {
+    acumulador[currentValue]++;
+  } else {
+    acumulador[currentValue] = 1;
+  }
+  return acumulador;
+}, {});
+
+console.log(palabrasRepetidas);
+//retorna  { manzana: 1, banana: 1, mora: 2 }
+```
+
+### **Método find() y findIndex**
+
+Son métodos que no modifican el array pero ayudan a encontrar elementos dentro de el.
+
+#### find()
+
+Busca el primer elemento que cumpla una condición Y lo devuelve directamente (no un array). Este espera una función como argumento que aplique la condición
+
+```js
+//sintaxis
+array.metodo((elemento) => {
+  // código
+});
+```
+
+```js
+//Ejemplo
+const multipleOf5 = [5, 10, 15, 20];
+const firstNumberGreaterThan10 = multipleOf5.find((number) => number > 10);
+console.log(firstNumberGreaterThan10);
+// Imprime 15
+```
+
+#### findIndex()
+
+Busca el primer elemento que cumple una condición. Pero en vez de devolver el valor… devuelve su posición (índice). **Si este no encuentra nada devuelve en -1**
+
+```js
+const numeros = [10, 20, 30, 40];
+
+const index = numeros.findIndex((n) => n > 25);
+
+//Resultado 2  (Porque 30 es el primer número > 25)
+```
+
+#### ¿Para qué sirve?
+
+- Saber la posición de un elemento en un array
+
+- Eliminar elementos (splice)
+
+- Editar elementos específicos
+
+- Trabajar con listas en UI (React, etc.)
+
+### **Método slice()**
+
+Crea una copia de una parte del array sin modificar el original.
+
+```js
+//sintaxis
+array.slice(inicio, fin);
+```
+
+- inicio = representa desde que posición del array quieres
+- fin: representa hasta que posición del array quieres
+
+```js
+//Ejemplo
+const numeros = [1, 2, 3, 4, 5];
+const resultado = numeros.slice(1, 4);
+// devuleve [2,3,4]
+```
+
+#### ¿Para que sirve?
+
+- Cortar una parte de un array
+
+- Limitar resultados ( ej: solo mostrar 5 elementos)
+
+- Copiar Arrays sin modificarlos
+
+- Paginación4
+
+### **Spread Operator (...)**
+
+Permite expandir (expandir = “abrir”) arrays, objetos o valores en partes individuales.
+
+```js
+//Sintaxis
+
+...valor
+
+//Se usa dentro de:
+[...array]
+{...objeto}
+funcion(...argumentos)
+```
+
+#### ¿Como se usa comúnmente?
+
+- Copiar un array
+
+```js
+const numeros = [1, 2, 3];
+const copia = [...numeros];
+```
+
+- Unir Arrays
+  ```js
+  const a = [1, 2];
+  const b = [3, 4];
+  const resultado = [...a, ...b]; // [1,2,3,4]
+  ```
+- Copiar objetos
+
+```js
+const user = { name: "Anna", age: 20 };
+const copia = { ...user };
+```
+
+- Modificar sin mutar
+
+```js
+const user = { name: "Anna", age: 20 };
+const actualizado = { ...user, age: 21 };
+```
+
+#### Condiciones de uso
+
+- Solo funciona con arrays, objetos , iterables (string,etc)
+- Hace copias superficiales no profundas
+- Si repites propiedades en objetos , la ultima gana
+- **_..._** No transforma datos, solo expande/copia datos
