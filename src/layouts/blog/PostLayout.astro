@@ -1,0 +1,70 @@
+---
+import "@/styles/global.css";
+import SideNav from "@/components/blog/SideNav";
+import Footer from "@/components/Footer.astro";
+const { title } = Astro.props;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Blog - {title}</title>
+    <style lang="scss"></style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="text-gray-800 font-sans min-h-screen flex flex-col">
+    <main class="min-h-screen font-rethink">
+      <div class="flex flex-row w-full gap-6">
+        <SideNav client:load />
+        <div class="pr-20">
+          <slot />
+        </div>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  /* Encabezados */
+  h1 {
+    font-family: var(--font-fantabular);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 1.5rem 0 1rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    margin: 2rem 0rem;
+    background: #a9b39b;
+    padding: 4px 20px;
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem;
+    padding: 4px 20px;
+    background: #d3cdb3;
+  }
+  h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 4px 20px;
+    border-bottom: solid #5b6851 3px;
+    border-left: solid #5b6851 3px;
+    margin: 2rem 0rem;
+  }
+  h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 4px 20px;
+    margin: 2rem 0rem;
+  }
+</style>

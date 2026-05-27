@@ -8,7 +8,6 @@ import Inicio from "@/components/indexComponents/Inicio.astro";
 import SobreMi from "@/components/indexComponents/SobreMi.astro";
 import Proyectos from "@/components/indexComponents/Proyectos.astro";
 import Contactame from "@/components/indexComponents/Contactame.astro";
-import Footer from "@/components/Footer.astro";
 
 import Subtitulo from "@/components/Subtitulo.astro";
 import CardEstudios from "@/components/CardEstudios.astro";
@@ -16,7 +15,7 @@ import CardEstudios from "@/components/CardEstudios.astro";
 
 <Layout title="Gabriela Ferrer - Bienvenido a mi portafolio.">
   <BarNav />
-  <main
+  <div
     class="flex flex-col items-center gap-8 font-rethink select-none w-full"
   >
     <Inicio />
@@ -73,6 +72,5 @@ import CardEstudios from "@/components/CardEstudios.astro";
       </div>
     </section>
     <Contactame />
-  </main>
-  <Footer />
+  </div>
 </Layout>

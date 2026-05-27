@@ -4,7 +4,6 @@ import { Image } from "astro:assets";
 import { proyectos } from "@/data/portfolio";
 
 import Layout from "@/layouts/Layout.astro";
-import Footer from "@/components/Footer.astro";
 import Investigacion from "@/components/PaginaDinamica/Investigacion.astro";
 import DefinicionProblema from "@/components/PaginaDinamica/DefinicionProblema.astro";
 import Ideacion from "@/components/PaginaDinamica/Ideacion.astro";
@@ -228,7 +227,6 @@ const {
     </div>
     {visualDesign && <Diseño visualDesign={visualDesign} />}
   </main>
-  <Footer />
 </Layout>
 
 <script>
