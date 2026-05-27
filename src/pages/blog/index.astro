@@ -21,8 +21,9 @@ import Layout from "@/layouts/Layout.astro";
       </h1>
     </section>
     <div class="bg-asparagus-500 h-12 w-full"></div>
-    <div class="mx-auto max-w-[1280px] px-4 sm:px-12 xl:px-0">
-      <section class="flex flex-col gap-4 py-20">
+    <div class="mx-auto w-full max-w-[1280px] px-4 sm:px-12 xl:px-0">
+      <section class="flex flex-col gap-4 py-20 w-full">
+        <div class="flex flex-row w-full gap-4">
         {
           dataSeccionesBlog.map((dataBlog) => (
             <a
@@ -42,6 +43,7 @@ import Layout from "@/layouts/Layout.astro";
             </a>
           ))
         }
+        </div>
       </section>
     </div>
   </main>

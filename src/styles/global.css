@@ -57,9 +57,6 @@
   --font-fantabular: "fantabular-mvb", mono;
 
   --color-tag: var(--color-secondary);
-
-  --font-rethink: "Rethink Sans", sans-serif;
-  --font-fantabular: "fantabular-mvb", mono;
 }
 
 @layer components {

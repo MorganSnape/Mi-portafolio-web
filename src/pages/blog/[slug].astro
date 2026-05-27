@@ -55,10 +55,10 @@ const posts = (await getCollection("blog")).sort(
         >
           {
             posts.map((post, index) => (
-              <li class="border-t border-gray-300 py-2 gap-4 list-none mb-0 ">
+              <li class="border-t-2 border-black-secondary py-2 gap-4 list-none mb-0">
                 <a
                   href={`/blog/${post.id}`}
-                  class="flex items-center text-lg gap-4 h-full text-black font-medium hover:text-primary transition-colors"
+                  class="flex items-center text-lg gap-4 h-1/2 text-black font-medium hover:text-primary transition-colors"
                 >
                   {/* Número */}
                   <span class="text-primary text-base font-bold">
@@ -66,6 +66,14 @@ const posts = (await getCollection("blog")).sort(
                   </span>
                   {post.data.title}
                 </a>
+                <p class="text-gray-500 text-sm font-semibold">
+                  Fecha de publicación:
+                  {post.data.pubDate.toLocaleDateString("es-CO",{
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </p>
               </li>
             ))
           }
