@@ -3,27 +3,27 @@ import type { NavLinksType } from "@/models";
 export const navLinks: NavLinksType[] = [
   {
     name: "Inicio",
-    href: "#inicio",
+    href: "/#inicio",
   },
   {
     name: "Sobre mí",
-    href: "#sobre-mi",
+    href: "/#sobre-mi",
   },
   {
     name: "Experiencia",
-    href: "#experiencia-container",
+    href: "/#experiencia-container",
   },
   {
     name: "Proyectos",
-    href: "#proyectos-container",
+    href: "/#proyectos-container",
   },
   {
     name: "Estudios",
-    href: "#estudios-container",
+    href: "/#estudios-container",
   },
   {
     name: "Contáctame",
-    href: "#contactame",
+    href: "/#contactame",
   },
   {
     name: "Currículum",
