@@ -6,14 +6,21 @@ import DecoracionCurva from "@/icons/decoracion-curva.svg";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  return dataSeccionesBlog.flatMap((seccionBlog) => {
+  const posts = (await getCollection("blog")).sort(
+    (a, b) => a.data.pubDate.getTime() - b.data.pubDate.getTime(),
+  );
+
+
+  return dataSeccionesBlog.map((seccionBlog) => {
     return {
       params: { slug: seccionBlog.slug },
+      props: { posts: posts.filter((post) => post.data.sectionBlogId === seccionBlog.slug) },
     };
   });
 }
 
 const { slug } = Astro.params;
+const { posts } = Astro.props;
 const seccionBlog = dataSeccionesBlog.find(
   (seccionBlog) => seccionBlog.slug === slug,
 );
@@ -24,9 +31,7 @@ if (!seccionBlog) {
 
 const { title, description, image } = seccionBlog;
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => a.data.pubDate.getTime() - b.data.pubDate.getTime(),
-);
+
 ---
 
 <Layout title={`Blog de ${title}`}>
@@ -55,18 +60,18 @@ const posts = (await getCollection("blog")).sort(
         >
           {
             posts.map((post, index) => (
-              <li class="border-t-2 border-black-secondary py-2 gap-4 list-none mb-0">
+              <li class="border-t-2 border-black-secondary py-3 gap-4 list-none mb-0">
                 <a
                   href={`/blog/${post.id}`}
                   class="flex items-center text-lg gap-4 h-1/2 text-black font-medium hover:text-primary transition-colors"
                 >
                   {/* Número */}
-                  <span class="text-primary text-base font-bold">
+                  <span class="text-white text-base font-bold bg-primary rounded-full w-8 h-8 flex justify-center items-center">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   {post.data.title}
                 </a>
-                <p class="text-gray-500 text-sm font-semibold">
+                <p class="ml-12 text-gray-500 text-sm font-semibold">
                   Fecha de publicación:
                   {post.data.pubDate.toLocaleDateString("es-CO",{
                     year: "numeric",

@@ -35,7 +35,7 @@ export const personalInfo: PersonalInfo = {
   website: "https://gabrielaferrer.vercel.app/",
   behance: "https://www.behance.net/gabriellangeles",
   birthDate: "2000",
-  summary: "Vengo del mundo de la atención al cliente, donde aprendí que la empatía es la herramienta más poderosa para resolver problemas. Hoy, esa misma empatía es la que guía mi proceso como Diseñadora UX/UI y Desarrolladora Frontend. \n\n Me apasiona el reto de transformar una necesidad de negocio en un flujo de navegación fluido y, posteriormente, en una interfaz funcional y estética. Mi formación autodidacta y académica (SENA, Google, Oracle) me ha dado la versatilidad necesaria para adaptarme a equipos ágiles y proyectos de alto impacto, como mi reciente trabajo en el sistema de diseño para Mvp KunturWing. Estoy lista para dar mi siguiente paso profesional a través de mis pasantías de Diseño Gráfico mediante a un contrato de aprendizaje, aportando un valor agregado en diseño digital y tecnología",
+  summary: "Soy una diseñadora en formación con un perfil multidisciplinario que integra Diseño Gráfico, UX/UI y Desarrollo Frontend. Mi experiencia previa en atención al cliente me enseñó a escuchar, empatizar y comprender las necesidades de las personas, habilidades que hoy aplico en cada proyecto que desarrollo.\n\n Disfruto convertir ideas en experiencias digitales completas: desde la identidad visual y la comunicación gráfica, hasta el diseño de interfaces centradas en el usuario y su implementación en la web. Me interesa especialmente el punto de encuentro entre creatividad y tecnología, donde el diseño no solo se ve bien, sino que también resuelve problemas y genera valor.\n\n Mi objetivo es seguir creciendo como profesional digital, participando en proyectos innovadores y aportando una visión integral que combina estrategia, diseño y desarrollo.",
   experiences: [
     {
       company: "KunturWing",
@@ -49,7 +49,7 @@ export const personalInfo: PersonalInfo = {
         "Diseño de la interfaz visual asegurando accesibilidad y consistencia visual.",
         "Aplicación de Design Thinking para crear soluciones centradas en el usuario."
       ],
-      reference: "Juan Giraldo - CTO del proyecto +57 304 4757582"
+      reference: "Eduardo Sanchez - CO del proyecto +57 318 3400992"
     },
   ],
   skills: [

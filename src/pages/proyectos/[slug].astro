@@ -13,6 +13,7 @@ import Button from "@/components/Button.astro";
 import BarNav from "@/components/PaginaDinamica/BarNav.astro";
 
 import Estrella from "@/assets/estrella.svg";
+import Footer from "@/components/Footer.astro";
 
 export async function getStaticPaths() {
   return proyectos.flatMap((proyecto) => {
@@ -53,7 +54,7 @@ const {
 
 <Layout title=`Este es el proyecto ${nameProject}`>
   <BarNav />
-  <main class="flex flex-col items-center gap-20 py-20">
+  <main class="flex flex-col items-center gap-20 py-14">
     <button
       id="backToTop"
       type="button"
@@ -81,7 +82,28 @@ const {
       }
     </div>
     <section id="inicio" class="flex flex-col items-center w-full">
-      <div
+      <Image src={coverImage} alt={`Portada del proyecto ${nameProject}`} class="h-[200px] md:h-[400px] w-full object-cover object-center border-y-2 border-black" width={coverImage.width} height={coverImage.height}/>
+      <ul
+        class="sombra w-full bg-white grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-4 py-4 px-4 items-start"
+      >
+        {
+          details?.map((detail) => (
+            <li class="flex flex-col justify-center gap-2 text-center">
+              <div class="flex flex-row justify-center items-center gap-2 font-semibold">
+                <Icon name={detail.icon} class="text-lg md:text-xl" />
+                {detail.label}
+              </div>
+              <p class="text-base md:text-lg">{detail.value}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    <div
+      class="max-w-[1280px] w-full px-4 md:px-12 lg:px-0 flex flex-col gap-20 mb-8"
+    >
+      <section id="acerca" class="flex flex-col gap-12">
+         <div
         class="flex flex-col gap-4 items-start py-3 max-w-[1280px] w-full px-4 md:px-12 lg:px-0"
       >
         <h1 class="titleH3 font-bold font-fantabular">
@@ -123,27 +145,6 @@ const {
           }
         </ul>
       </div>
-      <Image src={coverImage} alt={`Portada del proyecto ${nameProject}`} class="h-[200px] md:h-[400px] w-full object-cover object-center border-y-2 border-black" width={coverImage.width} height={coverImage.height}/>
-      <ul
-        class="sombra w-full bg-white grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-4 py-4 px-4 items-start"
-      >
-        {
-          details?.map((detail) => (
-            <li class="flex flex-col justify-center gap-2 text-center">
-              <div class="flex flex-row justify-center items-center gap-2 font-semibold">
-                <Icon name={detail.icon} class="text-lg md:text-xl" />
-                {detail.label}
-              </div>
-              <p class="text-base md:text-lg">{detail.value}</p>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-    <div
-      class="max-w-[1280px] w-full px-4 md:px-12 lg:px-0 flex flex-col gap-20 mb-8"
-    >
-      <section id="acerca" class="flex flex-col gap-12">
         {
           brandDescription && (
             <p class="italic text-base md:text-lg border-l-8 border-primary pl-4">
@@ -227,6 +228,7 @@ const {
     </div>
     {visualDesign && <Diseño visualDesign={visualDesign} />}
   </main>
+  <Footer />
 </Layout>
 
 <script>
