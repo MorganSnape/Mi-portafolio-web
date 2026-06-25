@@ -1,87 +1,76 @@
 ---
-import { Icon } from "astro-icon/components";
+import { Icon } from 'astro-icon/components'
 ---
 
-<div>
- 
-  <div class="proyectos-container relative flex items-center flex-row gap-12 md:min-h-[240px] h-[368px]">
-    <button
-      type="button"
-      aria-label="Scroll projects left"
-      class="hidden md:flex scrollLeft primaryButton bg-white rounded-full text-black p-3 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
-    >
-      <Icon
-        name="fa6-solid:arrow-up"
-        height={20}
-        width={20}
-        class="rotate-270"
-      />
-    </button>
+<div
+  class="proyectos-container relative flex items-center justify-center flex-row gap-12 max-w-[1480px] w-full mx-auto"
+>
+  <button
+    type="button"
+    aria-label="Scroll projects left"
+    class="hidden md:flex scrollLeft primaryButton bg-white rounded-full text-black p-3 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer shrink-0"
+  >
+    <Icon name="fa6-solid:arrow-up" height={20} width={20} class="rotate-270" />
+  </button>
 
-    <div class="w-full">
-      <div
-        class="scrollContainer gap-4 flex flex-row overflow-x-scroll scroll-smooth snap-x snap-mandatory pt-4"
-      >
-        <slot />
-      </div>
+  <div class="w-full min-w-0 max-w-[1020px]">
+    <div
+      class="scrollContainer gap-6 flex flex-row overflow-x-scroll scroll-smooth snap-x snap-mandatory pt-2 pb-1"
+    >
+      <slot />
     </div>
-
-    <button
-      type="button"
-      aria-label="Scroll projects right"
-      class="hidden md:flex scrollRight primaryButton bg-white rounded-full text-black p-3 disabled:cursor-not-allowed cursor-pointer disabled:opacity-30"
-    >
-      <Icon
-        name="fa6-solid:arrow-up"
-        height={20}
-        width={20}
-        class="rotate-90"
-      />
-    </button>
   </div>
+
+  <button
+    type="button"
+    aria-label="Scroll projects right"
+    class="hidden md:flex scrollRight primaryButton bg-white rounded-full text-black p-3 disabled:cursor-not-allowed cursor-pointer disabled:opacity-30 shrink-0"
+  >
+    <Icon name="fa6-solid:arrow-up" height={20} width={20} class="rotate-90" />
+  </button>
 </div>
 
 <script>
   // CONTROLADOR DE SCROLL HORIZONTAL (cada instancia funciona por separado)
-  document.querySelectorAll(".proyectos-container").forEach((wrapper) => {
+  document.querySelectorAll('.proyectos-container').forEach(wrapper => {
     const container = wrapper.querySelector(
-      ".scrollContainer",
-    ) as HTMLElement | null;
+      '.scrollContainer',
+    ) as HTMLElement | null
     const btnLeft = wrapper.querySelector(
-      ".scrollLeft",
-    ) as HTMLButtonElement | null;
+      '.scrollLeft',
+    ) as HTMLButtonElement | null
     const btnRight = wrapper.querySelector(
-      ".scrollRight",
-    ) as HTMLButtonElement | null;
-    const card = container?.querySelector(".snap-start") as HTMLElement | null;
+      '.scrollRight',
+    ) as HTMLButtonElement | null
+    const card = container?.querySelector('.snap-start') as HTMLElement | null
 
     function getScrollAmount() {
-      if (!card) return 0;
-      const cardWidth = card.offsetWidth;
-      const gap = 48; // si tu gap-6 = 24px
-      return cardWidth + gap;
+      if (!card) return 0
+      const cardWidth = card.offsetWidth
+      const gap = 48 // si tu gap-6 = 24px
+      return cardWidth + gap
     }
 
     function updateButtons() {
-      if (!container || !btnLeft || !btnRight) return;
-      const scrollLeft = container.scrollLeft;
-      const maxScroll = container.scrollWidth - container.clientWidth;
+      if (!container || !btnLeft || !btnRight) return
+      const scrollLeft = container.scrollLeft
+      const maxScroll = container.scrollWidth - container.clientWidth
 
-      btnLeft.disabled = scrollLeft <= 0;
-      btnRight.disabled = scrollLeft >= maxScroll - 1;
+      btnLeft.disabled = scrollLeft <= 0
+      btnRight.disabled = scrollLeft >= maxScroll - 1
     }
 
-    btnRight?.addEventListener("click", () => {
-      if (!container) return;
-      container.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
-    });
+    btnRight?.addEventListener('click', () => {
+      if (!container) return
+      container.scrollBy({ left: getScrollAmount(), behavior: 'smooth' })
+    })
 
-    btnLeft?.addEventListener("click", () => {
-      if (!container) return;
-      container.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
-    });
+    btnLeft?.addEventListener('click', () => {
+      if (!container) return
+      container.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' })
+    })
 
-    container?.addEventListener("scroll", updateButtons);
-    updateButtons();
-  });
+    container?.addEventListener('scroll', updateButtons)
+    updateButtons()
+  })
 </script>

@@ -28,7 +28,7 @@ const SectionIcon = icons[section as keyof typeof icons] ?? TagDesign
     class="absolute right-4 -top-2 w-16 h-16 z-40 drop-shadow-md"
   />
   <article
-    class={` group flex flex-col border-2 border-black rounded-xl md:rounded-2xl h-[368px] w-64 sm:w-xs md:min-h-[240px] bg-white `}
+    class={` group flex flex-col border-2 border-black rounded-xl md:rounded-2xl h-[340px] md:h-[360px] w-[300px] md:w-xs bg-white`}
   >
 
     <div
@@ -39,7 +39,7 @@ const SectionIcon = icons[section as keyof typeof icons] ?? TagDesign
       <div class="h-3 w-3 bg-black rounded-full"></div>
     </div>
     <header
-      class="relative w-full overflow-hidden md:flex-shrink-0 flex-1 rounded-b-2xl shadow-md"
+      class="relative w-full overflow-hidden md:flex-shrink-0 rounded-b-2xl shadow-md h-2/5"
     >
       <Image
         src={coverImage}
@@ -49,7 +49,7 @@ const SectionIcon = icons[section as keyof typeof icons] ?? TagDesign
         height={coverImage.height}
       />
     </header>
-    <main class="flex flex-col p-4 justify-between w-full h-44">
+    <main class="flex flex-col p-4 justify-between w-full flex-1">
       <h4 class="text-sm md:text-base font-medium font-fantabular">
         {nameProject}
       </h4>
