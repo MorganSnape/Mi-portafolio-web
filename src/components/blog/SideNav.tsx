@@ -10,16 +10,16 @@ type titlesType = {
 export default function SideNav() {
   const [titles, setTitles] = useState([] as titlesType[]);
 
-  // useEffect(() => {
-  //   const elements = Array.from(document.querySelectorAll("h2"));
+  useEffect(() => {
+    const elements = Array.from(document.querySelectorAll("h2"));
 
-  //   const arrTitles = elements.map((title) => ({
-  //     id: title.id,
-  //     text: title.textContent,
-  //   }));
+    const arrTitles = elements.map((title) => ({
+      id: title.id,
+      text: title.textContent,
+    }));
 
-  //   setTitles(arrTitles);
-  // }, []);
+    setTitles(arrTitles);
+  }, []);
 
   return (
     <aside className="sticky p-4 w-60 top-0 h-screen overflow-y-auto bg-black-secondary">

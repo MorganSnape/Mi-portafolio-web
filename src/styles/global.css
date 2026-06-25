@@ -1,7 +1,7 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --color-primary: #8c529b;
+  --color-primary: var(--color-trendy-pink-600);
   --color-secondary: var(--color-kournikova-200);
   --color-pink: var(--color-tickle-me-pink-400);
   --color-plant-green: var(--color-asparagus-500);
@@ -12,6 +12,20 @@
   --color-gray-400: #9d9a9d;
   --color-gray-500: #6a686b;
   --color-gray-600: #2e2b2e;
+
+  /* morado */
+
+  --color-trendy-pink-50: #fbf7fc;
+  --color-trendy-pink-100: #f6eef9;
+  --color-trendy-pink-200: #ebddf1;
+  --color-trendy-pink-300: #dcc2e5;
+  --color-trendy-pink-400: #c89dd5;
+  --color-trendy-pink-500: #af75c0;
+  --color-trendy-pink-600: #8c529b;
+  --color-trendy-pink-700: #7a4586;
+  --color-trendy-pink-800: #653a6e;
+  --color-trendy-pink-900: #56335c;
+  --color-trendy-pink-950: #341939;
 
   /* Rosa */
 
@@ -53,8 +67,8 @@
 
   --color-tag: var(--color-secondary);
 
-  --font-rethink: "Rethink Sans", sans-serif;
-  --font-fantabular: "fantabular-mvb", mono;
+  --font-rethink: 'Rethink Sans', sans-serif;
+  --font-fantabular: 'fantabular-mvb', mono;
 
   --color-tag: var(--color-secondary);
 }
@@ -119,10 +133,10 @@
 }
 
 html {
-    font-weight: 400;
-    background-image: url(/fondo.svg);
-    background-size: 30px;
-    scroll-behavior: smooth;
-    scroll-padding-top: 100px;
-    font-family: "Rethink Sans", sans-serif;
-  }
+  font-weight: 400;
+  background-image: url(/fondo.svg);
+  background-size: 30px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+  font-family: 'Rethink Sans', sans-serif;
+}

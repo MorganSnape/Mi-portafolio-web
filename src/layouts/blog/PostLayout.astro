@@ -19,20 +19,21 @@ const { title } = Astro.props
     <link rel="stylesheet" href="https://use.typekit.net/eft1vyl.css" />
   </head>
   <body class="text-gray-800 font-sans min-h-screen flex flex-col">
-    <main class="min-h-screen font-rethink">
+    <div class="min-h-screen font-rethink">
       <div class="flex flex-row w-full">
         <SideNav client:load />
-        <div class="flex-1 px-10 py-6">
+        <main class="blog-main flex-1 px-10 py-6 whitespace-normal">
           <slot />
-        </div>
+        </main>
       </div>
-    </main>
+    </div>
     <Footer />
   </body>
 </html>
 
 <style is:global>
   /* Encabezados */
+.blog-main {
   h1 {
     font-family: var(--font-fantabular);
     font-size: 2rem;
@@ -40,33 +41,91 @@ const { title } = Astro.props
     margin: 0rem 0 2rem 0;
   }
 
-  h2 {
+  h3 {
     font-size: 1.2rem;
     font-weight: 600;
-    margin: 2rem 0rem;
-    padding: 4px 20px;
-  }
-
-  h3 {
-    margin: 1rem 0 0.5rem;
+    margin: 0rem 0 2rem 0;
+    font-family: var(--font-fantabular);
   }
   h4 {
     font-size: 1rem;
+    font-family: var(--font-fantabular);
     font-weight: 600;
     padding: 4px 20px;
-    border-bottom: solid #000 3px;
-    border-left: solid #000 3px;
+    border-bottom: solid var(--color-pink) 3px;
+    border-left: solid var(--color-pink) 3px;
     margin: 2rem 0rem;
   }
   h5 {
     font-size: 1rem;
     font-weight: 600;
-    padding: 4px 20px;
-    margin: 2rem 0rem;
+    margin: 0rem 0 2rem 0;
   }
   p {
-    margin: 0rem 0 4rem 0;
+    margin: 0rem 0 20px 0;
     font-size: 17px;
     font-weight: 400;
   }
+
+  li {
+    list-style: outside;
+    font-size: 17px;
+    font-weight: 400;
+    margin: 0 0 0.35rem 0;
+    padding-left: 0.25rem;
+  }
+
+  li p {
+    margin: 0;
+  }
+
+  ul,
+  ol {
+    margin: 0rem 0 12px 0;
+    padding-left: 1.25rem;
+  }
+
+  pre{
+    padding: 1rem;
+  }
+  mark {
+  background-color: var(--color-tickle-me-pink-200); /* Color de fondo suave */
+  color: var(--color-tickle-me-pink-600);            /* Color del texto */
+  padding: 0.1em 0.3em;      /* Espaciado interno */
+  border-radius: 4px;        /* Bordes redondeados */
+}
+
+  .blog-content-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  .blog-content-grid-responsive {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .blog-content-grid > div,
+  .blog-content-grid-responsive > div {
+    width: 100%;
+  }
+
+  .blog-content-note {
+    background-color: var(--color-trendy-pink-200);
+    padding: 1.25rem 1.25rem 0.125rem;
+    border-radius: 0.5rem;
+    color: var(--color-trendy-pink-900);
+  }
+
+  @media (min-width: 768px) {
+    .blog-content-grid-responsive {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+}
 </style>

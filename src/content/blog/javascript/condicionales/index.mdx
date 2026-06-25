@@ -1,40 +1,51 @@
 ---
 title: "Estructuras condicionales"
-description: "Condicionales en JavaScript"
+description: "Al programar, uno de los conceptos fundamentales a dominar, son las estructuras condicionales, también conocidas como estructuras de control. Estas estructuas nos permiten decidir que parte de nuesrto código se ejecutará basado en ciertas condiciones."
 pubDate: 2026-04-17 
 ---
 import NumeroSecreto from "./SecretGame.jsx";
+import SubtitleBlog from '@/components/blog/SubtitleBlog.astro'
+import BrowserCodeBlock from '@/components/blog/BrowserCodeBlock.astro'
+import PageDivider from '@/components/blog/PageDivider.astro'
 
-Al programar, uno de los conceptos fundamentales a dominar, son las estructuras condicionales, también conocidas como estructuras de control. Estas estructuas nos permiten decidir que parte de nuesrto código se ejecutará basado en ciertas condiciones.
-
-## if, else y else if
+<SubtitleBlog align="left">
+  ## if, else y else if
+</SubtitleBlog>
 
 La más básica de estas es **IF**, esta nos permite ejecutar un bloque de código solo si la condición es verdadera.
 
 ### Estructura:
 
-```js
-if (condición) {
-  //código a ejecutar
-} else {
-  //Solo se ejecuta si las anteriores validaciones no son verdaderas
-}
-```
+<BrowserCodeBlock>
+  ```js
+  if (condición) {
+    //código a ejecutar
+  } else {
+    //Solo se ejecuta si las anteriores validaciones no son verdaderas
+  }
+  ```
+</BrowserCodeBlock>
 
 ### Ejemplo:
 
-```js
-let edad = 18;
-if (edad >= 18) {
-  console.log("Eres mayor de edad");
-} else {
-  console.log("Eres menor de edad");
-}
-```
-## Juego del número secreto
+<BrowserCodeBlock>
+  ```js
+  let edad = 18;
+  if (edad >= 18) {
+    console.log("Eres mayor de edad");
+  } else {
+    console.log("Eres menor de edad");
+  }
+  ```
+</BrowserCodeBlock>
+<SubtitleBlog align="left">
+  ## Juego del número secreto
+</SubtitleBlog>
 <NumeroSecreto client:load />
 
-## Switch
+<SubtitleBlog align="left">
+  ## Switch
+</SubtitleBlog>
 
 La condición switch en JavaScript es una estructura de control que permite ejecutar diferentes bloques de código según si el valor de una expresión es true.
 
@@ -42,40 +53,46 @@ Es especialmente útil cuando necesitas manejar múltiples casos basados en el v
 
 ### Estrucctura
 
-```js
-switch (expresión) {
-  case valor1:
-    //código a ejecutar
-    break;
-  case valor2:
-    //código a ejecutar
-    break;
-  default:
-    //código a si ninguno de los anteriores fue true
-    break;
-}
-```
+<BrowserCodeBlock>
+  ```js
+  switch (expresión) {
+    case valor1:
+      //código a ejecutar
+      break;
+    case valor2:
+      //código a ejecutar
+      break;
+    default:
+      //código a si ninguno de los anteriores fue true
+      break;
+  }
+  ```
+</BrowserCodeBlock>
 
 ### Ejemplo
 
-```js
-let fruta = "Papaya";
+<BrowserCodeBlock>
+  ```js
+  let fruta = "Papaya";
 
-switch (fruta) {
-  case "Manzana":
-    console.log("Las manzanas cuestan 40mil el kilo");
-    break;
-  case "Papaya":
-    console.log("las papayas cuestan 15mil el kilo");
-    break;
-  case "Mangos": //Se pueden concatenar respuestas
-  case "Sandia":
-    console.log("Cada uno cuesta 25mil el kilo");
-    break;
-  default:
-    console.log(`lo siento, no tenemos ${fruta}`);
-    break;
-}
-```
+  switch (fruta) {
+    case "Manzana":
+      console.log("Las manzanas cuestan 40mil el kilo");
+      break;
+    case "Papaya":
+      console.log("las papayas cuestan 15mil el kilo");
+      break;
+    case "Mangos": //Se pueden concatenar respuestas
+    case "Sandia":
+      console.log("Cada uno cuesta 25mil el kilo");
+      break;
+    default:
+      console.log(`lo siento, no tenemos ${fruta}`);
+      break;
+  }
+  ```
+</BrowserCodeBlock>
+
+
 
 

@@ -4,143 +4,229 @@ description: 'Crear objetos de forma manual está bien cuando necesitas uno o do
 pubDate: 2026-06-18
 ---
 
-import Subtitulo from '@/components/Subtitulo.astro'
+import SubtitleBlog from '@/components/blog/SubtitleBlog.astro'
 import BrowserCodeBlock from '@/components/blog/BrowserCodeBlock.astro'
+import PageDivider from '@/components/blog/PageDivider.astro'
 
-<Subtitulo type="¿Que es un objeto?" />
-<div class="w-full grid grid-cols-2 grid-rows-1">
-<p>
-Un objeto es una estructura de datos que guarda información en formato clave → valor. Es como una ficha con propiedades.
-</p>
+<SubtitleBlog align="left">
+  ## ¿Qué es un objeto?
+</SubtitleBlog>
+<div class="blog-content-grid-responsive">
+  <div class="w-full">
+    Un objeto es una estructura de datos que permite agrupar información relacionada en una sola unidad. Cada pieza de información se guarda como una propiedad, usando una clave y un valor. Por ejemplo, un usuario puede tener un nombre, una edad y una profesión, todo dentro del mismo objeto.
+  </div>
+  <div class="w-full">
+    <BrowserCodeBlock>
+      ```js
+      //Sintaxis
 
-<BrowserCodeBlock>
-```js
-//Sintaxis
+      const objeto = {
+        clave: valor,
+        clave2: valor2,
+      };
 
-const objeto = {
-clave: valor,
-clave2: valor2,
-};
+      // Clave: nombre de la propiedad
+      // Propiedad / Atributos : clave + valor
+      // Metódos : Acciones que pertenecen al objeto
 
-// Clave: nombre de la propiedad
-// Propiedad / Atributos : clave + valor
-// Metódos : Acciones que pertenecen al objeto
-
-````
-</BrowserCodeBlock>
+      ```
+    </BrowserCodeBlock>
+  </div>
 </div>
 
 {/* TODO: Traer imagen */}
 {/* ![Texto alternativo](public/img/objeto.png) */}
 
-## ¿Cómo se usa comúnmente?
+<PageDivider />
 
-```js
-const user = {
-  name: "Ana",
-  age: 20,
-  isStudent: true,
-};
-````
-
-### ¿Para qué sirve?
-
-- Guardar información relacionada
-- Representar cosas del mundo real (usuarios,productos,etc.)
-- Organizar datos de forma clara
-- Muy usado en frontend (APIs, React,etc)
+<div class="blog-content-grid-responsive">
+  <div>
+    ### ¿Cómo se usa comúnmente?
+    <BrowserCodeBlock>
+      ```js
+      const user = {
+        name: "Ana",
+        age: 20,
+        isStudent: true,
+      };
+      ```
+    </BrowserCodeBlock>
+  </div>
+  <div>
+    ### ¿Para qué sirve?
+    - Guardar información relacionada
+    - Representar cosas del mundo real (usuarios,productos,etc.)
+    - Organizar datos de forma clara
+    - Muy usado en frontend (APIs, React,etc)
+  </div>
+</div>
 
 #### Condiciones de uso
 
 - Las claves (keys) suelen ser strings
-- Los valores pueden ser:
-  - string
-  - numbers
-  - boolean
-  - array
-  - otro objeto
-  - funciones
+- Los valores pueden ser: string, numbers, boolean, array, otro objeto, funciones
 
-## Acceder a los valores
+
+<SubtitleBlog align="left">
+  ## Acceder a los valores
+</SubtitleBlog>
 
 #### Notación punto
 
-```js
-const user = {
-  name: 'Ana',
-  age: 20,
-  isStudent: true,
-}
+<BrowserCodeBlock>
+  ```js
+    const user = {
+    name: 'Ana',
+    age: 20,
+    isStudent: true,
+    }
 
-user.name
-```
+    user.name // Este retorna el valor de la llave Ana  
+  ```
+</BrowserCodeBlock>
 
 #### Notación de corchetes
 
-```js
-user['age']
-```
+<BrowserCodeBlock>
+  ```js
+  user['age']
+  ```
+</BrowserCodeBlock>
 
 #### Modificar valores
 
-```js
-user.age = 21
-```
+<BrowserCodeBlock>
+  ```js
+  user.age = 21
+  ```
+</BrowserCodeBlock>
 
 #### Agregar propiedades
 
-```js
-user.country = 'Colombia'
-```
+<BrowserCodeBlock>
+  ```js
+  user.country = 'Colombia'
+  ```
+</BrowserCodeBlock>
 
-## Métodos en un objeto
+<SubtitleBlog align="left">
+  ## Métodos en un objeto
+</SubtitleBlog>
 
-Un metódo es una función dentro de un objeto. Es una acción que ese objeto puede hacer.
 
-```js
-const user = {
-  propiedad: valor,
-  metodo() {
-    //código
-  },
-}
 
-//¿Como usarlo?
-user.metodo()
-```
+  <BrowserCodeBlock>
+    ```js
+     ⁉️ Un metódo es una función dentro de un objeto. Es una acción que ese objeto puede hacer.
 
-### ¿Para qué sirve?
+    const user = {
+      propiedad: valor,
+      metodo() {
+        //código
+      },
+    }
 
-- Darle comportamiento a un objeto
-- Trabajar con sus propios datos
-- Siular cosas reales
-- Es una función dentro del objeto
-- Puedes usar **_this_** para acceder a sus propiedades
-  - 👉 this significa: “este objeto” es para hacer referencia al valor de una propiedad dentro del mismo objeto
+    //¿Como usarlo?
+    user.metodo()
+    ```
+  </BrowserCodeBlock>
 
-```js
-const user = {
-  name: 'Ana',
-  greet() {
-    return `Hola , soy ${this.name}`
-  },
-  setAge(newAge) {
-    this.age = newAge
-  },
-}
-```
+<div class="blog-content-grid-responsive">
+ <div>
+    ### ¿Para qué sirve?
 
-## Eliminar propiedades de un objeto
+    - Darle comportamiento a un objeto
+    - Trabajar con sus propios datos
+    - Siular cosas reales
+    - Es una función dentro del objeto
+    - Puedes usar <mark>`this`</mark> para acceder a sus propiedades
+      - 👉 this significa: “este objeto” es para hacer referencia al valor de una propiedad dentro del mismo objeto
+ </div>
 
-Elimina una propiedad (clave + valor) de un objeto. Esto es mediante al operador propio de JavaScript delete. Este no es un método
+  <BrowserCodeBlock>
+    ```js
+    const user = {
+      name: 'Ana',
+      greet() {
+        return `Hola , soy ${this.name}`
+      },
+      setAge(newAge) {
+        this.age = newAge
+      },
+    }
+    ```
+  </BrowserCodeBlock>
+</div>
 
-```js
-const user = {
-  name: 'Ana',
-  age: 20,
-}
+### Eliminar propiedades de un objeto
 
-delete user.age
-```
+<BrowserCodeBlock>
+  ```js
+  ⁉️ Elimina una propiedad (clave + valor) de un objeto. Esto es mediante al operador propio de JavaScript delete. Este no es un método
 
-## Función constructora y gestión de instancias en JavaScript
+  const user = {
+    name: 'Ana',
+    age: 20,
+  }
+
+  delete user.age
+  ```
+</BrowserCodeBlock>
+
+<SubtitleBlog align="left">
+  ## Función constructora
+</SubtitleBlog>
+
+<div class="blog-content-grid-responsive">
+  <div>
+    Una función constructora es, en esencia, una función cuyo único propósito es construir objetos y así poder hacer el proceso mas corto y rapido. Su sintaxis es la misma que la de cualquier función, con ciertas diferencias importantes:
+
+    - El nombre de la función inicia con mayúsculas(por convención).
+    - Dentro del cuerpo se utiliza la palabra reservada <mark>`this`</mark> para acceder a las propiedades del objeto que se está construyendo.
+    - La palabra reservada <mark>`new`</mark> se utiliza para crear un nuevo objeto.
+  </div>
+
+  <BrowserCodeBlock>
+    ```js
+    function Person(name,lastName,age){
+      this.name = name;
+      this.lastName = lastName;
+      this.age = age;
+    }   /*↳ Usamos la palabra reservada this para acceder
+     a las propiedades del objeto que se está construyendo*/
+
+    const person1 = new Person("Gabriela", "Ferrer",26);
+    /* ↳ Usamos la palabra reservada new para
+    crear un nuevo objeto y llamar a la función constructora*/
+    ```
+  </BrowserCodeBlock>
+</div>
+
+### ¿Para qué sirve prototype en una función constructora?
+
+Después de definir la función constructora, es probable que necesites **agregar nuevas propiedades o métodos** sin modificar el constructor original. Aquí es dond entra en juego  <mark>`prototype`</mark>.
+
+<div class="w-full grid grid-cols-2 gap-4 items-center">
+
+  El <mark>`prototype`</mark> es un objeto especial que actúa como una copia compartida de la función constructora.Todo lo que agregues al prototype estará disponible para todas las instancias de ese objeto.
+
+  <div class="blog-content-note">
+    ***Nota:*** Una **instancia** es simplemente el objeto resultante de ejecutar tu función constructora con la palabra reservada new. Es la "copia" única y específica que nace de ese molde.
+  </div>
+</div>
+
+<BrowserCodeBlock>
+  ```js
+  Person.prototype.cellPhone = "123456789";
+  ↳ /* Esta propiedad estará disponible para todas las instancias de Person*/
+  ```
+</BrowserCodeBlock>
+
+#### Agregar una propiedad a una unica instancia
+
+<BrowserCodeBlock>
+  ```js
+ person1.nationality = "Colombian";
+ ↳ /* Esta propiedad estará disponible unicamente para la instancia person1*/
+  ```
+</BrowserCodeBlock>

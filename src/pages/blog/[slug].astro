@@ -4,6 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import DecoracionCurva from "@/icons/decoracion-curva.svg";
 
 import { getCollection } from "astro:content";
+import Footer from "@/components/Footer.astro";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("blog")).sort(
@@ -86,4 +87,5 @@ const { title, description, image } = seccionBlog;
       </div>
     </div>
   </main>
+  <Footer/>
 </Layout>

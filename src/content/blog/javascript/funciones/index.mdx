@@ -1,11 +1,16 @@
 ---
 title: "Funciones JavaScript"
-description: "Funciones en JavaScript"
+description: "Las funciones son un tipo de objeto en JavaScript, son bloques de código reutilizables que permiten realizar tareas específicas una y otra vez. Imagina que son como piezas de Lego: puedes utilizarlas para crear múltiples objetos con las mismas piezas. Son una herramienta poderosa que, una vez definida, puede utilizarse repetidamente con distintos conjuntos de datos."
 pubDate: 2026-05-18 
 ---
-Las funciones son un tipo de objeto en JavaScript, son **bloques de código** reutilizables que permiten realizar tareas específicas una y otra vez. Imagina que son como piezas de Lego: puedes utilizarlas para crear múltiples objetos con las mismas piezas. Son una herramienta poderosa que, una vez definida, puede utilizarse repetidamente con distintos conjuntos de datos.
 
-## Ejemplo Descuentos de Black Friday.
+import SubtitleBlog from '@/components/blog/SubtitleBlog.astro'
+import BrowserCodeBlock from '@/components/blog/BrowserCodeBlock.astro'
+import PageDivider from '@/components/blog/PageDivider.astro'
+
+<SubtitleBlog align="left">
+  ## Ejemplo Descuentos de Black Friday.
+</SubtitleBlog>
 
 Quiero calcular el valor de una prenda descontando el porcentaje de descuento.
 
@@ -22,15 +27,19 @@ Quiero calcular el valor de una prenda descontando el porcentaje de descuento.
 
 ### Estructura
 
-```js
-function suma(a, b) {
-  return a + b;
-}
+<BrowserCodeBlock>
+  ```js
+  function suma(a, b) {
+    return a + b;
+  }
 
-suma(3, 5); // llamado de la función
-```
+  suma(3, 5); // llamado de la función
+  ```
+</BrowserCodeBlock>
 
-## Anatomia de una función
+<SubtitleBlog align="left">
+  ## Anatomia de una función
+</SubtitleBlog>
 
 Esta contiene:
 
@@ -41,119 +50,141 @@ Esta contiene:
 - **Return** (opcional) las funciones pueden simplemente ejecutar algo o puede retornar un valor.
 - **Llamado de la función** se usa nombre de la función, y dentro de los parentesis van los argumentos que son los valores que se le dan a los parametros.
 
-```js
-function caculateDiscontedPrice(price, discountPercentage) {
-  const discount = (price * discountPercentage) / 100;
-  return (priceWhithDiscount = price - discount);
-}
-const originalPrice = 20.0;
-const discountPercentage = 50;
-const finalPrice = caculateDiscontedPrice(originalPrice, discountPercentage);
+<BrowserCodeBlock>
+  ```js
+  function caculateDiscontedPrice(price, discountPercentage) {
+    const discount = (price * discountPercentage) / 100;
+    return (priceWhithDiscount = price - discount);
+  }
+  const originalPrice = 20.0;
+  const discountPercentage = 50;
+  const finalPrice = caculateDiscontedPrice(originalPrice, discountPercentage);
 
-console.log(finalPrice);
-```
+  console.log(finalPrice);
+  ```
+</BrowserCodeBlock>
 
-## Diferencia entre Funciones y Métodos
+<SubtitleBlog align="left">
+  ## Diferencia entre Funciones y Métodos
+</SubtitleBlog>
 
 ### Capacidades que tienen las funciones al igual que otros objetos.
 
 Se le pueden **pasar funciones como argumentos** -> se conoce como callback. (calback es una función que se pasa como argumento)
 
-```js
-function a() {}
-function b(a) {}
-b(a);
-```
+<BrowserCodeBlock>
+  ```js
+  function a() {}
+  function b(a) {}
+  b(a);
+  ```
+</BrowserCodeBlock>
 
 Pueden **retornar funciones** podemos tener otra función dentro y también retornarla. **Nota:** Cuando le damos nombre a la función a esto se le conoce como declaraciión de funcion
 
-```js
-function a() {
-  function b() {}
-  return b;
-}
-```
+<BrowserCodeBlock>
+  ```js
+  function a() {
+    function b() {}
+    return b;
+  }
+  ```
+</BrowserCodeBlock>
 
 Se pueden **asignar funciones a variables**. Termina quedando sin nombre y termina quedando a cargo de la variable.Ha esto se le conoce como expresión de función.
 
-```js
-const a = function () {};
-```
+<BrowserCodeBlock>
+  ```js
+  const a = function () {};
+  ```
+</BrowserCodeBlock>
 
 Pueden **tener propiedades y métodos**. En el siguiente ejemplo el método es .call
 
 - **Los métodos:** son funciones que pertenecen a un objeto. Siempre su esstrutura es obj.metodo()
 
-```js
-function a() {}
+<BrowserCodeBlock>
+  ```js
+  function a() {}
 
-const obj = {};
+  const obj = {};
 
-a.call(obj);
-```
+  a.call(obj);
+  ```
+</BrowserCodeBlock>
 
 **Se pueden anidar funciones**. Ha esto se le conoce cómo Nested functions. Inclusive podriamos llamar a las funciones detro de cada una.
 
-```js
-function a() {
-  function b() {
-    function c() {}
-    c();
+<BrowserCodeBlock>
+  ```js
+  function a() {
+    function b() {
+      function c() {}
+      c();
+    }
+    b();
   }
-  b();
-}
-a();
-```
+  a();
+  ```
+</BrowserCodeBlock>
 
 Se puede almacenar funciones en objetos y las mismas pueden ser llamadas y así creamos un método.
 
-```js
-const rocket = {
-  name: "Falcon 9",
-  launchMessage: function launchMessage() {
-    console.log("🔥");
-  },
-};
+<BrowserCodeBlock>
+  ```js
+  const rocket = {
+    name: "Falcon 9",
+    launchMessage: function launchMessage() {
+      console.log("🔥");
+    },
+  };
 
-rocket.launchMessage();
-```
+  rocket.launchMessage();
+  ```
+</BrowserCodeBlock>
 
-## Funciones Puras y funciones Impuras
+<SubtitleBlog align="left">
+  ## Funciones Puras y funciones Impuras
+</SubtitleBlog>
 
 ### Funciones Puras son aquellas que cumplen dos reglas:
 
 - Mismo input, mismo output.
 - No tienen efectos secundarios; No modifica nada fuera de ella (no cambia variables externas, no toca el DOM, no hace console.log, etc.).
 
-```js
-function sumar(a, b) {
-  return a + b;
-}
-//Al hacer
-sumar(2, 3); // siempre dara 5
-//No depende de nada externo. No modifica nada afuera.
-//No importa cuándo la ejecutes, siempre dará el mismo resultado.
-```
+<BrowserCodeBlock>
+  ```js
+  function sumar(a, b) {
+    return a + b;
+  }
+  //Al hacer
+  sumar(2, 3); // siempre dara 5
+  //No depende de nada externo. No modifica nada afuera.
+  //No importa cuándo la ejecutes, siempre dará el mismo resultado.
+  ```
+</BrowserCodeBlock>
 
 ### Funciones impuras son aquellas en las que ocurre alguno de estos dos casos:
 
 - Puede devolver diferentes resultados con los mismos argumentos.
 - Pueden causar efectos secundarios; modifica algo fuera de ella (estado global, array externo, DOM, base de datos, etc.).
 
-```js
-let contador = 0;
+<BrowserCodeBlock>
+  ```js
+  let contador = 0;
 
-function incrementar() {
-  contador++;
-}
-//Aquí la función modifica una variable externa (contador).
-//Eso la hace impura.
-function obtenerHora() {
-  return new Date();
-}
-//Si la ejecutas varias veces, devuelve diferentes valores.
-//Entonces no es predecible → es impura.
-```
+  function incrementar() {
+    contador++;
+  }
+  //Aquí la función modifica una variable externa (contador).
+  //Eso la hace impura.
+  function obtenerHora() {
+    return new Date();
+  }
+  //Si la ejecutas varias veces, devuelve diferentes valores.
+  //Entonces no es predecible → es impura.
+  ```
+</BrowserCodeBlock>
 
 Las funciones impuras no son malas , son necesarias. Se segmentan principalmente porque las funciones puras son; más fáciles de probar, más fáciles de entender, no rompen cosas inesperadamente, son más predecibles.
 
@@ -169,25 +200,31 @@ Modificar variables globales.
 - Manipulación del DOM.
 - Obtener hora y fecha actual.
 
-## Arrow functions
+<SubtitleBlog align="left">
+  ## Arrow functions
+</SubtitleBlog>
 
 Las arrow functions (=>) no son solo una forma más corta de escribir funciones.
 
 Tienen comportamientos especiales.
 
-```js
-const almuerzo = (proteina, verdura) => {
-  return `${proteina}${verdura}`; // return explicito
-};
+<BrowserCodeBlock>
+  ```js
+  const almuerzo = (proteina, verdura) => {
+    return `${proteina}${verdura}`; // return explicito
+  };
 
-almuerzo("🥩", "🥕");
-```
+  almuerzo("🥩", "🥕");
+  ```
+</BrowserCodeBlock>
 
 ### Return implicito y eliminación de () en caso de haber un solo parametro
 
-```js
-const almuerzo = (proteina) => `${proteina}`;
-```
+<BrowserCodeBlock>
+  ```js
+  const almuerzo = (proteina) => `${proteina}`;
+  ```
+</BrowserCodeBlock>
 
 ### NO tiene su propio this
 
@@ -229,18 +266,20 @@ Las arrow functions no los contienen.
 
 Un constructor es una función que se usa para crear objetos con new. Es como una “plantilla” para fabricar objetos.
 
-```js
-function Persona(nombre) {
-  this.nombre = nombre;
-}
-const p1 = new Persona("Ana");
+<BrowserCodeBlock>
+  ```js
+  function Persona(nombre) {
+    this.nombre = nombre;
+  }
+  const p1 = new Persona("Ana");
 
-p1.nombre; // "Ana"
+  p1.nombre; // "Ana"
 
-//Aquí:
+  //Aquí:
 
-//new crea un objeto vacío
-//this apunta a ese nuevo objeto
-//Se le asigna nombre
-```
+  //new crea un objeto vacío
+  //this apunta a ese nuevo objeto
+  //Se le asigna nombre
+  ```
+</BrowserCodeBlock>
 

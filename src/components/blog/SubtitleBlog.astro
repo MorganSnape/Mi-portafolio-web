@@ -1,0 +1,28 @@
+---
+interface Props {
+  text?: string | null;
+  align: "left" | "center" | "right";
+}
+
+enum aligns {
+  left = "left",
+  center = "center",
+  right = "right",
+}
+
+const { align } = Astro.props;
+---
+
+<div class="w-full relative h-2 flex items-center my-20">
+  <div
+    class:list={aligns[align]}
+    class={`min-w-[12rem] md:min-w-[18rem] lg:min-w-sm absolute bottom-[100%] translate-y-1/2 ${align === "center" && "-translate-1/2 left-1/2"} ${align === "left" && "left-5 md:left-20"} ${align === "right" && "right-5 md:right-20"} `}
+  >
+    <div
+      class={`bg-secondary w-full h-14 md:h-16 py-2 md:py-6 px-5 md:px-12 gap-4 text-center text-base md:text-lg ${align !== "center" ? "tag-me" : "center-tag-me"}`}
+    >
+      <span class="tracking-[6px] font-bold"><slot /></span>
+    </div>
+  </div>
+  <div class="bg-black w-full h-2"></div>
+</div>
