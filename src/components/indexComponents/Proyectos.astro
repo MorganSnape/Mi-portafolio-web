@@ -36,12 +36,12 @@ const buttonClass =
     </div>
     <div id="design-projects" class="py-4 md:py-6 w-full mb-20">
       <ProyectosContainer id="proyects-list">
-        {proyectos.map((proyecto, key) => (
+        {proyectos.map((proyecto) => (
           <div
             class="project-card"
             data-type={proyecto.type.map((type) => type.toLowerCase()).join(" ")}
           >
-            <Card section={proyecto.type[key]} {...proyecto} />
+            <Card section={proyecto.type[0]} {...proyecto} />
           </div>
         ))}
       </ProyectosContainer>
@@ -63,7 +63,7 @@ const buttonClass =
     const searchTerms = filterMap[filter] || [filter];
 
     projectCards.forEach((card) => {
-      const types = card.dataset.type || "";
+      const types = (card.getAttribute("data-type") || "").split(" ");
       const isVisible =
         filter === "all" ||
         searchTerms.some((term) => types.includes(term));
