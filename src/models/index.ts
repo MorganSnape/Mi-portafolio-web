@@ -126,5 +126,5 @@ export interface SectionBlogType {
   title: string;
   description: string;
   image: string;
-  slug: 'javascript' | 'diseñoGrafico';
+  slug: 'javascript' | 'diseñoGrafico' | 'react';
 }

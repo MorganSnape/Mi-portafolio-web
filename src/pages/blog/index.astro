@@ -28,8 +28,8 @@ import Layout from "@/layouts/Layout.astro";
         {
           dataSeccionesBlog.map((dataBlog) => (
             <a
-              href={`blog/${dataBlog.slug}`}
-              class="cursor-pointer hover:scale-105 transition-all duration-150 ease-in-out aspect-square w-72 bg-white min-h-64 border-2 border-black rounded-xl md:rounded-2xl overflow-hidden"
+              href={`/blog/${dataBlog.slug}`}
+              class="group relative cursor-pointer hover:scale-[1.02] transition-all duration-300 ease-out aspect-square w-72 bg-white min-h-64 border-2 border-black rounded-xl md:rounded-2xl overflow-hidden shadow-sm hover:shadow-xl"
             >
               <div class="h-10 bg-white flex flex-row items-center gap-2 px-4 border-b-4 border-black rounded-t-xl md:rounded-t-2xl">
                 <div class="h-3 w-3 bg-black rounded-full" />
@@ -39,8 +39,17 @@ import Layout from "@/layouts/Layout.astro";
               <img
                 src={dataBlog.image}
                 alt={`Imagen de ${dataBlog.title}`}
-                class="w-full h-full object-cover object-left"
+                class="h-full w-full object-cover object-center transition-transform duration-300 ease-out group-hover:scale-105"
               />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent opacity-0 transition-all duration-300 ease-out group-hover:opacity-100" />
+              <div class="absolute inset-x-0 bottom-0 translate-y-full p-4 text-white transition-transform duration-300 ease-out group-hover:translate-y-0">
+                <h2 class="font-fantabular text-xl font-semibold leading-tight">
+                  {dataBlog.title}
+                </h2>
+                <p class="mt-2 text-sm leading-5 text-white/90 max-h-16 overflow-hidden">
+                  {dataBlog.description}
+                </p>
+              </div>
             </a>
           ))
         }
