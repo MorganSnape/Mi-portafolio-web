@@ -23,13 +23,13 @@ const icons = {
 const SectionIcon = icons[section as keyof typeof icons] ?? TagDesign
 ---
 
-<a href={`/proyectos/${slug}`} class="inline-block snap-start shrink-0">
+<a href={`/proyectos/${slug}`} class="relative inline-block snap-start shrink-0">
+  <SectionIcon
+    class="absolute right-4 -top-2 w-16 h-16 z-40 drop-shadow-md"
+  />
   <article
-    class={`relative group flex flex-col border-2 border-black rounded-xl md:rounded-2xl h-[368px] w-64 sm:w-xs md:min-h-[240px] bg-white `}
+    class={` group flex flex-col border-2 border-black rounded-xl md:rounded-2xl h-[368px] w-64 sm:w-xs md:min-h-[240px] bg-white `}
   >
-    <SectionIcon
-      class="absolute right-4 -top-2 w-16 h-16 z-40 drop-shadow-md"
-    />
 
     <div
       class="h-10 py-4 flex flex-row items-center gap-2 px-4 border-b-4 border-black"
