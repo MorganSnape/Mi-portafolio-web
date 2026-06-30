@@ -7,7 +7,6 @@ import { marcaPersonalProyect } from "./marcaPersonal";
 
 export const proyectos: Proyect[] = [
   amarillaGardenProyect,
-  commetAppProyect,
   encriptadorTextoProyect,
   marcaPersonalProyect,
 ];

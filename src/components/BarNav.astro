@@ -4,6 +4,7 @@ import Logo from "public/isotipo-negativo.svg";
 
 import {navLinks} from "@/data/navLinks";
 
+const { active = true } = Astro.props;
 ---
 
 <header class="fixed top-0 z-50 bg-black-secondary w-full">
@@ -39,59 +40,63 @@ import {navLinks} from "@/data/navLinks";
   </nav>
 </header>
 
-<script>
-  const $ul = document.querySelector("header ul.ul-links");
-  const $checkbox = document.getElementById(
-    "menu-hamburguer",
-  ) as HTMLInputElement;
-  const $navItems = document.querySelectorAll(
-    ".nav-item",
-  ) as NodeListOf<HTMLAnchorElement>;
+{active && (
+  <>
+    <script>
+      const $ul = document.querySelector("header ul.ul-links");
+      const $checkbox = document.getElementById(
+        "menu-hamburguer",
+      ) as HTMLInputElement;
+      const $navItems = document.querySelectorAll(
+        ".nav-item",
+      ) as NodeListOf<HTMLAnchorElement>;
 
-  // Cerrar menu al hacer click
-  $ul?.addEventListener("click", () => {
-    $checkbox.checked = false;
-  });
+      // Cerrar menu al hacer click
+      $ul?.addEventListener("click", () => {
+        $checkbox.checked = false;
+      });
 
-  // Función para resaltar nav item activo
-  function updateActiveNavItem() {
-    const sections = document.querySelectorAll(
-      "section[id]",
-    ) as NodeListOf<HTMLElement>;
-    let currentSection = "inicio";
+      // Función para resaltar nav item activo
+      function updateActiveNavItem() {
+        const sections = document.querySelectorAll(
+          "section[id]",
+        ) as NodeListOf<HTMLElement>;
+        let currentSection = "inicio";
 
-    sections.forEach((section) => {
-      const rect = section.getBoundingClientRect();
-      if (
-        rect.top <= window.innerHeight / 2 &&
-        rect.bottom >= window.innerHeight / 2
-      ) {
-        currentSection = section.id;
+        sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          if (
+            rect.top <= window.innerHeight / 2 &&
+            rect.bottom >= window.innerHeight / 2
+          ) {
+            currentSection = section.id;
+          }
+        });
+
+        $navItems.forEach((item) => {
+          item.classList.remove("active");
+          const href = item.getAttribute("href") ?? "";
+          const targetId = href.split("#").pop() ?? "";
+
+          if (targetId === currentSection || (currentSection === "inicio" && targetId === "inicio")) {
+            item.classList.add("active");
+          }
+        });
       }
-    });
 
-    $navItems.forEach((item) => {
-      item.classList.remove("active");
-      const href = item.getAttribute("href") ?? "";
-      const targetId = href.split("#").pop() ?? "";
+      // Listener en scroll y resize
+      window.addEventListener("scroll", updateActiveNavItem, { passive: true });
+      window.addEventListener("resize", updateActiveNavItem);
+      // Inicializar al cargar
+      updateActiveNavItem();
+    </script>
 
-      if (targetId === currentSection || (currentSection === "inicio" && targetId === "inicio")) {
-        item.classList.add("active");
+    <style>
+      .nav-item.active {
+        font-weight: 700;
+        color: var(--color-secondary, #ffe971);
+        border-bottom: 3px solid var(--color-secondary, #ffe971);
       }
-    });
-  }
-
-  // Listener en scroll y resize
-  window.addEventListener("scroll", updateActiveNavItem, { passive: true });
-  window.addEventListener("resize", updateActiveNavItem);
-  // Inicializar al cargar
-  updateActiveNavItem();
-</script>
-
-<style>
-  .nav-item.active {
-    font-weight: 700;
-    color: var(--color-secondary, #ffe971);
-    border-bottom: 3px solid var(--color-secondary, #ffe971);
-  }
-</style>
+    </style>
+  </>
+)}
