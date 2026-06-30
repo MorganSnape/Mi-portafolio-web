@@ -70,18 +70,18 @@ import {navLinks} from "@/data/navLinks";
 
     $navItems.forEach((item) => {
       item.classList.remove("active");
-      const href = item.getAttribute("href");
-      if (
-        href === `#${currentSection}` ||
-        (currentSection === "inicio" && href === "#inicio")
-      ) {
+      const href = item.getAttribute("href") ?? "";
+      const targetId = href.split("#").pop() ?? "";
+
+      if (targetId === currentSection || (currentSection === "inicio" && targetId === "inicio")) {
         item.classList.add("active");
       }
     });
   }
 
-  // Listener en scroll
-  window.addEventListener("scroll", updateActiveNavItem);
+  // Listener en scroll y resize
+  window.addEventListener("scroll", updateActiveNavItem, { passive: true });
+  window.addEventListener("resize", updateActiveNavItem);
   // Inicializar al cargar
   updateActiveNavItem();
 </script>
