@@ -54,6 +54,28 @@ const {
 
 <Layout title=`Este es el proyecto ${nameProject}`>
   <BarNav active={false} />
+  <aside
+    id="section-nav"
+    class="fixed right-4 top-1/2 z-40 hidden -translate-y-1/2 lg:flex lg:flex-col lg:items-end lg:gap-3"
+    aria-label="Navegación por secciones"
+  >
+    <div class="rounded-full border border-black-secondary/20 bg-white/90 p-2 shadow-[4px_4px_0px_#141414] backdrop-blur">
+      <div class="relative h-40 w-2 overflow-hidden rounded-full bg-black-secondary/15">
+        <div
+          id="nav-progress-fill"
+          class="absolute bottom-0 left-0 w-full rounded-full bg-primary transition-all duration-300"
+          style="height: 0%;"
+        />
+      </div>
+    </div>
+    <nav class="max-w-[220px] rounded-2xl border border-black-secondary/10 bg-white/90 p-3 shadow-[4px_4px_0px_#141414] backdrop-blur">
+      <p class="mb-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-black-secondary/70">
+        Secciones
+      </p>
+      <ul id="section-nav-list" class="flex flex-col gap-2"></ul>
+    </nav>
+  </aside>
+
   <main class="flex flex-col items-center gap-20 py-14">
     <button
       id="backToTop"
@@ -250,6 +272,95 @@ const {
 
 <script>
   const button = document.getElementById('backToTop')
+  const navList = document.getElementById('section-nav-list')
+  const progressFill = document.getElementById('nav-progress-fill')
+
+  const createSlug = (value: string) => {
+    return value
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '')
+  }
+
+  const headings = Array.from(document.querySelectorAll('main h2'))
+
+  if (navList && progressFill && headings.length > 0) {
+    headings.forEach((heading, index) => {
+      const text = heading.textContent?.trim() ?? `Sección ${index + 1}`
+      const baseId = createSlug(text) || `seccion-${index + 1}`
+      let uniqueId = baseId
+      let counter = 1
+
+      while (document.getElementById(uniqueId)) {
+        uniqueId = `${baseId}-${counter}`
+        counter += 1
+      }
+
+      heading.id = uniqueId
+
+      const item = document.createElement('li')
+      item.className = 'w-full'
+
+      const link = document.createElement('a')
+      link.href = `#${uniqueId}`
+      link.className =
+        'flex items-center gap-2 rounded-md px-2 py-1 text-sm text-black-secondary transition-colors duration-200 hover:bg-primary/10 hover:text-black'
+
+      const dot = document.createElement('span')
+      dot.className =
+        'h-2.5 w-2.5 rounded-full border border-black-secondary/30 bg-transparent transition-all duration-200'
+
+      const label = document.createElement('span')
+      label.className = 'line-clamp-2 text-left'
+      label.textContent = text
+
+      link.appendChild(dot)
+      link.appendChild(label)
+      item.appendChild(link)
+      navList.appendChild(item)
+
+      link.addEventListener('click', event => {
+        event.preventDefault()
+        heading.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      })
+    })
+
+    const updateNavState = () => {
+      const scrollTop = window.scrollY + 150
+      const documentHeight = document.documentElement.scrollHeight - window.innerHeight
+      const progress = documentHeight > 0 ? (scrollTop / documentHeight) * 100 : 0
+      progressFill.style.height = `${Math.min(100, Math.max(0, progress))}%`
+
+      const links = Array.from(navList.querySelectorAll('a'))
+      let activeIndex = 0
+
+      headings.forEach((heading, index) => {
+        if (scrollTop >= heading.offsetTop) {
+          activeIndex = index
+        }
+      })
+
+      links.forEach((link, index) => {
+        const dot = link.querySelector('span')
+        const isActive = index === activeIndex
+
+        link.classList.toggle('text-primary', isActive)
+        link.classList.toggle('font-semibold', isActive)
+        link.setAttribute('aria-current', isActive ? 'true' : 'false')
+
+        if (dot) {
+          dot.classList.toggle('bg-primary', isActive)
+          dot.classList.toggle('border-primary', isActive)
+        }
+      })
+    }
+
+    updateNavState()
+    window.addEventListener('scroll', updateNavState, { passive: true })
+    window.addEventListener('resize', updateNavState)
+  }
 
   button?.addEventListener('click', () => {
     window.scrollTo({

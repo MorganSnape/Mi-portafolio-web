@@ -140,3 +140,7 @@ html {
   scroll-padding-top: 100px;
   font-family: 'Rethink Sans', sans-serif;
 }
+
+main h2 {
+  scroll-margin-top: 120px;
+}

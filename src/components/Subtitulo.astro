@@ -14,7 +14,7 @@ enum aligns {
 const { align, text, type } = Astro.props;
 ---
 
-<div class="w-full relative h-2 flex items-center">
+<div class="w-full relative h-2 flex items-center z-20">
   <h2
     class:list={aligns[align]}
     class={`min-w-[12rem] md:min-w-[18rem] lg:min-w-sm absolute bottom-[100%] translate-y-1/2 ${align === "center" && "-translate-1/2 left-1/2"} ${align === "left" && "left-5 md:left-20 lg:left-40"} ${align === "right" && "right-5 md:right-20 lg:right-40"} `}

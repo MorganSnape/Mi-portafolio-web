@@ -60,7 +60,7 @@ import { estudios } from "../data/studies";
               href={personalInfo.behance}
               class="text-primary hover:text-black transition-colors"
             >
-              <span class="font-bold break-words">Behane:</span>
+              <span class="font-bold break-words">Behance:</span>
               <p class="text-black">{personalInfo.behance}</p>
             </a>
             <a
@@ -106,10 +106,6 @@ import { estudios } from "../data/studies";
                     ))}
                   </ul>
                 </main>
-                <div class="">
-                  <span class="font-bold text-primary">Referencias:</span>
-                  <p>{experience.reference}</p>
-                </div>
               </article>
             </div>
           ))
@@ -170,22 +166,6 @@ import { estudios } from "../data/studies";
         <ul class="ml-5">
           {
             personalInfo.skills.map((skill) => (
-              <li class="list-disc mb-1">{skill}</li>
-            ))
-          }
-        </ul>
-      </section>
-
-      <!-- Habilidades Blandas -->
-      <section class="mb-12 print:break-inside-avoid pb-12">
-        <h2
-          class="font-bold text-xl mb-6 pb-4 text-black border-b-3 border-primary"
-        >
-          Habilidades Blandas
-        </h2>
-        <ul class="ml-5">
-          {
-            personalInfo.softSkills?.map((skill) => (
               <li class="list-disc mb-1">{skill}</li>
             ))
           }
