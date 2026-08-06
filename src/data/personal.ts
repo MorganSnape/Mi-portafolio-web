@@ -55,5 +55,5 @@ export const personalInfo: PersonalInfo = {
     "Herramientas Dev: Git, TypeScript (Básico), Optimización y Performance Web",
     "Diseño Visual: Adobe Creative Suite (Ai, Ps, Id), Branding, Teoría del Color y Tipografía"
   ],
-  languages: ["Español (Nativo)", "Inglés (B1)"],
+  // languages: ["Español (Nativo)", "Inglés (B1)"],
 };
