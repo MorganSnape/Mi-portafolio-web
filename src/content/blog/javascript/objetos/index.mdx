@@ -7,6 +7,7 @@ pubDate: 2026-06-18
 import SubtitleBlog from '@/components/blog/SubtitleBlog.astro'
 import BrowserCodeBlock from '@/components/blog/BrowserCodeBlock.astro'
 import PageDivider from '@/components/blog/PageDivider.astro'
+import DataTable from '@/components/blog/DataTable.astro'
 
 <SubtitleBlog align="left">
   ## ¿Qué es un objeto?
@@ -68,22 +69,21 @@ import PageDivider from '@/components/blog/PageDivider.astro'
 
 
 <SubtitleBlog align="left">
-  ## Acceder a los valores
+  ## Formas de acceder o modificar valores
 </SubtitleBlog>
 
+<div class="blog-content-grid-responsive"> 
+<div>
 #### Notación punto
 
 <BrowserCodeBlock>
   ```js
-    const user = {
-    name: 'Ana',
-    age: 20,
-    isStudent: true,
-    }
-
-    user.name // Este retorna el valor de la llave Ana  
+    user.name  
   ```
 </BrowserCodeBlock>
+</div>
+
+<div>
 
 #### Notación de corchetes
 
@@ -92,7 +92,9 @@ import PageDivider from '@/components/blog/PageDivider.astro'
   user['age']
   ```
 </BrowserCodeBlock>
+</div>
 
+<div>
 #### Modificar valores
 
 <BrowserCodeBlock>
@@ -100,7 +102,8 @@ import PageDivider from '@/components/blog/PageDivider.astro'
   user.age = 21
   ```
 </BrowserCodeBlock>
-
+</div>
+<div>
 #### Agregar propiedades
 
 <BrowserCodeBlock>
@@ -108,6 +111,10 @@ import PageDivider from '@/components/blog/PageDivider.astro'
   user.country = 'Colombia'
   ```
 </BrowserCodeBlock>
+</div>
+</div>
+
+
 
 <SubtitleBlog align="left">
   ## Métodos en un objeto
@@ -184,6 +191,8 @@ import PageDivider from '@/components/blog/PageDivider.astro'
     - El nombre de la función inicia con mayúsculas(por convención).
     - Dentro del cuerpo se utiliza la palabra reservada <mark>`this`</mark> para acceder a las propiedades del objeto que se está construyendo.
     - La palabra reservada <mark>`new`</mark> se utiliza para crear un nuevo objeto.
+
+    **Necesitamos saber que es una**  <mark>`instancia`</mark>. Una instancia es una clase de objeto creado a partir de una clase o constructor.
   </div>
 
   <BrowserCodeBlock>
@@ -195,6 +204,7 @@ import PageDivider from '@/components/blog/PageDivider.astro'
     }   /*↳ Usamos la palabra reservada this para acceder
      a las propiedades del objeto que se está construyendo*/
 
+    /* ↓ Esto es una instancia. */
     const person1 = new Person("Gabriela", "Ferrer",26);
     /* ↳ Usamos la palabra reservada new para
     crear un nuevo objeto y llamar a la función constructora*/
@@ -219,8 +229,19 @@ Después de definir la función constructora, es probable que necesites **agrega
   ```js
   Person.prototype.cellPhone = "123456789";
   ↳ /* Esta propiedad estará disponible para todas las instancias de Person*/
+
+  Ⓜ️Person.prototype.saludar= function(){ // los metodos se añaden a partir de prototype
+    console.log(`¡Hola! me llamo ${this.name}`)
+  }
+  /*Podemos hace los mismo para agregar métodos*/
   ```
 </BrowserCodeBlock>
+
+#### ¿Por qué usar ***.prototype*** en lugar de declararlo dentro de la función constructora?
+
+- **Eficiencia de memoria:** Si defines el método directamente con this.miMetodo = function() {} dentro de la función constructora, se creará una copia nueva de esa función en la memoria cada vez que crees un objeto nuevo.
+
+- **Uso compartido:** Al añadirlo a Persona.prototype, todas las instancias (persona1, persona2, etc.) consultan un único lugar en la memoria para ejecutar ese método.
 
 #### Agregar una propiedad a una unica instancia
 
@@ -230,3 +251,56 @@ Después de definir la función constructora, es probable que necesites **agrega
  ↳ /* Esta propiedad estará disponible unicamente para la instancia person1*/
   ```
 </BrowserCodeBlock>
+
+<SubtitleBlog align="left">
+  ## Clases en JavaScript
+</SubtitleBlog>
+
+Las clases son la forma más moderna nacida en 2015, para crear objetos en JavaScript con una sintaxis más limpia.
+
+<div class="w-full grid grid-cols-2 gap-4 items-center">
+
+Una clase funciona como un <mark>`blueprint`</mark>, es decir, un molde a partir del cual vas a construir diferentes objetos con la misma estructura. No es una característica completamente nueva del lenguaje: es lo que se conoce como sugar syntax, una capa más amigable encima de las funciones constructoras que ya existían.
+
+  <div class="blog-content-note">
+    **¿Qué es sugar syntax?** Es una sintaxis más legible que hace lo mismo que el código original por debajo. En este caso, las clases siguen creando objetos como las funciones constructoras, pero se leen mejor.
+  </div>
+</div>
+
+<BrowserCodeBlock>
+```js
+//Sintaxis
+
+class User {
+  constructor (name, age){
+    this.name = name;
+    this,age= age;
+  }
+  saludar(){ //Los métodos en una clase son funciones que describen acciones que pueden realizar sus instancias.
+    console.log(`¡Hola! me llamo ${this.name}`)
+  }
+}
+
+const ana = new User("Ana", 24);
+ana.name // Este retorna el valor de la llave Ana
+ana.saludar();
+```
+</BrowserCodeBlock>
+
+<SubtitleBlog align="left">
+  ## Diferencias entre clases y funciones constructoras
+</SubtitleBlog>
+
+<DataTable>
+  | Característica | Función constructora | Clase |
+  |---|---|---|
+  | ¿Qué es? | Una función usada como molde para crear  objetos. | Una sintaxis moderna para crear objetos. |
+  | ¿Para qué sirve? | Crear múltiples objetos con una  estructura similar. | Crear múltiples objetos de forma más   organizada. |
+  | ¿Cómo se crea? | Se utiliza `function` y `new`. | Se  utiliza `class` y `new`. |
+  | Constructor | La propia función actúa como  constructor. | Se utiliza `constructor()`. |
+  | Métodos | Se suelen agregar al `prototype`. | Se  escriben directamente dentro de la clase. |
+  | Sintaxis | `function User(name) { ... }` | `class User  { ... }` |
+  | Uso | `new User("Ana")` | `new User("Ana")` |
+  | Prototipos | Utiliza el sistema de prototipos de  JavaScript. | También utiliza prototipos internamente. |
+
+</DataTable>
