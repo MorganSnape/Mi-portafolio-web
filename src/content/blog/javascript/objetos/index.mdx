@@ -8,6 +8,9 @@ import SubtitleBlog from '@/components/blog/SubtitleBlog.astro'
 import BrowserCodeBlock from '@/components/blog/BrowserCodeBlock.astro'
 import PageDivider from '@/components/blog/PageDivider.astro'
 import DataTable from '@/components/blog/DataTable.astro'
+import PhotoFrame from '@/components/blog/PhotoFrame.astro'
+import prototipo from '@/assets/blog/objetos-article/prototipo.png'
+import herencia from '@/assets/blog/objetos-article/herencia.png'
 
 <SubtitleBlog align="left">
   ## ¿Qué es un objeto?
@@ -256,36 +259,40 @@ Después de definir la función constructora, es probable que necesites **agrega
   ## Clases en JavaScript
 </SubtitleBlog>
 
-Las clases son la forma más moderna nacida en 2015, para crear objetos en JavaScript con una sintaxis más limpia.
 
-<div class="w-full grid grid-cols-2 gap-4 items-center">
+<div class="w-full grid grid-cols-2 gap-4">
+ <div class="mt-4">
+    Las clases son la forma más moderna nacida en 2015, para crear objetos en JavaScript con una sintaxis más limpia.
 
-Una clase funciona como un <mark>`blueprint`</mark>, es decir, un molde a partir del cual vas a construir diferentes objetos con la misma estructura. No es una característica completamente nueva del lenguaje: es lo que se conoce como sugar syntax, una capa más amigable encima de las funciones constructoras que ya existían.
+    Una clase funciona como un <mark>`blueprint`</mark>, es decir, un molde a partir del cual vas a construir diferentes objetos con la misma estructura. No es una característica completamente nueva del lenguaje: es lo que se conoce como sugar syntax, una capa más amigable encima de las funciones constructoras que ya existían.
 
-  <div class="blog-content-note">
-    **¿Qué es sugar syntax?** Es una sintaxis más legible que hace lo mismo que el código original por debajo. En este caso, las clases siguen creando objetos como las funciones constructoras, pero se leen mejor.
-  </div>
+    <div class="blog-content-note">
+      **¿Qué es sugar syntax?** Es una sintaxis más legible que hace lo mismo que el código original por debajo. En este caso, las clases siguen creando objetos como las funciones constructoras, pero se leen mejor.
+    </div>
+ </div>
+  <BrowserCodeBlock>
+  ```js
+  //Sintaxis  
+
+  class User {
+    constructor (name, age){
+      this.name = name;
+      this.age= age;
+    }           
+    saludar(){ 
+      console.log(`¡Hola! me llamo ${this.name}`)
+    }/*Los métodos en una clase son funciones que
+     describen acciones que pueden realizar sus instancias.*/
+  }
+
+  const ana = new User("Ana", 24);
+  ana.name // Este retorna el valor de la llave Ana
+  ana.saludar();
+  ```
+  </BrowserCodeBlock>
 </div>
 
-<BrowserCodeBlock>
-```js
-//Sintaxis
 
-class User {
-  constructor (name, age){
-    this.name = name;
-    this,age= age;
-  }
-  saludar(){ //Los métodos en una clase son funciones que describen acciones que pueden realizar sus instancias.
-    console.log(`¡Hola! me llamo ${this.name}`)
-  }
-}
-
-const ana = new User("Ana", 24);
-ana.name // Este retorna el valor de la llave Ana
-ana.saludar();
-```
-</BrowserCodeBlock>
 
 <SubtitleBlog align="left">
   ## Diferencias entre clases y funciones constructoras
@@ -304,3 +311,30 @@ ana.saludar();
   | Prototipos | Utiliza el sistema de prototipos de  JavaScript. | También utiliza prototipos internamente. |
 
 </DataTable>
+
+<SubtitleBlog align="left">
+  ## Herencia y prototipos
+</SubtitleBlog>
+
+<div class="w-full grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-4 ">
+  <div class="flex flex-col items-center w-full">
+    <PhotoFrame
+    src={prototipo}
+    alt="Ejemplo de prototipo en las clases"
+    class="h-full max-h-1/2"
+    />
+    <p class="mt-4">
+      <mark>`Prototipo:`</mark> **Cada clase o función constructora genera un prototipo** que comparte propiedades y métodos a sus instancia, lo que te permite escribir código más limpio, reutilizable y organizado.
+    </p>
+  </div>
+  <div class="flex flex-col items-center w-full">
+    <PhotoFrame
+      src={herencia}
+      alt="Ejemplo de prototipo en las clases"
+      class="h-full max-h-1/2"
+      />
+     <p class="mt-4 text-center" >
+      <mark>`Herencia:`</mark> La herencia en JavaScript **ocurre de forma automática gracias al prototipo**. Cuando defines un método en la clase constructora, ese método queda disponible para cualquier instancia que crees después.
+    </p>
+  </div>
+</div>
