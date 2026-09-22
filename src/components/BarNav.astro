@@ -2,9 +2,19 @@
 import { Icon } from "astro-icon/components";
 import Logo from "public/isotipo-negativo.svg";
 
-import {navLinks} from "@/data/navLinks";
+import { navLinks } from "@/data/navLinks";
 
-const { active = true } = Astro.props;
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+const isCurrentLink = (href: string) => {
+  const normalizedHref = href.replace(/\/$/, "") || "/";
+
+  if (normalizedHref === "/") {
+    return currentPath === "/" || currentPath.startsWith("/proyectos/");
+  }
+
+  return currentPath === normalizedHref;
+};
 ---
 
 <header class="fixed top-0 z-50 bg-black-secondary w-full">
@@ -29,7 +39,10 @@ const { active = true } = Astro.props;
           <li class="w-full lg:w-fit">
             <a
               href={link.href}
-              class="nav-item font-rethink w-full px-4 text-center lg:text-left text-white text-lg lg:text-base font-normal hover:text-gray-400 focus:ring-2 active:font-semibold active:text-white active:border-none focus:outline-none h-[calc(var(--altura-header)_-_12px)] focus:ring-yellow-300 flex flex-col items-center justify-center "
+              class:list={[
+                "nav-item font-rethink w-full px-4 text-center lg:text-left text-white text-lg lg:text-base font-normal hover:text-gray-400 focus:ring-2 active:font-semibold active:text-white active:border-none focus:outline-none h-[calc(var(--altura-header)_-_12px)] focus:ring-yellow-300 flex flex-col items-center justify-center",
+                { active: isCurrentLink(link.href) },
+              ]}
             >
               {link.name}
             </a>
@@ -40,63 +53,10 @@ const { active = true } = Astro.props;
   </nav>
 </header>
 
-{active && (
-  <>
-    <script>
-      const $ul = document.querySelector("header ul.ul-links");
-      const $checkbox = document.getElementById(
-        "menu-hamburguer",
-      ) as HTMLInputElement;
-      const $navItems = document.querySelectorAll(
-        ".nav-item",
-      ) as NodeListOf<HTMLAnchorElement>;
-
-      // Cerrar menu al hacer click
-      $ul?.addEventListener("click", () => {
-        $checkbox.checked = false;
-      });
-
-      // Función para resaltar nav item activo
-      function updateActiveNavItem() {
-        const sections = document.querySelectorAll(
-          "section[id]",
-        ) as NodeListOf<HTMLElement>;
-        let currentSection = "inicio";
-
-        sections.forEach((section) => {
-          const rect = section.getBoundingClientRect();
-          if (
-            rect.top <= window.innerHeight / 2 &&
-            rect.bottom >= window.innerHeight / 2
-          ) {
-            currentSection = section.id;
-          }
-        });
-
-        $navItems.forEach((item) => {
-          item.classList.remove("active");
-          const href = item.getAttribute("href") ?? "";
-          const targetId = href.split("#").pop() ?? "";
-
-          if (targetId === currentSection || (currentSection === "inicio" && targetId === "inicio")) {
-            item.classList.add("active");
-          }
-        });
-      }
-
-      // Listener en scroll y resize
-      window.addEventListener("scroll", updateActiveNavItem, { passive: true });
-      window.addEventListener("resize", updateActiveNavItem);
-      // Inicializar al cargar
-      updateActiveNavItem();
-    </script>
-
-    <style>
-      .nav-item.active {
-        font-weight: 700;
-        color: var(--color-secondary, #ffe971);
-        border-bottom: 3px solid var(--color-secondary, #ffe971);
-      }
-    </style>
-  </>
-)}
+<style>
+  .nav-item.active {
+    font-weight: 700;
+    color: var(--color-secondary, #ffe971);
+    border-bottom: 3px solid var(--color-secondary, #ffe971);
+  }
+</style>
