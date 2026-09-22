@@ -1,28 +1,28 @@
 ---
-import SocialMediaButtons from "@/components/SocialMediaButtons.astro";
-import {navLinks} from "@/data/navLinks";
+import SocialMediaButtons from '@/components/SocialMediaButtons.astro'
+import { navLinks } from '@/data/navLinks'
 
-import Logo from "public/negativo.svg";
-
+import Logo from 'public/negativo.svg'
 ---
 
 <footer class="bg-[url(/fondoDos.svg)] bg-[length:30px] text-white w-full">
   <div
-    class="flex flex-col gap-6 md:flex-row justify-center md:justify-between w-full max-w-[1280px] px-4 md:px-12 mx-auto py-12"
+    class="flex flex-col gap-6 md:flex-row justify-center md:justify-between w-full max-w-[1280px] px-4 md:px-12 mx-auto py-10"
   >
     <Logo class="h-20 md:h-28 w-auto fill-white pointer-events-none" />
     <div
       class="flex flex-col gap-4 max-w-64 items-center md:items-start mx-auto"
     >
       <p>Navegación</p>
-      <ul class="grid grid-cols-3 gap-x-2">
+      <ul class="grid grid-cols-2 gap-x-8">
         {
-          navLinks.map((link) => (
+          navLinks.map(link => (
             <li>
               <a
                 href={link.href}
                 class="font-rethink h-full text-white text-sm font-normal
-              hover:text-gray-400" arial-label={`Boton redirige a ${link.name}`}
+              hover:text-gray-400"
+                arial-label={`Boton redirige a ${link.name}`}
               >
                 {link.name}
               </a>
@@ -30,8 +30,12 @@ import Logo from "public/negativo.svg";
           ))
         }
         <li>
-          <a href="/blog" arial-label="Boton redirige a blog" class="font-rethink h-full text-white text-sm font-normal
-              hover:text-gray-400">
+          <a
+            href="/blog"
+            arial-label="Boton redirige a blog"
+            class="font-rethink h-full text-white text-sm font-normal
+              hover:text-gray-400"
+          >
             Blog
           </a>
         </li>
@@ -42,15 +46,13 @@ import Logo from "public/negativo.svg";
       <SocialMediaButtons />
     </div>
   </div>
-  <div
-    class="bg-primary w-full"
-  >
-    <div class="min-h-20 w-full max-w-[1280px] px-4 md:px-12 flex flex-col gap-2 justify-center items-center mx-auto py-2">
+  <div class='w-full"'>
+    <div
+      class="min-h-20 w-full max-w-[1280px] px-4 md:px-12 flex flex-col gap-2 justify-center items-center mx-auto py-2"
+    >
       <p class="text-sm text-center">
-        Ilustraciones e iconografía ilustradas la dueña del sitio · Logos
+        Ilustraciones e iconografía ilustradas por la dueña del sitio · Logos
         pertenecen a sus respectivas marcas.
-      </p>
-      <p class="text-sm text-center">
         {new Date().getFullYear()} Gabriela Ferrer · Portafolio
       </p>
     </div>

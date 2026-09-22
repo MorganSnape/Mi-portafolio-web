@@ -1,17 +1,14 @@
 ---
-import { estudios } from "@/data/studies.ts";
-import { personalInfo } from "@/data/personal";
+import { personalInfo } from '@/data/personal'
 
-import Layout from "@/layouts/Layout.astro";
-import BarNav from "@/components/BarNav.astro";
-import Inicio from "@/components/indexComponents/Inicio.astro";
-import SobreMi from "@/components/indexComponents/SobreMi.astro";
-import Proyectos from "@/components/indexComponents/Proyectos.astro";
-import Contactame from "@/components/indexComponents/Contactame.astro";
+import Layout from '@/layouts/Layout.astro'
+import BarNav from '@/components/BarNav.astro'
+import Inicio from '@/components/indexComponents/Inicio.astro'
+import Proyectos from '@/components/indexComponents/Proyectos.astro'
 
-import Subtitulo from "@/components/Subtitulo.astro";
-import CardEstudios from "@/components/CardEstudios.astro";
-import Footer from "@/components/Footer.astro";
+import Subtitulo from '@/components/Subtitulo.astro'
+import Footer from '@/components/Footer.astro'
+import Invitacion from '@/components/invitacion.astro'
 ---
 
 <Layout title="Gabriela Ferrer - Bienvenido a mi portafolio.">
@@ -20,18 +17,15 @@ import Footer from "@/components/Footer.astro";
     class="flex flex-col items-center gap-8 font-rethink select-none w-full"
   >
     <Inicio />
-    <div class="-mt-10">
-      <Subtitulo align="center" type="Sobre mí" />
-    </div>
-    <SobreMi />
     <section
       id="experiencia-container"
       class="w-full flex flex-col items-center"
     >
-      <Subtitulo align="center" type="Experiencia" />
+        <Subtitulo align="center" type="Experiencia" class="-mt-10" />
+
       <div class="flex flex-col gap-8 my-32">
         {
-          personalInfo.experiences?.map((experience) => (
+          personalInfo.experiences?.map(experience => (
             <div class="flex flex-col md:flex-row items-start gap-10 px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0">
               <div class="flex flex-row items-center gap-4 mt-2">
                 <p class="text-black font-medium text-base font-fantabular">
@@ -48,7 +42,7 @@ import Footer from "@/components/Footer.astro";
                 </header>
                 <main>
                   <ul class="text-sm lg:text-base space-y-1 pl-6">
-                    {experience.description?.map((desc) => (
+                    {experience.description?.map(desc => (
                       <li class="list-disc list-outside pl-2">{desc}</li>
                     ))}
                   </ul>
@@ -60,19 +54,7 @@ import Footer from "@/components/Footer.astro";
       </div>
     </section>
     <Proyectos />
-    <section id="estudios-container" class="w-full -mt-8">
-      <Subtitulo align="center" type="Estudios" />
-      <div class="grid grid-cols-1 md:grid-rows-2 md:grid-cols-2 gap-8 justify-center items-center py-20 mx-auto max-w-[1280px] px-4 sm:px-12 xl:px-0">
-        {
-          estudios.map((estudio) => (
-            <CardEstudios
-              {...estudio}
-            />
-          ))
-        }
-      </div>
-    </section>
-    <Contactame />
-  </main>
+    <Invitacion class="-mt-10" />
+  </main> 
   <Footer />
 </Layout>
