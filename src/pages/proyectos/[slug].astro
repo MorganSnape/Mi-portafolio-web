@@ -59,15 +59,15 @@ const {
     <button
       id="backToTop"
       type="button"
-      aria-label="Scroll projects left"
+      aria-label="Ir al inicio"
       class="fixed z-50 bottom-0 right-2 -translate-x-1/2 primaryButton bg-white rounded-t-2xl text-black p-3 cursor-pointer opacity-60 hover:opacity-100 gap-2"
     >
-      <Icon name="fa6-solid:arrow-up" height={20} width={20} /> 
+      <Icon name="fa6-solid:arrow-up" height={20} width={20} aria-hidden="true" />
       Ir al inicio
     </button>
     <section id="inicio" class="w-full">
       <div
-        class="mx-auto flex max-w-[1280px] flex-col gap-10 px-4 py-12 md:px-12 md:py-16 lg:px-0"
+        class="w-full lg:w-4/5 mx-auto max-w-[1280px] flex flex-col gap-10 px-4 py-12 md:px-12 md:py-16 lg:px-0"
       >
         <h1
           class="font-fantabular italic text-3xl font-medium leading-none md:text-5xl"
@@ -162,7 +162,7 @@ const {
     </section>
     <div class="bg-tag w-full">
       <div
-        class="mx-auto max-w-[1280px] w-full px-4 md:px-12 lg:px-0 flex flex-col gap-8 my-8"
+        class="w-full lg:w-4/5 mx-auto max-w-[1280px] px-4 md:px-12 lg:px-0 flex flex-col gap-8 my-8"
       >
         <h2 class="titleProyecto">Synopsis</h2>
         <p class="text-balance text-base md:text-lg">
@@ -172,7 +172,7 @@ const {
     </div>
 
     <div
-      class="max-w-[1280px] w-full px-4 md:px-12 lg:px-0 flex flex-col gap-20 mb-8"
+      class="w-full lg:w-4/5 mx-auto max-w-[1280px] px-4 md:px-12 lg:px-0 flex flex-col gap-20 mb-8"
     >
       <section id="acerca" class="flex flex-col gap-12">
 
@@ -223,10 +223,10 @@ const {
       {
         projectImagesList && (
           <div class="flex flex-col gap-0 w-full mx-auto bg-black-secondary/90">
-            {projectImagesList?.map((img: any) => (
+            {projectImagesList?.map(img => (
               <Image
-                src={img}
-                alt={`Imagen del proyecto ${nameProject}`}
+                src={img.src}
+                alt={img.alt}
                 class="shadow-xl"
               />
             ))}

@@ -23,12 +23,12 @@ import Invitacion from '@/components/invitacion.astro'
     >
         <Subtitulo align="center" type="Experiencia" class="-mt-10" />
 
-      <div class="flex flex-col gap-8 my-32">
+      <div class="flex flex-col gap-8 my-40 lg:w-11/12 max-w-[1280px] w-full mx-auto">
         {
           personalInfo.experiences?.map(experience => (
             <div class="flex flex-col md:flex-row items-start gap-10 px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0">
               <div class="flex flex-row items-center gap-4 mt-2">
-                <p class="text-black font-medium text-base font-fantabular">
+                <p class="text-black font-medium text-base font-fantabular text-balance">
                   {experience.date}
                 </p>
                 <div class="h-0.5 bg-black w-20" />
@@ -43,7 +43,7 @@ import Invitacion from '@/components/invitacion.astro'
                 <main>
                   <ul class="text-sm lg:text-base space-y-1 pl-6">
                     {experience.description?.map(desc => (
-                      <li class="list-disc list-outside pl-2">{desc}</li>
+                      <li class="list-disc list-outside pl-2 ">{desc}</li>
                     ))}
                   </ul>
                 </main>

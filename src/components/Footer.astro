@@ -7,7 +7,7 @@ import Logo from 'public/negativo.svg'
 
 <footer class="bg-[url(/fondoDos.svg)] bg-[length:30px] text-white w-full">
   <div
-    class="flex flex-col gap-6 md:flex-row justify-center md:justify-between w-full max-w-[1280px] px-4 md:px-12 mx-auto py-10"
+    class="flex flex-col gap-6 md:flex-row justify-center md:justify-between w-full lg:w-4/5 max-w-[1280px] px-4 md:px-12 mx-auto py-10"
   >
     <Logo class="h-20 md:h-28 w-auto fill-white pointer-events-none" />
     <div
@@ -46,14 +46,14 @@ import Logo from 'public/negativo.svg'
       <SocialMediaButtons />
     </div>
   </div>
-  <div class='w-full"'>
+  <div class='w-full bg-black-secondary border-t-2'>
     <div
-      class="min-h-20 w-full max-w-[1280px] px-4 md:px-12 flex flex-col gap-2 justify-center items-center mx-auto py-2"
+      class="min-h-10 w-full max-w-[1280px] px-4 md:px-12 flex flex-col gap-2 justify-center items-center mx-auto"
     >
-      <p class="text-sm text-center">
-        Ilustraciones e iconografía ilustradas por la dueña del sitio · Logos
-        pertenecen a sus respectivas marcas.
-        {new Date().getFullYear()} Gabriela Ferrer · Portafolio
+      <p class="text-xs text-center">
+        Sitio construido por Gabriela Ferrer · Portafolio {
+          new Date().getFullYear()
+        }
       </p>
     </div>
   </div>

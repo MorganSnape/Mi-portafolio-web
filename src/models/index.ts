@@ -6,7 +6,7 @@ export interface Proyect {
   specialTag?: string;
   nameProject: string;
   date: string;
-  projectImagesList?: unknown[];
+  projectImagesList?: { src: ImageMetadata; alt: string }[];
   details?: ProyectDetail[];
   shortDescription: string;
   projectType?: string;

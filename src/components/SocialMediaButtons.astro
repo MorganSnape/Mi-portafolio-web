@@ -5,14 +5,17 @@ import { Icon } from "astro-icon/components";
 
 const redes = [
   {
+    name: "LinkedIn",
     link: personalInfo.linkedin,
     icon: "fa6-brands:linkedin",
   },
   {
+    name: "Behance",
     link: personalInfo.behance,
     icon: "fa6-brands:square-behance",
   },
   {
+    name: "GitHub",
     link: personalInfo.github,
     icon: "fa6-brands:github",
   },
@@ -25,9 +28,11 @@ const redes = [
       <a
         href={red.link}
         class=" text-white hover:brightness-80 hover:scale-105 transition-all duration-150 ease-in-out"
+        aria-label={`${red.name} (se abre en una pestaña nueva)`}
         target="_blank"
+        rel="noopener noreferrer"
       >
-        <Icon name={red.icon} class="w-9 h-9" />
+        <Icon name={red.icon} class="w-9 h-9" aria-hidden="true" />
       </a>
     ))
   }

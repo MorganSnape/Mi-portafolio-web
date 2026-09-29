@@ -1,28 +1,32 @@
 ---
-import NavegadorStacks from "../NavegadorStacks.astro";
+import NavegadorStacks from '../NavegadorStacks.astro'
 
-import Exclamacion from "@/icons/exclamacion.svg";
-import Decoracion from "@/icons/decoracion-cuadros.svg";
-import DecoracionCurva from "@/icons/decoracion-curva.svg";
+import Exclamacion from '@/icons/exclamacion.svg'
+import Decoracion from '@/icons/decoracion-cuadros.svg'
+import DecoracionCurva from '@/icons/decoracion-curva.svg'
 
-import TagDesign from "@/assets/tag-design.svg";
-import TagFrontEnd from "@/assets/tag-code.svg";
-import TagDesignUX from "@/assets/tag-ux-ui.svg";
+import TagDesign from '@/assets/tag-design.svg'
+import TagFrontEnd from '@/assets/tag-code.svg'
+import TagDesignUX from '@/assets/tag-ux-ui.svg'
+import Image from 'astro/components/Image.astro'
 
+import ImageSobremImg from '@/assets/sobre-mi.webp'
 ---
 
 <section
   id="sobre-mi"
   class="w-full flex flex-col items-center text-black z-10 overflow-hidden"
 >
-  <div class="my-20 max-w-[1280px] px-4 sm:px-12 xl:px-0 flex flex-col gap-6">
+  <div class="my-20 lg:w-4/5 max-w-[1280px] px-4 sm:px-12 xl:px-0 flex flex-col gap-6">
     <div
-      class="grid grid-cols-1 lg:grid-cols-2 items-center gap-0 lg:gap-32 justify-items-center justify-self-start"
+      class="flex flex-col items-center gap-0 lg:gap- justify-items-center justify-self-start"
     >
       <div class="flex flex-col gap-6">
         <h3 class="relative titleH3 efectoResaltador w-fit px-0">
           Quién soy y qué hago
-          <Exclamacion class="absolute h-8 sm:h-12 w-8 sm:w-12 -top-6 sm:-top-10 -right-8 sm:-right-12" />
+          <Exclamacion
+            class="absolute h-8 sm:h-12 w-8 sm:w-12 -top-6 sm:-top-10 -right-8 sm:-right-12"
+          />
         </h3>
         <p
           class="text-base lg:text-lg text-black leading-tight text-balance font-normal"
@@ -33,29 +37,48 @@ import TagDesignUX from "@/assets/tag-ux-ui.svg";
           > y el <strong>desarrollo frontend.</strong>
           <br /><br />
 
-          Actualmente curso la carrera tecnológica en Diseño Gráfico en el  <strong>SENA</strong> y busco incorporarme a equipos donde pueda desempeñarme con solidez en cualquiera de estas tres áreas. Mi valor diferencial no es solo dominar las herramientas de cada disciplina, sino entender cómo se conectan: diseño identidades visuales con estrategia, estructuro interfaces UX/UI técnicamente viables en Figma y escribo código Frontend limpio (con React y TailwindCSS) respetando el pixel-perfect del diseño.
+          Actualmente curso la carrera tecnológica en Diseño Gráfico en el <strong
+            >SENA</strong
+          > y busco incorporarme a equipos donde pueda desempeñarme con solidez en
+          cualquiera de estas tres áreas. Mi valor diferencial no es solo dominar
+          las herramientas de cada disciplina, sino entender cómo se conectan: diseño
+          identidades visuales con estrategia, estructuro interfaces UX/UI técnicamente
+          viables en Figma y escribo código Frontend limpio (con React y TailwindCSS)
+          respetando el pixel-perfect del diseño.
         </p>
-        <div class="flex justify-end">
-          <Decoracion class="w-40 lg:w-60" />
-        </div>
       </div>
-      <img
-        class="w-11/12 lg:w-full max-w-xl"
-        src="/images/tarjeta-presentacion.webp"
-        alt="Imagen que contiene un resumen de perfil profesional de Gabriela Ferrer"
-      />
+      <Image class="w-11/12 lg:w-full" src={ImageSobremImg} alt="Sobre mi" />
+      <div class="flex justify-end w-full">
+        <Decoracion class="w-40 lg:w-60" />
+      </div>
     </div>
     <div id="stacks" class="py-12 flex flex-col gap-12">
-      <div class="flex flex-row flex-wrap justify-center md:justify-start items-center gap-4">
-        <h3 class="titleH3 efectoResaltador text-balance">Herramientas que uso</h3>
-        <DecoracionCurva  class="w-32 lg:w-40"/>
+      <div
+        class="flex flex-row flex-wrap justify-center md:justify-start items-center gap-4"
+      >
+        <h3 class="titleH3 efectoResaltador text-balance">
+          Herramientas que uso
+        </h3>
+        <DecoracionCurva class="w-32 lg:w-40" />
       </div>
       <div
         class="grid grid-rows-3 sm:grid-rows-2 lg:grid-rows-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center"
       >
-        <NavegadorStacks title="Diseño UX/UI" tagSvg={TagDesignUX} textColor="text-tickle-me-pink-500"/>
-        <NavegadorStacks title="Desarrollo Front-End" tagSvg={TagFrontEnd} textColor="text-asparagus-600" />
-        <NavegadorStacks title="Diseño Gráfico" tagSvg={TagDesign} textColor="text-kournikova-500" />
+        <NavegadorStacks
+          title="Diseño UX/UI"
+          tagSvg={TagDesignUX}
+          textColor="text-tickle-me-pink-500"
+        />
+        <NavegadorStacks
+          title="Desarrollo Front-End"
+          tagSvg={TagFrontEnd}
+          textColor="text-asparagus-600"
+        />
+        <NavegadorStacks
+          title="Diseño Gráfico"
+          tagSvg={TagDesign}
+          textColor="text-kournikova-500"
+        />
       </div>
     </div>
   </div>

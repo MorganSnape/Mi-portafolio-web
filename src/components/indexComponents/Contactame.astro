@@ -6,7 +6,7 @@ import Computador from "@/assets/Ilustraciones/Computador.svg";
   id="contactame"
   class="w-full flex flex-col items-center text-black py-16 border-t-8 border-black"
 >
-  <div class=" w-full mx-auto max-w-[1280px] px-4 sm:px-12 xl:px-0">
+  <div class=" w-full lg:w-4/5 mx-auto max-w-[1280px] px-4 sm:px-12 xl:px-0">
     <!-- Header Section -->
     <div class="relative text-center py-12">
       <h2 class="titleH3 efectoResaltador text-balance">
@@ -28,8 +28,9 @@ import Computador from "@/assets/Ilustraciones/Computador.svg";
           <div class="flex flex-col md:flex-row gap-4 md:gap-4">
             <!-- Nombre Completo -->
             <div class="flex flex-col gap-2 flex-1">
-              <label class="font-semibold text-sm">Nombre completo</label>
+              <label for="fullName" class="font-semibold text-sm">Nombre completo</label>
               <input
+                id="fullName"
                 name="fullName"
                 type="text"
                 required
@@ -40,8 +41,9 @@ import Computador from "@/assets/Ilustraciones/Computador.svg";
 
             <!-- Correo Electrónico -->
             <div class="flex flex-col gap-2 flex-1">
-              <label class="font-semibold text-sm">Correo electrónico</label>
+              <label for="fromEmail" class="font-semibold text-sm">Correo electrónico</label>
               <input
+                id="fromEmail"
                 name="fromEmail"
                 type="email"
                 required
@@ -52,10 +54,11 @@ import Computador from "@/assets/Ilustraciones/Computador.svg";
           </div>
           <!-- Mensaje del Proyecto -->
           <div class="flex flex-col gap-2 w-full">
-            <label class="font-semibold text-sm"
+            <label for="message" class="font-semibold text-sm"
               >Cuéntame sobre tu proyecto...</label
             >
             <textarea
+              id="message"
               name="message"
               required
               rows="5"

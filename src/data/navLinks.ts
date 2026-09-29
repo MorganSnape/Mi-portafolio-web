@@ -7,7 +7,7 @@ export const navLinks: NavLinksType[] = [
   },
   {
     name: "Proyectos",
-    href: "/",
+    href: "/#proyectos-container",
   },
   {
     name: "Contáctame",

@@ -1,19 +1,33 @@
 import type { Proyect } from "@/models";
+import type { ImageMetadata } from "astro";
 import Portada from "@/assets/proyectos/marcaPersonalGaby/portada-proyecto.webp";
 
-const imagesManualMarcaGaby = Object.values(
-  import.meta.glob(
+const imagesManualMarcaGaby = Object.entries(
+  import.meta.glob<{ default: ImageMetadata }>(
     "@/assets/proyectos/marcaPersonalGaby/presentacion/*.{png,jpg,jpeg,webp}",
     {
       eager: true,
     }
   )
-).map((module: any) => module.default);
+).map(([path, module]) => {
+  const slideTitle =
+    path
+      .split("/")
+      .pop()
+      ?.replace(/^\d+\s*/, "")
+      .replace(/\s*@2x\.(png|jpe?g|webp)$/i, "")
+      .trim() ?? "Lámina";
+
+  return {
+    src: module.default,
+    alt: `${slideTitle} del manual de identidad visual de Gabriela Ferrer`,
+  };
+});
 
 export const marcaPersonalProyect: Proyect = {
   type: ["Diseño"],
-  slug: "Diseño-de-marca-personal-Gabriela",
-  nameProject: "Marca personal de Gabriela",
+  slug: "marca-personal-gabriela",
+  nameProject: "Marca Gabriela",
   date: "Mayo 2026",
   projectType: "Identidad visual",
   projectImagesList: imagesManualMarcaGaby,

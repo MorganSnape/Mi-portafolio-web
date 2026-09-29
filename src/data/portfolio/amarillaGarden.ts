@@ -6,7 +6,7 @@ export const amarillaGardenProyect: Proyect = {
   type: ["UX"],
   slug: "amarilla-garden",
   date: "3 de Marzo del 2026",
-  nameProject: "Amarilla Garden e-commerce",
+  nameProject: "Amarilla Garden",
   shortDescription: "Crear una tienda E-commerce para una empresa de decoraciones.",
   projectType: "E-commerce",
   details: [

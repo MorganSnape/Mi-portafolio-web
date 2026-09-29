@@ -18,21 +18,25 @@ const isCurrentLink = (href: string) => {
 ---
 
 <header class="fixed top-0 z-50 bg-black-secondary w-full">
-  <nav class="max-w-[1440px] mx-auto flex items-center justify-between px-4 lg:px-6 h-[var(--altura-header)]">
-    <a href="/">
-      <Logo class="h-10 fill-white" />
+  <nav class="mx-auto lg:w-11/12 max-w-[1280px] w-fullmx-auto flex items-center justify-between h-[var(--altura-header)] px-6">
+    <a href="/" aria-label="Inicio, Gabriela Ferrer">
+      <Logo class="h-10 fill-white" aria-hidden="true" />
     </a>
 
-    <!-- Botón hamburguesa -->
-    <label for="menu-hamburguer" class="lg:hidden z-50">
-      <Icon name="codicon:menu" class="text-3xl text-white" />
-    </label>
-    <input type="checkbox" id="menu-hamburguer" class="hidden peer" />
+    <button
+      id="menu-toggle"
+      type="button"
+      class="z-50 p-2 text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-300 lg:hidden"
+      aria-label="Menú principal"
+      aria-controls="primary-navigation"
+      aria-expanded="false"
+    >
+      <Icon name="codicon:menu" class="text-3xl" aria-hidden="true" />
+    </button>
 
-    <!-- Links -->  
     <ul
-      class="fixed lg:static inset-x-0 left-0 right-0 top-[var(--altura-header)] bottom-0 lg:bottom-auto lg:top-0 bg-black-secondary lg:bg-transparent
-      flex flex-col lg:flex-row items-center lg:items-center justify-start peer-checked:justify-center max-h-0 peer-checked:max-h-none overflow-hidden lg:overflow-visible transition-all duration-300 ul-links box-border px-0 h-full lg:h-auto space-y-4 lg:space-y-0 lg:space-x-4"
+      id="primary-navigation"
+      class="hidden fixed inset-x-0 top-[var(--altura-header)] z-40 min-h-[calc(100dvh-var(--altura-header))] flex-col items-center justify-center gap-4 overflow-y-auto bg-black-secondary px-0 lg:static lg:flex lg:min-h-0 lg:flex-row lg:justify-end lg:gap-0 lg:overflow-visible lg:bg-transparent"
     >
       {
         navLinks.map((link) => (
@@ -43,6 +47,11 @@ const isCurrentLink = (href: string) => {
                 "nav-item font-rethink w-full px-4 text-center lg:text-left text-white text-lg lg:text-base font-normal hover:text-gray-400 focus:ring-2 active:font-semibold active:text-white active:border-none focus:outline-none h-[calc(var(--altura-header)_-_12px)] focus:ring-yellow-300 flex flex-col items-center justify-center",
                 { active: isCurrentLink(link.href) },
               ]}
+              aria-current={
+                currentPath === (link.href.replace(/\/$/, '') || '/')
+                  ? 'page'
+                  : undefined
+              }
             >
               {link.name}
             </a>
@@ -52,6 +61,40 @@ const isCurrentLink = (href: string) => {
     </ul>
   </nav>
 </header>
+
+<script>
+  const menuButton = document.querySelector<HTMLButtonElement>('#menu-toggle')
+  const primaryNavigation = document.querySelector<HTMLUListElement>(
+    '#primary-navigation',
+  )
+
+  if (menuButton && primaryNavigation) {
+    const closeMenu = () => {
+      menuButton.setAttribute('aria-expanded', 'false')
+      primaryNavigation.classList.add('hidden')
+    }
+
+    menuButton.addEventListener('click', () => {
+      const isExpanded = menuButton.getAttribute('aria-expanded') === 'true'
+      menuButton.setAttribute('aria-expanded', String(!isExpanded))
+      primaryNavigation.classList.toggle('hidden', isExpanded)
+    })
+
+    primaryNavigation.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu)
+    })
+
+    document.addEventListener('keydown', event => {
+      if (
+        event.key === 'Escape' &&
+        menuButton.getAttribute('aria-expanded') === 'true'
+      ) {
+        closeMenu()
+        menuButton.focus()
+      }
+    })
+  }
+</script>
 
 <style>
   .nav-item.active {

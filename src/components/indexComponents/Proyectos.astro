@@ -1,109 +1,128 @@
 ---
-import { proyectos } from "@/data/portfolio";
+import { proyectos } from '@/data/portfolio'
 
-import { Icon } from "astro-icon/components";
+import { Icon } from 'astro-icon/components'
 
-import Card from "@/components/Card.astro";
-import ProyectosContainer from "@/components/ProyectosContainer.astro";
-import Subtitulo from "@/components/Subtitulo.astro";
+import Card from '@/components/Card.astro'
+import ProyectosContainer from '@/components/ProyectosContainer.astro'
+import Subtitulo from '@/components/Subtitulo.astro'
 
 const buttonClass =
-  "cursor-pointer hover:scale-105 gap-2 flex flex-row justify-center items-center transition-all duration-150 ease-in-out select-none border-2 border-black font-medium translate-0 text-base";
+  'cursor-pointer hover:scale-105 gap-2 flex flex-row justify-center items-center transition-all duration-150 ease-in-out select-none border-2 border-black font-medium translate-0 text-base'
 ---
 
 <section
   id="proyectos-container"
-  class="bg-[url(/fondoDos.svg)] bg-[length:30px] w-full flex flex-col items-center min-h-[760px]"
+  class="bg-[length:30px] w-full flex flex-col items-center min-h-[760px]"
 >
   <Subtitulo align="center" type="Mis proyectos" />
-  <div class="w-full px-4 md:px-12 lg:px-0">
+  <div class="w-full px-4 md:px-12 lg:px-0 lg:w-4/5 max-w-[1280px] mx-auto">
     <p
-      class="mx-auto text-center text-base md:text-xl font-normal text-white text-balance mt-20"
+      class="mx-auto text-center text-base md:text-lg font-normal text-balance mt-20 leading-tight"
     >
-      Una selección de proyectos donde aplico diseño , experiencia de usuario y
-      código.
+      Cada proyecto que encontrarás aquí es una historia corta: un mundo
+      moldeado con intención, empatía y diseño. Juntos, forman los capítulos de
+      un viaje en curso: mi camino como diseñadora UX/UI, siempre aprendiendo,
+      siempre evolucionando.
     </p>
-    <div
+    <!-- <div
       class="w-full justify-center flex flex-row flex-wrap gap-4 md:gap-6 items-center py-10"
     >
       <button class={`${buttonClass} filter-button`} data-filter="all">
-        Todos 
-        <Icon name="codicon:check-all" height={20} width={20} class="text-white"/>
+        Todos
+        <Icon
+          name="codicon:check-all"
+          height={20}
+          width={20}
+          class="text-white"
+        />
       </button>
-      <button class={`${buttonClass} filter-button`} data-filter="ux">UX/UI</button>
-      <button class={`${buttonClass} filter-button`} data-filter="front">Front-End</button>
-      <button class={`${buttonClass} filter-button`} data-filter="design">Diseño Gráfico</button>
-    </div>
-    <div id="design-projects" class="py-4 md:py-6 w-full flex items-center mb-20">
-      <ProyectosContainer id="proyects-list">
-        {proyectos.map((proyecto) => (
-          <div
-            class="project-card"
-            data-type={proyecto.type.map((type) => type.toLowerCase()).join(" ")}
-          >
-            <Card section={proyecto.type[0]} {...proyecto} />
-          </div>
-        ))}
-      </ProyectosContainer>
+      <button class={`${buttonClass} filter-button`} data-filter="ux"
+        >UX/UI</button
+      >
+      <button class={`${buttonClass} filter-button`} data-filter="front"
+        >Front-End</button
+      >
+      <button class={`${buttonClass} filter-button`} data-filter="design"
+        >Diseño Gráfico</button
+      >
+    </div> -->
+    <div
+      id="design-projects"
+      class="py-4 md:py-6 w-full flex items-center mb-20"
+    >
+      <div class="grid grid-cols-1 lg:grid-cols-2 justify-items-center lg:justify-items-normal gap-4 md:gap-6 xl:gap-12 md:flex-row justify-center md:justify-between w-full max-w-[1280px] pt-12 md:pt-20">
+        {
+          proyectos.map(proyecto => (
+            <div
+              class="project-card"
+              data-type={proyecto.type
+                .map(type => type.toLowerCase())
+                .join(' ')}
+            >
+              <Card section={proyecto.type[0]} {...proyecto} />
+            </div>
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>
 
 <script type="module">
-  const filterButtons = document.querySelectorAll("[data-filter]");
-  const projectCards = document.querySelectorAll(".project-card");
+  const filterButtons = document.querySelectorAll('[data-filter]')
+  const projectCards = document.querySelectorAll('.project-card')
 
   function updateFilter(filter) {
     const filterMap = {
       all: [],
-      ux: ["ux"],
-      front: ["front"],
-      design: ["design", "diseño", "graphic", "graphics"],
-    };
-    const searchTerms = filterMap[filter] || [filter];
+      ux: ['ux'],
+      front: ['front'],
+      design: ['design', 'diseño', 'graphic', 'graphics'],
+    }
+    const searchTerms = filterMap[filter] || [filter]
 
-    projectCards.forEach((card) => {
-      const types = (card.getAttribute("data-type") || "").split(" ");
+    projectCards.forEach(card => {
+      const types = (card.getAttribute('data-type') || '').split(' ')
       const isVisible =
-        filter === "all" ||
-        searchTerms.some((term) => types.includes(term));
-      card.classList.toggle("hidden", !isVisible);
-    });
+        filter === 'all' || searchTerms.some(term => types.includes(term))
+      card.classList.toggle('hidden', !isVisible)
+    })
   }
 
   function updateActiveButton(clickedButton) {
-    filterButtons.forEach((button) => {
-      button.classList.remove("active");
-    });
-    clickedButton.classList.add("active");
+    filterButtons.forEach(button => {
+      button.classList.remove('active')
+    })
+    clickedButton.classList.add('active')
   }
 
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const filter = button.dataset.filter || "all";
-      updateFilter(filter);
-      updateActiveButton(button);
-    });
-  });
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.filter || 'all'
+      updateFilter(filter)
+      updateActiveButton(button)
+    })
+  })
 
   if (filterButtons[0]) {
-    updateActiveButton(filterButtons[0]);
+    updateActiveButton(filterButtons[0])
   }
 
-  updateFilter("all");
+  updateFilter('all')
 </script>
 
 <style>
   .filter-button {
     font-weight: 400;
     background: transparent;
-    color: white;
-    border: 2px solid white;
-    transition:all  0.1s ease-in-out;
+    border: 2px solid;
+    transition: all 0.1s ease-in-out;
     padding: 8px 20px;
   }
   .filter-button.active {
     background: var(--color-primary);
     border: 2px solid #000;
+    color: #fff;
   }
 </style>
