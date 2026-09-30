@@ -22,7 +22,7 @@ const shadowTransparent =
 <a
   id={id}
   href={href}
-  class={`${animation} primaryButton border-2 text-white flex flex-row items-center gap-2 px-4 py-3 text-sm md:px-6 md:py-3 md:text-base font-normal ${style === "solid" ? `bg-primary ${shadowSolid}` : `bg-transparent ${shadowTransparent}`}`}
+  class={`${animation} primaryButton border-2 text-white flex flex-row items-center gap-2 px-4 py-3 text-sm md:py-3 md:text-base font-normal ${style === "solid" ? `bg-primary ${shadowSolid}` : `bg-transparent ${shadowTransparent}`}`}
 >
   {text && <span>{text}</span>}
   {typeIcon &&<span class="flex items-center stroke-white"><slot/></span> }

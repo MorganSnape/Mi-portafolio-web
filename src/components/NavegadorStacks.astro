@@ -23,12 +23,12 @@ const { title, tagSvg: TagSvg,textColor } = Astro.props;
 const tecnologias = {
   "Desarrollo Front-End": {
     logos: [
-      { logo: ReactSvg, alt: "Logo de React" },
-      { logo: TailwindSvg, alt: "Logo de Tailwind" },
-      { logo: AstroSvg, alt: "Logo de Astro" },
-      { logo: JavaScriptSvg, alt: "Logo de JavaScript" },
-      { logo: GitHubSvg, alt: "Logo de GitHub" },
-      { logo: Claude, alt: "Logo de Claude" },
+      { logo: ReactSvg, alt: "React" },
+      { logo: TailwindSvg, alt: "Tailwind" },
+      { logo: AstroSvg, alt: "Astro" },
+      { logo: JavaScriptSvg, alt: "JavaScript" },
+      { logo: GitHubSvg, alt: "GitHub" },
+      { logo: Claude, alt: "Claude" },
     ],
     skills: [
       "HTML, CSS, JavaScript",
@@ -40,10 +40,10 @@ const tecnologias = {
 
   "Diseño UX/UI": {
     logos: [
-      { logo: FigmaSvg, alt: "Logo de Figma" },
-      { logo: MiroSvg, alt: "Logo de Miro" },
-      { logo: NotionSvg, alt: "Logo de Notion" },
-      { logo: ChatGPT, alt: "Logo de ChatGPT" },
+      { logo: FigmaSvg, alt: "Figma" },
+      { logo: MiroSvg, alt: "Miro" },
+      { logo: NotionSvg, alt: "Notion" },
+      { logo: ChatGPT, alt: "ChatGPT" },
     ],
     skills: [
       "Arquitectura de información",
@@ -55,12 +55,12 @@ const tecnologias = {
 
   "Diseño Gráfico": {
     logos: [
-      { logo: AiSvg, alt: "Logo de Illustrator" },
-      { logo: PsSvg, alt: "Logo de Photoshop" },
-      { logo: PrSvg, alt: "Logo de Premiere" },
-      { logo: Canva, alt: "Logo de Canva" },
-      { logo: MidJourney, alt: "Logo de MidJourney" },
-      { logo: AdobeFirefly, alt: "Logo de Adobe FireFly" },
+      { logo: AiSvg, alt: "Illustrator" },
+      { logo: PsSvg, alt: "Photoshop" },
+      { logo: PrSvg, alt: "Premiere" },
+      { logo: Canva, alt: "Canva" },
+      { logo: MidJourney, alt: "MidJourney" },
+      { logo: AdobeFirefly, alt: "Logo FireFly" },
     ],
     skills: [
       "Identidad visual",
@@ -103,10 +103,10 @@ const segundaPalabraTitle = title.split(" ")[1];
         ))
       }
     </div>
-    <ul>
+    <ul class="space-y-1 list-disc list-outside pl-4">
       {
         tecnologiasSeleccionadas.skills.map((tecnologiaSkill) => (
-          <li class="list-disc list-inside">{tecnologiaSkill}</li>
+          <li>{tecnologiaSkill}</li>
         ))
       }
     </ul>

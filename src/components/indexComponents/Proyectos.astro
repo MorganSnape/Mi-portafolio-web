@@ -13,17 +13,16 @@ const buttonClass =
 
 <section
   id="proyectos-container"
-  class="bg-[length:30px] w-full flex flex-col items-center min-h-[760px]"
+  class="bg-[url(/fondoDos.svg)] bg-[length:30px] w-full flex flex-col items-center min-h-[760px]"
 >
   <Subtitulo align="center" type="Mis proyectos" />
   <div class="w-full px-4 md:px-12 lg:px-0 lg:w-4/5 max-w-[1280px] mx-auto">
     <p
-      class="mx-auto text-center text-base md:text-lg font-normal text-balance mt-20 leading-tight"
+      class=" text-base md:text-lg font-normal mt-24 font-fantabular italic text-white"
     >
-      Cada proyecto que encontrarás aquí es una historia corta: un mundo
-      moldeado con intención, empatía y diseño. Juntos, forman los capítulos de
-      un viaje en curso: mi camino como diseñadora UX/UI, siempre aprendiendo,
-      siempre evolucionando.
+      <span class="font-black font-rethink text-2xl text-tag"> Cada proyecto muestra cómo trabajo: </span> 
+      <br /> 
+      el reto de la marca, las decisiones que tomé y el resultado.
     </p>
     <!-- <div
       class="w-full justify-center flex flex-row flex-wrap gap-4 md:gap-6 items-center py-10"
@@ -51,7 +50,9 @@ const buttonClass =
       id="design-projects"
       class="py-4 md:py-6 w-full flex items-center mb-20"
     >
-      <div class="grid grid-cols-1 lg:grid-cols-2 justify-items-center lg:justify-items-normal gap-4 md:gap-6 xl:gap-12 md:flex-row justify-center md:justify-between w-full max-w-[1280px] pt-12 md:pt-20">
+      <div
+        class="grid grid-cols-1 lg:grid-cols-2 justify-items-center lg:justify-items-normal gap-4 md:gap-6 xl:gap-12 md:flex-row justify-center md:justify-between w-full max-w-[1280px] pt-12 md:pt-20"
+      >
         {
           proyectos.map(proyecto => (
             <div
