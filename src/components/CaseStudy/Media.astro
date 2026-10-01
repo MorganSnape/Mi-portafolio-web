@@ -1,0 +1,22 @@
+---
+// Muestra una imagen importada (optimizada por Astro) o una ruta de la carpeta public.
+import { Image } from 'astro:assets'
+import type { CaseImage } from '@/models'
+
+interface Props {
+  image: CaseImage
+  class?: string
+  eager?: boolean
+}
+
+const { image, class: className, eager = false } = Astro.props
+const loading = eager ? 'eager' : 'lazy'
+---
+
+{
+  typeof image.src === 'string' ? (
+    <img src={image.src} alt={image.alt} class={className} loading={loading} decoding="async" />
+  ) : (
+    <Image src={image.src} alt={image.alt} class={className} loading={loading} />
+  )
+}

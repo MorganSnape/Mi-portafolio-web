@@ -1,268 +1,1096 @@
 ---
-import { Image } from 'astro:assets'
+import { Icon } from 'astro-icon/components'
 
 import { proyectos } from '@/data/portfolio'
+import type { CaseChapter } from '@/models'
+import { readableOn, toId } from '@/utils/color'
+import { legacyToChapters } from '@/utils/caseStudy'
 
 import Layout from '@/layouts/Layout.astro'
-import Investigacion from '@/components/PaginaDinamica/Investigacion.astro'
-import DefinicionProblema from '@/components/PaginaDinamica/DefinicionProblema.astro'
-import Ideacion from '@/components/PaginaDinamica/Ideacion.astro'
-import Diseño from '@/components/PaginaDinamica/Diseño.astro'
-import { Icon } from 'astro-icon/components'
-import Button from '@/components/Button.astro'
 import BarNav from '@/components/BarNav.astro'
-
-import Estrella from '@/assets/estrella.svg'
 import Footer from '@/components/Footer.astro'
+import CaseBlock from '@/components/CaseStudy/CaseBlock.astro'
+import Media from '@/components/CaseStudy/Media.astro'
+import Invitacion from '@/components/invitacion.astro'
 
 export async function getStaticPaths() {
-  return proyectos.flatMap(proyecto => {
-    return {
-      params: { slug: proyecto.slug },
-    }
-  })
+  return proyectos.map(proyecto => ({ params: { slug: proyecto.slug } }))
 }
 
 const { slug } = Astro.params
-const proyecto = proyectos.find(proyecto => proyecto.slug === slug)
+const index = proyectos.findIndex(p => p.slug === slug)
+const proyecto = proyectos[index]
 
 if (!proyecto) {
-  throw new Error('No existe el proyecto')
+  throw new Error(`No existe el proyecto "${slug}"`)
 }
 
 const {
   nameProject,
   date,
-  brandDescription,
   coverImage,
   linkFigma,
-  projectImagesList,
   linkWebsite,
   shortDescription,
   descriptionProject,
   objectiveBusiness,
   objectiveUser,
-  testing,
-  research,
-  problemDefinition,
-  ideation,
-  visualDesign,
   tags,
   details,
+  brand,
+  role,
+  roleSummary,
+  tools,
+  challenge,
+  learnings,
+  nextSteps,
 } = proyecto
+
+// ── Acento de la marca ─────────────────────────────────────────────
+const accent = brand?.primary ?? '#2B2A29'
+const accentStyle = [
+  `--cs-accent:${accent}`,
+  `--cs-accent-contrast:${readableOn(accent)}`,
+  brand?.surface ? `--cs-stage:${brand.surface}` : '',
+  brand?.headingFont ? `--cs-heading-font:'${brand.headingFont}'` : '',
+]
+  .filter(Boolean)
+  .join(';')
+
+// ── Ficha ──────────────────────────────────────────────────────────
+const toList = (value?: string | string[]) => (value ? [value].flat() : [])
+const projectType =
+  details?.find(item => item.label === 'Tipo de proyecto')?.value ?? tags?.join(', ')
+const projectRole = role ?? details?.find(item => item.label === 'My rol')?.value
+const goals = [
+  { title: 'Objetivo del negocio', items: toList(objectiveBusiness) },
+  { title: 'Objetivo del usuario', items: toList(objectiveUser) },
+].filter(goal => goal.items.length)
+
+// ── Capítulos: los nuevos o, si no hay, los convertidos desde los campos antiguos ──
+const rawChapters: CaseChapter[] = proyecto.chapters?.length
+  ? proyecto.chapters
+  : legacyToChapters(proyecto)
+
+const chapters = rawChapters.map((chapter, i) => {
+  const id = chapter.id ?? `capitulo-${i + 1}-${toId(chapter.title)}`
+  return {
+    ...chapter,
+    id,
+    number: i + 1,
+    blocks: chapter.blocks.map(block => ({
+      block,
+      id: block.id ?? (block.title ? `${id}-${toId(block.title)}` : undefined),
+    })),
+  }
+})
+
+const learningList = toList(learnings)
+// Menú de secciones: Resumen, cada capítulo y el epílogo
+const shortTitle = (title: string) => (title.length > 26 ? `${title.slice(0, 24).trimEnd()}…` : title)
+const nextStepList = toList(nextSteps)
+const hasEpilogue = learningList.length > 0 || nextStepList.length > 0
+const menu = [
+  { id: 'resumen', label: 'Resumen' },
+  ...chapters.map(c => ({ id: c.id, label: shortTitle(c.title), number: c.number })),
+  ...(hasEpilogue ? [{ id: 'epilogo-seccion', label: 'Epílogo' }] : []),
+]
+
+// ── Siguiente proyecto ─────────────────────────────────────────────
+const next = proyectos.length > 1 ? proyectos[(index + 1) % proyectos.length] : undefined
 ---
 
-<Layout title=`Este es el proyecto ${nameProject}`>
+<Layout title={`${nameProject}: caso de estudio | Gabriela Ferrer`}>
   <BarNav active={false} />
 
-  <main class="flex flex-col items-center gap-20 pt-14">
-    <button
-      id="backToTop"
-      type="button"
-      aria-label="Ir al inicio"
-      class="fixed z-50 bottom-0 right-2 -translate-x-1/2 primaryButton bg-white rounded-t-2xl text-black p-3 cursor-pointer opacity-60 hover:opacity-100 gap-2"
-    >
-      <Icon name="fa6-solid:arrow-up" height={20} width={20} aria-hidden="true" />
-      Ir al inicio
-    </button>
-    <section id="inicio" class="w-full">
-      <div
-        class="w-full lg:w-4/5 mx-auto max-w-[1280px] flex flex-col gap-10 px-4 py-12 md:px-12 md:py-16 lg:px-0"
-      >
-        <h1
-          class="font-fantabular italic text-3xl font-medium leading-none md:text-5xl"
-        >
-          {nameProject}
-        </h1>
+  <div class="cs font-rethink" style={accentStyle}>
+    {brand?.fontHref && <link rel="stylesheet" href={brand.fontHref} />}
+    <p class="sr-only" aria-live="polite" data-copy-status></p>
 
-        <div
-          class="grid items-center gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] md:gap-14"
-        >
-          <div
-            class="flex min-h-[280px] items-center justify-center overflow-hidden md:min-h-[460px]"
-          >
-            <Image
-              src={coverImage}
-              alt={`Portada del proyecto ${nameProject}`}
-              class="h-full max-h-[520px] w-full object-contain"
-              width={coverImage.width}
-              height={coverImage.height}
-            />
-          </div>
+    <main>
+      <!-- ── Portada ── -->
+      <header id="inicio-caso" class="cs-hero">
+        <div class="cs-wrap flex flex-col gap-8">
 
-          <div class="flex flex-col gap-8">
-            <p class="max-w-2xl">
-              {shortDescription}
-            </p>
-            <div class="flex flex-wrap gap-3">
-              {
-                tags?.map(tag => (
-                  <span class="border-2 border-black bg-secondary px-3 py-1 text-sm font-semibold text-black">
-                    {tag}
-                  </span>
-                ))
-              }
+          <h1 class:list={['cs-h1', !brand?.headingFont && 'font-fantabular']}>{nameProject}</h1>
+
+          <div class="cs-hero-grid">
+            <div
+              class:list={['cs-stage', proyecto.coverFit === 'cover' && 'cs-stage--fill']}
+              style={proyecto.coverPosition ? `--cs-cover-pos:${proyecto.coverPosition}` : undefined}
+            >
+              <Media
+                image={{ src: coverImage, alt: `Portada del proyecto ${nameProject}` }}
+                class="cs-stage-img"
+                eager
+              />
             </div>
 
-            <dl class="flex flex-col">
-              <div class="border-b border-black-secondary/50 py-4">
-                <dt class="font-bold">Tipo de proyecto</dt>
-                <dd class="mt-1">
-                  {
-                    details?.find(item => item.label === 'Tipo de proyecto')
-                      ?.value ?? tags?.join(' · ')
-                  }
-                </dd>
-              </div>
-              <div class="border-b border-black-secondary/50 py-4">
-                <dt class="font-bold">Fecha</dt>
-                <dd class="mt-1">{date}</dd>
-              </div>
-              <div class="border-b border-black-secondary/50 py-4">
-                <dt class="font-bold">Rol</dt>
-                <dd class="mt-1">
-                  {details?.find(item => item.label === 'My rol')?.value}
-                </dd>
-              </div>
-            </dl>
+            <div class="cs-hero-info">
+              <p class="cs-lead">{shortDescription}</p>
 
-            {
-              (linkFigma || linkWebsite) && (
+              <dl class="cs-meta">
+                {projectType && (
+                  <div>
+                    <dt>Tipo de proyecto</dt>
+                    <dd>{projectType}</dd>
+                  </div>
+                )}
+                <div>
+                  <dt>Fecha</dt>
+                  <dd>{date}</dd>
+                </div>
+                {projectRole && (
+                  <div>
+                    <dt>Rol</dt>
+                    <dd>
+                      <strong>{projectRole}</strong>
+                      {roleSummary && <span class="cs-meta-note">{roleSummary}</span>}
+                    </dd>
+                  </div>
+                )}
+                {tools && tools.length > 0 && (
+                  <div>
+                    <dt>Herramientas</dt>
+                    <dd>{tools.join(', ')}</dd>
+                  </div>
+                )}
+              </dl>
+
+              {(linkFigma || linkWebsite) && (
                 <div class="flex flex-wrap gap-4">
                   {linkFigma && (
-                    <Button
-                      href={linkFigma}
-                      text="Ver prototipo"
-                      style="solid"
-                      typeIcon
-                    >
-                      <Icon name="fa6-brands:figma" height={18} width={18} />
-                    </Button>
+                    <a href={linkFigma} class="cs-cta" target="_blank" rel="noopener">
+                      <Icon name="fa6-brands:figma" class="size-4" aria-hidden="true" />
+                      Ver prototipo
+                    </a>
                   )}
                   {linkWebsite && (
-                    <Button
-                      href={linkWebsite}
-                      text="Visitar proyecto"
-                      style="solid"
-                      typeIcon
-                    >
-                      <Icon
-                        name="fa6-solid:arrow-up-right-from-square"
-                        height={18}
-                        width={18}
-                      />
-                    </Button>
+                    <a href={linkWebsite} class="cs-cta cs-cta-light" target="_blank" rel="noopener">
+                      <Icon name="fa6-solid:arrow-up-right-from-square" class="size-4" aria-hidden="true" />
+                      Visitar proyecto
+                    </a>
                   )}
                 </div>
-              )
-            }
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <div class="bg-tag w-full">
-      <div
-        class="w-full lg:w-4/5 mx-auto max-w-[1280px] px-4 md:px-12 lg:px-0 flex flex-col gap-8 my-8"
-      >
-        <h2 class="titleProyecto">Sinopsis</h2>
-        <p class="text-balance text-base md:text-lg">
-          {descriptionProject}
-        </p>
-      </div>
-    </div>
+      </header>
 
-    <div
-      class="w-full lg:w-4/5 mx-auto max-w-[1280px] px-4 md:px-12 lg:px-0 flex flex-col gap-20 mb-8"
-    >
-      <section id="acerca" class="flex flex-col gap-12">
+      <!-- ── Menú de secciones (se queda fijo al bajar) ── -->
+      <nav class="cs-subnav" aria-label="Secciones del caso de estudio">
+        <div class="cs-wrap cs-subnav-inner">
+          <a href="#inicio-caso" class="cs-subnav-title">{nameProject}</a>
+          <ol class="cs-subnav-list" data-subnav>
+            {menu.map(item => (
+              <li>
+                <a href={`#${item.id}`} data-subnav-link>
+                  {'number' in item && <span class="cs-subnav-num" aria-hidden="true">{item.number}</span>}
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </div>
+        <div class="cs-progress" aria-hidden="true"><span data-progress></span></div>
+      </nav>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-40">
-          <div class="flex flex-col gap-4">
-            <div class="flex flex-row gap-4 items-center">
-              <Estrella class="h-8 w-8" />
-              <h3 class="subtituloProyecto">Objetivo del negocio</h3>
-            </div>
-            {
-              Array.isArray(objectiveBusiness) ? (
-                <ul>
-                  {objectiveBusiness.map(item => (
-                    <li class="list-disc list-outside ml-5 text-base md:text-lg">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p class="text-balance text-base md:text-lg">
-                  {objectiveBusiness}
-                </p>
-              )
-            }
-          </div>
-          <div class="flex flex-col gap-4">
-            <div class="flex flex-row gap-4 items-center">
-              <Estrella class="h-8 w-8" />
-              <h3 class="subtituloProyecto">Objetivo del usuario</h3>
-            </div>
-            {
-              Array.isArray(objectiveUser) ? (
-                <ul>
-                  {objectiveUser.map(item => (
-                    <li class="list-disc list-outside ml-5 text-base md:text-lg">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p class="text-balance text-base md:text-lg">{objectiveUser}</p>
-              )
-            }
-          </div>
+      <!-- ── Sinopsis, objetivos y desafío ── -->
+      <section id="resumen" class="cs-wrap cs-split" aria-labelledby="sinopsis" data-subnav-target>
+        <h2 id="sinopsis" class="cs-h2">Sinopsis</h2>
+        <div class="cs-prose">
+          {descriptionProject.split(/\n\s*\n/).map(p => <p>{p}</p>)}
         </div>
       </section>
 
       {
-        projectImagesList && (
-          <div class="flex flex-col gap-0 w-full mx-auto bg-black-secondary/90">
-            {projectImagesList?.map(img => (
-              <Image
-                src={img.src}
-                alt={img.alt}
-                class="shadow-xl"
-              />
-            ))}
-          </div>
+        goals.length > 0 && (
+          <section class="cs-wrap cs-split" aria-labelledby="objetivos">
+            <h2 id="objetivos" class="cs-h2">Objetivos</h2>
+            <div class="grid gap-5 md:grid-cols-2">
+              {goals.map(goal => (
+                <div class="cs-card">
+                  <h3 class="cs-h4">{goal.title}</h3>
+                  {goal.items.length > 1 ? (
+                    <ul class="cs-list">{goal.items.map(item => <li>{item}</li>)}</ul>
+                  ) : (
+                    <p class="cs-small">{goal.items[0]}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
         )
       }
 
-      {research && <Investigacion research={research} />}
       {
-        problemDefinition && (
-          <DefinicionProblema problemDefinition={problemDefinition} />
+        challenge && (
+          <section class="cs-wrap cs-split" aria-labelledby="desafio">
+            <h2 id="desafio" class="cs-h2">El desafío</h2>
+            <p class="cs-statement">{challenge}</p>
+          </section>
         )
       }
-      {ideation && <Ideacion ideation={ideation} />}
+
+      <!-- ── Índice de capítulos ── -->
       {
-        testing && (
-          <div class="flex flex-col gap-12">
-            <h2 class="titleProyecto">Pruebas</h2>
-            <p>{testing.summary}</p>
-          </div>
+        chapters.length > 1 && (
+          <nav class="cs-wrap cs-toc" aria-labelledby="capitulos">
+            <h2 id="capitulos" class="cs-h2">Los capítulos</h2>
+            <ol class="cs-toc-grid">
+              {chapters.map(chapter => (
+                <li class="cs-toc-item">
+                  <span class="cs-num" aria-hidden="true">{chapter.number}</span>
+                  <a href={`#${chapter.id}`} class="cs-toc-title">{chapter.title}</a>
+                  {chapter.blocks.some(b => b.block.title) && (
+                    <ul class="cs-toc-sub">
+                      {chapter.blocks
+                        .filter(b => b.block.title && b.id)
+                        .map(b => (
+                          <li><a href={`#${b.id}`}>{b.block.title}</a></li>
+                        ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </nav>
         )
       }
-    </div>
-    {visualDesign && <Diseño visualDesign={visualDesign} />}
-    
-  </main>
+
+      <!-- ── Capítulos ── -->
+      {
+        chapters.map(chapter => (
+          <section id={chapter.id} class="cs-wrap cs-chapter" aria-labelledby={`${chapter.id}-titulo`} data-subnav-target>
+            <header class="cs-chapter-head">
+              <span class="cs-num" aria-hidden="true">{chapter.number}</span>
+              <h2 id={`${chapter.id}-titulo`} class="cs-h2">{chapter.title}</h2>
+              {chapter.intro && <p class="cs-lead cs-chapter-intro">{chapter.intro}</p>}
+            </header>
+            <div class="cs-chapter-body">
+              {chapter.blocks.map(({ block, id }) => <CaseBlock block={block} id={id} />)}
+            </div>
+          </section>
+        ))
+      }
+
+      <!-- ── Epílogo ── -->
+      {
+        hasEpilogue && (
+          <section id="epilogo-seccion" class="cs-wrap cs-chapter" aria-labelledby="epilogo" data-subnav-target>
+            <header class="cs-chapter-head">
+              <h2 id="epilogo" class="cs-h2">El epílogo</h2>
+            </header>
+            <div class="grid gap-5 md:grid-cols-2">
+              {nextStepList.length > 0 && (
+                <div class="cs-card">
+                  <h3 class="cs-h4">Próximos pasos</h3>
+                  <ul class="cs-list">{nextStepList.map(item => <li>{item}</li>)}</ul>
+                </div>
+              )}
+              {learningList.length > 0 && (
+                <div class="cs-card">
+                  <h3 class="cs-h4">Lo que aprendí</h3>
+                  <ul class="cs-list">{learningList.map(item => <li>{item}</li>)}</ul>
+                </div>
+              )}
+            </div>
+          </section>
+        )
+      }
+
+      <!-- ── Siguiente caso ── -->
+      {
+        next && (
+          <aside class="cs-wrap cs-next-wrap" aria-label="Siguiente caso de estudio">
+            <a href={`/proyectos/${next.slug}`} class="cs-next">
+              <div class="cs-next-media">
+                <Media image={{ src: next.coverImage, alt: '' }} class="cs-next-img" />
+              </div>
+              <div class="flex flex-col gap-3 justify-center">
+                <span class="cs-small cs-muted">Siguiente caso de estudio</span>
+                <span class="cs-h2">{next.nameProject}</span>
+                <span class="cs-body cs-muted">{next.shortDescription}</span>
+                <span class="cs-next-link">
+                  Ver caso de estudio
+                  <Icon name="fa6-solid:arrow-right" class="size-3.5" aria-hidden="true" />
+                </span>
+              </div>
+            </a>
+          </aside>
+        )
+      }
+
+    <Invitacion />
+    </main>
+
+    <button id="backToTop" type="button" class="cs-top" aria-label="Volver arriba">
+      <Icon name="fa6-solid:arrow-up" class="size-4" aria-hidden="true" />
+    </button>
+  </div>
+  
   <Footer />
 </Layout>
 
 <script>
-  const button = document.getElementById('backToTop')
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-  button?.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
+  // Barra de progreso y botón para volver arriba
+  const bar = document.querySelector<HTMLElement>('[data-progress]')
+  const toTop = document.getElementById('backToTop')
+  let ticking = false
+
+  const update = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight
+    const progress = max > 0 ? window.scrollY / max : 0
+    if (bar) bar.style.transform = `scaleX(${progress})`
+    toTop?.classList.toggle('is-visible', window.scrollY > 700)
+    ticking = false
+  }
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!ticking) {
+        ticking = true
+        requestAnimationFrame(update)
+      }
+    },
+    { passive: true },
+  )
+  update()
+
+  toTop?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' })
+  })
+
+  // Menú de secciones: marca la sección que se está leyendo
+  const subnav = document.querySelector<HTMLElement>('[data-subnav]')
+  const subnavLinks = [...document.querySelectorAll<HTMLAnchorElement>('[data-subnav-link]')]
+  const targets = [...document.querySelectorAll<HTMLElement>('[data-subnav-target]')]
+
+  const setActive = (id: string | null) => {
+    subnavLinks.forEach(link => {
+      const active = id !== null && link.hash === `#${id}`
+      if (active) {
+        link.setAttribute('aria-current', 'true')
+        // En celular, mueve el menú para que la sección activa quede a la vista
+        if (subnav) {
+          const left = link.offsetLeft - subnav.clientWidth / 2 + link.clientWidth / 2
+          subnav.scrollTo({ left, behavior: reduceMotion ? 'auto' : 'smooth' })
+        }
+      } else {
+        link.removeAttribute('aria-current')
+      }
+    })
+  }
+
+  if (targets.length && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) setActive(entry.target.id)
+        })
+      },
+      { rootMargin: '-40% 0px -55% 0px' },
+    )
+    targets.forEach(target => observer.observe(target))
+
+    // Antes del resumen no hay ninguna sección activa
+    const hero = document.getElementById('inicio-caso')
+    if (hero) {
+      new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.4) setActive(null)
+      }, { threshold: [0.4] }).observe(hero)
+    }
+  }
+
+  // Comparar dos imágenes
+  document.querySelectorAll<HTMLElement>('[data-compare]').forEach(root => {
+    const buttons = root.querySelectorAll<HTMLButtonElement>('[data-compare-button]')
+    const items = root.querySelectorAll<HTMLElement>('[data-compare-item]')
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const selected = button.dataset.compareButton
+        buttons.forEach(b => b.setAttribute('aria-pressed', String(b === button)))
+        items.forEach(item => {
+          const active = item.dataset.compareItem === selected
+          item.classList.toggle('is-active', active)
+          item.setAttribute('aria-hidden', String(!active))
+        })
+      })
+    })
+  })
+
+  // Copiar códigos de color
+  const status = document.querySelector<HTMLElement>('[data-copy-status]')
+
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach(button => {
+    button.addEventListener('click', async () => {
+      const code = button.dataset.copy ?? ''
+      try {
+        await navigator.clipboard.writeText(code)
+        button.classList.add('is-copied')
+        if (status) status.textContent = `Código ${code} copiado`
+        setTimeout(() => button.classList.remove('is-copied'), 1400)
+      } catch {
+        if (status) status.textContent = `No se pudo copiar. El código es ${code}`
+      }
     })
   })
 </script>
+
+<style is:global>
+  /* ── Tokens: neutros para que cada proyecto luzca su propia marca ── */
+  .cs {
+    /* Alto del header del sitio (BarNav) y del menú de secciones */
+    --cs-header: var(--altura-header, 4rem);
+    --cs-subnav-h: 3.5rem;
+    --cs-offset: calc(var(--cs-header) + var(--cs-subnav-h) + 1.5rem);
+    --cs-ink: #1f1e1d;
+    --cs-muted: #5d5955;
+    --cs-line: #e6e3de;
+    --cs-surface: #f5f4f1;
+    --cs-accent: #2b2a29;
+    --cs-accent-contrast: #ffffff;
+    --cs-stage: color-mix(in srgb, var(--cs-accent) 10%, #ffffff);
+    color: var(--cs-ink);
+    background: #ffffff;
+  }
+
+  /* ── Estructura ── */
+  .cs-wrap {
+    width: min(1120px, 100% - 2.5rem);
+    margin-inline: auto;
+  }
+  /* Portada con el fondo de puntos del portafolio */
+  .cs-hero {
+    padding-block: calc(var(--cs-header) + 3rem) 4.5rem;
+    background-color: #ffffff;
+    background-image: radial-gradient(color-mix(in srgb, var(--cs-accent) 28%, transparent) 1px, transparent 1.2px);
+    background-size: 18px 18px;
+  }
+  .cs-hero-grid {
+    display: grid;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  @media (min-width: 900px) {
+    .cs-hero-grid {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 4rem;
+    }
+  }
+  .cs-hero-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 0.25rem;
+  }
+  .cs-split {
+    scroll-margin-top: var(--cs-offset);
+    display: grid;
+    gap: 1.25rem;
+    padding-block: 3rem;
+    border-top: 1px solid var(--cs-line);
+  }
+  @media (min-width: 900px) {
+    .cs-split {
+      grid-template-columns: 16rem minmax(0, 1fr);
+      gap: 3rem;
+    }
+  }
+  .cs-chapter {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding-block: 4.5rem;
+    border-top: 1px solid var(--cs-line);
+    scroll-margin-top: var(--cs-offset);
+  }
+  .cs-chapter-head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  .cs-chapter-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+  .cs-block {
+    scroll-margin-top: var(--cs-offset);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .cs-block-head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* ── Tipografía ── */
+  .cs-h1 {
+    font-family: var(--cs-heading-font, inherit);
+    font-size: clamp(2.75rem, 7vw, 5.5rem);
+    line-height: 1.02;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+  .cs-h2 {
+    font-family: var(--cs-heading-font, inherit);
+    font-size: clamp(1.6rem, 3vw, 2.25rem);
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+  .cs-h3 {
+    font-size: 1.35rem;
+    line-height: 1.3;
+    font-weight: 650;
+  }
+  .cs-h4 {
+    font-size: 1.1rem;
+    line-height: 1.35;
+    font-weight: 650;
+  }
+  .cs-lead {
+    max-width: 60ch;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    line-height: 1.55;
+    color: var(--cs-muted);
+  }
+  .cs-statement {
+    max-width: 44ch;
+    font-size: clamp(1.3rem, 2.6vw, 1.75rem);
+    line-height: 1.45;
+    font-weight: 500;
+  }
+  .cs-body,
+  .cs-prose {
+    max-width: 68ch;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+  .cs-prose {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .cs-small {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .cs-muted {
+    color: var(--cs-muted);
+  }
+
+  /* ── Portada ── */
+  .cs-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    align-self: flex-start;
+    font-weight: 600;
+    color: var(--cs-muted);
+  }
+  .cs-back:hover {
+    color: var(--cs-ink);
+  }
+  .cs-stage {
+    display: grid;
+    place-items: center;
+    padding: clamp(1.25rem, 4vw, 2.5rem);
+    background: var(--cs-stage);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .cs-stage-img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+  /* Portada que llena un panel vertical, como un afiche */
+  .cs-stage--fill {
+    aspect-ratio: 4 / 5;
+    padding: 0;
+  }
+  .cs-stage--fill .cs-stage-img {
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--cs-cover-pos, center);
+    border-radius: 0;
+  }
+  .cs-meta {
+    display: flex;
+    flex-direction: column;
+  }
+  .cs-meta > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding-block: 1.1rem;
+    border-bottom: 1px solid var(--cs-ink);
+  }
+  .cs-meta > div:last-child {
+    border-bottom: 0;
+  }
+  .cs-meta dt {
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+  .cs-meta dd {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    color: var(--cs-muted);
+    line-height: 1.55;
+  }
+  .cs-meta dd strong {
+    color: var(--cs-ink);
+    font-weight: 600;
+  }
+  .cs-meta-note {
+    font-size: 0.975rem;
+  }
+
+  /* ── Botón principal: el estilo del portafolio con el color de cada proyecto ── */
+  .cs-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.5rem;
+    border: 2px solid var(--cs-ink);
+    border-radius: 999px;
+    background: var(--cs-accent);
+    color: var(--cs-accent-contrast);
+    font-weight: 700;
+    box-shadow: 4px 4px 0 var(--cs-ink);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .cs-cta:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--cs-ink);
+  }
+  .cs-cta:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--cs-ink);
+  }
+  .cs-cta-light {
+    background: #ffffff;
+    color: var(--cs-ink);
+  }
+
+  /* ── Índice de capítulos ── */
+  .cs-toc {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-block: 3.5rem;
+    border-top: 1px solid var(--cs-line);
+  }
+  .cs-toc-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  }
+  .cs-toc-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.4rem;
+    background: var(--cs-surface);
+    border-radius: 20px;
+  }
+  .cs-toc-title {
+    font-size: 1.15rem;
+    font-weight: 650;
+    line-height: 1.3;
+  }
+  .cs-toc-sub {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: 0.95rem;
+    color: var(--cs-muted);
+  }
+  .cs-toc a {
+    background-image: linear-gradient(var(--cs-accent), var(--cs-accent));
+    background-size: 0% 2px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.25s, color 0.2s;
+  }
+  .cs-toc a:hover {
+    color: var(--cs-ink);
+    background-size: 100% 2px;
+  }
+  .cs-num {
+    display: inline-grid;
+    place-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border: 2px solid var(--cs-ink);
+    border-radius: 10px;
+    background: var(--cs-accent);
+    color: var(--cs-accent-contrast);
+    font-weight: 700;
+    box-shadow: 3px 3px 0 var(--cs-ink);
+  }
+
+  /* ── Bloques ── */
+  .cs-figure {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .cs-img {
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    background: var(--cs-surface);
+  }
+  .cs-caption {
+    max-width: 68ch;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--cs-muted);
+  }
+  .cs-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.4rem;
+    background: var(--cs-surface);
+    border-radius: 20px;
+  }
+  .cs-card-stat {
+    flex-direction: column-reverse;
+  }
+  .cs-card-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 14px;
+  }
+  .cs-step {
+    display: inline-grid;
+    place-items: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 999px;
+    background: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    box-shadow: inset 0 0 0 1.5px var(--cs-ink);
+  }
+  .cs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .cs-list li {
+    position: relative;
+    padding-left: 1.25rem;
+    line-height: 1.6;
+  }
+  .cs-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 999px;
+    background: var(--cs-accent);
+  }
+  .cs-highlight {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    max-width: 52rem;
+    padding: clamp(1.4rem, 3vw, 2.2rem);
+    background: var(--cs-stage);
+    border-left: 4px solid var(--cs-accent);
+    border-radius: 6px 20px 20px 6px;
+  }
+  .cs-quote {
+    font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+    line-height: 1.5;
+    font-weight: 500;
+  }
+  .cs-specs {
+    display: flex;
+    flex-direction: column;
+  }
+  .cs-specs > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--cs-line);
+  }
+  .cs-specs > div:first-child {
+    border-top: 1px solid var(--cs-line);
+  }
+  .cs-stat {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  /* Comparar */
+  .cs-toggle {
+    display: inline-flex;
+    align-self: flex-start;
+    gap: 4px;
+    padding: 4px;
+    background: var(--cs-surface);
+    border-radius: 999px;
+  }
+  .cs-toggle button {
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+    font-weight: 600;
+    color: var(--cs-muted);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  .cs-toggle button[aria-pressed='true'] {
+    background: var(--cs-accent);
+    color: var(--cs-accent-contrast);
+  }
+  .cs-compare {
+    display: grid;
+  }
+  .cs-compare-item {
+    grid-area: 1 / 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s;
+  }
+  .cs-compare-item.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Paleta */
+  .cs-swatch {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .cs-swatch-color {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1;
+    border-radius: 18px;
+    background: var(--swatch);
+    color: var(--swatch-text);
+    font-weight: 700;
+    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.08);
+    transition: transform 0.2s;
+  }
+  .cs-swatch:hover .cs-swatch-color {
+    transform: translateY(-3px);
+  }
+  .cs-swatch-feedback {
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .cs-swatch.is-copied .cs-swatch-feedback {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── Siguiente caso ── */
+  .cs-next-wrap {
+    padding-block: 3rem 6rem;
+    border-top: 1px solid var(--cs-line);
+  }
+  .cs-next {
+    display: grid;
+    gap: 2rem;
+    padding: clamp(1rem, 3vw, 1.5rem);
+    background: var(--cs-surface);
+    border-radius: 28px;
+  }
+  @media (min-width: 800px) {
+    .cs-next {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: center;
+    }
+  }
+  .cs-next-media {
+    overflow: hidden;
+    border-radius: 20px;
+  }
+  .cs-next-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .cs-next:hover .cs-next-img {
+    transform: scale(1.03);
+  }
+  .cs-next-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+  }
+  .cs-next-link svg {
+    transition: transform 0.2s;
+  }
+  .cs-next:hover .cs-next-link svg {
+    transform: translateX(4px);
+  }
+
+  /* ── Menú de secciones ── */
+  .cs-subnav {
+    position: sticky;
+    top: var(--cs-header);
+    z-index: 40;
+    background: rgb(255 255 255 / 0.92);
+    backdrop-filter: blur(10px);
+    border-block: 1px solid var(--cs-line);
+  }
+  .cs-subnav-inner {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    height: var(--cs-subnav-h);
+  }
+  .cs-subnav-title {
+    display: none;
+    flex-shrink: 0;
+    font-family: var(--cs-heading-font, inherit);
+    font-weight: 700;
+  }
+  @media (min-width: 1024px) {
+    .cs-subnav-title {
+      display: block;
+      padding-right: 1.5rem;
+      border-right: 1px solid var(--cs-line);
+    }
+  }
+  .cs-subnav-list {
+    display: flex;
+    gap: 0.25rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    mask-image: linear-gradient(to right, #000 calc(100% - 2rem), transparent);
+  }
+  .cs-subnav-list::-webkit-scrollbar {
+    display: none;
+  }
+  .cs-subnav-list a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--cs-muted);
+    transition: background-color 0.2s, color 0.2s;
+  }
+  .cs-subnav-list a:hover {
+    color: var(--cs-ink);
+    background: var(--cs-surface);
+  }
+  .cs-subnav-list a[aria-current] {
+    color: var(--cs-ink);
+    font-weight: 700;
+    background: var(--cs-stage);
+  }
+  .cs-subnav-num {
+    display: inline-grid;
+    place-items: center;
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: var(--cs-surface);
+    color: var(--cs-muted);
+    transition: background-color 0.2s, color 0.2s;
+  }
+  .cs-subnav-list a[aria-current] .cs-subnav-num {
+    background: var(--cs-accent);
+    color: var(--cs-accent-contrast);
+  }
+
+  /* Barra de progreso en el borde inferior del menú */
+  .cs-progress {
+    position: absolute;
+    inset: auto 0 -1px 0;
+    height: 3px;
+  }
+  .cs-progress span {
+    display: block;
+    height: 100%;
+    background: var(--cs-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  .cs-top {
+    position: fixed;
+    z-index: 50;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 999px;
+    background: var(--cs-ink);
+    color: #fff;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity 0.25s, transform 0.25s;
+  }
+  .cs-top.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  /* ── Accesibilidad ── */
+  .cs :focus-visible {
+    outline: 2.5px solid var(--cs-ink);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  /* ── Un solo momento al cargar: la portada aparece suave ── */
+  @media (prefers-reduced-motion: no-preference) {
+    .cs-stage-img {
+      animation: cs-enter 0.8s 0.1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+  }
+  @keyframes cs-enter {
+    from {
+      opacity: 0;
+      transform: translateY(14px) scale(0.985);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cs *,
+    .cs *::before {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>

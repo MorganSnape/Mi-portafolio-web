@@ -1,0 +1,236 @@
+---
+import Media from './Media.astro'
+import type { CaseBlock } from '@/models'
+import { readableOn } from '@/utils/color'
+
+interface Props {
+  block: CaseBlock
+  /** Id calculado por la página a partir del capítulo y el título. */
+  id?: string
+}
+
+const { block, id } = Astro.props
+const headingId = id ? `${id}-titulo` : undefined
+const paragraphs = block.type === 'text' ? [block.body].flat() : []
+const cols = { 1: '', 2: 'md:grid-cols-2', 3: 'md:grid-cols-2 lg:grid-cols-3', 4: 'sm:grid-cols-2 lg:grid-cols-4' }
+---
+
+<div id={id} class="cs-block" aria-labelledby={block.title ? headingId : undefined} role={block.title ? 'group' : undefined}>
+  {
+    (block.title || block.intro) && (
+      <header class="cs-block-head">
+        {block.title && <h3 id={headingId} class="cs-h3">{block.title}</h3>}
+        {block.intro && <p class="cs-body cs-muted">{block.intro}</p>}
+      </header>
+    )
+  }
+
+  {/* Texto */}
+  {
+    block.type === 'text' && (
+      <div class="cs-prose">
+        {paragraphs.map(p => <p>{p}</p>)}
+      </div>
+    )
+  }
+
+  {/* Frase destacada */}
+  {
+    block.type === 'highlight' && (
+      <figure class="cs-highlight">
+        {block.label && <figcaption class="cs-small font-semibold">{block.label}</figcaption>}
+        <blockquote class="cs-quote">{block.text}</blockquote>
+      </figure>
+    )
+  }
+
+  {/* Imagen */}
+  {
+    block.type === 'image' && (
+      <figure class="cs-figure">
+        <Media image={block.image} class="cs-img" />
+        {block.image.caption && <figcaption class="cs-caption">{block.image.caption}</figcaption>}
+      </figure>
+    )
+  }
+
+  {/* Galería */}
+  {
+    block.type === 'gallery' && (
+      <div class:list={['grid gap-6 grid-cols-1', cols[block.columns ?? 2]]}>
+        {block.images.map(img => (
+          <figure class="cs-figure">
+            <Media image={img} class="cs-img" />
+            {img.caption && <figcaption class="cs-caption">{img.caption}</figcaption>}
+          </figure>
+        ))}
+      </div>
+    )
+  }
+
+  {/* Tarjetas */}
+  {
+    block.type === 'cards' && (
+      <ul class:list={['grid gap-5 grid-cols-1', cols[block.columns ?? 3]]}>
+        {block.items.map((item, i) => (
+          <li class="cs-card">
+            {item.image && <Media image={item.image} class="cs-card-img" />}
+            <div class="flex flex-col gap-2">
+              {block.numbered && <span class="cs-step" aria-hidden="true">{i + 1}</span>}
+              <h4 class="cs-h4">{item.title}</h4>
+              {item.meta && <p class="cs-small cs-muted">{item.meta}</p>}
+              {item.text && <p class="cs-small">{item.text}</p>}
+            </div>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  {/* Columnas de listas */}
+  {
+    block.type === 'columns' && (
+      <div class:list={['grid gap-5 grid-cols-1', cols[Math.min(Math.max(block.items.length, 2), 3) as 2 | 3]]}>
+        {block.items.map(col => (
+          <div class="cs-card">
+            <h4 class="cs-h4">{col.title}</h4>
+            <ul class="cs-list">
+              {col.items.map(item => <li>{item}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    )
+  }
+
+  {/* Comparar dos imágenes */}
+  {
+    block.type === 'compare' && (
+      <div class="flex flex-col gap-4" data-compare>
+        <div class="cs-toggle" role="group" aria-label="Cambiar vista">
+          {block.items.map((item, i) => (
+            <button type="button" aria-pressed={i === 0 ? 'true' : 'false'} data-compare-button={i}>
+              {item.label}
+            </button>
+          ))}
+        </div>
+        <div class="cs-compare">
+          {block.items.map((item, i) => (
+            <figure
+              data-compare-item={i}
+              class:list={['cs-compare-item', i === 0 && 'is-active']}
+              aria-hidden={i === 0 ? 'false' : 'true'}
+            >
+              <Media image={item} class="cs-img" />
+              {item.caption && <figcaption class="cs-caption">{item.caption}</figcaption>}
+            </figure>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  {/* Paleta */}
+  {
+    block.type === 'palette' && (
+      <ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+        {block.colors.map(color => (
+          <li>
+            <button
+              type="button"
+              class="cs-swatch"
+              data-copy={color.hex}
+              style={`--swatch:${color.hex};--swatch-text:${readableOn(color.hex)}`}
+              aria-label={`Copiar el código ${color.hex}${color.name ? ` (${color.name})` : ''}`}
+            >
+              <span class="cs-swatch-color">
+                <span class="cs-swatch-feedback" aria-hidden="true">Copiado</span>
+              </span>
+              <span class="flex flex-col gap-0.5 pt-3 text-left cs-small">
+                {color.name && <strong>{color.name}</strong>}
+                <span class="font-semibold">{color.hex.toUpperCase()}</span>
+                {color.rgb && <span class="cs-muted">RGB {color.rgb}</span>}
+                {color.cmyk && <span class="cs-muted">CMYK {color.cmyk}</span>}
+              </span>
+            </button>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  {/* Tipografías */}
+  {
+    block.type === 'typography' && (
+      <div class="grid gap-5 md:grid-cols-2">
+        {block.fonts.map(font => (
+          <div class="cs-card">
+            <p class="cs-small cs-muted">{font.role}</p>
+            <p
+              class="text-5xl leading-none py-2"
+              style={`font-family:'${font.family}', serif;font-weight:${font.weight ?? 400}`}
+            >
+              {font.sample ?? 'Aa'}
+            </p>
+            <p class="font-semibold">{font.family}</p>
+          </div>
+        ))}
+      </div>
+    )
+  }
+
+  {/* Especificaciones */}
+  {
+    block.type === 'specs' && (
+      <div class:list={['grid gap-8 items-center', block.image && 'md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]']}>
+        <dl class="cs-specs">
+          {block.items.map(item => (
+            <div>
+              <dt class="cs-small cs-muted">{item.label}</dt>
+              <dd class="font-medium">{item.value}</dd>
+            </div>
+          ))}
+        </dl>
+        {block.image && (
+          <figure class="cs-figure">
+            <Media image={block.image} class="cs-img" />
+            {block.image.caption && <figcaption class="cs-caption">{block.image.caption}</figcaption>}
+          </figure>
+        )}
+      </div>
+    )
+  }
+
+  {/* Lista */}
+  {
+    block.type === 'list' && (
+      <ul class="cs-list cs-prose">
+        {block.items.map(item => <li>{item}</li>)}
+      </ul>
+    )
+  }
+
+  {/* Cifras */}
+  {
+    block.type === 'stats' && (
+      <dl class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {block.items.map(item => (
+          <div class="cs-card cs-card-stat">
+            <dt class="cs-small cs-muted">{item.label}</dt>
+            <dd class="cs-stat">{item.value}</dd>
+          </div>
+        ))}
+      </dl>
+    )
+  }
+
+  {/* Video */}
+  {
+    block.type === 'video' && (
+      <figure class="cs-figure">
+        <video class="cs-img" src={block.src} poster={block.poster?.src} controls playsinline preload="metadata" />
+        {block.caption && <figcaption class="cs-caption">{block.caption}</figcaption>}
+      </figure>
+    )
+  }
+</div>
