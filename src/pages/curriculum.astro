@@ -1,207 +1,360 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { personalInfo } from "../data/personal";
-import { estudios } from "../data/studies";
+import Layout from '../layouts/Layout.astro'
+import { Icon } from 'astro-icon/components'
+
+const cv = {
+  name: 'Gabriela Ferrer',
+  role: 'Diseñadora Gráfica',
+  subtitle: 'Identidad de marca y UX/UI',
+  availability: 'Disponible para etapa productiva SENA',
+  // TODO: agrega tu ciudad, por ejemplo "Pereira, Colombia"
+  location: 'Colombia',
+  email: 'gabriellangelesferrer@gmail.com',
+  phone: '+57 321 326 6303',
+  links: [
+    {
+      label: 'gabrielaferrer.vercel.app',
+      href: 'https://gabrielaferrer.vercel.app',
+      icon: 'fa6-solid:globe',
+    },
+  ],
+}
+
+const experiences = [
+  {
+    position: 'Diseñadora UX/UI',
+    company: 'KunturWing',
+    date: 'Nov 2024 – Oct 2025',
+    items: [
+      'Creé la identidad visual de la marca: logotipo, paleta de color, tipografía y lineamientos de uso.',
+      'Diseñé y mantuve el sistema de diseño, asegurando coherencia visual.',
+      'Definí flujos de navegación, wireframes y prototipos de alta fidelidad junto al equipo de desarrollo.',
+      'Apoyé la implementación front-end con React, TypeScript y Tailwind CSS.',
+      // TODO: agrega aquí un resultado concreto (pantallas diseñadas, lanzamiento del producto, etc.)
+    ],
+  },
+  {
+    position: 'Asesora de servicio al cliente',
+    company: 'Atento Colombia',
+    date: 'Oct 2020 – May 2023',
+    items: [
+      'Atendí clientes en ventas, retención, fidelización y soporte técnico para una empresa de telecomunicaciones de Chile.',
+      'Desarrollé escucha activa y empatía, habilidades que hoy aplico al investigar con usuarios.',
+      'Trabajé con metas de calidad y tiempos de respuesta en un entorno de alta exigencia.',
+    ],
+  },
+  {
+    position: 'Administradora',
+    company: "Duke's Delicioso",
+    date: 'Nov 2019 – Jul 2020',
+    items: [
+      'Optimicé el control de inventarios con Excel y mejoré el procedimiento de cierre de caja.',
+    ],
+  },
+]
+
+const education = [
+  {
+    title: 'Tecnología en Diseño Gráfico',
+    institution: 'SENA',
+    date: 'En curso',
+  },
+  {
+    title: 'Certificado Profesional de Diseño UX',
+    institution: 'Google + Coursera',
+    date: 'En curso',
+  },
+  {
+    title: 'Curso de UX Research y UX Writing (36 h)',
+    institution: 'Universidad Católica de Pereira',
+    date: '2024',
+  },
+  {
+    title: 'Programación JavaScript Front-End',
+    institution: 'Oracle + Alura Latam',
+    date: '2025',
+  },
+  {
+    title: 'Diplomado Programador Full Stack Junior (176 h)',
+    institution: 'Universidad Tecnológica de Pereira',
+    date: '2023 – 2024',
+  },
+]
+
+const skills = [
+  {
+    label: 'Diseño gráfico',
+    text: 'identidad visual, manuales de marca, tipografía, teoría del color, piezas para redes e impresos.',
+  },
+  {
+    label: 'UX/UI',
+    text: 'investigación de usuarios, análisis competitivo, user personas, arquitectura de información, wireframes, prototipos, pruebas de usabilidad, sistemas de diseño y Design Thinking.',
+  },
+  {
+    label: 'Conocimientos técnicos',
+    text: 'HTML, CSS, JavaScript, React y Tailwind CSS, para una entrega clara al equipo de desarrollo.',
+  },
+  {
+    label: 'Personales',
+    text: 'comunicación, resolución de problemas, trabajo en equipo y adaptación al cambio.',
+  },
+]
+
+const software = [
+  'Illustrator',
+  'Photoshop',
+  'InDesign',
+  'Premiere',
+  'Figma',
+  'FigJam',
+  'Miro',
+  'Canva',
+  'Notion',
+  'Midjourney',
+  'Adobe Firefly',
+]
+
+// TODO: agrega tu nivel de inglés, por ejemplo "Inglés B1". Si no puedes demostrarlo, déjalo así.
+const languages = ['Español nativo']
 ---
 
 <Layout title="Currículum - Gabriela Ferrer">
-  <main class="bg-primary/20 text-sm print:font-light font-normal">
+  <main class="bg-primary/20 text-sm font-normal print:bg-white">
     <article
-      class="max-w-4xl mx-auto p-12 print:p-4 bg-white flex flex-col gap-8"
+      class="cv max-w-4xl mx-auto p-12 bg-white flex flex-col gap-7 print:gap-4 text-black"
     >
-      <section class="flex gap-5 flex-col">
-        <div class="text-center pb-5 border-b-3 border-primary">
-          <div>
-            <h1 class="font-semibold text-3xl text-black mb-4 font-fantabular">
-              {personalInfo.name}
-            </h1>
-            <p class="text-lg font-medium font-rethink">{personalInfo.title}</p>
-          </div>
-        </div>
-        <div class="flex flex-col gap-5 justify-center items-center">
-          <h2 class="font-bold text-xl mb-2">Resumen Profesional</h2>
-          <p class="text-black text-pretty text-center whitespace-pre-line">
-            {personalInfo.summary}
-          </p>
-        </div>
-        <div class="flex flex-col gap-2">
-          <div class="grid md:grid-cols-2 col-span-1 print:grid-cols-2 gap-6">
-            <div class="space-y-3 text-black">
-              <span class="font-bold text-primary">Teléfono:</span>
-              <p>
-                {personalInfo.phone}
-              </p>
-            </div>
-            <div>
-              <span class="font-bold text-primary">Email:</span>
-              <p>
-                {personalInfo.email}
-              </p>
-            </div>
-          </div>
-          <div class="grid md:grid-cols-2 col-span-1 print:grid-cols-2 gap-6 z-10">
-            <a
-              href={personalInfo.linkedin}
-              class="text-primary hover:text-black transition-colors"
-            >
-              <span class="font-bold">LinkedIn:</span>
-              <p class="text-black">{personalInfo.linkedin}</p>
-            </a>
-            <a
-              href={personalInfo.website}
-              class="text-primary hover:text-black transition-colors"
-            >
-              <span class="font-bold">Portafolio Web:</span>
-              <p class="text-black">{personalInfo.website}</p>
-            </a>
-          </div>
-          <div class="grid md:grid-cols-2 col-span-1 print:grid-cols-2 gap-6">
-            <a
-              href={personalInfo.behance}
-              class="text-primary hover:text-black transition-colors"
-            >
-              <span class="font-bold break-words">Behance:</span>
-              <p class="text-black">{personalInfo.behance}</p>
-            </a>
-            <a
-              href={personalInfo.github}
-              class="text-primary hover:text-black transition-colors"
-            >
-              <span class="font-bold">Git Hub:</span>
-              <p class="text-black">{personalInfo.github}</p>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Experiencia Profesional -->
-      <section class="flex flex-col gap-6 print:break-inside-avoid">
-        <h2
-          class="font-bold text-xl pb-4 text-black border-b-3 border-primary"
+      <!-- Encabezado -->
+      <header class="flex flex-col gap-3">
+        <div
+          class="flex flex-col md:flex-row print:flex-row md:items-end print:items-end justify-between gap-2 pb-3 border-b border-primary/30"
         >
-          Experiencia Profesional
+          <div>
+            <h1 class="font-fantabular font-semibold text-4xl text-trendy-pink-700">
+              {cv.name}
+            </h1>
+            <p class="text-neutral-600 mt-1">{cv.subtitle}</p>
+          </div>
+          <div class="md:text-right print:text-right">
+            <p class="font-fantabular font-semibold text-lg text-primary">
+              {cv.role}
+            </p>
+            <p class="italic text-primary inline-flex items-center gap-1.5">
+              <Icon
+                name="fa6-solid:circle-check"
+                class="size-3.5 not-italic"
+                aria-hidden="true"
+              />
+              {cv.availability}
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-x-6 gap-y-1 text-xs">
+          <a
+            href={`mailto:${cv.email}`}
+            class="inline-flex items-center gap-1.5 hover:text-primary transition-colors"
+          >
+            <Icon
+              name="fa6-solid:envelope"
+              class="size-3.5 text-primary"
+              aria-hidden="true"
+            />
+            {cv.email}
+          </a>
+          <a
+            href={`tel:${cv.phone.replace(/\s/g, '')}`}
+            class="inline-flex items-center gap-1.5 hover:text-primary transition-colors"
+          >
+            <Icon
+              name="fa6-solid:phone"
+              class="size-3.5 text-primary"
+              aria-hidden="true"
+            />
+            {cv.phone}
+          </a>
+          <span class="inline-flex items-center gap-1.5">
+            <Icon
+              name="fa6-solid:location-dot"
+              class="size-3.5 text-primary"
+              aria-hidden="true"
+            />
+            {cv.location}
+          </span>
+          {
+            cv.links.map(link => (
+              <a
+                href={link.href}
+                class="inline-flex items-center gap-1.5 underline underline-offset-2 hover:text-primary transition-colors"
+              >
+                <Icon
+                  name={link.icon}
+                  class="size-3.5 text-primary"
+                  aria-hidden="true"
+                />
+                {link.label}
+              </a>
+            ))
+          }
+        </div>
+      </header>
+
+      <!-- Experiencia -->
+      <section class="flex flex-col gap-4">
+        <h2
+          class="font-fantabular font-semibold text-xl text-primary flex items-center gap-2.5"
+        >
+          Experiencia
         </h2>
         {
-          personalInfo.experiences?.map((experience) => (
-            <div class="flex flex-row items-start gap-6 px-0">
-              <div class="flex flex-row gap-2 items-center">
-                <p class="text-black font-medium font-fantabular w-26">
-                  {experience.date}
-                </p>
-                <div class="h-0.5 bg-black w-8" />
-              </div>
-
-              <article class="flex flex-col gap-6">
-                <header>
-                  <h4 class="font-medium font-fantabular text-lg w-fit">
-                    {experience.position} - {experience.company}
-                  </h4>
-                </header>
-                <main>
-                  <ul class="space-y-1">
-                    {experience.description?.map((desc) => (
-                      <li class="list-disc list-outside pl-2">
-                        {desc}
-                      </li>
-                    ))}
-                  </ul>
-                </main>
-              </article>
+          experiences.map(exp => (
+            <div class="print:break-inside-avoid">
+              <h3 class="text-xs font-bold uppercase tracking-wide">
+                <span class="underline decoration-primary underline-offset-2">
+                  {exp.position}
+                </span>{' '}
+                - <span class="italic font-fantabular font-medium">{exp.company}</span>
+                <span class="ml-3 inline-flex items-center gap-1 font-normal normal-case tracking-normal text-neutral-500">
+                  <Icon
+                    name="fa6-solid:calendar"
+                    class="size-3"
+                    aria-hidden="true"
+                  />
+                  {exp.date}
+                </span>
+              </h3>
+              <ul class="mt-2 ml-5 space-y-1 list-disc">
+                {exp.items.map(item => (
+                  <li>{item}</li>
+                ))}
+              </ul>
             </div>
           ))
         }
       </section>
 
       <!-- Educación -->
-      <section class="mb-12 print:break-before-page">
+      <section class="flex flex-col gap-3 print:break-inside-avoid">
         <h2
-          class="font-bold text-xl mb-6 pb-4 text-black border-b-3 border-primary"
-        >
+          class="font-fantabular font-semibold text-xl text-primary flex items-center gap-2.5"
+        >         
           Educación
         </h2>
-        <div class="space-y-8">
+        <ul class="space-y-1.5">
           {
-            estudios.map((estudio) => (
-              <div class="border-l-3 border-primary/40 pl-6 print:break-inside-avoid">
-                <h3 class="font-fantabular font-medium text-base text-black">
-                  {estudio.title} | {estudio.duration}
-                </h3>
-                <p class=" font-medium mb-3 text-primary italic  ">
-                  {estudio.institution}
-                </p>
-                <ul class="text-black ml-6">
-                  {estudio.descriptions.map((desc) => (
-                    <li class="list-disc mb-1">{desc}</li>
-                  ))}
-                </ul>
-              </div>
-            ))
-          }
-        </div>
-      </section>
-
-      <!-- Idiomas -->
-      {
-        personalInfo.languages && (
-          <section class="mb-12 print:break-inside-avoid">
-            <h2 class="font-bold text-xl mb-6 pb-4 text-black border-b-3 border-primary">
-              Idiomas
-            </h2>
-            <div class="flex flex-wrap gap-4">
-              {personalInfo.languages.map((language) => (
-                <span>{language}</span>
-              ))}
-            </div>
-          </section>
-        )
-      }
-
-      <!-- Habilidades Técnicas -->
-      <section class="mb-12 print:break-inside-avoid">
-        <h2
-          class="font-bold text-xl mb-6 pb-4 text-black border-b-3 border-primary"
-        >
-          Habilidades Técnicas
-        </h2>
-        <ul class="ml-5">
-          {
-            personalInfo.skills.map((skill) => (
-              <li class="list-disc mb-1">{skill}</li>
+            education.map(edu => (
+              <li>
+                <span class="text-xs font-bold uppercase tracking-wide">
+                  {edu.title}
+                </span> -
+                <span class="ml-3 text-neutral-500">{edu.institution}</span>
+                <span class="ml-3 text-neutral-500">{edu.date}</span>
+              </li>
             ))
           }
         </ul>
       </section>
+
+      <!-- Habilidades y métodos -->
+      <section class="flex flex-col gap-3 print:break-inside-avoid">
+        <h2
+          class="font-fantabular font-semibold text-xl text-primary flex items-center gap-2.5"
+        >
+          Habilidades y métodos
+        </h2>
+        <ul class="ml-5 space-y-1 list-disc">
+          {
+            skills.map(skill => (
+              <li>
+                <strong>{skill.label}:</strong> {skill.text}
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <!-- Software -->
+      <section class="flex flex-col gap-3 print:break-inside-avoid">
+        <h2
+          class="font-fantabular font-semibold text-xl text-primary flex items-center gap-2.5"
+        >
+          Software
+        </h2>
+        <ul class="flex flex-wrap gap-2">
+          {
+            software.map(tool => (
+              <li class="px-2.5 py-1 rounded-md bg-primary/10 text-xs">
+                {tool}
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <!-- Idiomas -->
+      <section class="flex flex-col gap-3 print:break-inside-avoid">
+        <h2
+          class="font-fantabular font-semibold text-xl text-primary flex items-center gap-2.5"
+        >
+        Idiomas
+        </h2>
+        <p>{languages.join('  ·  ')}</p>
+      </section>
     </article>
 
     <!-- Botón de descarga -->
-    <div class="text-center mt-12 print:hidden fixed bottom-12 right-12 z-50">
-      <button
-        onclick="window.print()"
-        class="primaryButton bg-primary text-white px-6 py-3 font-medium"
+    <div class="print:hidden fixed bottom-12 right-12 z-50">
+      <a
+        href="/Hoja_de_vida_Gabriela_Ferrer.pdf"
+        download
+        class="primaryButton bg-primary text-white px-6 py-3 font-medium inline-flex items-center gap-2"
       >
-        Descargar como PDF
-      </button>
+        <Icon
+          name="fa6-solid:file-arrow-down"
+          class="size-4"
+          aria-hidden="true"
+        />
+        Descargar hoja de vida
+      </a>
     </div>
   </main>
 </Layout>
 
-<style>
+<style is:global>
+  /* @page va FUERA del @media print y con margen 0:
+     así el navegador no tiene espacio para imprimir la fecha, la URL y el número de página. */
+  @page {
+    size: letter;
+    margin: 0;
+  }
+
   @media print {
+    /* Las clases de Tailwind usan rem, así que se reduce la base
+       para que todo el currículum quepa en una sola hoja. */
+    html {
+      font-size: 14.5px !important;
+    }
+
     body {
-      -webkit-print-color-adjust: exact; /* Chrome, Safari, Edge */
-      print-color-adjust: exact; /* Firefox */
-      user-select: text !important;
-      -webkit-user-select: text !important;
+      margin: 0 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
     }
-    .print\\:hidden {
-      display: none;
+
+    main {
+      background: white !important;
     }
-    .border-l-4 {
-      border-left-width: 4px;
+
+    .cv {
+      max-width: none !important;
+      margin: 0 !important;
+      padding: 0.5in 0.6in !important;
     }
-    .border-b-2 {
-      border-bottom-width: 2px;
+
+    /* Oculta el menú y el pie de página del Layout al imprimir */
+    header:not(.cv header),
+    footer,
+    nav {
+      display: none !important;
     }
   }
-  /* No aplicar z-index global a los enlaces para evitar solapamientos con elementos fijos */
 </style>
