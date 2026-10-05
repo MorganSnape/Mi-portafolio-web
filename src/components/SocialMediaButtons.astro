@@ -1,39 +1,42 @@
 ---
-import { personalInfo } from "@/data/personal";
-import { Icon } from "astro-icon/components";
-
+import { personalInfo } from '@/data/personal'
+import { Icon } from 'astro-icon/components'
 
 const redes = [
   {
-    name: "LinkedIn",
+    name: 'LinkedIn',
     link: personalInfo.linkedin,
-    icon: "fa6-brands:linkedin",
+    icon: 'fa6-brands:linkedin-in',
   },
   {
-    name: "Behance",
+    name: 'Behance',
     link: personalInfo.behance,
-    icon: "fa6-brands:square-behance",
+    icon: 'fa6-brands:behance',
   },
   {
-    name: "GitHub",
+    name: 'GitHub',
     link: personalInfo.github,
-    icon: "fa6-brands:github",
+    icon: 'fa6-brands:github',
   },
-];
+]
 ---
 
 <div class="flex flex-row gap-4">
   {
-    redes.map((red) => (
-      <a
-        href={red.link}
-        class=" text-white hover:brightness-80 hover:scale-105 transition-all duration-150 ease-in-out"
-        aria-label={`${red.name} (se abre en una pestaña nueva)`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Icon name={red.icon} class="w-9 h-9" aria-hidden="true" />
-      </a>
+    redes.map(red => (
+      <div class="group">
+        <a
+          href={red.link}
+          class="inline-flex text-white hover:brightness-80 transition-[filter] duration-200 ease-in-out"
+          aria-label={`${red.name} (se abre en una pestaña nueva)`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="grid size-10 shrink-0 origin-center place-items-center rounded-lg bg-white text-black-secondary transition-transform duration-200 ease-in-out group-hover:scale-105">
+            <Icon name={red.icon} class="size-7" aria-hidden="true" />
+          </span>
+        </a>
+      </div>
     ))
   }
 </div>
