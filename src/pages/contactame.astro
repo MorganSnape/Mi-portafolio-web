@@ -1,8 +1,55 @@
 ---
 import BarNav from '@/components/BarNav.astro'
 import Footer from '@/components/Footer.astro'
-import Contactame from '@/components/indexComponents/Contactame.astro'
 import Layout from '@/layouts/Layout.astro'
+
+import { Image } from 'astro:assets'
+import { Icon } from 'astro-icon/components'
+
+// Cambia esta ruta por la de la ilustración del PC que ya usas en Contactame.astro.
+// Si la tienes como SVG inline o como componente, pega ese bloque dentro del <figure> y borra este import.
+import ilustracionPc from '@/assets/Ilustraciones/Computador.svg'
+
+const telefono = '573213266303'
+const mensajeWhatsApp = 'Hola Gabriela, vi tu portafolio y me gustaría hablar contigo.'
+
+const directos = [
+  {
+    etiqueta: 'Correo',
+    valor: 'gabriellangelesferrer@gmail.com',
+    href: 'mailto:gabriellangelesferrer@gmail.com',
+    colorEtiqueta: 'bg-tag',
+    externo: false,
+  },
+  {
+    etiqueta: 'WhatsApp',
+    valor: '+57 321 326 6303',
+    href: `https://wa.me/${telefono}?text=${encodeURIComponent(mensajeWhatsApp)}`,
+    colorEtiqueta: 'bg-asparagus-300',
+    externo: true,
+  },
+]
+
+const redes = [
+  {
+    nombre: 'LinkedIn',
+    icono: 'fa6-brands:linkedin-in',
+    href: 'https://www.linkedin.com/in/gabrielaferrer-diseno-ux',
+  },
+  {
+    nombre: 'Behance',
+    icono: 'fa6-brands:behance',
+    href: 'https://www.behance.net/gabriellangeles',
+  },
+]
+
+// Fila clicable: toda la fila es el enlace
+const fila =
+  'group flex items-center gap-4 px-5 py-5 sm:px-7 transition-colors hover:bg-kournikova-50 focus-visible:outline-none focus-visible:bg-[#F4EFE6] focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-[#16140F]'
+const flecha =
+  'size-5 shrink-0 -rotate-45 group-hover:rotate-0 transition-transform duration-200'
+const tarjeta =
+  'overflow-hidden rounded-3xl border-2 border-[#16140F] bg-white shadow-[6px_6px_0_#16140F] divide-y-2 divide-[#16140F]'
 ---
 
 <Layout title="Trabajemos juntos - Contáctame">
@@ -10,7 +57,71 @@ import Layout from '@/layouts/Layout.astro'
   <main
     class="flex flex-col items-center gap-8 font-rethink select-none w-full"
   >
-    <Contactame />
+    <section
+  aria-labelledby="titulo-contacto"
+  class="mx-auto grid w-full max-w-[1280px] gap-10 px-6 py-16 text-[#16140F] lg:grid-cols-2 lg:gap-x-16 lg:py-24"
+>
+  <!-- Título y texto: arriba a la izquierda -->
+  <header class="flex flex-col gap-5 lg:col-start-1 lg:row-start-1">
+    <h1 id="titulo-contacto" class="text-5xl font-extrabold leading-none tracking-tight md:text-6xl">
+      Contáctame
+    </h1>
+    <p class="max-w-[52ch] text-lg leading-relaxed text-[#3D3A33]">
+      ¿Tienes una marca por crear o un producto por diseñar? Escríbeme por el medio que prefieras y
+      conversamos.
+    </p>
+  </header>
+
+  <!-- Opciones de contacto: derecha. En móvil van antes de la ilustración -->
+  <div class="flex flex-col gap-8 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-center">
+    <ul class={tarjeta}>
+      {
+        directos.map((d) => (
+          <li>
+            <a
+              href={d.href}
+              class={fila}
+              {...(d.externo && { target: '_blank', rel: 'noopener noreferrer' })}
+            >
+              <span class="flex min-w-0 flex-1 flex-col items-start gap-2">
+                <span
+                  class={`rounded-full border-2 border-[#16140F] px-3 py-0.5 text-sm font-bold ${d.colorEtiqueta}`}
+                >
+                  {d.etiqueta}
+                </span>
+                <span class="break-all text-lg font-medium sm:break-normal">{d.valor}</span>
+              </span>
+              <Icon name="fa6-solid:arrow-right" class={flecha} aria-hidden="true" />
+              {d.externo && <span class="sr-only">(se abre en una pestaña nueva)</span>}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <ul class={tarjeta}>
+      {
+        redes.map((r) => (
+          <li>
+            <a href={r.href} target="_blank" rel="noopener noreferrer" class={fila}>
+              <span class="grid size-11 shrink-0 place-items-center rounded-lg border-2 border-[#16140F] bg-[#16140F] text-white">
+                <Icon name={r.icono} class="size-6" aria-hidden="true" />
+              </span>
+              <span class="flex-1 text-lg font-bold">{r.nombre}</span>
+              <Icon name="fa6-solid:arrow-right" class={flecha} aria-hidden="true" />
+              <span class="sr-only">(se abre en una pestaña nueva)</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <!-- Ilustración del PC: abajo a la izquierda -->
+  <figure class="mx-auto w-full max-w-2xl lg:col-start-1 lg:row-start-2 lg:mx-0 lg:max-w-lg">
+    <Image src={ilustracionPc} alt="Ilustración de un PC con plantas" class="h-auto w-full" loading="eager" />
+  </figure>
+</section>
   </main>
   <Footer />
 </Layout>
