@@ -7,7 +7,7 @@ import { navLinks } from "@/data/navLinks";
 const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 const isCurrentLink = (href: string) => {
-  const normalizedHref = href.replace(/\/$/, "") || "/";
+  const normalizedHref = new URL(href, Astro.url).pathname.replace(/\/$/, "") || "/";
 
   if (normalizedHref === "/") {
     return currentPath === "/" || currentPath.startsWith("/proyectos/");
@@ -17,7 +17,7 @@ const isCurrentLink = (href: string) => {
 };
 ---
 
-<header class="fixed top-0 z-50 bg-black-secondary w-full">
+<header class="fixed top-0 z-50 bg-black-secondary w-full shadow-sm">
   <nav class="mx-auto lg:w-11/12 max-w-[1280px] w-fullmx-auto flex items-center justify-between h-[var(--altura-header)] px-6">
     <a href="/" aria-label="Inicio, Gabriela Ferrer">
       <Logo class="h-10 fill-white" aria-hidden="true" />
@@ -47,11 +47,7 @@ const isCurrentLink = (href: string) => {
                 "nav-item font-rethink w-full px-4 text-center lg:text-left text-white text-lg lg:text-base font-normal hover:text-gray-400 focus:ring-2 active:font-semibold active:text-white active:border-none focus:outline-none h-[calc(var(--altura-header)_-_12px)] focus:ring-yellow-300 flex flex-col items-center justify-center",
                 { active: isCurrentLink(link.href) },
               ]}
-              aria-current={
-                currentPath === (link.href.replace(/\/$/, '') || '/')
-                  ? 'page'
-                  : undefined
-              }
+              aria-current={isCurrentLink(link.href) ? 'page' : undefined}
             >
               {link.name}
             </a>
@@ -63,21 +59,51 @@ const isCurrentLink = (href: string) => {
 </header>
 
 <script>
+  const header = document.querySelector<HTMLElement>('header')
   const menuButton = document.querySelector<HTMLButtonElement>('#menu-toggle')
   const primaryNavigation = document.querySelector<HTMLUListElement>(
     '#primary-navigation',
+  )
+
+  let lastScrollY = window.scrollY
+
+  const showHeader = () => {
+    header?.classList.remove('scroll-hidden')
+  }
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      const currentScrollY = window.scrollY
+      const isMenuExpanded =
+        menuButton?.getAttribute('aria-expanded') === 'true'
+
+      if (currentScrollY <= 10 || isMenuExpanded) {
+        showHeader()
+        lastScrollY = currentScrollY
+        return
+      }
+
+      if (Math.abs(currentScrollY - lastScrollY) < 8) return
+
+      header?.classList.toggle('scroll-hidden', currentScrollY > lastScrollY)
+      lastScrollY = currentScrollY
+    },
+    { passive: true },
   )
 
   if (menuButton && primaryNavigation) {
     const closeMenu = () => {
       menuButton.setAttribute('aria-expanded', 'false')
       primaryNavigation.classList.add('hidden')
+      lastScrollY = window.scrollY
     }
 
     menuButton.addEventListener('click', () => {
       const isExpanded = menuButton.getAttribute('aria-expanded') === 'true'
       menuButton.setAttribute('aria-expanded', String(!isExpanded))
       primaryNavigation.classList.toggle('hidden', isExpanded)
+      if (!isExpanded) showHeader()
     })
 
     primaryNavigation.querySelectorAll('a').forEach(link => {
@@ -97,9 +123,24 @@ const isCurrentLink = (href: string) => {
 </script>
 
 <style>
+  header {
+    transition: transform 200ms ease-in-out;
+  }
+
+  header.scroll-hidden {
+    transform: translateY(-100%);
+    pointer-events: none;
+  }
+
   .nav-item.active {
     font-weight: 700;
     color: var(--color-secondary, #ffe971);
     border-bottom: 3px solid var(--color-secondary, #ffe971);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    header {
+      transition: none;
+    }
   }
 </style>
