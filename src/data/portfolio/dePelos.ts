@@ -16,39 +16,55 @@ import cajaMockup2 from '@/assets/proyectos/depelos/caja-mockup-2.webp'
 export const depelosProyect: Proyect = {
   type: ['Diseño'],
   slug: 'depelos',
+
+  // ── Portada ──
   nameProject: 'DePelös',
-  date: '2026',
-  coverImage: cover,
-  tags: ['Branding', 'Packaging'],
+  headline: 'Una marca de premios saludables para mascotas, desde el nombre hasta el empaque',
   shortDescription:
     'Identidad de marca y empaque para un yogur helado saludable para perros y gatos.',
-  details: [{ label: 'Tipo de proyecto', value: 'Proyecto académico, SENA', icon: '' }],
+  coverImage: cover,
+  date: '2026',
+  projectType: 'Proyecto académico, SENA',
+  tags: ['Branding', 'Packaging'],
+  details: [{ label: 'Tipo de proyecto', value: 'Proyecto académico, SENA', icon: 'bxs:briefcase' }],
   role: 'Diseñadora de marca y empaque',
   roleSummary: 'Naming, identidad visual, diseño de empaque, troqueles y mockups.',
   tools: ['Illustrator', 'Dimension', 'Adobe Stock'],
+  // Confirma de dónde salieron las imágenes de los mockups y ajusta esta línea
+  credits: ['Recursos para mockups: Adobe Stock'],
+  // links: [
+  //   { label: 'Ver en Behance', href: 'https://www.behance.net/[tu-usuario]/[proyecto]', kind: 'behance', primary: true },
+  // ],
 
-  // El azul de la marca como acento; el crema como fondo de la portada
+  // Azul: portada y acentos. Rosa: botón principal. Crema: fondo detrás de la portada.
   brand: {
     primary: '#2356A4',
+    secondary: '#EB5699',
     surface: '#F1EDE1',
     headingFont: 'Fraunces',
-    fontHref: 'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap',
+    // También carga Bricolage Grotesque para que el bloque de tipografía se vea con la fuente real
+    fontHref:
+      'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Bricolage+Grotesque:wght@400&display=swap',
   },
 
-  // Separa los párrafos con una línea en blanco (\n\n)
+  // ── Resumen ──
   descriptionProject:
     'DePelös es una marca colombiana de premios saludables para mascotas. Su producto insignia es un yogur helado con probióticos que consiente a perros y gatos mientras cuida su digestión.\n\n' +
     'Creé la marca desde cero: el nombre, la identidad visual, el empaque del helado y una caja especial para entregarlo en un evento a favor de la protección animal.',
-  objectiveBusiness:
-    'Lanzar una marca que se distinga en el punto de venta y transmita calidad nutricional.',
-  objectiveUser:
-    'Dueños de mascotas de 20 a 45 años, en ciudades de Colombia, que buscan productos premium y con causa social.',
   challenge:
     '¿Cómo diseñar un empaque que se sienta divertido y cercano, que comunique con claridad los beneficios del producto y que sea coherente con el compromiso ambiental de la marca?',
+  // En branding no hay "negocio" y "usuario": van como objetivos generales
+  objectives: [
+    'Lanzar una marca que se distinga en el punto de venta y transmita calidad nutricional.',
+    'Comunicar con claridad los beneficios del producto, de forma divertida y cercana.',
+    'Diseñar empaques coherentes con el compromiso ambiental de la marca.',
+  ],
 
+  // ── Capítulos: label = el tema, title = la conclusión ──
   chapters: [
     {
-      title: 'La marca',
+      label: 'La marca',
+      title: 'Un nombre que juega con lo que tienen en común perros y gatos',
       intro: 'Antes de diseñar, definí qué quería transmitir la marca y a quién le hablaba.',
       blocks: [
         {
@@ -59,13 +75,19 @@ export const depelosProyect: Proyect = {
         },
         {
           type: 'text',
+          title: 'Para quién',
+          body: 'Dueños de mascotas de 20 a 45 años, en ciudades de Colombia, que buscan productos premium y con causa social.',
+        },
+        {
+          type: 'text',
           title: 'Estilo',
           body: 'Me inspiré en el estilo hipster contemporáneo: fresco, desenfadado y con carácter. Los colores vivos, los patrones geométricos y las formas simples hacen que la marca se sienta divertida, actual y cercana a dueños de mascotas jóvenes y urbanos.',
         },
       ],
     },
     {
-      title: 'Identidad visual',
+      label: 'Identidad visual',
+      title: 'Colores vivos y formas simples para una marca divertida y cercana',
       blocks: [
         {
           type: 'image',
@@ -100,8 +122,8 @@ export const depelosProyect: Proyect = {
       ],
     },
     {
-      title: 'Empaque del helado',
-      intro: 'Un envase para 200 ml, pensado para congelación y fácil de reciclar.',
+      label: 'Empaque del helado',
+      title: 'Un envase de 200 ml pensado para congelarse y reciclarse',
       blocks: [
         {
           type: 'specs',
@@ -125,9 +147,10 @@ export const depelosProyect: Proyect = {
       ],
     },
     {
-      title: 'Embalaje para el evento',
+      label: 'Embalaje para el evento',
+      title: 'Una caja para disfrutar el helado ahí mismo, en el evento',
       intro:
-        'Una caja para entregar el producto en un evento a favor de la protección animal, con todo lo necesario para disfrutarlo ahí mismo.',
+        'El producto se entregaba en un evento a favor de la protección animal, así que la caja lleva todo lo necesario para comerlo y jugar.',
       blocks: [
         {
           type: 'specs',
@@ -158,8 +181,18 @@ export const depelosProyect: Proyect = {
       ],
     },
     {
-      title: 'Resultado',
+      label: 'Resultado',
+      title: 'Una marca completa: del nombre a la caja que llega al evento',
+      tinted: true,
       blocks: [
+        {
+          type: 'stats',
+          items: [
+            { value: '2', label: 'empaques: el envase del helado y la caja del evento' },
+            { value: '3', label: 'troqueles con medidas reales' },
+            { value: '6', label: 'colores en la paleta de la marca' },
+          ],
+        },
         {
           type: 'gallery',
           images: [
@@ -167,10 +200,13 @@ export const depelosProyect: Proyect = {
             { src: cajaMockup2, alt: 'Caja DePelös con el helado, el plato y el juguete de varilla y plumas para gatos' },
           ],
         },
+        // Si tu instructor comentó el proyecto, agrega su opinión:
+        // { type: 'highlight', label: '[Nombre], instructor/a SENA', text: '«[Comentario textual]»' },
       ],
     },
   ],
 
+  // ── Epílogo ──
   learnings: [
     '[Qué aprendiste al trabajar con troqueles y medidas reales.]',
     '[Qué harías diferente si lo hicieras otra vez.]',

@@ -67,8 +67,13 @@ const isCurrentLink = (href: string) => {
 
   let lastScrollY = window.scrollY
 
+  const setHeaderHidden = (hidden: boolean) => {
+    header?.classList.toggle('scroll-hidden', hidden)
+    document.documentElement.classList.toggle('header-hidden', hidden)
+  }
+
   const showHeader = () => {
-    header?.classList.remove('scroll-hidden')
+    setHeaderHidden(false)
   }
 
   window.addEventListener(
@@ -86,7 +91,7 @@ const isCurrentLink = (href: string) => {
 
       if (Math.abs(currentScrollY - lastScrollY) < 8) return
 
-      header?.classList.toggle('scroll-hidden', currentScrollY > lastScrollY)
+      setHeaderHidden(currentScrollY > lastScrollY)
       lastScrollY = currentScrollY
     },
     { passive: true },

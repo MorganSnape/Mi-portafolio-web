@@ -22,13 +22,17 @@ import redesSociales from '@/assets/proyectos/marca-personal/redes-sociales.webp
 export const marcaPersonalProyect: Proyect = {
   type: ['Diseño'],
   slug: 'marca-personal-gabriela',
+
+  // ── Portada ──
   nameProject: 'Marca Gabriela',
-  date: 'Mayo de 2026',
-  coverImage: cover,
-  tags: ['Identidad visual', 'Manual de marca'],
-  projectType: 'Identidad visual',
+  headline: 'Una identidad neobrutalista que une el diseño gráfico, la experiencia de usuario y el código',
   shortDescription:
     'Mi identidad visual y manual de marca: una estética neobrutalista con retículas y guiños al código, pensada para crecer conmigo.',
+  coverImage: cover,
+  // La ficha no muestra "Duración" por separado, por eso va junto a la fecha
+  date: 'Mayo de 2026, en 1 mes',
+  projectType: 'Proyecto académico, SENA',
+  tags: ['Identidad visual', 'Manual de marca'],
   details: [
     { label: 'Tipo de proyecto', value: 'Proyecto académico, SENA', icon: 'bxs:briefcase' },
     { label: 'Duración', value: '1 mes', icon: 'bxs:time' },
@@ -36,30 +40,42 @@ export const marcaPersonalProyect: Proyect = {
   role: 'Diseñadora gráfica',
   roleSummary: 'Concepto, logo, sistema visual, ilustración, manual de marca y aplicaciones.',
   tools: ['Illustrator'],
+  // Mucha gente no abre el PDF, por eso las láminas clave ya están en la página.
+  // Sube el manual a public/pdf/ y descomenta este botón:
+  // links: [
+  //   { label: 'Descargar el manual de marca', href: '/pdf/Manual-Marca-GabrielaFerrer.pdf', kind: 'pdf', note: 'PDF, [n] MB', primary: true },
+  // ],
 
-  // Tus propios colores: el morado como acento y el amarillo en la portada
-  brand: { primary: '#8C529B', surface: '#FFE971' },
+  // Morado: portada y acentos. Amarillo: botón principal y fondo detrás de la portada.
+  // Fantabular MVB ya es la tipografía del portafolio, así que no hace falta headingFont.
+  brand: { primary: '#8C529B', secondary: '#FFE971', surface: '#FFE971' },
 
+  // ── Resumen ──
   descriptionProject:
     'Diseñé mi marca personal y su manual de identidad visual. Quería una marca que mostrara cómo uno lo visual con su ejecución: el diseño gráfico, la experiencia de usuario y el código.\n\n' +
     'El resultado es una identidad neobrutalista, construida sobre retículas y con referencias al código, que incluye ilustración como parte clave de la experiencia. Busca sentirse cercana, creativa y en constante crecimiento.',
-  objectiveBusiness: [
-    'Construir una identidad visual reconocible y profesional.',
-    'Comunicar mis habilidades en diseño gráfico y UX/UI.',
-    'Mantener una imagen coherente en el portafolio y las redes sociales.',
-  ],
-  objectiveUser: [
-    'Entender rápido mi perfil profesional y mis habilidades.',
-    'Vivir una experiencia visual clara, cercana y memorable.',
-  ],
   challenge:
     '¿Cómo construir una sola identidad que muestre el diseño gráfico, la experiencia de usuario y el código, sin que se sienta recargada?',
+  // En una marca personal no hay "negocio" y "usuario": van como objetivos generales
+  objectives: [
+    'Construir una identidad visual reconocible y profesional.',
+    'Comunicar mis habilidades en diseño gráfico y UX/UI.',
+    'Que quien vea mi portafolio entienda rápido mi perfil y viva una experiencia clara, cercana y memorable.',
+    'Mantener una imagen coherente en el portafolio y las redes sociales.',
+  ],
 
+  // ── Capítulos: label = el tema, title = la conclusión ──
   chapters: [
     {
-      title: 'La marca',
+      label: 'Concepto',
+      title: 'Una marca "unicornio" que une lo visual con su ejecución',
       intro: 'Antes de diseñar, definí qué quería transmitir y hacia dónde quería crecer.',
       blocks: [
+        {
+          type: 'highlight',
+          label: 'El concepto',
+          text: 'Una marca que une lo visual con su ejecución: neobrutalismo, retículas, referencias al código e ilustración.',
+        },
         {
           type: 'cards',
           columns: 2,
@@ -74,16 +90,11 @@ export const marcaPersonalProyect: Proyect = {
             },
           ],
         },
-        {
-          type: 'highlight',
-          title: 'El concepto',
-          label: 'Un enfoque "unicornio"',
-          text: 'Una marca que une lo visual con su ejecución: neobrutalismo, retículas, referencias al código e ilustración.',
-        },
       ],
     },
     {
-      title: 'Identidad visual',
+      label: 'Identidad visual',
+      title: 'Un logo construido sobre una retícula, con guiños al código y a Figma',
       blocks: [
         {
           type: 'text',
@@ -138,8 +149,9 @@ export const marcaPersonalProyect: Proyect = {
       ],
     },
     {
-      title: 'Recursos e ilustración',
-      intro: 'Elementos que complementan el logo y le dan vida a la marca, siempre usados con moderación.',
+      label: 'Recursos e ilustración',
+      title: 'Trazos inspirados en el código e ilustraciones que le dan vida a la marca',
+      intro: 'Elementos que complementan el logo, siempre usados con moderación.',
       blocks: [
         {
           type: 'image',
@@ -164,7 +176,8 @@ export const marcaPersonalProyect: Proyect = {
       ],
     },
     {
-      title: 'Usos y variantes',
+      label: 'Usos y variantes',
+      title: 'Tres versiones del logo para que funcione en cualquier tamaño',
       intro: 'Reglas para que la marca se vea bien en cualquier tamaño y formato.',
       blocks: [
         {
@@ -195,7 +208,9 @@ export const marcaPersonalProyect: Proyect = {
       ],
     },
     {
-      title: 'Aplicaciones',
+      label: 'Aplicaciones',
+      title: 'La marca en papel, en sello seco, en el correo y en las redes',
+      tinted: true,
       blocks: [
         {
           type: 'gallery',
@@ -206,10 +221,13 @@ export const marcaPersonalProyect: Proyect = {
             { src: redesSociales, alt: 'Publicaciones para Instagram con el estilo de la marca', caption: 'Posts para redes' },
           ],
         },
+        // Este portafolio también es una aplicación de la marca. Si quieres, cuéntalo:
+        // { type: 'text', title: 'Este portafolio', body: '[Cómo aplicaste la marca en este sitio.]' },
       ],
     },
   ],
 
+  // ── Epílogo ──
   // Cuando lo tengas claro, cuenta qué aprendiste. Por ejemplo:
   // learnings: [
   //   'Construir sobre una retícula me ayudó a tomar decisiones más rápido y con coherencia.',

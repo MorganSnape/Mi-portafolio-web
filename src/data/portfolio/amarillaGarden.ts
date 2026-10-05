@@ -14,13 +14,16 @@ import caja from '@/assets/proyectos/amarilla-garden/caja.webp'
 export const amarillaGardenProyect: Proyect = {
   type: ['UX'],
   slug: 'amarilla-garden',
+
+  // ── Portada ──
   nameProject: 'Amarilla Garden',
-  date: 'Marzo de 2026, en proceso',
-  coverImage: cover,
-  tags: ['UX/UI', 'E-commerce'],
+  headline: 'Una tienda en línea para vender lo hecho a mano sin perder su calidez',
   shortDescription:
     'Una tienda en línea que lleva la calidez de lo hecho a mano a la pantalla, para una marca artesanal de velas y decoración.',
-  projectType: 'E-commerce',
+  coverImage: cover,
+  date: 'Marzo de 2026, en proceso',
+  projectType: 'Pro bono para una marca real',
+  tags: ['UX/UI', 'E-commerce'],
   details: [
     { label: 'Tipo de proyecto', value: 'E-commerce, proyecto pro bono', icon: 'bxs:briefcase' },
     { label: 'Empresa', value: 'Amarilla Garden', icon: 'bxs:briefcase' },
@@ -29,30 +32,43 @@ export const amarillaGardenProyect: Proyect = {
   roleSummary:
     'Única diseñadora del proyecto: brief e investigación con la clienta, ideación, iteración de propuestas y validación con usuarios.',
   tools: ['Figma', 'FigJam', 'Google Forms'],
-  linkWebsite: 'https://www.amarillagarden.com',
+  credits: ['Identidad visual: NubeLab'],
+  // El sitio actual es de la marca, no es tu diseño: por eso el botón dice "Conocer la marca".
+  // Cuando tengas el prototipo, ponlo primero.
+  links: [
+    // { label: 'Ver prototipo en Figma', href: 'https://www.figma.com/proto/[…]', kind: 'figma', primary: true },
+    { label: 'Conocer la marca', href: 'https://www.amarillagarden.com', kind: 'website' },
+  ],
 
+  // Durazno: portada y acentos. Crema durazno: fondo detrás de la portada.
+  // Sin "secondary", el botón principal es negro, que contrasta mejor con los tonos pastel.
   brand: {
     primary: '#F4A375',
     surface: '#FDE9D2',
+    // Los títulos de la marca usan Mahalini, que no está en Google Fonts; Montserrat es la de textos.
     headingFont: 'Montserrat',
     fontHref: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap',
   },
 
   brandDescription:
     'Amarilla Garden es una marca artesanal con cinco años de evolución. Empezó vendiendo suculentas y amplió su oferta a piezas de concreto, velas hechas a mano y talleres creativos.',
+
+  // ── Resumen ──
   descriptionProject:
     'Amarilla Garden es una marca artesanal con cinco años de trayectoria. Empezó vendiendo suculentas y hoy ofrece velas, piezas de concreto hechas a mano y talleres creativos para personas y empresas.\n\n' +
-    'Este proyecto pro bono busca digitalizar su catálogo con un e-commerce que abra un nuevo canal de ventas y promueva sus talleres, manteniendo su esencia artesanal en una experiencia moderna, accesible e intuitiva.',
-  objectiveBusiness:
-    'Digitalizar el catálogo artesanal y abrir un canal de venta en línea que preserve la experiencia de marca.',
-  objectiveUser:
-    'Comprar productos hechos a mano con un recorrido claro, visual y seguro.',
+    'En este proyecto pro bono diseño su tienda en línea para digitalizar el catálogo, abrir un nuevo canal de ventas y promover sus talleres, sin perder su esencia artesanal. La identidad visual es de la agencia NubeLab; mi trabajo es llevarla a una experiencia de compra moderna, accesible e intuitiva.',
   challenge:
     '¿Cómo diseñar una tienda en línea que transmita la calidez de un producto hecho a mano y, al mismo tiempo, sea clara y confiable al momento de comprar?',
+  // En UX van separados: uno del negocio y uno de la persona usuaria
+  objectiveBusiness:
+    'Digitalizar el catálogo artesanal y abrir un canal de venta en línea que preserve la experiencia de marca.',
+  objectiveUser: 'Comprar productos hechos a mano con un recorrido claro, visual y seguro.',
 
+  // ── Capítulos: label = el tema, title = la conclusión ──
   chapters: [
     {
-      title: 'El brief',
+      label: 'Brief',
+      title: 'La tienda debía vender productos y talleres sin perder lo emocional',
       intro:
         'Antes de diseñar, preparé un formulario de briefing para que la dueña me contara sobre su negocio, sus clientes y sus metas. Sus respuestas definieron qué debía resolver la tienda.',
       blocks: [
@@ -100,9 +116,10 @@ export const amarillaGardenProyect: Proyect = {
       ],
     },
     {
-      title: 'La identidad de la marca',
+      label: 'Identidad de la marca',
+      title: 'Una identidad cálida, creada por NubeLab, que la tienda debe respetar',
       intro:
-        'La identidad visual fue creada por la agencia NubeLab. Mi reto era llevarla a una tienda en línea sin perder su calidez.',
+        'La identidad visual fue creada por la agencia NubeLab. Mi reto es llevarla a una tienda en línea sin perder su calidez.',
       blocks: [
         {
           type: 'image',
@@ -149,10 +166,19 @@ export const amarillaGardenProyect: Proyect = {
       ],
     },
     {
-      title: 'Investigación',
+      label: 'Investigación',
+      title: 'Sus talleres creativos son algo que la competencia no ofrece',
       intro:
         'Hice encuestas cualitativas y cuantitativas para entender cómo perciben los clientes la marca y qué esperan de una página web para comprar. Así identifiqué puntos de dolor, necesidades de contenido y los usos principales que esperaban de la tienda.',
       blocks: [
+        // Las cifras de la investigación le dan credibilidad. Llénalas con tus datos reales:
+        // {
+        //   type: 'stats',
+        //   items: [
+        //     { value: '[n]', label: 'personas encuestadas' },
+        //     { value: '3', label: 'marcas analizadas' },
+        //   ],
+        // },
         {
           type: 'cards',
           title: 'Análisis de la competencia',
@@ -185,7 +211,8 @@ export const amarillaGardenProyect: Proyect = {
       ],
     },
     {
-      title: 'Definición del problema',
+      label: 'Definición del problema',
+      title: 'Sin un camino claro ni información de materiales, la gente no se anima a comprar',
       blocks: [
         {
           type: 'highlight',
@@ -220,12 +247,14 @@ export const amarillaGardenProyect: Proyect = {
     // ── Capítulos por completar ──
     // Descomenta cada uno cuando tengas el material. Guarda las imágenes en
     // src/assets/proyectos/amarilla-garden/ e impórtalas arriba.
+    // Recuerda: label es el tema y title es lo que descubriste o decidiste.
     //
     // {
-    //   title: 'Ideación',
+    //   label: 'Ideación',
+    //   title: '[Conclusión, por ejemplo: "Separé productos y talleres para que cada uno tenga su camino"]',
     //   intro: 'Organicé la tienda con categorías concretas, fichas de producto visuales y un pago accesible para un público poco técnico.',
     //   blocks: [
-    //     { type: 'image', title: 'Mapa del sitio', image: { src: mapaSitio, alt: 'Mapa del sitio de la tienda' } },
+    //     { type: 'image', title: 'Mapa del sitio', image: { src: mapaSitio, alt: 'Mapa del sitio de la tienda', caption: '[Por qué lo organizaste así]' } },
     //     { type: 'image', title: 'Flujo de compra', image: { src: flujoCompra, alt: 'Flujo de compra' } },
     //     { type: 'compare', title: 'Del boceto al wireframe', items: [
     //       { label: 'Boceto', src: boceto, alt: '...' },
@@ -234,15 +263,19 @@ export const amarillaGardenProyect: Proyect = {
     //   ],
     // },
     // {
-    //   title: 'Diseño de la tienda',
+    //   label: 'Diseño de la tienda',
+    //   title: '[Conclusión, por ejemplo: "Adapté la identidad de NubeLab a la pantalla"]',
     //   intro: 'Cómo llevé la identidad de la marca a la interfaz.',
     //   blocks: [
     //     { type: 'image', title: 'Kit de UI', image: { src: kitUi, alt: '...' } },
+    //     { type: 'compare', title: 'Del wireframe a la alta fidelidad', items: [ ... ] },
     //     { type: 'gallery', title: 'Pantallas finales', images: [ ... ] },
+    //     { type: 'video', title: 'Recorrido del prototipo', src: '/videos/amarilla-prototipo.mp4' },
     //   ],
     // },
     // {
-    //   title: 'Pruebas con usuarios',
+    //   label: 'Pruebas con usuarios',
+    //   title: '[Conclusión, por ejemplo: "[n] de [n] personas completaron la compra sin ayuda"]',
     //   intro: 'Evalué si las personas encontraban un producto en menos de tres pasos y entendían las opciones de envío.',
     //   blocks: [
     //     { type: 'columns', items: [
@@ -251,5 +284,22 @@ export const amarillaGardenProyect: Proyect = {
     //     ] },
     //   ],
     // },
+    // {
+    //   label: 'Resultado',
+    //   title: '[Conclusión]',
+    //   tinted: true,
+    //   blocks: [
+    //     { type: 'stats', items: [ { value: '[n]', label: '...' } ] },
+    //     { type: 'highlight', label: '[Nombre], fundadora de Amarilla Garden', text: '«[Su comentario sobre el diseño]»' },
+    //   ],
+    // },
+  ],
+
+  // ── Epílogo ──
+  // Mientras el proyecto sigue en proceso, los próximos pasos cuentan qué falta.
+  nextSteps: [
+    'Definir el mapa del sitio y el flujo de compra.',
+    'Diseñar las pantallas aplicando la identidad de NubeLab.',
+    'Probar con usuarios si encuentran un producto en menos de tres pasos y entienden las opciones de envío.',
   ],
 }

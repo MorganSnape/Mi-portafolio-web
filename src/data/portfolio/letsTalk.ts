@@ -8,41 +8,51 @@ import bannerYoutube from '@/assets/proyectos/lets-talk/banner-youtube.webp'
 import bannerEnYoutube from '@/assets/proyectos/lets-talk/banner-en-youtube.webp'
 import productos from '@/assets/proyectos/lets-talk/productos.webp'
 import mockupCalle from '@/assets/proyectos/lets-talk/mockup-calle.webp'
-import mockupNoche from '@/assets/proyectos/lets-talk/mockup-noche.webp'
 
 export const letsTalkProyect: Proyect = {
   type: ['Diseño'],
   slug: 'lets-talk',
+
+  // ── Portada ──
   nameProject: "Let's Talk",
-  date: '2026',
+  headline: 'Una campaña que muestra que el diseño y el código no son mundos separados',
+  shortDescription:
+    'Campaña gráfica para un evento sobre la relación entre el diseño y la programación, en piezas impresas, digitales y promocionales.',
   coverImage: cover,
   coverFit: 'cover',
   coverPosition: '49% 50%',
+  date: '2026',
+  projectType: 'Proyecto académico, SENA',
   tags: ['Campaña gráfica', 'Ilustración'],
-  projectType: 'Campaña gráfica',
-  shortDescription:
-    'Campaña gráfica para un evento sobre la relación entre el diseño y la programación, en piezas impresas, digitales y promocionales.',
   details: [{ label: 'Tipo de proyecto', value: 'Proyecto académico, SENA', icon: 'bxs:briefcase' }],
   role: 'Diseñadora gráfica',
   roleSummary: 'Concepto, ilustración, pieza principal y adaptación a formatos impresos, digitales y promocionales.',
   tools: ['Illustrator'],
+  // links: [
+  //   { label: 'Ver en Behance', href: 'https://www.behance.net/[tu-usuario]/[proyecto]', kind: 'behance', primary: true },
+  // ],
 
-  // El azul de la noche como acento
-  brand: { primary: '#2B5090' },
+  // Azul noche: portada y acentos. Amarillo: botón principal, como la frase del evento.
+  brand: { primary: '#2B5090', secondary: '#E5DE73' },
 
+  // ── Resumen ──
   descriptionProject:
     "Let's Talk es un evento de tecnología que busca abrir la conversación sobre la relación entre el diseño y la programación, y mostrar la importancia de que ambas áreas colaboren al crear productos y experiencias digitales.\n\n" +
     'Diseñé su campaña publicitaria completa: una ilustración central y su adaptación a flyer, cartel, banner para YouTube y productos para el día del evento.',
-  objectiveBusiness:
-    'Dar a conocer el evento y atraer a personas interesadas en el diseño y la tecnología.',
-  objectiveUser:
-    'Entender de un vistazo de qué trata el evento, cuándo y dónde será.',
   challenge:
     '¿Cómo comunicar en una sola imagen que el diseño y el código no son mundos separados, y mantener esa idea reconocible en piezas de tamaños muy distintos?',
+  // En una campaña van como objetivos generales
+  objectives: [
+    'Dar a conocer el evento y atraer a personas interesadas en el diseño y la tecnología.',
+    'Que se entienda de un vistazo de qué trata el evento, cuándo y dónde será.',
+    'Mantener la misma idea reconocible en piezas impresas, digitales y promocionales.',
+  ],
 
+  // ── Capítulos: label = el tema, title = la conclusión ──
   chapters: [
     {
-      title: 'El concepto',
+      label: 'Concepto',
+      title: 'Una luna dibujada con la pluma de un programa de diseño, en un cielo de código',
       blocks: [
         {
           type: 'highlight',
@@ -64,9 +74,9 @@ export const letsTalkProyect: Proyect = {
       ],
     },
     {
-      title: 'La pieza principal',
-      intro:
-        'El cartel reúne el concepto, el mensaje y la información del evento, y es la base de todas las demás piezas.',
+      label: 'Pieza principal',
+      title: 'Un cartel que reúne la idea, el mensaje y los datos del evento',
+      intro: 'Es la base de todas las demás piezas.',
       blocks: [
         {
           type: 'specs',
@@ -97,8 +107,8 @@ export const letsTalkProyect: Proyect = {
       ],
     },
     {
-      title: 'Adaptación a formatos',
-      intro: 'La misma idea, reorganizada según cómo y dónde se ve cada pieza.',
+      label: 'Adaptación a formatos',
+      title: 'La misma idea, reorganizada según dónde se ve cada pieza',
       blocks: [
         {
           type: 'cards',
@@ -139,8 +149,8 @@ export const letsTalkProyect: Proyect = {
       ],
     },
     {
-      title: 'Productos publicitarios',
-      intro: 'Piezas para el día del evento, que extienden la campaña más allá de los anuncios.',
+      label: 'Productos publicitarios',
+      title: 'La campaña también llega a las manos del público el día del evento',
       blocks: [
         {
           type: 'image',
@@ -160,19 +170,32 @@ export const letsTalkProyect: Proyect = {
       ],
     },
     {
-      title: 'Resultado',
+      label: 'Resultado',
+      title: 'Una sola ilustración que sostiene toda la campaña',
+      tinted: true,
       blocks: [
         {
-          type: 'gallery',
-          images: [
-            { src: mockupCalle, alt: "Cartel de Let's Talk pegado en un poste en la calle", caption: 'De día, en la calle' },
-            { src: mockupNoche, alt: "Cartel de Let's Talk en una valla iluminada de noche", caption: 'De noche, en una valla' },
+          type: 'stats',
+          items: [
+            { value: '1', label: 'ilustración central' },
+            { value: '3', label: 'formatos: flyer, cartel y banner' },
+            { value: '3', label: 'productos para el día del evento' },
           ],
+        },
+        // La foto de noche ya es la portada, así que aquí va la de día
+        {
+          type: 'image',
+          image: {
+            src: mockupCalle,
+            alt: "Cartel de Let's Talk pegado en un poste en la calle",
+            caption: 'De día, en la calle. [Agrega qué buscabas que se viera desde lejos.]',
+          },
         },
       ],
     },
   ],
 
+  // ── Epílogo ──
   // Cuando lo tengas claro, cuenta qué aprendiste. Por ejemplo:
   // learnings: [
   //   'Diseñar primero la pieza principal y después adaptarla me ahorró tiempo y mantuvo la campaña coherente.',

@@ -9,6 +9,7 @@ export interface Proyect {
   projectImagesList?: { src: ImageMetadata; alt: string }[];
   details?: ProyectDetail[];
   shortDescription: string;
+  /** Qué tipo de proyecto es, con honestidad: "Proyecto académico, SENA", "Pro bono para una marca real". */
   projectType?: string;
   brandDescription?: string;
   descriptionProject: string;
@@ -28,6 +29,18 @@ export interface Proyect {
   linkWebsite?: string;
 
   // ── Caso de estudio (todos opcionales) ──
+  /**
+   * Título orientado a resultado: qué cambió + tipo de trabajo.
+   * Ej.: "Una marca de yogur helado para mascotas que se distingue en el estante".
+   * Si existe, el nombre del proyecto pasa a ser la línea pequeña de arriba.
+   */
+  headline?: string;
+  /** Quién más participó. Ej.: ["Identidad visual: NubeLab", "Fotografía: de la marca"]. */
+  credits?: string | string[];
+  /** Objetivos generales (útil en branding, donde no hay "negocio" y "usuario"). */
+  objectives?: string[];
+  /** Botones de la portada (máximo 3). Si no hay, se usan linkFigma, linkWebsite y linkGit. */
+  links?: ProyectLink[];
   /** Colores de la marca del proyecto. Se usan con moderación como acento. */
   brand?: ProyectBrand;
   /** Tu rol en una frase corta, por ejemplo "Diseñadora de marca y empaque". */
@@ -49,11 +62,14 @@ export interface Proyect {
 /**
  * Colores de la marca del proyecto.
  * - primary: el color más reconocible de la marca.
- * - surface (opcional): un tono claro para el fondo de la portada.
+ * - secondary (opcional): segundo color, para el botón principal.
+ * - surface (opcional): el fondo detrás de la imagen de portada.
  * El color del texto encima de la marca se calcula solo para que siempre sea legible.
  */
 export interface ProyectBrand {
   primary: string;
+  /** Segundo color de la marca. Se usa en el botón principal. Si no hay, el botón es negro. */
+  secondary?: string;
   surface?: string;
   headingFont?: string;
   fontHref?: string;
@@ -61,10 +77,26 @@ export interface ProyectBrand {
 
 /** Un capítulo del caso: agrupa varios bloques bajo un mismo tema. */
 export interface CaseChapter {
+  /** El tema, corto: "Investigación". Se muestra en el menú y sobre el título. */
+  label?: string;
+  /** La conclusión del capítulo, no el tema: "Las clientas quieren saber de qué está hecha cada pieza". */
   title: string;
   intro?: string;
   id?: string;
+  /** Fondo con el tono de la marca, para destacar un capítulo (por ejemplo, Resultado). */
+  tinted?: boolean;
   blocks: CaseBlock[];
+}
+
+/** Un botón de la portada. Nómbralo por lo que hace: "Ver prototipo en Figma". */
+export interface ProyectLink {
+  label: string;
+  href: string;
+  kind?: "figma" | "behance" | "pdf" | "website" | "github" | "video";
+  /** Dato extra que se muestra junto al texto, por ejemplo "PDF, 4 MB". */
+  note?: string;
+  /** El botón destacado. Si ninguno lo es, se destaca el primero. */
+  primary?: boolean;
 }
 
 export interface CaseImage {
