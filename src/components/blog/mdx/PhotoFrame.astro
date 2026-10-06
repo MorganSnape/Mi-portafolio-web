@@ -1,0 +1,24 @@
+---
+// Reemplaza automáticamente cada ![alt](./foto.jpg) del MDX.
+// Con imágenes locales Astro entrega `src` como ImageMetadata (se optimiza);
+// con rutas de /public o URLs externas llega como texto.
+import { Image } from 'astro:assets'
+import type { ImageMetadata } from 'astro'
+
+interface Props {
+  src: ImageMetadata | string
+  alt: string
+  class?: string
+}
+
+const { src, alt, class: className } = Astro.props
+const clases = ['border-2 border-black w-auto', className]
+---
+
+{
+  typeof src === 'string' ? (
+    <img src={src} alt={alt} loading="lazy" class:list={clases} />
+  ) : (
+    <Image src={src} alt={alt} class:list={clases} />
+  )
+}

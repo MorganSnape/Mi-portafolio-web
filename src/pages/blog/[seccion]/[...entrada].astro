@@ -1,0 +1,39 @@
+---
+import PostLayout from '@/layouts/blog/PostLayout.astro'
+import { getCollection, render } from 'astro:content'
+import { dataSeccionesBlog } from '@/data/blog/dataSeccionesBlog'
+import { componentesMdx } from '@/components/blog/mdx'
+import { entradaDe, formatearFecha, seccionDe } from '@/utils/blog'
+
+export async function getStaticPaths() {
+  const slugsSecciones = dataSeccionesBlog.map(seccion => seccion.slug)
+
+  return (await getCollection('blog'))
+    // Solo apuntes que están dentro de la carpeta de una sección registrada
+    .filter(post => slugsSecciones.includes(seccionDe(post)) && entradaDe(post) !== '')
+    .map(post => ({
+      params: { seccion: seccionDe(post), entrada: entradaDe(post) },
+      props: { post },
+    }))
+}
+
+const { post } = Astro.props
+// `headings` trae todos los títulos del MDX con su id: alimenta el SideNav
+const { Content, headings } = await render(post)
+
+const seccion = dataSeccionesBlog.find(s => s.slug === seccionDe(post))
+---
+
+<PostLayout
+  title={post.data.title}
+  headings={headings}
+  volver={{ href: `/blog/${seccionDe(post)}`, texto: seccion?.title ?? 'Inicio de Blog' }}
+>
+  {post.data.curso && <p class="text-sm text-gray-500">{post.data.curso}</p>}
+  <h1>{post.data.title}</h1>
+  <p>{post.data.description}</p>
+  <time datetime={post.data.pubDate.toISOString()} class="text-sm text-gray-500">
+    {formatearFecha(post.data.pubDate)}
+  </time>
+  <Content components={componentesMdx} />
+</PostLayout>

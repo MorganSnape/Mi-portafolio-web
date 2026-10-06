@@ -1,0 +1,21 @@
+---
+// Línea — [ Título ] — línea, como en los bocetos.
+interface Props {
+  titulo: string
+  id?: string
+  nivel?: 'h2' | 'h3'
+}
+
+const { titulo, id, nivel = 'h2' } = Astro.props
+const Encabezado = nivel
+---
+
+<div id={id} class="flex items-center gap-4 w-full scroll-mt-28">
+  <span aria-hidden="true" class="h-0.5 flex-1 bg-black"></span>
+  <Encabezado
+    class="border-2 border-black rounded-lg bg-white px-4 py-1 text-center text-base md:text-lg font-semibold font-fantabular text-balance max-w-[70%]"
+  >
+    {titulo}
+  </Encabezado>
+  <span aria-hidden="true" class="h-0.5 flex-1 bg-black"></span>
+</div>

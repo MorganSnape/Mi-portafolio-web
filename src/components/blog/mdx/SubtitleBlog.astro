@@ -1,0 +1,35 @@
+---
+// Reemplaza automáticamente cada ## Título del MDX.
+// Astro le pasa el `id`, así el SideNav puede enlazar a esta sección.
+// También puedes usarlo a mano para cambiar la alineación:
+// <SubtitleBlog align="center">Título</SubtitleBlog>  (este no aparece en el SideNav)
+interface Props {
+  id?: string
+  align?: 'left' | 'center' | 'right'
+}
+
+const { id, align = 'left' } = Astro.props
+---
+
+<div id={id} class="w-full relative h-2 flex items-center my-20 scroll-mt-24">
+  <div
+    class:list={[
+      'min-w-[12rem] md:min-w-[18rem] lg:min-w-sm absolute bottom-full translate-y-1/2',
+      {
+        'left-1/2 -translate-x-1/2': align === 'center',
+        'left-5 md:left-20': align === 'left',
+        'right-5 md:right-20': align === 'right',
+      },
+    ]}
+  >
+    <h2
+      class:list={[
+        'bg-secondary w-full h-14 md:h-16 py-2 md:py-6 px-5 md:px-12 flex items-center justify-center text-center text-base md:text-lg',
+        align === 'center' ? 'center-tag-me' : 'tag-me',
+      ]}
+    >
+      <span class="tracking-[6px] font-bold"><slot /></span>
+    </h2>
+  </div>
+  <div class="bg-black w-full h-2"></div>
+</div>

@@ -1,0 +1,105 @@
+---
+import BarNav from '@/components/BarNav.astro'
+import Footer from '@/components/Footer.astro'
+import Layout from '@/layouts/Layout.astro'
+import DivisorTitulo from '@/components/blog/DivisorTitulo.astro'
+import TarjetaArticulo from '@/components/blog/TarjetaArticulo.astro'
+import { Icon } from 'astro-icon/components'
+import { getCollection } from 'astro:content'
+import { dataSeccionesBlog } from '@/data/blog/dataSeccionesBlog'
+import { agruparPorCurso, postsDeSeccion } from '@/utils/blog'
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog')
+
+  return dataSeccionesBlog.map(seccion => ({
+    params: { seccion: seccion.slug },
+    props: {
+      seccion,
+      grupos: agruparPorCurso(postsDeSeccion(posts, seccion.slug)),
+    },
+  }))
+}
+
+const { seccion, grupos } = Astro.props
+const { title, description, image } = seccion
+---
+
+<Layout title={`${title} - Gabriela Ferrer`}>
+  <BarNav active={false} />
+  <main
+    class:list={[
+      'mx-auto w-full max-w-[1280px] px-4 sm:px-12 xl:px-0 py-12 font-rethink grid gap-10',
+      { 'lg:grid-cols-[220px_1fr]': grupos.length > 0 },
+    ]}
+  >
+    <!-- Índice de apuntes (columna izquierda del boceto) -->
+    {
+      grupos.length > 0 && (
+        <aside class="lg:sticky lg:top-24 lg:self-start" aria-label="Índice de apuntes">
+          <a
+            href="/blog"
+            class="inline-flex items-center gap-2 text-sm font-semibold mb-6 hover:text-primary"
+          >
+            <Icon name="fa6-solid:arrow-left" width={14} height={14} aria-hidden="true" />
+            Todos los temas
+          </a>
+          <p class="font-fantabular text-lg mb-3">Índice</p>
+          <nav>
+            <ul class="flex gap-2 overflow-x-auto pb-2 lg:flex-col lg:overflow-visible lg:pb-0 lg:border-l-2 lg:border-black">
+              {grupos.map(grupo => (
+                <li class="shrink-0">
+                  <a
+                    href={`#${grupo.ancla}`}
+                    class="block border-2 border-black rounded-full px-3 py-1 text-sm whitespace-nowrap lg:whitespace-normal lg:border-0 lg:rounded-none lg:px-4 lg:py-1.5 hover:bg-secondary"
+                  >
+                    {grupo.curso}
+                    <span class="text-gray-500">({grupo.posts.length})</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
+      )
+    }
+
+    <!-- Contenido del tema -->
+    <div class="flex flex-col gap-10 min-w-0">
+      <header class="flex flex-col gap-6">
+        <img
+          src={image}
+          alt=""
+          class="w-full h-56 md:h-72 object-cover object-center rounded-2xl border-2 border-black"
+        />
+        <h1 class="text-4xl md:text-5xl font-bold font-fantabular text-balance">
+          {title}
+        </h1>
+        <p class="text-lg leading-7 text-pretty max-w-prose">{description}</p>
+      </header>
+
+      {
+        grupos.length === 0 ? (
+          <p class="border-2 border-dashed border-black rounded-xl p-6 text-center">
+            Todavía no hay apuntes en este tema.
+            <a href="/blog" class="font-semibold underline">Ver otros temas</a>
+          </p>
+        ) : (
+          grupos.map(grupo => (
+            <section class="flex flex-col gap-6">
+              <DivisorTitulo titulo={grupo.curso} id={grupo.ancla} />
+              <ol class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {grupo.posts.map((post, index) => (
+                  <li>
+                    <TarjetaArticulo post={post} numero={index + 1} />
+                  </li>
+                ))}
+              </ol>
+            </section>
+          ))
+        )
+      }
+    </div>
+  </main>
+  <Footer />
+</Layout>

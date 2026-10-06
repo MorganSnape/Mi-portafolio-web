@@ -5,41 +5,35 @@ description: "Los arrays son fundamentales en la programación, permitiendo a lo
 pubDate: 2026-06-10
 ---
 
-import SubtitleBlog from '@/components/blog/SubtitleBlog.astro'
-import BrowserCodeBlock from '@/components/blog/BrowserCodeBlock.astro'
-import PageDivider from '@/components/blog/PageDivider.astro'
+import SubtitleBlog from '@/components/blog/mdx/SubtitleBlog.astro'
+import BrowserCodeBlock from '@/components/blog/mdx/BrowserCodeBlock.astro'
+import PageDivider from '@/components/blog/mdx/PageDivider.astro'
 
-<SubtitleBlog align="left">
   ## ¿Como crear un Array?
-</SubtitleBlog>
 
-- **1-** Usando la función constructora new Array () o usando solo .Array ()
 
-<BrowserCodeBlock>
+ **1-** Usando la función constructora new Array () o usando solo .Array ()
+
   ```js
   const fruits = Array("apple", "banana", "orange");
 
   const justOneNumber = Array(12); // creas un array con 12 posiciones vacias
   ```
-</BrowserCodeBlock>
 
 **Array es un conjunto de elementos que se insertan en una variable**
 
 El constructor permite crear arrays con los elementos que insertes en el, pero sin embargo si solo ingresas un número este lo toma si le asignaras la longitud del array.
 
-- **2-** Usando la sintaxis literal del array.
+**2-** Usando la sintaxis literal del array.
 
-<BrowserCodeBlock>
   ```js
   const oneNumber = [4]; // Aquí no sucede como con el constructor
 
   const emptyArray = []; //Defines un array vacio
   ```
-</BrowserCodeBlock>
 
 Estos pueden contender todo tipo de elementos.
 
-<BrowserCodeBlock>
   ```js
   //Array Mixto
   const recipeIngredients = [
@@ -52,27 +46,20 @@ Estos pueden contender todo tipo de elementos.
     },
   ];
   ```
-</BrowserCodeBlock>
 
-<SubtitleBlog align="left">
   ## Acceder a elementos dentro de un array
-</SubtitleBlog>
 
 Lo hacemos mediante el uso de la posición también llamado el indice , teniendo en cuenta que siempre la posicion incial parte desde 0.
 
 Adiccional contamos en el método _.length_ que permite saber el lago de un array.
 
-<BrowserCodeBlock>
   ```js
   const firsFruit = fruits[0];
 
   const numberOfFruits = fruits.length; // este permite acceder al valor del largo del array.
   ```
-</BrowserCodeBlock>
 
-<SubtitleBlog align="left">
   ## Mutabilidad e inmutabilidad
-</SubtitleBlog>
 
 Los conceptos de mutabilidad e inmutabilidad juegan un papel clave, especialmente al manipular arrays.
 
@@ -86,19 +73,16 @@ Por otro lado, la **_inmutabilidad_** asegura que una vez creado, **el array no 
 
 El método **.concat()** el crea un nuevo array con la información del array que le pases más la nueva que le insertes como parametro.
 
-<BrowserCodeBlock>
   ```js
   const fruist = ["manzana", "mango", "sandia"];
   const newFruist = fruist.concat(["naranja", "fresa"]);
   console.log(newFruist); // ["manzana","mango","sandia","naranja","fresa"]
   ```
-</BrowserCodeBlock>
 
 ### Ejercicio de practica
 
 Es la suma de todos los elementos de un array
 
-<BrowserCodeBlock>
   ```js
   const numbersArray = [1, 2, 3, 4, 5];
 
@@ -110,11 +94,8 @@ Es la suma de todos los elementos de un array
 
   console.log(sum);
   ```
-</BrowserCodeBlock>
 
-<SubtitleBlog align="left">
-  ## Métodos de los Arrays
-</SubtitleBlog>
+## Métodos de los Arrays
 
 ### **.pusch()**
 
@@ -136,7 +117,6 @@ Contrario al método push, pop remueve el último elemento de un array, devolvie
 - Se usa cuando quieres transformar datos
 - Puedes acceder al indice pero usarlo es opcional.
 
-<BrowserCodeBlock>
   ```js
   //Sintaxis
   const array = [];
@@ -153,7 +133,6 @@ Contrario al método push, pop remueve el último elemento de un array, devolvie
     return `<div>${tag}</div>`;
   });
   ```
-</BrowserCodeBlock>
 
 ### **forEach()**
 
@@ -163,7 +142,6 @@ Contrario al método push, pop remueve el último elemento de un array, devolvie
 - Modicicar algo externo
 - Ejecutar acciones (ej: enviar datos, guardar algo)
 
-<BrowserCodeBlock>
   ```js
   //Sintaxis
 
@@ -179,13 +157,11 @@ Contrario al método push, pop remueve el último elemento de un array, devolvie
     console.log(`Producto: ${p}`);
   });
   ```
-</BrowserCodeBlock>
 
 ### **filter()**
 
 **Crea un nuevo array** con los elementos que cumplen una condición _true_. Es como decir "de todo esto, solo quiero algunos".
 
-<BrowserCodeBlock>
   ```js
   //Ejemplo
 
@@ -193,26 +169,25 @@ Contrario al método push, pop remueve el último elemento de un array, devolvie
 
   const pares = numeros.filter((n) => n % 2 === 0);
   ```
-</BrowserCodeBlock>
 
 ### reduce()
 
 **Reduce todo el array a un solo valor**. Este puede ser un número, string u objeto
 
-<BrowserCodeBlock>
+
   ```js
   //Sintaxis
   array.reduce((acumulador, elemento)=>{
     return nuevoValor;
   }valorInicial);
   ```
-</BrowserCodeBlock>
+
 
 - **Acumulador** es la variable propia de la función que almacena el valor
 - **Elemento es** el item actual a trabajar en la función ejemplo el primer item seria el 1 luego el segundo item seria el 2
 - **Valor Inicial** es tal cual el valor inical de la variable
 
-<BrowserCodeBlock>
+
   ```js
   //Ejemplo:
   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -223,9 +198,9 @@ Contrario al método push, pop remueve el último elemento de un array, devolvie
   );
   // Devuelve 50
   ```
-</BrowserCodeBlock>
 
-<BrowserCodeBlock>
+
+
   ```js
   //Otro ejemplo
   //Hacer que en un objeto se almacene las palabras repetidas y su cantidad
@@ -244,7 +219,7 @@ Contrario al método push, pop remueve el último elemento de un array, devolvie
   console.log(palabrasRepetidas);
   //retorna  { manzana: 1, banana: 1, mora: 2 }
   ```
-</BrowserCodeBlock>
+
 
 ### **Método find() y findIndex**
 
@@ -254,16 +229,16 @@ Son métodos que no modifican el array pero ayudan a encontrar elementos dentro 
 
 Busca el primer elemento que cumpla una condición Y lo devuelve directamente (no un array). Este espera una función como argumento que aplique la condición
 
-<BrowserCodeBlock>
+
   ```js
   //sintaxis
   array.metodo((elemento) => {
     // código
   });
   ```
-</BrowserCodeBlock>
 
-<BrowserCodeBlock>
+
+
   ```js
   //Ejemplo
   const multipleOf5 = [5, 10, 15, 20];
@@ -271,13 +246,13 @@ Busca el primer elemento que cumpla una condición Y lo devuelve directamente (n
   console.log(firstNumberGreaterThan10);
   // Imprime 15
   ```
-</BrowserCodeBlock>
+
 
 #### findIndex()
 
 Busca el primer elemento que cumple una condición. Pero en vez de devolver el valor… devuelve su posición (índice). **Si este no encuentra nada devuelve en -1**
 
-<BrowserCodeBlock>
+
   ```js
   const numeros = [10, 20, 30, 40];
 
@@ -285,7 +260,7 @@ Busca el primer elemento que cumple una condición. Pero en vez de devolver el v
 
   //Resultado 2  (Porque 30 es el primer número > 25)
   ```
-</BrowserCodeBlock>
+
 
 #### ¿Para qué sirve?
 
@@ -376,3 +351,5 @@ const actualizado = { ...user, age: 21 };
 - Hace copias superficiales no profundas
 - Si repites propiedades en objetos , la ultima gana
 - **_..._** No transforma datos, solo expande/copia datos
+
+

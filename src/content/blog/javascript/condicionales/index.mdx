@@ -4,19 +4,19 @@ description: "Al programar, uno de los conceptos fundamentales a dominar, son la
 pubDate: 2026-04-17 
 ---
 import NumeroSecreto from "./SecretGame.jsx";
-import SubtitleBlog from '@/components/blog/SubtitleBlog.astro'
-import BrowserCodeBlock from '@/components/blog/BrowserCodeBlock.astro'
-import PageDivider from '@/components/blog/PageDivider.astro'
+import SubtitleBlog from '@/components/blog/mdx/SubtitleBlog.astro'
+import BrowserCodeBlock from '@/components/blog/mdx/BrowserCodeBlock.astro'
+import PageDivider from '@/components/blog/mdx/PageDivider.astro'
 
-<SubtitleBlog align="left">
+
   ## if, else y else if
-</SubtitleBlog>
+
 
 La más básica de estas es **IF**, esta nos permite ejecutar un bloque de código solo si la condición es verdadera.
 
 ### Estructura:
 
-<BrowserCodeBlock>
+
   ```js
   if (condición) {
     //código a ejecutar
@@ -24,11 +24,11 @@ La más básica de estas es **IF**, esta nos permite ejecutar un bloque de códi
     //Solo se ejecuta si las anteriores validaciones no son verdaderas
   }
   ```
-</BrowserCodeBlock>
+
 
 ### Ejemplo:
 
-<BrowserCodeBlock>
+
   ```js
   let edad = 18;
   if (edad >= 18) {
@@ -37,15 +37,10 @@ La más básica de estas es **IF**, esta nos permite ejecutar un bloque de códi
     console.log("Eres menor de edad");
   }
   ```
-</BrowserCodeBlock>
-<SubtitleBlog align="left">
   ## Juego del número secreto
-</SubtitleBlog>
 <NumeroSecreto client:load />
-
-<SubtitleBlog align="left">
   ## Switch
-</SubtitleBlog>
+
 
 La condición switch en JavaScript es una estructura de control que permite ejecutar diferentes bloques de código según si el valor de una expresión es true.
 
@@ -53,7 +48,7 @@ Es especialmente útil cuando necesitas manejar múltiples casos basados en el v
 
 ### Estrucctura
 
-<BrowserCodeBlock>
+
   ```js
   switch (expresión) {
     case valor1:
@@ -67,11 +62,11 @@ Es especialmente útil cuando necesitas manejar múltiples casos basados en el v
       break;
   }
   ```
-</BrowserCodeBlock>
+
 
 ### Ejemplo
 
-<BrowserCodeBlock>
+
   ```js
   let fruta = "Papaya";
 
@@ -91,7 +86,9 @@ Es especialmente útil cuando necesitas manejar múltiples casos basados en el v
       break;
   }
   ```
-</BrowserCodeBlock>
+
+
+
 
 
 

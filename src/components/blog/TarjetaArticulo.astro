@@ -1,0 +1,43 @@
+---
+import { Icon } from 'astro-icon/components'
+import { formatearFecha, urlPost, type Post } from '@/utils/blog'
+
+interface Props {
+  post: Post
+  /** Posición dentro del curso. Si no se pasa, se muestra un ícono. */
+  numero?: number
+  /** Nombre del tema, útil en "Entradas recientes" donde se mezclan temas. */
+  tema?: string
+}
+
+const { post, numero, tema } = Astro.props
+---
+
+<a
+  href={urlPost(post)}
+  class="group flex items-center gap-4 h-full border-2 border-black rounded-xl bg-white p-3 transition-colors duration-200 hover:bg-primary/10 hover:border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black motion-reduce:transition-none"
+>
+  <span
+    class="w-10 h-10 shrink-0 rounded-full bg-primary text-white font-bold flex items-center justify-center"
+    aria-hidden="true"
+  >
+    {
+      numero !== undefined ? (
+        String(numero).padStart(2, '0')
+      ) : (
+        <Icon name="fa6-solid:file-lines" width={16} height={16} />
+      )
+    }
+  </span>
+  <span class="flex flex-col min-w-0">
+    <span class="font-semibold leading-snug text-black line-clamp-2 group-hover:text-primary">
+      {post.data.title}
+    </span>
+    <span class="text-sm text-gray-500 mt-1">
+      {tema && <span class="font-semibold">{tema}, </span>}
+      <time datetime={post.data.pubDate.toISOString()}>
+        {formatearFecha(post.data.pubDate)}
+      </time>
+    </span>
+  </span>
+</a>

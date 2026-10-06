@@ -4,17 +4,15 @@ description: 'Crear objetos de forma manual está bien cuando necesitas uno o do
 pubDate: 2026-06-18
 ---
 
-import SubtitleBlog from '@/components/blog/SubtitleBlog.astro'
-import BrowserCodeBlock from '@/components/blog/BrowserCodeBlock.astro'
-import PageDivider from '@/components/blog/PageDivider.astro'
-import DataTable from '@/components/blog/DataTable.astro'
-import PhotoFrame from '@/components/blog/PhotoFrame.astro'
+import SubtitleBlog from '@/components/blog/mdx/SubtitleBlog.astro'
+import BrowserCodeBlock from '@/components/blog/mdx/BrowserCodeBlock.astro'
+import PageDivider from '@/components/blog/mdx/PageDivider.astro'
+import DataTable from '@/components/blog/mdx/DataTable.astro'
+import PhotoFrame from '@/components/blog/mdx/PhotoFrame.astro'
 import prototipo from '@/assets/blog/objetos-article/prototipo.png'
 import herencia from '@/assets/blog/objetos-article/herencia.png'
 
-<SubtitleBlog align="left">
-  ## ¿Qué es un objeto?
-</SubtitleBlog>
+## ¿Qué es un objeto?
 <div class="blog-content-grid-responsive">
   <div class="w-full">
     Un objeto es una <mark>`estructura de datos`</mark> que permite agrupar información relacionada en una sola unidad. Cada pieza de información se guarda como una propiedad, usando una clave y un valor. Por ejemplo, un usuario puede tener un nombre, una edad y una profesión, todo dentro del mismo objeto.
@@ -24,7 +22,7 @@ import herencia from '@/assets/blog/objetos-article/herencia.png'
     - **Metódos :** Acciones que pertenecen al objeto
   </div>
   <div class="w-full">
-    <BrowserCodeBlock>
+    
       ```js
       //Sintaxis
 
@@ -34,7 +32,7 @@ import herencia from '@/assets/blog/objetos-article/herencia.png'
       };
 
       ```
-    </BrowserCodeBlock>
+    
   </div>
 </div>
 
@@ -46,7 +44,7 @@ import herencia from '@/assets/blog/objetos-article/herencia.png'
 <div class="blog-content-grid-responsive">
   <div>
     ### ¿Cómo se usa comúnmente?
-    <BrowserCodeBlock>
+    
       ```js
       const user = {
         name: "Ana",
@@ -54,7 +52,7 @@ import herencia from '@/assets/blog/objetos-article/herencia.png'
         isStudent: true,
       };
       ```
-    </BrowserCodeBlock>
+    
   </div>
   <div>
     ### ¿Para qué sirve?
@@ -71,61 +69,61 @@ import herencia from '@/assets/blog/objetos-article/herencia.png'
 - Los valores pueden ser: string, numbers, boolean, array, otro objeto, funciones
 
 
-<SubtitleBlog align="left">
+
   ## Formas de acceder o modificar valores
-</SubtitleBlog>
+
 
 <div class="blog-content-grid-responsive"> 
 <div>
 #### Notación punto
 
-<BrowserCodeBlock>
+
   ```js
     user.name  
   ```
-</BrowserCodeBlock>
+
 </div>
 
 <div>
 
 #### Notación de corchetes
 
-<BrowserCodeBlock>
+
   ```js
   user['age']
   ```
-</BrowserCodeBlock>
+
 </div>
 
 <div>
 #### Modificar valores
 
-<BrowserCodeBlock>
+
   ```js
   user.age = 21
   ```
-</BrowserCodeBlock>
+
 </div>
 <div>
 #### Agregar propiedades
 
-<BrowserCodeBlock>
+
   ```js
   user.country = 'Colombia'
   ```
-</BrowserCodeBlock>
+
 </div>
 </div>
 
 
 
-<SubtitleBlog align="left">
+
   ## Métodos en un objeto
-</SubtitleBlog>
 
 
 
-  <BrowserCodeBlock>
+
+  
     ```js
      ⁉️ Un metódo es una función dentro de un objeto. Es una acción que ese objeto puede hacer.
 
@@ -139,7 +137,7 @@ import herencia from '@/assets/blog/objetos-article/herencia.png'
     //¿Como usarlo?
     user.metodo()
     ```
-  </BrowserCodeBlock>
+  
 
 <div class="blog-content-grid-responsive">
  <div>
@@ -153,7 +151,7 @@ import herencia from '@/assets/blog/objetos-article/herencia.png'
       - 👉 this significa: “este objeto” es para hacer referencia al valor de una propiedad dentro del mismo objeto
  </div>
 
-  <BrowserCodeBlock>
+  
     ```js
     const user = {
       name: 'Ana',
@@ -165,12 +163,12 @@ import herencia from '@/assets/blog/objetos-article/herencia.png'
       },
     }
     ```
-  </BrowserCodeBlock>
+  
 </div>
 
 ### Eliminar propiedades de un objeto
 
-<BrowserCodeBlock>
+
   ```js
   ⁉️ Elimina una propiedad (clave + valor) de un objeto. Esto es mediante al operador propio de JavaScript delete. Este no es un método
 
@@ -181,11 +179,11 @@ import herencia from '@/assets/blog/objetos-article/herencia.png'
 
   delete user.age
   ```
-</BrowserCodeBlock>
 
-<SubtitleBlog align="left">
+
+
   ## Función constructora
-</SubtitleBlog>
+
 
 <div class="blog-content-grid-responsive">
   <div>
@@ -198,7 +196,7 @@ import herencia from '@/assets/blog/objetos-article/herencia.png'
     **Necesitamos saber que es una**  <mark>`instancia`</mark>. Una instancia es una clase de objeto creado a partir de una clase o constructor.
   </div>
 
-  <BrowserCodeBlock>
+  
     ```js
     function Person(name,lastName,age){
       this.name = name;
@@ -212,7 +210,7 @@ import herencia from '@/assets/blog/objetos-article/herencia.png'
     /* ↳ Usamos la palabra reservada new para
     crear un nuevo objeto y llamar a la función constructora*/
     ```
-  </BrowserCodeBlock>
+  
 </div>
 
 ### ¿Para qué sirve prototype en una función constructora?
@@ -228,7 +226,7 @@ Después de definir la función constructora, es probable que necesites **agrega
   </div>
 </div>
 
-<BrowserCodeBlock>
+
   ```js
   Person.prototype.cellPhone = "123456789";
   ↳ /* Esta propiedad estará disponible para todas las instancias de Person*/
@@ -238,7 +236,7 @@ Después de definir la función constructora, es probable que necesites **agrega
   }
   /*Podemos hace los mismo para agregar métodos*/
   ```
-</BrowserCodeBlock>
+
 
 #### ¿Por qué usar ***.prototype*** en lugar de declararlo dentro de la función constructora?
 
@@ -248,17 +246,13 @@ Después de definir la función constructora, es probable que necesites **agrega
 
 #### Agregar una propiedad a una unica instancia
 
-<BrowserCodeBlock>
+
   ```js
  person1.nationality = "Colombian";
  ↳ /* Esta propiedad estará disponible unicamente para la instancia person1*/
   ```
-</BrowserCodeBlock>
 
-<SubtitleBlog align="left">
   ## Clases en JavaScript
-</SubtitleBlog>
-
 
 <div class="w-full grid grid-cols-2 gap-4">
  <div class="mt-4">
@@ -270,7 +264,7 @@ Después de definir la función constructora, es probable que necesites **agrega
       **¿Qué es sugar syntax?** Es una sintaxis más legible que hace lo mismo que el código original por debajo. En este caso, las clases siguen creando objetos como las funciones constructoras, pero se leen mejor.
     </div>
  </div>
-  <BrowserCodeBlock>
+  
   ```js
   //Sintaxis  
 
@@ -289,52 +283,35 @@ Después de definir la función constructora, es probable que necesites **agrega
   ana.name // Este retorna el valor de la llave Ana
   ana.saludar();
   ```
-  </BrowserCodeBlock>
+  
 </div>
 
+## Diferencias entre clases y funciones constructoras
+
+| Característica | Función constructora | Clase |
+|---|---|---|
+| ¿Qué es? | Una función usada como molde para crear  objetos. | Una sintaxis moderna para crearobjetos. |
+| ¿Para qué sirve? | Crear múltiples objetos con una  estructura similar. | Crear múltiplesobjetos de forma más   organizada. |
+| ¿Cómo se crea? | Se utiliza `function` y `new`. | Se  utiliza `class` y `new`. |
+| Constructor | La propia función actúa como  constructor. | Se utiliza `constructor()`. |
+| Métodos | Se suelen agregar al `prototype`. | Se  escriben directamente dentro de la clase. |
+| Sintaxis | `function User(name) { ... }` | `class User  { ... }` |
+| Uso | `new User("Ana")` | `new User("Ana")` |
+| Prototipos | Utiliza el sistema de prototipos de  JavaScript. | También utiliza prototiposinternamente. |
+
+## Herencia y prototipos
+
+<TwoColumns>
+  <PhotoNote src={prototipo} alt="Ejemplo de prototipo en las clases">
+
+    <mark>Prototipo:</mark> **Cada clase o función constructora genera un prototipo** que comparte propiedades y métodos con sus instancias, lo que te permite escribir código más limpio, reutilizable y organizado.
+
+  </PhotoNote>
+  <PhotoNote src={herencia} alt="Ejemplo de herencia entre clases">
+
+    <mark>Herencia:</mark> La herencia en JavaScript **ocurre de forma automática gracias al prototipo**. Cuando defines un método en la clase constructora, ese método queda disponible para cualquier instancia que crees después.
+
+  </PhotoNote>
+</TwoColumns>
 
 
-<SubtitleBlog align="left">
-  ## Diferencias entre clases y funciones constructoras
-</SubtitleBlog>
-
-<DataTable>
-  | Característica | Función constructora | Clase |
-  |---|---|---|
-  | ¿Qué es? | Una función usada como molde para crear  objetos. | Una sintaxis moderna para crear objetos. |
-  | ¿Para qué sirve? | Crear múltiples objetos con una  estructura similar. | Crear múltiples objetos de forma más   organizada. |
-  | ¿Cómo se crea? | Se utiliza `function` y `new`. | Se  utiliza `class` y `new`. |
-  | Constructor | La propia función actúa como  constructor. | Se utiliza `constructor()`. |
-  | Métodos | Se suelen agregar al `prototype`. | Se  escriben directamente dentro de la clase. |
-  | Sintaxis | `function User(name) { ... }` | `class User  { ... }` |
-  | Uso | `new User("Ana")` | `new User("Ana")` |
-  | Prototipos | Utiliza el sistema de prototipos de  JavaScript. | También utiliza prototipos internamente. |
-
-</DataTable>
-
-<SubtitleBlog align="left">
-  ## Herencia y prototipos
-</SubtitleBlog>
-
-<div class="w-full grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-4 ">
-  <div class="flex flex-col items-center w-full">
-    <PhotoFrame
-    src={prototipo}
-    alt="Ejemplo de prototipo en las clases"
-    class="h-full max-h-1/2"
-    />
-    <p class="mt-4">
-      <mark>`Prototipo:`</mark> **Cada clase o función constructora genera un prototipo** que comparte propiedades y métodos a sus instancia, lo que te permite escribir código más limpio, reutilizable y organizado.
-    </p>
-  </div>
-  <div class="flex flex-col items-center w-full">
-    <PhotoFrame
-      src={herencia}
-      alt="Ejemplo de prototipo en las clases"
-      class="h-full max-h-1/2"
-      />
-     <p class="mt-4 text-center" >
-      <mark>`Herencia:`</mark> La herencia en JavaScript **ocurre de forma automática gracias al prototipo**. Cuando defines un método en la clase constructora, ese método queda disponible para cualquier instancia que crees después.
-    </p>
-  </div>
-</div>

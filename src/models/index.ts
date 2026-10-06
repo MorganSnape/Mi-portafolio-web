@@ -259,9 +259,12 @@ export type NavLinksType = {
   href: string;
 };
 
+export type CategoriaBlog = 'diseno' | 'programacion';
+
 export interface SectionBlogType {
   title: string;
   description: string;
   image: string;
-  slug: 'javascript' | 'diseñoGrafico' | 'react';
+  categoria: CategoriaBlog;
+  slug: string;
 }

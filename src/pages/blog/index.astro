@@ -1,85 +1,108 @@
 ---
 import BarNav from '@/components/BarNav.astro'
 import Footer from '@/components/Footer.astro'
-import { dataSeccionesBlog } from '@/data/blog/dataSeccionesBlog'
-
 import Layout from '@/layouts/Layout.astro'
+import DivisorTitulo from '@/components/blog/DivisorTitulo.astro'
+import TarjetaTema from '@/components/blog/TarjetaTema.astro'
+import TarjetaArticulo from '@/components/blog/TarjetaArticulo.astro'
 import { Icon } from 'astro-icon/components'
-import { Image } from 'astro:assets'
-import type { $brand } from 'astro:schema'
+import { categoriasBlog, dataSeccionesBlog } from '@/data/blog/dataSeccionesBlog'
+import { getPostsRecientes, postsDeSeccion, seccionDe } from '@/utils/blog'
+
+const CANTIDAD_RECIENTES = 4
+
+const todosLosPosts = await getPostsRecientes()
+const recientes = todosLosPosts.slice(0, CANTIDAD_RECIENTES)
+
+const contarApuntes = (slug: string) =>
+  postsDeSeccion(todosLosPosts, slug).length
+
+const nombreTema = (slug: string) =>
+  dataSeccionesBlog
+    .find(seccion => seccion.slug === slug)
+    ?.title.replace('Apuntes sobre ', '')
+
+// Solo se muestran las categorías que tienen al menos un tema
+const temasPorCategoria = categoriasBlog
+  .map(categoria => ({
+    ...categoria,
+    secciones: dataSeccionesBlog.filter(s => s.categoria === categoria.id),
+  }))
+  .filter(categoria => categoria.secciones.length > 0)
 ---
 
-<Layout title="Inicio de blog - Gabriela Ferrer">
+<Layout title="Blog de apuntes - Gabriela Ferrer">
   <BarNav active={false} />
-  <main
-    class="flex flex-col items-center gap-8 font-rethink w-full"
-  >
-    <section class="min-h-screen flex flex-col items-center justify-center">
-      <h1 class="text-5xl leading-tight text-center font-fantabular sm:text-7xl lg:text-8xl">
-        <span
-          class="relative font-bold font-rethink after:bg-secondary after:-z-10 after:w-full after:absolute after:left-0 after:bottom-1 after:h-[50%]"
-          >My blog personal</span
-        ><br />
-        <span class="italic font-fantabular font-normal">de estudios</span>
-      </h1>
+  <main class="flex flex-col items-center w-full font-rethink">
+    <!-- Portada: yo y mis apuntes -->
+    <section
+      class="mx-auto w-full max-w-[1280px] px-4 sm:px-12 xl:px-0 min-h-[80vh] py-16 grid items-center gap-10 lg:grid-cols-2"
+    >
+      <div class="flex flex-col gap-6 text-center lg:text-left">
+        <h1 class="text-5xl leading-tight font-fantabular sm:text-7xl">
+          <span
+            class="relative font-bold font-rethink after:bg-secondary after:-z-10 after:w-full after:absolute after:left-0 after:bottom-1 after:h-[50%]"
+            >Mi blog personal</span
+          ><br />
+          <span class="italic font-normal">de estudios</span>
+        </h1>
+        <p class="text-lg text-pretty max-w-prose mx-auto lg:mx-0">
+          Lo que aprendo en cursos y lecturas, pasado del cuaderno a un lugar
+          donde puedo encontrarlo cuando lo necesito.
+        </p>
+      </div>
+      <img
+        src="/images/blog/portada-blog.avif"
+        alt="Gabriela revisando sus apuntes"
+        class="w-full aspect-[4/3] object-cover rounded-2xl border-2 border-black"
+      />
     </section>
+
     <div class="bg-asparagus-500 h-12 w-full"></div>
-    <div class="mx-auto w-full max-w-[1280px] px-4 sm:px-12 xl:px-0">
-      <section class="flex flex-col gap-4 py-20 w-full">
-        <div class="flex flex-row w-full gap-4">
-          {
-            dataSeccionesBlog.map(dataBlog => (
-              <a
-                href={`/blog/${dataBlog.slug}`}
-                class="inline-block snap-start shrink-0"
-                aria-label={`Leer: ${dataBlog.title}`}
-              >
-                <article
-                  class={` group flex flex-col border-2 border-black rounded-xl md:rounded-2xl h-[360px] md:h-[400px] w-[280px] md:w-xs bg-white`}
-                >
-                  <div class="h-10 py-4 flex flex-row items-center gap-2 px-4 border-b-4 border-black">
-                    <div class="h-3 w-3 bg-black rounded-full" />
-                    <div class="h-3 w-3 bg-black rounded-full" />
-                    <div class="h-3 w-3 bg-black rounded-full" />
-                  </div>
-                  <header class="relative w-full overflow-hidden md:flex-shrink-0 rounded-b-2xl shadow-md h-2/5">
-                    <img
-                      src={dataBlog.image}
-                      alt={'Portada del proyecto ' + dataBlog.title}
-                      class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-110"
+
+    <div class="mx-auto w-full max-w-[1280px] px-4 sm:px-12 xl:px-0 flex flex-col gap-20 py-20">
+      <!-- Entradas recientes -->
+      {
+        recientes.length > 0 && (
+          <section class="flex flex-col gap-8" aria-labelledby="recientes">
+            <DivisorTitulo titulo="Entradas recientes" id="recientes" />
+            <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {recientes.map(post => (
+                <li>
+                  <TarjetaArticulo
+                    post={post}
+                    tema={nombreTema(seccionDe(post))}
+                  />
+                </li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
+
+      <!-- Temas agrupados por categoría -->
+      <section class="flex flex-col gap-12" aria-labelledby="temas">
+        <DivisorTitulo titulo="Temas" id="temas" />
+        {
+          temasPorCategoria.map(categoria => (
+            <div class="flex flex-col gap-6">
+              <h3 class="flex items-center gap-3 text-2xl font-fantabular">
+                <Icon name="fa6-solid:folder" width={24} height={24} aria-hidden="true" />
+                {categoria.nombre}
+              </h3>
+              <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {categoria.secciones.map(seccion => (
+                  <li>
+                    <TarjetaTema
+                      seccion={seccion}
+                      totalApuntes={contarApuntes(seccion.slug)}
                     />
-                  </header>
-                  <main class="flex flex-col p-4 justify-between w-full flex-1">
-                    <h4 class="text-sm md:text-base font-medium font-fantabular">
-                      {dataBlog.title}
-                    </h4>
-                    <p class="text-sm lg:text-base text-pretty line-clamp-3">
-                      {dataBlog.description}
-                    </p>
-                    <div class="flex flex-row items-center justify-between">
-                      {/* <div class="flex flex-wrap gap-2">
-                        {tags?.slice(0, 1).map(tag => (
-                          <div class="bg-secondary text-black border border-black py-0.5 px-2 md:px-4 w-fit text-xs font-semibold">
-                            {tag}
-                          </div>
-                        ))}
-                      </div> */}
-                      <span aria-hidden="true" class="p-2 flex items-center w-fit text-black">
-                        <Icon
-                          name="fa6-solid:arrow-up"
-                          height={20}
-                          width={20}
-                          class="transition-transform ease-in-out duration-200 rotate-45 group-hover:rotate-90"
-                          aria-hidden="true"
-                        />
-                      </span>
-                    </div>
-                  </main>
-                </article>
-              </a>
-            ))
-          }
-        </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
       </section>
     </div>
   </main>

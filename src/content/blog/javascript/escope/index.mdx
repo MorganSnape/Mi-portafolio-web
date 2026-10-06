@@ -4,13 +4,13 @@ description: "¿Qué es el scope en JavaScript? Es el área del código donde un
 pubDate: 2026-05-20 
 ---
 
-import SubtitleBlog from '@/components/blog/SubtitleBlog.astro'
-import BrowserCodeBlock from '@/components/blog/BrowserCodeBlock.astro'
-import PageDivider from '@/components/blog/PageDivider.astro'
+import SubtitleBlog from '@/components/blog/mdx/SubtitleBlog.astro'
+import BrowserCodeBlock from '@/components/blog/mdx/BrowserCodeBlock.astro'
+import PageDivider from '@/components/blog/mdx/PageDivider.astro'
 
-<SubtitleBlog align="left">
+
  ## Contextos de ejecución y la cadena de alcances
-</SubtitleBlog>
+
 <div class="blog-content-grid-responsive">
   <div>
     Determinan cómo y dónde se accede a las variables dentro del código. Al usar las palabras clave var, let, y const, es esencial comprender estas diferencias: el tipo de scope y el comportamiento de hoisting. Esto nos ayudará a tomar decisiones informadas sobre cuándo y cómo utilizar cada una.
@@ -24,30 +24,23 @@ import PageDivider from '@/components/blog/PageDivider.astro'
   ![Imágen que hababla del tipo de scope.](/images/blog/scope.png)
 </div>
 
-
 ### Hoisting _"eleva"_
 
 Hoisting significa que JavaScript "eleva" las declaraciones al inicio del archivo o función antes de ejecutar el código.
 
-<SubtitleBlog align="left">
- ## ¿Cómo funciona el contexto de ejecución?
-</SubtitleBlog>
-
+## ¿Cómo funciona el contexto de ejecución?
 
 En JavaScript, el contexto de ejecución puede pensarse como muñecas rusas: el contexto global es la muñeca más grande y los contextos locales son las más pequeñas dentro de ella.
 
 - **Contexto global:** Incluye todas las variables y código que está por fuera de funciones o bloques. Este no puede acceder al contexto local.
 - **Contextos locales:** Son los bloques definidos, por ejemplo, dentro de una función. El contecto local puede acceder al contexto global.
 
-<SubtitleBlog align="left">
- ## ¿Como se determina el contexto en un código?
-</SubtitleBlog>
+## ¿Como se determina el contexto en un código?
 
 A través del uso de llaves { }, podemos identificar los bloques que delimitan los contextos locales. Todo lo que cae fuera de estos bloques pertenece al contexto global.
 
 ### Ejemplo
 
-<BrowserCodeBlock>
   ```js
   const globalVariable = "global1";
   console.log(carrot) // Error: carrot no está definida
@@ -70,8 +63,9 @@ A través del uso de llaves { }, podemos identificar los bloques que delimitan l
   }
   console.log(local1());
   ```
-</BrowserCodeBlock>
 
 En este caso la función mas adentrada solo puede acceder a las variables de su padre, de la función que la envuelve, si esta no cuenta con la variable que busca se va al global.
+
+
 
 

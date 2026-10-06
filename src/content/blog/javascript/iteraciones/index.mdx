@@ -4,25 +4,25 @@ description: "Las iteraciones en JavaScript permiten ejecutar un bloque de códi
 pubDate: 2026-04-18 
 ---
 
-import SubtitleBlog from '@/components/blog/SubtitleBlog.astro'
-import BrowserCodeBlock from '@/components/blog/BrowserCodeBlock.astro'
-import PageDivider from '@/components/blog/PageDivider.astro'
+import SubtitleBlog from '@/components/blog/mdx/SubtitleBlog.astro'
+import BrowserCodeBlock from '@/components/blog/mdx/BrowserCodeBlock.astro'
+import PageDivider from '@/components/blog/mdx/PageDivider.astro'
 
-<SubtitleBlog align="left">
+
   ## Ciclo for
-</SubtitleBlog>
+
 
 El ciclo o bucle for es una estructura de control que se utiliza para repetir un bloque de código el número determinado de veces que definamos.
 
 ### Estructura
 
-<BrowserCodeBlock>
+
   ```js
   for (variable; condicion; incremento) {
     //código a ejecutar
   }
   ```
-</BrowserCodeBlock>
+
 
 - **Variable:** Solo se ejecuta una vez, normalmente para crear un contador. La variable se puede llamar como gustes normalmente se usa i.
 - **Condición:** Se evalúa antes de cada repetición. Mientras esta sea _true_, el ciclo continua.
@@ -31,7 +31,7 @@ El ciclo o bucle for es una estructura de control que se utiliza para repetir un
 
 ### Ejemplo
 
-<BrowserCodeBlock>
+
   ```js
   let list = ["eat", "sleep", "code", "repeat"];
 
@@ -39,11 +39,11 @@ El ciclo o bucle for es una estructura de control que se utiliza para repetir un
     console.log(list[i]);
   }
   ```
-</BrowserCodeBlock>
 
-<SubtitleBlog align="left">
+
+
   ## for of
-</SubtitleBlog>
+
 
 El ciclo for... of permite operar sobre un objeto iterable estos serian arrays y strings.
 
@@ -51,17 +51,17 @@ El código que se termina ejecutando es por cada elemento dentro del iterable. E
 
 ### Estructura
 
-<BrowserCodeBlock>
+
   ```js
   for (variable of iterable) {
     // código que se ejecuta por cada elemento
   }
   ```
-</BrowserCodeBlock>
+
 
 ### Ejemplo
 
-<BrowserCodeBlock>
+
   ```js
   const frutas = ["manzana", "pera", "uva"];
 
@@ -69,11 +69,11 @@ El código que se termina ejecutando es por cada elemento dentro del iterable. E
     console.log(fruta);
   }
   ```
-</BrowserCodeBlock>
 
-<SubtitleBlog align="left">
+
+
   ## forIn
-</SubtitleBlog>
+
 
 El for...in es un bucle de JavaScript que se usa para recorrer las propiedades (claves) de un objeto.
 
@@ -81,17 +81,17 @@ Los **objetos** se componen de propiedades y su respectivo valor.
 
 ### Estructura
 
-<BrowserCodeBlock>
+
   ```js
   for (variable in objeto que vamos a iterar) {
     //código a ajecutar
   }
   ```
-</BrowserCodeBlock>
+
 
 ### Ejemplo
 
-<BrowserCodeBlock>
+
   ```js
   const persona = {
     nombre: "Ana",
@@ -116,11 +116,11 @@ Los **objetos** se componen de propiedades y su respectivo valor.
     'ciudad' 'Bogotá'
   }
   ```
-</BrowserCodeBlock>
 
-<SubtitleBlog align="left">
+
+
   ## Ciclo While
-</SubtitleBlog>
+
 
 El método while es una estructura de control de flujo utilizada en programación para repetir un bloque de código mientras una condición específica sea verdadera es decir que cuando la condición pase a retornar false este ciclo para.
 
@@ -130,17 +130,17 @@ Se debe tener cuidado porque de no realizar bien la condición puede generar un 
 
 ### Estructura
 
-<BrowserCodeBlock>
+
   ```js
   while (condición) {
     //codigo a ejecutar
   }
   ```
-</BrowserCodeBlock>
+
 
 ### Ejemplo
 
-<BrowserCodeBlock>
+
   ```js
   let contador = 0;
 
@@ -149,27 +149,27 @@ Se debe tener cuidado porque de no realizar bien la condición puede generar un 
     contador++; // contador crece + 1
   }
   ```
-</BrowserCodeBlock>
 
-<SubtitleBlog align="left">
+
+
   ## Ciclo doWhile
-</SubtitleBlog>
+
 
 Ha diferencia del while este cliclo siempre se va a ejcutar minimo 1 vez y luego pasa a validar la condición. Si la condición da true este se repite hasta que la condición retorne false.
 
 ### Estructura
 
-<BrowserCodeBlock>
+
   ```js
   do {
     //codigo a ejecutar
   } while (condición);
   ```
-</BrowserCodeBlock>
+
 
 ### Ejemplo
 
-<BrowserCodeBlock>
+
   ```js
   let contador = 0;
 
@@ -178,6 +178,8 @@ Ha diferencia del while este cliclo siempre se va a ejcutar minimo 1 vez y luego
     contador++; // contador crece + 1
   } while (contador <= 10);
   ```
-</BrowserCodeBlock>
+
+
+
 
 

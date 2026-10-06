@@ -1,0 +1,39 @@
+---
+// Versión Astro del SideNav: recibe los títulos ya calculados en el servidor,
+// así que no necesita React, useEffect ni JavaScript en el navegador.
+import type { MarkdownHeading } from 'astro'
+import Flecha from '@/assets/flecha.svg'
+
+interface Props {
+  headings: MarkdownHeading[]
+  volver?: { href: string; texto: string }
+}
+
+const { headings, volver = { href: '/blog', texto: 'Inicio de Blog' } } = Astro.props
+const titulos = headings.filter(heading => heading.depth === 2)
+---
+
+<aside class="sticky p-4 w-60 top-0 h-screen overflow-y-auto bg-black-secondary">
+  <nav aria-label="Contenido del apunte">
+    <ul class="flex flex-col gap-4">
+      <li class="border-b-2 border-gray-400 h-12 mb-4">
+        <a
+          href={volver.href}
+          class="flex flex-row items-center gap-4 h-full text-lg text-white hover:text-gray-400"
+        >
+          <Flecha class="w-8 shrink-0 rotate-180" aria-hidden="true" />
+          {volver.texto}
+        </a>
+      </li>
+      {
+        titulos.map(titulo => (
+          <li>
+            <a href={`#${titulo.slug}`} class="text-white hover:text-gray-400">
+              {titulo.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</aside>

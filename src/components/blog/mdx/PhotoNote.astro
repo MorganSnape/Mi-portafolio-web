@@ -1,0 +1,32 @@
+---
+// Imagen con su explicación debajo (<figure> + <figcaption>).
+// Dentro puedes escribir Markdown normal: **negrita**, `código`, <mark>...</mark>
+//
+// <PhotoNote src={prototipo} alt="Diagrama del prototipo">
+//
+// <mark>Prototipo:</mark> Cada clase genera un prototipo...
+//
+// </PhotoNote>
+import { Image } from 'astro:assets'
+import type { ImageMetadata } from 'astro'
+
+interface Props {
+  src: ImageMetadata | string
+  alt: string
+}
+
+const { src, alt } = Astro.props
+// Altura fija: las dos imágenes de un TwoColumns quedan alineadas aunque tengan distinto tamaño
+const clasesImagen = 'w-full h-64 object-contain bg-white border-2 border-black'
+---
+
+<figure class="flex flex-col gap-4 w-full">
+  {
+    typeof src === 'string' ? (
+      <img src={src} alt={alt} loading="lazy" class={clasesImagen} />
+    ) : (
+      <Image src={src} alt={alt} class={clasesImagen} />
+    )
+  }
+  <figcaption class="text-pretty [&>p]:m-0"><slot /></figcaption>
+</figure>
