@@ -18,7 +18,7 @@ export const dataSeccionesBlog: SectionBlogType[] = [
   },
   {
     // El slug debe coincidir con el nombre real de la carpeta en src/content/blog/
-    slug: "diseñografico",
+    slug: "disenografico",
     categoria: "diseno",
     title: "Apuntes sobre Diseño gráfico",
     description: "El diseño gráfico es la disciplina que combina arte y comunicación para transmitir mensajes específicos de forma visual. Utilizando elementos como imágenes, tipografías, colores y composición, busca resolver problemas y satisfacer necesidades de comunicación entre una marca y su público.",
