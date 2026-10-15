@@ -18,7 +18,7 @@ export const dataSeccionesBlog: SectionBlogType[] = [
   },
   {
     // El slug debe coincidir con el nombre real de la carpeta en src/content/blog/
-    slug: "diseñoGrafico",
+    slug: "diseñografico",
     categoria: "diseno",
     title: "Apuntes sobre Diseño gráfico",
     description: "El diseño gráfico es la disciplina que combina arte y comunicación para transmitir mensajes específicos de forma visual. Utilizando elementos como imágenes, tipografías, colores y composición, busca resolver problemas y satisfacer necesidades de comunicación entre una marca y su público.",
@@ -31,4 +31,11 @@ export const dataSeccionesBlog: SectionBlogType[] = [
     description: "React es una biblioteca de JavaScript que permite crear interfaces de usuario dinámicas y complejas. Es una de las bibliotecas más populares para el desarrollo de aplicaciones web y se utiliza ampliamente en la industria. React se enfoca en facilitar la creación de interfaces de usuario, permitiendo a los desarrolladores crear aplicaciones web de alta calidad y eficiencia.",
     image: "/images/blog/portada-React.png",
   },
+  {
+    slug:"productdesign",
+    categoria: "diseno",
+    title: "Apuntes sobre Product Design",
+    description: "Product Design es un conjunto de procesos, metodologías y herramientas que ayudan a los productos y servicios de la industria a ser más efectivos, eficientes y satisfactorios. El diseño de productos es una parte fundamental de cualquier negocio, ya que ayuda a los clientes a entender mejor el producto y a tomar decisiones informadas.",
+    image: "/src/content/blog/productDesign/portada-PD.webp",
+  }
 ];
