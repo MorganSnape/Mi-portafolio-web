@@ -1,20 +1,23 @@
 ---
 /**
- * LinkButton — tarjeta/botón de enlace para artículos de blog.
+ * LinkButton — tarjeta/botón de enlace neo-brutalista para artículos de blog.
  *
- * Uso en .astro:
+ * Uso en .astro / .mdx:
  *   <LinkButton href="https://zajuna.sena.edu.co/login" description="Plataforma donde subo mis evidencias del SENA" />
  *
- * Uso en .mdx (descripción como contenido):
+ * Descripción como contenido (.mdx):
  *   <LinkButton href="https://zajuna.sena.edu.co">
  *     Aquí encuentras el curso que menciono en este artículo.
  *   </LinkButton>
  *
  * Props:
- *   href         (obligatorio) URL completa del enlace
+ *   href         (obligatorio) URL completa
  *   description  (opcional)    texto personalizado; también se puede pasar como slot
  *   title        (opcional)    reemplaza el dominio mostrado en negrita
- *   class        (opcional)    clases extra de Tailwind
+ *   class        (opcional)    clases extra
+ *
+ * Depende de la clase `.tag-me` definida en global.css
+ * (borde negro, sombra dura y efecto de "presionar" en hover).
  */
 interface Props {
   href: string;
@@ -33,12 +36,10 @@ try {
   hostname = url.hostname.replace(/^www\./, "");
   isExternal = /^https?:$/.test(url.protocol);
 } catch {
-  // href relativo o inválido: se muestra tal cual
   isExternal = false;
 }
 
-const hasSlot = Astro.slots.has("default");
-const hasDescription = Boolean(description) || hasSlot;
+const hasDescription = Boolean(description) || Astro.slots.has("default");
 ---
 
 <a
@@ -46,48 +47,51 @@ const hasDescription = Boolean(description) || hasSlot;
   target={isExternal ? "_blank" : undefined}
   rel={isExternal ? "noopener noreferrer" : undefined}
   class:list={[
-    "group not-prose my-4 flex w-full max-w-md items-center gap-4 rounded-2xl",
-    "border border-neutral-800 bg-neutral-900 px-6 py-5 no-underline",
-    "transition-colors duration-200 hover:border-neutral-600 hover:bg-neutral-800",
-    "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
+    "tag-me group not-prose my-6 block w-full max-w-md overflow-hidden rounded-lg",
+    "bg-white-cream text-black no-underline",
+    "focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-primary",
     className,
   ]}
 >
-  <div class="min-w-0 flex-1">
-    <!-- Dominio / título en negrita -->
-    <p class="truncate text-lg font-bold text-white">
-      {title ?? hostname}
-    </p>
+  <!-- Dominio + parte del enlace -->
+  <div class="flex items-center gap-4 px-4 py-4">
+    <div class="min-w-0 flex-1">
+      <p class="font-fantabular truncate text-lg font-bold md:text-xl">
+        {title ?? hostname}
+      </p>
+      <p class="font-rethink truncate text-sm text-gray-500" title={href}>
+        {href}
+      </p>
+    </div>
 
-    <!-- Parte del enlace, truncada con "…" -->
-    <p class="truncate text-sm text-neutral-400" title={href}>
-      {href}
-    </p>
-
-    <!-- Descripción personalizable (prop o slot) -->
-    {
-      hasDescription && (
-        <p class="mt-3 border-t border-neutral-800 pt-3 text-sm leading-relaxed text-neutral-300">
-          {description}
-          <slot />
-        </p>
-      )
-    }
+    <!-- Flecha dentro del círculo rosa -->
+    <span
+      class="flex size-10 shrink-0 items-center justify-center rounded-full border-2 border-black bg-pink transition-colors duration-150 group-hover:bg-secondary"
+      aria-hidden="true"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="size-5"
+      >
+        <path d="M7 17 17 7"></path>
+        <path d="M7 7h10v10"></path>
+      </svg>
+    </span>
   </div>
 
-  <!-- Flecha -->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    class="size-5 shrink-0 text-neutral-500 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white"
-    aria-hidden="true"
-  >
-    <path d="M7 17 17 7"></path>
-    <path d="M7 7h10v10"></path>
-  </svg>
+  <!-- Descripción personalizable (prop o slot) -->
+  {
+    hasDescription && (
+      <p class="font-rethink border-t-2 border-black bg-secondary px-4 py-3 text-sm leading-relaxed font-medium">
+        {description}
+        <slot />
+      </p>
+    )
+  }
 </a>
