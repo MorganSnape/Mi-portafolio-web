@@ -304,14 +304,102 @@ Después de definir la función constructora, es probable que necesites **agrega
 <TwoColumns>
   <PhotoNote src={prototipo} alt="Ejemplo de prototipo en las clases">
 
-    <mark>Prototipo:</mark> **Cada clase o función constructora genera un prototipo** que comparte propiedades y métodos con sus instancias, lo que te permite escribir código más limpio, reutilizable y organizado.
+    <mark>Prototipo:</mark>es un objeto que permite compartir métodos entre instancias y establecer vinculos de herencia entre clases. **Cada clase o función constructora genera un prototipo** que comparte propiedades y métodos con sus instancias, lo que te permite escribir código más limpio, reutilizable y organizado.
 
   </PhotoNote>
   <PhotoNote src={herencia} alt="Ejemplo de herencia entre clases">
 
-    <mark>Herencia:</mark> La herencia en JavaScript **ocurre de forma automática gracias al prototipo**. Cuando defines un método en la clase constructora, ese método queda disponible para cualquier instancia que crees después.
+    <mark>Herencia:</mark> La herencia en JavaScript **ocurre de forma automática gracias al prototipo**. Cuando defines un método en la clase constructora, ese método queda disponible para cualquier instancia que crees después (las instacias no cuentan con un prototipo propio).
 
   </PhotoNote>
 </TwoColumns>
 
 
+<TwoColumns>
+<div>
+### ¿Como crear una clase padre?
+Una clase padre contiene propiedades y métodos que pueden reutilizar sus clases hijas.
+#### Conceptos clave:
+- **constructor():** inicializa las propiedades al crear una instancia.
+- **this.nombre y this.tipo:** guardan los datos de cada animal.
+
+### ¿Como crear una clase hija?
+La palabra reservada extends permite que una clase herede de otra.
+En este ejemplo, Perro hereda de Animal.
+- **extends Animal:** establece la herencia.
+- **super(nombre, tipo):** llama al constructor de la clase padre.
+- **this.raza = raza:** agrega una propiedad específica de Perro.
+- **emitirSonido():** sobrescribe el método heredado.
+- **correr():** agrega un método propio de Perro.
+</div>
+```js
+// Clase padre
+class Animal { 
+  constructor(nombre, tipo){
+    this.nombre = nombre;
+    this.tipo = tipo;
+  }
+  emitirSonido(){
+    console.log("El animal emite un sonido");
+  }
+}
+
+// Clase hija
+class Perro extends Animal { 
+  constructor(nombre, tipo, color, raza){
+    super(nombre, tipo);
+    this.color = color;
+  }
+  emitirSonido(){
+    console.log("El perro ladra");
+  }
+  correr(){
+    console.log(`${this.nombre} corre alegremente`);
+  }
+}
+
+const perro1  = new Perro("Manchas", "Perro", "cafe", "Caniche");
+```
+</TwoColumns>
+
+### Crear nuevos métodos que no esten dentro de las clases
+
+Se puede crear pero este <mark>no estara disponible para todas las instancias de la clase</mark>. Ya que no pertenece al prototipo de la clase.
+```js
+perro1.nuevoMetodo = function(){
+  console.log("Este método no pertenece al prototipo de la clase")
+}
+```
+
+Para que este <mark>método este disponible</mark> para todas las instancias de la clase, debemos agregarlo al prototipo de la clase. Una forma para hacerlo necesitamos llamar al prototipo de la clase que le deseamos agregar el método.
+```js
+Perro.prototype.metodoClase = function(){
+  console.log("Este método esta disponible para todas las instancias de la clase")
+}
+```
+
+## Uso de this en clases y funciones constructoras
+
+<mark>this</mark> es una palabra reservada que se utilizar al momento de trabajar con clases y funciones constructoras. Es una referencia a la instancia actual. 
+
+Esta hace referencia al objeto mismo = this -> objeto -> class
+
+```js
+class Persona {
+  constructor(nombre, apellido, edad) {
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.edad = edad;
+  }};
+  // En este caso this hace referencia a todo el objeto Persona
+
+// Se traduce como: this.nombre el nombre  del objeto Persona va a ser el nombre que se coloque en la instacia persona1
+
+const persona1 = new Persona("Ana", "Ferrer");
+ 
+persona1.nuevoMetodo = funcion(){
+  console.log(`Mi nombre es ${this.nombre}`); //This hace referencia a la instancia persona1
+}
+```
+
+## Practica
