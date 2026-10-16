@@ -1,0 +1,86 @@
+---
+title: "Aplicación de normas técnicas ISO-12647"
+pubDate: 2026-10-15
+description: "Conjunto de procesos y herramientas que permiten controlar y mantener la consistencia de los colores entre diferentes dispositivos, como cámaras, monitores e impresoras, para lograr una reproducción del color lo más fiel y uniforme posible durante todo el flujo de trabajo gráfico."
+curso: Gestión de color 
+---
+
+import SubtitleBlog from '@/components/blog/mdx/SubtitleBlog.astro'
+import BrowserCodeBlock from '@/components/blog/mdx/BrowserCodeBlock.astro'
+import PageDivider from '@/components/blog/mdx/PageDivider.astro'
+import LinkButton from '@/components/blog/mdx/LinkButton.astro'
+import TwoColumns from '@/components/blog/mdx/TwoColumns.astro'
+import InfoCard from '@/components/blog/mdx/InfoCard.astro'
+import cmyk from "./cmyk.svg?url";
+import control from "./tema3-ico2.370a6842.svg?url";
+import tono from "./tema3-ico3.76626a2d.svg?url";
+import grises from "./tema3-ico4.200f867d.svg?url";
+
+## Aplicaciones de normas técnicas ISO-12647
+
+<TwoColumns>
+<div>
+Actualmente se encuentra establecida internacionalmente la norma técnia <mark>`ISO-12647`</mark>, esta establece criterios para controlar y estandarizar el color en los procesos de impresión. Esta norma poseé diferentes tipos de variantes según el tipo de impresión a usar; offset, tipográfica, en plano o rotativa, serigrafía, huecograbado,etc.
+
+***Lo que se busca con su implementación*** es conseguir resultados de color consistentes y predecibles entre pruebas de impreión y máquinas diferentes.
+</div>
+
+<LinkButton
+  href="https://zajuna.sena.edu.co/Repositorio/Titulada/institution/SENA/Arte/522309/Contenido/OVA/CF3/index.html#/curso/tema3"
+  title="OVA Gestión de color"
+  description="Tema 3: Aplicación de normas técnicas (SENA)."
+/>
+</TwoColumns>
+
+### ¿Qué regula?
+Entre otros aspectos, las características colorimétrias de las tintas, los valores de color que deben reproducirse y las condiciones de impresión, según el proceso y el papel pueden ser estos ; estucados, brillantes, mates, blancos y diferentes gramados (grosor del papel).
+
+## Parámetros a controlar para caldiad de impresión
+
+
+<div class="not-prose my-10 grid gap-8 pl-4 sm:grid-cols-2 lg:grid-cols-4">
+  <InfoCard
+    number={1}
+    image={cmyk}
+    imageAlt="Cartuchos de tinta CMYK"
+    title="Densidad vs. color"
+    description="Controlar la capa de tinta que se deposita sobre el papel para poder controlar la información del color y su relación."
+  />
+  <InfoCard
+    number={2}
+    image={control}
+    imageAlt="Imagen con controles de tamaño"
+    title="Parámetros de control"
+    description="Son las medidas y condiciones que se revisan para comprobar que la impresión cumple con los valores esperados."
+  />
+  <InfoCard
+    number={3}
+    image={tono}
+    imageAlt="Controles deslizantes"
+    title="Límites de reproducción de tono"
+    description="Se refiere a los límites dentro de los cuales una máquina puede reproducir los tonos sin perder detalles."
+  />
+  <InfoCard
+    number={4}
+    image={grises}
+    imageAlt="Documento con círculos de color"
+    title="Balance de grises"
+    description="Consiste en combinar las tintas cian, magenta y amarilla en proporciones adecuadas para obtener un gris neutro, sin dominantes de color."
+  />
+</div>
+
+#### Otras normas que se incluyen son:
+
+- **Soportes de impresión:** según la norma ISO se establecen 4 soportes: 3 papeles y 1 lámina o película. Aquí aparece el primer problema: con el tiempo surgen soportes nuevos, sobre todo en la impresión flexográfica, como los plásticos (polietileno y similares) e incluso materiales como el aluminio. La norma todavía no los contempla, así que muchas de sus especificaciones no se ajustan a ellos.
+- **El brillo en los soportes:** en el empaque y en el trabajo flexográfico se aplican barnices y tintas especiales que reaccionan al calor o a la luz, y se usan sustratos que afectan directamente el brillo y el color. La norma no contempla estos elementos. Importan porque un mismo color se ve distinto sobre una superficie mate que sobre una brillante, y porque inciden en los acabados que habría que considerar para incluir nuevos mercados en la norma.
+- **Juego de tintas CMYK:** para trabajar con tintas directas (colores ya mezclados, como los Pantone) se debe seguir una lógica análoga a la de la norma ISO. Esto implica estandarizar el proceso con las tintas específicas que se emplean, seguir las pautas y recomendaciones técnicas, estudiar las condiciones de impresión y definir **tolerancias** de trabajo, es decir, cuánto puede variar el color sin dejar de ser aceptable.
+- **La formulación de las tintas:** hay aspectos de la fabricación que la norma no especifica y que deben fijarse por aparte: la viscosidad (qué tan espesa o fluida es la tinta), las condiciones ambientales y las mezclas con sus porcentajes. No se ven en el impreso, pero determinan su calidad. Una buena fabricación con porcentajes óptimos y una calibración que permita el flujo y la viscosidad adecuados marcan la diferencia al momento de implementar la tinta.
+## Resumen
+ 
+| Tema | Qué no cubre la norma | Qué hacer |
+| --- | --- | --- |
+| Soportes | Plásticos y aluminio | Tener presente que sus especificaciones no se ajustan a estos materiales |
+| Brillo | Barnices, tintas especiales y sustratos que cambian brillo y color | Considerar los acabados para incluir nuevos mercados |
+| Tintas CMYK | Pautas propias para tintas directas | Estandarizar con las tintas usadas y definir tolerancias |
+| Formulación | Viscosidad, ambiente, mezclas y porcentajes | Fijarlos y calibrarlos para controlar el flujo |
+ 

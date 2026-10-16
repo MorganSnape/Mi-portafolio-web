@@ -1,0 +1,105 @@
+---
+/**
+ * InfoCard — tarjeta numerada con icono, título y descripción (estilo neo-brutalista).
+ *
+ * Uso básico:
+ *   <InfoCard
+ *     number={1}
+ *     image="/icons/cmyk.svg"
+ *     imageAlt="Cartuchos de tinta CMYK"
+ *     title="Densidad vs. color"
+ *     description="Controlar la capa de tinta para poder controlar la información del color y su relación."
+ *   />
+ *
+ * Con icono propio y descripción como contenido (.mdx / .astro):
+ *   <InfoCard number={2} title="Mi título" variant="pink">
+ *     <svg slot="icon" ... />
+ *     Texto de la descripción.
+ *   </InfoCard>
+ *
+ * Props:
+ *   title        (obligatorio) título en negrita
+ *   description  (opcional)    descripción; también se puede pasar como slot por defecto
+ *   number       (opcional)    número que aparece en el círculo; si se omite, no hay círculo
+ *   image        (opcional)    ruta de una imagen/icono (alternativa al slot "icon")
+ *   imageAlt     (opcional)    texto alternativo de la imagen
+ *   variant      (opcional)    "secondary" (amarillo) | "pink" | "green" | "purple" | "cream"
+ *   class        (opcional)    clases extra
+ *
+ * Nota: el círculo sobresale unos px a la izquierda; deja algo de espacio
+ * (gap / padding) en el contenedor para que no se corte.
+ */
+interface Props {
+  title: string;
+  description?: string;
+  number?: number | string;
+  image?: string;
+  imageAlt?: string;
+  variant?: "secondary" | "pink" | "green" | "purple" | "cream";
+  class?: string;
+}
+
+const {
+  title,
+  description,
+  number,
+  image,
+  imageAlt = "",
+  variant = "secondary",
+  class: className = "",
+} = Astro.props;
+
+// Clases completas (necesario para que Tailwind las detecte)
+const variants = {
+  secondary: { card: "bg-secondary", badge: "bg-pink" },
+  pink: { card: "bg-pink", badge: "bg-secondary" },
+  green: { card: "bg-plant-green", badge: "bg-secondary" },
+  purple: { card: "bg-trendy-pink-200", badge: "bg-primary text-white-cream" },
+  cream: { card: "bg-white-cream", badge: "bg-pink" },
+} as const;
+
+const styles = variants[variant];
+const hasIcon = Boolean(image) || Astro.slots.has("icon");
+---
+
+<article
+  class:list={[
+    "sombra not-prose relative flex h-full flex-col items-center gap-4 rounded-3xl px-6 pb-8 pt-8 text-center text-black",
+    styles.card,
+    className,
+  ]}
+>
+  {
+    number !== undefined && (
+      <span
+        class:list={[
+          "font-fantabular absolute -left-4 top-6 flex size-14 items-center justify-center rounded-full border-2 border-black text-2xl font-black shadow-[2px_2px_0px_#141414]",
+          styles.badge,
+        ]}
+        aria-hidden="true"
+      >
+        {number}
+      </span>
+    )
+  }
+
+  {
+    hasIcon && (
+      <div class="flex h-24 items-center justify-center">
+        <slot name="icon" />
+        {image && <img src={image} alt={imageAlt} class="h-full w-auto object-contain" loading="lazy" />}
+      </div>
+    )
+  }
+
+  <h3 class="title-h2 text-balance">{title}</h3>
+
+  {
+    (description || Astro.slots.has("default")) && (
+      <p class="font-rethink text-base leading-relaxed md:text-lg">
+        {description}
+        <slot />
+      </p>
+    )
+  }
+</article>

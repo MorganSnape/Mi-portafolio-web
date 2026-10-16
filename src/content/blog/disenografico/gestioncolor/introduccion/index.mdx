@@ -1,0 +1,184 @@
+---
+title: "Introducción a la gestión de color"
+pubDate: 2026-10-15
+description: "Es el proceso de ajustar cada dispositivo (cámara, escáner, monitor, impresora) para que los colores coincidan desde la captura hasta la impresión final. Se conoce también como CMS (Color Management System). Compara el espacio de color en que se creó la imagen con el espacio en que se va a imprimir, y aplica los cambios necesarios para que se vean lo más parecidos posible."
+curso: Gestión de color 
+orden: 1
+---
+import singestioncolor from './singestioncolor.png'
+import color from "./factor-color.svg?url";
+import perfil from "./factor-perfil.svg?url";
+import motor from "./factor-motor.svg?url";
+import pantalla from "./factor-pantalla.svg?url";
+import iluminacion from "./factor-iluminacion.svg?url";
+import impresora from "./factor-impresora.svg?url";
+import tintas from "./factor-tintas.svg?url";
+import papel from "./factor-papel.svg?url";
+import calibrador from "./factor-calibrador.svg?url";
+import InfoCard from '@/components/blog/mdx/InfoCard.astro'
+import cmykImpresos from "./impresos-cmyk.svg?url";
+import cuatricromia from "./impresos-cuatricromia.svg?url";
+import sustractiva from "./impresos-sustractiva.svg?url";
+import papelLuz from "./impresos-papel-luz.svg?url";
+import etapas from "./impresos-etapas.svg?url";
+import errores from "./impresos-errores.svg?url";
+
+
+<TwoColumns>
+<div>
+### Por qué es importante
+Uno de los errores más comunes en producción gráfica es no hacer este proceso. El resultado es que la imagen se ve distinta en el original, en el monitor y en el papel.
+</div>
+
+<PhotoFrame src={singestioncolor} alt="Diagrama de props" class="w-1/2" />
+</TwoColumns>
+
+<TwoColumns>
+<div>
+### Estándar ICC:
+ en el International Color Consortium (1993) creó los perdiles ICC, que describen cómo se comporta el color en cada dispositivo. Estos se dividen principalmente en tres catgorías según el tipo de dispositivo:
+1. <mark>Perfiles de entrada (Input):</mark> Cámaras, escáneres, teléfonos móviles.
+2. <mark>Perfiles de visualización / pantalla (Display):</mark> Monitores, pantalla de portatiles, celulares.
+3. <mark>Perfiles de salida (Output):</mark> Impresoras de inyección de tinta, plotters, máquinas de impresión offset o equipos de sublimación y DTF..
+</div>
+<div>
+### Estándares gráficos:
+También se permite trabajar con ISO SWOP y Japan Color. Cada uno define cómo debe reproducirse el color en la impresión de una región o industria. En Photoshop o Illustrator aparecen como perfiles CMYK para elegir al convertir una imagen antes de imprimir.
+</div>
+</TwoColumns>
+
+| Estándar | Qué es | Dónde se usa |
+| --- | --- | --- |
+| **ISO** | Normas internacionales de la Organización Internacional de Normalización. En impresión la principal es la **ISO 12647**. | Mundial, con mucho peso en Europa |
+| **SWOP** | *Specifications for Web Offset Publications*. Define cómo imprimir en offset de rotativa (revistas, catálogos, periódicos). | Estados Unidos, y de ahí se extendió a otros mercados |
+| **Japan Color** | Estándar japonés de color para impresión offset. | Japón y mercados que trabajan con impresores japoneses |
+
+## Características básicas de la gestión de color
+ 
+Para lograr que el color se vea igual en todo el flujo de trabajo, hay nueve factores que influyen. Algunos son dispositivos, otros son condiciones del entorno, y todos se controlan con técnicas de medición y programas especializados.
+ 
+<div class="not-prose my-10 grid gap-8 pl-4 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    number={1}
+    image={color}
+    imageAlt="Círculo cromático"
+    title="Color"
+    description="Lo percibimos con fenómenos físicos y psicológicos. Los modelos de color lo describen con matemáticas, normalmente con tres valores."
+  />
+  <InfoCard
+    number={2}
+    image={perfil}
+    imageAlt="Cubo que representa un espacio de color sRGB"
+    title="Espacio o perfil de color"
+    description="Describe las características de un modelo de color y se asigna al archivo. Los más comunes son sRGB, Adobe RGB y ProPhoto RGB."
+  />
+  <InfoCard
+    number={3}
+    image={motor}
+    imageAlt="Motor de color que convierte RGB en CMYK"
+    title="Motor de color"
+    description="Es el software que hace las conversiones de color usando el perfil. Ojo: la mayoría de los navegadores web no lo tienen."
+  />
+  <InfoCard
+    number={4}
+    image={pantalla}
+    imageAlt="Monitor mostrando una imagen a color"
+    title="Pantalla"
+    description="Es el dispositivo principal para trabajar el color. Debe tener buena resolución y estar calibrada."
+  />
+  <InfoCard
+    number={5}
+    image={iluminacion}
+    imageAlt="Bombillo con luz neutra"
+    title="Iluminación"
+    description="La luz del lugar de trabajo debe ser neutra, sin colores dominantes y sin reflejos sobre la pantalla."
+  />
+  <InfoCard
+    number={6}
+    image={impresora}
+    imageAlt="Impresora imprimiendo una prueba de color"
+    title="Impresora"
+    description="Permite revisar el color con pruebas físicas. Debe tener buena calidad tonal y estar calibrada."
+  />
+  <InfoCard
+    number={7}
+    image={tintas}
+    imageAlt="Gotas de tinta cian, magenta, amarillo y negro"
+    title="Tintas"
+    description="El rango tonal de la prueba debe ser mayor que el del equipo final donde se va a imprimir."
+  />
+  <InfoCard
+    number={8}
+    image={papel}
+    imageAlt="Pliegos de papel de distintos tonos"
+    title="Papel"
+    description="Lo ideal es probar sobre el mismo papel del trabajo final, nunca sobre uno de tono base más oscuro."
+  />
+  <InfoCard
+    number={9}
+    image={calibrador}
+    imageAlt="Colorímetro midiendo el color de un monitor"
+    title="Calibrador"
+    description="El colorímetro calibra la pantalla. El espectrofotómetro, más avanzado, mide monitor y papel y crea perfiles de impresoras."
+  />
+</div>
+
+## El color en impresos
+ 
+Todo lo impreso trabaja con el modelo de color <mark>`CMYK`</mark>. A diferencia de una pantalla, que mezcla luz, el impreso mezcla tintas sobre un papel, y eso cambia por completo la forma en que se forma el color.
+ 
+<div class="not-prose my-10 grid gap-8 pl-4 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    number={1}
+    image={cmykImpresos}
+    imageAlt="Fichas de color cian, magenta, amarillo y negro con sus letras"
+    title="CMYK"
+    description="Cian, magenta, amarillo y Key (negro). Se usa la K para no confundir el negro con el azul (Blue)."
+  />
+  <InfoCard
+    number={2}
+    image={cuatricromia}
+    imageAlt="Cuatro planchas de tinta superpuestas"
+    title="Cuatricromía"
+    description="Mezcla las cuatro tintas por capas y reproduce casi el 70 % de los colores visibles. Es el estándar de la impresión offset."
+  />
+  <InfoCard
+    number={3}
+    image={sustractiva}
+    imageAlt="Círculos cian, magenta y amarillo superpuestos que forman negro al centro"
+    title="Síntesis sustractiva"
+    description="Cada tinta funciona como un filtro que absorbe parte de la luz. Entre más tintas se superponen, menos luz se refleja."
+  />
+  <InfoCard
+    number={4}
+    image={papelLuz}
+    imageAlt="Luz que llega al papel y se refleja"
+    title="El papel refleja la luz"
+    description="El papel blanco se ve blanco porque refleja toda la luz. Las tintas controlan qué parte de esa luz vuelve al ojo."
+  />
+  <InfoCard
+    number={5}
+    image={etapas}
+    imageAlt="Lista de chequeo con las etapas del impreso"
+    title="Control antes de imprimir"
+    description="El impreso pasa por diseño, preprensa, impresión y terminados. Una vez impreso no se puede corregir, a diferencia de lo digital."
+  />
+  <InfoCard
+    number={6}
+    image={errores}
+    imageAlt="Color brillante en pantalla distinto del color apagado en papel"
+    title="Errores de color"
+    description="Suelen venir del papel, la calidad de las tintas, la impresora y, sobre todo, de un monitor mal calibrado."
+  />
+</div>
+## Modelos de color
+ 
+Los modelos de color sirven para **clasificar y definir los colores** con fórmulas matemáticas que los representan de forma numérica.
+ 
+| Modelo | Cómo se forma el color | Componentes | Dónde se usa |
+| --- | --- | --- | --- |
+| **CMYK** | Síntesis sustractiva: las tintas absorben luz | Cian, magenta, amarillo y negro (Key) | Impresión |
+| **RGB** | Síntesis aditiva: se suma luz, y las tres juntas dan blanco | Rojo, verde y azul (millones de colores) | Pantallas, monitores y proyectores |
+| **LAB** | Separa la luminosidad del color; es el más cercano a la percepción visual | L: luminosidad de 0 (negro) a 100 (blanco). a: del verde al rojo. b: del azul al amarillo | Referencia de color que no depende del dispositivo |
+ 
+Los colores CMYK se ven distintos a los RGB de la pantalla, por eso es importante **convertir los archivos** antes de imprimir.
