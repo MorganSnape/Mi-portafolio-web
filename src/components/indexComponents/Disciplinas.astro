@@ -1,0 +1,198 @@
+---
+import { Image } from 'astro:assets'
+
+import {
+  disciplinas as disciplinasBase,
+  type Disciplina,
+} from '@/data/disciplinas'
+
+// ── Qué hace este componente ──
+// Sección "¿Qué puedo hacer por ti?": lista los servicios con su número,
+// como un índice editorial. Es informativa, no lleva a otras páginas.
+// Con mouse: al pasar el cursor por una fila, la vista previa de la izquierda
+// se abre como una cortina y desliza en vertical hasta la imagen de ese
+// servicio. La sombra cambia al color de marca asignado a cada uno.
+// En celular o tablet (sin cursor): cada fila muestra su miniatura y su frase.
+
+interface Props {
+  titulo?: string
+  descripcion?: string
+  disciplinas?: Disciplina[]
+  class?: string
+}
+
+const {
+  titulo = '¿Qué puedo hacer por ti?',
+  descripcion = 'Acompaño a tu marca desde la primera idea hasta cada lugar donde la gente la encuentra.',
+  disciplinas = disciplinasBase,
+  class: className = '',
+} = Astro.props
+
+const numero = (i: number) => String(i + 1).padStart(2, '0')
+const acento = (d: Disciplina) => d.acento ?? 'var(--color-black)'
+
+const transicion =
+  'duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] data-[instant=true]:transition-none motion-reduce:transition-none'
+---
+
+<section
+  data-disciplinas
+  class={`w-full flex flex-col items-center text-black ${className}`}
+>
+  <!-- Sin ancho ni márgenes propios: toma los del contenedor de SobreMi -->
+  <div class="w-full py-12 flex flex-col gap-10 md:gap-12">
+    <header class="flex flex-col gap-4 max-w-2xl">
+      <h3 class="titleH3 efectoResaltador w-fit">{titulo}</h3>
+      <p class="text-base lg:text-lg leading-tight text-balance text-black-secondary">
+        {descripcion}
+      </p>
+    </header>
+
+    <div
+      class="grid grid-cols-1 items-start gap-8
+             md:[@media(hover:hover)]:grid-cols-[minmax(0,16rem)_1fr] md:[@media(hover:hover)]:gap-12
+             lg:[@media(hover:hover)]:grid-cols-[minmax(0,20rem)_1fr] lg:[@media(hover:hover)]:gap-16"
+    >
+      <!-- Vista previa: solo con mouse. Es decorativa, el texto también está en la lista. -->
+      <div aria-hidden="true" class="hidden md:[@media(hover:hover)]:block sticky top-28">
+        <div
+          data-preview
+          data-state="idle"
+          style="--acento:var(--color-black)"
+          class={`relative aspect-square w-full overflow-hidden rounded-xl md:rounded-2xl border-2 border-black bg-white-cream
+                  shadow-[6px_6px_0_var(--acento)]
+                  transition-[clip-path,box-shadow] ${transicion}
+                  [clip-path:inset(0_-12px_calc(100%_+_12px)_0)]
+                  data-[state=open]:[clip-path:inset(0_-12px_-12px_0)]
+                  data-[state=leaving]:[clip-path:inset(calc(100%_+_12px)_-12px_-12px_0)]`}
+        >
+          <div data-reel class={`absolute inset-0 transition-transform ${transicion}`}>
+            {
+              disciplinas.map((d, i) => (
+                <figure class="relative m-0 h-full w-full">
+                  <Image
+                    src={d.imagen}
+                    alt=""
+                    widths={[400, 800]}
+                    sizes="(min-width: 1024px) 20rem, 16rem"
+                    class={`absolute inset-0 h-full w-full object-cover ${d.encuadre ?? 'object-center'}`}
+                  />
+                  <span class="absolute left-3 top-3 w-fit rounded-tl-full rounded-br-full border-2 border-black bg-secondary px-3 py-0.5 text-xs font-bold shadow-[3px_3px_0_#141414]">
+                    {numero(i)}
+                  </span>
+                  <figcaption class="absolute inset-x-3 bottom-3">
+                    <span class="inline-block max-w-full rounded-lg border-2 border-black bg-white-cream px-3 py-1.5 text-xs lg:text-sm font-semibold leading-snug text-balance">
+                      {d.descripcion}
+                    </span>
+                  </figcaption>
+                </figure>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Lista de servicios -->
+      <ul data-lista class="flex flex-col">
+        {
+          disciplinas.map((d, i) => (
+            <li
+              data-item={i}
+              data-acento={acento(d)}
+              style={`--acento:${acento(d)}`}
+              class="group/row flex items-center gap-4 py-4 md:py-5 border-b-2 border-black/15
+                     transition-colors duration-300 hover:border-black"
+            >
+              <span class="shrink-0 size-14 sm:size-16 overflow-hidden rounded-lg border-2 border-black shadow-[3px_3px_0_var(--acento)] md:[@media(hover:hover)]:hidden">
+                <Image
+                  src={d.imagen}
+                  alt=""
+                  widths={[128, 256]}
+                  sizes="4rem"
+                  class={`h-full w-full object-cover ${d.encuadre ?? 'object-center'}`}
+                />
+              </span>
+
+              <span class="flex min-w-0 flex-1 flex-col gap-1">
+                <span class="flex items-start gap-1.5 transition-transform duration-300 ease-out group-hover/row:translate-x-3 motion-reduce:transition-none">
+                  <span
+                    class="relative isolate font-fantabular font-medium text-xl md:text-2xl lg:text-3xl leading-tight
+                           group-hover/row:font-bold
+                           after:content-[''] after:absolute after:left-0 after:bottom-1 after:-z-10 after:h-[45%] after:w-0 after:bg-secondary
+                           after:transition-all after:duration-300 group-hover/row:after:w-full"
+                  >
+                    {d.nombre}
+                  </span>
+                  <sup class="mt-1 text-[0.65rem] md:text-xs font-semibold text-gray-400 transition-colors duration-300 group-hover/row:text-primary">
+                    ({numero(i)})
+                  </sup>
+                </span>
+                <!-- Visible en celular; con mouse queda solo para lectores de pantalla -->
+                <span class="text-sm leading-snug text-gray-500 md:[@media(hover:hover)]:sr-only">
+                  {d.descripcion}
+                </span>
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<script>
+  const sinMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+  function iniciar(root: HTMLElement) {
+    const preview = root.querySelector<HTMLElement>('[data-preview]')
+    const reel = root.querySelector<HTMLElement>('[data-reel]')
+    const lista = root.querySelector<HTMLElement>('[data-lista]')
+    const items = root.querySelectorAll<HTMLElement>('[data-item]')
+    if (!preview || !reel || !lista) return
+
+    // Cambia algo sin animación (para "rebobinar" mientras está oculto).
+    const alInstante = (cambio: () => void) => {
+      preview.dataset.instant = reel.dataset.instant = 'true'
+      cambio()
+      void preview.offsetHeight
+      delete preview.dataset.instant
+      delete reel.dataset.instant
+    }
+
+    const mostrar = (item: HTMLElement) => {
+      const posicion = `translateY(${Number(item.dataset.item) * -100}%)`
+      preview.style.setProperty('--acento', item.dataset.acento ?? 'var(--color-black)')
+
+      if (preview.dataset.state === 'idle') {
+        // Estaba cerrada: se ubica en la imagen correcta y luego se abre.
+        alInstante(() => (reel.style.transform = posicion))
+      } else {
+        reel.style.transform = posicion
+      }
+      preview.dataset.state = 'open'
+    }
+
+    const ocultar = () => {
+      if (preview.dataset.state !== 'open') return
+      preview.dataset.state = sinMovimiento.matches ? 'idle' : 'leaving'
+    }
+
+    // Al terminar de cerrarse, vuelve a la posición inicial sin que se note.
+    preview.addEventListener('transitionend', e => {
+      if (e.propertyName !== 'clip-path') return
+      if (preview.dataset.state !== 'leaving') return
+      alInstante(() => (preview.dataset.state = 'idle'))
+    })
+
+    items.forEach(item => {
+      item.addEventListener('pointerenter', e => {
+        if (e.pointerType === 'mouse') mostrar(item)
+      })
+    })
+    lista.addEventListener('pointerleave', ocultar)
+  }
+
+  document
+    .querySelectorAll<HTMLElement>('[data-disciplinas]')
+    .forEach(iniciar)
+</script>
