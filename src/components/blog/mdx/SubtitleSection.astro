@@ -1,0 +1,25 @@
+---
+// Reemplaza automáticamente cada ### Título del MDX.
+// Mezcla el PageDivider (línea + dos estrellas) con un <h3> real:
+//   Título ——————————————— ★ ★
+// Astro le pasa el `id`, así se puede enlazar a la sección con #id.
+import Estrella from '@/assets/estrella.svg'
+
+interface Props {
+  id?: string
+}
+
+const { id } = Astro.props
+---
+
+<div class="my-12 w-full flex flex-row items-center gap-2">
+  <h3
+    id={id}
+    class="m-0! scroll-mt-24 shrink-0 max-w-[70%] text-balance font-fantabular text-xl! md:text-2xl! font-bold!"
+  >
+    <slot />
+  </h3>
+  <div class="flex-1 h-0.5 bg-black mx-3" aria-hidden="true"></div>
+  <Estrella class="h-6 shrink-0" aria-hidden="true" />
+  <Estrella class="h-9 shrink-0" aria-hidden="true" />
+</div>

@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components'
+import Etiqueta from '@/components/blog/ui/Etiqueta.astro'
 import { formatearFecha, urlPost, type Post } from '@/utils/blog'
 
 interface Props {
@@ -15,10 +16,10 @@ const { post, numero, tema } = Astro.props
 
 <a
   href={urlPost(post)}
-  class="group flex items-center gap-4 h-full border-2 border-black rounded-xl bg-white p-3 transition-colors duration-200 hover:bg-primary/10 hover:border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black motion-reduce:transition-none"
+  class="group tag-me flex h-full items-center gap-4 rounded-2xl bg-white p-3 md:p-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
 >
   <span
-    class="w-10 h-10 shrink-0 rounded-full bg-primary text-white font-bold flex items-center justify-center"
+    class="flex size-11 shrink-0 items-center justify-center rounded-full border-2 border-black bg-secondary font-fantabular font-bold"
     aria-hidden="true"
   >
     {
@@ -29,15 +30,17 @@ const { post, numero, tema } = Astro.props
       )
     }
   </span>
-  <span class="flex flex-col min-w-0">
-    <span class="font-semibold leading-snug text-black line-clamp-2 group-hover:text-primary">
-      {post.data.title}
+  <span class="flex min-w-0 flex-1 flex-col gap-1.5">
+    <span class="font-semibold leading-snug text-black line-clamp-3 sm:line-clamp-2">{post.data.title}</span>
+    <span class="flex flex-wrap items-center gap-2 text-sm text-gray-500">
+      {tema && <Etiqueta color="morado">{tema}</Etiqueta>}
+      <time datetime={post.data.pubDate.toISOString()}>{formatearFecha(post.data.pubDate)}</time>
     </span>
-    <span class="text-sm text-gray-500 mt-1">
-      {tema && <span class="font-semibold">{tema}, </span>}
-      <time datetime={post.data.pubDate.toISOString()}>
-        {formatearFecha(post.data.pubDate)}
-      </time>
-    </span>
+  </span>
+  <span
+    class="hidden sm:flex size-9 shrink-0 items-center justify-center rounded-full border-2 border-black bg-pink transition-colors duration-150 group-hover:bg-secondary"
+    aria-hidden="true"
+  >
+    <Icon name="fa6-solid:arrow-up" width={14} height={14} class="rotate-45" />
   </span>
 </a>

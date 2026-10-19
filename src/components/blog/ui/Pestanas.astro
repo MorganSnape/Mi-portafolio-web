@@ -1,0 +1,94 @@
+---
+// Pestañas tipo carpeta encima de un panel de color (Home · About me · Projects).
+// Cada pestaña controla un <PanelPestana id="..."> que va dentro del slot.
+// Sin JavaScript se ven todos los paneles; con JavaScript solo el activo.
+type Color = 'rosa' | 'amarillo' | 'morado' | 'verde'
+
+interface Pestana {
+  id: string
+  texto: string
+}
+
+interface Props {
+  pestanas: Pestana[]
+  color?: Color
+  etiqueta: string
+  class?: string
+}
+
+const { pestanas, color = 'rosa', etiqueta, class: className = '' } = Astro.props
+
+const fondos: Record<Color, { panel: string; activa: string; inactiva: string }> = {
+  rosa: { panel: 'bg-pink', activa: 'aria-selected:bg-pink', inactiva: 'bg-trendy-pink-300' },
+  amarillo: { panel: 'bg-secondary', activa: 'aria-selected:bg-secondary', inactiva: 'bg-trendy-pink-300' },
+  morado: { panel: 'bg-primary text-white-cream', activa: 'aria-selected:bg-primary aria-selected:text-white-cream', inactiva: 'bg-white-cream' },
+  verde: { panel: 'bg-plant-green', activa: 'aria-selected:bg-plant-green', inactiva: 'bg-trendy-pink-300' },
+}
+const estilo = fondos[color]
+---
+
+<div class:list={['relative', className]} data-pestanas>
+  <div role="tablist" aria-label={etiqueta} class="relative z-10 -mb-0.5 flex flex-wrap items-end gap-1">
+    {
+      pestanas.map((p, i) => (
+        <a
+          href={`#${p.id}`}
+          role="tab"
+          id={`tab-${p.id}`}
+          aria-controls={p.id}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          class:list={[
+            'rounded-t-2xl border-2 border-b-0 border-black px-4 md:px-6 py-2 text-sm md:text-base font-semibold',
+            'transition-[padding] duration-150 aria-selected:pb-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black',
+            estilo.inactiva,
+            estilo.activa,
+          ]}
+        >
+          {p.texto}
+        </a>
+      ))
+    }
+  </div>
+  <div class:list={['rounded-[2rem] rounded-tl-none border-2 border-black p-2.5 sm:p-8 md:p-12', estilo.panel]}>
+    <slot />
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-pestanas]').forEach(raiz => {
+    const tabs = [...raiz.querySelectorAll<HTMLAnchorElement>('[role="tab"]')]
+    const paneles = tabs.map(tab => document.getElementById(tab.getAttribute('aria-controls') ?? ''))
+    if (tabs.length === 0) return
+
+    const seleccionar = (indice: number, enfocar: boolean) => {
+      tabs.forEach((tab, i) => {
+        const activa = i === indice
+        tab.setAttribute('aria-selected', String(activa))
+        tab.tabIndex = activa ? 0 : -1
+        const panel = paneles[i]
+        if (panel) panel.hidden = !activa
+      })
+      if (enfocar) tabs[indice].focus()
+    }
+
+    const desdeHash = tabs.findIndex(tab => `#${tab.getAttribute('aria-controls')}` === location.hash)
+    seleccionar(desdeHash >= 0 ? desdeHash : 0, false)
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', evento => {
+        evento.preventDefault()
+        seleccionar(i, false)
+        history.replaceState(null, '', `#${tab.getAttribute('aria-controls')}`)
+      })
+      tab.addEventListener('keydown', evento => {
+        if (evento.key === 'ArrowRight') {
+          evento.preventDefault()
+          seleccionar((i + 1) % tabs.length, true)
+        } else if (evento.key === 'ArrowLeft') {
+          evento.preventDefault()
+          seleccionar((i - 1 + tabs.length) % tabs.length, true)
+        }
+      })
+    })
+  })
+</script>

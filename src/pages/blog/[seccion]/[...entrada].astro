@@ -1,5 +1,10 @@
 ---
 import PostLayout from '@/layouts/blog/PostLayout.astro'
+import Panel from '@/components/blog/ui/Panel.astro'
+import Etiqueta from '@/components/blog/ui/Etiqueta.astro'
+import Ondulada from '@/components/blog/ui/Ondulada.astro'
+import CierreBlog from '@/components/blog/ui/CierreBlog.astro'
+import { Icon } from 'astro-icon/components'
 import { getCollection, render } from 'astro:content'
 import { dataSeccionesBlog } from '@/data/blog/dataSeccionesBlog'
 import { componentesMdx } from '@/components/blog/mdx'
@@ -22,18 +27,55 @@ const { post } = Astro.props
 const { Content, headings } = await render(post)
 
 const seccion = dataSeccionesBlog.find(s => s.slug === seccionDe(post))
+const nombreSeccion = seccion?.title.replace('Apuntes sobre ', '') ?? 'Blog'
+const urlSeccion = `/blog/${seccionDe(post)}`
 ---
 
 <PostLayout
   title={post.data.title}
   headings={headings}
-  volver={{ href: `/blog/${seccionDe(post)}`, texto: seccion?.title ?? 'Inicio de Blog' }}
+  volver={{ href: urlSeccion, texto: seccion?.title ?? 'Inicio de Blog' }}
 >
-  {post.data.curso && <p class="text-sm text-gray-500">{post.data.curso}</p>}
-  <h1>{post.data.title}</h1>
-  <p>{post.data.description}</p>
-  <time datetime={post.data.pubDate.toISOString()} class="text-sm text-gray-500">
-    {formatearFecha(post.data.pubDate)}
-  </time>
+  <Panel color="amarillo" as="header" slot="encabezado" class="overflow-visible">
+    <Ondulada class="absolute hidden sm:block right-4 md:right-8 -top-8 w-16 md:w-24 rotate-12" color="var(--color-pink)" />
+    <div class="flex flex-wrap items-center gap-2">
+      <a
+        href={urlSeccion}
+        class="inline-flex items-center gap-2 rounded-full border-2 border-black bg-white px-3 py-0.5 text-xs font-bold transition-colors duration-150 hover:bg-trendy-pink-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black lg:hidden"
+      >
+        <Icon name="fa6-solid:arrow-left" width={12} height={12} aria-hidden="true" />
+        {nombreSeccion}
+      </a>
+      {post.data.curso && <Etiqueta color="negro" mayusculas>{post.data.curso}</Etiqueta>}
+    </div>
+    <h1 class="mt-5 font-fantabular font-black text-4xl md:text-6xl leading-[0.95] text-balance">
+      {post.data.title}
+    </h1>
+    {post.data.description && <p class="mt-5 max-w-3xl text-lg md:text-xl font-medium text-pretty">{post.data.description}</p>}
+    <dl class="mt-8 grid gap-2 border-t-2 border-black pt-4 text-sm font-semibold sm:grid-cols-3">
+      <div class="flex gap-1">
+        <dt>Tema:</dt>
+        <dd>{nombreSeccion}</dd>
+      </div>
+      <div class="flex gap-1 sm:justify-center">
+        <dt class="sr-only">Publicado:</dt>
+        <dd><time datetime={post.data.pubDate.toISOString()}>{formatearFecha(post.data.pubDate)}</time></dd>
+      </div>
+      <div class="flex gap-1 sm:justify-end">
+        <dt>por</dt>
+        <dd>Gabriela Ferrer</dd>
+      </div>
+    </dl>
+  </Panel>
+
   <Content components={componentesMdx} />
+
+  <CierreBlog
+    slot="cierre"
+    enlaces={[
+      { texto: `Más de ${nombreSeccion}`, href: urlSeccion },
+      { texto: 'Todos los temas', href: '/blog' },
+      { texto: 'Escríbeme', href: '/contactame' },
+    ]}
+  />
 </PostLayout>

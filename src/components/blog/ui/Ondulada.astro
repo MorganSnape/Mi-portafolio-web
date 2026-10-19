@@ -1,0 +1,33 @@
+---
+// Forma ondulada de la marca: 12 ondas largas y redondeadas con valles profundos,
+// como sticker decorativo o dentro de un título en lugar de una letra "o".
+// Cada onda es una línea gruesa con punta redonda que sale del centro:
+// primero se dibujan todas en negro (un poco más anchas) y luego encima
+// en color, así solo queda visible el contorno exterior.
+interface Props {
+  /** Color de relleno (cualquier color CSS o var(--color-...)) */
+  color?: string
+  /** Cantidad de ondas */
+  ondas?: number
+  class?: string
+}
+
+const { color = 'var(--color-secondary)', ondas = 12, class: className = '' } = Astro.props
+
+const centro = 60
+const largo = 48 // distancia del centro a la punta de cada onda (sin la parte redonda)
+const ancho = 9 // radio de la punta redonda
+const trazo = 2.8 // grosor del contorno
+
+const puntas = Array.from({ length: ondas }, (_, i) => {
+  const a = (Math.PI * 2 * i) / ondas - Math.PI / 2
+  return [centro + largo * Math.cos(a), centro + largo * Math.sin(a)]
+})
+---
+
+<svg viewBox="0 0 120 120" class={className} aria-hidden="true" focusable="false">
+  <g stroke-linecap="round">
+    {puntas.map(([x, y]) => <line x1={centro} y1={centro} x2={x} y2={y} style="stroke:var(--color-black)" stroke-width={(ancho + trazo) * 2} />)}
+    {puntas.map(([x, y]) => <line x1={centro} y1={centro} x2={x} y2={y} style={`stroke:${color}`} stroke-width={ancho * 2} />)}
+  </g>
+</svg>

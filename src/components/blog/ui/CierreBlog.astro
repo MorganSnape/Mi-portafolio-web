@@ -1,0 +1,50 @@
+---
+// Tarjeta negra de cierre, como el "Get in touch!" de la referencia.
+import Ondulada from './Ondulada.astro'
+
+interface Enlace {
+  texto: string
+  href: string
+}
+
+interface Props {
+  enlaces?: Enlace[]
+  class?: string
+}
+
+const {
+  enlaces = [
+    { texto: 'Escríbeme', href: '/contactame' },
+    { texto: 'Ver mis proyectos', href: '/#proyectos-container' },
+  ],
+  class: className = '',
+} = Astro.props
+---
+
+<section
+  class:list={['relative rounded-[2rem] border-2 border-black bg-black px-6 py-14 md:py-20 text-center text-white-cream', className]}
+  aria-labelledby="cierre-blog"
+>
+  <Ondulada class="absolute -top-8 -left-1 md:-left-6 w-20 md:w-28 rotate-12" color="var(--color-secondary)" />
+  <Ondulada class="absolute -bottom-8 right-6 w-16 md:w-24 -rotate-12" color="var(--color-trendy-pink-300)" />
+  <h2 id="cierre-blog" class="font-fantabular font-black text-pink text-5xl md:text-7xl leading-[0.9] text-balance">
+    ¡Sigamos<br />aprendiendo!
+  </h2>
+  <p class="mx-auto mt-6 max-w-md text-base md:text-lg text-white-cream/80">
+    Si algún apunte te sirvió o quieres trabajar conmigo, escríbeme.
+  </p>
+  <ul class="mt-8 flex flex-wrap justify-center gap-3">
+    {
+      enlaces.map(enlace => (
+        <li>
+          <a
+            href={enlace.href}
+            class="inline-block rounded-full border-2 border-white-cream px-5 py-2 font-semibold transition-colors duration-150 hover:bg-pink hover:text-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary"
+          >
+            {enlace.texto}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>

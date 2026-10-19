@@ -1,0 +1,14 @@
+---
+// Alias de compatibilidad: la flor vieja se reemplazó por la forma ondulada.
+// Cualquier <Flor> que quede en el proyecto dibuja ahora <Ondulada>.
+import Ondulada from './Ondulada.astro'
+
+interface Props {
+  color?: string
+  class?: string
+}
+
+const { color, class: className } = Astro.props
+---
+
+<Ondulada color={color} class={className} />

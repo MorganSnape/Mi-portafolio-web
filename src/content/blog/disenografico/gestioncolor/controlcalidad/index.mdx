@@ -1,6 +1,205 @@
 ---
 title: "Control de calidad de impresos"
-pubDate: 2026-10-15
-description: "Conjunto de procesos y herramientas que permiten controlar y mantener la consistencia de los colores entre diferentes dispositivos, como cámaras, monitores e impresoras, para lograr una reproducción del color lo más fiel y uniforme posible durante todo el flujo de trabajo gráfico."
-curso: Gestión de color 
+sectionBlogId: "diseñoGrafico"
+pubDate: 2026-10-19
+description: "Cómo se controla la calidad de un impreso: la norma ISO 12647, los estándares de impresión, los espacios y perfiles de color, el gamut, Pantone y la ganancia de punto."
+curso: "Gestión de color"
+orden: 2
 ---
+
+import InfoCard from '@/components/blog/mdx/InfoCard.astro'
+import LinkButton from '@/components/blog/mdx/LinkButton.astro'
+import offline from "./cc-offline.svg?url";
+import online from "./cc-online.svg?url";
+import perfilEntrada from "./cc-perfil-entrada.svg?url";
+import perfilVisualizacion from "./cc-perfil-visualizacion.svg?url";
+import perfilSalida from "./cc-perfil-salida.svg?url";
+import gamut from "./cc-gamut.svg?url";
+import gananciaPunto from "./cc-ganancia-punto.svg?url";
+
+En la introducción vimos qué es la gestión de color. En este tema el foco pasa al impreso: cómo se comprueba que lo que sale de la máquina es lo que se diseñó, y qué herramientas, normas y conceptos hay detrás de ese control.
+
+## ¿Qué es el control de calidad?
+
+El control de calidad consiste en **diseñar y desarrollar productos con la mejor calidad al menor costo posible**. En impresión, su objetivo principal es <mark>eliminar el error humano</mark>, detectando tanto los errores que se ven a simple vista como los que son casi imperceptibles.
+
+En la industria gráfica este control se rige por la norma <mark>`ISO 12647`</mark>. Hoy es muy común mandar a imprimir a otros países donde los costos son menores, así que tener procesos estandarizados es lo que garantiza que el resultado tenga la misma calidad en cualquier lugar.
+
+***Un detalle importante:*** en el mercado hay muchas tintas baratas que no cumplen con la norma, y con ellas la impresión no alcanza el estándar de calidad.
+
+### Versiones de la norma
+
+La ISO 12647 tiene una versión para cada proceso de impresión:
+
+| Norma | Proceso |
+| --- | --- |
+| **12647-1** | Parámetros y métodos de medición |
+| **12647-2** | Offset plano y con horno |
+| **12647-3** | Coldset y periódicos |
+| **12647-4** | Huecograbado |
+| **12647-5** | Serigrafía |
+| **12647-6** | Flexografía |
+| **12647-7** | Pruebas de color |
+| **12647-8** | Impresión digital |
+
+### Errores comunes al imprimir
+
+- Texto mal impreso.
+- Falta de tinta o de material.
+- Salpicaduras de tinta, manchas y rayas.
+- Arrugas.
+- Variación de color o de tonalidad.
+
+### Inspección con visión artificial
+
+Para encontrar estos errores existen sistemas de **visión artificial** que localizan los defectos y registran su ubicación exacta, para que el operador sepa dónde está la falla. Si el error es crítico, el sistema puede **detener la línea de impresión**. Funcionan de dos formas:
+
+<div class="not-prose my-10 grid gap-8 pl-4 sm:grid-cols-2">
+  <InfoCard
+    number={1}
+    image={offline}
+    imageAlt="Escáner de alta resolución revisando una hoja impresa"
+    title="Modo offline"
+    description="Control fuera de la línea de producción con un escáner de alta resolución. Es más lento, pero más preciso."
+  />
+  <InfoCard
+    number={2}
+    image={online}
+    imageAlt="Cámara lineal revisando pliegos en movimiento sobre rodillos"
+    title="Modo online"
+    description="Control en tiempo real y a gran velocidad con cámaras lineales, mientras la máquina sigue imprimiendo."
+  />
+</div>
+
+Estos sistemas se configuran según la velocidad de impresión (entre 150 y 300 m/min), el ancho de inspección (hasta 1500 mm), el nivel de calidad esperado y lo que deben vigilar: alineamiento, densidad, posición, tamaño y tipo de defecto, y desviaciones de color o tono.
+
+
+## Estandarización del color
+
+Estandarizar el color no es solo que el impreso se vea uniforme. Es poner de acuerdo **todos los elementos de la cadena de producción**: máquinas, tintas, soportes, pruebas de producción y pruebas de material, para que todos consigan el mismo color.
+
+Además de la ISO, existen especificaciones técnicas de carácter internacional que guían la reproducción de impresos:
+
+| Especificación | Qué es | Para qué sirve |
+| --- | --- | --- |
+| **SWOP** | *Specifications for Web Offset Publications* (EE. UU., 1976) | Offset en rotativa sobre papel estucado |
+| **SNAP** | *Specifications for Non-Heatset Advertising Printing* (1984) | Offset en frío sobre papel prensa |
+| **GRACoL** | *General Requirements for Applications in Commercial Offset Lithography* (1996) | Offset comercial |
+| **FOGRA** | Asociación alemana de investigación en artes gráficas (1983) | Reportes de caracterización según ISO 12647 |
+| **CGATS** | Comité de estándares de tecnologías de artes gráficas (1988) | Desarrolla normas en nombre de ANSI |
+
+
+## Espacios de color
+
+Un **espacio de color** es una organización de colores. Junto con los perfiles de cada dispositivo, permite que un color se reproduzca igual tanto en medios digitales como impresos. Cuando un modelo de color se conecta con un espacio de referencia, se obtiene una "huella" dentro de ese espacio: su **gama**.
+
+La **conversión de espacio de color** es traducir un color de un espacio a otro, buscando que la imagen se vea lo más parecida posible al original.
+
+| Espacio | Características | Uso ideal |
+| --- | --- | --- |
+| **sRGB** | El más común. Gama limitada, pero compatible con casi todo | Web, redes sociales y pantallas |
+| **Adobe RGB** | Gama más amplia. Reproduce casi todos los colores CMYK imprimibles | Edición profesional de fotografía |
+| **ProPhoto RGB** | Creado por Kodak. Abarca todos los colores que percibe el ojo, aunque ninguna pantalla los muestra todos | Trabajo profesional muy exigente |
+| **CMYK** | Sustractivo, con 4 canales (uno por tinta) | Todo lo que se va a imprimir |
+
+***La regla práctica:*** si la pieza se va a ver en una pantalla (web, celular, televisor) se trabaja en <mark>RGB</mark>. Si se va a imprimir (revista, catálogo, póster, folleto) se trabaja en <mark>CMYK</mark>. Enviar un archivo en RGB a impresión cambia los colores finales.
+
+
+## Perfiles de color
+
+El sistema de gestión de color usa tres tipos de perfiles para que el color se mantenga al pasar de un dispositivo a otro. Así todos los equipos "hablan el mismo idioma":
+
+<div class="not-prose my-10 grid gap-8 pl-4 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard
+    number={1}
+    image={perfilEntrada}
+    imageAlt="Cámara fotográfica que captura en RGB"
+    title="Perfil de entrada"
+    description="Describe los dispositivos que capturan: cámaras, escáneres y celulares. Casi siempre son RGB y solo pueden ser origen."
+  />
+  <InfoCard
+    number={2}
+    image={perfilVisualizacion}
+    imageAlt="Monitor que traduce los valores del archivo a su espacio de color"
+    title="Perfil de visualización"
+    description="Le dice al sistema cómo convertir los valores del archivo al espacio de color del monitor."
+  />
+  <InfoCard
+    number={3}
+    image={perfilSalida}
+    imageAlt="Impresora que imprime según el papel y la tinta"
+    title="Perfil de salida"
+    description="Describe impresoras, prensas y rotativas. Puede ser origen o destino, y depende del papel y la tinta."
+  />
+</div>
+
+Un documento sin perfil asignado se llama **sin etiqueta**: solo tiene los valores de color en bruto, y el programa le aplica el perfil del espacio de trabajo activo. Por eso Photoshop avisa cuando una imagen no trae un perfil incrustado.
+
+## Gamut
+
+El **gamut** es el conjunto de colores que puede reproducir un dispositivo. Si pensamos en el ojo humano como un dispositivo, su gamut sería la referencia universal. Las pantallas, cámaras e impresoras tienen gamuts más pequeños, e incluso dos pantallas del mismo modelo pueden tener gamuts distintos.
+
+<PhotoNote src={gamut} alt="Diagrama de cromaticidad con los gamut de sRGB, Adobe RGB y ProPhoto RGB">
+
+<mark>Por esto una imagen se ve bien en pantalla y sale distinta al imprimirla:</mark> cada dispositivo solo alcanza una parte de todos los colores visibles. La **colorimetría** es la ciencia que mide el color con números (tono, saturación y luminancia) y permite ubicar cualquier color en este diagrama.
+
+</PhotoNote>
+
+## Pantone
+
+Los colores **Pantone** son tintas directas o planas: se aplican tal cual, en vez de formarse mezclando CMYK.
+
+- Su catálogo tiene **1.114 colores**, hechos con 13 pigmentos más el negro.
+- Cada código es universal: un mismo Pantone se ve igual aquí o en China, algo que CMYK no garantiza.
+- Son ideales para **logotipos, empaques y envases**.
+- Cada año Pantone anuncia el color o los colores de tendencia, que influyen en diseño, moda y alimentos.
+
+***Ojo con el presupuesto:*** las tintas Pantone pueden ser costosas para impresores pequeños. Antes de elegir un color de la pantonera conviene revisar si se puede representar en CMYK.
+
+
+## Valor tonal, balance de grises y tramado
+
+### Valor tonal
+
+Es la cantidad de luz y sombra que refleja una superficie, en una escala que va del blanco al negro. El valor tonal construye el **contraste y el volumen**: es lo que nos deja diferenciar un círculo de una esfera sin tocarla. Se modifica así:
+
+- Agregando blanco, **sube** el valor.
+- Agregando negro, **baja** el valor.
+- Agregando un gris o un pigmento de otro valor, sube o baja según el caso.
+
+### Balance de grises
+
+Es el **primer paso del control de color**. Se trata de comprobar que ningún color domina sobre los demás. En teoría, partes iguales de cian, magenta y amarillo dan un gris neutro, pero en la imprenta no pasa exactamente así por la transparencia y la calidad de las tintas.
+
+Para medirlo se necesita un entorno neutro con luz día estándar. Si no, aparece el **metamerismo**: percibimos el color distinto según la luz o los colores que rodean la muestra.
+
+### Tramado
+
+Para imprimir una fotografía hay que pasarla por dos procesos:
+
+1. **Tramado:** convertir la imagen en puntos diminutos que, a cierta distancia, se ven como tonos continuos.
+2. **Separación de colores:** descomponer cada tono en cian, magenta, amarillo y negro.
+
+En el tramado **monocromático** los puntos están siempre a la misma distancia y lo que cambia es su tamaño: punto grande, color intenso; punto pequeño, color suave. También existe el tramado **estocástico**, y un tramado mal hecho puede producir el **efecto muaré**.
+
+
+## Ganancia de punto
+
+El **incremento de valor tonal**, o ganancia de punto, es el crecimiento del punto de trama durante la impresión. Por eso una imagen puede salir **más oscura** de lo esperado, o con un desplazamiento de color.
+
+<PhotoNote src={gananciaPunto} alt="Gráfica de ganancia de punto: la curva real queda por encima de la línea ideal a 45 grados">
+
+<mark>Ejemplo:</mark> si en la plancha el punto está al 80 % y en el impreso se mide un 90 %, la ganancia es de **10 puntos**, no del 10 % de 80 (que daría 88 %). La **línea característica** ideal es una recta a 45°, pero se desvía según el papel, la tinta y la máquina.
+
+</PhotoNote>
+
+Por eso es tan importante que las máquinas estén bien calibradas: así el punto impreso corresponde al valor que realmente se diseñó.
+
+
+## Fuente
+
+<LinkButton
+  href="https://zajuna.sena.edu.co/Repositorio/Titulada/institution/SENA/Arte/522309/Contenido/OVA/CF3/index.html#/curso/tema2"
+  title="OVA Gestión de color"
+  description="Tema 2: Control de calidad de impresos (SENA)."
+/>

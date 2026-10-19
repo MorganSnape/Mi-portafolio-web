@@ -1,0 +1,53 @@
+---
+// Ventana de navegador de la marca. Arriba lleva tres puntos o, si se le pasan
+// `pestanas`, un grupo de píldoras como en la referencia (Projects · CV · About).
+interface Pestana {
+  texto: string
+  href: string
+  activa?: boolean
+}
+
+interface Props {
+  pestanas?: Pestana[]
+  etiquetaNav?: string
+  class?: string
+  /** Clases del contenido (padding por defecto) */
+  cuerpo?: string
+}
+
+const { pestanas, etiquetaNav = 'Navegación de la sección', class: className = '', cuerpo = 'p-4 sm:p-6 md:p-10' } = Astro.props
+---
+
+<div class:list={['relative rounded-[1.5rem] border-2 border-black bg-white-cream text-black', className]}>
+  {
+    pestanas ? (
+      <nav aria-label={etiquetaNav} class="flex justify-center px-4 pt-4">
+        <ul class="flex flex-wrap items-center justify-center gap-1 rounded-full border-2 border-black bg-white p-1 text-xs md:text-sm">
+          {pestanas.map(p => (
+            <li>
+              <a
+                href={p.href}
+                aria-current={p.activa ? 'page' : undefined}
+                class:list={[
+                  'block rounded-full px-3 md:px-4 py-1 font-semibold transition-colors duration-150',
+                  p.activa ? 'bg-pink ring-2 ring-black' : 'hover:bg-trendy-pink-100',
+                ]}
+              >
+                {p.texto}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    ) : (
+      <div class="flex h-10 items-center gap-2 border-b-2 border-black px-4" aria-hidden="true">
+        <span class="size-3 rounded-full bg-black" />
+        <span class="size-3 rounded-full bg-black" />
+        <span class="size-3 rounded-full bg-black" />
+      </div>
+    )
+  }
+  <div class={cuerpo}>
+    <slot />
+  </div>
+</div>
