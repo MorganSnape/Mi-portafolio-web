@@ -16,7 +16,7 @@
  *   title        (opcional)    reemplaza el dominio mostrado en negrita
  *   class        (opcional)    clases extra
  *
- * Depende de la clase `.tag-me` definida en global.css
+ * Depende de la clase `.efecto-hundir border-2 border-black` definida en global.css
  * (borde negro, sombra dura y efecto de "presionar" en hover).
  */
 interface Props {
@@ -47,7 +47,7 @@ const hasDescription = Boolean(description) || Astro.slots.has("default");
   target={isExternal ? "_blank" : undefined}
   rel={isExternal ? "noopener noreferrer" : undefined}
   class:list={[
-    "tag-me group not-prose my-6 block w-full max-w-md overflow-hidden rounded-lg",
+    "efecto-hundir border-2 border-black group not-prose my-6 block w-full max-w-md overflow-hidden rounded-chico",
     "bg-white-cream text-black no-underline",
     "focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-primary",
     className,

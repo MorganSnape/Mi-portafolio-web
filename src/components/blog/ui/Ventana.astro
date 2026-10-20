@@ -18,7 +18,7 @@ interface Props {
 const { pestanas, etiquetaNav = 'Navegación de la sección', class: className = '', cuerpo = 'p-4 sm:p-6 md:p-10' } = Astro.props
 ---
 
-<div class:list={['relative rounded-[1.5rem] border-2 border-black bg-white-cream text-black', className]}>
+<div class:list={['relative rounded-ventana border-2 border-black bg-white-cream text-black', className]}>
   {
     pestanas ? (
       <nav aria-label={etiquetaNav} class="flex justify-center px-4 pt-4">

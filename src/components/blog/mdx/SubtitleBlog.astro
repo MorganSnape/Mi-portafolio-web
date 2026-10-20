@@ -25,7 +25,7 @@ const { id, align = 'left' } = Astro.props
     <h2
       class:list={[
         'bg-secondary w-full h-14 md:h-16 py-2 md:py-6 px-5 md:px-12 flex items-center justify-center text-center text-base md:text-lg',
-        align === 'center' ? 'center-tag-me' : 'tag-me',
+        align === 'center' ? 'efecto-hundir-abajo border-2 border-black flex items-center justify-center' : 'efecto-hundir border-2 border-black',
       ]}
     >
       <span class="tracking-[6px] font-bold"><slot /></span>

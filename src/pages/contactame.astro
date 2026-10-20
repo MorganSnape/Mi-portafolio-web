@@ -47,11 +47,11 @@ const redes = [
 
 // Fila clicable: toda la fila es el enlace
 const fila =
-  'group flex items-center gap-4 px-5 py-5 sm:px-7 transition-colors hover:bg-kournikova-50 focus-visible:outline-none focus-visible:bg-[#F4EFE6] focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-[#16140F]'
+  'group flex items-center gap-4 px-5 py-5 sm:px-7 transition-colors hover:bg-kournikova-50 focus-visible:outline-none focus-visible:bg-white-cream focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-black'
 const flecha =
   'size-5 shrink-0 -rotate-45 group-hover:rotate-0 transition-transform duration-200'
 const tarjeta =
-  'overflow-hidden rounded-2xl border-2 border-[#16140F] bg-white shadow-[6px_6px_0_#16140F] divide-y-2 divide-[#16140F]'
+  'overflow-hidden rounded-tarjeta border-2 border-black bg-white shadow-dura-lg divide-y-2 divide-black'
 ---
 
 <Layout title="Trabajemos juntos - Contáctame">
@@ -61,7 +61,7 @@ const tarjeta =
   >
     <section
   aria-labelledby="titulo-contacto"
-  class="mx-auto min-h-screen grid w-full max-w-[1280px] gap-10 px-6 py-16 text-[#16140F] lg:grid-cols-2 lg:gap-x-16 lg:py-40"
+  class="mx-auto min-h-screen grid w-full max-w-sitio gap-10 px-6 py-16 text-black lg:grid-cols-2 lg:gap-x-16 lg:py-40"
 >
   <!-- Título y texto: arriba a la izquierda -->
   <header class="flex flex-col gap-5 lg:col-start-1 lg:row-start-1">
@@ -69,7 +69,7 @@ const tarjeta =
     <h1 id="titulo-contacto" class="text-5xl font-extrabold leading-none tracking-tight md:text-6xl">
       Contáctame
     </h1>
-    <p class="max-w-[52ch] text-lg leading-relaxed text-[#3D3A33]">
+    <p class="max-w-[52ch] text-lg leading-relaxed text-black-secondary">
       ¿Tienes una marca por crear o un producto por diseñar? Escríbeme por el medio que prefieras y
       conversamos.
     </p>
@@ -88,7 +88,7 @@ const tarjeta =
             >
               <span class="flex min-w-0 flex-1 flex-col items-start gap-2">
                 <span
-                  class={`rounded-full border-2 border-[#16140F] px-3 py-0.5 text-sm font-bold ${d.colorEtiqueta}`}
+                  class={`rounded-full border-2 border-black px-3 py-0.5 text-sm font-bold ${d.colorEtiqueta}`}
                 >
                   {d.etiqueta}
                 </span>
@@ -107,7 +107,7 @@ const tarjeta =
         redes.map((r) => (
           <li>
             <a href={r.href} target="_blank" rel="noopener noreferrer" class={fila}>
-              <span class="grid size-11 shrink-0 place-items-center rounded-lg border-2 border-[#16140F] bg-[#16140F] text-white">
+              <span class="grid size-11 shrink-0 place-items-center rounded-chico border-2 border-black bg-black text-white">
                 <Icon name={r.icono} class="size-6" aria-hidden="true" />
               </span>
               <span class="flex-1 text-lg font-bold">{r.nombre}</span>

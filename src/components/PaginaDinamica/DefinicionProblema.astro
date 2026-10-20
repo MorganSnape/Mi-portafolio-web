@@ -13,7 +13,7 @@ const { problemDefinition } = Astro.props;
 <section class="flex flex-col gap-12">
   <section class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
     <div class="flex flex-col gap-4">
-      <h2 class="titleProyecto">
+      <h2 class="titulo-seccion">
         Definición del <br /> problema
       </h2>
       <p
@@ -24,14 +24,14 @@ const { problemDefinition } = Astro.props;
     </div>
     <div class="relative">
       <div
-        class="tag-me bg-tag font-bold absolute -right-4 sm:-right-8 md:-right-12 top-4 sm:top-6 md:top-8 lg:top-14 w-fit py-2 px-4 text-[clamp(0.1rem,_0.5rem_+_0.727vw,_0.8rem)] z-40 rounded-md"
+        class="efecto-hundir border-2 border-black bg-tag font-bold absolute -right-4 sm:-right-8 md:-right-12 top-4 sm:top-6 md:top-8 lg:top-14 w-fit py-2 px-4 text-xs z-40 rounded-chico"
       >
         100% Artesanal
       </div>
       <img
         src="/images/proyectos/amarilla/portada-proyecto.webp"
         alt=""
-        class="h-40 sm:h-48 md:h-56 w-full object-cover border-2 border-black rounded-2xl -rotate-2"
+        class="h-40 sm:h-48 md:h-56 w-full object-cover border-2 border-black rounded-tarjeta -rotate-2"
       />
     </div>
   </section>
@@ -39,7 +39,7 @@ const { problemDefinition } = Astro.props;
     <article class="flex flex-col gap-8">
       <header class="flex flex-row gap-4 items-center">
         <div
-          class="bg-primary rounded-full p-2 border-2 border-black shadow-[4px_4px_0px_#141414]"
+          class="bg-primary rounded-full p-2 border-2 border-black shadow-dura"
         >
           <Icon
             name="fa6-solid:exclamation"
@@ -48,10 +48,10 @@ const { problemDefinition } = Astro.props;
             class="text-white"
           />
         </div>
-        <h3 class="subtituloProyecto">Objetivo del negocio</h3>
+        <h3 class="subtitulo">Objetivo del negocio</h3>
       </header>
       <p
-        class="w-full min-h-64 md:min-h-96 shadow-[4px_4px_0px_#141414] md:shadow-[6px_6px_0px_#141414] rounded-2xl border-2 border-black p-4 md:p-8"
+        class="w-full min-h-64 md:min-h-96 shadow-dura md:shadow-dura-lg rounded-tarjeta border-2 border-black p-4 md:p-8"
       >
         {problemDefinition?.businessObjective ??
           "Objetivo del negocio no definido para este proyecto."}
@@ -60,7 +60,7 @@ const { problemDefinition } = Astro.props;
     <article class="flex flex-col gap-8">
       <header class="flex flex-row gap-4 items-center">
         <div
-          class="bg-primary rounded-full p-2 border-2 border-black shadow-[4px_4px_0px_#141414]"
+          class="bg-primary rounded-full p-2 border-2 border-black shadow-dura"
         >
           <Icon
             name="fa6-solid:face-frown"
@@ -69,13 +69,13 @@ const { problemDefinition } = Astro.props;
             class="text-white"
           />
         </div>
-        <h3 class="subtituloProyecto">Puntos de dolor</h3>
+        <h3 class="subtitulo">Puntos de dolor</h3>
       </header>
       <div class="flex flex-col gap-3">
         {(problemDefinition?.painPoints ?? []).map((painPoint) => (
           <div class="flex flex-row gap-4 items-center border-b last:border-0 border-black pb-3">
             <div
-              class="bg-tag rounded-lg p-2 border-2 border-black shadow-[4px_4px_0px_#141414]"
+              class="bg-tag rounded-chico p-2 border-2 border-black shadow-dura"
             >
               <Icon name="fa6-solid:leaf" height={22} width={22} class="" />
             </div>
@@ -92,7 +92,7 @@ const { problemDefinition } = Astro.props;
     <article class="flex flex-col gap-8">
       <header class="flex flex-row gap-4 items-center">
         <div
-          class="bg-primary rounded-full p-2 border-2 border-black shadow-[4px_4px_0px_#141414]"
+          class="bg-primary rounded-full p-2 border-2 border-black shadow-dura"
         >
           <Icon
             name="fa6-solid:lightbulb"
@@ -101,10 +101,10 @@ const { problemDefinition } = Astro.props;
             class="text-white"
           />
         </div>
-        <h3 class="subtituloProyecto">INSIGHT clave</h3>
+        <h3 class="subtitulo">INSIGHT clave</h3>
       </header>
       <div
-        class="w-full min-h-64 md:min-h-96 shadow-[4px_4px_0px_#141414] md:shadow-[6px_6px_0px_#141414] rounded-2xl border-2 border-black p-4 overflow-hidden flex flex-col justify-between"
+        class="w-full min-h-64 md:min-h-96 shadow-dura md:shadow-dura-lg rounded-tarjeta border-2 border-black p-4 overflow-hidden flex flex-col justify-between"
       >
         <Comillas />
         <p class="p-4">
@@ -117,11 +117,11 @@ const { problemDefinition } = Astro.props;
       </div>
     </article>
     <article
-      class="w-full lg:col-span-3 border-2 border-black rounded-2xl p-4 flex flex-col gap-4"
+      class="w-full lg:col-span-3 border-2 border-black rounded-tarjeta p-4 flex flex-col gap-4"
     >
       <header class="flex flex-row gap-4 items-center">
         <div
-          class="bg-primary rounded-full p-2 border-2 border-black shadow-[4px_4px_0px_#141414]"
+          class="bg-primary rounded-full p-2 border-2 border-black shadow-dura"
         >
           <Icon
             name="fa6-solid:question"
@@ -130,7 +130,7 @@ const { problemDefinition } = Astro.props;
             class="text-white"
           />
         </div>
-        <h3 class="subtituloProyecto">
+        <h3 class="subtitulo">
           {problemDefinition?.summaryTitle ?? "Resumen del problema"}
         </h3>
       </header>

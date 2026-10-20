@@ -1,0 +1,137 @@
+---
+title: "Paso a paso: cómo hacer un control de calidad"
+sectionBlogId: "diseñoGrafico"
+pubDate: 2026-10-20T14:00:00
+description: "El método que sigo para revisar un archivo antes de mandarlo a la imprenta: definir la salida, armar la lista de requisitos, verificar en Illustrator y Acrobat, registrar resultados y escribir el informe."
+curso: "Gestión de color"
+orden: 5
+---
+
+import InfoCard from '@/components/blog/mdx/InfoCard.astro'
+
+En el apunte de control de calidad de impresos vi la teoría: la norma ISO 12647, los perfiles, el gamut y la ganancia de punto. Aquí la pongo en práctica. Un **control de calidad** es comparar mi archivo con una lista de requisitos y decir, punto por punto, si cumple o no. Lo hice para la evidencia **GA5-291301083-AA4-EV02** con el packaging de DePelös, y este es el método que me quedó.
+
+***La idea clave:*** no se revisa "todo lo que se me ocurra". Primero se define <mark>cómo se va a imprimir</mark>, y de ahí salen los requisitos que hay que verificar.
+
+<figure class="not-prose my-10">
+  <div class="overflow-hidden rounded-ventana border-2 border-black bg-black shadow-dura-lg">
+    <video class="block aspect-video w-full" controls playsinline preload="metadata" poster="/videos/control-calidad-paso-a-paso.jpg">
+      <source src="/videos/control-calidad-paso-a-paso.mp4" type="video/mp4" />
+      Tu navegador no puede reproducir este video.
+    </video>
+  </div>
+  <figcaption class="mt-4 text-center text-sm text-black-secondary">El método en un minuto: los cinco pasos del control de calidad.</figcaption>
+</figure>
+
+## Los cinco pasos
+
+<div class="not-prose my-10 grid gap-8 pl-4 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard number={1} variant="purple" title="Definir la salida" description="Qué se imprime, en qué proceso y sobre qué papel." />
+  <InfoCard number={2} variant="secondary" title="Armar la lista" description="Los requisitos que esa salida exige, cada uno con su fuente." />
+  <InfoCard number={3} variant="green" title="Verificar" description="Revisar el archivo contra la lista, un criterio a la vez." />
+  <InfoCard number={4} variant="pink" title="Registrar" description="Cumple, Ajustar o No cumple, con una evidencia de cada hallazgo." />
+  <InfoCard number={5} variant="cream" title="Corregir e informar" description="Acciones correctivas y una conclusión: ¿está listo para imprenta?" />
+</div>
+
+---
+
+## 1. Definir la salida
+
+Antes de abrir el archivo hay que responder tres preguntas. En un trabajo real las responde la **ficha técnica de la imprenta**; en una evidencia, la guía de la actividad o el instructor.
+
+| Pregunta | Ejemplo | Qué define |
+| --- | --- | --- |
+| **¿Qué proceso?** | Offset, flexografía, digital | Qué parte de la ISO 12647 aplica |
+| **¿Qué soporte?** | Cartulina estucada, papel bond | El perfil de color (estucado o sin estucar) |
+| **¿Qué pieza y tamaño?** | Envase de 9 × 4 cm, caja de 36 × 6 cm | Escala, sangrado y troquel |
+
+Con offset sobre papel estucado, por ejemplo, la norma es la **ISO 12647-2** y el perfil es **Coated FOGRA39**, con una cobertura máxima de tinta cercana al 330 %.
+
+---
+
+## 2. Armar la lista de requisitos
+
+Esta es la parte que más me confundía: ¿de dónde salen todos los requisitos? No vienen de un solo lugar. La ISO 12647 controla sobre todo **el color**; lo demás son convenciones de preprensa, el formato PDF/X o normas propias del producto.
+
+| Criterio | Requisito | De dónde sale |
+| --- | --- | --- |
+| **Modo de color** | CMYK con el perfil de la salida | ISO 12647 y el perfil de la imprenta |
+| **Cobertura de tinta** | Máximo 300 a 330 % en estucado | ISO 12647-2 / FOGRA39 |
+| **Escala** | Arte final a 1:1, en milímetros | Preprensa |
+| **Sangrado** | 3 mm por cada lado | Convención de imprentas |
+| **Resolución** | 300 ppp a tamaño real | Convención de imprentas |
+| **Troquel** | Tinta plana aparte, en sobreimpresión | Guía de preprensa de la imprenta |
+| **Texto mínimo** | 6 pt | Regla de legibilidad |
+| **Fuentes** | Incrustadas o en contornos | Estándar PDF/X |
+| **Contenido** | Textos sin errores y con lo que exige la ley | Normas del producto (en alimentos para mascotas, el ICA) |
+| **Código de barras** | EAN-13 válido, barras oscuras sobre fondo claro | GS1 Colombia |
+
+***Un consejo:*** si no tengo la ficha de la imprenta, descargo la de una imprenta local y la uso como mi lista. Así cada requisito tiene una fuente que puedo citar.
+
+---
+
+## 3. Verificar el archivo
+
+Reviso un criterio a la vez. Casi todo se comprueba en Illustrator, y al final paso el PDF por Acrobat.
+
+### En Illustrator
+
+| Criterio | Dónde lo reviso |
+| --- | --- |
+| **Modo de color** | Archivo › Modo de color del documento; y en el panel Muestras, que ningún color esté en RGB |
+| **Perfil** | Edición › Ajustes de color |
+| **Tamaño y sangrado** | Archivo › Ajustar documento |
+| **Imágenes** | Ventana › Vínculos: modo de color y ppp efectivos de cada foto |
+| **Fuentes** | Texto › Buscar fuente |
+| **Troquel y tintas** | Ventana › Previsualización de separaciones y Ver › Previsualización de sobreimpresión |
+| **Resumen general** | Ventana › Información del documento |
+
+### Lo que se revisa leyendo
+
+Ningún programa encuentra un "depelos.cpm" o una tabla nutricional en el idioma equivocado. Por eso imprimo o amplío la pieza y leo **todos los textos**, mido el tamaño de letra a escala real y compruebo que el código de barras tenga los 13 dígitos.
+
+### En Acrobat: verificación previa
+
+Al exportar el PDF (idealmente **PDF/X-4**), lo abro en Acrobat Pro y uso **Producción de impresión › Verificación previa** con un perfil PDF/X. Acrobat revisa de forma automática el color, las fuentes, la resolución y las cajas de sangrado, y marca cada problema. Es lo mismo que hace la imprenta cuando recibe el archivo.
+
+---
+
+## 4. Registrar los resultados
+
+Cada criterio recibe uno de tres estados:
+
+- <mark>Cumple</mark>: está bien, no hay que tocar nada.
+- <mark>Ajustar</mark>: funciona, pero conviene corregirlo o confirmarlo (por ejemplo, la licencia de una imagen).
+- <mark>No cumple</mark>: si se imprime así, el resultado sale mal.
+
+Y cada hallazgo lleva su **evidencia**: una captura o un dato concreto. "Las 72 muestras de color están en RGB" es un hallazgo; "los colores están raros" no lo es.
+
+---
+
+## 5. Corregir y escribir el informe
+
+Por cada "No cumple" o "Ajustar" escribo una **acción correctiva** concreta, con el menú o el paso que la resuelve. Luego armo el informe con esta estructura:
+
+1. **Archivo revisado:** nombre, programa y piezas.
+2. **Condiciones de salida:** proceso, soporte, norma y perfil (el paso 1).
+3. **Resultados:** una tabla con criterio, hallazgo y estado.
+4. **Evidencias:** las capturas de los hallazgos más importantes.
+5. **Acciones correctivas:** una por problema.
+6. **Conclusión:** ¿el archivo es apto para imprimirse o no, y qué falta?
+
+---
+
+## Mi ejemplo: el packaging de DePelös
+
+| Criterio | Hallazgo | Estado |
+| --- | --- | --- |
+| **Modo de color** | Documento y 72 muestras en RGB | No cumple |
+| **Escala** | Piezas reducidas dentro de una presentación, en píxeles | No cumple |
+| **Troquel** | Dibujado como parte del arte, sin tinta plana | No cumple |
+| **Sangrado** | No tiene | No cumple |
+| **Imágenes** | Una foto queda cerca de 120 ppp a tamaño real | Ajustar |
+| **Textos** | Tabla nutricional en inglés y con errores; "depelos.cpm" | No cumple |
+| **Legibilidad** | Texto de 4 a 5,5 pt; código de barras ilegible | No cumple |
+| **Fuentes** | Incrustadas | Cumple |
+
+***Lo que aprendí:*** un diseño puede verse perfecto en una presentación y aun así no estar listo para imprenta. El control de calidad no juzga si el diseño es bonito, sino si <mark>va a salir de la máquina tal como se diseñó</mark>.

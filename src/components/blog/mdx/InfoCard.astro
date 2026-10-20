@@ -64,7 +64,7 @@ const hasIcon = Boolean(image) || Astro.slots.has("icon");
 
 <article
   class:list={[
-    "sombra not-prose relative flex h-full flex-col items-center gap-4 rounded-3xl px-6 pb-8 pt-8 text-center text-black",
+    "border-2 border-black shadow-dura-abajo md:shadow-dura-abajo-lg not-prose relative flex h-full flex-col items-center gap-4 rounded-ventana px-6 pb-8 pt-8 text-center text-black",
     styles.card,
     className,
   ]}
@@ -73,7 +73,7 @@ const hasIcon = Boolean(image) || Astro.slots.has("icon");
     number !== undefined && (
       <span
         class:list={[
-          "font-fantabular absolute -left-4 top-6 flex size-14 items-center justify-center rounded-full border-2 border-black text-2xl font-black shadow-[2px_2px_0px_#141414]",
+          "font-fantabular absolute -left-4 top-6 flex size-14 items-center justify-center rounded-full border-2 border-black text-2xl font-black shadow-dura-sm",
           styles.badge,
         ]}
         aria-hidden="true"
@@ -92,7 +92,7 @@ const hasIcon = Boolean(image) || Astro.slots.has("icon");
     )
   }
 
-  <h3 class="title-h2 text-balance">{title}</h3>
+  <h3 class="subtitulo text-balance">{title}</h3>
 
   {
     (description || Astro.slots.has("default")) && (

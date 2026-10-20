@@ -9,13 +9,13 @@ const { ideation } = Astro.props;
 ---
 
 <section class="flex flex-col gap-12">
-  <h2 class="titleProyecto">Ideación</h2>
+  <h2 class="titulo-seccion">Ideación</h2>
   <p>
     {ideation?.overview}
   </p>
   {
     ideation?.sitemapImage && (
-      <h3 class="subtituloProyecto efectoResaltador">Sitemap</h3>
+      <h3 class="subtitulo efecto-resaltador">Sitemap</h3>
       <img
         class="w-full mx-auto"
         src={ideation?.sitemapImage}
@@ -26,7 +26,7 @@ const { ideation } = Astro.props;
   }
   {
     ideation?.userFlowImage &&(
-      <h3 class="subtituloProyecto efectoResaltador">User flow</h3>
+      <h3 class="subtitulo efecto-resaltador">User flow</h3>
       <img
         class="h-4xl mx-auto"
         src={ideation?.userFlowImage}
@@ -40,7 +40,7 @@ const { ideation } = Astro.props;
     ideation?.sketchImage && ideation?.wireframeImage && (
     <div class="grid grid-cols-1 md:grid-cols-2">
       <div class="flex flex-col gap-12">
-        <h3 class="subtituloProyecto efectoResaltador">Sketch</h3>
+        <h3 class="subtitulo efecto-resaltador">Sketch</h3>
         <img
           class="h-4xl"
           src={ideation?.sketchImage}
@@ -48,7 +48,7 @@ const { ideation } = Astro.props;
         />
       </div>
       <div class="flex flex-col gap-12">
-        <h3 class="subtituloProyecto efectoResaltador">Wireframe</h3>
+        <h3 class="subtitulo efecto-resaltador">Wireframe</h3>
         <img
           class="h-4xl"
           src={ideation?.wireframeImage}

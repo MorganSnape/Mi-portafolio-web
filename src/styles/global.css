@@ -1,18 +1,42 @@
 @import 'tailwindcss';
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   SISTEMA DE DISEÑO · Gabriela Ferrer
+   ───────────────────────────────────────────────────────────────────────────
+   Todo lo que define el estilo del portafolio vive aquí. Los componentes solo
+   combinan estas piezas; si necesitas un valor nuevo, agrégalo aquí primero.
+
+   GUÍA RÁPIDA
+   Color ......... bg-primary · bg-secondary · bg-pink · bg-plant-green · text-black · bg-white-cream
+   Texto ......... text-xs → text-7xl (fluidos) · text-display · text-hero · text-2xs
+   Títulos ....... titulo-portada · titulo-seccion · titulo-bloque · subtitulo
+   Forma ......... rounded-chico · rounded-tarjeta · rounded-ventana · rounded-panel · forma-hoja
+   Sombras ....... shadow-dura-sm · shadow-dura · shadow-dura-lg · shadow-dura-xl · shadow-dura-abajo(-lg)
+                   (cámbiales el color con shadow-white, shadow-secondary, shadow-(--acento)…)
+   Efectos ....... efecto-hundir · efecto-hundir-abajo · efecto-presionar · efecto-resaltador
+   Anchos ........ max-w-sitio (1280) · max-w-contenido (1200) · max-w-angosto (1120)
+   Documentos .... tipografia-fija (tamaños fijos para imprimir, como el currículum)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 @theme {
-  --color-primary: var(--color-trendy-pink-600);
-  --color-secondary: var(--color-kournikova-200);
-  --color-pink: var(--color-tickle-me-pink-400);
+  /* ── 1. COLOR ────────────────────────────────────────────────────────────
+     Roles de marca. Usa estos nombres en los componentes, no los tonos sueltos. */
+  --color-primary: var(--color-trendy-pink-600); /* morado: acción principal */
+  --color-secondary: var(--color-kournikova-200); /* amarillo: resaltados y hover */
+  --color-pink: var(--color-tickle-me-pink-400); /* rosa: acentos y botones de tarjeta */
   --color-plant-green: var(--color-asparagus-500);
+  --color-tag: var(--color-secondary); /* fondo de etiquetas */
+
+  /* Neutros. black es la "tinta" de la marca: bordes, texto y sombras duras. */
   --color-black: #0b090b;
-  --color-white-cream: #fdf7f5;
-  --color-black-secondary: #3a353a;
+  --color-black-secondary: #3a353a; /* texto de párrafos */
+  --color-white-cream: #fdf7f5; /* fondo de ventanas y tarjetas */
   --color-gray-200: #cecdce;
   --color-gray-400: #9d9a9d;
-  --color-gray-500: #6a686b;
+  --color-gray-500: #6a686b; /* texto de apoyo: fechas, contexto */
   --color-gray-600: #2e2b2e;
 
+  /* Paletas completas (para tonos claros u oscuros puntuales) */
   /* morado */
 
   --color-trendy-pink-50: #fbf7fc;
@@ -65,81 +89,206 @@
   --color-asparagus-900: #354225;
   --color-asparagus-950: #1a2310;
 
-  --color-tag: var(--color-secondary);
-
-  /* Formas del sistema de diseño: rounded-panel, rounded-ventana, rounded-tarjeta */
-  --radius-tarjeta: 1rem;
-  --radius-ventana: 1.5rem;
-  --radius-panel: 2rem;
-
-  /* Sombra dura (sin desenfoque) de la marca: shadow-dura, shadow-dura-lg */
-  --shadow-dura: 4px 4px 0 var(--color-black);
-  --shadow-dura-lg: 6px 6px 0 var(--color-black);
-
+  /* ── 2. TIPOGRAFÍA ───────────────────────────────────────────────────────
+     Rethink Sans para leer; Fantabular para títulos. */
+  --font-sans: 'Rethink Sans', ui-sans-serif, system-ui, sans-serif;
   --font-rethink: 'Rethink Sans', sans-serif;
-  --font-fantabular: 'fantabular-mvb', mono;
+  --font-fantabular: 'fantabular-mvb', serif;
 
-  --color-tag: var(--color-secondary);
+  /* Escala fluida: cada tamaño crece con la pantalla entre 360px y 1440px,
+     sin bajar del mínimo ni pasar del máximo. No necesitas md:text-… para
+     que se adapten. Valores en px: mínimo → máximo. */
+  --text-2xs: 0.6875rem; /* 11 fijo: solo insignias muy pequeñas */
+  --text-xs: clamp(0.75rem, 0.7292rem + 0.0926vw, 0.8125rem); /* 12 → 13 */
+  --text-sm: clamp(0.875rem, 0.8542rem + 0.0926vw, 0.9375rem); /* 14 → 15 */
+  --text-base: clamp(1rem, 0.9792rem + 0.0926vw, 1.0625rem); /* 16 → 17 */
+  --text-lg: clamp(1.0625rem, 1.0208rem + 0.1852vw, 1.1875rem); /* 17 → 19 */
+  --text-xl: clamp(1.125rem, 1.0625rem + 0.2778vw, 1.3125rem); /* 18 → 21 */
+  --text-2xl: clamp(1.25rem, 1.1458rem + 0.463vw, 1.5625rem); /* 20 → 25 */
+  --text-3xl: clamp(1.5rem, 1.3542rem + 0.6481vw, 1.9375rem); /* 24 → 31 */
+  --text-4xl: clamp(1.75rem, 1.5417rem + 0.9259vw, 2.375rem); /* 28 → 38 */
+  --text-5xl: clamp(2rem, 1.6667rem + 1.4815vw, 3rem); /* 32 → 48 */
+  --text-6xl: clamp(2.25rem, 1.75rem + 2.2222vw, 3.75rem); /* 36 → 60 */
+  --text-7xl: clamp(2.5rem, 1.8333rem + 2.963vw, 4.5rem); /* 40 → 72 */
+  --text-display: clamp(2.75rem, 1.6667rem + 4.8148vw, 6rem); /* 44 → 96: encabezados de página */
+  --text-display--line-height: 0.9;
+  --text-hero: clamp(3.25rem, 1.8333rem + 6.2963vw, 7.5rem); /* 52 → 120: portada del blog */
+  --text-hero--line-height: 0.85;
+
+  /* ── 3. FORMA ────────────────────────────────────────────────────────────
+     Cuatro radios, de menor a mayor según el tamaño del elemento. */
+  --radius-chico: 0.5rem; /* 8px: imágenes internas, cajas de íconos, chips */
+  --radius-tarjeta: 1rem; /* 16px: tarjetas, bloques de código, pestañas */
+  --radius-ventana: 1.5rem; /* 24px: ventanas de navegador y tarjetas grandes */
+  --radius-panel: 2rem; /* 32px: paneles de color que envuelven secciones */
+
+  /* ── 4. SOMBRAS DURAS ────────────────────────────────────────────────────
+     Sin desenfoque. El color se cambia con shadow-white, shadow-secondary,
+     shadow-(--acento), etc. Patrón habitual: shadow-dura md:shadow-dura-lg */
+  --shadow-dura-sm: 3px 3px 0 var(--color-black); /* insignias y círculos pequeños */
+  --shadow-dura: 4px 4px 0 var(--color-black); /* tarjetas en celular */
+  --shadow-dura-lg: 6px 6px 0 var(--color-black); /* tarjetas en escritorio */
+  --shadow-dura-xl: 10px 10px 0 var(--color-black); /* piezas destacadas */
+  --shadow-dura-abajo: 0 4px 0 var(--color-black); /* solo hacia abajo */
+  --shadow-dura-abajo-lg: 0 6px 0 var(--color-black);
+  --drop-shadow-dura: 3px 3px 0 var(--color-black); /* para SVG con forma libre */
+
+  /* ── 5. ANCHOS ───────────────────────────────────────────────────────── */
+  --container-sitio: 80rem; /* 1280px: header, footer y secciones del inicio */
+  --container-contenido: 75rem; /* 1200px: páginas del blog */
+  --container-angosto: 70rem; /* 1120px: carruseles y galerías */
 }
 
-@layer components {
-  .primaryButton {
-    @apply cursor-pointer disabled:hover:brightness-100 hover:scale-105 disabled:hover:scale-100 flex flex-row justify-center items-center transition-all duration-150 ease-in-out select-none border-2 border-black w-fit translate-0 active:translate-1.5 disabled:translate-0 shadow-[4px_4px_0px_#141414] md:shadow-[6px_6px_0px_#141414] active:shadow-[0px_0px_0px_#141414] disabled:md:shadow-[6px_6px_0px_#141414] disabled:shadow-[4px_4px_0px_#141414];
-  }
-  .tag-me {
-    @apply transition-all duration-150 ease-in-out select-none border-2 border-black  translate-0 hover:translate-1.5 shadow-[4px_4px_0px_#141414] md:shadow-[6px_6px_0px_#141414] hover:shadow-[0px_0px_0px_#141414];
-  }
-  .center-tag-me {
-    @apply flex flex-row justify-center items-center transition-all duration-150 ease-in-out select-none border-2 border-black font-medium w-fit translate-0 hover:translate-y-1.5 shadow-[0px_4px_0px_#141414] md:shadow-[0px_6px_0px_#141414] hover:shadow-[0px_0px_0px_#141414] disabled:hover:translate-y-0 disabled:hover:shadow-[0px_4px_0px_#141414];
-  }
-  .title-h2 {
-    @apply text-lg lg:text-2xl font-bold font-fantabular;
-  }
-  .titleH3 {
-    @apply text-2xl lg:text-3xl font-black font-fantabular;
-  }
-  .titleProyecto {
-    @apply font-fantabular font-bold text-3xl md:text-5xl text-balance;
-  }
-  .subtituloProyecto {
-    @apply font-fantabular font-bold text-2xl;
-  }
-  .efectoResaltador {
-    @apply relative w-fit inline-block
-         after:content-['']
-         after:absolute
-         after:left-0
-         after:bottom-1
-         after:h-[50%]
-         after:w-0
-         after:bg-secondary
-         after:-z-10
-         after:transition-all
-         after:duration-300
-         hover:after:w-full;
-  }
-  .sombra {
-    @apply border-2 border-black shadow-[0px_4px_0px_#141414] md:shadow-[0px_6px_0px_#141414];
+/* Distancia de la sombra de los efectos y del "hundido": 4px en celular → 6px en escritorio */
+@layer base {
+  :root {
+    --hundir: clamp(4px, 2.667px + 0.3704vw, 6px);
   }
 }
 
-/* Ocultar scrollbar Chrome, Edge y Safari */
-#scrollContainer::-webkit-scrollbar,
-.scrollContainer::-webkit-scrollbar {
-  display: none;
+/* ═══ EFECTOS DE LA MARCA ═══════════════════════════════════════════════════
+   Se escriben con @utility para que funcionen con variantes de Tailwind.
+   Solo manejan la sombra y el movimiento: el borde va aparte con
+   border-2 border-black (o border-white), y el color de la sombra se cambia
+   con shadow-white, shadow-secondary, shadow-(--acento)…
+   Todos se apagan si la persona pidió reducir el movimiento. */
+
+/* HUNDIR: tarjetas, etiquetas y enlaces grandes.
+   Tiene sombra dura y al pasar el cursor (o con Tab) se hunde sobre ella.
+   Uso: class="efecto-hundir border-2 border-black rounded-tarjeta" */
+@utility efecto-hundir {
+  box-shadow: var(--hundir) var(--hundir) 0 var(--tw-shadow-color, var(--color-black));
+  transition:
+    translate 150ms ease-in-out,
+    box-shadow 150ms ease-in-out;
+  user-select: none;
+
+  &:is(:hover, :focus-visible, :active):not(:disabled) {
+    translate: var(--hundir) var(--hundir);
+    box-shadow: 0 0 0 var(--tw-shadow-color, var(--color-black));
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
 }
 
-/* Ocultar scrollbar Firefox */
-#scrollContainer,
-.scrollContainer {
-  scrollbar-width: none;
+/* HUNDIR ABAJO: igual que el anterior, pero la sombra solo va hacia abajo.
+   Para barras de título centradas. */
+@utility efecto-hundir-abajo {
+  box-shadow: 0 var(--hundir) 0 var(--tw-shadow-color, var(--color-black));
+  transition:
+    translate 150ms ease-in-out,
+    box-shadow 150ms ease-in-out;
+  user-select: none;
+
+  &:is(:hover, :focus-visible, :active):not(:disabled) {
+    translate: 0 var(--hundir);
+    box-shadow: 0 0 0 var(--tw-shadow-color, var(--color-black));
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
 }
 
-/* Ocultar scrollbar IE */
-#scrollContainer,
-.scrollContainer {
-  -ms-overflow-style: none;
+/* PRESIONAR: botones. Crece un poco al pasar el cursor y se aplasta al hacer clic.
+   Uso: class="efecto-presionar border-2 border-black bg-primary text-white" */
+@utility efecto-presionar {
+  box-shadow: var(--hundir) var(--hundir) 0 var(--tw-shadow-color, var(--color-black));
+  cursor: pointer;
+  user-select: none;
+  transition:
+    scale 150ms ease-in-out,
+    translate 150ms ease-in-out,
+    box-shadow 150ms ease-in-out;
+
+  &:is(:hover, :focus-visible):not(:disabled) {
+    scale: 1.05;
+  }
+  &:active:not(:disabled) {
+    scale: 1;
+    translate: var(--hundir) var(--hundir);
+    box-shadow: 0 0 0 var(--tw-shadow-color, var(--color-black));
+  }
+  &:disabled {
+    cursor: not-allowed;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
 }
+
+/* RESALTADOR: una franja amarilla aparece detrás del texto al pasar el cursor. */
+@utility efecto-resaltador {
+  position: relative;
+  isolation: isolate;
+  display: inline-block;
+  width: fit-content;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0.25rem;
+    z-index: -1;
+    height: 50%;
+    width: 0;
+    background-color: var(--color-secondary);
+    transition: width 300ms ease-in-out;
+  }
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+/* HOJA: esquinas opuestas redondas, como las etiquetas del hero. */
+@utility forma-hoja {
+  border-radius: 9999px 0;
+}
+
+/* TIPOGRAFÍA FIJA: para documentos que se imprimen (el currículum).
+   Devuelve la escala a tamaños fijos para que el PDF siempre quepa en una página. */
+@utility tipografia-fija {
+  --text-2xs: 0.6875rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+}
+
+/* ═══ ROLES DE TÍTULO ═══════════════════════════════════════════════════════
+   Fantabular siempre. El tamaño ya es fluido, no hace falta md:text-… */
+@utility titulo-portada {
+  font-family: var(--font-fantabular);
+  font-weight: 900;
+  font-size: var(--text-display);
+  line-height: 0.9;
+  text-wrap: balance;
+}
+@utility titulo-seccion {
+  font-family: var(--font-fantabular);
+  font-weight: 700;
+  font-size: var(--text-5xl);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+@utility titulo-bloque {
+  font-family: var(--font-fantabular);
+  font-weight: 900;
+  font-size: var(--text-3xl);
+  line-height: 1.15;
+}
+@utility subtitulo {
+  font-family: var(--font-fantabular);
+  font-weight: 700;
+  font-size: var(--text-2xl);
+  line-height: 1.25;
+}
+
+/* ═══ BASE ═════════════════════════════════════════════════════════════════ */
 
 html {
   font-weight: 400;
@@ -147,9 +296,20 @@ html {
   background-size: 30px;
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
-  font-family: 'Rethink Sans', sans-serif;
+  font-family: var(--font-rethink);
 }
 
 main h2 {
   scroll-margin-top: 120px;
+}
+
+/* Ocultar la barra de scroll en carruseles */
+#scrollContainer,
+.scrollContainer {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+#scrollContainer::-webkit-scrollbar,
+.scrollContainer::-webkit-scrollbar {
+  display: none;
 }

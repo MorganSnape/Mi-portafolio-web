@@ -36,7 +36,7 @@ const totalApuntes = grupos.reduce((total, grupo) => total + grupo.posts.length,
 <Layout title={`${title} - Gabriela Ferrer`}>
   <BarNav active={false} />
   <main
-    class="mx-auto flex w-full max-w-[1200px] flex-col gap-14 md:gap-20 px-4 sm:px-8 pt-[calc(var(--altura-header)+2.5rem)] pb-20 font-rethink"
+    class="mx-auto flex w-full max-w-contenido flex-col gap-14 md:gap-20 px-4 sm:px-8 pt-[calc(var(--altura-header)+2.5rem)] pb-20 font-rethink"
   >
     <!-- Portada del tema -->
     <Panel color="morado" as="header" class="overflow-visible">
@@ -51,7 +51,7 @@ const totalApuntes = grupos.reduce((total, grupo) => total + grupo.posts.length,
 
       <p class="mt-8 text-center"><Etiqueta color="negro" mayusculas>Apuntes sobre</Etiqueta></p>
       <h1
-        class="mt-4 text-center font-fantabular font-black text-white-cream leading-[0.85] tracking-tight text-balance text-[clamp(2.8rem,9vw,7rem)]"
+        class="mt-4 text-center font-fantabular font-black text-white-cream leading-[0.85] tracking-tight text-balance text-display"
       >
         {nombre}
       </h1>
@@ -61,7 +61,7 @@ const totalApuntes = grupos.reduce((total, grupo) => total + grupo.posts.length,
           <img
             src={image}
             alt=""
-            class="sombra aspect-[4/3] w-full rounded-[1.25rem] object-cover object-center"
+            class="border-2 border-black shadow-dura-abajo md:shadow-dura-abajo-lg aspect-[4/3] w-full rounded-ventana object-cover object-center"
           />
           <div class="relative">
             <Ondulada class="w-12 mb-4" color="var(--color-pink)" />

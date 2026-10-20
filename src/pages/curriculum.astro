@@ -119,7 +119,7 @@ const languages = ['Español nativo']
 ---
 
 <Layout title="Currículum - Gabriela Ferrer">
-  <main class="bg-primary/20 text-sm font-normal print:bg-white">
+  <main class="tipografia-fija bg-primary/20 text-sm font-normal print:bg-white">
     <article
       class="cv max-w-4xl mx-auto p-12 bg-white flex flex-col gap-7 print:gap-4 text-black"
     >
@@ -282,7 +282,7 @@ const languages = ['Español nativo']
         <ul class="flex flex-wrap gap-2">
           {
             software.map(tool => (
-              <li class="px-2.5 py-1 rounded-md bg-primary/10 text-xs">
+              <li class="px-2.5 py-1 rounded-chico bg-primary/10 text-xs">
                 {tool}
               </li>
             ))
@@ -306,7 +306,7 @@ const languages = ['Español nativo']
       <a
         href="/Hoja_de_vida_Gabriela_Ferrer.pdf"
         download
-        class="primaryButton bg-primary text-white px-6 py-3 font-medium inline-flex items-center gap-2"
+        class="efecto-presionar border-2 border-black bg-primary text-white px-6 py-3 font-medium inline-flex items-center gap-2"
       >
         <Icon
           name="fa6-solid:file-arrow-down"
