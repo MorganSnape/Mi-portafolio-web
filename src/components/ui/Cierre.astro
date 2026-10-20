@@ -1,0 +1,56 @@
+---
+// Tarjeta negra de cierre de página: invita a la siguiente acción.
+import Ondulada from './Ondulada.astro'
+
+interface Enlace {
+  texto: string
+  href: string
+}
+
+interface Props {
+  /** Usa "\n" para partir el título en dos líneas */
+  titulo?: string
+  texto?: string
+  enlaces?: Enlace[]
+  class?: string
+}
+
+const {
+  titulo = 'Hagamos realidad\ntu próxima idea',
+  texto = '¿Tienes un proyecto en mente? Cuéntame qué necesitas y encontremos juntos la mejor forma de construirlo.',
+  enlaces = [
+    { texto: 'Hablemos de tu proyecto', href: '/contactame' },
+    { texto: 'Ver mis proyectos', href: '/#proyectos-container' },
+  ],
+  class: className = '',
+} = Astro.props
+
+const lineas = titulo.split('\n')
+const idTitulo = 'cierre-titulo'
+---
+
+<section
+  class:list={['relative rounded-panel border-2 border-black bg-black px-6 py-14 md:py-20 text-center text-white-cream', className]}
+  aria-labelledby={idTitulo}
+>
+  <Ondulada class="absolute -top-8 -left-1 md:-left-6 w-20 md:w-28 rotate-12" color="var(--color-secondary)" />
+  <Ondulada class="absolute -bottom-8 right-6 w-16 md:w-24 -rotate-12" color="var(--color-trendy-pink-300)" />
+  <h2 id={idTitulo} class="font-fantabular font-black text-pink text-5xl md:text-7xl leading-[0.9] text-balance">
+    {lineas.map((linea, i) => (i < lineas.length - 1 ? <>{linea}<br /></> : linea))}
+  </h2>
+  <p class="mx-auto mt-6 max-w-md text-base md:text-lg text-white-cream/80">{texto}</p>
+  <ul class="mt-8 flex flex-wrap justify-center gap-3">
+    {
+      enlaces.map(enlace => (
+        <li>
+          <a
+            href={enlace.href}
+            class="inline-block rounded-full border-2 border-white-cream px-5 py-2 font-semibold transition-colors duration-150 hover:bg-pink hover:text-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary"
+          >
+            {enlace.texto}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>

@@ -4,13 +4,13 @@ import Footer from '@/components/Footer.astro'
 import Layout from '@/layouts/Layout.astro'
 import TarjetaTema from '@/components/blog/TarjetaTema.astro'
 import TarjetaArticulo from '@/components/blog/TarjetaArticulo.astro'
-import Ondulada from '@/components/blog/ui/Ondulada.astro'
-import Panel from '@/components/blog/ui/Panel.astro'
-import Ventana from '@/components/blog/ui/Ventana.astro'
-import Etiqueta from '@/components/blog/ui/Etiqueta.astro'
-import Pestanas from '@/components/blog/ui/Pestanas.astro'
-import PanelPestana from '@/components/blog/ui/PanelPestana.astro'
-import CierreBlog from '@/components/blog/ui/CierreBlog.astro'
+import Ondulada from '@/components/ui/Ondulada.astro'
+import Panel from '@/components/ui/Panel.astro'
+import Ventana from '@/components/ui/Ventana.astro'
+import Etiqueta from '@/components/ui/Etiqueta.astro'
+import Pestanas from '@/components/ui/Pestanas.astro'
+import PanelPestana from '@/components/ui/PanelPestana.astro'
+import Cierre from '@/components/ui/Cierre.astro'
 import Estrella from '@/assets/estrella.svg'
 import { categoriasBlog, dataSeccionesBlog } from '@/data/blog/dataSeccionesBlog'
 import { formatearFecha, getPostsRecientes, postsDeSeccion, seccionDe } from '@/utils/blog'
@@ -174,7 +174,14 @@ const pestanas = temasPorCategoria.map(categoria => ({ id: categoria.id, texto: 
       )
     }
 
-    <CierreBlog />
+    <Cierre
+      titulo={'¡Sigamos\naprendiendo!'}
+      texto="Si algún apunte te sirvió o quieres trabajar conmigo, escríbeme."
+      enlaces={[
+        { texto: 'Escríbeme', href: '/contactame' },
+        { texto: 'Ver mis proyectos', href: '/#proyectos-container' },
+      ]}
+    />
   </main>
   <Footer />
 </Layout>

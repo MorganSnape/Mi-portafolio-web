@@ -10,6 +10,7 @@ import Subtitulo from '@/components/Subtitulo.astro'
 import Footer from '@/components/Footer.astro'
 import Invitacion from '@/components/invitacion.astro'
 import Disciplinas from '@/components/indexComponents/Disciplinas.astro'
+import Ventana from '@/components/ui/Ventana.astro'
 ---
 
 <Layout title="Gabriela Ferrer - Bienvenido a mi portafolio.">
@@ -24,10 +25,12 @@ import Disciplinas from '@/components/indexComponents/Disciplinas.astro'
     >
         <Subtitulo align="center" type="Experiencia" class="-mt-10" />
 
-      <div class="flex flex-col gap-8 my-40 lg:w-11/12 max-w-[1280px] w-full mx-auto">
+      <div class="my-40 lg:w-11/12 max-w-[1280px] w-full mx-auto px-4 sm:px-12 lg:px-0">
+      <Ventana>
+      <div class="flex flex-col gap-10">
         {
           personalInfo.experiences?.map(experience => (
-            <div class="flex flex-col md:flex-row items-start gap-10 px-[clamp(0.75rem,_-1.974rem_+_14.53vw,_5rem)] lg:px-0">
+            <div class="flex flex-col md:flex-row items-start gap-6 md:gap-10">
               <div class="flex flex-row items-center gap-4 mt-2">
                 <p class="text-black font-medium text-base font-fantabular text-balance">
                   {experience.date}
@@ -53,12 +56,14 @@ import Disciplinas from '@/components/indexComponents/Disciplinas.astro'
           ))
         }
       </div>
+      </Ventana>
+      </div>
     </section>
     <div class="flex flex-col items-center gap-8 my-40 lg:w-11/12 max-w-[1280px] w-full mx-auto">
       <Disciplinas />
     </div>
     <Proyectos />
-    <Invitacion class="-mt-10" />
+    <Invitacion />
   </main> 
   <Footer />
 </Layout>

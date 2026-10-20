@@ -67,6 +67,15 @@
 
   --color-tag: var(--color-secondary);
 
+  /* Formas del sistema de diseño: rounded-panel, rounded-ventana, rounded-tarjeta */
+  --radius-tarjeta: 1rem;
+  --radius-ventana: 1.5rem;
+  --radius-panel: 2rem;
+
+  /* Sombra dura (sin desenfoque) de la marca: shadow-dura, shadow-dura-lg */
+  --shadow-dura: 4px 4px 0 var(--color-black);
+  --shadow-dura-lg: 6px 6px 0 var(--color-black);
+
   --font-rethink: 'Rethink Sans', sans-serif;
   --font-fantabular: 'fantabular-mvb', mono;
 

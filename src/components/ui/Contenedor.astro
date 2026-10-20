@@ -1,0 +1,18 @@
+---
+// Contenedor de página del sistema: ancho máximo, márgenes laterales,
+// espacio para la barra de navegación fija y separación entre paneles.
+interface Props {
+  class?: string
+}
+
+const { class: className = '' } = Astro.props
+---
+
+<main
+  class:list={[
+    'mx-auto flex w-full max-w-[1200px] flex-col gap-14 md:gap-20 px-4 sm:px-8 pt-[calc(var(--altura-header)+2.5rem)] pb-20 font-rethink',
+    className,
+  ]}
+>
+  <slot />
+</main>

@@ -12,6 +12,8 @@ import Image from 'astro/components/Image.astro'
 
 import ImageSobremImg from '@/assets/sobre-mi.webp'
 import Disciplinas from './Disciplinas.astro'
+import Etiqueta from '@/components/ui/Etiqueta.astro'
+import Ondulada from '@/components/ui/Ondulada.astro'
 ---
 
 <section
@@ -25,6 +27,7 @@ import Disciplinas from './Disciplinas.astro'
       class="flex flex-col items-center gap-0 lg:gap- justify-items-center justify-self-start"
     >
       <div class="flex flex-col gap-6">
+        <Etiqueta color="negro" mayusculas class="w-fit">Sobre mí</Etiqueta>
         <h3 class="relative titleH3 efectoResaltador w-fit px-0">
           Quién soy y qué hago
           <Exclamacion
@@ -45,12 +48,15 @@ import Disciplinas from './Disciplinas.astro'
           tengo conocimientos de desarrollo, entrego diseños fáciles de
           implementar.
           <br /><br />
-          Estudio soy en <strong>Diseño Gráfico en el SENA</strong> y busco
+          Estudio <strong>Diseño Gráfico en el SENA</strong> y busco
           <strong>etapa productiva.</strong>  Fuera de la pantalla leo, tejo, pinto, patino y
           salgo a la naturaleza: todo eso termina en mi forma de diseñar.
         </p>
       </div>
-      <Image class="w-11/12 lg:w-full" src={ImageSobremImg} alt="Sobre mi" />
+      <div class="relative w-11/12 lg:w-full">
+        <Ondulada class="absolute -left-1 md:left-4 top-1/3 w-14 md:w-20 -rotate-12" color="var(--color-secondary)" />
+        <Image class="w-full" src={ImageSobremImg} alt="Collage con una foto de Gabriela en el campo rodeada de sus aficiones" />
+      </div>
       <div class="flex justify-end w-full">
         <Decoracion class="w-40 lg:w-60" />
       </div>

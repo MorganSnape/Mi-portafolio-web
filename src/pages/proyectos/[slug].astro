@@ -528,9 +528,10 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
     --cs-header-offset: var(--cs-header);
     --cs-subnav-h: 3.75rem;
     --cs-offset: calc(var(--cs-header-offset) + var(--cs-subnav-h) + 1.5rem);
-    --cs-ink: #16140f;
-    --cs-muted: #4a463d;
-    --cs-line: #16140f;
+    /* Conectado a los tokens de global.css */
+    --cs-ink: var(--color-black);
+    --cs-muted: var(--color-black-secondary);
+    --cs-line: var(--color-black);
     --cs-paper: #ffffff;
     --cs-accent: #6a3587;
     --cs-accent-contrast: #ffffff;
@@ -542,7 +543,7 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
     --cs-border: 2px solid var(--cs-ink);
     --cs-shadow: 5px 5px 0 var(--cs-ink);
     --cs-shadow-lg: 8px 8px 0 var(--cs-ink);
-    --cs-radius: 16px;
+    --cs-radius: var(--radius-tarjeta);
     color: var(--cs-ink);
     background: var(--cs-paper);
   }

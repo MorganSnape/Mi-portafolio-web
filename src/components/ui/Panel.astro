@@ -1,0 +1,30 @@
+---
+// Bloque de color con borde negro y esquinas muy redondeadas.
+import type { HTMLAttributes } from 'astro/types'
+
+type Color = 'morado' | 'amarillo' | 'rosa' | 'verde' | 'negro' | 'crema'
+
+interface Props extends HTMLAttributes<'section'> {
+  color?: Color
+  as?: 'section' | 'div' | 'header' | 'aside'
+}
+
+const { color = 'morado', as: Tag = 'section', class: className = '', ...resto } = Astro.props
+
+// Clases completas para que Tailwind las detecte
+const fondos: Record<Color, string> = {
+  morado: 'bg-primary text-white-cream',
+  amarillo: 'bg-secondary',
+  rosa: 'bg-pink',
+  verde: 'bg-plant-green',
+  negro: 'bg-black text-white-cream',
+  crema: 'bg-white-cream',
+}
+---
+
+<Tag
+  class:list={['relative rounded-panel border-2 border-black p-5 sm:p-8 md:p-12', fondos[color], className]}
+  {...resto}
+>
+  <slot />
+</Tag>

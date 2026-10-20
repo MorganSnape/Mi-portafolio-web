@@ -6,6 +6,7 @@ import { Icon } from 'astro-icon/components'
 import Card from '@/components/Card.astro'
 import ProyectosContainer from '@/components/ProyectosContainer.astro'
 import Subtitulo from '@/components/Subtitulo.astro'
+import Ondulada from '@/components/ui/Ondulada.astro'
 
 const buttonClass =
   'cursor-pointer hover:scale-105 gap-2 flex flex-row justify-center items-center transition-all duration-150 ease-in-out select-none border-2 border-black font-medium translate-0 text-base'
@@ -16,7 +17,8 @@ const buttonClass =
   class="bg-[url(/fondoDos.svg)] bg-[length:30px] w-full flex flex-col items-center min-h-[760px]"
 >
   <Subtitulo align="center" type="Mis proyectos" />
-  <div class="w-full px-4 md:px-12 lg:px-0 lg:w-4/5 max-w-[1280px] mx-auto">
+  <div class="relative w-full px-4 md:px-12 lg:px-0 lg:w-4/5 max-w-[1280px] mx-auto">
+    <Ondulada class="hidden sm:block absolute right-4 md:right-12 lg:right-0 top-16 w-14 md:w-20 -rotate-12" color="var(--color-secondary)" />
     <p
       class=" text-base md:text-lg font-normal mt-24 font-fantabular italic text-white"
     >

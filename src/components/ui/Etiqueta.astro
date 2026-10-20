@@ -1,0 +1,32 @@
+---
+// Píldora con borde negro: categorías, contadores y rótulos.
+type Color = 'negro' | 'blanco' | 'amarillo' | 'rosa' | 'morado' | 'verde'
+
+interface Props {
+  color?: Color
+  mayusculas?: boolean
+  class?: string
+}
+
+const { color = 'blanco', mayusculas = false, class: className = '' } = Astro.props
+
+const fondos: Record<Color, string> = {
+  negro: 'bg-black text-white-cream',
+  blanco: 'bg-white text-black',
+  amarillo: 'bg-tag text-black',
+  rosa: 'bg-tickle-me-pink-200 text-black',
+  morado: 'bg-trendy-pink-300 text-black',
+  verde: 'bg-asparagus-200 text-black',
+}
+---
+
+<span
+  class:list={[
+    'inline-flex items-center gap-1 rounded-full border-2 border-black px-3 py-0.5 text-xs font-bold whitespace-nowrap',
+    { 'uppercase tracking-wider': mayusculas },
+    fondos[color],
+    className,
+  ]}
+>
+  <slot />
+</span>

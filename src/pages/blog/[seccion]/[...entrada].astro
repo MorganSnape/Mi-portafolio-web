@@ -1,9 +1,9 @@
 ---
 import PostLayout from '@/layouts/blog/PostLayout.astro'
-import Panel from '@/components/blog/ui/Panel.astro'
-import Etiqueta from '@/components/blog/ui/Etiqueta.astro'
-import Ondulada from '@/components/blog/ui/Ondulada.astro'
-import CierreBlog from '@/components/blog/ui/CierreBlog.astro'
+import Panel from '@/components/ui/Panel.astro'
+import Etiqueta from '@/components/ui/Etiqueta.astro'
+import Ondulada from '@/components/ui/Ondulada.astro'
+import Cierre from '@/components/ui/Cierre.astro'
 import { Icon } from 'astro-icon/components'
 import { getCollection, render } from 'astro:content'
 import { dataSeccionesBlog } from '@/data/blog/dataSeccionesBlog'
@@ -70,7 +70,9 @@ const urlSeccion = `/blog/${seccionDe(post)}`
 
   <Content components={componentesMdx} />
 
-  <CierreBlog
+  <Cierre
+    titulo={'¡Sigamos\naprendiendo!'}
+    texto="Si algún apunte te sirvió o quieres trabajar conmigo, escríbeme."
     slot="cierre"
     enlaces={[
       { texto: `Más de ${nombreSeccion}`, href: urlSeccion },

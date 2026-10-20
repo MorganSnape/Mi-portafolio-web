@@ -1,0 +1,41 @@
+---
+// Encabezado de sección del sistema: etiqueta en píldora + título grande
+// en Fantabular + descripción opcional. Hereda el color de texto del panel.
+import Etiqueta from './Etiqueta.astro'
+
+interface Props {
+  etiqueta?: string
+  titulo: string
+  descripcion?: string
+  /** id del título, para aria-labelledby y anclas */
+  id?: string
+  nivel?: 'h1' | 'h2'
+  alinear?: 'centro' | 'izquierda'
+  class?: string
+}
+
+const {
+  etiqueta,
+  titulo,
+  descripcion,
+  id,
+  nivel: Titulo = 'h2',
+  alinear = 'centro',
+  class: className = '',
+} = Astro.props
+const centrado = alinear === 'centro'
+---
+
+<header class:list={['flex flex-col gap-4', centrado ? 'items-center text-center' : 'items-start', className]}>
+  {etiqueta && <Etiqueta color="negro" mayusculas>{etiqueta}</Etiqueta>}
+  <Titulo
+    id={id}
+    class:list={[
+      'scroll-mt-24 font-fantabular font-black leading-[0.9] text-balance',
+      Titulo === 'h1' ? 'text-[clamp(2.8rem,9vw,7rem)]' : 'text-4xl md:text-6xl',
+    ]}
+  >
+    {titulo}
+  </Titulo>
+  {descripcion && <p class:list={['max-w-2xl text-lg md:text-xl font-medium text-pretty', { 'mx-auto': centrado }]}>{descripcion}</p>}
+</header>

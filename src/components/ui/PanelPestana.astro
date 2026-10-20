@@ -1,0 +1,12 @@
+---
+// Contenido de una pestaña de <Pestanas>. El id debe coincidir con el de la pestaña.
+interface Props {
+  id: string
+}
+
+const { id } = Astro.props
+---
+
+<div id={id} role="tabpanel" aria-labelledby={`tab-${id}`} tabindex="0" class="scroll-mt-24 focus-visible:outline-none">
+  <slot />
+</div>

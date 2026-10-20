@@ -1,0 +1,46 @@
+---
+title: "Mapas conceptuales de gestión de color"
+sectionBlogId: "diseñoGrafico"
+pubDate: 2026-10-20T12:00:00
+description: "Los dos mapas conceptuales de la evidencia GA5-AA4-EV01: los modos de color en Photoshop y la preparación de un documento para impresión en Illustrator."
+curso: "Gestión de color"
+orden: 4
+---
+
+import mapaPhotoshop from "./mapa-photoshop.png";
+import mapaIllustrator from "./mapa-illustrator.png";
+import ImagenAmpliable from "@/components/blog/mdx/ImagenAmpliable.astro";
+
+Estos dos mapas resumen lo que aprendí en el componente de gestión de color, aplicado a los dos programas que uso para llevar una imagen de la pantalla al papel. Los hice para la evidencia **GA5-291301083-AA4-EV01**: primero ajusté los modos de color de una imagen en Photoshop y luego preparé el documento de salida en Illustrator.
+
+## Photoshop: modos de color
+
+En Photoshop todo empieza en **Edición › Ajustes de color**, donde se definen los espacios de trabajo, y sigue en **Imagen › Modo**, donde se cambia el modo de la imagen. Antes de imprimir se revisa el resultado con la prueba de colores y el aviso de gama.
+
+<ImagenAmpliable src={mapaPhotoshop} alt="Mapa conceptual de la gestión de color en Adobe Photoshop: ajustes de color, modos RGB, CMYK, Lab y escala de grises, control antes de imprimir y buenas prácticas" />
+
+| Modo | Canales | Para qué lo uso |
+| --- | --- | --- |
+| **RGB** | 3: rojo, verde y azul | Editar y publicar en pantalla |
+| **CMYK** | 4: cian, magenta, amarillo y negro | El archivo final que va a la imprenta |
+| **Lab** | L, a y b | Corregir la luminosidad sin tocar el color; no depende de ningún dispositivo |
+| **Escala de grises** | 1, con 256 tonos | Piezas a una tinta, duotonos y mapas de bits |
+
+***Lo que más me sirvió:*** cada cambio de modo pierde información, así que siempre duplico la imagen antes de convertir y paso a <mark>CMYK</mark> al final, con el perfil de la imprenta.
+
+---
+
+## Illustrator: documento para impresión
+
+En Illustrator la clave está en crear bien el documento desde **Archivo › Nuevo**, en la pestaña Imprimir. Si el documento ya existe, cada ajuste se puede corregir desde los menús Archivo y Efecto.
+
+<ImagenAmpliable src={mapaIllustrator} alt="Mapa conceptual del documento de Adobe Illustrator para impresión: creación del documento, ajustes de un documento existente, imagen de Photoshop, control de color y exportación a PDF" />
+
+### Mi lista de chequeo
+
+- **Nombre** del documento que identifique el proyecto y la salida.
+- **Tamaño** final en milímetros, con **3 mm de sangrado** por cada lado.
+- **Modo de color CMYK**: Archivo › Modo de color del documento.
+- **Efectos de rasterizado en Alta (300 ppp)**: Efecto › Configuración de efectos de rasterizado de documento.
+- La imagen de Photoshop **colocada en CMYK y a 300 ppp**, revisada en el panel Vínculos.
+- Exportar como **PDF/X-1a** con marcas de corte y sangrado.
