@@ -1,12 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import { Icon } from 'astro-icon/components'
+import Etiqueta from '@/components/ui/Etiqueta.astro'
+import Button from '@/components/Button.astro'
 
 const cv = {
   name: 'Gabriela Ferrer',
   role: 'Diseñadora Gráfica',
   subtitle: 'Identidad de marca y UX/UI',
   availability: 'Disponible para etapa productiva SENA',
+  summary:
+    'Diseñadora gráfica en formación en el SENA, enfocada en identidad de marca y diseño UX/UI. Creo marcas completas, desde el logotipo y la paleta hasta piezas para redes e interfaces digitales, y antes de diseñar investigo con usuarios para que cada decisión tenga un porqué. Mis conocimientos de desarrollo front-end me permiten entregar diseños claros y fáciles de implementar.',
   // TODO: agrega tu ciudad, por ejemplo "Pereira, Colombia"
   location: 'Colombia',
   email: 'gabriellangelesferrer@gmail.com',
@@ -120,109 +124,55 @@ const languages = ['Español nativo']
 
 <Layout title="Currículum - Gabriela Ferrer">
   <main class="tipografia-fija bg-primary/20 text-sm font-normal print:bg-white">
+    <!-- Estilo sobrio: todo en negro y grises, títulos en mayúsculas espaciadas,
+         una línea corta antes de cada sección y una barra de contacto entre dos líneas. -->
     <article
-      class="cv max-w-4xl mx-auto p-12 bg-white flex flex-col gap-7 print:gap-4 text-black"
+      class="cv max-w-4xl mx-auto px-6 sm:px-14 py-14 bg-white flex flex-col gap-8 print:gap-4 text-black leading-relaxed print:leading-snug"
     >
       <!-- Encabezado -->
-      <header class="flex flex-col gap-3">
-        <div
-          class="flex flex-col md:flex-row print:flex-row md:items-end print:items-end justify-between gap-2 pb-3 border-b border-primary/30"
-        >
-          <div>
-            <h1 class="font-fantabular font-semibold text-4xl text-trendy-pink-700">
-              {cv.name}
-            </h1>
-            <p class="text-neutral-600 mt-1">{cv.subtitle}</p>
-          </div>
-          <div class="md:text-right print:text-right">
-            <p class="font-fantabular font-semibold text-lg text-primary">
-              {cv.role}
-            </p>
-            <p class="italic text-primary inline-flex items-center gap-1.5">
-              <Icon
-                name="fa6-solid:circle-check"
-                class="size-3.5 not-italic"
-                aria-hidden="true"
-              />
-              {cv.availability}
-            </p>
-          </div>
+      <header class="flex flex-col gap-6 print:gap-4">
+        <div class="flex flex-col gap-3">
+          <h1 class="font-fantabular font-bold text-5xl leading-none tracking-wide">
+            {cv.name}
+          </h1>
+          <p class="text-xs font-bold uppercase tracking-[0.2em]">
+            {cv.role} · {cv.subtitle}
+          </p>
+          <p class="text-xs text-gray-500">{cv.availability}</p>
         </div>
 
-        <div class="flex flex-wrap gap-x-6 gap-y-1 text-xs">
-          <a
-            href={`mailto:${cv.email}`}
-            class="inline-flex items-center gap-1.5 hover:text-primary transition-colors"
-          >
-            <Icon
-              name="fa6-solid:envelope"
-              class="size-3.5 text-primary"
-              aria-hidden="true"
-            />
-            {cv.email}
-          </a>
-          <a
-            href={`tel:${cv.phone.replace(/\s/g, '')}`}
-            class="inline-flex items-center gap-1.5 hover:text-primary transition-colors"
-          >
-            <Icon
-              name="fa6-solid:phone"
-              class="size-3.5 text-primary"
-              aria-hidden="true"
-            />
-            {cv.phone}
-          </a>
-          <span class="inline-flex items-center gap-1.5">
-            <Icon
-              name="fa6-solid:location-dot"
-              class="size-3.5 text-primary"
-              aria-hidden="true"
-            />
-            {cv.location}
-          </span>
+        <!-- Contacto: entre dos líneas, como en el ejemplo -->
+        <div
+          class="-mx-6 px-6 sm:-mx-14 sm:px-14 py-2.5 border-y border-black flex flex-wrap justify-between gap-x-6 gap-y-1 text-xs"
+        >
+          <a href={`mailto:${cv.email}`} class="hover:underline underline-offset-2">{cv.email}</a>
+          <a href={`tel:${cv.phone.replace(/\s/g, '')}`} class="hover:underline underline-offset-2">{cv.phone}</a>
+          <span>{cv.location}</span>
           {
             cv.links.map(link => (
-              <a
-                href={link.href}
-                class="inline-flex items-center gap-1.5 underline underline-offset-2 hover:text-primary transition-colors"
-              >
-                <Icon
-                  name={link.icon}
-                  class="size-3.5 text-primary"
-                  aria-hidden="true"
-                />
-                {link.label}
-              </a>
+              <a href={link.href} class="hover:underline underline-offset-2">{link.label}</a>
             ))
           }
         </div>
       </header>
 
+      <!-- Perfil -->
+      <section class="flex flex-col gap-3">
+        <h2 class="text-base font-bold uppercase tracking-[0.15em]">Perfil</h2>
+        <p class="text-black-secondary text-pretty">{cv.summary}</p>
+      </section>
+
       <!-- Experiencia -->
-      <section class="flex flex-col gap-4">
-        <h2
-          class="font-fantabular font-semibold text-xl text-primary flex items-center gap-2.5"
-        >
-          Experiencia
-        </h2>
+      <section class="flex flex-col gap-5 print:gap-2.5">
+        <h2 class="text-base font-bold uppercase tracking-[0.15em]">Experiencia</h2>
         {
           experiences.map(exp => (
-            <div class="print:break-inside-avoid">
-              <h3 class="text-xs font-bold uppercase tracking-wide">
-                <span class="underline decoration-primary underline-offset-2">
-                  {exp.position}
-                </span>{' '}
-                - <span class="italic font-fantabular font-medium">{exp.company}</span>
-                <span class="ml-3 inline-flex items-center gap-1 font-normal normal-case tracking-normal text-neutral-500">
-                  <Icon
-                    name="fa6-solid:calendar"
-                    class="size-3"
-                    aria-hidden="true"
-                  />
-                  {exp.date}
-                </span>
+            <div class="flex flex-col gap-1.5 print:break-inside-avoid">
+              <Etiqueta class="w-fit">{exp.date}</Etiqueta>
+              <h3>
+                <strong>{exp.position}</strong>, <em>{exp.company}</em>
               </h3>
-              <ul class="mt-2 ml-5 space-y-1 list-disc">
+              <ul class="ml-5 space-y-0.5 list-disc marker:text-gray-400 text-black-secondary">
                 {exp.items.map(item => (
                   <li>{item}</li>
                 ))}
@@ -233,21 +183,17 @@ const languages = ['Español nativo']
       </section>
 
       <!-- Educación -->
-      <section class="flex flex-col gap-3 print:break-inside-avoid">
-        <h2
-          class="font-fantabular font-semibold text-xl text-primary flex items-center gap-2.5"
-        >         
-          Educación
-        </h2>
-        <ul class="space-y-1.5">
+      <section class="flex flex-col gap-5 print:gap-2.5 print:break-inside-avoid">
+        <span class="w-24 border-t border-black" aria-hidden="true"></span>
+        <h2 class="text-base font-bold uppercase tracking-[0.15em]">Educación</h2>
+        <ul class="grid sm:grid-cols-2 print:grid-cols-3 gap-x-8 gap-y-4 print:gap-y-2.5">
           {
             education.map(edu => (
-              <li>
-                <span class="text-xs font-bold uppercase tracking-wide">
-                  {edu.title}
-                </span> -
-                <span class="ml-3 text-neutral-500">{edu.institution}</span>
-                <span class="ml-3 text-neutral-500">{edu.date}</span>
+              <li class="flex flex-col gap-1.5">
+                <Etiqueta class="w-fit">{edu.date}</Etiqueta>
+                <span>
+                  <strong>{edu.title}</strong>, {edu.institution}
+                </span>
               </li>
             ))
           }
@@ -255,66 +201,49 @@ const languages = ['Español nativo']
       </section>
 
       <!-- Habilidades y métodos -->
-      <section class="flex flex-col gap-3 print:break-inside-avoid">
-        <h2
-          class="font-fantabular font-semibold text-xl text-primary flex items-center gap-2.5"
-        >
-          Habilidades y métodos
-        </h2>
-        <ul class="ml-5 space-y-1 list-disc">
+      <section class="flex flex-col gap-5 print:gap-2.5 print:break-inside-avoid">
+        <span class="w-24 border-t border-black" aria-hidden="true"></span>
+        <h2 class="text-base font-bold uppercase tracking-[0.15em]">Habilidades y métodos</h2>
+        <ul class="space-y-1 text-black-secondary">
           {
             skills.map(skill => (
               <li>
-                <strong>{skill.label}:</strong> {skill.text}
+                <strong class="text-black">{skill.label}:</strong> {skill.text}
               </li>
             ))
           }
         </ul>
       </section>
 
-      <!-- Software -->
-      <section class="flex flex-col gap-3 print:break-inside-avoid">
-        <h2
-          class="font-fantabular font-semibold text-xl text-primary flex items-center gap-2.5"
-        >
-          Software
-        </h2>
-        <ul class="flex flex-wrap gap-2">
-          {
-            software.map(tool => (
-              <li class="px-2.5 py-1 rounded-chico bg-primary/10 text-xs">
-                {tool}
-              </li>
-            ))
-          }
+      <!-- Software e idiomas: lado a lado para que todo quepa en una hoja -->
+      <div class="grid sm:grid-cols-[3fr_1fr] print:grid-cols-[3fr_1fr] gap-8 print:gap-6">
+      <section class="flex flex-col gap-5 print:gap-2.5 print:break-inside-avoid">
+        <span class="w-24 border-t border-black" aria-hidden="true"></span>
+        <h2 class="text-base font-bold uppercase tracking-[0.15em]">Software</h2>
+        <ul class="grid grid-cols-2 sm:grid-cols-3 print:grid-cols-4 gap-x-6 gap-y-0.5 text-xs">
+          {software.map(tool => <li>{tool}</li>)}
         </ul>
       </section>
 
-      <!-- Idiomas -->
-      <section class="flex flex-col gap-3 print:break-inside-avoid">
-        <h2
-          class="font-fantabular font-semibold text-xl text-primary flex items-center gap-2.5"
-        >
-        Idiomas
-        </h2>
-        <p>{languages.join('  ·  ')}</p>
+      <section class="flex flex-col gap-5 print:gap-2.5 print:break-inside-avoid">
+        <span class="w-24 border-t border-black" aria-hidden="true"></span>
+        <h2 class="text-base font-bold uppercase tracking-[0.15em]">Idiomas</h2>
+        <p class="text-xs">{languages.join('  ·  ')}</p>
       </section>
+      </div>
     </article>
 
-    <!-- Botón de descarga -->
-    <div class="print:hidden fixed bottom-12 right-12 z-50">
-      <a
-        href="/Hoja_de_vida_Gabriela_Ferrer.pdf"
-        download
-        class="efecto-presionar border-2 border-black bg-primary text-white px-6 py-3 font-medium inline-flex items-center gap-2"
+    <!-- Botón de descarga: el PDF está en public/pdf (se genera desde esta misma página) -->
+    <div class="print:hidden fixed bottom-8 right-8 z-50">
+      <Button
+        text="Descargar hoja de vida"
+        href="/pdf/Hoja_de_vida_Gabriela_Ferrer.pdf"
+        download="Hoja_de_vida_Gabriela_Ferrer.pdf"
+        tono="claro"
+        typeIcon
       >
-        <Icon
-          name="fa6-solid:file-arrow-down"
-          class="size-4"
-          aria-hidden="true"
-        />
-        Descargar hoja de vida
-      </a>
+        <Icon name="fa6-solid:file-arrow-down" class="size-4" aria-hidden="true" />
+      </Button>
     </div>
   </main>
 </Layout>
@@ -331,7 +260,7 @@ const languages = ['Español nativo']
     /* Las clases de Tailwind usan rem, así que se reduce la base
        para que todo el currículum quepa en una sola hoja. */
     html {
-      font-size: 14.5px !important;
+      font-size: 13px !important;
     }
 
     body {
@@ -347,7 +276,13 @@ const languages = ['Español nativo']
     .cv {
       max-width: none !important;
       margin: 0 !important;
-      padding: 0.5in 0.6in !important;
+      padding: 0.45in 0.6in !important;
+    }
+
+    /* La barra de contacto sale de borde a borde de la hoja */
+    .cv header > div:last-child {
+      margin-inline: -0.6in !important;
+      padding-inline: 0.6in !important;
     }
 
     /* Oculta el menú y el pie de página del Layout al imprimir */

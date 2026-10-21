@@ -1,28 +1,52 @@
 ---
-type StyleType = "transparent" | "solid";
+type StyleType = 'transparent' | 'solid'
 
 interface Props {
-  id?: string;
-  style: StyleType;
-  text?: string;
-  typeIcon?: boolean;
-  href: string;
+  id?: string
+  text?: string
+  typeIcon?: boolean
+  href: string
+  /** oscuro (por defecto): para fondos oscuros, borde y texto claros.
+   *  claro: para fondos claros, fondo blanco, borde y texto negros. */
+  tono?: 'oscuro' | 'claro'
+  /** Descarga el archivo en vez de abrirlo. Con texto, es el nombre del archivo descargado. */
+  download?: boolean | string
 }
 
-const { style, text, typeIcon, href, id } = Astro.props;
+const { text, typeIcon, href, id, tono = 'oscuro', download } = Astro.props
 
-// Sólido: morado con borde y sombra negros. Transparente: para fondos oscuros, borde y sombra blancos.
-const variantes: Record<StyleType, string> = {
-  solid: "bg-primary border-black",
-  transparent: "bg-transparent border-white shadow-white",
-};
+// Clases completas para que Tailwind las detecte
+const tonos = {
+  oscuro: 'border-white-cream text-white',
+  claro: 'border-black bg-white text-black',
+}
 ---
 
-<a
+<!-- <a
   id={id}
   href={href}
   class={`efecto-presionar border-2 text-white flex flex-row items-center gap-2 px-4 py-3 text-sm md:text-base font-normal ${variantes[style]}`}
 >
   {text && <span>{text}</span>}
-  {typeIcon &&<span class="flex items-center stroke-white"><slot/></span> }
-</a>
+  {typeIcon &&<span class:list={["flex items-center", tono === "oscuro" && "stroke-white"]}><slot/></span> }
+</a> -->
+<div>
+  <a
+    id={id}
+    href={href}
+    download={download}
+    class:list={[
+      'flex flex-row items-center gap-2 rounded-full border-2 px-5 py-2 font-semibold transition-colors duration-150 hover:bg-pink hover:text-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary',
+      tonos[tono],
+    ]}
+  >
+    {text}
+    {
+      typeIcon && (
+        <span class:list={["flex items-center", tono === "oscuro" && "stroke-white"]}>
+          <slot />
+        </span>
+      )
+    }
+  </a>
+</div>

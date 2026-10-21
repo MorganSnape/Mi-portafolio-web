@@ -401,7 +401,10 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
         )
       }
 
-      <Invitacion />
+      <!-- Ancho del cierre: lo decide la página, no el componente -->
+      <div class="mx-auto w-full lg:w-4/5 max-w-sitio px-4 sm:px-12 xl:px-0">
+        <Invitacion />
+      </div>
     </main>
 
     <button id="backToTop" type="button" class="cs-top" aria-label="Volver arriba">

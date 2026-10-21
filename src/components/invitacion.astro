@@ -28,6 +28,8 @@ const {
 } = Astro.props
 ---
 
-<div class:list={['w-full px-4 sm:px-12 xl:px-0 py-16 md:py-24', className]}>
-  <Cierre class="mx-auto lg:w-4/5 max-w-sitio" titulo={titulo} texto={texto} enlaces={enlaces} />
+<!-- Ocupa todo el ancho que le dé su contenedor: no pone márgenes laterales
+     ni ancho propio. La página decide el ancho (ver index.astro y sobre-mi.astro). -->
+<div class:list={['w-full pt-16 md:pt-20 pb-10', className]}>
+  <Cierre titulo={titulo} texto={texto} enlaces={enlaces} />
 </div>

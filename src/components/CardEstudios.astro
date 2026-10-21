@@ -2,6 +2,7 @@
 import type { Studies } from "@/models";
 
 import IconMedioCirculo from "@/icons/medio-circulo.svg";
+import Etiqueta from "@/components/ui/Etiqueta.astro";
 
 interface Props extends Studies {}
 
@@ -14,13 +15,11 @@ const { title, descriptions, institution, duration, logo } =
 >
   <div class="relative flex flex-col justify-between gap-3 p-6 flex-1">
     <main class="flex-1 flex flex-col gap-2">
-      <h4 class="text-base md:text-lg font-medium font-fantabular">
+      <!-- Siempre 2 líneas: reserva el alto de dos líneas (2lh) y corta con … si el título es más largo -->
+      <h4 class="text-base md:text-lg font-medium font-fantabular leading-snug min-h-[2lh] line-clamp-2 text-balance">
         {title}
       </h4>
-      <span
-        class="block font-medium text-medium font-fantabular italic"
-        >{duration}</span
-      >
+      <Etiqueta color="amarillo" class="w-fit">{duration}</Etiqueta>
 
       <ul class="space-y-1 list-disc list-outside pl-4">
         {

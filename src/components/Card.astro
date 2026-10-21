@@ -47,7 +47,7 @@ const hundir =
 
 <a
   href={`/proyectos/${slug}`}
-  class="group/card @container relative block h-full w-[min(32rem,calc(100vw-3rem))] xl:w-full shrink-0 snap-start rounded-ventana focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-secondary"
+  class="group/card @container relative block h-full w-full max-w-lg xl:max-w-none shrink-0 snap-start rounded-ventana focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-secondary"
 >
   <SectionIcon
     aria-hidden="true"
@@ -113,8 +113,8 @@ const hundir =
           tags && tags.length > 0 && (
             <ul class="flex flex-wrap gap-1.5" aria-label="Disciplinas">
               {tags.map(tag => (
-                <li>
-                  <Etiqueta color="morado">{tag}</Etiqueta>
+                <li class="text-gray-400">
+                  {tag} /
                 </li>
               ))}
             </ul>

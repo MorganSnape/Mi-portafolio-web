@@ -5,11 +5,11 @@ import SocialMediaButtons from '@/components/SocialMediaButtons.astro'
 
 import IlustracionMia from '@/assets/Ilustraciones/Yo.webp'
 import ArrowIcon from '@/assets/flecha.svg'
-import Ondulada from '@/components/ui/Ondulada.astro'
+import Icon from 'node_modules/astro-icon/components/Icon.astro'
 ---
 
 <div
-  class="w-full bg-[url(/fondoDos.svg)] bg-[length:30px] pb-20 lg:h-[110vh] max-h-[1080px]"
+  class="w-full bg-[url(/fondoDos.svg)] bg-[length:30px] lg:h-[110vh] max-h-[1080px]"
 >
   <section
     id="inicio"
@@ -34,9 +34,7 @@ import Ondulada from '@/components/ui/Ondulada.astro'
         Diseñadora gráfica <!-- Product Designer · Branding y UX/UI -->
       </div>
       <div class="flex gap-4 flex-col">
-        <h1
-          class="font-extrabold font-fantabular text-4xl text-pink"
-        >
+        <h1 class="font-extrabold font-fantabular text-4xl text-pink">
           <span class="text-white">Gabriela</span> Ferrer<span
             class="text-secondary">.</span
           >
@@ -61,12 +59,21 @@ import Ondulada from '@/components/ui/Ondulada.astro'
           <Button
             text="Ver mis proyectos"
             typeIcon
-            style="solid"
             href="#proyectos-container"
           >
-            <ArrowIcon class="w-8" />
+            <ArrowIcon class="size-6" />
           </Button>
-          <Button text="Currículum" style="transparent" href="/curriculum" />
+          <Button
+            text="Currículum"
+            href="/curriculum"
+            typeIcon
+          >
+            <Icon
+              name="fa6-solid:file-lines"
+              class="size-4"
+              aria-hidden="true"
+            />
+          </Button>
         </div>
         <SocialMediaButtons />
       </div>

@@ -11,59 +11,73 @@ import Footer from '@/components/Footer.astro'
 import Invitacion from '@/components/invitacion.astro'
 import Disciplinas from '@/components/indexComponents/Disciplinas.astro'
 import Ventana from '@/components/ui/Ventana.astro'
+import Etiqueta from '@/components/ui/Etiqueta.astro'
+
+// Carril de contenido de la caja "experiencia-container".
+// Todo bloque dentro de la caja (menos los Subtitulo, que son divisores
+// de borde a borde) va envuelto con esta clase, así todos comparten
+// los mismos márgenes laterales en cada tamaño de pantalla:
+//   celular: ancho completo con px-4 · tablet: px-12 · desktop: 11/12 centrado
+const carril = 'w-full lg:w-11/12 max-w-sitio mx-auto px-4 sm:px-12 lg:px-0'
 ---
 
 <Layout title="Gabriela Ferrer - Bienvenido a mi portafolio.">
   <BarNav />
   <main
-    class="flex flex-col items-center gap-8 font-rethink select-none w-full"
+    class="flex flex-col items-center  font-rethink select-none w-full bg-[url(/fondoDos.svg)] bg-[length:30px]"
   >
     <Inicio />
     <section
       id="experiencia-container"
-      class="w-full flex flex-col items-center"
+      class="w-11/12 max-w-sitio flex flex-col gap-20 items-center bg-[url(/fondo.svg)] bg-[length:30px] rounded-ventana border-2 border-black overflow-hidden py-20"
     >
-        <Subtitulo align="center" type="Experiencia" class="-mt-10" />
+      <Subtitulo align="center" type="Experiencia" />
+      <div class={carril}>
+        <Ventana>
+          <div class="flex flex-col gap-10">
+            {
+              personalInfo.experiences?.map(experience => (
+                <div class="flex flex-col md:flex-row items-start gap-6 md:gap-10">
+                  <div class="flex flex-row items-center gap-4 mt-2">
+                    <Etiqueta color="negro" mayusculas class="text-base font-fantabular font-medium">
+                      {experience.date}
+                    </Etiqueta>
+                    <div class="h-0.5 bg-black w-20" />
+                  </div>
 
-      <div class="my-40 lg:w-11/12 max-w-sitio w-full mx-auto px-4 sm:px-12 lg:px-0">
-      <Ventana>
-      <div class="flex flex-col gap-10">
-        {
-          personalInfo.experiences?.map(experience => (
-            <div class="flex flex-col md:flex-row items-start gap-6 md:gap-10">
-              <div class="flex flex-row items-center gap-4 mt-2">
-                <p class="text-black font-medium text-base font-fantabular text-balance">
-                  {experience.date}
-                </p>
-                <div class="h-0.5 bg-black w-20" />
-              </div>
-
-              <article class="flex flex-col gap-6">
-                <header>
-                  <h4 class="efecto-resaltador font-medium font-fantabular text-xl md:text-2xl w-fit">
-                    {experience.position} - {experience.company}
-                  </h4>
-                </header>
-                <main>
-                  <ul class="text-sm lg:text-base space-y-1 pl-6">
-                    {experience.description?.map(desc => (
-                      <li class="list-disc list-outside pl-2 ">{desc}</li>
-                    ))}
-                  </ul>
-                </main>
-              </article>
-            </div>
-          ))
-        }
+                  <article class="flex flex-col gap-6">
+                    <header>
+                      <h4 class="efecto-resaltador font-medium font-fantabular text-xl md:text-2xl w-fit">
+                        {experience.position} - {experience.company}
+                      </h4>
+                    </header>
+                    <main>
+                      <ul class="text-sm lg:text-base space-y-1 pl-6">
+                        {experience.description?.map(desc => (
+                          <li class="list-disc list-outside pl-2 ">{desc}</li>
+                        ))}
+                      </ul>
+                    </main>
+                  </article>
+                </div>
+              ))
+            }
+          </div>
+        </Ventana>
       </div>
-      </Ventana>
+      <div class={carril}>
+        <Disciplinas />
+      </div>
+      <Subtitulo align="center" type="Mis proyectos" />
+      <div class={carril}>
+        <Proyectos />
       </div>
     </section>
-    <div class="flex flex-col items-center gap-8 my-40 lg:w-11/12 max-w-sitio w-full mx-auto">
-      <Disciplinas />
+    <!-- Fuera de la caja: mismo ancho que la caja de experiencia (w-11/12),
+         no el carril, que es el ancho del contenido DENTRO de la caja -->
+    <div class="w-11/12 max-w-sitio">
+      <Invitacion />
     </div>
-    <Proyectos />
-    <Invitacion />
-  </main> 
+  </main>
   <Footer />
 </Layout>

@@ -23,7 +23,10 @@ import Invitacion from '@/components/invitacion.astro'
         {estudios.map(estudio => <CardEstudios {...estudio} />)}
       </div>
     </section>
-    <Invitacion />
+    <!-- Mismo ancho que el contenido de SobreMi -->
+    <div class="w-full lg:w-4/5 max-w-sitio px-4 sm:px-12 xl:px-0">
+      <Invitacion />
+    </div>
   </main>
   <Footer />
 </Layout>

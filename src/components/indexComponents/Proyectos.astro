@@ -1,29 +1,26 @@
 ---
 import { proyectos } from '@/data/portfolio'
 
-import { Icon } from 'astro-icon/components'
 
 import Card from '@/components/Card.astro'
 import ProyectosContainer from '@/components/ProyectosContainer.astro'
-import Subtitulo from '@/components/Subtitulo.astro'
-import Ondulada from '@/components/ui/Ondulada.astro'
 
 const buttonClass =
   'cursor-pointer hover:scale-105 gap-2 flex flex-row justify-center items-center transition-all duration-150 ease-in-out select-none border-2 border-black font-medium translate-0 text-base'
 ---
 
+<!-- Sin márgenes externos: la separación vertical la pone la caja (gap-20)
+     y los márgenes laterales el carril de index.astro -->
 <section
   id="proyectos-container"
-  class="bg-[url(/fondoDos.svg)] bg-[length:30px] w-full flex flex-col items-center min-h-[760px]"
+  class="w-full scroll-mt-28"
 >
-  <Subtitulo align="center" type="Mis proyectos" />
-  <div class="relative w-full px-4 md:px-12 lg:px-0 lg:w-4/5 max-w-sitio mx-auto">
-    <Ondulada class="hidden sm:block absolute right-4 md:right-12 lg:right-0 top-16 w-14 md:w-20 -rotate-12" color="var(--color-secondary)" />
-    <p
-      class=" text-base md:text-lg font-normal mt-24 font-fantabular italic text-white"
-    >
-      <span class="font-black font-rethink text-2xl text-tag"> Cada proyecto muestra cómo trabajo: </span> 
-      <br /> 
+  <div class="w-full flex flex-col gap-12 md:gap-20">
+    <p class="text-base md:text-lg font-normal font-fantabular">
+      <span class="font-black text-2xl">
+        Cada proyecto muestra cómo trabajo:
+      </span>
+      <br />
       el reto de la marca, las decisiones que tomé y el resultado.
     </p>
     <!-- <div
@@ -48,17 +45,14 @@ const buttonClass =
         >Diseño Gráfico</button
       >
     </div> -->
-    <div
-      id="design-projects"
-      class="py-4 md:py-6 w-full flex items-center mb-20"
-    >
+    <div id="design-projects" class="w-full">
       <div
-        class="grid grid-cols-1 xl:grid-cols-2 justify-items-center xl:justify-items-normal gap-y-12 md:gap-12 md:flex-row justify-center md:justify-between w-full max-w-sitio pt-12 md:pt-20"
+        class="grid grid-cols-1 xl:grid-cols-2 justify-items-center xl:justify-items-stretch gap-12 w-full"
       >
         {
           proyectos.map(proyecto => (
             <div
-              class="project-card"
+              class="project-card w-full flex justify-center"
               data-type={proyecto.type
                 .map(type => type.toLowerCase())
                 .join(' ')}

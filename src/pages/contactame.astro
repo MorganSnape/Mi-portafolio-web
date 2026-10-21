@@ -13,7 +13,8 @@ import Ondulada from '@/components/ui/Ondulada.astro'
 import ilustracionPc from '@/assets/Ilustraciones/Computador.svg'
 
 const telefono = '573213266303'
-const mensajeWhatsApp = 'Hola Gabriela, vi tu portafolio y me gustaría hablar contigo.'
+const mensajeWhatsApp =
+  'Hola Gabriela, vi tu portafolio y me gustaría hablar contigo.'
 
 const directos = [
   {
@@ -45,13 +46,57 @@ const redes = [
   },
 ]
 
-// Fila clicable: toda la fila es el enlace
-const fila =
-  'group flex items-center gap-4 px-5 py-5 sm:px-7 transition-colors hover:bg-kournikova-50 focus-visible:outline-none focus-visible:bg-white-cream focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-black'
-const flecha =
-  'size-5 shrink-0 -rotate-45 group-hover:rotate-0 transition-transform duration-200'
-const tarjeta =
-  'overflow-hidden rounded-tarjeta border-2 border-black bg-white shadow-dura-lg divide-y-2 divide-black'
+// ── Botones de contacto en pares ──
+// Cada enlace es un botón independiente que se hunde solo, pero el par se ve
+// como una sola tarjeta: van pegados, comparten el borde del medio (-mt-0.5),
+// solo el primero redondea arriba y solo el último abajo.
+//
+// El hundido está escrito aquí (no con efecto-hundir) para controlar tres
+// cosas que lo hacían ver poco natural:
+//  1. El hover lo detecta el <li> (group/boton), que NO se mueve. Antes lo
+//     detectaba el propio botón: al hundirse se corría debajo del cursor, perdía
+//     el hover, volvía a subir… y temblaba en los bordes.
+//  2. Ritmo de botón físico: se hunde rápido (100 ms) y sube más despacio
+//     (200 ms), con una curva que frena al final. El color de fondo y la flecha
+//     se animan con el mismo ritmo (antes el color cambiaba de golpe).
+//  3. El botón de abajo queda por encima (z-10), así la sombra del de arriba
+//     nunca se asoma sobre él mientras se anima.
+// Ojo: las clases van escritas completas (sin armarlas con ${}) para que
+// Tailwind las encuentre al leer el archivo.
+const curva = 'ease-[cubic-bezier(0.2,0.8,0.2,1)]'
+const fila = [
+  'flex items-center gap-4 px-5 py-5 sm:px-7 border-2 border-black bg-white',
+  // Sombra dura de la marca en reposo (la misma medida que efecto-hundir)
+  '[box-shadow:var(--hundir)_var(--hundir)_0_var(--color-black)]',
+  // Animación: baja en 100 ms, sube en 200 ms
+  `transition-[translate,box-shadow,background-color] duration-200 ${curva}`,
+  'group-hover/boton:duration-100 active:duration-75 motion-reduce:transition-none',
+  // Estado hundido: pierde la sombra y se tiñe (con mouse, Tab o al tocar)
+  'group-hover/boton:[box-shadow:0_0_0_var(--color-black)] focus-visible:[box-shadow:0_0_0_var(--color-black)] active:[box-shadow:0_0_0_var(--color-black)]',
+  'group-hover/boton:bg-kournikova-50 focus-visible:bg-kournikova-50',
+  'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary',
+].join(' ')
+const flecha = `size-4 shrink-0 rotate-45`
+
+// Hacia dónde se hunde cada botón:
+// el último en diagonal (su sombra se ve abajo y a la derecha);
+// los que tienen otro debajo solo a la derecha, para no montarse sobre él.
+const diagonal =
+  'group-hover/boton:[translate:var(--hundir)_var(--hundir)] focus-visible:[translate:var(--hundir)_var(--hundir)] active:[translate:var(--hundir)_var(--hundir)]'
+const derecha =
+  'group-hover/boton:[translate:var(--hundir)_0] focus-visible:[translate:var(--hundir)_0] active:[translate:var(--hundir)_0]'
+const posicion = (i: number, total: number) => [
+  i === 0 && 'rounded-t-tarjeta',
+  i === total - 1 ? ['rounded-b-tarjeta', diagonal] : derecha,
+]
+// Los botones de un par van pegados (sin gap)
+const par = 'flex flex-col'
+// <li>: detecta el hover. Del segundo en adelante sube 2px para compartir el
+// borde y queda por encima del anterior.
+const contenedor = (i: number) => [
+  'group/boton',
+  i > 0 && '-mt-0.5 relative z-10',
+]
 ---
 
 <Layout title="Trabajemos juntos - Contáctame">
@@ -60,72 +105,105 @@ const tarjeta =
     class="flex flex-col items-center gap-8 font-rethink select-none w-full"
   >
     <section
-  aria-labelledby="titulo-contacto"
-  class="mx-auto min-h-screen grid w-full max-w-sitio gap-10 px-6 py-16 text-black lg:grid-cols-2 lg:gap-x-16 lg:py-40"
->
-  <!-- Título y texto: arriba a la izquierda -->
-  <header class="flex flex-col gap-5 lg:col-start-1 lg:row-start-1">
-    <Etiqueta color="negro" mayusculas class="w-fit">Hablemos</Etiqueta>
-    <h1 id="titulo-contacto" class="text-5xl font-extrabold leading-none tracking-tight md:text-6xl">
-      Contáctame
-    </h1>
-    <p class="max-w-[52ch] text-lg leading-relaxed text-black-secondary">
-      ¿Tienes una marca por crear o un producto por diseñar? Escríbeme por el medio que prefieras y
-      conversamos.
-    </p>
-  </header>
+      aria-labelledby="titulo-contacto"
+      class="mx-auto min-h-[calc(100dvh+var(--altura-header))] grid w-full max-w-sitio gap-10 px-6 text-black lg:grid-cols-2 lg:gap-x-16 pt-20"
+    >
+      <!-- Título y texto: arriba a la izquierda -->
+      <header class="flex flex-col gap-5 lg:col-start-1 lg:row-start-1">
+        <Etiqueta color="negro" mayusculas class="w-fit">Hablemos</Etiqueta>
+        <h1
+          id="titulo-contacto"
+          class="text-5xl font-extrabold leading-none tracking-tight md:text-6xl"
+        >
+          Contáctame
+        </h1>
+        <p class="max-w-[52ch] text-lg leading-relaxed text-black-secondary">
+          ¿Tienes una marca por crear o un producto por diseñar? Escríbeme por
+          el medio que prefieras y conversamos.
+        </p>
+      </header>
 
-  <!-- Opciones de contacto: derecha. En móvil van antes de la ilustración -->
-  <div class="flex flex-col gap-8 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-center">
-    <ul class={tarjeta}>
-      {
-        directos.map((d) => (
-          <li>
-            <a
-              href={d.href}
-              class={fila}
-              {...(d.externo && { target: '_blank', rel: 'noopener noreferrer' })}
-            >
-              <span class="flex min-w-0 flex-1 flex-col items-start gap-2">
-                <span
-                  class={`rounded-full border-2 border-black px-3 py-0.5 text-sm font-bold ${d.colorEtiqueta}`}
+      <!-- Opciones de contacto: derecha. En móvil van antes de la ilustración -->
+      <div
+        class="flex flex-col gap-8 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-center"
+      >
+        <ul class={par}>
+          {
+            directos.map((d, i) => (
+              <li class:list={contenedor(i)}>
+                <a
+                  href={d.href}
+                  class:list={[fila, posicion(i, directos.length)]}
+                  {...(d.externo && {
+                    target: '_blank',
+                    rel: 'noopener noreferrer',
+                  })}
                 >
-                  {d.etiqueta}
-                </span>
-                <span class="break-all text-lg font-medium sm:break-normal">{d.valor}</span>
-              </span>
-              <Icon name="fa6-solid:arrow-right" class={flecha} aria-hidden="true" />
-              {d.externo && <span class="sr-only">(se abre en una pestaña nueva)</span>}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+                  <span class="flex min-w-0 flex-1 flex-col items-start gap-2">
+                    <span
+                      class={`rounded-full border-2 border-black px-3 py-0.5 text-sm font-bold ${d.colorEtiqueta}`}
+                    >
+                      {d.etiqueta}
+                    </span>
+                    <span class="break-all text-lg font-medium sm:break-normal">
+                      {d.valor}
+                    </span>
+                  </span>
+                  <span
+                    class="hidden sm:flex size-9 shrink-0 items-center justify-center rounded-full border-2 border-black bg-pink transition-colors duration-150 group-hover/boton:bg-secondary "
+                    aria-hidden="true"
+                  >
+                    <Icon name="fa6-solid:arrow-up" class={flecha} />
+                  </span>
+                  {d.externo && (
+                    <span class="sr-only">(se abre en una pestaña nueva)</span>
+                  )}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
 
-    <ul class={tarjeta}>
-      {
-        redes.map((r) => (
-          <li>
-            <a href={r.href} target="_blank" rel="noopener noreferrer" class={fila}>
-              <span class="grid size-11 shrink-0 place-items-center rounded-chico border-2 border-black bg-black text-white">
-                <Icon name={r.icono} class="size-6" aria-hidden="true" />
-              </span>
-              <span class="flex-1 text-lg font-bold">{r.nombre}</span>
-              <Icon name="fa6-solid:arrow-right" class={flecha} aria-hidden="true" />
-              <span class="sr-only">(se abre en una pestaña nueva)</span>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+        <ul class={par}>
+          {
+            redes.map((r, i) => (
+              <li class:list={contenedor(i)}>
+                <a
+                  href={r.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class:list={[fila, posicion(i, redes.length)]}
+                >
+                  <span class="grid size-11 shrink-0 place-items-center rounded-chico border-2 border-black bg-black text-white">
+                    <Icon name={r.icono} class="size-6" aria-hidden="true" />
+                  </span>
+                  <span class="flex-1 text-lg font-bold">{r.nombre}</span>
+                  <span class="sr-only">(se abre en una pestaña nueva)</span>
+                  <span
+                    class="hidden sm:flex size-9 shrink-0 items-center justify-center rounded-full border-2 border-black bg-pink transition-colors duration-150 group-hover/boton:bg-secondary "
+                    aria-hidden="true"
+                  >
+                    <Icon name="fa6-solid:arrow-up" class={flecha} />
+                  </span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
 
-  <!-- Ilustración del PC: abajo a la izquierda -->
-  <figure class="relative mx-auto w-full max-w-2xl lg:col-start-1 lg:row-start-2 lg:mx-0 lg:max-w-lg">
-    <Ondulada class="absolute right-2 -top-6 w-14 md:w-20 rotate-12" color="var(--color-pink)" />
-    <Image src={ilustracionPc} alt="Ilustración de un PC con plantas" class="h-auto w-full" loading="eager" />
-  </figure>
-</section>
+      <!-- Ilustración del PC: abajo a la izquierda -->
+      <figure
+        class="relative mx-auto w-full max-w-2xl lg:col-start-1 lg:row-start-2 lg:mx-0 lg:max-w-xl"
+      >
+        <Image
+          src={ilustracionPc}
+          alt="Ilustración de un PC con plantas"
+          class="h-auto w-full"
+          loading="eager"
+        />
+      </figure>
+    </section>
   </main>
   <Footer />
 </Layout>
