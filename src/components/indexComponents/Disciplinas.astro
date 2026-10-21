@@ -60,7 +60,7 @@ const transicion =
           data-state="idle"
           style="--acento:var(--color-black)"
           class={`relative aspect-square w-full overflow-hidden rounded-tarjeta border-2 border-black bg-white-cream
-                  shadow-dura-lg shadow-(--acento)
+                  
                   transition-[clip-path,box-shadow] ${transicion}
                   [clip-path:inset(0_-12px_calc(100%_+_12px)_0)]
                   data-[state=open]:[clip-path:inset(0_-12px_-12px_0)]
@@ -95,7 +95,7 @@ const transicion =
               class="group/row flex items-center gap-4 py-4 md:py-5 border-b-2 border-black/15
                      transition-colors duration-300 hover:border-pink"
             >
-              <span class="shrink-0 size-14 sm:size-16 overflow-hidden rounded-chico border-2 border-black shadow-dura-sm shadow-(--acento) md:[@media(hover:hover)]:hidden">
+              <span class="shrink-0 size-14 sm:size-16 overflow-hidden rounded-chico border-2 border-black md:[@media(hover:hover)]:hidden">
                 <Image
                   src={d.imagen}
                   alt=""
@@ -108,14 +108,10 @@ const transicion =
               <span class="flex min-w-0 flex-1 flex-col gap-1">
                 <span class="flex items-start gap-1.5 transition-transform duration-300 ease-out group-hover/row:translate-x-4 motion-reduce:transition-none">
                   <span
-                    class="relative isolate font-fantabular font-light text-lg md:text-xl lg:text-2xl leading-tight group-hover/row:font-normal"
+                    class="relative isolate font-fantabular font-normal text-lg lg:text-xl leading-tight group-hover/row:font-normal"
                   >
                     {d.nombre}
                   </span>
-                </span>
-                <!-- Visible en celular; con mouse queda solo para lectores de pantalla -->
-                <span class="text-sm leading-snug text-gray-500 md:[@media(hover:hover)]:sr-only">
-                  {d.descripcion}
                 </span>
               </span>
             </li>

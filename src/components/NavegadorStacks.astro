@@ -79,31 +79,31 @@ const segundaPalabraTitle = title.split(" ")[1];
 ---
 
 <div
-  class={`relative w-full bg-white min-h-64 border-2 border-black rounded-tarjeta`}
+  class="relative w-full h-full bg-white-cream border-2 border-black rounded-ventana"
 >
-  {(<TagSvg class="absolute right-4 -top-2 w-18 h-1w-18 text-black" />)}
+  {(<TagSvg class="absolute right-4 -top-3 size-14 text-black" aria-hidden="true" />)}
   <div
-    class="h-10 bg-white flex flex-row items-center gap-2 px-4 border-b-4 border-black rounded-t-tarjeta md:rounded-t-tarjeta"
+    class="h-10 flex flex-row items-center gap-2 px-4 border-b-2 border-black" aria-hidden="true"
   >
     <div class="h-3 w-3 bg-black rounded-full"></div>
     <div class="h-3 w-3 bg-black rounded-full"></div>
     <div class="h-3 w-3 bg-black rounded-full"></div>
   </div>
-  <div class="p-4 lg:px-6 lg:py-8 flex flex-col gap-4">
-    <h4 class="font-medium text-xl lg:text-2xl font-fantabular flex flex-col">
+  <div class="p-4 sm:p-6 flex flex-col gap-4">
+    <h4 class="subtitulo flex flex-col">
       <span class={`${textColor}`}>
         {primeraPalabraTitle}
       </span>
       <span class="italic"> {segundaPalabraTitle}</span>
     </h4>
-    <div class="flex flex-row flex-wrap gap-1">
+    <div class="flex flex-row flex-wrap gap-2">
       {
         tecnologiasSeleccionadas.logos.map((tecnologiaLogos) => (
           <TegnologiaLogo {...tecnologiaLogos} />
         ))
       }
     </div>
-    <ul class="space-y-1 list-disc list-outside pl-4">
+    <ul class="space-y-1 list-disc list-outside pl-4 text-sm lg:text-base text-black-secondary">
       {
         tecnologiasSeleccionadas.skills.map((tecnologiaSkill) => (
           <li>{tecnologiaSkill}</li>

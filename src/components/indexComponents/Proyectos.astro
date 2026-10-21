@@ -1,7 +1,6 @@
 ---
 import { proyectos } from '@/data/portfolio'
 
-
 import Card from '@/components/Card.astro'
 import ProyectosContainer from '@/components/ProyectosContainer.astro'
 
@@ -11,15 +10,10 @@ const buttonClass =
 
 <!-- Sin márgenes externos: la separación vertical la pone la caja (gap-20)
      y los márgenes laterales el carril de index.astro -->
-<section
-  id="proyectos-container"
-  class="w-full scroll-mt-28"
->
+<section id="proyectos-container" class="w-full scroll-mt-28">
   <div class="w-full flex flex-col gap-12 md:gap-20">
-    <p class="text-base md:text-lg font-normal font-fantabular">
-      <span class="font-black text-2xl">
-        Cada proyecto muestra cómo trabajo:
-      </span>
+    <p class="text-base lg:text-lg leading-tight text-balance text-black-secondary">
+      Cada proyecto muestra cómo trabajo:
       <br />
       el reto de la marca, las decisiones que tomé y el resultado.
     </p>

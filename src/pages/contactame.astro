@@ -106,14 +106,21 @@ const contenedor = (i: number) => [
   >
     <section
       aria-labelledby="titulo-contacto"
-      class="mx-auto min-h-[calc(100dvh+var(--altura-header))] grid w-full max-w-sitio gap-10 px-6 text-black lg:grid-cols-2 lg:gap-x-16 pt-20"
+      class="mx-auto grid w-full lg:w-11/12 max-w-sitio gap-12 px-6 lg:px-0 pt-[calc(var(--altura-header)+3rem)] pb-20 lg:pb-28 lg:grid-cols-2 lg:grid-rows-[auto_auto] lg:gap-x-16 lg:gap-y-10 text-black"
     >
+      <!-- Alineación:
+           · mismo ancho que la barra de navegación (lg:w-11/12 max-w-sitio, lg:px-0),
+             así el título arranca en línea con el logo y los botones terminan en línea con el menú.
+           · Sin min-h: las filas miden lo que su contenido, y el título y la
+             ilustración quedan juntos en la columna izquierda.
+           · Los botones ocupan las dos filas a la derecha y se centran en vertical
+             respecto a toda la columna izquierda. -->
       <!-- Título y texto: arriba a la izquierda -->
-      <header class="flex flex-col gap-5 lg:col-start-1 lg:row-start-1">
+      <header class="flex flex-col gap-5 lg:col-start-1 lg:row-start-1 lg:self-end">
         <Etiqueta color="negro" mayusculas class="w-fit">Hablemos</Etiqueta>
         <h1
           id="titulo-contacto"
-          class="text-5xl font-extrabold leading-none tracking-tight md:text-6xl"
+          class="titulo-seccion"
         >
           Contáctame
         </h1>
@@ -194,7 +201,7 @@ const contenedor = (i: number) => [
 
       <!-- Ilustración del PC: abajo a la izquierda -->
       <figure
-        class="relative mx-auto w-full max-w-2xl lg:col-start-1 lg:row-start-2 lg:mx-0 lg:max-w-xl"
+        class="relative mx-auto w-full max-w-md lg:col-start-1 lg:row-start-2 lg:mx-0 lg:max-w-lg lg:self-start"
       >
         <Image
           src={ilustracionPc}

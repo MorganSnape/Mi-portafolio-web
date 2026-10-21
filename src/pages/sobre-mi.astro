@@ -1,30 +1,118 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-import SobreMi from '@/components/indexComponents/SobreMi.astro'
-import Subtitulo from '@/components/Subtitulo.astro'
-import { estudios } from '@/data/studies'
-import CardEstudios from '@/components/CardEstudios.astro'
 import Footer from '@/components/Footer.astro'
 import BarNav from '@/components/BarNav.astro'
 import Invitacion from '@/components/invitacion.astro'
+// Contenido de la página Sobre mí, con la misma estructura que la página
+// principal: una caja clara (fondo de puntos, borde negro, rounded-ventana)
+// dividida por barras Subtitulo, y cada bloque en el mismo carril de ancho.
+import CardEstudios from '@/components/CardEstudios.astro'
+import Subtitulo from '@/components/Subtitulo.astro'
+import Ventana from '@/components/ui/Ventana.astro'
+
+import Exclamacion from '@/icons/exclamacion.svg'
+
+import TagDesign from '@/assets/tag-design.svg'
+import TagFrontEnd from '@/assets/tag-code.svg'
+import TagDesignUX from '@/assets/tag-ux-ui.svg'
+import { Image } from 'astro:assets'
+
+import ImageSobremImg from '@/assets/sobre-mi.webp'
+
+import { estudios } from '@/data/studies'
+import Etiqueta from '@/components/ui/Etiqueta.astro'
+import Disciplinas from '@/components/indexComponents/Disciplinas.astro'
+import NavegadorStacks from '@/components/NavegadorStacks.astro'
+
+
+// Mismo carril que en index.astro: todos los bloques comparten márgenes laterales
+const carril = 'w-full lg:w-11/12 max-w-sitio mx-auto px-4 sm:px-12 lg:px-0'
 ---
 
-<Layout title="Gabriela Ferrer - Bienvenido a mi portafolio.">
+<Layout title="Sobre mí - Gabriela Ferrer">
   <BarNav />
+  <!-- Mismo fondo oscuro de puntos que la página principal; la caja clara va encima -->
   <main
-    class="flex flex-col items-center gap-8 font-rethink select-none w-full mt-10 leading-tight"
+    class="flex flex-col items-center font-rethink select-none w-full pt-[calc(var(--altura-header)+3rem)]"
   >
-    <SobreMi />
-    <section id="estudios-container" class="w-full -mt-8">
+    <div class:list={[carril, 'flex flex-col gap-12 ']}>
+      <Etiqueta color="negro" mayusculas class="w-fit">Sobre mí</Etiqueta>
+      <Ventana>
+        <div class="flex flex-col gap-6">
+          <h3 class="relative titulo-bloque efecto-resaltador w-fit">
+            Quién soy y qué hago
+            <Exclamacion
+              class="absolute h-8 sm:h-12 w-8 sm:w-12 -top-6 sm:-top-10 -right-8 sm:-right-12"
+              aria-hidden="true"
+            />
+          </h3>
+          <p
+            class="text-base lg:text-lg text-black-secondary leading-snug text-pretty"
+          >
+            ¡Hola! Soy Gabriela Ferrer. Me apasiona crear marcas desde cero:
+            encontrar su esencia, darle forma en un logo, una paleta y una
+            tipografía, y acompañarla hasta cada lugar donde la gente la
+            encuentra, desde una publicación en redes hasta una página web.
+            <br /><br />
+
+            Me formé también en experiencia de usuario, así que antes de diseñar
+            investigo y escucho; mis decisiones siempre tienen un porqué. Y como
+            tengo conocimientos de desarrollo, entrego diseños fáciles de
+            implementar.
+            <br /><br />
+            Estudio <strong>Diseño Gráfico en el SENA</strong> y busco
+            <strong>etapa productiva.</strong> Fuera de la pantalla leo, tejo, pinto,
+            patino y salgo a la naturaleza: todo eso termina en mi forma de diseñar.
+          </p>
+        </div>
+      </Ventana>
+
+      <figure class="relative mx-auto w-11/12 lg:w-full">
+        <Image
+          class="w-full h-auto"
+          src={ImageSobremImg}
+          alt="Collage con una foto de Gabriela en el campo rodeada de sus aficiones"
+        />
+      </figure>
+    </div>
+    <section
+      class="w-11/12 max-w-sitio flex flex-col gap-20 items-center bg-[url(/fondoDos.svg)] bg-[length:30px] rounded-ventana border-2 border-black overflow-hidden py-20 text-black"
+    >
+      <Subtitulo align="center" type="Herramientas" />
+      <div
+        id="stacks"
+        class:list={[
+          carril,
+          'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8',
+        ]}
+      >
+        <NavegadorStacks
+          title="Diseño UX/UI"
+          tagSvg={TagDesignUX}
+          textColor="text-tickle-me-pink-500"
+        />
+        <NavegadorStacks
+          title="Desarrollo Front-End"
+          tagSvg={TagFrontEnd}
+          textColor="text-asparagus-600"
+        />
+        <NavegadorStacks
+          title="Diseño Gráfico"
+          tagSvg={TagDesign}
+          textColor="text-kournikova-500"
+        />
+      </div>
+
       <Subtitulo align="center" type="Estudios" />
       <div
-        class="grid grid-cols-1 md:grid-rows-2 md:grid-cols-2 gap-8 justify-center items-center py-20 mx-auto lg:w-4/5 max-w-sitio px-4 sm:px-12 xl:px-0"
+        id="estudios-container"
+        class:list={[carril, 'grid grid-cols-1 md:grid-cols-2 gap-8']}
       >
         {estudios.map(estudio => <CardEstudios {...estudio} />)}
       </div>
     </section>
-    <!-- Mismo ancho que el contenido de SobreMi -->
-    <div class="w-full lg:w-4/5 max-w-sitio px-4 sm:px-12 xl:px-0">
+    <!-- Fuera de la caja: mismo ancho que la caja (como en index.astro) -->
+    <div class="w-11/12 max-w-sitio">
       <Invitacion />
     </div>
   </main>

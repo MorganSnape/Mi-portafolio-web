@@ -283,7 +283,7 @@
 }
 @utility subtitulo {
   font-family: var(--font-fantabular);
-  font-weight: 700;
+  font-weight: 500;
   font-size: var(--text-2xl);
   line-height: 1.25;
 }

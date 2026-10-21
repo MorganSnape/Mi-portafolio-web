@@ -11,12 +11,12 @@ const { title, descriptions, institution, duration, logo } =
 ---
 
 <article
-  class="efecto-hundir border-2 border-black group flex flex-col rounded-tarjeta overflow-hidden h-full w-full bg-white flex-shrink-0 mx-auto"
+  class="relative flex flex-col h-full w-full overflow-hidden rounded-ventana border-2 border-black bg-white-cream shadow-dura"
 >
   <div class="relative flex flex-col justify-between gap-3 p-6 flex-1">
-    <main class="flex-1 flex flex-col gap-2">
+    <div class="flex-1 flex flex-col gap-3">
       <!-- Siempre 2 líneas: reserva el alto de dos líneas (2lh) y corta con … si el título es más largo -->
-      <h4 class="text-base md:text-lg font-medium font-fantabular leading-snug min-h-[2lh] line-clamp-2 text-balance">
+      <h4 class="subtitulo min-h-[2lh] line-clamp-2 text-balance">
         {title}
       </h4>
       <Etiqueta color="amarillo" class="w-fit">{duration}</Etiqueta>
@@ -25,13 +25,13 @@ const { title, descriptions, institution, duration, logo } =
         {
           descriptions &&
             descriptions.map((description) => (
-              <li class="text-sm lg:text-base text-black text-pretty">
+              <li class="text-sm lg:text-base text-black-secondary text-pretty">
                 {description}
               </li>
             ))
         }
       </ul>
-    </main>
+    </div>
     <div
       class="border-2 z-20 bg-white/90 border-gray-200 rounded-chico w-fit px-4 py-2 flex flex-row items-center gap-4"
     >
