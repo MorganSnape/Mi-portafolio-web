@@ -5,7 +5,8 @@ import Layout from '@/layouts/Layout.astro'
 import TarjetaTema from '@/components/blog/TarjetaTema.astro'
 import TarjetaArticulo from '@/components/blog/TarjetaArticulo.astro'
 import Ondulada from '@/components/ui/Ondulada.astro'
-import Panel from '@/components/ui/Panel.astro'
+import Subtitulo from '@/components/Subtitulo.astro'
+import Button from '@/components/Button.astro'
 import Ventana from '@/components/ui/Ventana.astro'
 import Etiqueta from '@/components/ui/Etiqueta.astro'
 import Pestanas from '@/components/ui/Pestanas.astro'
@@ -35,153 +36,144 @@ const temasPorCategoria = categoriasBlog
   .filter(categoria => categoria.secciones.length > 0)
 
 const pestanas = temasPorCategoria.map(categoria => ({ id: categoria.id, texto: categoria.nombre }))
+
+// Mismo carril que la página principal: todos los bloques de la caja
+// comparten los márgenes laterales
+const carril = 'w-full lg:w-11/12 max-w-sitio mx-auto px-4 sm:px-12 lg:px-0'
 ---
 
 <Layout title="Blog de apuntes - Gabriela Ferrer">
   <BarNav active={false} />
+  <!-- Misma estructura que la página principal: portada sobre fondo oscuro de
+       puntos, una caja clara con barras Subtitulo y el cierre fuera de la caja -->
   <main
-    class="mx-auto flex w-full max-w-contenido flex-col gap-14 md:gap-20 px-4 sm:px-8 pt-[calc(var(--altura-header)+2.5rem)] pb-20 font-rethink"
+    class="flex flex-col items-center font-rethink select-none w-full bg-[url(/fondoDos.svg)] bg-[length:30px]"
   >
-    <!-- Portada: título gigante + ventana de presentación -->
-    <Panel color="morado" class="overflow-visible">
-      <Ondulada class="absolute -left-1 md:-left-8 top-1/2 w-20 md:w-28 -rotate-12" color="var(--color-secondary)" />
-      <Ondulada class="absolute -right-1 md:-right-8 -top-10 w-24 md:w-32 rotate-12" color="var(--color-pink)" />
-
-      <h1 class="text-center font-fantabular font-black text-white-cream leading-[0.82] tracking-tight text-hero">
-        <span class="sr-only">Blog de estudios</span>
-        <span aria-hidden="true" class="block">
-          Bl<Ondulada class="inline-block w-[0.66em] align-[-0.04em]" color="var(--color-pink)" />g de
-        </span>
-        <span aria-hidden="true" class="block">
-          estudi<Ondulada class="inline-block w-[0.66em] align-[-0.04em]" color="var(--color-secondary)" />s
-        </span>
-      </h1>
-
-      <Ventana
-        class="mt-8 md:mt-12"
-        etiquetaNav="Secciones del portafolio"
-        pestanas={[
-          { texto: 'Portafolio', href: '/' },
-          { texto: 'Blog', href: '/blog', activa: true },
-          { texto: 'Contáctame', href: '/contactame' },
-        ]}
-      >
-        <div class="grid items-center gap-8 md:grid-cols-[1.2fr_1fr]">
-          <div
-            class="relative rounded-ventana border-2 border-black bg-white p-6 md:p-8 shadow-dura-xl shadow-secondary"
-          >
-            <Ondulada class="absolute -top-6 -left-6 w-12 md:w-14 rotate-12" color="var(--color-trendy-pink-300)" />
-            <p class="font-fantabular text-3xl md:text-4xl font-bold">¡Hola, soy Gaby!</p>
-            <p class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-2 font-fantabular text-3xl md:text-4xl font-bold">
-              Mis
-              <span class="rounded-full border-2 border-black bg-trendy-pink-300 px-4 py-0.5">apuntes</span>
-              de estudio.
-            </p>
-            <p class="mt-5 text-pretty text-base text-gray-600">
-              Lo que aprendo en cursos y lecturas, pasado del cuaderno a un lugar donde puedo encontrarlo cuando lo
-              necesito.
-            </p>
-            <Estrella class="absolute -right-4 -bottom-5 h-10" aria-hidden="true" />
-          </div>
-          <img
-            src="/images/blog/portada-blog.webp"
-            alt="Ilustración de Gabriela trabajando en su computador"
-            class="mx-auto max-h-80 w-auto"
-          />
-        </div>
-      </Ventana>
-
-      <dl class="mt-6 grid gap-2 text-sm font-semibold text-white-cream sm:grid-cols-3">
-        <div class="flex gap-1 sm:justify-start">
-          <dt>Temas:</dt>
-          <dd>{dataSeccionesBlog.length}</dd>
-        </div>
-        <div class="flex gap-1 sm:justify-center">
-          <dt>Apuntes:</dt>
-          <dd>{todosLosPosts.length}</dd>
-        </div>
-        <div class="flex gap-1 sm:justify-end">
-          <dt>Última entrada:</dt>
-          <dd>{ultimaFecha ? formatearFecha(ultimaFecha) : 'pronto'}</dd>
-        </div>
-      </dl>
-    </Panel>
-
-    <!-- Sobre el blog -->
-    <Panel color="amarillo" class="overflow-visible" aria-labelledby="sobre-el-blog">
-      <Etiqueta color="negro" mayusculas><span id="sobre-el-blog">Sobre el blog</span></Etiqueta>
-      <div class="mt-6 flex max-w-4xl flex-col gap-6 text-xl md:text-3xl font-semibold leading-snug text-pretty">
-        <p>
-          Este blog es mi cuaderno digital: aquí paso en limpio lo que aprendo en cursos y lecturas, explicado con mis
-          propias palabras.
-        </p>
-        <p>
-          Cada apunte está organizado por temas y cursos, del diseño gráfico a la programación, para encontrarlo
-          cuando lo necesito.
-        </p>
+    <!-- Portada: igual que la de inicio (imagen + texto claro + botones) -->
+    <section
+      class="mx-auto w-full lg:w-4/5 max-w-sitio grid grid-cols-1 lg:grid-cols-2 items-center gap-10 px-4 md:px-12 lg:px-8 xl:px-0 pt-[calc(var(--altura-header)+3rem)] pb-20"
+    >
+      <div class="relative mx-auto w-full max-w-[520px]">
+        <Ondulada class="absolute -left-2 top-4 w-16 md:w-20 -rotate-12" color="var(--color-secondary)" />
+        <img
+          src="/images/blog/portada-blog.webp"
+          alt="Ilustración de Gabriela trabajando en su computador"
+          class="mx-auto w-4/5 h-auto"
+        />
       </div>
-      <Ondulada class="absolute -right-1 md:-right-6 -top-8 w-16 md:w-28 -rotate-12" color="var(--color-pink)" />
-    </Panel>
 
-    <!-- Entradas recientes: sección propia -->
-    {
-      recientes.length > 0 && (
-        <Panel color="verde" class="overflow-visible" aria-labelledby="recientes" id="entradas-recientes">
-          <Ondulada class="absolute -left-1 md:-left-8 -top-10 w-20 md:w-28 rotate-12" color="var(--color-secondary)" />
-          <div class="flex flex-col items-center gap-3 text-center">
-            <Etiqueta color="negro" mayusculas>Lo último</Etiqueta>
-            <h2 id="recientes" class="font-fantabular text-4xl md:text-5xl font-black">Entradas recientes</h2>
+      <div class="flex flex-col gap-6 text-center lg:text-left">
+        <div
+          class="efecto-hundir font-fantabular font-light border-2 italic border-black w-fit bg-tag py-2 px-6 text-base md:text-lg mx-auto lg:mx-0 forma-hoja"
+        >
+          Blog de estudios
+        </div>
+        <h1 class="font-extrabold font-fantabular text-4xl text-pink">
+          <span class="text-white">Mis</span> apuntes<span class="text-secondary">.</span>
+        </h1>
+        <p class="text-base font-normal leading-tight text-white">
+          Lo que aprendo en cursos y lecturas, pasado del cuaderno a un lugar donde
+          puedo encontrarlo cuando lo necesito.
+        </p>
+
+        <!-- Datos del blog en etiquetas -->
+        <dl class="flex flex-wrap justify-center lg:justify-start gap-2">
+          <div><dt class="sr-only">Temas</dt><dd><Etiqueta color="blanco">{dataSeccionesBlog.length} temas</Etiqueta></dd></div>
+          <div><dt class="sr-only">Apuntes</dt><dd><Etiqueta color="blanco">{todosLosPosts.length} apuntes</Etiqueta></dd></div>
+          <div>
+            <dt class="sr-only">Última entrada</dt>
+            <dd><Etiqueta color="amarillo">Última entrada: {ultimaFecha ? formatearFecha(ultimaFecha) : 'pronto'}</Etiqueta></dd>
           </div>
-          <Ventana class="mt-8">
-            <ul class="grid grid-cols-1 gap-5 md:grid-cols-2">
-              {recientes.map(post => (
-                <li>
-                  <TarjetaArticulo post={post} tema={nombreTema(seccionDe(post))} />
-                </li>
-              ))}
-            </ul>
-          </Ventana>
-        </Panel>
-      )
-    }
+        </dl>
 
-    <!-- Temas por categoría, en pestañas tipo carpeta -->
-    {
-      pestanas.length > 0 && (
-        <section id="temas" aria-labelledby="titulo-temas" class="scroll-mt-24">
-          <h2 id="titulo-temas" class="mb-6 font-fantabular text-4xl md:text-5xl font-black">Temas</h2>
-          <Pestanas pestanas={pestanas} etiqueta="Temas por categoría" color="rosa">
-            {temasPorCategoria.map(categoria => (
-              <PanelPestana id={categoria.id}>
-                <Ventana>
-                  <h3 class="mb-8 text-center font-fantabular text-3xl md:text-4xl font-bold">{categoria.nombre}</h3>
-                  <ul class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
-                    {categoria.secciones.map(seccion => (
-                      <li>
-                        <TarjetaTema
-                          seccion={seccion}
-                          categoria={categoria.nombre}
-                          totalApuntes={contarApuntes(seccion.slug)}
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                </Ventana>
-              </PanelPestana>
-            ))}
-          </Pestanas>
-        </section>
-      )
-    }
+        <div class="flex flex-row flex-wrap justify-center lg:justify-start gap-4">
+          <Button text="Ver temas" href="#temas" />
+          {recientes.length > 0 && <Button text="Lo más reciente" href="#entradas-recientes" />}
+        </div>
+      </div>
+    </section>
 
-    <Cierre
-      titulo={'¡Sigamos\naprendiendo!'}
-      texto="Si algún apunte te sirvió o quieres trabajar conmigo, escríbeme."
-      enlaces={[
-        { texto: 'Escríbeme', href: '/contactame' },
-        { texto: 'Ver mis proyectos', href: '/#proyectos-container' },
-      ]}
-    />
+    <!-- Caja clara con el contenido, como "experiencia-container" en el inicio -->
+    <section
+      class="w-11/12 max-w-sitio flex flex-col gap-20 items-center bg-[url(/fondo.svg)] bg-[length:30px] rounded-ventana border-2 border-black overflow-hidden py-20 text-black"
+    >
+      <Subtitulo align="center" type="Sobre el blog" />
+      <div class={carril}>
+        <Ventana>
+          <div class="flex flex-col gap-4 text-lg md:text-2xl font-semibold leading-snug text-pretty">
+            <p>
+              Este blog es mi cuaderno digital: aquí paso en limpio lo que aprendo en cursos y lecturas, explicado con
+              mis propias palabras.
+            </p>
+            <p>
+              Cada apunte está organizado por temas y cursos, del diseño gráfico a la programación, para encontrarlo
+              cuando lo necesito.
+            </p>
+          </div>
+        </Ventana>
+      </div>
+
+      {
+        recientes.length > 0 && (
+          <>
+            <Subtitulo align="center" type="Lo último" />
+            <div id="entradas-recientes" class:list={[carril, 'scroll-mt-28 flex flex-col gap-8']}>
+              <h2 id="recientes" class="titulo-bloque efecto-resaltador w-fit">Entradas recientes</h2>
+              <ul class="grid grid-cols-1 gap-5 md:grid-cols-2">
+                {recientes.map(post => (
+                  <li>
+                    <TarjetaArticulo post={post} tema={nombreTema(seccionDe(post))} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        )
+      }
+
+      {
+        pestanas.length > 0 && (
+          <>
+            <Subtitulo align="center" type="Temas" />
+            <div id="temas" class:list={[carril, 'scroll-mt-28 flex flex-col gap-8']}>
+              <h2 id="titulo-temas" class="titulo-bloque efecto-resaltador w-fit">Temas por categoría</h2>
+              <Pestanas pestanas={pestanas} etiqueta="Temas por categoría" color="amarillo">
+                {temasPorCategoria.map(categoria => (
+                  <PanelPestana id={categoria.id}>
+                    <Ventana>
+                      <h3 class="mb-8 text-center subtitulo">{categoria.nombre}</h3>
+                      <ul class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+                        {categoria.secciones.map(seccion => (
+                          <li>
+                            <TarjetaTema
+                              seccion={seccion}
+                              categoria={categoria.nombre}
+                              totalApuntes={contarApuntes(seccion.slug)}
+                            />
+                          </li>
+                        ))}
+                      </ul>
+                    </Ventana>
+                  </PanelPestana>
+                ))}
+              </Pestanas>
+            </div>
+          </>
+        )
+      }
+    </section>
+
+    <!-- Cierre fuera de la caja, con su mismo ancho (como la Invitación del inicio) -->
+    <div class="w-11/12 max-w-sitio py-16 md:py-24">
+      <Cierre
+        titulo={'¡Sigamos\naprendiendo!'}
+        texto="Si algún apunte te sirvió o quieres trabajar conmigo, escríbeme."
+        enlaces={[
+          { texto: 'Escríbeme', href: '/contactame' },
+          { texto: 'Ver mis proyectos', href: '/#proyectos-container' },
+        ]}
+      />
+    </div>
   </main>
   <Footer />
 </Layout>

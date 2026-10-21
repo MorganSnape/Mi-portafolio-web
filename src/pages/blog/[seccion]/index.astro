@@ -5,6 +5,7 @@ import Layout from '@/layouts/Layout.astro'
 import TarjetaArticulo from '@/components/blog/TarjetaArticulo.astro'
 import Ondulada from '@/components/ui/Ondulada.astro'
 import Panel from '@/components/ui/Panel.astro'
+import Subtitulo from '@/components/Subtitulo.astro'
 import Ventana from '@/components/ui/Ventana.astro'
 import Etiqueta from '@/components/ui/Etiqueta.astro'
 import Pestanas from '@/components/ui/Pestanas.astro'
@@ -31,111 +32,112 @@ const { seccion, grupos } = Astro.props
 const { title, description, image } = seccion
 const nombre = title.replace('Apuntes sobre ', '')
 const totalApuntes = grupos.reduce((total, grupo) => total + grupo.posts.length, 0)
+
+const carril = 'w-full lg:w-11/12 max-w-sitio mx-auto px-4 sm:px-12 lg:px-0'
 ---
 
 <Layout title={`${title} - Gabriela Ferrer`}>
   <BarNav active={false} />
+  <!-- Misma estructura que la página principal: portada sobre fondo oscuro,
+       caja clara con barras Subtitulo y cierre fuera de la caja -->
   <main
-    class="mx-auto flex w-full max-w-contenido flex-col gap-14 md:gap-20 px-4 sm:px-8 pt-[calc(var(--altura-header)+2.5rem)] pb-20 font-rethink"
+    class="flex flex-col items-center font-rethink select-none w-full bg-[url(/fondoDos.svg)] bg-[length:30px]"
   >
     <!-- Portada del tema -->
-    <Panel color="morado" as="header" class="overflow-visible">
-      <Ondulada class="absolute -right-1 md:-right-8 -top-10 w-24 md:w-32 rotate-12" color="var(--color-secondary)" />
-      <a
-        href="/blog"
-        class="inline-flex items-center gap-2 rounded-full border-2 border-black bg-white px-4 py-1.5 text-sm font-semibold text-black transition-colors duration-150 hover:bg-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-      >
-        <Icon name="fa6-solid:arrow-left" width={14} height={14} aria-hidden="true" />
-        Todos los temas
-      </a>
-
-      <p class="mt-8 text-center"><Etiqueta color="negro" mayusculas>Apuntes sobre</Etiqueta></p>
-      <h1
-        class="mt-4 text-center font-fantabular font-black text-white-cream leading-[0.85] tracking-tight text-balance text-display"
-      >
-        {nombre}
-      </h1>
-
-      <Ventana class="mt-8 md:mt-12">
-        <div class="grid items-center gap-8 md:grid-cols-2">
-          <img
-            src={image}
-            alt=""
-            class="border-2 border-black shadow-dura-abajo md:shadow-dura-abajo-lg aspect-[4/3] w-full rounded-ventana object-cover object-center"
-          />
-          <div class="relative">
-            <Ondulada class="w-12 mb-4" color="var(--color-pink)" />
-            <p class="text-lg md:text-xl leading-relaxed text-pretty">{description}</p>
-          </div>
+    <header
+      class="mx-auto w-full lg:w-4/5 max-w-sitio grid grid-cols-1 lg:grid-cols-2 items-center gap-10 px-4 md:px-12 lg:px-8 xl:px-0 pt-[calc(var(--altura-header)+3rem)] pb-20"
+    >
+      <div class="flex flex-col gap-6 text-center lg:text-left items-center lg:items-start">
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-2 rounded-full border-2 border-white-cream px-4 py-1.5 text-sm font-semibold text-white transition-colors duration-150 hover:bg-pink hover:text-black hover:border-pink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary"
+        >
+          <Icon name="fa6-solid:arrow-left" width={14} height={14} aria-hidden="true" />
+          Todos los temas
+        </a>
+        <div
+          class="efecto-hundir font-fantabular font-light border-2 italic border-black w-fit bg-tag py-2 px-6 text-base md:text-lg forma-hoja"
+        >
+          Apuntes sobre
         </div>
-      </Ventana>
+        <h1 class="font-extrabold font-fantabular text-4xl text-pink text-balance">
+          {nombre}<span class="text-secondary">.</span>
+        </h1>
+        <p class="text-base font-normal leading-tight text-white text-pretty">{description}</p>
+        <dl class="flex flex-wrap justify-center lg:justify-start gap-2">
+          <div><dt class="sr-only">Apuntes</dt><dd><Etiqueta color="blanco">{`${totalApuntes} ${totalApuntes === 1 ? 'apunte' : 'apuntes'}`}</Etiqueta></dd></div>
+          <div><dt class="sr-only">Cursos</dt><dd><Etiqueta color="blanco">{`${grupos.length} ${grupos.length === 1 ? 'curso' : 'cursos'}`}</Etiqueta></dd></div>
+        </dl>
+      </div>
 
-      <dl class="mt-6 grid gap-2 text-sm font-semibold text-white-cream sm:grid-cols-3">
-        <div class="flex gap-1">
-          <dt>Apuntes:</dt>
-          <dd>{totalApuntes}</dd>
-        </div>
-        <div class="flex gap-1 sm:justify-center">
-          <dt>Cursos:</dt>
-          <dd>{grupos.length}</dd>
-        </div>
-        <div class="flex gap-1 sm:justify-end">
-          <dt>por</dt>
-          <dd>Gabriela Ferrer</dd>
-        </div>
-      </dl>
-    </Panel>
+      <div class="relative mx-auto w-full max-w-[520px]">
+        <Ondulada class="absolute -right-3 -top-6 w-16 md:w-20 rotate-12" color="var(--color-secondary)" />
+        <img
+          src={image}
+          alt=""
+          class="aspect-[4/3] w-full rounded-ventana border-2 border-black object-cover object-center shadow-dura-lg shadow-secondary"
+        />
+      </div>
+    </header>
 
-    <!-- Apuntes agrupados por curso, en pestañas tipo carpeta -->
-    {
-      grupos.length === 0 ? (
-        <Panel color="crema" class="border-dashed text-center">
-          <p class="text-lg">
-            Todavía no hay apuntes en este tema.{' '}
-            <a href="/blog" class="font-semibold underline">
-              Ver otros temas
-            </a>
-          </p>
-        </Panel>
-      ) : (
-        <section aria-label="Apuntes por curso">
-          <Pestanas
-            pestanas={grupos.map(grupo => ({ id: grupo.ancla, texto: grupo.curso }))}
-            etiqueta="Cursos del tema"
-            color="rosa"
-          >
-            {grupos.map(grupo => (
-              <PanelPestana id={grupo.ancla}>
-                <Ventana>
-                  <div class="mb-8 flex flex-col items-center gap-3 text-center">
-                    <h2 class="font-fantabular text-3xl md:text-4xl font-bold text-balance">{grupo.curso}</h2>
-                    <Etiqueta color="amarillo">
-                      {`${grupo.posts.length} ${grupo.posts.length === 1 ? 'apunte' : 'apuntes'}`}
-                    </Etiqueta>
-                  </div>
-                  <ol class="grid grid-cols-1 gap-5 md:grid-cols-2">
-                    {grupo.posts.map((post, index) => (
-                      <li>
-                        <TarjetaArticulo post={post} numero={index + 1} />
-                      </li>
-                    ))}
-                  </ol>
-                </Ventana>
-              </PanelPestana>
-            ))}
-          </Pestanas>
-        </section>
-      )
-    }
+    <!-- Caja clara con los apuntes, como "experiencia-container" en el inicio -->
+    <section
+      aria-label="Apuntes por curso"
+      class="w-11/12 max-w-sitio flex flex-col gap-20 items-center bg-[url(/fondo.svg)] bg-[length:30px] rounded-ventana border-2 border-black overflow-hidden py-20 text-black"
+    >
+      <Subtitulo align="center" type="Apuntes" />
+      <div class={carril}>
+        {
+          grupos.length === 0 ? (
+            <Panel color="crema" class="border-dashed text-center">
+              <p class="text-lg">
+                Todavía no hay apuntes en este tema.{' '}
+                <a href="/blog" class="font-semibold underline">
+                  Ver otros temas
+                </a>
+              </p>
+            </Panel>
+          ) : (
+            <Pestanas
+              pestanas={grupos.map(grupo => ({ id: grupo.ancla, texto: grupo.curso }))}
+              etiqueta="Cursos del tema"
+              color="amarillo"
+            >
+              {grupos.map(grupo => (
+                <PanelPestana id={grupo.ancla}>
+                  <Ventana>
+                    <div class="mb-8 flex flex-col items-center gap-3 text-center">
+                      <h2 class="subtitulo text-balance">{grupo.curso}</h2>
+                      <Etiqueta color="amarillo">
+                        {`${grupo.posts.length} ${grupo.posts.length === 1 ? 'apunte' : 'apuntes'}`}
+                      </Etiqueta>
+                    </div>
+                    <ol class="grid grid-cols-1 gap-5 md:grid-cols-2">
+                      {grupo.posts.map((post, index) => (
+                        <li>
+                          <TarjetaArticulo post={post} numero={index + 1} />
+                        </li>
+                      ))}
+                    </ol>
+                  </Ventana>
+                </PanelPestana>
+              ))}
+            </Pestanas>
+          )
+        }
+      </div>
+    </section>
 
-    <Cierre
-    titulo={'¡Sigamos\naprendiendo!'}
-    texto="Si algún apunte te sirvió o quieres trabajar conmigo, escríbeme."
-      enlaces={[
-        { texto: 'Todos los temas', href: '/blog' },
-        { texto: 'Escríbeme', href: '/contactame' },
-      ]}
-    />
+    <div class="w-11/12 max-w-sitio py-16 md:py-24">
+      <Cierre
+        titulo={'¡Sigamos\naprendiendo!'}
+        texto="Si algún apunte te sirvió o quieres trabajar conmigo, escríbeme."
+        enlaces={[
+          { texto: 'Todos los temas', href: '/blog' },
+          { texto: 'Escríbeme', href: '/contactame' },
+        ]}
+      />
+    </div>
   </main>
   <Footer />
 </Layout>
