@@ -1,0 +1,61 @@
+---
+// Ventana de navegador donde vive una demo interactiva de un caso de estudio.
+// Arriba: tres puntos, la dirección de la página y el botón para pausar.
+// El contenido (la interfaz recreada) va en el slot y lleva sus propios colores.
+interface Props {
+  /** Ruta que se muestra en la barra de direcciones, por ejemplo "amarillagarden.com/productos". */
+  url: string
+  /** Qué muestra la demo, para lectores de pantalla. */
+  etiqueta: string
+  /** Muestra el botón de pausa (para demos que se animan solas). */
+  animada?: boolean
+  class?: string
+}
+
+const { url, etiqueta, animada = true, class: className = '' } = Astro.props
+---
+
+<div
+  data-demo
+  role="group"
+  aria-label={etiqueta}
+  class:list={[
+    'overflow-hidden rounded-ventana border-2 border-black bg-white shadow-dura md:shadow-dura-lg',
+    className,
+  ]}
+>
+  <div class="flex h-11 items-center gap-3 border-b-2 border-black bg-white-cream px-3 sm:px-4">
+    <span class="flex shrink-0 gap-1.5" aria-hidden="true">
+      <span class="size-2.5 rounded-full bg-black"></span>
+      <span class="size-2.5 rounded-full bg-black"></span>
+      <span class="size-2.5 rounded-full bg-black"></span>
+    </span>
+    <span
+      class="min-w-0 flex-1 truncate rounded-full border-2 border-black bg-white px-3 py-0.5 text-xs font-semibold"
+      aria-hidden="true"
+    >
+      {url}
+    </span>
+    {
+      animada && (
+        <button
+          type="button"
+          data-demo-pausa
+          class="group inline-flex shrink-0 items-center gap-1.5 rounded-full border-2 border-black bg-secondary px-3 py-0.5 text-xs font-bold transition-colors hover:bg-kournikova-300"
+        >
+          <svg viewBox="0 0 12 12" class="size-3 group-data-[estado=pausado]:hidden" aria-hidden="true">
+            <rect x="2" y="1.5" width="2.6" height="9" rx="0.6" fill="currentColor" />
+            <rect x="7.4" y="1.5" width="2.6" height="9" rx="0.6" fill="currentColor" />
+          </svg>
+          <svg viewBox="0 0 12 12" class="hidden size-3 group-data-[estado=pausado]:block" aria-hidden="true">
+            <path d="M3 1.6v8.8L10.4 6z" fill="currentColor" />
+          </svg>
+          <span data-demo-pausa-texto>Pausar</span>
+        </button>
+      )
+    }
+  </div>
+  <div data-demo-escena class="relative font-[Montserrat,ui-sans-serif,sans-serif] text-[#442D1C]">
+    <slot />
+  </div>
+</div>

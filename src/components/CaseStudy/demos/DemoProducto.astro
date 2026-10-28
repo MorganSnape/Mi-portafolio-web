@@ -1,0 +1,206 @@
+---
+// Demo: estados de los componentes en el camino de compra.
+// Menú (reposo, hover, activo), galería, selector de cantidad,
+// acción principal y secundaria, carrito que cuenta y salida a WhatsApp.
+import { Image } from 'astro:assets'
+import MarcoDemo from './MarcoDemo.astro'
+import NavAmarilla from './NavAmarilla.astro'
+
+import velaMarca from '@/assets/proyectos/amarilla-garden/demo/vela-marca.webp'
+import velaFlores from '@/assets/proyectos/amarilla-garden/demo/vela-flores.webp'
+import artesana from '@/assets/proyectos/amarilla-garden/demo/artesana.webp'
+import setRegalo from '@/assets/proyectos/amarilla-garden/demo/set-regalo.webp'
+
+const fotos = [
+  { src: velaMarca, alt: 'Vela de sentimientos con la etiqueta de la marca' },
+  { src: velaFlores, alt: 'Vela encendida entre flores' },
+  { src: artesana, alt: 'La artesana de la marca preparando velas' },
+  { src: setRegalo, alt: 'Vela dentro de una caja de regalo' },
+]
+---
+
+<MarcoDemo
+  url="amarillagarden.com/productos/velas-de-sentimientos"
+  etiqueta="Demostración de la página de producto de Amarilla Garden: el menú cambia de estado, se elige la cantidad y el producto se añade al carrito"
+>
+  <div data-producto-demo class="relative bg-[#F0EDE6]">
+    <NavAmarilla activo="Inicio" interactiva />
+
+    <div class="grid gap-6 p-4 pb-20 sm:p-8 sm:pb-20 md:grid-cols-[1.05fr_1fr] md:gap-10 md:pb-8">
+      <div class="flex flex-col gap-3">
+        <div class="relative aspect-[5/4] overflow-hidden bg-[#E7E3DA]">
+          {
+            fotos.map((f, i) => (
+              <Image
+                src={f.src}
+                alt={f.alt}
+                data-foto={i}
+                data-estado={i === 0 ? 'activo' : 'inactivo'}
+                widths={[480, 800]}
+                sizes="(min-width: 768px) 520px, 100vw"
+                class="absolute inset-0 size-full scale-105 object-cover opacity-0 transition duration-500 data-[estado=activo]:scale-100 data-[estado=activo]:opacity-100"
+              />
+            ))
+          }
+        </div>
+        <div class="grid grid-cols-4 gap-2" role="group" aria-label="Fotos del producto">
+          {
+            fotos.map((f, i) => (
+              <button
+                type="button"
+                data-miniatura={i}
+                data-estado={i === 0 ? 'activo' : 'inactivo'}
+                aria-label={`Ver foto ${i + 1}`}
+                aria-pressed={i === 0 ? 'true' : 'false'}
+                class="aspect-square overflow-hidden opacity-60 ring-[#442D1C] ring-offset-2 ring-offset-[#F0EDE6] transition hover:opacity-100 data-[estado=activo]:opacity-100 data-[estado=activo]:ring-2"
+              >
+                <Image src={f.src} alt="" widths={[160]} sizes="120px" class="size-full object-cover" />
+              </button>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <div>
+          <p class="text-xl font-semibold sm:text-3xl">Velas de sentimientos</p>
+          <p class="mt-1 text-lg font-bold sm:text-2xl">$52.000</p>
+        </div>
+        <p class="text-sm leading-relaxed text-[#4D403A]">
+          Atrae a tu vida y regálale a los demás aquello que anhelas. Cada vela lleva una intención escrita a
+          mano.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-3">
+          <div class="flex items-center gap-1 rounded-full border border-[#442D1C] bg-white p-1" role="group" aria-label="Cantidad">
+            <button type="button" data-menos aria-label="Quitar una unidad" class="grid size-8 place-items-center rounded-full text-lg transition hover:bg-[#E7E3DA] active:scale-90">−</button>
+            <span data-cantidad aria-live="polite" class="w-6 text-center font-bold tabular-nums">1</span>
+            <button type="button" data-mas aria-label="Añadir una unidad" class="grid size-8 place-items-center rounded-full text-lg transition hover:bg-[#E7E3DA] active:scale-90">+</button>
+          </div>
+          <p class="flex items-center gap-1.5 text-xs font-semibold text-[#5E6B2E]">
+            <span class="size-2 rounded-full bg-[#7D9E4A]" aria-hidden="true"></span>
+            Stock disponible
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          <button
+            type="button"
+            data-anadir
+            class="inline-flex items-center gap-2 bg-[#442D1C] px-5 py-3 text-sm font-semibold text-white transition duration-150 hover:bg-[#4D403A] active:scale-95 data-[estado=presionado]:scale-95 data-[estado=presionado]:bg-[#4D403A]"
+          >
+            <svg viewBox="0 0 24 24" class="size-4" aria-hidden="true">
+              <path d="M5 8h14l-1.2 11.2a1.5 1.5 0 0 1-1.5 1.3H7.7a1.5 1.5 0 0 1-1.5-1.3L5 8Zm4 0V6.5a3 3 0 0 1 6 0V8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+            </svg>
+            Añadir a tu carrito
+          </button>
+          <span class="inline-flex items-center border border-[#442D1C] px-5 py-3 text-sm font-semibold">Comprar ahora</span>
+        </div>
+
+        <p class="border-t border-[#E7E3DA] pt-4 text-xs leading-relaxed text-[#4D403A] sm:text-sm">
+          ¿No tenemos la cantidad que necesitas o el producto no está disponible? <strong class="text-[#442D1C] underline">Escríbenos</strong>
+        </p>
+      </div>
+    </div>
+
+    <p
+      data-aviso
+      role="status"
+      class="pointer-events-none absolute top-16 right-4 flex -translate-y-2 items-center gap-2 rounded-full bg-[#442D1C] px-4 py-2 text-xs font-semibold text-white opacity-0 shadow-lg transition duration-300 data-[visible=true]:translate-y-0 data-[visible=true]:opacity-100 sm:top-20"
+    >
+      <svg viewBox="0 0 16 16" class="size-3.5" aria-hidden="true">
+        <path d="m3 8.5 3 3 7-7" fill="none" stroke="#F4A275" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <span data-aviso-texto></span>
+    </p>
+
+    <span
+      class="absolute right-4 bottom-4 grid size-11 place-items-center rounded-full bg-[#25D366] shadow-lg"
+      aria-hidden="true"
+    >
+      <svg viewBox="0 0 24 24" class="size-6 fill-white">
+        <path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.9L2.3 21.8l4.8-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.9a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.8.8-2.8-.2-.3a8.1 8.1 0 1 1 6.6 3.6Zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.9 2c0 1.2.9 2.4 1 2.5.1.2 1.7 2.6 4.2 3.6 1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1 .1-1.2l-.5-.2Z" />
+      </svg>
+    </span>
+  </div>
+</MarcoDemo>
+
+<script>
+  import { crearBucle } from '@/utils/demo'
+  import { controlarNav } from '@/utils/navAmarilla'
+
+  document.querySelectorAll<HTMLElement>('[data-producto-demo]').forEach(demo => {
+    const raiz = demo.closest<HTMLElement>('[data-demo]')
+    if (!raiz) return
+    const nav = controlarNav(demo)
+    const fotos = [...demo.querySelectorAll<HTMLElement>('[data-foto]')]
+    const miniaturas = [...demo.querySelectorAll<HTMLButtonElement>('[data-miniatura]')]
+    const cantidadEl = demo.querySelector<HTMLElement>('[data-cantidad]')
+    const anadir = demo.querySelector<HTMLButtonElement>('[data-anadir]')
+    const aviso = demo.querySelector<HTMLElement>('[data-aviso]')
+    const avisoTexto = demo.querySelector<HTMLElement>('[data-aviso-texto]')
+    let cantidad = 1
+    let relojAviso: number | undefined
+
+    const verFoto = (i: number) => {
+      fotos.forEach((f, j) => (f.dataset.estado = j === i ? 'activo' : 'inactivo'))
+      miniaturas.forEach((m, j) => {
+        m.dataset.estado = j === i ? 'activo' : 'inactivo'
+        m.setAttribute('aria-pressed', String(j === i))
+      })
+    }
+    const fijarCantidad = (n: number) => {
+      cantidad = Math.min(12, Math.max(1, n))
+      if (cantidadEl) cantidadEl.textContent = String(cantidad)
+    }
+    const agregar = () => {
+      if (anadir) {
+        anadir.dataset.estado = 'presionado'
+        window.setTimeout(() => (anadir.dataset.estado = ''), 160)
+      }
+      nav.sumar(cantidad)
+      if (aviso && avisoTexto) {
+        avisoTexto.textContent = cantidad === 1 ? '1 vela añadida a tu carrito' : `${cantidad} velas añadidas a tu carrito`
+        aviso.dataset.visible = 'true'
+        window.clearTimeout(relojAviso)
+        relojAviso = window.setTimeout(() => (aviso.dataset.visible = 'false'), 1800)
+      }
+    }
+
+    // Recorrido: el menú pasa de reposo a hover a activo, se elige otra foto,
+    // se sube la cantidad y se añade al carrito.
+    const pasos = [
+      () => nav.resaltar('Productos'),
+      () => nav.activar('Productos'),
+      () => verFoto(1),
+      () => fijarCantidad(2),
+      () => agregar(),
+      () => verFoto(3),
+      () => {
+        nav.vaciar()
+        fijarCantidad(1)
+        verFoto(0)
+        nav.activar('Inicio')
+      },
+    ]
+    let paso = 0
+    const bucle = crearBucle(raiz, () => {
+      pasos[paso]()
+      paso = (paso + 1) % pasos.length
+    }, 1500)
+
+    // Cuando la persona toca algo, el recorrido automático se detiene
+    const usar = (fn: () => void) => () => {
+      bucle.soltar()
+      fn()
+    }
+
+    nav.opciones.forEach(o =>
+      o.addEventListener('click', usar(() => nav.activar(o.dataset.navOpcion!))),
+    )
+    miniaturas.forEach((m, i) => m.addEventListener('click', usar(() => verFoto(i))))
+    demo.querySelector('[data-mas]')?.addEventListener('click', usar(() => fijarCantidad(cantidad + 1)))
+    demo.querySelector('[data-menos]')?.addEventListener('click', usar(() => fijarCantidad(cantidad - 1)))
+    anadir?.addEventListener('click', usar(agregar))
+  })
+</script>

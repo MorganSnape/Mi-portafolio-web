@@ -12,6 +12,7 @@ import Footer from '@/components/Footer.astro'
 import CaseBlock from '@/components/CaseStudy/CaseBlock.astro'
 import Media from '@/components/CaseStudy/Media.astro'
 import Invitacion from '@/components/invitacion.astro'
+import Etiqueta from '@/components/ui/Etiqueta.astro'
 
 export async function getStaticPaths() {
   return proyectos.map(proyecto => ({ params: { slug: proyecto.slug } }))
@@ -71,7 +72,6 @@ const accentStyle = [
 ]
   .filter(Boolean)
   .join(';')
-const headingClass = brand?.headingFont ? '' : 'font-fantabular'
 
 // ── Ficha ──────────────────────────────────────────────────────────
 const toList = (value?: string | string[]) => (value ? [value].flat().filter(Boolean) : [])
@@ -194,18 +194,18 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
             <div class="cs-hero-info">
               {(projectKind || tags?.length) && (
                 <ul class="cs-chips" aria-label="Tipo de trabajo">
-                  {projectKind && <li class="cs-chip">{projectKind}</li>}
-                  {tags?.map(tag => <li class="cs-chip cs-chip--ink">{tag}</li>)}
+                  {projectKind && <li><Etiqueta color="blanco">{projectKind}</Etiqueta></li>}
+                  {tags?.map(tag => <li><Etiqueta color="negro">{tag}</Etiqueta></li>)}
                 </ul>
               )}
 
               {headline ? (
                 <div class="cs-titles">
                   <p class="cs-eyebrow">{nameProject}</p>
-                  <h1 class:list={['cs-h1 cs-h1--headline', headingClass]}>{headline}</h1>
+                  <h1 class="cs-h1 cs-h1--headline">{headline}</h1>
                 </div>
               ) : (
-                <h1 class:list={['cs-h1', headingClass]}>{nameProject}</h1>
+                <h1 class="cs-h1">{nameProject}</h1>
               )}
 
               <p class="cs-hero-lead">{shortDescription}</p>
@@ -231,7 +231,7 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
                   {ctas.map(cta => (
                     <a
                       href={cta.href}
-                      class:list={['cs-cta', !cta.primary && 'cs-cta-light']}
+                      class:list={['cs-cta efecto-presionar', !cta.primary && 'cs-cta-light']}
                       target={cta.newTab ? '_blank' : undefined}
                       rel={cta.newTab ? 'noopener' : undefined}
                     >
@@ -253,7 +253,7 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
       <!-- ── Menú de secciones (se queda fijo al bajar) ── -->
       <nav class="cs-subnav" aria-label="Secciones del caso de estudio">
         <div class="cs-wrap cs-subnav-inner">
-          <a href="#inicio-caso" class:list={['cs-subnav-title', headingClass]}>{nameProject}</a>
+          <a href="#inicio-caso" class="cs-subnav-title">{nameProject}</a>
           <ol class="cs-subnav-list" data-subnav>
             {menu.map(item => (
               <li>
@@ -271,11 +271,11 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
       <!-- ── Resumen: sinopsis, desafío y objetivos ── -->
       <section id="resumen" class="cs-section" aria-labelledby="resumen-titulo" data-subnav-target>
         <div class="cs-wrap cs-section-inner">
-          <p id="resumen-titulo" class="cs-kicker">Resumen</p>
+          <p id="resumen-titulo" class="cs-kicker"><Etiqueta color="negro" mayusculas>Resumen</Etiqueta></p>
 
           <div class="cs-summary">
             <div class="cs-summary-main">
-              <h2 class:list={['cs-h3', headingClass]}>Sinopsis</h2>
+              <h2 class="cs-h3">Sinopsis</h2>
               <div class="cs-prose cs-prose--big">
                 {descriptionProject.split(/\n\s*\n/).map(p => <p>{p}</p>)}
               </div>
@@ -283,7 +283,7 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
 
             {challenge && (
               <div class="cs-challenge">
-                <h2 class:list={['cs-h3', headingClass]}>El desafío</h2>
+                <h2 class="cs-h3">El desafío</h2>
                 <p>{challenge}</p>
               </div>
             )}
@@ -291,7 +291,7 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
 
           {hasGoals && (
             <div class="cs-goals">
-              <h2 class:list={['cs-h3', headingClass]}>Objetivos</h2>
+              <h2 class="cs-h3">Objetivos</h2>
               <ul class="cs-goal-grid">
                 {objectiveList.map((item, i) => (
                   <li class="cs-card cs-card--raised">
@@ -328,9 +328,9 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
               <header class="cs-chapter-head">
                 <p class="cs-kicker">
                   <span class="cs-num" aria-hidden="true">{chapter.number}</span>
-                  {chapter.label && <span>{chapter.label}</span>}
+                  {chapter.label && <Etiqueta color="negro" mayusculas>{chapter.label}</Etiqueta>}
                 </p>
-                <h2 id={`${chapter.id}-titulo`} class:list={['cs-h2', headingClass]}>{chapter.title}</h2>
+                <h2 id={`${chapter.id}-titulo`} class="cs-h2">{chapter.title}</h2>
                 {chapter.intro && <p class="cs-lead">{chapter.intro}</p>}
               </header>
               <div class="cs-chapter-body">
@@ -347,8 +347,8 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
           <section id="epilogo-seccion" class="cs-section" aria-labelledby="epilogo" data-subnav-target>
             <div class="cs-wrap cs-section-inner">
               <header class="cs-chapter-head">
-                <p class="cs-kicker">Epílogo</p>
-                <h2 id="epilogo" class:list={['cs-h2', headingClass]}>Lo que me llevo de este proyecto</h2>
+                <p class="cs-kicker"><Etiqueta color="negro" mayusculas>Epílogo</Etiqueta></p>
+                <h2 id="epilogo" class="cs-h2">Lo que me llevo de este proyecto</h2>
               </header>
               <div class="cs-epilogue">
                 {learningList.length > 0 && (
@@ -377,19 +377,21 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
         )
       }
 
-      <!-- ── Siguiente caso: la tarjeta lleva el color de su marca ── -->
+      <!-- ── Final: fondo oscuro de puntos, igual que la página principal ── -->
+      <div class="cs-final">
+      <!-- Siguiente caso: la tarjeta lleva el color de su marca -->
       {
         next && (
           <aside class="cs-next-band" aria-label="Siguiente caso de estudio">
             <div class="cs-wrap">
-              <a href={`/proyectos/${next.slug}`} class="cs-next" style={nextStyle}>
+              <a href={`/proyectos/${next.slug}`} class="cs-next efecto-hundir shadow-(color:--cs-next-accent)" style={nextStyle}>
                 <div class="cs-next-media">
                   <Media image={{ src: next.coverImage, alt: '' }} class="cs-next-img" />
                 </div>
                 <div class="cs-next-text">
                   <span class="cs-tag">Siguiente caso de estudio</span>
-                  <span class:list={['cs-h2', next.brand?.headingFont ? '' : 'font-fantabular']}>{next.nameProject}</span>
-                  <span class="cs-body cs-muted">{next.shortDescription}</span>
+                  <span class="cs-h3" style={next.brand?.headingFont ? `--cs-heading-font:'${next.brand.headingFont}'` : undefined}>{next.nameProject}</span>
+                  <span class="cs-body cs-muted cs-next-desc">{next.shortDescription}</span>
                   <span class="cs-next-link">
                     Ver caso de estudio
                     <Icon name="fa6-solid:arrow-right" class="size-3.5" aria-hidden="true" />
@@ -401,13 +403,14 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
         )
       }
 
-      <!-- Ancho del cierre: lo decide la página, no el componente -->
-      <div class="mx-auto w-full lg:w-4/5 max-w-sitio px-4 sm:px-12 xl:px-0">
+      <!-- Cierre fuera de la caja: mismo ancho que las secciones -->
+      <div class="cs-wrap">
         <Invitacion />
+      </div>
       </div>
     </main>
 
-    <button id="backToTop" type="button" class="cs-top" aria-label="Volver arriba">
+    <button id="backToTop" type="button" class="cs-top efecto-presionar" aria-label="Volver arriba">
       <Icon name="fa6-solid:arrow-up" class="size-4" aria-hidden="true" />
     </button>
   </div>
@@ -525,155 +528,115 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
 </script>
 
 <style is:global>
-  /* ── Tokens del portafolio + los de cada marca (se inyectan en style) ── */
+  /* ═══ PLANTILLA DE CASO DE ESTUDIO ═══════════════════════════════════════
+     Dos capas:
+     1. Estructura del portafolio (fija): bordes, radios, sombras duras, escala
+        de texto, anchos y fondos salen de global.css (--radius-*, --shadow-*,
+        --text-*, --container-*, --hundir, fondo.svg / fondoDos.svg).
+     2. Identidad de cada proyecto (variable): solo el color y la tipografía de
+        títulos. Se inyectan en style desde brand (primary, secondary, surface,
+        headingFont). Si el proyecto no trae marca, se usan los de la marca
+        personal (morado + Fantabular).
+     No pongas medidas sueltas aquí: si hace falta una nueva, va en global.css. */
   .cs {
     --cs-header: var(--altura-header, 4rem);
     --cs-header-offset: var(--cs-header);
     --cs-subnav-h: 3.75rem;
     --cs-offset: calc(var(--cs-header-offset) + var(--cs-subnav-h) + 1.5rem);
-    /* Conectado a los tokens de global.css */
+    /* Tokens del sistema */
     --cs-ink: var(--color-black);
     --cs-muted: var(--color-black-secondary);
-    --cs-line: var(--color-black);
-    --cs-paper: #ffffff;
-    --cs-accent: #6a3587;
-    --cs-accent-contrast: #ffffff;
-    --cs-accent-2: #16140f;
-    --cs-accent-2-contrast: #ffffff;
-    /* Tono claro de la marca para fondos de capítulos y menú activo */
-    --cs-stage: color-mix(in srgb, var(--cs-accent) 14%, #ffffff);
-    --cs-cover-bg: #ffffff;
+    --cs-paper: var(--color-white-cream);
     --cs-border: 2px solid var(--cs-ink);
-    --cs-shadow: 5px 5px 0 var(--cs-ink);
-    --cs-shadow-lg: 8px 8px 0 var(--cs-ink);
-    --cs-radius: var(--radius-tarjeta);
+    --cs-shadow: var(--shadow-dura);
+    --cs-shadow-lg: var(--shadow-dura-lg);
+    --cs-radius: var(--radius-ventana);
+    /* Identidad del proyecto (se sobrescriben desde brand) */
+    --cs-accent: var(--color-primary);
+    --cs-accent-contrast: #ffffff;
+    --cs-accent-2: var(--cs-ink);
+    --cs-accent-2-contrast: #ffffff;
+    --cs-cover-bg: var(--cs-paper);
+    /* Tono claro de la marca para capítulos destacados y fondos de imagen */
+    --cs-stage: color-mix(in srgb, var(--cs-accent) 14%, var(--cs-paper));
     color: var(--cs-ink);
-    background: var(--cs-paper);
+    background: var(--cs-paper) url(/fondo.svg);
+    background-size: 30px;
   }
-
-  /* ── Estructura ── */
-  .cs-wrap {
-    width: min(1120px, 100% - 2.5rem);
-    margin-inline: auto;
-  }
-  .cs-section {
-    scroll-margin-top: var(--cs-offset);
+  @media (min-width: 768px) {
+    .cs {
+      --cs-shadow: var(--shadow-dura-lg);
+      --cs-shadow-lg: var(--shadow-dura-xl);
+    }
   }
   html.header-hidden .cs {
     --cs-header-offset: 0px;
+  }
+
+  /* ── Estructura: mismo ancho que la página principal ── */
+  .cs-wrap {
+    width: min(var(--container-sitio), 100% - 2rem);
+    margin-inline: auto;
+  }
+  @media (min-width: 640px) {
+    .cs-wrap { width: min(var(--container-sitio), 100% - 6rem); }
+  }
+  @media (min-width: 1024px) {
+    .cs-wrap { width: min(var(--container-sitio), 91.6667%); }
+  }
+  .cs-section {
+    scroll-margin-top: var(--cs-offset);
     padding-block: clamp(3.5rem, 7vw, 5.5rem);
+  }
+  .cs-section + .cs-section {
     border-top: var(--cs-border);
   }
   .cs-section--tinted {
     background: var(--cs-stage);
   }
-  .cs-section-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-  }
-  .cs-chapter-head {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .cs-chapter-body {
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-  }
-  .cs-block {
-    scroll-margin-top: var(--cs-offset);
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-  }
-  .cs-block-head {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+  .cs-section-inner { display: flex; flex-direction: column; gap: 2.5rem; }
+  .cs-chapter-head { display: flex; flex-direction: column; gap: 1rem; }
+  .cs-chapter-body { display: flex; flex-direction: column; gap: 4rem; }
+  .cs-block { scroll-margin-top: var(--cs-offset); display: flex; flex-direction: column; gap: 1.25rem; }
+  .cs-block-head { display: flex; flex-direction: column; gap: 0.5rem; }
 
-  /* ── Tipografía ── */
-  .cs-h1 {
-    font-family: var(--cs-heading-font, inherit);
-    font-size: clamp(2.75rem, 7vw, 5.25rem);
-    line-height: 1;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+  /* ── Tipografía: roles de título de global.css con la fuente de la marca ── */
+  .cs-h1,
+  .cs-h1--headline,
+  .cs-h2,
+  .cs-h3,
+  .cs-h4,
+  .cs-quote,
+  .cs-stat,
+  .cs-subnav-title {
+    font-family: var(--cs-heading-font, var(--font-fantabular));
     text-wrap: balance;
   }
-  .cs-h1--headline {
-    font-size: clamp(2.1rem, 4.4vw, 3.6rem);
-    line-height: 1.04;
-  }
-  .cs-h2 {
-    max-width: 24ch;
-    font-family: var(--cs-heading-font, inherit);
-    font-size: clamp(1.9rem, 4vw, 3rem);
-    line-height: 1.08;
-    font-weight: 700;
-    letter-spacing: -0.015em;
-    text-wrap: balance;
-  }
-  .cs-h3 {
-    font-family: var(--cs-heading-font, inherit);
-    font-size: 1.6rem;
-    line-height: 1.2;
-    font-weight: 700;
-  }
-  .cs-h4 {
-    font-size: 1.2rem;
-    line-height: 1.35;
-    font-weight: 700;
-  }
-  .cs-lead {
-    max-width: 62ch;
-    font-size: clamp(1.1rem, 2vw, 1.25rem);
-    line-height: 1.6;
-    color: var(--cs-muted);
-  }
+  .cs-h1 { font-size: var(--text-display); line-height: 0.9; font-weight: 900; } /* titulo-portada */
+  .cs-h1--headline { font-size: var(--text-5xl); line-height: 1.1; font-weight: 700; } /* titulo-seccion */
+  .cs-h2 { max-width: 24ch; font-size: var(--text-5xl); line-height: 1.1; font-weight: 700; } /* titulo-seccion */
+  .cs-h3 { font-size: var(--text-3xl); line-height: 1.15; font-weight: 900; } /* titulo-bloque */
+  .cs-h4 { font-size: var(--text-2xl); line-height: 1.25; font-weight: 700; } /* subtitulo */
+  .cs-lead { max-width: 62ch; font-size: var(--text-xl); line-height: 1.6; color: var(--cs-muted); }
   .cs-body,
-  .cs-prose {
-    max-width: 68ch;
-    font-size: 1.0625rem;
-    line-height: 1.7;
-  }
-  .cs-prose {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .cs-prose--big {
-    font-size: clamp(1.1rem, 1.8vw, 1.3rem);
-    line-height: 1.6;
-  }
-  .cs-small {
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-  .cs-muted {
-    color: var(--cs-muted);
-  }
-  /* El tema del capítulo, encima del título */
-  .cs-kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 1.05rem;
-    font-weight: 700;
-  }
+  .cs-prose { max-width: 68ch; font-size: var(--text-base); line-height: 1.7; }
+  .cs-prose { display: flex; flex-direction: column; gap: 1rem; }
+  .cs-prose--big { font-size: var(--text-xl); line-height: 1.6; }
+  .cs-small { font-size: var(--text-sm); line-height: 1.6; }
+  .cs-muted { color: var(--cs-muted); }
+  .cs-kicker { display: inline-flex; align-items: center; gap: 0.75rem; }
+  /* Píldora con el tono de la marca (misma forma que <Etiqueta>) */
   .cs-tag {
     align-self: flex-start;
-    padding: 0.3rem 0.75rem;
+    padding: 0.125rem 0.75rem;
     border: var(--cs-border);
-    border-radius: 999px;
+    border-radius: 9999px;
     background: var(--cs-stage);
-    font-size: 0.85rem;
+    font-size: var(--text-xs);
     font-weight: 700;
   }
 
-  /* ── Portada ── */
+  /* ── Portada: color de la marca con puntos ── */
   .cs-hero {
     padding-block: calc(var(--cs-header) + 2rem) clamp(3.5rem, 7vw, 5rem);
     background-color: var(--cs-accent);
@@ -683,92 +646,46 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
     );
     background-size: 18px 18px;
     color: var(--cs-accent-contrast);
+    border-bottom: var(--cs-border);
   }
-  .cs-hero-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
+  .cs-hero-inner { display: flex; flex-direction: column; gap: 2rem; }
+  /* Volver: píldora con borde, como los botones claros del sitio */
   .cs-back {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     align-self: flex-start;
-    min-height: 44px;
-    font-weight: 700;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-  }
-  .cs-hero-grid {
-    display: grid;
-    gap: 2.5rem;
-    align-items: start;
-  }
-  @media (min-width: 960px) {
-    .cs-hero-grid {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-      gap: 3.5rem;
-    }
-  }
-  .cs-hero-info {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .cs-titles {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-  .cs-eyebrow {
-    font-size: 1.1rem;
-    font-weight: 700;
-  }
-  .cs-hero-lead {
-    max-width: 48ch;
-    font-size: clamp(1.15rem, 2vw, 1.35rem);
-    line-height: 1.45;
+    padding: 0.375rem 1rem;
+    border: 2px solid currentColor;
+    border-radius: 9999px;
+    font-size: var(--text-sm);
     font-weight: 600;
+    transition: background-color 150ms, color 150ms, border-color 150ms;
   }
-  .cs-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+  .cs-back:hover { background: var(--color-pink); border-color: var(--cs-ink); color: var(--cs-ink); }
+  .cs-hero-grid { display: grid; gap: 2.5rem; align-items: start; }
+  @media (min-width: 960px) {
+    .cs-hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 3.5rem; }
   }
-  .cs-chip {
-    padding: 0.35rem 0.8rem;
-    border: var(--cs-border);
-    border-radius: 999px;
-    background: #ffffff;
-    color: var(--cs-ink);
-    font-size: 0.9rem;
-    font-weight: 700;
-  }
-  .cs-chip--ink {
-    background: var(--cs-ink);
-    color: #ffffff;
-  }
+  .cs-hero-info { display: flex; flex-direction: column; gap: 1.5rem; }
+  .cs-titles { display: flex; flex-direction: column; gap: 0.6rem; }
+  .cs-eyebrow { font-size: var(--text-lg); font-weight: 700; }
+  .cs-hero-lead { max-width: 48ch; font-size: var(--text-xl); line-height: 1.45; font-weight: 600; }
+  .cs-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
-  /* La imagen de portada en una tarjeta con sombra sólida */
+  /* Imagen de portada: ventana con sombra dura */
   .cs-stage {
     display: grid;
     place-items: center;
     padding: clamp(1.25rem, 4vw, 2.25rem);
     background: var(--cs-cover-bg);
     border: var(--cs-border);
-    border-radius: 20px;
+    border-radius: var(--radius-ventana);
     box-shadow: var(--cs-shadow-lg);
     overflow: hidden;
   }
-  .cs-stage-img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
-  .cs-stage--fill {
-    aspect-ratio: 4 / 5;
-    padding: 0;
-  }
+  .cs-stage-img { width: 100%; height: auto; border-radius: var(--radius-chico); }
+  .cs-stage--fill { aspect-ratio: 4 / 5; padding: 0; }
   .cs-stage--fill .cs-stage-img {
     height: 100%;
     object-fit: cover;
@@ -776,14 +693,14 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
     border-radius: 0;
   }
 
-  /* Ficha: celdas blancas separadas por líneas negras */
+  /* Ficha: celdas separadas por líneas negras */
   .cs-meta {
     display: flex;
     flex-wrap: wrap;
     gap: 2px;
     background: var(--cs-ink);
     border: var(--cs-border);
-    border-radius: var(--cs-radius);
+    border-radius: var(--radius-tarjeta);
     overflow: hidden;
     color: var(--cs-ink);
   }
@@ -793,183 +710,104 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
     flex-direction: column;
     gap: 0.3rem;
     padding: 0.9rem 1rem;
-    background: #ffffff;
+    background: var(--cs-paper);
   }
-  .cs-meta > .cs-meta-wide {
-    flex-basis: 100%;
-  }
-  .cs-meta dt {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--cs-muted);
-  }
-  .cs-meta dd {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    line-height: 1.45;
-  }
-  .cs-meta dd strong {
-    font-weight: 700;
-  }
-  .cs-meta-note {
-    font-size: 0.95rem;
-    color: var(--cs-muted);
-  }
-  .cs-meta-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem 1.25rem;
-    font-weight: 700;
-  }
+  .cs-meta > .cs-meta-wide { flex-basis: 100%; }
+  .cs-meta dt { font-size: var(--text-sm); font-weight: 600; color: var(--cs-muted); }
+  .cs-meta dd { display: flex; flex-direction: column; gap: 0.2rem; line-height: 1.45; }
+  .cs-meta dd strong { font-weight: 700; }
+  .cs-meta-note { font-size: var(--text-sm); color: var(--cs-muted); }
+  .cs-meta-list { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; font-weight: 700; }
 
-  /* Botones */
-  .cs-ctas {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.9rem;
-  }
+  /* Botones: forma de píldora del sitio + efecto-presionar (en el HTML).
+     Aquí NO va box-shadow ni transition: los pone el efecto. */
+  .cs-ctas { display: flex; flex-wrap: wrap; gap: 0.9rem; }
   .cs-cta {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    min-height: 48px;
-    padding: 0.7rem 1.3rem;
+    min-height: 44px;
+    padding: 0.6rem 1.25rem;
     border: var(--cs-border);
-    border-radius: 12px;
+    border-radius: 9999px;
     background: var(--cs-accent-2);
     color: var(--cs-accent-2-contrast);
-    font-weight: 700;
-    box-shadow: 4px 4px 0 var(--cs-ink);
-    transition: transform 0.15s, box-shadow 0.15s;
+    font-weight: 600;
   }
-  .cs-cta:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--cs-ink);
-  }
-  .cs-cta:active {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0 var(--cs-ink);
-  }
-  .cs-cta-light {
-    background: #ffffff;
-    color: var(--cs-ink);
-  }
-  .cs-cta-note {
-    font-weight: 500;
-  }
+  .cs-cta-light { background: var(--cs-paper); color: var(--cs-ink); }
+  .cs-cta-note { font-weight: 500; }
 
   /* ── Resumen ── */
-  .cs-summary {
-    display: grid;
-    gap: 2rem;
-    align-items: start;
-  }
+  .cs-summary { display: grid; gap: 2rem; align-items: start; }
   @media (min-width: 900px) {
-    .cs-summary {
-      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
-      gap: 3rem;
-    }
+    .cs-summary { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 3rem; }
   }
-  .cs-summary-main {
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
-  }
+  .cs-summary-main { display: flex; flex-direction: column; gap: 0.9rem; }
   .cs-challenge {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
     padding: clamp(1.4rem, 3vw, 1.9rem);
     background: var(--cs-ink);
-    color: #ffffff;
+    color: var(--color-white-cream);
     border: var(--cs-border);
-    border-radius: var(--cs-radius);
-    box-shadow: 5px 5px 0 var(--cs-accent);
-    font-size: 1.075rem;
+    border-radius: var(--radius-ventana);
+    box-shadow: var(--hundir) var(--hundir) 0 var(--cs-accent);
+    font-size: var(--text-base);
     line-height: 1.6;
   }
-  .cs-goals {
-    display: flex;
-    flex-direction: column;
-    gap: 1.1rem;
-  }
-  .cs-goal-grid {
-    display: grid;
-    gap: 1.25rem;
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  }
-  .cs-goal-text {
-    font-size: 1.1rem;
-    line-height: 1.5;
-    font-weight: 600;
-  }
-  .cs-epilogue {
-    display: grid;
-    gap: 1.25rem;
-  }
+  .cs-goals { display: flex; flex-direction: column; gap: 1.1rem; }
+  .cs-goal-grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+  .cs-goal-text { font-size: var(--text-lg); line-height: 1.5; font-weight: 600; }
+  .cs-epilogue { display: grid; gap: 1.25rem; }
   @media (min-width: 800px) {
-    .cs-epilogue {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+    .cs-epilogue { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 
-  /* ── Números de capítulo ── */
+  /* ── Número de capítulo ── */
   .cs-num {
     display: inline-grid;
     place-items: center;
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 2.5rem;
+    height: 2.5rem;
     border: var(--cs-border);
-    border-radius: 10px;
+    border-radius: var(--radius-chico);
     background: var(--cs-accent);
     color: var(--cs-accent-contrast);
     font-weight: 700;
-    box-shadow: 3px 3px 0 var(--cs-ink);
+    box-shadow: var(--shadow-dura-sm);
   }
 
   /* ── Bloques (los usa CaseBlock.astro) ── */
-  .cs-figure {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
+  .cs-figure { display: flex; flex-direction: column; gap: 0.75rem; }
   .cs-img {
     width: 100%;
     height: auto;
     border: var(--cs-border);
-    border-radius: var(--cs-radius);
+    border-radius: var(--radius-tarjeta);
     background: var(--cs-stage);
   }
-  .cs-caption {
-    max-width: 68ch;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    color: var(--cs-muted);
-  }
+  .cs-caption { max-width: 68ch; font-size: var(--text-sm); line-height: 1.55; color: var(--cs-muted); }
+  /* Tarjeta: igual que las tarjetas del portafolio */
   .cs-card {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-    padding: 1.4rem;
-    background: #ffffff;
+    padding: 1.5rem;
+    background: var(--cs-paper);
     border: var(--cs-border);
-    border-radius: var(--cs-radius);
+    border-radius: var(--radius-ventana);
   }
   .cs-card--raised,
-  .cs-card-stat {
-    box-shadow: var(--cs-shadow);
-  }
-  .cs-card-stat {
-    flex-direction: column-reverse;
-  }
+  .cs-card-stat { box-shadow: var(--cs-shadow); }
+  .cs-card-stat { flex-direction: column-reverse; }
   .cs-card-img {
     width: 100%;
     height: auto;
     aspect-ratio: 4 / 3;
     object-fit: cover;
     border: var(--cs-border);
-    border-radius: 12px;
+    border-radius: var(--radius-tarjeta);
   }
   .cs-step {
     display: inline-grid;
@@ -977,22 +815,14 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
     width: 2rem;
     height: 2rem;
     border: var(--cs-border);
-    border-radius: 999px;
+    border-radius: 9999px;
     background: var(--cs-accent);
     color: var(--cs-accent-contrast);
-    font-size: 0.9rem;
+    font-size: var(--text-sm);
     font-weight: 700;
   }
-  .cs-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-  .cs-list li {
-    position: relative;
-    padding-left: 1.4rem;
-    line-height: 1.6;
-  }
+  .cs-list { display: flex; flex-direction: column; gap: 0.6rem; }
+  .cs-list li { position: relative; padding-left: 1.4rem; line-height: 1.6; }
   .cs-list li::before {
     content: '';
     position: absolute;
@@ -1004,7 +834,7 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
     border-radius: 3px;
     background: var(--cs-accent);
   }
-  /* Frase destacada: el concepto, el hallazgo clave o una cita */
+  /* Frase destacada: panel de color de la marca */
   .cs-highlight {
     display: flex;
     flex-direction: column;
@@ -1014,24 +844,17 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
     background: var(--cs-accent);
     color: var(--cs-accent-contrast);
     border: var(--cs-border);
-    border-radius: 20px;
+    border-radius: var(--radius-panel);
     box-shadow: var(--cs-shadow-lg);
   }
-  .cs-highlight * {
-    color: inherit;
-  }
-  .cs-quote {
-    font-family: var(--cs-heading-font, inherit);
-    font-size: clamp(1.35rem, 2.8vw, 2rem);
-    line-height: 1.25;
-    font-weight: 700;
-  }
+  .cs-highlight * { color: inherit; }
+  .cs-quote { font-size: var(--text-3xl); line-height: 1.25; font-weight: 700; }
   .cs-specs {
     display: flex;
     flex-direction: column;
-    background: #ffffff;
+    background: var(--cs-paper);
     border: var(--cs-border);
-    border-radius: var(--cs-radius);
+    border-radius: var(--radius-tarjeta);
     overflow: hidden;
   }
   .cs-specs > div {
@@ -1041,22 +864,11 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
     padding: 1rem 1.25rem;
     border-bottom: 1px solid color-mix(in srgb, var(--cs-ink) 25%, transparent);
   }
-  .cs-specs > div:last-child {
-    border-bottom: 0;
-  }
+  .cs-specs > div:last-child { border-bottom: 0; }
   @media (min-width: 700px) {
-    .cs-specs > div {
-      display: grid;
-      grid-template-columns: 12rem minmax(0, 1fr);
-      gap: 1.5rem;
-    }
+    .cs-specs > div { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 1.5rem; }
   }
-  .cs-stat {
-    font-family: var(--cs-heading-font, inherit);
-    font-size: clamp(2.4rem, 5vw, 3.5rem);
-    font-weight: 700;
-    line-height: 1;
-  }
+  .cs-stat { font-size: var(--text-6xl); font-weight: 700; line-height: 1; }
 
   /* Comparar (troquel/diseño, antes/después) */
   .cs-toggle {
@@ -1064,115 +876,86 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
     align-self: flex-start;
     gap: 4px;
     padding: 4px;
-    background: #ffffff;
+    background: var(--cs-paper);
     border: var(--cs-border);
-    border-radius: 999px;
+    border-radius: 9999px;
   }
   .cs-toggle button {
     min-height: 40px;
     padding: 0.45rem 1.1rem;
-    border-radius: 999px;
+    border-radius: 9999px;
     font-weight: 700;
     color: var(--cs-muted);
     cursor: pointer;
     transition: background-color 0.2s, color 0.2s;
   }
-  .cs-toggle button[aria-pressed='true'] {
-    background: var(--cs-accent);
-    color: var(--cs-accent-contrast);
-  }
-  .cs-compare {
-    display: grid;
-  }
+  .cs-toggle button[aria-pressed='true'] { background: var(--cs-accent); color: var(--cs-accent-contrast); }
+  .cs-compare { display: grid; }
   .cs-compare-item {
     grid-area: 1 / 1;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.35s ease, visibility 0.35s;
   }
-  .cs-compare-item.is-active {
-    opacity: 1;
-    visibility: visible;
-  }
+  .cs-compare-item.is-active { opacity: 1; visibility: visible; }
 
-  /* Paleta */
-  .cs-swatch {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-  }
+  /* Paleta: cada muestra se hunde como los botones del sitio */
+  .cs-swatch { width: 100%; display: flex; flex-direction: column; cursor: pointer; }
   .cs-swatch-color {
     display: grid;
     place-items: center;
     aspect-ratio: 1;
     border: var(--cs-border);
-    border-radius: var(--cs-radius);
+    border-radius: var(--radius-tarjeta);
     background: var(--swatch);
     color: var(--swatch-text);
     font-weight: 700;
-    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: var(--hundir) var(--hundir) 0 var(--cs-ink);
+    transition: translate 150ms ease-in-out, box-shadow 150ms ease-in-out;
   }
   .cs-swatch:hover .cs-swatch-color {
-    transform: translate(-2px, -2px);
-    box-shadow: var(--cs-shadow);
+    translate: var(--hundir) var(--hundir);
+    box-shadow: 0 0 0 var(--cs-ink);
   }
-  .cs-swatch-feedback {
-    opacity: 0;
-    transform: translateY(6px);
-    transition: opacity 0.2s, transform 0.2s;
-  }
-  .cs-swatch.is-copied .cs-swatch-feedback {
-    opacity: 1;
-    transform: none;
-  }
+  .cs-swatch-feedback { opacity: 0; transform: translateY(6px); transition: opacity 0.2s, transform 0.2s; }
+  .cs-swatch.is-copied .cs-swatch-feedback { opacity: 1; transform: none; }
 
-  /* ── Siguiente caso: banda oscura y tarjeta con el color de la otra marca ── */
-  .cs-next-band {
-    padding-block: clamp(3rem, 7vw, 5rem);
-    background: var(--cs-ink);
+  /* ── Final: fondo oscuro de puntos como el inicio (siguiente caso + invitación) ── */
+  .cs-final {
+    background: url(/fondoDos.svg);
+    background-size: 30px;
     border-top: var(--cs-border);
   }
+  .cs-next-band { padding-top: clamp(3rem, 7vw, 5rem); }
+  /* Tarjeta mediana: en celular la imagen va arriba; desde tablet,
+     imagen a la izquierda y texto a la derecha.
+     efecto-hundir + shadow-(color:--cs-next-accent) van en el HTML */
   .cs-next {
     display: grid;
-    gap: 2rem;
-    padding: clamp(1rem, 3vw, 1.5rem);
-    background: #ffffff;
+    gap: 1.25rem;
+    max-width: 56rem;
+    padding: 1rem;
+    background: var(--cs-paper);
+    color: var(--cs-ink);
     border: var(--cs-border);
-    border-radius: 24px;
-    box-shadow: 8px 8px 0 var(--cs-next-accent);
-    transition: transform 0.15s, box-shadow 0.15s;
+    border-radius: var(--radius-ventana);
   }
-  .cs-next:hover {
-    transform: translate(-3px, -3px);
-    box-shadow: 11px 11px 0 var(--cs-next-accent);
+  @media (min-width: 640px) {
+    .cs-next { grid-template-columns: 14rem minmax(0, 1fr); align-items: center; gap: 1.75rem; }
   }
-  @media (min-width: 800px) {
-    .cs-next {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      align-items: center;
-    }
+  @media (min-width: 1024px) {
+    .cs-next { grid-template-columns: 18rem minmax(0, 1fr); padding: 1.25rem; }
   }
-  .cs-next-media {
+  .cs-next-media { overflow: hidden; border: var(--cs-border); border-radius: var(--radius-tarjeta); }
+  .cs-next-img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+  .cs-next-text { display: flex; flex-direction: column; gap: 0.75rem; }
+  .cs-next-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
     overflow: hidden;
-    border: var(--cs-border);
-    border-radius: 16px;
   }
-  .cs-next-img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-  }
-  .cs-next-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
-  }
-  .cs-next-text .cs-tag {
-    background: var(--cs-next-accent);
-    color: var(--cs-next-contrast);
-  }
+  .cs-next-text .cs-tag { background: var(--cs-next-accent); color: var(--cs-next-contrast); }
   .cs-next-link {
     display: inline-flex;
     align-items: center;
@@ -1187,29 +970,14 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
     position: sticky;
     top: var(--cs-header-offset);
     z-index: 40;
-    background: #ffffff;
-    border-block: var(--cs-border);
+    background: var(--cs-paper);
+    border-bottom: var(--cs-border);
     transition: top 200ms ease-in-out;
   }
-  .cs-subnav-inner {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    height: var(--cs-subnav-h);
-  }
-  .cs-subnav-title {
-    display: none;
-    flex-shrink: 0;
-    font-family: var(--cs-heading-font, inherit);
-    font-weight: 700;
-    font-size: 1.1rem;
-  }
+  .cs-subnav-inner { display: flex; align-items: center; gap: 1.25rem; height: var(--cs-subnav-h); }
+  .cs-subnav-title { display: none; flex-shrink: 0; font-weight: 700; font-size: var(--text-lg); }
   @media (min-width: 1024px) {
-    .cs-subnav-title {
-      display: block;
-      padding-right: 1.25rem;
-      border-right: var(--cs-border);
-    }
+    .cs-subnav-title { display: block; padding-right: 1.25rem; border-right: var(--cs-border); }
   }
   .cs-subnav-list {
     display: flex;
@@ -1219,9 +987,7 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
     scrollbar-width: none;
     mask-image: linear-gradient(to right, #000 calc(100% - 2rem), transparent);
   }
-  .cs-subnav-list::-webkit-scrollbar {
-    display: none;
-  }
+  .cs-subnav-list::-webkit-scrollbar { display: none; }
   .cs-subnav-list a {
     display: inline-flex;
     align-items: center;
@@ -1229,17 +995,14 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
     min-height: 40px;
     padding: 0.35rem 0.85rem;
     border: 2px solid transparent;
-    border-radius: 999px;
+    border-radius: 9999px;
     white-space: nowrap;
-    font-size: 0.95rem;
+    font-size: var(--text-sm);
     font-weight: 600;
     color: var(--cs-muted);
     transition: background-color 0.2s, color 0.2s, border-color 0.2s;
   }
-  .cs-subnav-list a:hover {
-    color: var(--cs-ink);
-    border-color: var(--cs-ink);
-  }
+  .cs-subnav-list a:hover { color: var(--cs-ink); border-color: var(--cs-ink); }
   .cs-subnav-list a[aria-current] {
     color: var(--cs-accent-contrast);
     background: var(--cs-accent);
@@ -1252,17 +1015,13 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
     width: 1.4rem;
     height: 1.4rem;
     border: 1.5px solid currentColor;
-    border-radius: 6px;
-    font-size: 0.75rem;
+    border-radius: var(--radius-chico);
+    font-size: var(--text-2xs);
     font-weight: 700;
   }
 
   /* Barra de progreso en el borde inferior del menú */
-  .cs-progress {
-    position: absolute;
-    inset: auto 0 -2px 0;
-    height: 4px;
-  }
+  .cs-progress { position: absolute; inset: auto 0 -2px 0; height: 4px; }
   .cs-progress span {
     display: block;
     height: 100%;
@@ -1271,6 +1030,7 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
     transform: scaleX(0);
     transform-origin: left;
   }
+  /* Volver arriba: efecto-presionar en el HTML; aquí solo su aparición */
   .cs-top {
     position: fixed;
     z-index: 50;
@@ -1281,50 +1041,31 @@ const nextStyle = `--cs-next-accent:${nextAccent};--cs-next-contrast:${readableO
     width: 3rem;
     height: 3rem;
     border: var(--cs-border);
-    border-radius: 12px;
+    border-radius: var(--radius-chico);
     background: var(--cs-accent);
     color: var(--cs-accent-contrast);
-    box-shadow: 3px 3px 0 var(--cs-ink);
-    cursor: pointer;
     opacity: 0;
     pointer-events: none;
     transform: translateY(10px);
-    transition: opacity 0.25s, transform 0.25s;
+    transition: opacity 0.25s, transform 0.25s, scale 150ms, translate 150ms, box-shadow 150ms;
   }
-  .cs-top.is-visible {
-    opacity: 1;
-    pointer-events: auto;
-    transform: none;
-  }
+  .cs-top.is-visible { opacity: 1; pointer-events: auto; transform: none; }
 
-  /* ── Accesibilidad ── */
+  /* ── Accesibilidad: el mismo contorno amarillo del resto del sitio ── */
   .cs :focus-visible {
-    outline: 3px solid var(--cs-ink);
-    outline-offset: 3px;
-    border-radius: 6px;
-  }
-  .cs-hero :focus-visible {
-    outline-color: var(--cs-accent-contrast);
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 4px;
   }
 
   /* ── Un solo momento al cargar: la portada aparece suave ── */
   @media (prefers-reduced-motion: no-preference) {
-    .cs-stage {
-      animation: cs-enter 0.7s 0.1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-    }
+    .cs-stage { animation: cs-enter 0.7s 0.1s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
   }
   @keyframes cs-enter {
-    from {
-      opacity: 0;
-      transform: translate(8px, 8px);
-      box-shadow: 0 0 0 var(--cs-ink);
-    }
+    from { opacity: 0; transform: translate(8px, 8px); box-shadow: 0 0 0 var(--cs-ink); }
   }
   @media (prefers-reduced-motion: reduce) {
     .cs *,
-    .cs *::before {
-      animation: none !important;
-      transition: none !important;
-    }
+    .cs *::before { animation: none !important; transition: none !important; }
   }
 </style>

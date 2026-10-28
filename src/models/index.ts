@@ -161,7 +161,15 @@ export type CaseBlock =
   /** Cifras de resultado. */
   | (CaseBlockBase & { type: "stats"; items: { value: string; label: string }[] })
   /** Video guardado en la carpeta public, por ejemplo "/videos/prototipo.mp4". */
-  | (CaseBlockBase & { type: "video"; src: string; poster?: ImageMetadata; caption?: string });
+  | (CaseBlockBase & { type: "video"; src: string; poster?: ImageMetadata; caption?: string })
+  /**
+   * Demo animada e interactiva hecha en código (src/components/CaseStudy/demos/).
+   * Se mueve sola, se pausa al pasar el cursor y la persona la puede usar.
+   */
+  | (CaseBlockBase & { type: "demo"; demo: CaseDemo; caption?: string });
+
+/** Demos disponibles. Para agregar una, créala en src/components/CaseStudy/demos/ y regístrala en CaseBlock.astro. */
+export type CaseDemo = "amarilla-portada" | "amarilla-catalogo" | "amarilla-producto" | "amarilla-versiones";
 
 export interface ProyectDetail {
   label: string;

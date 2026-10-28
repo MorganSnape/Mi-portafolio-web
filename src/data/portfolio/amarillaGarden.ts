@@ -37,6 +37,8 @@ export const amarillaGardenProyect: Proyect = {
   // Cuando tengas el prototipo, ponlo primero.
   links: [
     // { label: 'Ver prototipo en Figma', href: 'https://www.figma.com/proto/[…]', kind: 'figma', primary: true },
+    // Descomenta cuando el archivo esté compartido como "cualquiera con el enlace puede ver":
+    // { label: 'Ver diseño en Figma', href: 'https://www.figma.com/design/3ZYq13xu3IjEHVp5MdNEkZ/Amarilla-Garden?node-id=1-4', kind: 'figma', primary: true },
     { label: 'Conocer la marca', href: 'https://www.amarillagarden.com', kind: 'website' },
   ],
 
@@ -47,7 +49,7 @@ export const amarillaGardenProyect: Proyect = {
     surface: '#FDE9D2',
     // Los títulos de la marca usan Mahalini, que no está en Google Fonts; Montserrat es la de textos.
     headingFont: 'Montserrat',
-    fontHref: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap',
+    fontHref: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap',
   },
 
   brandDescription:
@@ -179,6 +181,21 @@ export const amarillaGardenProyect: Proyect = {
         //     { value: '3', label: 'marcas analizadas' },
         //   ],
         // },
+        // TODO Gaby: confirma que estas cifras son porcentajes de personas encuestadas
+        // (en "canal de compra" se podía marcar más de una opción) y agrega cuántas respondieron.
+        {
+          type: 'stats',
+          title: 'Lo que esperan de la tienda',
+          intro: 'Resultados de la encuesta cuantitativa. Con ellos ordené las prioridades del diseño.',
+          items: [
+            { value: '90 %', label: 've probable o muy probable usar la tienda en línea' },
+            { value: '0 %', label: 'dijo que no la usaría' },
+            { value: '90 %', label: 'la usaría para comprar en línea' },
+            { value: '70 %', label: 'la usaría para ver productos' },
+            { value: '80 %', label: 'prefiere contenido educativo' },
+            { value: '50 %', label: 'también compra por chat (WhatsApp, Instagram)' },
+          ],
+        },
         {
           type: 'cards',
           title: 'Análisis de la competencia',
@@ -244,35 +261,264 @@ export const amarillaGardenProyect: Proyect = {
       ],
     },
 
+    // Las demos animadas de estos capítulos están hechas en código:
+    // src/components/CaseStudy/demos/. Se mueven solas, se pausan al pasar
+    // el cursor y se pueden usar (filtros, carrito, comparador).
+    {
+      label: 'Ideación',
+      title: 'Cinco pantallas para las cuatro maneras de llegar a la marca',
+      intro:
+        'Con el problema definido, organicé la tienda alrededor de lo que la gente viene a hacer: comprar para sí, regalar, pedir al por mayor o vivir un taller. Las decisiones de este capítulo y los siguientes se apoyan en mi criterio, en la encuesta y en leyes de diseño; todavía no las he probado con usuarios.',
+      blocks: [
+        {
+          type: 'cards',
+          title: 'Mapa de pantallas',
+          intro:
+            'Cada pantalla tiene un lugar fijo en el menú. Lo secundario, como envíos, políticas y preguntas frecuentes, vive en el pie de página.',
+          numbered: true,
+          items: [
+            {
+              title: 'Inicio',
+              text: 'Presenta la marca, muestra la campaña de temporada y lleva rápido al catálogo.',
+            },
+            {
+              title: 'Productos',
+              text: 'El catálogo completo, con filtros por categoría, promoción y disponibilidad.',
+            },
+            {
+              title: 'Producto',
+              text: 'El detalle de cada pieza: fotos, precio, cantidad y compra.',
+            },
+            {
+              title: 'Mayoristas',
+              text: 'Pedidos grandes para empresas y eventos, por correo o WhatsApp.',
+            },
+            {
+              title: 'Talleres',
+              text: 'La experiencia Cosecha emocional y cómo reservarla para un grupo o un equipo.',
+            },
+          ],
+        },
+        {
+          type: 'cards',
+          title: 'Cómo se navega',
+          columns: 2,
+          items: [
+            {
+              title: 'Solo cuatro opciones en el menú',
+              meta: 'Ley de Hick',
+              text: 'Cada opción adicional alarga el tiempo de decisión. Con cuatro destinos claros, más la búsqueda y el carrito, nadie tiene que pensar dónde está lo que busca.',
+            },
+            {
+              title: 'WhatsApp siempre a mano',
+              meta: 'Encuesta y ley de Fitts',
+              text: 'La mitad de las personas encuestadas también compra por chat. Por eso el botón flotante de WhatsApp acompaña todas las pantallas: un objetivo grande, fijo y siempre en el mismo lugar.',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      label: 'Diseño visual',
+      title:
+        'Llevé la identidad de NubeLab a tonos tierra para que las fotos sean las protagonistas',
+      intro:
+        'Hice dos iteraciones de wireframe del inicio y una primera versión en alta fidelidad con los tonos durazno y salmón de la marca. Al ponerla junto a las fotos reales, con cera, concreto y flores secas, la interfaz competía con los productos en lugar de enmarcarlos. Por eso hice una segunda versión.',
+      blocks: [
+        {
+          type: 'demo',
+          title: 'De la versión 1 a la versión 2',
+          intro: 'Arrastra la línea para comparar las dos versiones del inicio.',
+          demo: 'amarilla-versiones',
+          caption:
+            'A la izquierda, la versión 1: salmón saturado, foto recortada en una mancha y los productos después de la historia. A la derecha, la versión final: paleta tierra, foto completa y el catálogo justo debajo de la portada.',
+        },
+        {
+          type: 'cards',
+          title: 'Qué cambió y por qué',
+          columns: 2,
+          items: [
+            {
+              title: 'Una paleta que se aparta para que hablen las fotos',
+              meta: 'Efecto estética-usabilidad',
+              text: 'Antes: salmón saturado, gris frío y oliva compitiendo con las fotos. Después: crema, café y terracota tomados de los propios productos. Percibimos como más fácil de usar lo que nos resulta agradable, y aquí lo agradable era quitar color para que las fotos fueran lo más vivo de la pantalla.',
+            },
+            {
+              title: 'Fotos completas en lugar de formas recortadas',
+              meta: 'Ley de Prägnanz',
+              text: 'Antes: la foto de "Sobre Amarilla" recortada en una mancha orgánica con capas. Después: la foto ocupa una mitad y el texto la otra. El ojo interpreta primero la forma más simple; la mancha obligaba a leer la forma antes que la foto.',
+            },
+            {
+              title: 'El catálogo sube a la segunda posición',
+              meta: 'Efecto de posición serial',
+              text: 'Antes: los productos aparecían después de "Sobre Amarilla". Después: categorías y destacados van justo debajo de la portada. Recordamos mejor lo primero y lo último, y la encuesta mostró que la gente viene a ver y comprar.',
+            },
+            {
+              title: 'Tarjetas planas sobre una retícula',
+              meta: 'Ley de región común',
+              text: 'Antes: tarjetas blancas con sombra flotando sobre gris. Después: producto y texto alineados en cuatro columnas, sin cajas. La alineación y el espacio ya agrupan cada producto; las sombras solo añadían ruido.',
+            },
+          ],
+        },
+        {
+          type: 'palette',
+          title: 'Paleta de la interfaz',
+          intro:
+            'Parte de la identidad de NubeLab y de los materiales de los productos. Sigue una proporción cercana a 60-30-10: el crema domina, el café estructura y la terracota se reserva para lo que debe destacar, como el menú activo y los filtros (efecto Von Restorff). Toca un color para copiar su código.',
+          colors: [
+            { name: 'Crema', hex: '#F0EDE6', rgb: '240, 237, 230' },
+            { name: 'Arena', hex: '#E7E3DA', rgb: '231, 227, 218' },
+            { name: 'Café', hex: '#442D1C', rgb: '68, 45, 28' },
+            { name: 'Café suave', hex: '#4D403A', rgb: '77, 64, 58' },
+            { name: 'Terracota', hex: '#D98C70', rgb: '217, 140, 112' },
+            { name: 'Oliva', hex: '#9D9167', rgb: '157, 145, 103' },
+          ],
+        },
+        {
+          type: 'stats',
+          title: 'Contraste',
+          intro:
+            'Revisé el contraste de las combinaciones principales con el criterio de WCAG.',
+          items: [
+            { value: '10.97:1', label: 'texto café sobre crema · nivel AAA' },
+            { value: '12.82:1', label: 'texto blanco en el botón principal · nivel AAA' },
+            { value: '2.65:1 → 4.84:1', label: 'etiquetas de filtro: el texto blanco no cumplía AA; con texto café sí (así se ven en la demo)' },
+          ],
+        },
+        {
+          type: 'text',
+          title: 'Tipografía',
+          body: 'Dos familias con trabajos distintos. Mahalini, la display artesanal de la marca, solo para títulos de sección y la portada. Montserrat para todo lo demás (menú, precios, descripciones y botones) porque se lee bien en tamaños pequeños. El contraste entre ambas marca la jerarquía sin necesidad de más colores.',
+        },
+        {
+          type: 'demo',
+          title: 'Componentes en acción',
+          intro:
+            'Construí en Figma los elementos que se repiten: menú, galería, selector de cantidad, botones, carrito y WhatsApp. Sus estados no son decoración: el subrayado terracota del menú y el número del carrito le dicen a la persona dónde está y qué lleva. Pruébalos.',
+          demo: 'amarilla-producto',
+          caption:
+            'El menú pasa de reposo a hover a activo, la foto cambia, la cantidad sube y el carrito confirma lo que se añadió. "Añadir a tu carrito" va relleno y "Comprar ahora" en contorno: una acción principal y una secundaria.',
+        },
+      ],
+    },
+    {
+      label: 'Decisiones de diseño',
+      title: 'Cada pantalla responde sola lo que antes se preguntaba por chat',
+      intro:
+        'Precio, disponibilidad, envío y cómo pedir más: estas son las decisiones que tomé pantalla por pantalla y la ley o principio que respalda cada una.',
+      blocks: [
+        {
+          type: 'demo',
+          title: 'La portada',
+          demo: 'amarilla-portada',
+          caption:
+            'Una campaña por temporada, un solo botón y, debajo, la franja de confianza con lo que antes se preguntaba por chat.',
+        },
+        {
+          type: 'cards',
+          title: 'Inicio',
+          columns: 2,
+          items: [
+            {
+              title: 'Portada con una sola acción',
+              meta: 'Ley de Hick y punto focal',
+              text: 'La portada cambia con la temporada ("¡Porque nuestras madres lo merecen!") y tiene un único botón. La foto ocupa todo el ancho y el texto se apoya en un velo oscuro: un solo punto focal y una sola decisión.',
+            },
+            {
+              title: 'Una franja de confianza antes del catálogo',
+              meta: 'Reducción de incertidumbre',
+              text: 'Justo debajo de la portada: envíos a todo Colombia, pago seguro, venta al detal y al por mayor. Son las dudas que llegaban por chat, resueltas antes de pedir la compra.',
+            },
+            {
+              title: 'Tres categorías, no más',
+              meta: 'Ley de Hick',
+              text: 'Sets, velas y piezas: tres caminos grandes y fotográficos que se eligen casi sin pensar. Quien quiere más detalle tiene el catálogo con filtros.',
+            },
+            {
+              title: 'Clientes y opiniones como respaldo',
+              meta: 'Prueba social',
+              text: '"Iluminamos su historia" muestra las marcas que ya confiaron en Amarilla Garden para sus eventos, y luego vienen las opiniones. Pesa sobre todo para el comprador mayorista.',
+            },
+            {
+              title: 'Cerrar con dos formas de contacto',
+              meta: 'Ley de Fitts',
+              text: '"Pide tu propia cajita de luz" termina el recorrido con dos botones anchos, correo y WhatsApp. Un objetivo grande y cercano se alcanza más rápido.',
+            },
+            {
+              title: 'Contenido que enseña y conmueve',
+              meta: 'Encuesta y tono de voz',
+              text: 'El contenido educativo fue el preferido, seguido del emocional. Por eso "Sobre Amarilla Garden" habla de bienestar y talleres, y las velas se presentan por lo que significan: velas de sentimientos.',
+            },
+          ],
+        },
+        {
+          type: 'demo',
+          title: 'El catálogo',
+          intro: 'Activa o quita filtros y mira cómo responde la lista.',
+          demo: 'amarilla-catalogo',
+          caption:
+            'El contador y las etiquetas de filtros activos dicen siempre qué se está viendo; cada filtro se quita con su "×".',
+        },
+        {
+          type: 'cards',
+          title: 'Catálogo y producto',
+          columns: 2,
+          items: [
+            {
+              title: 'Filtros que siempre dicen dónde estás',
+              meta: 'Visibilidad del estado del sistema',
+              text: 'El catálogo indica cuántos resultados hay, cómo están ordenados y qué filtros están activos. Es la primera heurística de Nielsen: nadie debe preguntarse qué está viendo.',
+            },
+            {
+              title: 'Quitar un filtro con un toque',
+              meta: 'Control y libertad del usuario',
+              text: 'Cada filtro activo aparece como una etiqueta con su "×". Deshacer una elección es tan fácil como hacerla, sin volver al panel lateral.',
+            },
+            {
+              title: 'Filtros agrupados por intención',
+              meta: 'Ley de proximidad',
+              text: 'Categoría, promoción y disponibilidad van en grupos separados. Cada grupo se lee como una sola pregunta, y las casillas muestran todas las opciones para que nadie tenga que recordarlas.',
+            },
+            {
+              title: 'La tarjeta que ya conoces',
+              meta: 'Ley de Jakob',
+              text: 'Foto, nombre, precio y una línea de descripción, con el "+" para añadir en la esquina de la foto. Las personas pasan la mayor parte del tiempo en otras tiendas y esperan que esta funcione igual.',
+            },
+            {
+              title: 'Una acción principal y una secundaria',
+              meta: 'Jerarquía visual',
+              text: '"Añadir a tu carrito" va relleno en café y "Comprar ahora" en contorno. El peso visual dice cuál es el camino esperado sin esconder el atajo.',
+            },
+            {
+              title: 'Ningún callejón sin salida',
+              meta: 'Prevención de errores',
+              text: 'Debajo de la compra: "¿No tenemos la cantidad que necesitas o el producto no está disponible? Escríbenos". Si el stock no alcanza, la página ofrece una salida en lugar de un final.',
+            },
+          ],
+        },
+        {
+          type: 'cards',
+          title: 'Mayoristas y talleres',
+          columns: 2,
+          items: [
+            {
+              title: 'Una misma plantilla para dos servicios',
+              meta: 'Consistencia y estándares',
+              text: 'Texto a la izquierda, foto a la derecha y dos botones de contacto. Quien aprendió a usar una pantalla ya sabe usar la otra, y para la marca es más fácil mantenerlas.',
+            },
+            {
+              title: 'Los beneficios se repiten donde se decide',
+              meta: 'Reconocer antes que recordar',
+              text: 'Envío gratis desde $200 mil, pago con Mercado Pago y soporte reaparecen en catálogo, producto, mayoristas y talleres. No hay que recordar lo que se leyó en el inicio.',
+            },
+          ],
+        },
+      ],
+    },
+
     // ── Capítulos por completar ──
-    // Descomenta cada uno cuando tengas el material. Guarda las imágenes en
-    // src/assets/proyectos/amarilla-garden/ e impórtalas arriba.
-    // Recuerda: label es el tema y title es lo que descubriste o decidiste.
+    // Descomenta cada uno cuando tengas el material.
     //
-    // {
-    //   label: 'Ideación',
-    //   title: '[Conclusión, por ejemplo: "Separé productos y talleres para que cada uno tenga su camino"]',
-    //   intro: 'Organicé la tienda con categorías concretas, fichas de producto visuales y un pago accesible para un público poco técnico.',
-    //   blocks: [
-    //     { type: 'image', title: 'Mapa del sitio', image: { src: mapaSitio, alt: 'Mapa del sitio de la tienda', caption: '[Por qué lo organizaste así]' } },
-    //     { type: 'image', title: 'Flujo de compra', image: { src: flujoCompra, alt: 'Flujo de compra' } },
-    //     { type: 'compare', title: 'Del boceto al wireframe', items: [
-    //       { label: 'Boceto', src: boceto, alt: '...' },
-    //       { label: 'Wireframe', src: wireframe, alt: '...' },
-    //     ] },
-    //   ],
-    // },
-    // {
-    //   label: 'Diseño de la tienda',
-    //   title: '[Conclusión, por ejemplo: "Adapté la identidad de NubeLab a la pantalla"]',
-    //   intro: 'Cómo llevé la identidad de la marca a la interfaz.',
-    //   blocks: [
-    //     { type: 'image', title: 'Kit de UI', image: { src: kitUi, alt: '...' } },
-    //     { type: 'compare', title: 'Del wireframe a la alta fidelidad', items: [ ... ] },
-    //     { type: 'gallery', title: 'Pantallas finales', images: [ ... ] },
-    //     { type: 'video', title: 'Recorrido del prototipo', src: '/videos/amarilla-prototipo.mp4' },
-    //   ],
-    // },
     // {
     //   label: 'Pruebas con usuarios',
     //   title: '[Conclusión, por ejemplo: "[n] de [n] personas completaron la compra sin ayuda"]',
@@ -298,8 +544,13 @@ export const amarillaGardenProyect: Proyect = {
   // ── Epílogo ──
   // Mientras el proyecto sigue en proceso, los próximos pasos cuentan qué falta.
   nextSteps: [
-    'Definir el mapa del sitio y el flujo de compra.',
-    'Diseñar las pantallas aplicando la identidad de NubeLab.',
     'Probar con usuarios si encuentran un producto en menos de tres pasos y entienden las opciones de envío.',
+    'Llevar a Figma la corrección de contraste de las etiquetas de filtro (texto café sobre terracota, 4.84:1).',
+    'Llevar los wireframes móviles a alta fidelidad con la paleta final.',
+    'Reemplazar los textos de ejemplo de la portada y las opiniones por campañas y testimonios reales.',
+  ],
+  learnings: [
+    'Aprendí a soltar la primera versión. La V1 tenía más "diseño" a la vista y justamente por eso le quitaba protagonismo a los productos: a veces la mejor decisión es la que menos se nota.',
+    'Mientras llegan las pruebas con usuarios, las leyes de diseño y los datos de la encuesta me ayudaron a decidir con fundamento y a poder explicar cada elección.',
   ],
 }

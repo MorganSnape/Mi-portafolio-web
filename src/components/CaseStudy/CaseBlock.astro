@@ -1,6 +1,10 @@
 ---
 import Media from './Media.astro'
-import type { CaseBlock } from '@/models'
+import type { CaseBlock, CaseDemo } from '@/models'
+import DemoPortada from './demos/DemoPortada.astro'
+import DemoCatalogo from './demos/DemoCatalogo.astro'
+import DemoProducto from './demos/DemoProducto.astro'
+import DemoVersiones from './demos/DemoVersiones.astro'
 import { readableOn } from '@/utils/color'
 
 interface Props {
@@ -12,6 +16,13 @@ interface Props {
 const { block, id } = Astro.props
 const headingId = id ? `${id}-titulo` : undefined
 const paragraphs = block.type === 'text' ? [block.body].flat() : []
+const demos: Record<CaseDemo, typeof DemoPortada> = {
+  'amarilla-portada': DemoPortada,
+  'amarilla-catalogo': DemoCatalogo,
+  'amarilla-producto': DemoProducto,
+  'amarilla-versiones': DemoVersiones,
+}
+const Demo = block.type === 'demo' ? demos[block.demo] : undefined
 const cols = { 1: '', 2: 'md:grid-cols-2', 3: 'md:grid-cols-2 lg:grid-cols-3', 4: 'sm:grid-cols-2 lg:grid-cols-4' }
 ---
 
@@ -221,6 +232,16 @@ const cols = { 1: '', 2: 'md:grid-cols-2', 3: 'md:grid-cols-2 lg:grid-cols-3', 4
           </div>
         ))}
       </dl>
+    )
+  }
+
+  {/* Demo animada */}
+  {
+    block.type === 'demo' && Demo && (
+      <figure class="cs-figure">
+        <Demo />
+        {block.caption && <figcaption class="cs-caption">{block.caption}</figcaption>}
+      </figure>
     )
   }
 

@@ -1,0 +1,134 @@
+---
+// Demo: la portada de Amarilla Garden.
+// Una campaña por temporada, una sola acción y la franja de confianza debajo.
+import { Image } from 'astro:assets'
+import MarcoDemo from './MarcoDemo.astro'
+import NavAmarilla from './NavAmarilla.astro'
+
+import vela from '@/assets/proyectos/amarilla-garden/vela.webp'
+import caja from '@/assets/proyectos/amarilla-garden/caja.webp'
+import velaFlores from '@/assets/proyectos/amarilla-garden/demo/vela-flores.webp'
+
+const campanas = [
+  {
+    imagen: vela,
+    titulo: '¡Porque nuestras madres lo merecen!',
+    texto: 'Velas de sentimientos para decir con luz lo que a veces no decimos.',
+  },
+  {
+    imagen: caja,
+    titulo: 'Cada paquetico lleva cariño',
+    texto: 'Tus regalos viajan envueltos a mano, con una nota para quien los recibe.',
+  },
+  {
+    imagen: velaFlores,
+    titulo: 'Talleres Cosecha emocional',
+    texto: 'Crea tu propia vela con tu equipo o con las personas que quieres.',
+  },
+]
+
+const beneficios = ['Envíos a todo Colombia', 'Pago seguro', 'Venta al detal', 'Venta al por mayor']
+---
+
+<MarcoDemo
+  url="amarillagarden.com"
+  etiqueta="Demostración animada de la portada de Amarilla Garden: las campañas cambian solas y debajo está la franja de beneficios"
+>
+  <div data-portada>
+    <NavAmarilla activo="Inicio" />
+
+    <div class="relative aspect-[4/5] overflow-hidden bg-[#442D1C] sm:aspect-[16/9] lg:aspect-[2.1/1]">
+      {
+        campanas.map((c, i) => (
+          <article
+            data-slide
+            data-estado={i === 0 ? 'activo' : 'inactivo'}
+            aria-hidden={i === 0 ? 'false' : 'true'}
+            class="group absolute inset-0 opacity-0 transition-opacity duration-700 data-[estado=activo]:opacity-100"
+          >
+            <Image
+              src={c.imagen}
+              alt=""
+              widths={[480, 800, 1200]}
+              sizes="(min-width: 1120px) 1100px, 100vw"
+              class="absolute inset-0 size-full scale-110 object-cover transition-transform duration-[4000ms] ease-out group-data-[estado=activo]:scale-100"
+            />
+            <div class="absolute inset-x-0 bottom-0 flex flex-col gap-2 bg-[#442D1C]/85 p-5 text-white sm:inset-y-0 sm:right-0 sm:left-auto sm:w-[44%] sm:justify-center sm:gap-4 sm:p-10">
+              <h3 class="translate-y-4 text-2xl leading-tight font-semibold opacity-0 transition duration-700 group-data-[estado=activo]:translate-y-0 group-data-[estado=activo]:opacity-100 group-data-[estado=activo]:delay-200 sm:text-4xl">
+                {c.titulo}
+              </h3>
+              <p class="translate-y-4 text-sm leading-relaxed opacity-0 transition duration-700 group-data-[estado=activo]:translate-y-0 group-data-[estado=activo]:opacity-100 group-data-[estado=activo]:delay-300">
+                {c.texto}
+              </p>
+              <span class="mt-1 w-fit translate-y-4 rounded-full border-2 border-white px-5 py-2 text-xs font-semibold opacity-0 transition duration-700 group-data-[estado=activo]:translate-y-0 group-data-[estado=activo]:opacity-100 group-data-[estado=activo]:delay-[450ms] sm:text-sm">
+                Conoce más aquí
+              </span>
+            </div>
+          </article>
+        ))
+      }
+
+      <div class="absolute top-3 left-1/2 flex -translate-x-1/2 gap-1 sm:top-auto sm:bottom-4 sm:left-[28%]">
+        {
+          campanas.map((c, i) => (
+            <button
+              type="button"
+              data-punto={i}
+              data-estado={i === 0 ? 'activo' : 'inactivo'}
+              aria-label={`Ver campaña ${i + 1}: ${c.titulo}`}
+              aria-pressed={i === 0 ? 'true' : 'false'}
+              class="group/punto grid h-6 place-items-center px-0.5"
+            >
+              <span class="block h-2 w-2 rounded-full bg-white/60 transition-all duration-300 group-data-[estado=activo]/punto:w-6 group-data-[estado=activo]/punto:bg-white" />
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <ul class="flex flex-wrap justify-center gap-x-6 gap-y-1 bg-[#9D9167] px-4 py-2.5 text-[10px] font-bold tracking-wider text-[#2B1C11] uppercase sm:justify-around sm:text-xs">
+      {
+        beneficios.map(b => (
+          <li class="flex items-center gap-1.5">
+            <svg viewBox="0 0 16 16" class="size-3" aria-hidden="true">
+              <path d="M8 0c.6 4.4 3.6 7.4 8 8-4.4.6-7.4 3.6-8 8-.6-4.4-3.6-7.4-8-8 4.4-.6 7.4-3.6 8-8Z" fill="#F0EDE6" />
+            </svg>
+            {b}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</MarcoDemo>
+
+<script>
+  import { crearBucle } from '@/utils/demo'
+
+  document.querySelectorAll<HTMLElement>('[data-portada]').forEach(portada => {
+    const raiz = portada.closest<HTMLElement>('[data-demo]')
+    if (!raiz) return
+    const slides = [...portada.querySelectorAll<HTMLElement>('[data-slide]')]
+    const puntos = [...portada.querySelectorAll<HTMLButtonElement>('[data-punto]')]
+    let actual = 0
+
+    const mostrar = (i: number) => {
+      actual = (i + slides.length) % slides.length
+      slides.forEach((s, j) => {
+        s.dataset.estado = j === actual ? 'activo' : 'inactivo'
+        s.setAttribute('aria-hidden', String(j !== actual))
+      })
+      puntos.forEach((p, j) => {
+        p.dataset.estado = j === actual ? 'activo' : 'inactivo'
+        p.setAttribute('aria-pressed', String(j === actual))
+      })
+    }
+
+    const bucle = crearBucle(raiz, () => mostrar(actual + 1), 4000)
+    puntos.forEach((p, j) =>
+      p.addEventListener('click', () => {
+        bucle.soltar()
+        mostrar(j)
+      }),
+    )
+  })
+</script>

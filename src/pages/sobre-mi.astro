@@ -15,7 +15,7 @@ import Exclamacion from '@/icons/exclamacion.svg'
 import TagDesign from '@/assets/tag-design.svg'
 import TagFrontEnd from '@/assets/tag-code.svg'
 import TagDesignUX from '@/assets/tag-ux-ui.svg'
-import { Image } from 'astro:assets'
+import { Picture } from 'astro:assets'
 
 import ImageSobremImg from '@/assets/sobre-mi.webp'
 
@@ -68,9 +68,17 @@ const carril = 'w-full lg:w-11/12 max-w-sitio mx-auto px-4 sm:px-12 lg:px-0'
       </Ventana>
 
       <figure class="relative mx-auto w-11/12 lg:w-full">
-        <Image
+        <!-- Picture genera AVIF y WebP en varios anchos; el navegador descarga
+             solo el tamaño que necesita según la pantalla (sizes). -->
+        <Picture
           class="w-full h-auto"
           src={ImageSobremImg}
+          formats={['avif', 'webp']}
+          widths={[480, 768, 1080, 1280, 1655]}
+          sizes="(min-width: 1024px) min(92vw, 1280px), 90vw"
+          quality={75}
+          loading="lazy"
+          decoding="async"
           alt="Collage con una foto de Gabriela en el campo rodeada de sus aficiones"
         />
       </figure>

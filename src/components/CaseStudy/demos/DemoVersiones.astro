@@ -1,0 +1,188 @@
+---
+// Demo: la versión 1 y la versión 2 del inicio, una sobre otra.
+// Se comparan arrastrando la línea (o con las flechas del teclado).
+// Las dos pantallas se dibujan a 960 × 720 y se escalan al ancho disponible.
+import { Image } from 'astro:assets'
+import MarcoDemo from './MarcoDemo.astro'
+
+import vela from '@/assets/proyectos/amarilla-garden/vela.webp'
+import caja from '@/assets/proyectos/amarilla-garden/caja.webp'
+import velaMarca from '@/assets/proyectos/amarilla-garden/demo/vela-marca.webp'
+import velaFlores from '@/assets/proyectos/amarilla-garden/demo/vela-flores.webp'
+import setRegalo from '@/assets/proyectos/amarilla-garden/demo/set-regalo.webp'
+import artesana from '@/assets/proyectos/amarilla-garden/demo/artesana.webp'
+
+const menu = ['Inicio', 'Productos', 'Mayoristas', 'Talleres']
+const beneficios = ['Envíos a todo Colombia', 'Pago seguro', 'Venta al por mayor']
+const destacados = [velaMarca, setRegalo, velaFlores, artesana]
+const categorias = [
+  { nombre: 'Sets', imagen: setRegalo },
+  { nombre: 'Velas', imagen: velaFlores },
+  { nombre: 'Piezas', imagen: caja },
+]
+---
+
+<MarcoDemo
+  url="amarillagarden.com"
+  etiqueta="Comparación de la versión 1 y la versión 2 de la página de inicio. Usa el control deslizante para ver más de una o de la otra"
+>
+  <div data-versiones data-animando="true" class="group relative aspect-[4/3] overflow-hidden bg-white">
+    <!-- Lienzo fijo de 960 × 720: el script lo escala al ancho de la ventana -->
+    <div data-lienzo class="absolute top-0 left-0 h-[720px] w-[960px] origin-top-left">
+      <!-- ── Versión 1 ── -->
+      <div class="absolute inset-0 bg-[#F4F4F4] text-[#442D1C]" aria-hidden="true">
+        <div class="flex h-14 items-center gap-10 bg-white px-8 text-[13px]">
+          <p class="text-[15px] leading-[0.85] font-semibold text-[#D98C70]">amarilla<br />&nbsp;&nbsp;garden</p>
+          <ul class="flex flex-1 justify-center gap-10">
+            {menu.map((m, i) => <li class:list={[i === 0 && 'border-b-2 border-[#D98C70] font-bold']}>{m}</li>)}
+          </ul>
+          <span class="size-9 rounded-full bg-[#E7E3DA]"></span>
+        </div>
+        <div class="relative flex h-[300px]">
+          <Image src={vela} alt="" widths={[640]} sizes="600px" class="h-full w-[60%] object-cover" />
+          <div class="relative w-[40%] overflow-hidden">
+            <Image src={caja} alt="" widths={[480]} sizes="400px" class="absolute inset-0 size-full object-cover blur-[2px]" />
+            <div class="absolute inset-0 flex flex-col justify-center gap-3 bg-black/45 p-8 text-white">
+              <p class="text-[30px] leading-tight">¡Porque nuestras madres lo merecen!</p>
+              <p class="text-[11px] leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+            </div>
+          </div>
+          <span class="absolute bottom-6 left-8 rounded border border-white px-4 py-1.5 text-[11px] text-white">Conoce más aquí</span>
+        </div>
+        <div class="flex h-6 items-center justify-center gap-8 bg-[#9D9167] text-[9px] text-white uppercase">
+          {beneficios.map(b => <span>✦ {b}</span>)}
+        </div>
+        <div class="flex h-[230px] items-center gap-12 px-20">
+          <div class="relative h-[190px] w-[300px] shrink-0">
+            <span class="absolute -right-3 -bottom-4 h-[170px] w-[270px] rounded-[48%_52%_44%_56%/55%_45%_55%_45%] bg-[#E9A99A]"></span>
+            <Image src={setRegalo} alt="" widths={[400]} sizes="300px" class="relative size-full rounded-[44%_56%_52%_48%/50%_42%_58%_50%] object-cover" />
+          </div>
+          <div class="flex flex-col gap-3">
+            <p class="text-[28px] font-semibold">Sobre Amarilla</p>
+            <p class="text-[12px] leading-relaxed">Más que una empresa, somos una comunidad comprometida con la innovación y el crecimiento personal.</p>
+          </div>
+        </div>
+        <div class="flex h-10 items-center justify-center gap-2 bg-[#D98C70] text-[14px] font-semibold tracking-wide text-white">Nuestros Best Sellers 🏆</div>
+        <div class="flex gap-6 px-12 pt-6">
+          {
+            destacados.map(src => (
+              <div class="w-[200px] bg-white p-3 shadow-[0_6px_18px_rgba(0,0,0,.18)]">
+                <Image src={src} alt="" widths={[240]} sizes="200px" class="h-[110px] w-full object-cover" />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- ── Versión 2 (encima, recortada por el control) ── -->
+      <div
+        data-v2
+        class="absolute inset-0 bg-[#F0EDE6] text-[#442D1C] group-data-[animando=true]:transition-[clip-path] group-data-[animando=true]:duration-1000 group-data-[animando=true]:ease-in-out"
+        style="clip-path: inset(0 0 0 50%)"
+        aria-hidden="true"
+      >
+        <div class="flex h-14 items-center gap-10 bg-white px-8 text-[13px]">
+          <p class="text-[15px] leading-[0.85] font-semibold text-[#D98C70]">amarilla<br />&nbsp;&nbsp;garden</p>
+          <ul class="flex flex-1 justify-center gap-10">
+            {menu.map((m, i) => <li class:list={[i === 0 && 'border-b-[3px] border-[#D98C70] font-bold']}>{m}</li>)}
+          </ul>
+          <span class="size-9 rounded-full bg-[#F0EDE6]"></span>
+        </div>
+        <div class="relative h-[300px]">
+          <Image src={vela} alt="" widths={[960]} sizes="960px" class="absolute inset-0 size-full object-cover" />
+          <div class="absolute inset-y-0 right-0 flex w-[42%] flex-col justify-center gap-3 bg-[#442D1C]/85 p-10 text-white">
+            <p class="text-[30px] leading-tight font-semibold">¡Porque nuestras madres lo merecen!</p>
+            <p class="text-[11px] leading-relaxed">Velas de sentimientos para decir con luz lo que a veces no decimos.</p>
+            <span class="mt-1 w-fit rounded-full border-2 border-white px-4 py-1.5 text-[11px] font-semibold">Conoce más aquí</span>
+          </div>
+        </div>
+        <div class="flex h-6 items-center justify-center gap-8 bg-[#9D9167] text-[9px] font-bold text-[#2B1C11] uppercase">
+          {beneficios.map(b => <span>✦ {b}</span>)}
+        </div>
+        <div class="flex flex-col items-center gap-4 pt-7">
+          <p class="text-[26px] font-semibold">Nuestras categorías</p>
+          <div class="flex gap-5">
+            {
+              categorias.map(c => (
+                <div class="relative h-[200px] w-[270px] overflow-hidden">
+                  <Image src={c.imagen} alt="" widths={[320]} sizes="270px" class="size-full object-cover" />
+                  <span class="absolute inset-x-0 bottom-0 bg-[#442D1C]/80 py-2 text-center text-[11px] font-bold tracking-[0.2em] text-white uppercase">{c.nombre}</span>
+                </div>
+              ))
+            }
+          </div>
+          <p class="self-start pl-12 text-[20px] font-semibold">Nuestros productos destacados</p>
+        </div>
+      </div>
+    </div>
+
+    <span class="pointer-events-none absolute bottom-3 left-3 z-10 rounded-full border-2 border-black bg-white px-3 py-0.5 text-xs font-bold text-black">
+      Versión 1
+    </span>
+    <span class="pointer-events-none absolute right-3 bottom-3 z-10 rounded-full border-2 border-black bg-secondary px-3 py-0.5 text-xs font-bold text-black">
+      Versión 2
+    </span>
+
+    <input
+      type="range"
+      min="0"
+      max="100"
+      value="50"
+      data-control
+      aria-label="Comparar versiones: a la izquierda la versión 1, a la derecha la versión 2"
+      class="peer absolute inset-0 z-20 size-full cursor-ew-resize opacity-0"
+    />
+    <span
+      data-manija
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-y-0 z-10 w-0.5 -translate-x-1/2 bg-black group-data-[animando=true]:transition-[left] group-data-[animando=true]:duration-1000 group-data-[animando=true]:ease-in-out peer-focus-visible:w-1"
+      style="left: 50%"
+    >
+      <span class="absolute top-1/2 left-1/2 grid size-10 -translate-1/2 place-items-center rounded-full border-2 border-black bg-white shadow-dura-sm">
+        <svg viewBox="0 0 24 24" class="size-5">
+          <path d="m9 7-5 5 5 5M15 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </span>
+    </span>
+  </div>
+</MarcoDemo>
+
+<script>
+  import { crearBucle } from '@/utils/demo'
+
+  document.querySelectorAll<HTMLElement>('[data-versiones]').forEach(caja => {
+    const raiz = caja.closest<HTMLElement>('[data-demo]')
+    const lienzo = caja.querySelector<HTMLElement>('[data-lienzo]')
+    const v2 = caja.querySelector<HTMLElement>('[data-v2]')
+    const manija = caja.querySelector<HTMLElement>('[data-manija]')
+    const control = caja.querySelector<HTMLInputElement>('[data-control]')
+    if (!raiz || !lienzo || !v2 || !manija || !control) return
+
+    // Escala el lienzo de 960 px al ancho real
+    new ResizeObserver(() => {
+      lienzo.style.scale = String(caja.clientWidth / 960)
+    }).observe(caja)
+
+    const mover = (pos: number) => {
+      v2.style.clipPath = `inset(0 0 0 ${pos}%)`
+      manija.style.left = `${pos}%`
+      control.value = String(pos)
+      control.setAttribute('aria-valuetext', pos < 50 ? 'Se ve más la versión 2' : pos > 50 ? 'Se ve más la versión 1' : 'Mitad y mitad')
+    }
+
+    const recorrido = [22, 78, 50]
+    let paso = 0
+    const bucle = crearBucle(raiz, () => {
+      mover(recorrido[paso])
+      paso = (paso + 1) % recorrido.length
+    }, 2400)
+
+    control.addEventListener('input', () => {
+      if (caja.dataset.animando === 'true') {
+        caja.dataset.animando = 'false'
+        bucle.soltar()
+      }
+      mover(Number(control.value))
+    })
+  })
+</script>

@@ -1,0 +1,220 @@
+---
+// Demo: el catálogo con filtros de Amarilla Garden.
+// Los filtros activos aparecen como etiquetas que se quitan con un toque,
+// y el contador siempre dice cuántos productos se están viendo.
+import { Image } from 'astro:assets'
+import MarcoDemo from './MarcoDemo.astro'
+
+import velaFlores from '@/assets/proyectos/amarilla-garden/demo/vela-flores.webp'
+import setRegalo from '@/assets/proyectos/amarilla-garden/demo/set-regalo.webp'
+import artesana from '@/assets/proyectos/amarilla-garden/demo/artesana.webp'
+import vela from '@/assets/proyectos/amarilla-garden/vela.webp'
+import caja from '@/assets/proyectos/amarilla-garden/caja.webp'
+
+const categorias = [
+  { id: 'velas', nombre: 'Velas' },
+  { id: 'sets', nombre: 'Sets' },
+  { id: 'concreto', nombre: 'Piezas de concreto' },
+  { id: 'temporada', nombre: 'De temporada' },
+]
+
+// Las piezas de concreto se dibujan, porque el repositorio no tiene fotos de ellas.
+const productos = [
+  { nombre: 'Vela de sentimientos', precio: '$52.000', cat: ['velas'], imagen: vela },
+  { nombre: 'Vela floral', precio: '$48.000', cat: ['velas', 'temporada'], imagen: velaFlores },
+  { nombre: 'Set de regalo', precio: '$120.000', cat: ['sets'], imagen: setRegalo },
+  { nombre: 'Caja ¡Hola!', precio: '$95.000', cat: ['sets', 'temporada'], imagen: caja },
+  { nombre: 'Kit crea tu vela', precio: '$85.000', cat: ['sets'], imagen: artesana },
+  { nombre: 'Matera de concreto', precio: '$38.000', cat: ['concreto'], dibujo: 'matera' },
+  { nombre: 'Bandeja de concreto', precio: '$42.000', cat: ['concreto'], dibujo: 'bandeja' },
+]
+---
+
+<MarcoDemo
+  url="amarillagarden.com/productos"
+  etiqueta="Demostración del catálogo de Amarilla Garden: los filtros se activan y se quitan, y la lista de productos se actualiza"
+>
+  <div data-catalogo class="grid bg-[#F0EDE6] md:grid-cols-[200px_1fr]">
+    <aside class="hidden border-r border-[#E7E3DA] bg-white p-5 md:block">
+      <p class="mb-4 text-base font-semibold">Opciones de filtro</p>
+      <fieldset class="flex flex-col gap-2">
+        <legend class="mb-2 text-sm font-semibold">Por categoría</legend>
+        {
+          categorias.map(c => (
+            <label class="flex cursor-pointer items-center gap-2.5 text-sm">
+              <input type="checkbox" data-filtro={c.id} class="size-4 accent-[#442D1C]" />
+              {c.nombre}
+            </label>
+          ))
+        }
+      </fieldset>
+      <fieldset class="mt-5 flex flex-col gap-2">
+        <legend class="mb-2 text-sm font-semibold">Disponibilidad</legend>
+        <label class="flex items-center gap-2.5 text-sm">
+          <input type="checkbox" checked disabled class="size-4 accent-[#442D1C]" />
+          Solo stock disponible
+        </label>
+      </fieldset>
+    </aside>
+
+    <div class="flex min-w-0 flex-col gap-4 p-4 sm:p-6">
+      <div class="flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm">
+        <p aria-live="polite">
+          Mostrando <strong data-cuenta class="inline-block font-bold tabular-nums transition-transform duration-200">{productos.length}</strong>
+          de {productos.length} productos
+        </p>
+        <p class="rounded-full border border-[#442D1C] bg-white px-3 py-1">Ordenar por: <strong>Más relevantes</strong></p>
+      </div>
+
+      <div class="flex min-h-8 flex-wrap items-center gap-2 text-xs sm:text-sm">
+        <span class="font-semibold">Filtros activos:</span>
+        <span data-sin-filtros class="text-[#4D403A]">ninguno</span>
+        {
+          categorias.map(c => (
+            <button
+              type="button"
+              data-etiqueta={c.id}
+              hidden
+              aria-label={`Quitar el filtro ${c.nombre}`}
+              class="inline-flex scale-75 items-center gap-1.5 rounded-full bg-[#D98C70] px-3 py-1 font-semibold text-[#442D1C] opacity-0 transition duration-300 ease-[cubic-bezier(.34,1.56,.64,1)] hover:bg-[#E3A48C] data-[visible=true]:scale-100 data-[visible=true]:opacity-100"
+            >
+              {c.nombre}
+              <svg viewBox="0 0 12 12" class="size-2.5" aria-hidden="true">
+                <path d="m2 2 8 8M10 2l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </button>
+          ))
+        }
+      </div>
+
+      <ul data-rejilla class="grid content-start grid-cols-2 gap-x-3 gap-y-5 sm:grid-cols-3 lg:grid-cols-4">
+        {
+          productos.map(p => (
+            <li
+              data-producto={p.cat.join(' ')}
+              data-visible="true"
+              class="flex scale-95 flex-col gap-2 opacity-0 transition duration-300 data-[visible=true]:scale-100 data-[visible=true]:opacity-100"
+            >
+              <div class="relative aspect-square overflow-hidden bg-[#E7E3DA]">
+                {p.imagen ? (
+                  <Image src={p.imagen} alt="" widths={[240, 400]} sizes="200px" class="size-full object-cover" />
+                ) : p.dibujo === 'matera' ? (
+                  <svg viewBox="0 0 100 100" class="size-full" aria-hidden="true">
+                    <rect width="100" height="100" fill="#E7E3DA" />
+                    <path d="M50 22c-6 6-6 14 0 20 6-6 6-14 0-20Zm0 20c-8-5-16-4-20 2 8 4 15 3 20-2Zm0 0c8-5 16-4 20 2-8 4-15 3-20-2Z" fill="#9D9167" />
+                    <path d="M30 48h40l-5 30H35Z" fill="#B9B4AA" />
+                    <path d="M30 48h40v5H30Z" fill="#A39E94" />
+                    <ellipse cx="50" cy="82" rx="22" ry="3" fill="#442D1C" opacity=".12" />
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 100 100" class="size-full" aria-hidden="true">
+                    <rect width="100" height="100" fill="#E7E3DA" />
+                    <ellipse cx="50" cy="62" rx="34" ry="12" fill="#A39E94" />
+                    <ellipse cx="50" cy="59" rx="34" ry="12" fill="#C3BEB4" />
+                    <ellipse cx="50" cy="58" rx="27" ry="8" fill="#B9B4AA" />
+                    <rect x="42" y="42" width="9" height="16" rx="2" fill="#F0EDE6" />
+                    <path d="M46.5 35c-2 3-2 5 0 7 2-2 2-4 0-7Z" fill="#F4A275" />
+                  </svg>
+                )}
+                <span
+                  class="absolute right-2 bottom-2 grid size-7 place-items-center bg-white text-lg leading-none"
+                  aria-hidden="true"
+                >
+                  +
+                </span>
+              </div>
+              <p class="text-center text-xs leading-snug font-medium sm:text-sm">{p.nombre}</p>
+              <p class="-mt-1 text-center text-sm font-bold">{p.precio}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</MarcoDemo>
+
+<script>
+  import { crearBucle } from '@/utils/demo'
+
+  document.querySelectorAll<HTMLElement>('[data-catalogo]').forEach(catalogo => {
+    const raiz = catalogo.closest<HTMLElement>('[data-demo]')
+    if (!raiz) return
+    const casillas = [...catalogo.querySelectorAll<HTMLInputElement>('[data-filtro]')]
+    const etiquetas = [...catalogo.querySelectorAll<HTMLButtonElement>('[data-etiqueta]')]
+    const productos = [...catalogo.querySelectorAll<HTMLElement>('[data-producto]')]
+    const cuenta = catalogo.querySelector<HTMLElement>('[data-cuenta]')
+    const sinFiltros = catalogo.querySelector<HTMLElement>('[data-sin-filtros]')
+    const rejilla = catalogo.querySelector<HTMLElement>('[data-rejilla]')
+    const activos = new Set<string>()
+
+    // La rejilla guarda el alto de cuando se ven todos los productos,
+    // así filtrar no mueve el texto que viene después
+    const fijarAlto = () => {
+      if (!rejilla || activos.size > 0) return
+      rejilla.style.minHeight = ''
+      rejilla.style.minHeight = `${rejilla.offsetHeight}px`
+    }
+    new ResizeObserver(fijarAlto).observe(catalogo)
+
+    const aparecer = (el: HTMLElement, visible: boolean) => {
+      if (visible) {
+        el.hidden = false
+        requestAnimationFrame(() => requestAnimationFrame(() => (el.dataset.visible = 'true')))
+      } else {
+        el.dataset.visible = 'false'
+        window.setTimeout(() => {
+          if (el.dataset.visible === 'false') el.hidden = true
+        }, 280)
+      }
+    }
+
+    const pintar = () => {
+      casillas.forEach(c => (c.checked = activos.has(c.dataset.filtro!)))
+      etiquetas.forEach(e => aparecer(e, activos.has(e.dataset.etiqueta!)))
+      if (sinFiltros) sinFiltros.hidden = activos.size > 0
+
+      let n = 0
+      productos.forEach(p => {
+        const cats = p.dataset.producto!.split(' ')
+        const visible = activos.size === 0 || cats.some(c => activos.has(c))
+        if (visible) n++
+        aparecer(p, visible)
+      })
+      if (cuenta && cuenta.textContent !== String(n)) {
+        cuenta.textContent = String(n)
+        cuenta.classList.add('scale-150')
+        window.setTimeout(() => cuenta.classList.remove('scale-150'), 200)
+      }
+    }
+
+    // Recorrido automático: activar, sumar, quitar con la "×" y limpiar
+    const pasos: string[][] = [['velas'], ['velas', 'sets'], ['sets'], ['sets', 'concreto'], []]
+    let paso = 0
+    const bucle = crearBucle(
+      raiz,
+      () => {
+        activos.clear()
+        pasos[paso].forEach(f => activos.add(f))
+        paso = (paso + 1) % pasos.length
+        pintar()
+      },
+      2200,
+    )
+
+    casillas.forEach(c =>
+      c.addEventListener('change', () => {
+        bucle.soltar()
+        if (c.checked) activos.add(c.dataset.filtro!)
+        else activos.delete(c.dataset.filtro!)
+        pintar()
+      }),
+    )
+    etiquetas.forEach(e =>
+      e.addEventListener('click', () => {
+        bucle.soltar()
+        activos.delete(e.dataset.etiqueta!)
+        pintar()
+      }),
+    )
+  })
+</script>

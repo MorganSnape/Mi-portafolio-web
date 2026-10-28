@@ -1,0 +1,76 @@
+---
+// Barra de navegación de Amarilla Garden recreada para las demos.
+// La línea terracota marca la página activa y el punto del carrito cuenta productos.
+// Con `interactiva`, las opciones son botones que la demo puede activar.
+interface Props {
+  activo?: string
+  interactiva?: boolean
+}
+
+const { activo = 'Inicio', interactiva = false } = Astro.props
+const opciones = ['Inicio', 'Productos', 'Mayoristas', 'Talleres']
+---
+
+<div data-nav class="flex flex-wrap items-center gap-x-4 gap-y-1 border-b border-[#E7E3DA] bg-white px-4 py-2 sm:flex-nowrap sm:gap-x-8 sm:px-6 sm:py-3">
+  <p class="text-sm leading-[0.85] font-semibold lowercase text-[#D98C70] sm:text-base" aria-hidden="true">
+    amarilla<br /><span class="pl-2">garden</span>
+  </p>
+
+  <ul data-nav-lista class="relative order-last flex w-full justify-between text-xs sm:order-none sm:w-auto sm:flex-1 sm:justify-center sm:gap-8 sm:text-sm">
+    {
+      opciones.map(opcion => (
+        <li>
+          {interactiva ? (
+            <button
+              type="button"
+              data-nav-opcion={opcion}
+              data-estado={opcion === activo ? 'activo' : 'reposo'}
+              aria-pressed={opcion === activo ? 'true' : 'false'}
+              class="rounded-sm px-1 py-1 font-medium transition-[font-weight,color] duration-200 hover:font-bold data-[estado=activo]:font-bold data-[estado=hover]:font-bold"
+            >
+              {opcion}
+            </button>
+          ) : (
+            <span
+              data-nav-opcion={opcion}
+              data-estado={opcion === activo ? 'activo' : 'reposo'}
+              class="block px-1 py-1 font-medium data-[estado=activo]:font-bold"
+            >
+              {opcion}
+            </span>
+          )}
+        </li>
+      ))
+    }
+    <span
+      data-nav-indicador
+      aria-hidden="true"
+      class="pointer-events-none absolute -bottom-0.5 left-0 h-[3px] w-0 rounded-full bg-[#D98C70] transition-[translate,width] duration-300 ease-out"
+    ></span>
+  </ul>
+
+  <div class="ml-auto flex items-center gap-3 sm:ml-0">
+    <svg viewBox="0 0 24 24" class="hidden size-5 sm:block" aria-hidden="true">
+      <circle cx="10.5" cy="10.5" r="6" fill="none" stroke="currentColor" stroke-width="1.8" />
+      <path d="m15 15 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+    </svg>
+    <span data-carrito class="relative grid size-10 place-items-center rounded-full bg-[#F0EDE6] transition-transform duration-200 sm:size-11">
+      <svg viewBox="0 0 24 24" class="size-5" aria-hidden="true">
+        <path
+          d="M5 8h14l-1.2 11.2a1.5 1.5 0 0 1-1.5 1.3H7.7a1.5 1.5 0 0 1-1.5-1.3L5 8Zm4 0V6.5a3 3 0 0 1 6 0V8"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <span
+        data-carrito-cuenta
+        data-estado="vacio"
+        class="absolute -top-1 -left-1 grid size-5 scale-0 place-items-center rounded-full bg-[#F4A275] text-[10px] font-bold text-[#442D1C] transition-transform duration-300 ease-[cubic-bezier(.34,1.56,.64,1)] data-[estado=lleno]:scale-100 data-[estado=salto]:scale-125"
+      >
+        0
+      </span>
+    </span>
+  </div>
+</div>
