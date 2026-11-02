@@ -1,0 +1,2 @@
+# Guardar siempre los archivos de texto con saltos de línea LF (igual que .prettierrc)
+* text=auto eol=lf

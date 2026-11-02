@@ -1,0 +1,261 @@
+---
+title: "Productos editoriales: de libro a infografía"
+sectionBlogId: "diseñoGrafico"
+pubDate: 2026-11-02T10:10:00
+description: "Cómo se produce cada pieza editorial: libro, revista, periódico, catálogo, plegable, cartilla e infografía. Las etapas de cada una y lo que la diferencia de las demás."
+curso: "Producción de editoriales y tipografía"
+orden: 2
+---
+
+import InfoCard from '@/components/blog/mdx/InfoCard.astro'
+import LinkButton from '@/components/blog/mdx/LinkButton.astro'
+import ImagenAmpliable from '@/components/blog/mdx/ImagenAmpliable.astro'
+
+import libro1 from './img/libro-1-presentacion.webp?url'
+import libro2 from './img/libro-2-macroedicion.webp?url'
+import libro3 from './img/libro-3-microedicion.webp?url'
+import libro4 from './img/libro-4-revision-autores.webp?url'
+import libro5 from './img/libro-5-maquetacion.webp?url'
+import libro6 from './img/libro-6-correccion-pruebas.webp?url'
+import libro7 from './img/libro-7-diseno-final.webp?url'
+import libro8 from './img/libro-8-produccion.webp?url'
+import libro9 from './img/libro-9-distribucion.webp?url'
+
+import revistaEjemplo from './img/revista-ejemplo.webp'
+import etapa1 from './img/revista-etapa-1-informacion.webp?url'
+import etapa2 from './img/revista-etapa-2-control.webp?url'
+import etapa3 from './img/revista-etapa-3-montaje.webp?url'
+import etapa4 from './img/revista-etapa-4-soporte.webp?url'
+import etapa5 from './img/revista-etapa-5-impresion.webp?url'
+import etapa6 from './img/revista-etapa-6-plegado.webp?url'
+import partePortada from './img/revista-parte-1-portada.webp'
+import parteContraportada from './img/revista-parte-2-contraportada.webp'
+import parteEditorial from './img/revista-parte-3-editorial.webp'
+import parteIndice from './img/revista-parte-4-indice.webp'
+import parteDirectorio from './img/revista-parte-5-directorio.webp'
+import parteArticulo from './img/revista-parte-6-articulo.webp'
+import parteAnuncios from './img/revista-parte-7-anuncios.webp'
+
+import catalogoEjemplo from './img/catalogo-ejemplo.webp'
+import catalogoEtapas from './img/catalogo-etapas.webp'
+import diptico from './img/plegable-diptico.webp'
+import triptico from './img/plegable-triptico.webp'
+import ventana from './img/plegable-ventana.webp'
+import cartillaEjemplo from './img/cartilla-ejemplo.webp'
+import infografiaEjemplo from './img/infografia-ejemplo.webp'
+
+Cada pieza editorial tiene su propio proceso, pero todas pasan por lo mismo: **idea y contenido, maquetación, revisión, impresión o publicación y distribución**. Esta tabla sirve para ubicarlas rápido; abajo va el detalle de cada una.
+
+| Pieza | Para qué sirve | Lo que la distingue |
+| --- | --- | --- |
+| **Libro** | Obra extensa, impresa o digital | Edición en dos fases y trámites legales (ISBN) |
+| **Revista** | Publicación periódica con textos e imágenes | Se sostiene con pauta publicitaria |
+| **Periódico** | Informar la actualidad | Producción diaria o semanal, con prisa de cierre |
+| **Catálogo** | Mostrar y vender productos | Fotografía de calidad y descripciones precisas |
+| **Plegable** | Presentar una empresa o producto | Cantidad y tipo de pliegues |
+| **Cartilla** | Orientar sobre un tema puntual | Es una revista corta con propósito claro |
+| **Infografía** | Explicar algo complejo con gráficos | Narrativa visual, poco texto |
+
+---
+
+## Libro
+
+Se parte de un texto original y se llega a un libro físico y digital. El proceso se divide en nueve etapas.
+
+<div class="not-prose my-10 grid gap-8 pl-4 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard number={1} variant="purple" image={libro1} imageAlt="Ícono de un libro abierto" title="Presentación" description="El autor entrega la propuesta completa, argumentada y con lo legal en regla." />
+  <InfoCard number={2} variant="secondary" image={libro2} imageAlt="Persona revisando un texto en una tableta" title="Macroedición" description="Primera lectura del editor y el autor: estructura, orden de contenidos y recursos gráficos." />
+  <InfoCard number={3} variant="green" image={libro3} imageAlt="Persona subrayando un documento con un marcador gigante" title="Microedición" description="Corrección de estilo y ortotipografía: ortografía, puntuación, mayúsculas, comillas y negritas." />
+  <InfoCard number={4} variant="pink" image={libro4} imageAlt="Personas corrigiendo una hoja con lápiz, lupa y diccionarios" title="Revisión de autores" description="El autor incorpora los cambios que pidieron el corrector y el editor." />
+  <InfoCard number={5} variant="cream" image={libro5} imageAlt="Doble página maquetada con texto e ilustración" title="Maquetación" description="Con el texto definitivo, diseño arma las páginas con retículas, proporción y legibilidad." />
+  <InfoCard number={6} variant="purple" image={libro6} imageAlt="Persona en una escalera marcando errores en una página" title="Corrección de pruebas" description="Se revisan espacios, cortes de palabra y ubicación de elementos sobre la prueba impresa." />
+  <InfoCard number={7} variant="secondary" image={libro7} imageAlt="Libros volando alrededor de un libro abierto" title="Diseño y revisión final" description="Cubierta, contracubierta, lomo y solapas. Puede ir en paralelo a las etapas anteriores." />
+  <InfoCard number={8} variant="green" image={libro8} imageAlt="Computador junto a una rotativa imprimiendo" title="Producción" description="Se imprime y se genera la versión digital." />
+  <InfoCard number={9} variant="pink" image={libro9} imageAlt="Persona frente a una tienda en línea" title="Distribución" description="Llega a los canales de venta para que se lea, que es el objetivo." />
+</div>
+
+### Trámites legales
+
+- **ISBN:** número de trece dígitos que identifica cada título. Se pide cuando ya se conoce el total de páginas finales.
+- **Código de barras:** solo se tramita cuando ya existe el ISBN.
+- **Depósito legal:** también se gestiona con el ISBN en mano.
+- **Libro digital:** el ISBN se puede pedir en cualquier momento, pero hay que saber el formato (EPUB, MOBI o PDF).
+
+---
+
+## Revista
+
+<TwoColumns>
+
+<PhotoNote src={revistaEjemplo} alt="Revista abierta con una foto grande y columnas de texto">
+
+Una doble página de revista: **imagen protagonista** y texto en columnas.
+
+</PhotoNote>
+
+<div>
+
+Publicación periódica (semanal o mensual) que busca atraer al lector con entretenimiento.
+
+Puede ser informativa, de apoyo, científica, de entretenimiento, de farándula o digital.
+
+</div>
+
+</TwoColumns>
+
+### Etapas de producción
+
+<div class="not-prose my-10 grid gap-8 pl-4 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard number={1} variant="purple" image={etapa1} imageAlt="Manos en un portátil con datos y gráficos" title="Procesamiento" description="El redactor elige, produce y distribuye la información." />
+  <InfoCard number={2} variant="secondary" image={etapa2} imageAlt="Monitor con el boceto de una página" title="Control" description="Se ajustan los contenidos, se fija cada página y sección, y se ubica la publicidad." />
+  <InfoCard number={3} variant="green" image={etapa3} imageAlt="Escritorio de diseño con un monitor" title="Montaje de la página" description="Equilibrio entre ilustraciones y texto, con software de diseño." />
+  <InfoCard number={4} variant="pink" image={etapa4} imageAlt="Rodillos de impresión de colores" title="Soporte de impresión" description="Plancha offset o huecograbado. La técnica tipográfica no da buena calidad aquí." />
+  <InfoCard number={5} variant="cream" image={etapa5} imageAlt="Rotativa imprimiendo pliegos a color" title="Impresión" description="Muy automatizada, normalmente en rotativa." />
+  <InfoCard number={6} variant="purple" image={etapa6} imageAlt="Manos acomodando una pila de revistas" title="Plegado y encuadernado" description="Corte, pliegues, encuadernado, embalaje y salida a distribución." />
+</div>
+
+### Partes de una revista
+
+<div class="not-prose my-10 grid gap-8 sm:grid-cols-2">
+  <PhotoNote src={partePortada} alt="Portada de revista con un retrato">**1. Portada:** vende el contenido y despierta el interés por comprarla.</PhotoNote>
+  <PhotoNote src={parteContraportada} alt="Contraportadas de revista con formas geométricas">**2. Contraportada:** un adelanto breve de lo que hay adentro.</PhotoNote>
+  <PhotoNote src={parteEditorial} alt="Doble página editorial con texto y fotos pequeñas">**3. Editorial:** texto de opinión de la revista.</PhotoNote>
+  <PhotoNote src={parteIndice} alt="Página de contenidos con números de página">**4. Índice:** dónde encontrar cada contenido.</PhotoNote>
+  <PhotoNote src={parteDirectorio} alt="Página con las fotos y nombres del equipo">**5. Directorio:** quiénes hacen la revista.</PhotoNote>
+  <PhotoNote src={parteArticulo} alt="Doble página de artículo con una gran ilustración de una ola">**6. Artículo:** el eje central, siempre acompañado de imágenes.</PhotoNote>
+  <PhotoNote src={parteAnuncios} alt="Doble página publicitaria de productos cosméticos">**7. Anuncios:** la pauta publicitaria que sostiene la revista.</PhotoNote>
+</div>
+
+---
+
+## Periódico
+
+Medio impreso periódico (diario o semanal) con lo más relevante de la actualidad. Su producción tiene dos fases, **preimpresión** e **impresión**, y ocho áreas:
+
+| # | Área | Qué hace |
+| --- | --- | --- |
+| 1 | **Consejo de redacción** | Director, jefe de redacción y editores definen qué se publica y con qué enfoque. |
+| 2 | **Investigación** | Periodistas, fotógrafos e ilustradores buscan fuentes directas e indirectas y material de apoyo. |
+| 3 | **Redacción** | Cada periodista escribe su noticia, crónica o reportaje con títulos y secciones definidas. |
+| 4 | **Edición** | Cada editor verifica la veracidad, corrige y estandariza; el director aprueba. |
+| 5 | **Diagramación** | Diseño arma el contenido: marco tipográfico, paginación, titulares, fuentes, fotos y gráficos. |
+| 6 | **Caja tipográfica** | El marco de la página (como los márgenes de un cuaderno) que define el espacio del contenido. |
+| 7 | **Impresión** | Se define monocromo o policromía; es rápida y se hace en la noche para incluir las últimas noticias. |
+| 8 | **Distribución** | Suscripción, tiendas, librerías y supermercados; la publicidad ayuda a darlo a conocer. |
+
+---
+
+## Catálogo
+
+<TwoColumns>
+
+<PhotoNote src={catalogoEjemplo} alt="Catálogo abierto con fotos de muebles y plantas">
+
+Cada producto con **buena foto y descripción precisa**.
+
+</PhotoNote>
+
+<div>
+
+Una lista ordenada de productos pensada para promocionarlos.
+
+Necesita descripciones precisas, fotos de calidad y un diseño atractivo. La **portada** es su cara visible: tiene que representar lo que hay adentro.
+
+</div>
+
+</TwoColumns>
+
+Se hace en nueve etapas:
+
+<ImagenAmpliable src={catalogoEtapas} alt="Línea de tiempo con las nueve etapas del catálogo: briefing, conocer el producto, análisis de contenido, diseño de estructura, selección tipográfica y de color, volcado de contenidos, gráficos e imágenes, revisiones con el cliente y cierre de archivos" />
+
+1. **Briefing:** claro, explícito y con equilibrio entre imagen y texto.
+2. **Conocer el producto y su entorno:** saber bien qué se quiere comunicar.
+3. **Análisis de contenido:** información concreta y fácil de entender, sin imágenes sobrecargadas.
+4. **Estructura y formato:** número de páginas, tipo y peso del papel.
+5. **Tipografía y color:** líneas guía y gama cromática que den identidad al producto.
+6. **Volcado de contenidos:** se incorporan textos e imágenes y se ajustan.
+7. **Gráficos e imágenes:** infografías, tablas y una portada que represente el catálogo.
+8. **Revisiones con el cliente:** buena comunicación para reducir errores.
+9. **Cierre de archivos y envío a imprenta:** revisión final y PDF para preimpresión.
+
+---
+
+## Plegable
+
+Funciona como carta de presentación de una empresa o producto. Lo importante es no saturar y escoger bien el tipo de pliegue, según cuántos **cuerpos** (partes) tenga:
+
+<div class="not-prose my-10 grid gap-8 sm:grid-cols-3">
+  <PhotoNote src={diptico} alt="Díptico abierto con fotos y texto">**Díptico (2 cuerpos):** una hoja con un pliegue en el medio. Portada, interior y cierre, como un libro.</PhotoNote>
+  <PhotoNote src={triptico} alt="Tríptico abierto en tres partes">**Tríptico (3 cuerpos):** seis caras. Se puede plegar en sobre, acordeón o ventana.</PhotoNote>
+  <PhotoNote src={ventana} alt="Plegable tipo ventana con las caras laterales dobladas hacia el centro">**Pliegue en ventana:** solo las caras de los extremos se doblan hacia adentro.</PhotoNote>
+</div>
+
+El **cuadríptico** (4 cuerpos, ocho caras) es el menos usado, pero admite más información. La calidad de impresión pesa mucho: es lo que hace que los colores se vean bien.
+
+---
+
+## Cartilla
+
+<TwoColumns>
+
+<PhotoNote src={cartillaEjemplo} alt="Cartilla ambiental abierta en su página de introducción">
+
+Ejemplo: una **cartilla ambiental** con título creativo e ilustraciones.
+
+</PhotoNote>
+
+<div>
+
+Es una **revista corta** sobre un tema específico para orientar a un público objetivo. Tiene tres partes:
+
+- **Portada:** título creativo e imágenes.
+- **Desarrollo:** la primera página presenta; las siguientes organizan el contenido por sección; la última deja las conclusiones.
+- **Contratapa:** una idea o conclusión de referencia.
+
+</div>
+
+</TwoColumns>
+
+Antes de diseñar conviene escribir un plan: propósito, público, tema, secciones o páginas y estructura. Con eso se bosqueja la primera versión.
+
+---
+
+## Infografía
+
+<TwoColumns>
+
+<PhotoNote src={infografiaEjemplo} alt="Infografía tipo línea de tiempo con años, íconos y un camino">
+
+Una infografía de **línea de tiempo**: el camino guía la lectura.
+
+</PhotoNote>
+
+<div>
+
+Representa información y datos con gráficos para que un tema complejo se entienda fácil.
+
+Combina imágenes, gráficos de barras o circulares y **poco texto**, organizados con una narrativa visual.
+
+</div>
+
+</TwoColumns>
+
+Sigue ocho fases:
+
+| Fase | Qué se hace |
+| --- | --- |
+| **1. Recopilar información** | Definir fuentes, qué aspectos representar y el mensaje. |
+| **2. Objetivos** | Si es publicitaria, informativa o didáctica, y qué problema resuelve. |
+| **3. Medios de difusión** | Elegir los canales donde se va a publicar. |
+| **4. Soporte y formato** | Físico o virtual, y sus dimensiones. |
+| **5. Croquis o bocetos** | Organizar los elementos y la narrativa visual. |
+| **6. Diseño de elementos** | Gráficos, textos, ilustraciones, diagramas e iconografía. |
+| **7. Presentación y reflexión** | Chequeo final: que la información se perciba clara y sin interrupciones. |
+| **8. Difusión y medición** | Publicar (física u online) y medir resultados. |
+
+<LinkButton
+  href="https://zajuna.sena.edu.co/Repositorio/Titulada/institution/SENA/Arte/522309/Contenido/OVA/CF12/index.html#/curso/tema1"
+  title="Tema 1 del curso"
+  description="Producción de editoriales y tipografía, SENA. Fuente de estos apuntes y de sus imágenes."
+/>

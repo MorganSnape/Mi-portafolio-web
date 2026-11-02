@@ -83,3 +83,14 @@ export function agruparPorCurso(posts: Post[]): GrupoCurso[] {
     posts,
   }))
 }
+
+/**
+ * Apunte que sigue a `post` dentro de su sección, en el mismo orden que las
+ * pestañas de la página del tema: primero los del mismo curso y, al terminar,
+ * el primero del curso siguiente. Devuelve undefined si es el último.
+ */
+export function siguientePost(posts: Post[], post: Post): Post | undefined {
+  const enOrden = agruparPorCurso(postsDeSeccion(posts, seccionDe(post))).flatMap(grupo => grupo.posts)
+  const indice = enOrden.findIndex(p => p.id === post.id)
+  return indice === -1 ? undefined : enOrden[indice + 1]
+}

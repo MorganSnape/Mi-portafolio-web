@@ -4,25 +4,29 @@ import Panel from '@/components/ui/Panel.astro'
 import Etiqueta from '@/components/ui/Etiqueta.astro'
 import Ondulada from '@/components/ui/Ondulada.astro'
 import Cierre from '@/components/ui/Cierre.astro'
+import SiguienteApunte from '@/components/blog/SiguienteApunte.astro'
 import { Icon } from 'astro-icon/components'
 import { getCollection, render } from 'astro:content'
 import { dataSeccionesBlog } from '@/data/blog/dataSeccionesBlog'
 import { componentesMdx } from '@/components/blog/mdx'
-import { entradaDe, formatearFecha, seccionDe } from '@/utils/blog'
+import { entradaDe, formatearFecha, seccionDe, siguientePost } from '@/utils/blog'
 
 export async function getStaticPaths() {
   const slugsSecciones = dataSeccionesBlog.map(seccion => seccion.slug)
 
-  return (await getCollection('blog'))
+  const posts = await getCollection('blog')
+
+  return posts
     // Solo apuntes que están dentro de la carpeta de una sección registrada
     .filter(post => slugsSecciones.includes(seccionDe(post)) && entradaDe(post) !== '')
     .map(post => ({
       params: { seccion: seccionDe(post), entrada: entradaDe(post) },
-      props: { post },
+      // `siguiente`: el próximo apunte del tema, en el orden de sus pestañas
+      props: { post, siguiente: siguientePost(posts, post) },
     }))
 }
 
-const { post } = Astro.props
+const { post, siguiente } = Astro.props
 // `headings` trae todos los títulos del MDX con su id: alimenta el SideNav
 const { Content, headings } = await render(post)
 
@@ -69,6 +73,8 @@ const urlSeccion = `/blog/${seccionDe(post)}`
   </Panel>
 
   <Content components={componentesMdx} />
+
+  {siguiente && <SiguienteApunte post={siguiente} cursoActual={post.data.curso} slot="siguiente" />}
 
   <Cierre
     titulo={'¡Sigamos\naprendiendo!'}

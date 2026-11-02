@@ -25,6 +25,30 @@ export const contrastRatio = (a: string, b: string) => {
 export const readableOn = (bg: string) =>
   contrastRatio(bg, '#FFFFFF') >= contrastRatio(bg, '#1C1A1F') ? '#FFFFFF' : '#1C1A1F'
 
+const toHex = (rgb: number[]) =>
+  '#' + rgb.map(v => Math.round(v).toString(16).padStart(2, '0')).join('').toUpperCase()
+
+/** Mezcla dos colores: t = 0 devuelve a, t = 1 devuelve b. */
+export const mixHex = (a: string, b: string, t: number) => {
+  const [ca, cb] = [toRgb(a), toRgb(b)]
+  return toHex(ca.map((v, i) => v + (cb[i] - v) * t))
+}
+
+/**
+ * Ajusta un color de marca para que se lea sobre un fondo: lo aclara (sobre fondos
+ * oscuros) u oscurece (sobre fondos claros) lo mínimo necesario.
+ * Ej.: el azul de DePelös sobre negro se vuelve un azul más claro de la misma familia.
+ */
+export const legibleOn = (color: string, bg: string, min = 4.5) => {
+  if (contrastRatio(color, bg) >= min) return color
+  const target = luminance(bg) < 0.5 ? '#FFFFFF' : '#000000'
+  for (let t = 0.05; t <= 1; t += 0.05) {
+    const candidate = mixHex(color, target, t)
+    if (contrastRatio(candidate, bg) >= min) return candidate
+  }
+  return target
+}
+
 /** Convierte un título en un id para anclas: "Investigación" -> "investigacion". */
 export const toId = (text: string) =>
   text

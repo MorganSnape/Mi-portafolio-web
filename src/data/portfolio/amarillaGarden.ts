@@ -10,6 +10,10 @@ import moodboard from '@/assets/proyectos/amarilla-garden/moodboard.webp'
 import papeleria from '@/assets/proyectos/amarilla-garden/papeleria.webp'
 import texturas from '@/assets/proyectos/amarilla-garden/texturas.webp'
 import caja from '@/assets/proyectos/amarilla-garden/caja.webp'
+// Calcomanías y logo para la portada y el resumen
+import logo from '@/assets/proyectos/amarilla-garden/logo.webp'
+import stickerMariposa from '@/assets/proyectos/amarilla-garden/sticker-mariposa.webp'
+import stickerPaquetico from '@/assets/proyectos/amarilla-garden/sticker-paquetico.webp'
 
 export const amarillaGardenProyect: Proyect = {
   type: ['UX'],
@@ -44,6 +48,13 @@ export const amarillaGardenProyect: Proyect = {
 
   // Durazno: portada y acentos. Crema durazno: fondo detrás de la portada.
   // Sin "secondary", el botón principal es negro, que contrasta mejor con los tonos pastel.
+  // Calcomanías de la marca alrededor de la portada (fondo transparente)
+  stickers: [
+    { src: stickerMariposa, alt: '' },
+    { src: stickerPaquetico, alt: '' },
+  ],
+  summaryImage: { src: logo, alt: 'Logo de Amarilla Garden en letras durazno sobre fondo crema' },
+
   brand: {
     primary: '#F4A375',
     surface: '#FDE9D2',

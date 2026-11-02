@@ -1,0 +1,53 @@
+---
+// Botón "Siguiente apunte" al final de cada artículo del blog.
+// Mismo lenguaje que TarjetaArticulo: borde negro, sombra dura (efecto-hundir)
+// y círculo rosa con flecha que se vuelve amarillo al pasar el cursor.
+import { Icon } from 'astro-icon/components'
+import Etiqueta from '@/components/ui/Etiqueta.astro'
+import { urlPost, type Post } from '@/utils/blog'
+
+interface Props {
+  post: Post
+  /** Curso del artículo actual: si el siguiente es de otro curso, se avisa. */
+  cursoActual?: string
+  class?: string
+}
+
+const { post, cursoActual, class: className = '' } = Astro.props
+const curso = post.data.curso?.trim()
+const cambiaDeCurso = Boolean(curso) && curso !== cursoActual?.trim()
+---
+
+<nav aria-label="Siguiente apunte" class:list={['w-full', className]}>
+  <a
+    href={urlPost(post)}
+    rel="next"
+    class="group efecto-hundir border-2 border-black flex items-center gap-4 md:gap-6 rounded-ventana bg-secondary px-5 py-5 md:px-8 md:py-6 text-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
+  >
+    <span class="flex min-w-0 flex-1 flex-col gap-3">
+      <span class="flex flex-wrap items-center gap-2">
+        <Etiqueta color="negro" mayusculas>Siguiente apunte</Etiqueta>
+        {cambiaDeCurso && <Etiqueta color="blanco">{`Nuevo curso: ${curso}`}</Etiqueta>}
+      </span>
+      <span class="font-fantabular font-black text-2xl md:text-3xl leading-tight text-balance">
+        {post.data.title}
+      </span>
+      {
+        post.data.description && (
+          <span class="hidden md:block text-base font-medium line-clamp-2 text-pretty">{post.data.description}</span>
+        )
+      }
+    </span>
+    <span
+      class="flex size-12 md:size-14 shrink-0 items-center justify-center rounded-full border-2 border-black bg-pink shadow-dura-sm transition-colors duration-150 group-hover:bg-white"
+      aria-hidden="true"
+    >
+      <Icon
+        name="fa6-solid:arrow-right"
+        width={20}
+        height={20}
+        class="transition-transform duration-150 group-hover:translate-x-0.5"
+      />
+    </span>
+  </a>
+</nav>

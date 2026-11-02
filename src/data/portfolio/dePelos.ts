@@ -36,6 +36,11 @@ export const depelosProyect: Proyect = {
   //   { label: 'Ver en Behance', href: 'https://www.behance.net/[tu-usuario]/[proyecto]', kind: 'behance', primary: true },
   // ],
 
+  summaryImage: {
+    src: logo,
+    alt: 'Logo de DePelös con una pata de perro y una mano haciendo el gesto rockero, sobre textura de helado',
+  },
+
   // Azul: portada y acentos. Rosa: botón principal. Crema: fondo detrás de la portada.
   brand: {
     primary: '#2356A4',

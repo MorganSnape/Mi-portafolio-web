@@ -1,0 +1,97 @@
+---
+title: "Composición y diseño editorial"
+sectionBlogId: "diseñoGrafico"
+pubDate: 2026-11-02T10:00:00
+description: "Qué es componer una pieza gráfica, qué la diferencia del diseño editorial y qué decisiones hay que tomar antes de maquetar: formato, materiales, caja tipográfica y retícula."
+curso: "Producción de editoriales y tipografía"
+orden: 1
+---
+
+import InfoCard from '@/components/blog/mdx/InfoCard.astro'
+import LinkButton from '@/components/blog/mdx/LinkButton.astro'
+import ImagenAmpliable from '@/components/blog/mdx/ImagenAmpliable.astro'
+import caracteristicas from './img/caracteristicas-texto-imagen-reticula.webp'
+import paginaMaquetada from './img/partes-de-una-pagina-maquetada.webp'
+import iconoTarget from './img/icono-target.webp?url'
+import iconoTipografia from './img/icono-tipografia.webp?url'
+import iconoRecursos from './img/icono-recursos.webp?url'
+import iconoFormato from './img/icono-formato.webp?url'
+import iconoMateriales from './img/icono-materiales.webp?url'
+import iconoImagenes from './img/icono-imagenes.webp?url'
+import iconoMarcos from './img/icono-marcos.webp?url'
+import iconoCaja from './img/icono-caja-tipografica.webp?url'
+import iconoReticula from './img/icono-reticula.webp?url'
+
+**Componer** es ordenar los elementos de una pieza (texto, imágenes, color, espacios) para que el mensaje llegue claro a un público concreto. El **diseño editorial** es la rama del diseño gráfico que aplica esa idea a piezas con muchas páginas: libros, revistas, manuales, diarios, fanzines y folletos.
+
+***La idea clave:*** antes de abrir el programa se decide para quién es la pieza. Todo lo demás (tipografía, color, formato) sale de ahí.
+
+## Elementos de la composición
+
+| Elemento | Qué hay que decidir |
+| --- | --- |
+| **Texto** | La familia tipográfica. Tiene que ser legible y coherente con lo que quiere decir. |
+| **Imágenes** | Tamaño, escala y distribución, siempre en apoyo del texto. |
+| **Márgenes y cuadrícula** | Dónde va cada cosa. De esto depende la posición final del texto y las imágenes. |
+| **Formato** | Tamaño, papel y orientación (vertical u horizontal), según lo que necesite el cliente. |
+| **Espacios en blanco** | Dejar respirar la página. Saturar cansa la vista. |
+| **Contexto o concepto** | A qué público va dirigida la pieza. Es lo más importante de la composición. |
+| **Color** | Una gama definida desde el concepto, que se mantiene en toda la edición. |
+| **Equilibrio y armonía** | Revisar el conjunto antes de entregar y ajustar con ojo crítico. |
+
+## Diseño editorial
+
+Su función principal es la **maquetación**: acomodar textos e imágenes para que la pieza se lea bien y pase por varias rondas de ajustes hasta quedar lista.
+
+### Tres características
+
+Todo diseño editorial se arma con estas tres piezas:
+
+<mark>Texto:</mark> títulos, subtítulos, cuerpo y destacados. <mark>Imágenes:</mark> fotos, vectores e íconos. <mark>Retícula:</mark> las líneas horizontales y verticales que se cruzan para organizar el texto.
+
+<ImagenAmpliable src={caracteristicas} alt="Infografía con tres íconos: una T para el texto, un cuadro con montañas para las imágenes y una cuadrícula para la retícula" />
+
+### Tres componentes
+
+<div class="not-prose my-10 grid gap-8 pl-4 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard number="A" variant="pink" image={iconoTarget} imageAlt="Persona señalando un gráfico con perfiles de público" title="Target" description="Quién es el lector: sus intereses y gustos. Se analiza antes de diseñar." />
+  <InfoCard number="B" variant="cream" image={iconoTipografia} imageAlt="Página grande con una letra A y líneas de texto" title="Tipografía" description="Afín al público y a la marca. De ella depende gran parte del éxito." />
+  <InfoCard number="C" variant="secondary" image={iconoRecursos} imageAlt="Calculadora y planilla con monedas" title="Recursos" description="El presupuesto. Ayuda, pero un presupuesto pequeño no obliga a un mal diseño." />
+</div>
+
+El video del curso resume estos conceptos:
+
+<VideoFrame
+  youtube="https://www.youtube.com/watch?v=YyOHdz8abrs"
+  title="Conceptos básicos de diseño editorial"
+  caption="Conceptos básicos del diseño editorial, del curso del SENA."
+/>
+
+---
+
+## Qué definir antes de maquetar
+
+Estas seis decisiones se toman <mark>al empezar</mark>, no en medio del proyecto:
+
+<div class="not-prose my-10 grid gap-8 pl-4 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard number="A" variant="purple" image={iconoFormato} imageAlt="Documentos apilados" title="Formato" description="La estructura y el tamaño que mejor le quedan a la publicación." />
+  <InfoCard number="B" variant="secondary" image={iconoMateriales} imageAlt="Rodillo de pintura sobre un libro abierto" title="Materiales" description="Tipo y calibre del papel, cartón o cartulina, sobre todo para tapas y divisiones." />
+  <InfoCard number="C" variant="green" image={iconoImagenes} imageAlt="Cuadro con un paisaje y herramientas de recorte" title="Imágenes" description="Que su tratamiento, color, tamaño y calidad sean coherentes con el texto." />
+  <InfoCard number="D" variant="pink" image={iconoMarcos} imageAlt="Página con sus bordes marcados" title="Marcos, bordes y sangrías" description="Qué marco, qué borde y cuánta sangría. Le dan el nivel profesional." />
+  <InfoCard number="E" variant="cream" image={iconoCaja} imageAlt="Recuadro con texto ABC y puntos de ajuste" title="Caja tipográfica" description="El borde virtual (los cuatro márgenes) que limita dónde va el contenido." />
+  <InfoCard number="F" variant="purple" image={iconoReticula} imageAlt="Página dividida en columnas y bloques" title="Retícula editorial" description="Líneas imaginarias para organizar y bocetar el contenido." />
+</div>
+
+### Así se ve una página maquetada
+
+En una doble página se ven todas esas decisiones juntas: la **retícula** y el **medianil** (el espacio entre columnas), las **cajas de texto**, el título y el subtítulo, las imágenes con su **pie de foto**, los **folios** (el texto repetido arriba) y el **número de página**.
+
+<ImagenAmpliable src={paginaMaquetada} alt="Doble página maquetada con sus partes señaladas: folios, retícula, medianil, título, subtítulo, imagen, cajas de texto, elementos gráficos, pie de foto y número de página" />
+
+***Herramienta:*** el curso recomienda **Adobe InDesign** para proyectos editoriales, por sus funciones de maquetación de páginas.
+
+<LinkButton
+  href="https://zajuna.sena.edu.co/Repositorio/Titulada/institution/SENA/Arte/522309/Contenido/OVA/CF12/index.html#/curso/tema1"
+  title="Tema 1 del curso"
+  description="Producción de editoriales y tipografía, SENA. Fuente de estos apuntes y de sus imágenes."
+/>

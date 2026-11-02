@@ -30,6 +30,7 @@ const { title, headings = [], volver = { href: '/blog', texto: 'Inicio de Blog' 
         <Ventana class="blog-contenido" cuerpo="px-5 md:px-12 py-10 md:py-12">
           <slot />
         </Ventana>
+        <slot name="siguiente" />
         <slot name="cierre" />
       </main>
     </div>

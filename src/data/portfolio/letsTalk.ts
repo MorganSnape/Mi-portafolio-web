@@ -33,6 +33,10 @@ export const letsTalkProyect: Proyect = {
   // ],
 
   // Azul noche: portada y acentos. Amarillo: botón principal, como la frase del evento.
+  summaryImage: {
+    src: luna,
+    alt: 'Ilustración de la luna creciente dibujada con la pluma y los nodos de un programa de diseño',
+  },
   brand: { primary: '#2B5090', secondary: '#E5DE73' },
 
   // ── Resumen ──

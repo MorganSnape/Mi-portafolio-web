@@ -6,7 +6,8 @@ import PhotoNote from './PhotoNote.astro'
 import SubtitleBlog from './SubtitleBlog.astro'
 import SubtitleSection from './SubtitleSection.astro'
 import TwoColumns from './TwoColumns.astro'
- 
+import VideoFrame from './VideoFrame.astro'
+
 /**
  * Se pasa una sola vez a <Content components={componentesMdx} />.
  * Ningún archivo .mdx necesita importar estos componentes.
@@ -26,4 +27,5 @@ export const componentesMdx = {
   PhotoFrame,
   PhotoNote,
   TwoColumns,
+  VideoFrame, //            <VideoFrame youtube="..." title="..." />
 }

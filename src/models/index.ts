@@ -43,6 +43,17 @@ export interface Proyect {
   links?: ProyectLink[];
   /** Colores de la marca del proyecto. Se usan con moderación como acento. */
   brand?: ProyectBrand;
+  /**
+   * Calcomanías de la portada: imágenes con fondo transparente (PNG o WebP) de la
+   * propia marca, como stickers, íconos o el isotipo. Se pegan alrededor de la
+   * portada. Máximo 2. Si no hay, las etiquetas (tags) hacen de calcomanías.
+   */
+  stickers?: CaseImage[];
+  /**
+   * Imagen del resumen: logo, ilustración o pieza clave de la marca.
+   * Ocupa el bloque de color junto a la sinopsis. Si no hay, el desafío toma su lugar.
+   */
+  summaryImage?: CaseImage;
   /** Tu rol en una frase corta, por ejemplo "Diseñadora de marca y empaque". */
   role?: string;
   /** Detalle del rol: qué hiciste. */

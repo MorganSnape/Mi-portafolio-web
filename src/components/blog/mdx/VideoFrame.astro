@@ -1,0 +1,131 @@
+---
+/**
+ * VideoFrame — video con marco neo-brutalista para los apuntes.
+ * Sirve para un video de YouTube o para un archivo propio de la carpeta /public.
+ * Está registrado en componentesMdx: no hace falta importarlo en el .mdx.
+ *
+ * YouTube (acepta el enlace completo o solo el id):
+ *   <VideoFrame
+ *     youtube="https://www.youtube.com/watch?v=YyOHdz8abrs"
+ *     title="Conceptos básicos de diseño editorial"
+ *     caption="Video del curso, para contextualizar el tema."
+ *   />
+ *
+ * Archivo propio (guardado en public/videos/):
+ *   <VideoFrame src="/videos/control-calidad-paso-a-paso.mp4" poster="/videos/control-calidad-paso-a-paso.jpg" />
+ *
+ * Props:
+ *   youtube  (opcional)  enlace o id de YouTube. Se carga con youtube-nocookie.com.
+ *   src      (opcional)  ruta de un video en /public. Se usa si no hay `youtube`.
+ *   title    (recomendado) describe el video (lo leen los lectores de pantalla).
+ *   caption  (opcional)  pie de video.
+ *   poster   (opcional)  imagen previa, solo para `src`.
+ *   start    (opcional)  segundo en que empieza, solo para `youtube`.
+ *   class    (opcional)  clases extra.
+ *
+ * Con YouTube, la miniatura se muestra primero y el reproductor solo se carga
+ * al pulsar play: así la página pesa menos y no se envían datos a YouTube hasta que
+ * la persona decide ver el video.
+ */
+interface Props {
+  youtube?: string
+  src?: string
+  title?: string
+  caption?: string
+  poster?: string
+  start?: number
+  class?: string
+}
+
+const { youtube, src, title = 'Video', caption, poster, start, class: className = '' } = Astro.props
+
+// Saca el id de un enlace watch?v=, youtu.be/, embed/ o shorts/. Si ya es un id, lo deja igual.
+const sacarId = (valor?: string) => {
+  if (!valor) return undefined
+  const coincidencia = valor.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/)
+  if (coincidencia) return coincidencia[1]
+  return /^[\w-]{11}$/.test(valor.trim()) ? valor.trim() : undefined
+}
+
+const id = sacarId(youtube)
+if (youtube && !id) {
+  throw new Error(`VideoFrame: no pude sacar el id de YouTube de "${youtube}".`)
+}
+if (!id && !src) {
+  throw new Error('VideoFrame: falta `youtube` o `src`.')
+}
+
+const params = new URLSearchParams({ autoplay: '1', rel: '0', modestbranding: '1' })
+if (start) params.set('start', String(start))
+const embed = id ? `https://www.youtube-nocookie.com/embed/${id}?${params}` : undefined
+const miniatura = id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : undefined
+const enlace = id ? `https://www.youtube.com/watch?v=${id}` : undefined
+---
+
+<figure class:list={['not-prose my-10', className]}>
+  <div
+    class="overflow-hidden rounded-ventana border-2 border-black bg-black shadow-dura md:shadow-dura-lg"
+    data-video-frame
+  >
+    {
+      id ? (
+        <div class="relative aspect-video w-full">
+          <button
+            type="button"
+            data-embed={embed}
+            data-title={title}
+            class="group absolute inset-0 block size-full cursor-pointer focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-secondary"
+            aria-label={`Reproducir: ${title}`}
+          >
+            <img src={miniatura} alt="" loading="lazy" class="size-full object-cover" />
+            <span
+              class="absolute left-1/2 top-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-black bg-secondary shadow-dura-sm transition-colors duration-150 group-hover:bg-pink md:size-20"
+              aria-hidden="true"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" class="ml-1 size-7 text-black md:size-9">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </span>
+          </button>
+          <noscript>
+            <a href={enlace} class="absolute inset-0 flex items-center justify-center bg-black text-white underline">
+              Ver el video en YouTube
+            </a>
+          </noscript>
+        </div>
+      ) : (
+        <video
+          class="block aspect-video w-full"
+          controls
+          playsinline
+          preload="metadata"
+          poster={poster}
+          aria-label={title}
+        >
+          <source src={src} type="video/mp4" />
+          Tu navegador no puede reproducir este video.
+        </video>
+      )
+    }
+  </div>
+  {caption && <figcaption class="mt-4 text-center text-sm text-black-secondary">{caption}</figcaption>}
+</figure>
+
+<script>
+  // Cambia la miniatura por el reproductor cuando se pulsa play.
+  // Delegación de eventos: funciona con varios videos en la misma página.
+  document.addEventListener('click', event => {
+    const boton = (event.target as HTMLElement).closest<HTMLButtonElement>('button[data-embed]')
+    if (!boton) return
+
+    const iframe = document.createElement('iframe')
+    iframe.src = boton.dataset.embed ?? ''
+    iframe.title = boton.dataset.title ?? 'Video'
+    iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen'
+    iframe.allowFullscreen = true
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin'
+    iframe.className = 'absolute inset-0 size-full'
+    boton.replaceWith(iframe)
+    iframe.focus()
+  })
+</script>
