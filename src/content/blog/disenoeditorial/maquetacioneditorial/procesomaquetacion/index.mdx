@@ -1,0 +1,98 @@
+---
+title: "Proceso de maquetación: del machote al armado"
+sectionBlogId: "diseñoEditorial"
+pubDate: 2026-11-05T10:40:00
+description: "Las preguntas para empezar, cómo clasificar una publicación, cómo preparar los textos, los siete pasos para maquetar un libro y qué son el machote y el armado."
+curso: "Maquetación de productos editoriales"
+orden: 5
+---
+
+import InfoCard from '@/components/blog/mdx/InfoCard.astro'
+import LinkButton from '@/components/blog/mdx/LinkButton.astro'
+import preguntas from './img/preguntas-iniciales.webp'
+import iconoFrecuencia from './img/icono-frecuencia.webp?url'
+import iconoPublico from './img/icono-publico.webp?url'
+import iconoTemas from './img/icono-temas.webp?url'
+import paginas from './img/paginas-indesign.webp'
+import machote from './img/machote.webp'
+
+## Antes de empezar: dos preguntas
+
+<PhotoNote src={preguntas} alt="Ilustración de una mujer con dos globos de diálogo: ¿Qué es lo que vamos a organizar? y ¿Cómo lo vamos a organizar?">
+
+**¿Qué vamos a organizar?** y **¿cómo lo vamos a organizar?** No es lo mismo maquetar una revista religiosa que una de moda, música o política.
+
+</PhotoNote>
+
+Con las respuestas y el material reunido (textos e imágenes), se define el **público objetivo**. De él dependen los colores, las tipografías, el tamaño del papel y hasta la retícula.
+
+## Cómo clasificar la publicación
+
+<div class="not-prose my-10 grid gap-8 pl-4 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard number={1} variant="purple" image={iconoFrecuencia} imageAlt="Ícono de un calendario" title="Frecuencia" description="Una sola edición, diaria, semanal, quincenal, mensual, trimestral, semestral o anual (como un anuario)." />
+  <InfoCard number={2} variant="secondary" image={iconoPublico} imageAlt="Ícono de un grupo de personas en una diana" title="Público" description="Hombres, mujeres, niños, niñas, personas adultas, pensionados u otras comunidades." />
+  <InfoCard number={3} variant="pink" image={iconoTemas} imageAlt="Ícono de una persona rodeada de temas" title="Temas" description="Profesionales, culturales, educativos, deportivos o políticos." />
+</div>
+
+---
+
+## Preparar los textos
+
+Los textos suelen llegar en Word. Antes de maquetar tienen que estar:
+
+- **Revisados y corregidos:** gramática y ortografía. Cualquier cambio después de maquetar, por pequeño que sea, mueve todo el flujo del texto.
+- **Estructurados:** con la jerarquía clara, para poder aplicar los estilos.
+- **Corregidos tipográficamente:** sin dobles espacios, dobles saltos de párrafo, guiones mal usados en los diálogos ni comillas incorrectas.
+
+***La regla principal es la coherencia:*** elegir un estilo y aplicarlo igual en todo el texto. Mientras se maqueta, la atención va a la **forma**, no al contenido.
+
+---
+
+## Siete pasos para maquetar un libro
+
+| Paso | Qué hacer |
+| --- | --- |
+| **1. Formato** | Según el número de páginas y la encuadernación. Piensa como lector. |
+| **2. Márgenes** | Usa unos habituales, ni muy estrechos ni muy amplios, y confirma que la imprenta trabaja con ellos. |
+| **3. Croquis de las partes** | Abre un libro que tengas a mano y mira el orden de sus partes. Es el paso que más atención pide. |
+| **4. Portadilla** | Es la primera página con texto, pero antes van dos páginas en blanco. |
+| **5. Créditos** | Después de la portadilla: créditos, dedicatoria, índice y, por último, el contenido. |
+| **6. Página impar** | El documento empieza en página **impar** (derecha) y termina en **par**. |
+| **7. Tipografía** | Cómoda para leer y acorde al libro. Las más usadas en papel: Adobe Garamond, Century Gothic y Baskerville. |
+
+<PhotoNote src={paginas} alt="Panel de páginas de InDesign con pliegos dobles numerados">
+
+En el panel **Páginas** de InDesign se ve cómo quedan enfrentadas las páginas en pliegos dobles.
+
+</PhotoNote>
+
+---
+
+## Del machote al armado
+
+<TwoColumns>
+
+<PhotoNote src={machote} alt="Hoja de papel doblada por la mitad simulando una publicación">
+
+Un machote se puede hacer con una **hoja doblada por la mitad**, que simula la doble página.
+
+</PhotoNote>
+
+<div>
+
+El **machote** es el prototipo de la publicación que se le muestra al cliente. Marca dobleces, cortes, márgenes, espacios para textos e imágenes y paginación.
+
+Al impresor le sirve para calcular el papel, los pliegos y los costos.
+
+</div>
+
+</TwoColumns>
+
+- **Ojo:** una **página** es cada cara de un folio. Un folio tiene **2 páginas**.
+- El **armado** (manual o digital) ordena todas las páginas y las enfrenta: **pares a la izquierda, impares a la derecha**.
+
+<LinkButton
+  href="https://zajuna.sena.edu.co/Repositorio/Titulada/institution/SENA/Arte/522309/Contenido/OVA/CF11/index.html#/curso/tema4"
+  title="Tema 4 del curso"
+  description="Maquetación de productos editoriales, SENA. Fuente de estos apuntes y de sus imágenes."
+/>

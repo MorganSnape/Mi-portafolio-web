@@ -1,0 +1,92 @@
+---
+title: "Jerarquía, retículas y módulos"
+sectionBlogId: "diseñoEditorial"
+pubDate: 2026-11-05T10:20:00
+description: "Cómo se da importancia a cada elemento (color, alineación, posición, repetición), las partes de una retícula, sus cuatro tipos y qué es un módulo."
+curso: "Maquetación de productos editoriales"
+orden: 3
+---
+
+import InfoCard from '@/components/blog/mdx/InfoCard.astro'
+import LinkButton from '@/components/blog/mdx/LinkButton.astro'
+import ImagenAmpliable from '@/components/blog/mdx/ImagenAmpliable.astro'
+import ejemplo from './img/jerarquia-ejemplo.webp'
+import iconoColor from './img/icono-color.webp?url'
+import iconoAlineacion from './img/icono-alineacion.webp?url'
+import iconoPosicion from './img/icono-posicion.webp?url'
+import iconoRepeticion from './img/icono-repeticion.webp?url'
+import partes from './img/reticula-partes.webp'
+import manuscrito from './img/reticula-manuscrito.webp'
+import columnas from './img/reticula-columnas.webp'
+import modular from './img/reticula-modular.webp'
+import jerarquica from './img/reticula-jerarquica.webp'
+import modulos from './img/reticulas-modulos.webp'
+
+## Jerarquía
+
+Es el **orden de importancia** de cada elemento: qué se ve primero, qué después. Se logra con tamaño, contraste, color, proximidad, orientación, alineación y repetición.
+
+<PhotoNote src={ejemplo} alt="Revista abierta con fotos grandes de interiores y textos pequeños">
+
+En esta revista la mirada va primero a las **fotos grandes** y después a los títulos y al texto.
+
+</PhotoNote>
+
+<div class="not-prose my-10 grid gap-8 pl-4 sm:grid-cols-2">
+  <InfoCard number={1} variant="purple" image={iconoColor} imageAlt="Letras Aa en dos colores" title="Color" description="Títulos en un color fuerte y subtítulos en un tono más suave. Los bloques de color también ordenan." />
+  <InfoCard number={2} variant="secondary" image={iconoAlineacion} imageAlt="Dos letras a alineadas sobre líneas" title="Alineación" description="Alinear textos e imágenes marca un orden dentro del espacio." />
+  <InfoCard number={3} variant="pink" image={iconoPosicion} imageAlt="Ícono de una página con imagen y texto" title="Posición" description="Lo que está al centro suele ser lo más importante, como la foto principal de un periódico." />
+  <InfoCard number={4} variant="green" image={iconoRepeticion} imageAlt="Ícono de una página con una letra a" title="Repetición" description="Repetir textos, formas o intensidades de color refuerza la jerarquía." />
+</div>
+
+---
+
+## Retículas
+
+Una **retícula** es una red de líneas imaginarias, verticales y horizontales, sobre la que se acomodan textos e imágenes. Da armonía, orden y coherencia a todo el documento.
+
+### Sus partes
+
+<ImagenAmpliable src={partes} alt="Página con retícula y sus partes señaladas: márgenes, columna, módulo, líneas de flujo, zonas especiales y medianil" />
+
+| Parte | Qué es |
+| --- | --- |
+| **Márgenes** | El blanco entre el borde y el contenido. |
+| **Columnas** | Las divisiones verticales del texto. |
+| **Módulos** | Las celdas que forman columnas y filas al cruzarse. |
+| **Líneas de flujo** | Guías horizontales que marcan dónde arranca el contenido. |
+| **Zonas espaciales** | Varios módulos juntos para un elemento, por ejemplo, una foto. |
+| **Medianil** | El espacio entre columnas. |
+
+### Los cuatro tipos
+
+<div class="not-prose my-10 grid gap-8 sm:grid-cols-2">
+  <PhotoNote src={manuscrito} alt="Página con un solo bloque grande de texto">**Manuscrito:** un bloque grande y sencillo para texto largo y seguido, como en los libros. Pide márgenes amplios y buen interlineado.</PhotoNote>
+  <PhotoNote src={columnas} alt="Página con dos columnas">**De columnas:** muy flexible, para información variada. Las columnas se pueden unir para hacer bloques más anchos.</PhotoNote>
+  <PhotoNote src={modular} alt="Página dividida en una cuadrícula de módulos">**Modular:** columnas cortadas en filas que forman módulos. La más versátil: periódicos, formularios, proyectos complejos.</PhotoNote>
+  <PhotoNote src={jerarquica} alt="Página con bloques de distintos tamaños superpuestos">**Jerárquica:** sin un orden fijo. Se adapta a la información con libertad, pero sin perder claridad.</PhotoNote>
+</div>
+
+***Ojo con el ancho de columna:*** si es muy estrecha, se parten demasiadas palabras; si es muy ancha, cuesta encontrar el inicio de la siguiente línea.
+
+---
+
+## Módulos
+
+El **módulo** es una unidad de medida que se repite para dar proporción a la composición. Repetirlo une el diseño y le da armonía.
+
+- **Módulos grandes:** el diseño se ve simple y audaz.
+- **Módulos pequeños:** se ven como una textura uniforme.
+- **Supermódulos:** varios módulos agrupados que forman una figura mayor, que también se repite.
+
+<PhotoNote src={modulos} alt="Cuatro páginas con los distintos tipos de retícula">
+
+Cada retícula es, en el fondo, un **módulo que se repite** para ordenar la página.
+
+</PhotoNote>
+
+<LinkButton
+  href="https://zajuna.sena.edu.co/Repositorio/Titulada/institution/SENA/Arte/522309/Contenido/OVA/CF11/index.html#/curso/tema3"
+  title="Tema 3 del curso"
+  description="Maquetación de productos editoriales, SENA. Fuente de estos apuntes y de sus imágenes."
+/>

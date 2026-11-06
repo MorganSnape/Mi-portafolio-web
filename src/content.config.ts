@@ -13,7 +13,7 @@ const blog = defineCollection({
   }),
   schema: z.object({
     title: z.string(),
-    sectionBlogId: z.enum(['javascript', 'diseñoGrafico']).default('javascript'),
+    sectionBlogId: z.enum(['javascript', 'diseñoGrafico', 'diseñoEditorial']).default('javascript'),
     headerTitle: z.string().optional(),
     description: z.string().optional(),
     curso: z.string().optional(),

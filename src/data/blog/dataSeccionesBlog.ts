@@ -25,6 +25,14 @@ export const dataSeccionesBlog: SectionBlogType[] = [
     image: "/images/blog/portada-D-Grafico.jpeg",
   },
   {
+    // Carpeta src/content/blog/disenoeditorial/ (sin ñ: el slug y la URL deben coincidir)
+    slug: "disenoeditorial",
+    categoria: "diseno",
+    title: "Apuntes sobre Diseño editorial",
+    description: "El diseño editorial es la rama del diseño gráfico que se encarga de maquetar publicaciones: libros, revistas, periódicos, catálogos, plegables, cartillas e infografías. Organiza el texto, las imágenes y la retícula de cada página para que el contenido se lea con claridad y llegue al público al que va dirigido.",
+    image: "/images/blog/portada-diseno-editorial.webp",
+  },
+  {
     slug: "react",
     categoria: "programacion",
     title: "Apuntes sobre React",

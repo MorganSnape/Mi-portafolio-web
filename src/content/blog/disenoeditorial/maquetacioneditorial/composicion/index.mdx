@@ -1,0 +1,126 @@
+---
+title: "Composición: estructura, texto e imagen"
+sectionBlogId: "diseñoEditorial"
+pubDate: 2026-11-05T10:10:00
+description: "Tensión, equilibrio, simetría y ritmo; los elementos de estructura de una página (retícula, columnas, márgenes, sangrado); cómo elegir la tipografía y qué tipos de imagen existen."
+curso: "Maquetación de productos editoriales"
+orden: 2
+---
+
+import InfoCard from '@/components/blog/mdx/InfoCard.astro'
+import LinkButton from '@/components/blog/mdx/LinkButton.astro'
+import ImagenAmpliable from '@/components/blog/mdx/ImagenAmpliable.astro'
+import tension from './img/tension.webp'
+import tensionEquilibrio from './img/tension-equilibrio.webp'
+import simetria from './img/simetria.webp'
+import asimetria from './img/asimetria-ritmo.webp'
+import estructura from './img/elementos-estructura.webp'
+import paginas from './img/estructura-paginas.webp'
+import reticula from './img/estructura-reticula.webp'
+import columnas from './img/estructura-columnas.webp'
+import margenes from './img/estructura-margenes.webp'
+import interlineado from './img/estructura-interlineado.webp'
+import espaciado from './img/estructura-espaciado.webp'
+import sangrado from './img/estructura-sangrado.webp'
+import familia from './img/familia-tipografica.webp'
+import serif from './img/tipo-serif.webp?url'
+import sansSerif from './img/tipo-sans-serif.webp?url'
+import cursiva from './img/tipo-cursiva.webp?url'
+import decorativa from './img/tipo-decorativa.webp?url'
+import iconoFuente from './img/icono-fuente.webp?url'
+import iconoTipo from './img/icono-tipo.webp?url'
+import iconoTipografia from './img/icono-tipografia.webp?url'
+import iconoFamilia from './img/icono-familia.webp?url'
+import vectorial from './img/imagen-vectorial.webp'
+import mapaDeBits from './img/imagen-mapa-de-bits.webp'
+
+**Componer** es repartir los elementos en el espacio de forma equilibrada. Si el peso visual se ve desordenado, el lector intenta ordenarlo en su cabeza y termina perdiendo el interés.
+
+## Fuerzas de la composición
+
+<div class="not-prose my-10 grid gap-8 sm:grid-cols-2">
+  <PhotoNote src={tension} alt="Ilustración de un ojo con un gráfico sobre una hoja">**Tensión:** la fuerza que lleva la mirada a un punto. El punto tiene tensión; la línea, tensión y dirección.</PhotoNote>
+  <PhotoNote src={tensionEquilibrio} alt="Dos afiches oscuros con formas geométricas de colores">**Tensión y equilibrio:** a veces se carga a propósito una zona para romper el equilibrio y llamar la atención.</PhotoNote>
+  <PhotoNote src={simetria} alt="Dos portadas idénticas con el mismo patrón geométrico">**Simetría:** los dos lados se corresponden en forma, color y tamaño. En el **equilibrio simétrico** ambos pesan lo mismo.</PhotoNote>
+  <PhotoNote src={asimetria} alt="Portadas con formas naranjas de distintos tamaños">**Equilibrio asimétrico y ritmo:** los lados no son iguales, pero se compensan. El ritmo repite elementos con intervalos y da sensación de movimiento.</PhotoNote>
+</div>
+
+---
+
+## Elementos de estructura
+
+Toda publicación se divide en **bloques** con ayuda de una retícula. El texto suele ser el elemento que más espacio ocupa.
+
+<ImagenAmpliable src={estructura} alt="Composición con una página de texto e imagen y anotaciones de imagen, título y párrafo" />
+
+<div class="not-prose my-10 grid gap-8 sm:grid-cols-2">
+  <PhotoNote src={paginas} alt="Varias hojas en blanco">**Papel o páginas:** el soporte donde se organiza todo.</PhotoNote>
+  <PhotoNote src={reticula} alt="Tres páginas con distintas cuadrículas">**Retícula:** la estructura invisible sobre la que se reparten los elementos.</PhotoNote>
+  <PhotoNote src={columnas} alt="Dos páginas divididas en filas y en columnas">**Columnas:** el espacio del texto (y a veces de las imágenes). Las verticales se leen más fácil.</PhotoNote>
+  <PhotoNote src={margenes} alt="Dos páginas con sus márgenes marcados">**Márgenes:** el blanco entre el borde y el contenido: cabeza, pie, lomo y corte. Ahí suelen ir la numeración y algunas citas.</PhotoNote>
+  <PhotoNote src={interlineado} alt="Ícono de interlineado junto a un bloque de texto">**Interlineado:** el espacio entre líneas. Depende sobre todo del tamaño de la letra.</PhotoNote>
+  <PhotoNote src={espaciado} alt="Hoja con dos bloques de texto separados">**Espaciado:** la distancia entre elementos para que se lean y se vean mejor.</PhotoNote>
+  <PhotoNote src={sangrado} alt="Página con marcas de corte por fuera del borde">**Sangrado o rebase:** un extra de <mark>3 mm</mark> por fuera del borde para que, al cortar en guillotina, no queden bordes blancos.</PhotoNote>
+</div>
+
+---
+
+## Elementos de texto
+
+La tipografía puede sumar o restar importancia a un contenido. Para elegirla hay que estudiar antes al cliente, el mercado y las tendencias.
+
+- Una buena elección da **legibilidad**: el mensaje se lee sin esfuerzo.
+- Las letras **gruesas** forman bloques oscuros y las **delgadas**, espacios claros.
+- El peso (light, normal, bold, black) también cambia el mensaje. Algunas marcas diseñan su propia fuente para ser exclusivas.
+
+<div class="not-prose my-10 grid gap-8 pl-4 sm:grid-cols-2">
+  <InfoCard number={1} variant="purple" image={serif} imageAlt="Letra A con remates" title="Serif" description="Con remates. Seria, clásica e institucional. Las serifas guían la lectura." />
+  <InfoCard number={2} variant="secondary" image={sansSerif} imageAlt="Letra A sin remates" title="Sans serif" description="Sin remates. Moderna, neutral, minimalista. Ideal para diseños sencillos con poco texto." />
+  <InfoCard number={3} variant="pink" image={cursiva} imageAlt="Letra a manuscrita" title="Cursiva o manuscrita" description="Imita la escritura a mano, con ligaduras. Para frases cortas o firmas." />
+  <InfoCard number={4} variant="green" image={decorativa} imageAlt="Letra A decorativa con textura" title="Decorativa" description="Estilo propio y ornamental. Para frases publicitarias, nunca para textos largos." />
+</div>
+
+### Fuente, tipo, tipografía y familia
+
+<div class="not-prose my-10 grid gap-8 pl-4 sm:grid-cols-2">
+  <InfoCard number="A" variant="cream" image={iconoFuente} imageAlt="Letras Aa" title="Fuente" description="El conjunto completo de caracteres con un mismo estilo. Ej.: Times New Roman." />
+  <InfoCard number="B" variant="cream" image={iconoTipo} imageAlt="Ícono de una pieza de imprenta" title="Tipo" description="La pieza de imprenta con una letra grabada; hoy, el diseño de una letra." />
+  <InfoCard number="C" variant="cream" image={iconoTipografia} imageAlt="Letra A con una flecha vertical" title="Tipografía" description="El arte de crear y componer tipos. Es el oficio, no la fuente." />
+  <InfoCard number="D" variant="cream" image={iconoFamilia} imageAlt="Tres letras A en distintos estilos" title="Familia" description="Las variantes de una fuente: negrita, itálica, condensada…" />
+</div>
+
+<PhotoNote src={familia} alt="La palabra Arial en regular, itálica, negrita y vertical">
+
+La **familia Arial**: cada variante es distinta, pero todas se reconocen como Arial.
+
+</PhotoNote>
+
+---
+
+## Elementos de imagen
+
+Las imágenes atrapan la atención y tienen que reforzar lo que dice el texto. Son más flexibles que el texto: pueden **ocupar varias columnas** o superponerse a la retícula.
+
+<TwoColumns>
+
+<PhotoNote src={vectorial} alt="Ilustración vectorial de una mujer sonriente">
+
+**Vectorial:** hecha con puntos y líneas. Se amplía sin perder calidad.
+
+</PhotoNote>
+
+<PhotoNote src={mapaDeBits} alt="Fotografía de una cámara grabando a una persona">
+
+**Mapa de bits:** hecha de píxeles, como las fotografías.
+
+</PhotoNote>
+
+</TwoColumns>
+
+***Los espacios en blanco también cuentan:*** dan orden, claridad y sensación de libertad. Sin ellos la página se vuelve un caos.
+
+<LinkButton
+  href="https://zajuna.sena.edu.co/Repositorio/Titulada/institution/SENA/Arte/522309/Contenido/OVA/CF11/index.html#/curso/tema3"
+  title="Tema 3 del curso"
+  description="Maquetación de productos editoriales, SENA. Fuente de estos apuntes y de sus imágenes."
+/>
