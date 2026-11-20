@@ -5,6 +5,7 @@ import type { CategoriaBlog, SectionBlogType } from "@/models";
 export const categoriasBlog: { id: CategoriaBlog; nombre: string }[] = [
   { id: "diseno", nombre: "Diseño" },
   { id: "programacion", nombre: "Programación" },
+  { id: "negocios", nombre: "Negocios" },
 ];
 
 // Cada slug = nombre de una carpeta dentro de src/content/blog/
@@ -45,5 +46,13 @@ export const dataSeccionesBlog: SectionBlogType[] = [
     title: "Apuntes sobre Product Design",
     description: "Product Design es un conjunto de procesos, metodologías y herramientas que ayudan a los productos y servicios de la industria a ser más efectivos, eficientes y satisfactorios. El diseño de productos es una parte fundamental de cualquier negocio, ya que ayuda a los clientes a entender mejor el producto y a tomar decisiones informadas.",
     image: "/src/content/blog/productDesign/portada-PD.webp",
+  },
+  {
+    // Carpeta src/content/blog/emprendimiento/
+    slug: "emprendimiento",
+    categoria: "negocios",
+    title: "Apuntes sobre Emprendimiento",
+    description: "Emprender es identificar una necesidad y convertirla en una oportunidad de negocio sostenible. Estos apuntes resumen lo esencial para empezar: el perfil del emprendedor, cómo analizar el entorno y las oportunidades, cómo funciona una empresa por dentro y las bases financieras para saber si una idea es viable.",
+    image: "/images/blog/portada-emprendimiento.svg",
   }
 ];

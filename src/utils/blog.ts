@@ -85,12 +85,19 @@ export function agruparPorCurso(posts: Post[]): GrupoCurso[] {
 }
 
 /**
- * Apunte que sigue a `post` dentro de su sección, en el mismo orden que las
+ * Apuntes vecinos de `post` dentro de su sección, en el mismo orden que las
  * pestañas de la página del tema: primero los del mismo curso y, al terminar,
- * el primero del curso siguiente. Devuelve undefined si es el último.
+ * el primero del curso siguiente (o el último del anterior).
+ * `anterior` o `siguiente` quedan undefined en los extremos.
  */
-export function siguientePost(posts: Post[], post: Post): Post | undefined {
+export function vecinosPost(posts: Post[], post: Post): { anterior?: Post; siguiente?: Post } {
   const enOrden = agruparPorCurso(postsDeSeccion(posts, seccionDe(post))).flatMap(grupo => grupo.posts)
   const indice = enOrden.findIndex(p => p.id === post.id)
-  return indice === -1 ? undefined : enOrden[indice + 1]
+  if (indice === -1) return {}
+  return { anterior: enOrden[indice - 1], siguiente: enOrden[indice + 1] }
+}
+
+/** Apunte que sigue a `post` (atajo de vecinosPost). */
+export function siguientePost(posts: Post[], post: Post): Post | undefined {
+  return vecinosPost(posts, post).siguiente
 }

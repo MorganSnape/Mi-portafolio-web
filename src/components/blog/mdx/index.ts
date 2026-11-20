@@ -1,8 +1,11 @@
 import BrowserCodeBlock from './BrowserCodeBlock.astro'
 import DataTable from './DataTable.astro'
+import Formula from './Formula.astro'
+import InfoCard from './InfoCard.astro'
 import PageDivider from './PageDivider.astro'
 import PhotoFrame from './PhotoFrame.astro'
 import PhotoNote from './PhotoNote.astro'
+import Repaso from './Repaso.astro'
 import SubtitleBlog from './SubtitleBlog.astro'
 import SubtitleSection from './SubtitleSection.astro'
 import TwoColumns from './TwoColumns.astro'
@@ -27,5 +30,8 @@ export const componentesMdx = {
   PhotoFrame,
   PhotoNote,
   TwoColumns,
+  InfoCard, //              <InfoCard number={1} title="…" description="…" />
+  Formula, //              <Formula titulo="…">CT = CF + CV</Formula>
+  Repaso, //               <Repaso>- idea clave</Repaso>
   VideoFrame, //            <VideoFrame youtube="..." title="..." />
 }

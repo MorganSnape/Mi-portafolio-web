@@ -11,9 +11,15 @@ interface Props {
   tono?: 'oscuro' | 'claro'
   /** Descarga el archivo en vez de abrirlo. Con texto, es el nombre del archivo descargado. */
   download?: boolean | string
+  /** Pone el ícono (slot) antes del texto, por ejemplo una flecha hacia atrás. */
+  iconoAntes?: boolean
+  /** Relación del enlace, por ejemplo "prev" o "next". */
+  rel?: string
+  /** Texto para lectores de pantalla cuando el texto visible no basta. */
+  ariaLabel?: string
 }
 
-const { text, typeIcon, href, id, tono = 'oscuro', download } = Astro.props
+const { text, typeIcon, href, id, tono = 'oscuro', download, iconoAntes = false, rel, ariaLabel } = Astro.props
 
 // Clases completas para que Tailwind las detecte
 const tonos = {
@@ -35,14 +41,23 @@ const tonos = {
     id={id}
     href={href}
     download={download}
+    rel={rel}
+    aria-label={ariaLabel}
     class:list={[
       'flex flex-row items-center gap-2 rounded-full border-2 px-5 py-2 font-semibold transition-colors duration-150 hover:bg-pink hover:text-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary',
       tonos[tono],
     ]}
   >
+    {
+      typeIcon && iconoAntes && (
+        <span class:list={["flex items-center", tono === "oscuro" && "stroke-white"]}>
+          <slot />
+        </span>
+      )
+    }
     {text}
     {
-      typeIcon && (
+      typeIcon && !iconoAntes && (
         <span class:list={["flex items-center", tono === "oscuro" && "stroke-white"]}>
           <slot />
         </span>

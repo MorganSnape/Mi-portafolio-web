@@ -278,7 +278,7 @@ export type NavLinksType = {
   href: string;
 };
 
-export type CategoriaBlog = 'diseno' | 'programacion';
+export type CategoriaBlog = 'diseno' | 'programacion' | 'negocios';
 
 export interface SectionBlogType {
   title: string;

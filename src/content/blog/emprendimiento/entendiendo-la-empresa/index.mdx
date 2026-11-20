@@ -1,0 +1,330 @@
+---
+title: "Entendiendo la empresa"
+pubDate: 2026-11-20
+description: "Plan de negocios, características y estructura de una empresa, elementos estratégicos (misión, visión, filosofía, objetivos y estrategias) y plan de marketing con sus 4 P, segmentación, posicionamiento, marca y comunicación."
+curso: Emprendimiento SENA
+orden: 3
+---
+
+import Pestanas from '@/components/blog/ui/Pestanas.astro'
+import PanelPestana from '@/components/blog/ui/PanelPestana.astro'
+import ImagenAmpliable from '@/components/blog/mdx/ImagenAmpliable.astro'
+import organigramaFunciones from './organigrama-funciones.webp'
+import organigramaGeneral from './organigrama-general.webp'
+import sintesis from './sintesis.webp'
+
+Emprender con solidez exige entender la **planeación estratégica** del negocio: hacia dónde va, qué metas tiene y cómo se organiza para funcionar de forma sostenible. Este apunte recorre cuatro piezas que se conectan entre sí: el **plan de negocios**, la **empresa** y su estructura, los **elementos estratégicos** y el **marketing**.
+
+## Plan de negocios
+
+Es un documento **estructurado, estratégico y dinámico** que define, analiza y proyecta una idea empresarial según las condiciones reales del entorno. Sirve de guía para decidir, usar bien los recursos y evaluar la **viabilidad** a corto, mediano y largo plazo. También comunica la propuesta a aliados, inversionistas y entidades de financiamiento.
+
+Incluye: descripción del negocio, análisis del mercado, estructura organizacional, propuesta de valor, plan de marketing, plan operativo, proyecciones financieras y estrategias de crecimiento. Integra seis enfoques:
+
+<div class="not-prose my-10 grid gap-8 pl-4 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard number={1} title="Organizacional" description="Estructura interna, roles, misión y visión." />
+  <InfoCard number={2} title="Financiero" description="Costos, ingresos, rentabilidad y sostenibilidad económica." variant="pink" />
+  <InfoCard number={3} title="Mercadeo" description="Mercado, segmentación de clientes, estrategia comercial y posicionamiento." variant="green" />
+  <InfoCard number={4} title="Talento humano" description="Planificación, selección, formación y bienestar del personal." variant="purple" />
+  <InfoCard number={5} title="Operativo" description="Procesos internos, logística, recursos tecnológicos y tiempos de ejecución." variant="cream" />
+  <InfoCard number={6} title="Producción" description="Proceso productivo, insumos, estándares de calidad y capacidad instalada." />
+</div>
+
+Inversionistas, aceleradoras, incubadoras y entidades financieras suelen **exigirlo** para evaluar con datos la viabilidad, el riesgo y el retorno de una inversión.
+
+<TwoColumns>
+<div>
+### Ventajas
+
+- Permite **anticipar y reducir riesgos** antes de lanzar el producto.
+- Vuelve los objetivos **medibles** y alineados con la visión.
+- Ayuda a hallar el **punto de equilibrio**.
+- Articula a los **stakeholders** en la planificación.
+- Mejora la presentación ante inversionistas y aliados.
+- Permite estudiar cliente, proveedores y canales sin salir al mercado a ciegas.
+- Da **proyecciones financieras** más fundamentadas y cronogramas realistas.
+- Es un **documento vivo**: se revisa y actualiza. También sirve para valorar la empresa en negociaciones, ventas o fusiones.
+</div>
+<div>
+### Desventajas
+
+- **No elimina el riesgo**: no se pueden prever todos los factores externos.
+- Depende de datos del momento: si el entorno cambia, se **desactualiza**.
+- Un estudio **superficial** deja vacíos en mercado, costos o proyecciones.
+- Puede **tomar mucho tiempo** y retrasar el inicio.
+- Puede **limitar la flexibilidad** frente a nuevas oportunidades.
+- Con consultores externos puede ser **costoso**.
+- Si no se usa, se vuelve un ejercicio formal sin impacto en las decisiones.
+</div>
+</TwoColumns>
+
+La conclusión del material: sus límites no son motivo para descartarlo, sino para usarlo con **mirada crítica y actualización constante**.
+
+## La empresa: concepto, características y estructura
+
+Según Rosillo, Cruz y Villarreal (2002), una empresa es una **unidad económica de producción, autónoma y distinta de sus propietarios**, cuya finalidad es generar **valor agregado**: transforma recursos en bienes y servicios de mayor valor que los insumos. Hoy ese concepto es más amplio: además de rentabilidad, la empresa se adapta al entorno global, la tecnología y las demandas sociales, ambientales y éticas, y gana peso la **responsabilidad social empresarial**, la **transformación digital**, la **gobernanza corporativa** y la **economía circular**. Su éxito se mide también por el impacto positivo que genera, y debe crear **valor compartido** para accionistas, socios, empleados, clientes, proveedores, comunidades y entes reguladores.
+
+### Características de la empresa moderna
+
+| Característica | Porque… |
+| --- | --- |
+| **Sistémica** | Resulta de la interacción de todas sus áreas: ventas, producción, administración, recursos humanos, logística. |
+| **Dinámica** | Está en constante movimiento y se adapta a nuevas demandas. |
+| **Flexible** | Se ajusta rápido a cambios internos y externos. |
+| **Creativa e innovadora** | Desarrolla ideas y soluciones nuevas para competir. |
+| **Transparente** | Opera con claridad, honestidad y ética, lo que genera confianza. |
+| **Sostenible** | Busca perdurar integrando prácticas responsables (económicas, sociales, ambientales). |
+| **Íntegra o ética** | Sus decisiones se rigen por principios éticos. |
+
+**Dirigir una empresa** implica: fijar y programar objetivos · motivar y alinear esfuerzos · coordinar y controlar actividades · desarrollar y activar talentos · construir y cultivar relaciones. Y para definir el negocio a largo plazo: definir con precisión el negocio y su visión de futuro, fijar objetivos y metas claros, y formular estrategias y planes de acción. La visión y los objetivos deben ser **realistas, alcanzables y flexibles**.
+
+### Tipología de la organización
+
+La estructura que se elija depende del tamaño, la actividad, el número de empleados, la especialización, la tecnología, la cultura y los objetivos. Una buena estructura distribuye funciones, agiliza la comunicación y aclara quién decide.
+
+<Pestanas
+  color="amarillo"
+  etiqueta="Tipos de estructura organizacional"
+  pestanas={[
+    { id: 'estructura-lineal', texto: 'Lineal' },
+    { id: 'estructura-funcional', texto: 'Funcional' },
+    { id: 'estructura-comites', texto: 'Por comités' },
+    { id: 'estructura-matricial', texto: 'Matricial' },
+  ]}
+>
+<PanelPestana id="estructura-lineal">
+
+La autoridad y las decisiones se concentran en **una sola persona** o en una cadena jerárquica muy definida. Es simple, de mando directo, con comunicación vertical y control centralizado. Común en pequeñas empresas y emprendimientos.
+
+</PanelPestana>
+<PanelPestana id="estructura-funcional">
+
+La empresa se divide por **funciones o especialidades** (contabilidad, tesorería, operaciones, sistemas, mercadeo…). **A favor:** especialización. **En contra:** puede haber dificultades de coordinación entre departamentos.
+
+</PanelPestana>
+<PanelPestana id="estructura-comites">
+
+Cuerpos colegiados o grupos de trabajo **deciden en conjunto** sobre temas específicos. **A favor:** participación colectiva, diversidad de opiniones, gestión compartida. **En contra:** puede ralentizar los procesos si no se gestiona bien.
+
+</PanelPestana>
+<PanelPestana id="estructura-matricial">
+
+Combina la estructura funcional con la orientación **por proyectos**: cada colaborador responde a un gerente funcional y a un gerente de proyecto. Común en tecnología, construcción y consultoría. **A favor:** flexibilidad y uso eficiente de recursos. **En contra:** puede generar conflictos de autoridad si los roles no están claros.
+
+</PanelPestana>
+</Pestanas>
+
+### Áreas funcionales
+
+Son las divisiones clave de la empresa: **dirección, producción, finanzas, marketing, recursos humanos**, entre otras. Cada una se especializa, pero dependen unas de otras: producción planifica con las proyecciones de ventas de marketing; finanzas necesita datos de todas las áreas para el presupuesto; recursos humanos recluta y capacita para cada departamento. Por eso se necesita **comunicación constante** y una cultura colaborativa.
+
+### Estructura organizacional
+
+Una vez definidos los objetivos, se organizan los recursos físicos, tecnológicos y humanos y se coordinan las actividades de cada área. La estructura define la **disposición de las funciones**, las **jerarquías**, los **niveles de autoridad y responsabilidad** y la **asignación de tareas**. Se desarrolla en dos etapas:
+
+<TwoColumns>
+<div>
+**1. División del trabajo**
+
+Segmentar y delimitar actividades para lograr especialización y menos esfuerzo innecesario:
+
+- **Jerarquización:** ordenar funciones por niveles de autoridad, solo los necesarios y bien definidos.
+- **Departamentalización:** agrupar tareas similares en departamentos.
+</div>
+<div>
+**2. Coordinación**
+
+Integrar las funciones de cada área para que trabajen en sinergia, sin duplicidades ni contradicciones. Como una orquesta: cada integrante tiene un rol distinto, pero todos deben estar sincronizados.
+</div>
+</TwoColumns>
+
+Formas de **departamentalizar**: por **funciones** (producción, ventas, finanzas) · por **productos** (líneas de producto o servicio) · por **ubicación geográfica** · por **tipo de clientes** · por **procesos o tecnología**.
+
+<TwoColumns>
+<PhotoNote src={organigramaGeneral} alt="Organigrama: asamblea de accionistas, gerencia general y gerencias de ventas, financiera, de recursos y administrativa">**Organigrama general:** de la asamblea de accionistas a las gerencias de cada área.</PhotoNote>
+<PhotoNote src={organigramaFunciones} alt="Organigrama del área administrativa y financiera: contabilidad, tesorería, cartera, facturación, almacenes, sistemas y logística">**Departamentalización por funciones** dentro del área administrativa y financiera.</PhotoNote>
+</TwoColumns>
+
+## Elementos estratégicos de la empresa
+
+El **pensamiento estratégico** proyecta la empresa hacia el futuro a partir de sus condiciones actuales, sus recursos y el análisis del entorno. Nace en el líder o emprendedor, pero responde a los intereses de toda la organización: visión de largo plazo, anticipar cambios, detectar oportunidades y adaptar el modelo de negocio. Toda organización parte de una **intención estratégica** (un sueño o propuesta de valor del fundador) que da identidad, confianza y diferenciación (Chiavenato y Sapiro, 2017). Para llevarla a la práctica se usan cinco herramientas:
+
+<div class="not-prose my-10 grid gap-8 pl-4 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard number={1} title="Misión" description="Razón de ser: por qué existe la empresa, a quién sirve, qué hace y cómo." />
+  <InfoCard number={2} title="Visión" description="Cómo se proyecta en el futuro; orienta decisiones a mediano y largo plazo." variant="pink" />
+  <InfoCard number={3} title="Filosofía" description="El «ser»: principios, valores, creencias y normas que guían el comportamiento." variant="green" />
+  <InfoCard number={4} title="Objetivos" description="Resultados deseados en un tiempo determinado, ligados a misión y visión." variant="purple" />
+  <InfoCard number={5} title="Estrategias" description="Planes de acción para lograr objetivos a mediano y largo plazo." variant="cream" />
+</div>
+
+### Misión
+
+Diferencia a la organización de otras del mismo sector: señala su propuesta de valor, su enfoque, sus prioridades y sus principios. Conecta la visión de futuro con las operaciones del presente. Una misión efectiva incluye:
+
+- **Clientes o público objetivo:** ¿a quién va dirigida la oferta?
+- **Producto o servicio:** ¿qué se ofrece y qué necesidad satisface?
+- **Mercado:** ¿en qué sectores o contextos opera?
+- **Tecnología:** ¿qué capacidades técnicas usa?
+- **Crecimiento proyectado:** ¿qué expansión o sostenibilidad espera?
+- **Filosofía institucional:** ¿qué valores la inspiran?
+- **Imagen pública:** ¿cómo quiere ser percibida?
+
+Para redactarla, primero responde: ¿a qué negocio se dedica?, ¿para qué existe?, ¿qué la hace diferente?, ¿qué productos ofrece?, ¿quiénes son sus clientes actuales y potenciales?, ¿en qué mercados opera y proyecta operar?, ¿qué compromiso asume con sus grupos de interés?, ¿cuáles son sus canales de distribución?
+
+### Visión
+
+Es una declaración estratégica **clara, realista, motivadora, positiva y retadora**, alineada con la filosofía, la misión y los valores. Funciona como una **brújula**. Preguntas para construirla: ¿qué imagen quiero proyectar en el futuro?, ¿cómo será el negocio en 3, 5 o más años?, ¿cuáles son las metas a corto, mediano y largo plazo?, ¿qué productos y actividades nuevas serán clave?, ¿qué innovaciones tecnológicas, operativas o sociales podrían aplicarse?, ¿cómo evolucionarán los canales de distribución y comunicación?
+
+### Filosofía organizacional
+
+Es el corazón ideológico de la empresa. Para Chiavenato y Sapiro (2017), los **principios** son convicciones innegociables (ética, integridad, responsabilidad) y los **valores** son cualidades que la organización promueve y protege (respeto a la diversidad, equidad, transparencia, excelencia, compromiso ambiental, innovación).
+
+Una filosofía sólida alinea a los colaboradores con un propósito común, orienta las decisiones, fortalece la cultura y la adaptación al cambio, aumenta la confianza de los grupos de interés, mejora la reputación, facilita integrar nuevos talentos y aporta sostenibilidad.
+
+### Objetivos organizacionales
+
+Guían las decisiones, permiten fijar **indicadores de desempeño**, alinean al equipo y ayudan a adaptarse al entorno. Se clasifican por plazo:
+
+| Tipo | Plazo | Enfoque |
+| --- | --- | --- |
+| **Estratégicos** | Largo | Crecimiento, sostenibilidad y posicionamiento. |
+| **Tácticos** | Mediano | Coordinación de áreas o departamentos. |
+| **Operacionales** | Corto | Tareas concretas y resultados inmediatos. |
+
+### Estrategias organizacionales
+
+Son planes de acción para asignar recursos, resolver problemas, aprovechar oportunidades y superar a la competencia. Las **estrategias genéricas** buscan ventajas competitivas sostenibles: más rentabilidad y productividad, mayor participación de mercado, mejor calidad, menos costos, protección de activos y riesgos, y más sostenibilidad e innovación.
+
+<TwoColumns>
+<div>
+**Para formularla**
+
+1. Analizar el entorno: oportunidades y amenazas.
+2. Estimar los riesgos de cada alternativa.
+3. Evaluar fortalezas y debilidades internas.
+4. Reconocer recursos actuales y potenciales.
+5. Analizar la capacidad del mercado, hoy y a futuro.
+6. Valorar la capacidad de gestionar riesgos.
+7. Definir valores, principios éticos y aspiraciones.
+</div>
+<div>
+**Para implementarla**
+
+- Movilizar recursos financieros, humanos y tecnológicos.
+- Definir procesos y una estructura alineada.
+- Fijar indicadores de desempeño.
+- Establecer sistemas de compensación y motivación.
+- Asegurar una cultura coherente con la estrategia.
+</div>
+</TwoColumns>
+
+**Tipos de estrategias**
+
+| Tipo | Para qué sirve | Variantes |
+| --- | --- | --- |
+| **Intensivas** | Mejorar la posición competitiva con los productos o servicios actuales, sin cambiar el modelo. | **Penetración de mercado** (publicidad, promociones, más equipo comercial) · **Desarrollo de mercado** (productos actuales en nuevos mercados, segmentos o canales) · **Desarrollo de producto** (mejorar o innovar lo actual) |
+| **Integrativas** | Controlar más actores de la cadena de valor: eficiencia, menos costos y más poder de negociación. | **Hacia adelante** (controlar distribución o venta directa) · **Hacia atrás** (controlar o adquirir proveedores) · **Horizontal** (adquirir, fusionarse o asociarse con empresas del mismo sector) |
+| **Diversificadas** | Reducir riesgos y entrar a nuevos sectores con productos diferentes. | **Concéntrica** (productos nuevos pero relacionados) · **Horizontal** (productos no relacionados para los mismos clientes) · **Conglomerado** (sectores totalmente distintos) |
+| **Defensivas** | Preservar operación, capital y participación en entornos de riesgo o crisis. | **Riesgo compartido** (alianzas) · **Contratos de cooperación** · **Encogimiento** (recortar costos y procesos sin valor) · **Desinversión** (vender una unidad) · **Liquidación** (cierre total) |
+
+## Elementos del marketing
+
+Las acciones de mercadeo acercan productos y servicios al consumidor, generan valor, posicionan la marca y cumplen metas de venta. Un **plan de mercadeo** estructurado decide con base en dos tipos de factores:
+
+<TwoColumns>
+<div>
+**Factores externos** (fuera del control de la empresa)
+
+- Condiciones políticas, legales y regulatorias.
+- Entorno económico y medioambiental.
+- Cambios sociales, culturales y demográficos.
+- Competencia y comportamiento del consumidor.
+- Avances tecnológicos y transformación digital.
+- Tendencias del mercado y evolución de los canales de venta.
+</div>
+<div>
+**Factores internos** (controlables): el **mix de marketing o 4 P**
+
+- **Producto:** diseño, calidad, innovación, empaque, ciclo de vida.
+- **Precio:** estrategia, descuentos, percepción de valor.
+- **Plaza (distribución):** canales, cobertura, logística, puntos de contacto.
+- **Promoción:** comunicación, publicidad, ventas personales, marketing digital.
+</div>
+</TwoColumns>
+
+### Plan de marketing
+
+Documento estratégico que regula las decisiones comerciales durante un período: qué se hará, cómo, cuándo, con qué recursos y para lograr qué objetivos. Sus elementos son **logro de objetivos** (lo planeado frente a lo ejecutado), **estrategia de marketing** (las 4 P), **calendario** y **estándares de desempeño** (cualitativos: percepción y posicionamiento; cuantitativos: ventas, participación de mercado, ROI). Tiene tres propósitos: definir el **segmento de mercado**, determinar las variables del **mix de marketing** y **alinear** los objetivos comerciales con los planes financieros y estratégicos.
+
+### Etapas del plan de marketing
+
+<div class="not-prose my-10 grid gap-8 pl-4 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard number={1} title="Análisis de la situación" description="Revisar resultados del periodo anterior frente a lo planeado." />
+  <InfoCard number={2} title="Planificar objetivos" description="Metas claras, medibles y alcanzables para el siguiente periodo." variant="pink" />
+  <InfoCard number={3} title="Formular estrategias" description="Elegir el mercado meta y las acciones para llegar a él." variant="green" />
+  <InfoCard number={4} title="Asignar presupuesto" description="Recursos económicos, humanos y logísticos para ejecutar." variant="purple" />
+  <InfoCard number={5} title="Control y seguimiento" description="Medir resultados y corregir cuando haga falta." variant="cream" />
+</div>
+
+**1. Análisis de la situación.** Se evalúa el segmento atendido según su **tamaño y crecimiento**, su **atractivo estructural** (competencia, barreras de entrada, poder de clientes y proveedores) y las **capacidades y recursos** de la empresa. Ojo: los segmentos más grandes o de mayor crecimiento no siempre convienen; un emprendimiento puede ganar en **nichos** con menos competidores agresivos, mejores márgenes y donde se valore más la innovación o la atención personalizada que el precio.
+
+**2. Objetivos para el siguiente periodo.** Se fijan en cuatro ejes: **producto** (cantidad, calidad, mejoras, empaque) · **cliente** (ampliar el segmento, mejorar la experiencia, fortalecer la marca) · **distribución** (canales, inventario, logística, cobertura) · **ventas** (metas concretas con proyecciones realistas).
+
+**3. Formulación de estrategias.** Según el enfoque de segmentación:
+
+| Estrategia | Qué hace | Ejemplo |
+| --- | --- | --- |
+| **No diferenciado (masivo)** | Una misma oferta para todo el mercado; útil con demanda amplia y homogénea. | Sal, azúcar |
+| **Diferenciado (segmentado)** | Varios segmentos, con una oferta adaptada a cada uno. | Ropa para hombres, mujeres y niños |
+| **Concentrado (de nicho)** | Un solo segmento; ideal con recursos limitados o para ser especialista. | Productos veganos para personas con alergias alimentarias |
+| **Micromarketing (individualizado)** | Personaliza la oferta para grupos muy específicos o cada cliente. | Marketing hiperlocal, productos personalizados online |
+
+Después se complementan con estrategias de **posicionamiento**, **comunicación**, **marketing** (el mix de las 4 P) y **desarrollo de marca**.
+
+#### Posicionamiento
+
+Define cómo quiere la empresa que el mercado perciba su producto frente a la competencia. Tiene tres etapas:
+
+1. **Identificar ventajas competitivas:** calidad, servicio postventa, tiempos de entrega, imagen de marca, logística, sostenibilidad. En productos genéricos, destacar certificaciones, procesos, almacenamiento o transporte.
+2. **Seleccionar las relevantes** (Kotler y Armstrong, 2012): que sean **importantes** para el consumidor, **distintivas** (la competencia no las ofrece igual), **superiores**, **comunicables**, **exclusivas** (difíciles de imitar) y **rentables**, además de asequibles para el cliente objetivo.
+3. **Definir una estrategia de precio** como herramienta de posicionamiento.
+
+<Formula titulo="Tipos de precio">
+Precio técnico = costo unitario + gasto unitario
+
+Precio óptimo = precio técnico + utilidad esperada
+</Formula>
+
+Además: **precio de aceptación** (el rango que el cliente está dispuesto a pagar) y **precio competitivo** (frente a la competencia directa).
+
+#### Desarrollo de marca
+
+La marca es uno de los activos más valiosos: una construcción emocional y simbólica, no solo nombre y logotipo. Debe resaltar atributos únicos, asociarse a beneficios funcionales y emocionales, ir alineada con la misión, la visión y los valores, y proyectar una identidad coherente que genere confianza y fidelidad. Una marca bien posicionada da reconocimiento, recordación, lealtad y valor agregado.
+
+#### Comunicación
+
+| Herramienta | Qué es |
+| --- | --- |
+| **Venta personal** | Contacto directo para identificar necesidades, presentar soluciones, manejar objeciones, cerrar y hacer seguimiento. |
+| **Marketing directo** | Medios masivos o personalizados que llegan directo al consumidor: correo, SMS, llamadas. |
+| **Marketing digital** | Redes sociales, buscadores, sitio web, email marketing y canales electrónicos de atención y pago. |
+| **Merchandising** | Técnicas en el punto de venta para estimular la compra: exhibiciones, degustaciones, demostraciones. Incluye lo **visual** (vitrinas, iluminación, muebles) y la **gestión** (rentabilidad del punto de venta). |
+| **Relaciones públicas** | Eventos, alianzas, notas de prensa y acciones de responsabilidad social para construir una imagen positiva. |
+
+**4. Presupuesto comercial.** Asigna los recursos económicos, humanos y logísticos para ejecutar las estrategias. Debe alinearse con los objetivos estratégicos y financieros, incluir proyecciones de inversión y retorno (ROI), evaluar costos por canal, campaña y segmento, y dejar márgenes de ajuste.
+
+**5. Control y seguimiento.** El plan no es estático: se revisa periódicamente con indicadores **cuantitativos** (ventas, participación de mercado, ROI) y **cualitativos** (posicionamiento, satisfacción, percepción de marca), usando reportes, matrices de evaluación y comparativos entre lo planeado y lo ejecutado.
+
+### Mapa del tema
+
+<ImagenAmpliable src={sintesis} alt="Síntesis del OVA Entendiendo la empresa: plan de negocios, concepto y evolución de la empresa, elementos estratégicos y marketing" />
+
+<Repaso>
+- El **plan de negocios** orienta decisiones, reduce riesgos y evalúa viabilidad; es un documento vivo con límites que se corrigen actualizándolo.
+- Una empresa moderna es **sistémica, dinámica, flexible, innovadora, transparente, sostenible y ética**. Su estructura puede ser lineal, funcional, por comités o matricial.
+- **Misión** (razón de ser) · **visión** (futuro deseado) · **filosofía** (principios y valores) · **objetivos** (estratégicos, tácticos, operacionales) · **estrategias** (intensivas, integrativas, diversificadas, defensivas).
+- **Marketing:** 4 P (producto, precio, plaza, promoción); etapas: análisis → objetivos → estrategias → presupuesto → control.
+- Cobertura de mercado: masivo, diferenciado, de nicho y micromarketing; luego posicionamiento, marca y comunicación.
+</Repaso>
+
+<small>Fuente: OVA «Entendiendo la empresa», SENA ([ver material original](https://zajuna.sena.edu.co/Repositorio/Titulada/institution/SENA/Transversales/OVA/Emprendimiento/CF3_Emprendimiento/index.html#/)). Resumen y reorganización con fines de estudio; el material original puede copiarse y exhibirse citando los créditos, sin uso comercial.</small>

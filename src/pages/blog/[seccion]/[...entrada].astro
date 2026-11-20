@@ -4,12 +4,12 @@ import Panel from '@/components/ui/Panel.astro'
 import Etiqueta from '@/components/ui/Etiqueta.astro'
 import Ondulada from '@/components/ui/Ondulada.astro'
 import Cierre from '@/components/ui/Cierre.astro'
-import SiguienteApunte from '@/components/blog/SiguienteApunte.astro'
+import NavegacionApuntes from '@/components/blog/NavegacionApuntes.astro'
 import { Icon } from 'astro-icon/components'
 import { getCollection, render } from 'astro:content'
 import { dataSeccionesBlog } from '@/data/blog/dataSeccionesBlog'
 import { componentesMdx } from '@/components/blog/mdx'
-import { entradaDe, formatearFecha, seccionDe, siguientePost } from '@/utils/blog'
+import { entradaDe, formatearFecha, seccionDe, vecinosPost } from '@/utils/blog'
 
 export async function getStaticPaths() {
   const slugsSecciones = dataSeccionesBlog.map(seccion => seccion.slug)
@@ -21,12 +21,12 @@ export async function getStaticPaths() {
     .filter(post => slugsSecciones.includes(seccionDe(post)) && entradaDe(post) !== '')
     .map(post => ({
       params: { seccion: seccionDe(post), entrada: entradaDe(post) },
-      // `siguiente`: el próximo apunte del tema, en el orden de sus pestañas
-      props: { post, siguiente: siguientePost(posts, post) },
+      // `anterior` y `siguiente`: los apuntes vecinos, en el orden de las pestañas del tema
+      props: { post, ...vecinosPost(posts, post) },
     }))
 }
 
-const { post, siguiente } = Astro.props
+const { post, anterior, siguiente } = Astro.props
 // `headings` trae todos los títulos del MDX con su id: alimenta el SideNav
 const { Content, headings } = await render(post)
 
@@ -74,7 +74,7 @@ const urlSeccion = `/blog/${seccionDe(post)}`
 
   <Content components={componentesMdx} />
 
-  {siguiente && <SiguienteApunte post={siguiente} cursoActual={post.data.curso} slot="siguiente" />}
+  <NavegacionApuntes anterior={anterior} siguiente={siguiente} slot="navegacion" />
 
   <Cierre
     titulo={'¡Sigamos\naprendiendo!'}

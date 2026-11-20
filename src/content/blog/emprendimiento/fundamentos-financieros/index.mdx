@@ -1,0 +1,265 @@
+---
+title: "Fundamentos financieros para emprender"
+pubDate: 2026-11-20
+description: "Cómo saber si una idea es viable en números: presupuesto de costos, costo unitario y precio de venta, estados financieros (balance inicial y flujo de caja) e indicadores como punto de equilibrio, TIO, VAN y TIR, con los ejemplos resueltos."
+curso: Emprendimiento SENA
+orden: 4
+---
+
+import ImagenAmpliable from '@/components/blog/mdx/ImagenAmpliable.astro'
+import puntoEquilibrioGrafica from './punto-equilibrio-grafica.webp'
+import sintesis from './sintesis.webp'
+
+Antes de crear una empresa se hacen **estudios previos** que evalúan con objetividad si la idea es viable, mirando el comportamiento del mercado y los aspectos financieros. El **estudio de viabilidad** anticipa resultados y permite decidir si un proyecto puede ejecutarse con éxito. Para estructurarlo se necesitan tres bloques: el **presupuesto de costos**, los **estados financieros** y los **indicadores financieros**.
+
+## Presupuesto de costos
+
+Es la herramienta que **estima, organiza y controla** los recursos económicos necesarios para ejecutar un proyecto o mantener una empresa en marcha. Anticipa ingresos y egresos, y ayuda a estimar el valor total del proyecto, detectar necesidades adicionales de recursos y organizar las fuentes de financiación. Incluye un **programa de desembolsos** alineado con el cronograma de actividades.
+
+### Costos de producción
+
+**Costos y gastos de fabricación** (directos o indirectos al proceso productivo). Ejemplo con la fabricación de sillas:
+
+| Componente | Qué es | Ejemplo |
+| --- | --- | --- |
+| **Materia prima (materiales directos)** | Insumos que forman parte del producto final; suele ser el principal costo. | La madera de la silla |
+| **Materiales indirectos** | Necesarios para elaborar, pero no se incorporan físicamente al producto. | El pegante |
+| **Mano de obra directa** | Personal que transforma los materiales en producto. | Quien corta, ensambla y pinta la madera |
+| **Mano de obra indirecta** | Personal que apoya la producción sin fabricar directamente. | Supervisores, asistentes, mantenimiento, vigilantes |
+| **Otros gastos de fabricación** | Costos generales del área productiva. | Aseo, papelería, combustibles, lubricantes, repuestos, servicios públicos, alquileres, seguros, impuestos, depreciaciones |
+
+**Otros gastos de la empresa**
+
+| Gasto | Qué incluye |
+| --- | --- |
+| **De venta** | Comercializar y promocionar: salarios y comisiones de ventas, publicidad, material promocional, transporte y entrega, viáticos. |
+| **De administración** | Funciones administrativas, no ligadas a producir: sueldos administrativos, honorarios, servicios públicos, alquiler de oficinas, papelería, seguros, impuestos, mantenimiento y depreciación de equipos de oficina. |
+| **Financieros** | Uso de financiamiento externo: intereses de préstamos, comisiones bancarias, cargos por servicios financieros, costos de formalizar créditos. |
+
+### Costo unitario
+
+Indica cuánto cuesta producir **una sola unidad**. Es clave para fijar precios, calcular márgenes y proyectar la rentabilidad. Para calcularlo hay que clasificar bien los gastos:
+
+<TwoColumns>
+<div>
+**Gastos fijos**
+
+Se pagan siempre, sin importar cuánto se produzca o venda. Son indispensables para operar y sirven para calcular el punto de equilibrio.
+
+- Salarios administrativos y directivos
+- Alquileres de oficinas o plantas
+- Servicios básicos (luz, agua, internet, seguridad)
+- Seguros empresariales
+- Licencias de funcionamiento o software
+</div>
+<div>
+**Gastos variables**
+
+Cambian con el nivel de actividad: a más producción o ventas, más gasto. Permiten cierto control y ajuste.
+
+- Materias primas e insumos directos
+- Mano de obra directa
+- Comisiones por ventas
+- Embalaje, distribución y transporte
+- Envíos y logística
+- Personal temporal o de medio tiempo
+- Bonificaciones por productividad
+</div>
+</TwoColumns>
+
+<Formula titulo="Costo total">
+CT = CF + CV
+
+- CT = costo total
+- CF = costos fijos
+- CV = costos variables
+</Formula>
+
+<Formula titulo="Costo unitario">
+CU = CT ÷ n
+
+- CU = costo unitario
+- CT = costo total de producción
+- n = número de unidades producidas
+</Formula>
+
+### Precio de venta
+
+Con el costo unitario se define el **margen de utilidad** deseado. Pero el precio no puede basarse solo en el costo: una decisión errada afecta la rentabilidad y la sostenibilidad. Hay que mirar:
+
+<div class="not-prose my-10 grid gap-8 pl-4 sm:grid-cols-2 lg:grid-cols-3">
+  <InfoCard title="Productos similares" description="Cuánto cobran otras empresas por bienes parecidos." />
+  <InfoCard title="Productos sustitutos" description="Alternativas que cumplen la misma función, para ubicarse en un rango aceptable." variant="pink" />
+  <InfoCard title="Nivel de demanda" description="Mucha demanda y pocas alternativas puede justificar un precio más alto." variant="green" />
+  <InfoCard title="Valor y calidad percibidos" description="El precio debe reflejar lo que el cliente percibe; los atributos diferenciadores lo permiten subir." variant="purple" />
+  <InfoCard title="Objetivos financieros" description="Rentabilidad, cobertura de costos fijos y variables, y recuperación de la inversión." variant="cream" />
+  <InfoCard title="Ciclo de vida del producto" description="Al inicio puede usarse un precio promocional; en madurez se ajusta según demanda y competencia." />
+</div>
+
+También cuentan las **condiciones del mercado y la economía**: inflación, poder adquisitivo, costo de insumos y cambios regulatorios.
+
+<Formula titulo="Precio de venta">
+PV = CT + MU
+
+- PV = precio de venta
+- CT = costo total (costos fijos + variables)
+- MU = margen de utilidad (monto o porcentaje de ganancia por unidad)
+</Formula>
+
+**Ejemplo:** si producir un artículo cuesta $50.000 (CT) y se quiere ganar $20.000 (MU), PV = $50.000 + $20.000 = **$70.000**. Luego hay que contrastarlo con el mercado para confirmar que sea competitivo.
+
+## Estados financieros
+
+Son informes contables que muestran la **situación económica** y los **resultados** de una empresa en un periodo. En un emprendimiento sirven para **proyectar** cómo evolucionarán la financiación, los costos y gastos, los ingresos y las utilidades durante la vida útil del proyecto. Permiten ver cuántos fondos se necesitan, el efecto de los costos financieros, la estabilidad de los ingresos, los excedentes para reinvertir o repartir, y la evolución de la rentabilidad y el patrimonio. Con ellos se calculan los **indicadores** que dicen si el negocio es viable, necesita ajustes o no es sostenible.
+
+### Balance inicial
+
+Muestra la situación económica y patrimonial **antes de comenzar a operar**: es la base contable del negocio. Sirve para saber con qué capital se cuenta, evaluar la solidez desde el punto de partida, proyectar otros estados (flujo de efectivo, estado de resultados) y cumplir requisitos contables, tributarios y legales.
+
+<div class="not-prose my-10 grid gap-8 pl-4 sm:grid-cols-3">
+  <InfoCard title="Activos" description="Bienes y derechos de la empresa: efectivo, cuentas por cobrar, inventarios, maquinaria, equipos." />
+  <InfoCard title="Pasivos" description="Deudas y obligaciones por pagar: préstamos, cuentas por pagar, servicios por cancelar." variant="pink" />
+  <InfoCard title="Patrimonio" description="Aportes de los socios o capital propio: la diferencia entre activos y pasivos." variant="green" />
+</div>
+
+<Formula titulo="Ecuación del balance">
+Activo = Pasivo + Patrimonio
+</Formula>
+
+### Flujo de caja o de efectivo
+
+Tener ingresos altos no basta: si los **egresos** (materias primas, salarios, servicios, suministros, mantenimiento) superan a los ingresos, la empresa puede entrar en dificultades. El flujo de caja relaciona **ingresos y egresos de dinero** en un periodo y muestra la **liquidez**: si hay efectivo para cumplir los compromisos a corto y largo plazo. Los ingresos se anotan con signo (+) y los egresos con (−).
+
+- **Histórico:** de periodos pasados, para análisis contable.
+- **Proyectado o presupuestado:** de periodos futuros, para planificar y formular proyectos.
+
+Sirve para evaluar la capacidad de pago, decidir si se necesita financiamiento externo, analizar créditos y solvencia, valorar la capacidad del proyecto de generar efectivo y proyectar escenarios. Hoy el valor de un proyecto se entiende en gran parte como su **capacidad de generar efectivo en el tiempo**, por eso es la base para calcular el **VPN** y el **CAE** (costo anual equivalente).
+
+**Estructura de un flujo proyectado:** saldo inicial de efectivo · entradas (ventas, inversiones, aportes) · salidas (costos operacionales, pagos financieros, inversiones) · flujo neto del periodo (entradas − salidas) · saldo final.
+
+<Formula titulo="Saldo final de caja">
+Saldo final = saldo inicial + (entradas − salidas)
+</Formula>
+
+Para elaborarlo con rigor se necesita: el balance general del periodo anterior (o uno inicial), un estado de resultados proyectado con presupuestos de ventas, costos y gastos, las políticas internas de operación, financiamiento e inversión, y estimaciones realistas de ventas, tiempos de cobro y pago, mercado y variación de costos. Un flujo bien armado también refuerza la negociación con inversionistas, bancos y aliados.
+
+## Indicadores financieros
+
+Transforman los datos contables en información para decidir: permiten evaluar el **riesgo**, estimar la **rentabilidad**, calcular el **tiempo de recuperación** de la inversión y proyectar el valor que generará el negocio.
+
+### Punto de equilibrio
+
+Es el nivel mínimo de ventas o producción donde los **ingresos igualan a los egresos**: no hay pérdidas ni utilidades. Cuanto más bajo sea, mayor la probabilidad de generar utilidades y menor el riesgo. Se calcula separando **costos fijos** (alquiler, sueldos administrativos, seguros) y **costos variables** (insumos, comisiones, mano de obra directa), con datos mensuales o anuales.
+
+<Formula titulo="Punto de equilibrio en unidades">
+PE = CF ÷ (precio de venta unitario − costo variable unitario)
+</Formula>
+
+<ImagenAmpliable src={puntoEquilibrioGrafica} alt="Gráfica del punto de equilibrio: la recta de ingresos por ventas corta la de costos totales; antes del cruce hay pérdida y después ganancia" />
+
+En el ejemplo del OVA, con costos fijos de 2,360 (miles de $), la recta de **ingresos** corta la de **costos totales** en X = 9,009 unidades e Y = 14,160. A la izquierda queda el área de **pérdida**; a la derecha, la de **ganancias**.
+
+### Tasa interna de oportunidad (TIO)
+
+El dinero en el tiempo tiene un costo: quien presta o invierte renuncia a otras alternativas y recibe un valor adicional, el **interés**.
+
+<Formula titulo="Interés y tasa de interés">
+I = F − P
+
+i = (I ÷ P) × 100
+
+- P = capital invertido o prestado · F = valor recibido después · I = interés · i = tasa (%)
+</Formula>
+
+La **TIO** es el rendimiento **mínimo** que un inversionista espera de un proyecto, según el costo de oportunidad y el riesgo asumido: lo que sacrifica por no invertir en una alternativa segura o conocida (un CDT, un fondo de inversión). Si el retorno esperado del proyecto es **mayor que la TIO**, es viable; si es menor, se pierde valor frente a otras opciones. Debe cubrir la recuperación del capital, los costos operativos, los intereses del financiamiento y las utilidades esperadas por los socios.
+
+**Ejemplo.** Laura Galindo invierte en CDT que pagan en promedio 32 % efectivo anual: esa es su tasa de oportunidad en términos corrientes. En términos **constantes** se usa la tasa real, descontando la inflación. Con una TIO de 2,5 % mensual y una inflación de 1,5 % mensual:
+
+<Formula titulo="Tasa real de oportunidad">
+TR = (TIO − inflación) ÷ (1 + inflación)
+
+TR = (0,025 − 0,015) ÷ (1 + 0,015) = 0,99 %
+</Formula>
+
+<div class="blog-content-note">
+
+En el OVA el paso intermedio aparece con un signo «+» entre TIO e inflación; el resultado de 0,99 % solo sale con la **resta**, que es lo que corresponde a la fórmula.
+
+</div>
+
+### Valor actual neto (VAN o VPN)
+
+Estima el **valor presente** de los flujos netos de efectivo de toda la vida del proyecto, descontados a una tasa fija que representa el costo de oportunidad del capital. Responde: ¿los ingresos futuros compensan la inversión inicial **y** el valor del dinero en el tiempo? Para cada periodo se restan los egresos a los ingresos y el resultado se lleva al presente con un factor de actualización.
+
+<Formula titulo="VAN">
+VAN = −Inversión inicial + Σ [ (Ingresos − Egresos) ÷ (1 + i)ⁿ ]
+
+- i = tasa de descuento · n = número del periodo
+</Formula>
+
+| Resultado | Qué significa | Decisión |
+| --- | --- | --- |
+| **VAN > 0** | Rentabilidad superior al costo del capital. | Aprobar el proyecto. |
+| **VAN = 0** | Rentabilidad igual a la tasa de descuento; sin ganancia adicional. | Aceptable. |
+| **VAN &lt; 0** | No cubre el costo del capital; generaría pérdidas. | Descartar. |
+
+**Ejemplo del OVA** (tasa de descuento ≈ 19 %, inversión inicial de $12.845,40 en el año 0, 10 años de flujos):
+
+| Año | Flujo neto | Factor de actualización | Valor presente |
+| --- | --- | --- | --- |
+| 1 | $2.272,20 | 0,840 | $1.909,41 |
+| 2 | $2.962,00 | 0,706 | $2.091,66 |
+| 3 | $3.717,20 | 0,593 | $2.205,85 |
+| 4 | $3.717,20 | 0,499 | $1.853,65 |
+| 5 | $3.717,20 | 0,419 | $1.557,69 |
+| 6 | $3.717,20 | 0,352 | $1.308,98 |
+| 7 | $3.717,20 | 0,296 | $1.099,99 |
+| 8 | $3.717,20 | 0,249 | $924,36 |
+| 9 | $3.717,20 | 0,209 | $776,77 |
+| 10 | $3.717,20 | 0,176 | $652,75 |
+| | | **VAN** | **$1.535,71** |
+
+El VAN es positivo: se acepta el proyecto. Lo que se resta de la suma de los valores presentes es la inversión inicial, porque es un desembolso.
+
+### Tasa interna de retorno (TIR)
+
+Mide la **rentabilidad real** del proyecto: es la tasa de descuento que iguala el valor actual de los ingresos con el de los egresos, es decir, la que hace **VAN = 0**. Se compara con el **costo de capital**, el rendimiento mínimo exigido, que combina **recursos propios** (aportes de socios) y **recursos ajenos** (créditos, que generan intereses).
+
+| Resultado | Decisión |
+| --- | --- |
+| **TIR > costo de capital** | Proyecto rentable: se recomienda aprobarlo. |
+| **TIR = costo de capital** | Apenas cubre el costo de oportunidad: aceptable, sin valor adicional. |
+| **TIR &lt; costo de capital** | Financieramente inviable. |
+
+Conviene analizar la TIR **junto con el VAN**, sobre todo si los flujos no son uniformes o hay varias tasas internas. En Excel la TIR se calcula desde el periodo 0; el VPN, desde el periodo 1.
+
+**Ejemplo del OVA.** Inversión inicial de $120.000.000, con flujo de caja de $4.000.000 al mes durante 24 meses (ingresos de $5.000.000 menos egresos de $1.000.000). La inversión se financia con $70.000.000 de patrimonio y $50.000.000 de bancos.
+
+| Fuente | Valor | Ponderado | Costo | Costo de capital |
+| --- | --- | --- | --- | --- |
+| Patrimonio | $70.000.000 | 58,33 % | 2,1791 % (TMRR) | 1,2711 % |
+| Bancos | $50.000.000 | 41,67 % | 1,70 % (tasa de interés) | 0,71 % |
+| **Total** | $120.000.000 | | | **1,9795 %** |
+
+Cada fuente se pondera dividiendo su valor entre el total, se multiplica por su costo y se suman los resultados. La TIR mensual del flujo es negativa (el OVA la redondea a −2 %; con más decimales es −1,71 %), así que queda **por debajo** del costo de capital: pierde 3,69 % por cada mes de ejecución. **Bajo el criterio de la TIR, el proyecto no se acepta.**
+
+<div class="blog-content-note">
+
+Para aprobar un proyecto, el **VPN y la TIR deben ser positivos**, y los datos deben manejarse con precisión para que los resultados sean válidos.
+
+</div>
+
+### Mapa del tema
+
+<ImagenAmpliable src={sintesis} alt="Síntesis del OVA Fundamentos financieros: presupuesto de costos, estados financieros e indicadores financieros" />
+
+<Repaso>
+- **CT = CF + CV · CU = CT ÷ n · PV = CT + MU.** El precio también depende del mercado, la demanda y el valor percibido.
+- **Balance inicial:** activo = pasivo + patrimonio. **Flujo de caja:** saldo final = saldo inicial + (entradas − salidas); muestra la liquidez.
+- **Punto de equilibrio:** ventas mínimas donde ingresos = egresos.
+- **TIO:** rendimiento mínimo que espera el inversionista. Si el proyecto rinde más, es viable.
+- **VAN:** > 0 aprueba · = 0 aceptable · &lt; 0 descarta.
+- **TIR:** tasa que hace VAN = 0; se compara con el costo de capital (patrimonio + bancos, ponderado). Debe ser mayor para aceptar.
+</Repaso>
+
+<small>Fuente: OVA «Fundamentos financieros para emprender», SENA ([ver material original](https://zajuna.sena.edu.co/Repositorio/Titulada/institution/SENA/Transversales/OVA/Emprendimiento/CF4_Emprendimiento/index.html#/)). Resumen y reorganización con fines de estudio; el material original puede copiarse y exhibirse citando los créditos, sin uso comercial.</small>
